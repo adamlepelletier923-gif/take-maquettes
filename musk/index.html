@@ -5,252 +5,251 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Take, en plus simple</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
-:root{
-  color-scheme:light;
-  --bg:#F6F7F8; --surface:#FFFFFF; --ink:#141414; --ink-2:#62656A; --line:#E3E6EA; --chip:#F0F2F5;
-  --cut:#D92D20; --cut-bg:#FDECEA; --slim:#B54708; --slim-bg:#FEF4E6; --keep:#067647; --keep-bg:#E8F5EE; --ask:#3538CD; --ask-bg:#EEF0FF;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327;
-    --cut:#FF6B5E; --cut-bg:#3A1714; --slim:#F5A94A; --slim-bg:#3A2710; --keep:#3CCB7F; --keep-bg:#0F2E1D; --ask:#9EA2FF; --ask-bg:#1E2045; }
-}
-:root[data-theme="dark"]{ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327;
-  --cut:#FF6B5E; --cut-bg:#3A1714; --slim:#F5A94A; --slim-bg:#3A2710; --keep:#3CCB7F; --keep-bg:#0F2E1D; --ask:#9EA2FF; --ask-bg:#1E2045; }
-
+:root{ color-scheme:light; --bg:#F6F7F8; --surface:#FFFFFF; --ink:#141414; --ink-2:#62656A; --line:#E3E6EA; --chip:#F0F2F5;
+  --cut:#D92D20; --cut-bg:#FDECEA; --slim:#B54708; --slim-bg:#FEF4E6; --ok:#067647; --ok-bg:#E8F5EE; --ask:#3538CD; --ask-bg:#EEF0FF; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ color-scheme:dark; --bg:#000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327;
+  --cut:#FF6B5E; --cut-bg:#3A1714; --slim:#F5A94A; --slim-bg:#3A2710; --ok:#3CCB7F; --ok-bg:#0F2E1D; --ask:#9EA2FF; --ask-bg:#1E2045; } }
+:root[data-theme="dark"]{ color-scheme:dark; --bg:#000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327;
+  --cut:#FF6B5E; --cut-bg:#3A1714; --slim:#F5A94A; --slim-bg:#3A2710; --ok:#3CCB7F; --ok-bg:#0F2E1D; --ask:#9EA2FF; --ask-bg:#1E2045; }
 body{ margin:0; background:var(--bg); color:var(--ink); font-family:Inter,-apple-system,"Helvetica Neue",Arial,sans-serif; font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased; }
-.wrap{ max-width:920px; margin:0 auto; padding-inline:20px; padding-block:28px 72px; }
-h1,h2,h3{ text-wrap:balance; margin:0; }
-h1{ font-size:32px; line-height:38px; font-weight:700; letter-spacing:-0.4px; }
-h2{ font-size:23px; line-height:29px; font-weight:700; letter-spacing:-0.2px; }
-h3{ font-size:18px; line-height:24px; font-weight:700; }
+.wrap{ max-width:960px; margin:0 auto; padding-inline:20px; padding-block:28px 72px; }
+h1,h2,h3{ margin:0; text-wrap:balance; } h1{ font-size:32px; line-height:38px; letter-spacing:-.4px; } h2{ font-size:23px; line-height:29px; } h3{ font-size:18px; line-height:24px; }
 p{ margin:0; }
-.head{ display:grid; gap:14px; padding-block:8px 18px; }
-.eyebrow{ font-size:12px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:var(--ink-2); }
-.lead{ max-width:62ch; color:var(--ink-2); display:grid; gap:8px; font-size:16.5px; }
-.lead strong{ color:var(--ink); font-weight:600; }
-
+.eyebrow{ font-size:12px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; color:var(--ink-2); }
+.lead{ color:var(--ink-2); max-width:62ch; display:grid; gap:8px; font-size:16.5px; } .lead b{ color:var(--ink); }
+header{ display:grid; gap:14px; padding-bottom:16px; }
 nav{ position:sticky; top:env(safe-area-inset-top,0px); z-index:5; background:var(--bg); padding-block:10px; border-bottom:1px solid var(--line); }
 nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; }
 nav a{ display:inline-flex; align-items:center; height:34px; padding:0 14px; border-radius:17px; background:var(--chip); color:var(--ink); text-decoration:none; font-size:14.5px; font-weight:600; white-space:nowrap; }
-nav a:hover, nav a:focus-visible{ background:var(--ink); color:var(--bg); outline:none; }
-
 section{ display:grid; gap:16px; padding-block:36px 6px; scroll-margin-top:64px; }
-.sec-head{ display:grid; gap:8px; max-width:64ch; }
-.note{ font-size:14.5px; color:var(--ink-2); max-width:64ch; }
-
-.tag{ display:inline-flex; align-items:center; height:26px; padding:0 11px; border-radius:13px; font-size:13px; font-weight:700; white-space:nowrap; }
-.cut{ background:var(--cut-bg); color:var(--cut); }
-.slim{ background:var(--slim-bg); color:var(--slim); }
-.keep{ background:var(--keep-bg); color:var(--keep); }
-.ask{ background:var(--ask-bg); color:var(--ask); }
-
-.done{ display:flex; flex-wrap:wrap; gap:8px; }
-.done span{ display:inline-flex; align-items:center; height:34px; padding:0 14px; border-radius:17px; background:var(--surface); border:1px solid var(--line); font-size:14.5px; font-weight:600; text-decoration:line-through; text-decoration-color:var(--cut); }
-
-.point{ background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:18px; display:grid; grid-template-columns:minmax(0,1fr) 200px; gap:20px; align-items:start; }
-.point.noimg{ grid-template-columns:minmax(0,1fr); }
-.point .body{ display:grid; gap:12px; }
-.point .top{ display:flex; flex-wrap:wrap; gap:8px 10px; align-items:center; }
-.point dl{ margin:0; display:grid; gap:10px; }
-.point dt{ font-size:12px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:var(--ink-2); }
-.point dd{ margin:0; font-size:16px; overflow-wrap:anywhere; }
-.point figure{ margin:0; display:grid; gap:6px; }
-.point img{ width:100%; height:auto; border-radius:20px; border:1px solid var(--line); display:block; }
-.point figcaption{ font-size:12.5px; color:var(--ink-2); }
-.list{ display:grid; gap:12px; }
-
+.sec{ display:grid; gap:8px; max-width:64ch; } .note{ font-size:14.5px; color:var(--ink-2); max-width:66ch; }
+.tag{ display:inline-flex; align-items:center; height:26px; padding:0 11px; border-radius:13px; font-size:13px; font-weight:700; white-space:nowrap; width:max-content; }
+.cut{ background:var(--cut-bg); color:var(--cut); } .slim{ background:var(--slim-bg); color:var(--slim); } .go{ background:var(--ok-bg); color:var(--ok); } .ask{ background:var(--ask-bg); color:var(--ask); }
+.pills{ display:flex; flex-wrap:wrap; gap:8px; }
+.pills span{ display:inline-flex; align-items:center; min-height:34px; padding:4px 14px; border-radius:17px; background:var(--surface); border:1px solid var(--line); font-size:14.5px; font-weight:600; }
+.pills.done span{ text-decoration:line-through; text-decoration-color:var(--cut); }
+.tours{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; }
+.tours div{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:12px 14px; display:grid; gap:4px; }
+.tours b{ font-size:15px; } .tours span{ font-size:14px; color:var(--ink-2); }
+.idea{ background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:20px; display:grid; gap:14px; }
+.idea .txt{ display:grid; gap:8px; max-width:66ch; } .idea .txt b{ font-weight:600; }
+.pair{ display:grid; grid-template-columns:repeat(2,minmax(0,230px)); gap:20px; justify-content:start; }
+.col{ display:grid; gap:8px; justify-items:start; }
+.col > span{ font-size:12.5px; font-weight:700; color:var(--ink-2); text-transform:uppercase; letter-spacing:.5px; }
+.col img, .phone{ width:230px; max-width:100%; height:auto; aspect-ratio:241/524; border-radius:24px; border:1px solid var(--line); display:block; }
+.jev{ font-size:13px; color:var(--ink-2); }
+/* Imagined screens drawn in the app's own light palette. */
+.phone{ background:#fff; color:#141414; position:relative; overflow:hidden; font-size:10.5px; line-height:1.35; box-sizing:border-box; padding:34px 12px 12px; display:flex; flex-direction:column; gap:7px; }
+.phone .tabs{ display:flex; justify-content:center; gap:10px; font-weight:600; color:#8B9197; font-size:10px; } .phone .tabs b{ color:#141414; border-bottom:2px solid #141414; }
+.phone .q{ font-weight:700; font-size:12px; } .phone .who{ color:#8B9197; font-size:9px; }
+.phone .opt{ border:1px solid #E3E6EA; border-radius:9px; padding:6px 8px; font-size:10px; } .phone .opt.sel{ border-color:#141414; font-weight:700; }
+.phone .row{ display:flex; justify-content:space-between; align-items:center; gap:6px; }
+.phone .btn{ background:#141414; color:#fff; border-radius:12px; text-align:center; padding:8px; font-weight:700; font-size:10.5px; } .phone .btn.light{ background:#F0F2F5; color:#141414; }
+.phone .sheet{ position:absolute; left:6px; right:6px; bottom:6px; background:#fff; border-radius:16px; box-shadow:0 -4px 24px rgba(0,0,0,.14); padding:12px; display:grid; gap:7px; text-align:center; }
+.phone .sheet b{ font-size:12px; } .phone .small{ font-size:9px; color:#8B9197; }
+.phone .comment{ display:grid; gap:1px; border-top:1px solid #F0F2F5; padding-top:5px; }
+.phone .input{ margin-top:auto; border:1px solid #E3E6EA; border-radius:14px; padding:7px 9px; color:#8B9197; }
+.phone .chip{ display:inline-block; border:1px solid #E3E6EA; border-radius:10px; padding:2px 7px; font-size:9px; }
+.phone .vtag{ display:inline-block; border-radius:8px; padding:0 6px; font-size:8.5px; font-weight:700; background:#F0F2F5; margin-left:4px; }
+.phone .li{ display:flex; gap:6px; align-items:center; border-top:1px solid #F0F2F5; padding-top:6px; } .phone .li .t{ flex:1; font-weight:600; font-size:9.5px; }
+.phone .num{ font-weight:800; color:#8B9197; width:10px; } .phone .mini{ border:1px solid #141414; border-radius:8px; padding:2px 6px; font-size:9px; font-weight:700; }
+.phone .bubble{ align-self:flex-start; background:#F0F2F5; border-radius:12px; padding:6px 8px; max-width:80%; }
+.phone .bubble.me{ align-self:flex-end; background:#141414; color:#fff; }
+.phone .card{ border:1px solid #E3E6EA; border-radius:12px; padding:8px; display:grid; gap:5px; align-self:flex-end; width:78%; }
+.phone .h{ font-weight:800; font-size:9px; letter-spacing:.6px; color:#8B9197; text-transform:uppercase; margin-top:4px; }
 .cards{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-.card{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:16px; display:grid; gap:6px; align-content:start; }
-.card span{ color:var(--ink-2); font-size:15px; }
-
-@media (max-width:760px){ .point{ grid-template-columns:minmax(0,1fr); } .point figure{ max-width:230px; } .cards{ grid-template-columns:none; } }
-@media (max-width:480px){ h1{ font-size:27px; line-height:33px; } }
+.card2{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:16px; display:grid; gap:6px; align-content:start; } .card2 span{ color:var(--ink-2); font-size:15px; }
+@media (max-width:560px){ .pair{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; } .col img, .phone{ width:100%; } .cards{ grid-template-columns:none; } h1{ font-size:27px; line-height:33px; } }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="head">
-    <p class="eyebrow">Take · méthode Musk · version 3 · 29 septembre 2026, 20 h 50</p>
-    <h1>Take, en plus simple</h1>
-    <div class="lead">
-      <p>J'ai refait le tour de l'app comme quelqu'un de 16 ans qui la découvre. Pour chaque chose, une seule question : <strong>est-ce que ça t'aide à voir un take, voter, commenter ou publier ?</strong> Si non, on l'enlève ou on la rend plus simple.</p>
-      <p>Cette page ne parle que de ce qu'on voit dans l'app. Tout le technique est parti.</p>
-    </div>
-  </header>
+<header>
+  <p class="eyebrow">Take · méthode Musk · version 4 · 29 septembre 2026, 21 h 30</p>
+  <h1>Take, en plus simple : tout sur une page</h1>
+  <div class="lead">
+    <p>Le but : que chaque écran serve à <b>voir un take, voter, commenter ou publier</b>. Ce qui n'y aide pas, on l'enlève ou on le simplifie. Ce qui manque, on le rajoute.</p>
+    <p>Cette fois, <b>sept vrais tours</b> de l'app entière sur le simulateur, chacun avec un regard différent, avec et sans compte. Pour chaque idée : ce qu'on voit aujourd'hui, le souci, et souvent un croquis de ce que j'imagine, à côté de la vraie capture.</p>
+  </div>
+</header>
 
-  <nav aria-label="Sections">
-    <ul>
-      <li><a href="#fait">Déjà enlevé</a></li>
-      <li><a href="#idees">Nouvelles idées</a></li>
-      <li><a href="#trancher">À décider</a></li>
-      <li><a href="#simplifier">À simplifier</a></li>
-      <li><a href="#rajouter">À rajouter</a></li>
-      <li><a href="#bien">Déjà bien</a></li>
-    </ul>
-  </nav>
+<nav aria-label="Sections"><ul>
+  <li><a href="#fait">Fait</a></li><li><a href="#encours">En cours</a></li><li><a href="#tours">Les 7 tours</a></li>
+  <li><a href="#sanscompte">Sans compte</a></li><li><a href="#connecte">Avec un compte</a></li><li><a href="#decider">À décider</a></li><li><a href="#reste">Encore à simplifier</a></li>
+</ul></nav>
 
-  <section id="fait">
-    <div class="sec-head">
-      <p class="eyebrow">Tu as dit oui</p>
-      <h2>Déjà en train de partir</h2>
-      <p class="note">Ces écrans sont en train d'être retirés. Personne ne les regrettera : soit on ne pouvait plus les ouvrir, soit ils ne servaient à rien.</p>
-    </div>
-    <div class="done">
-      <span>« Liens partagés » dans les réglages</span>
-      <span>Choisir l'icône de l'app</span>
-      <span>« Rechercher une mise à jour »</span>
-    </div>
-    <p class="note"><b>En cours de réalisation</b>, validés par toi le 29/09 à 21 h 07 : les takes dans ta langue d'abord, les votes regroupés dans « Activité », « Sans limite » rangé dans « Plus d'options », un seul écran « Partager », le ménage des réglages, le prénom prérempli et « Passer » à l'inscription, et la demande de notifications après ton premier take.</p>
-  </section>
+<section id="fait">
+  <div class="sec"><p class="eyebrow">Tu as dit oui</p><h2>Déjà enlevé, c'est dans l'app</h2></div>
+  <div class="pills done"><span>« Liens partagés »</span><span>Choisir l'icône de l'app</span><span>« Rechercher une mise à jour »</span></div>
+</section>
 
-  <section id="idees">
-    <div class="sec-head">
-      <p class="eyebrow">Nouveau</p>
-      <h2>Sept tours de plus, avec des croquis</h2>
-      <p class="note">Les premiers pas dans Take, sans compte : ouvrir sur un vrai fil, lire un take, garder son vote, écrire avant de se connecter. Chaque idée avec la capture d'aujourd'hui et un croquis de ce que j'imagine : <a href="https://adamlepelletier923-gif.github.io/take-maquettes/musk/idees/">https://adamlepelletier923-gif.github.io/take-maquettes/musk/idees/</a></p>
-    </div>
-  </section>
+<section id="encours">
+  <div class="sec"><p class="eyebrow">Validé par toi le 29/09 à 21 h 07</p><h2>En cours de réalisation</h2><p class="note">Un agent les code, une PR par point. Je les relis et je les fusionne quand la vérification est verte.</p></div>
+  <div class="pills"><span>Réglages : plus d'arabe « bientôt », ni de « Mise à jour », version une seule fois</span><span>« Sans limite » rangé dans « Plus d'options »</span><span>Votes regroupés : l'agent a vérifié que c'est déjà le cas pour un même take</span><span>Demande de notifications après ton premier take</span><span>Prénom prérempli et « Passer » à l'inscription</span><span>Takes dans ta langue d'abord</span><span>Un seul écran « Partager »</span></div>
+</section>
 
-  <section id="trancher">
-    <div class="sec-head">
-      <p class="eyebrow">Les gros morceaux</p>
-      <h2>À décider ensemble</h2>
-      <p class="note">Ce sont des choix de produit, pas des bugs. Je donne mon avis, c'est à Imo et toi de trancher.</p>
-    </div>
-    <div class="list">
-      <article class="point">
-        <div class="body">
-          <div class="top"><h3>Le jeu Take Rush, et son « Score » en haut du profil</h3><span class="tag ask">À décider</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>Dans ton profil, un onglet « Jeu » avec « Jouer » et un classement entre amis. En haut du profil : « Amis 7 · Takes 10 · Score 7 ». Ce score, c'est ton record au jeu.</dd>
-            <dt>Le souci</dt><dd>Take, c'est donner son avis. Un jeu d'arcade n'a rien à voir avec ça. Pire : un « Score » en haut du profil fait croire que les gens te notent.</dd>
-            <dt>Ce que je ferais</dt><dd>Tout de suite : enlever « Score » du haut du profil ; il reste dans l'onglet Jeu. Ensuite, choisir : enlever le jeu, ou le sortir du profil pour le ranger dans un coin « Jeux ».</dd>
-          </dl>
-        </div>
-        <figure><img src="img/02-profil.png" alt="Profil : Amis, Takes, Score en haut, Top 8, onglets Takes, Questions, Jeu, Reposts" loading="lazy"><figcaption>Le profil : « Score » en haut, onglet « Jeu ».</figcaption></figure>
-      </article>
+<section id="tours">
+  <div class="sec"><p class="eyebrow">La méthode</p><h2>Les sept tours</h2><p class="note">Chaque tour traverse toute l'app, mais avec une seule question en tête.</p></div>
+  <div class="tours">
+    <div><b>1 · Découvrir</b><span>Sans compte : l'accueil, le fil, un take, le « + », le profil.</span></div>
+    <div><b>2 · Voter</b><span>Les fils Amis et Takes, chaque format de vote.</span></div>
+    <div><b>3 · Lire</b><span>La page d'un take, sa courbe, sa discussion.</span></div>
+    <div><b>4 · Publier</b><span>Le « + », les formats, qui peut voir.</span></div>
+    <div><b>5 · Les autres</b><span>Le profil d'un ami, les amis.</span></div>
+    <div><b>6 · Parler et revenir</b><span>Les messages, une conversation, l'activité.</span></div>
+    <div><b>7 · Chercher</b><span>Explorer, les tendances, la recherche.</span></div>
+  </div>
+</section>
 
-      <article class="point">
-        <div class="body">
-          <div class="top"><h3>Le Top 8</h3><span class="tag ask">À décider</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>Tes 8 meilleurs potes en grand, en haut de ton profil, comme sur MySpace.</dd>
-            <dt>Le souci</dt><dd>Quand quelqu'un ouvre ton profil, il voit d'abord tes amis, pas ce que tu penses. Et choisir 8 personnes dans l'ordre, c'est du travail qui ne mène pas à voter.</dd>
-            <dt>Ce que je ferais</dt><dd>Le garder, mais plus petit et plus bas, pour que tes takes passent en premier.</dd>
-          </dl>
-        </div>
-        <figure><img src="img/03-jeu.png" alt="Profil : Top 8 au-dessus de l'onglet Jeu" loading="lazy"><figcaption>Le Top 8 prend le haut du profil.</figcaption></figure>
-      </article>
+<section id="sanscompte">
+  <div class="sec"><p class="eyebrow">Tour 1 · Découvrir sans compte</p><h2>Les premiers pas : c'est là qu'on décide de rester</h2></div>
 
-      <article class="point noimg">
-        <div class="body">
-          <div class="top"><h3>Know me, le quiz « devine mes réponses »</h3><span class="tag ask">À décider</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>Dans une conversation, tu remplis un quiz sur toi, et ton pote doit deviner tes réponses.</dd>
-            <dt>Le souci</dt><dd>C'est un deuxième jeu à côté de Take Rush. Deux jeux dans une app d'avis, c'est beaucoup.</dd>
-            <dt>Ce que je ferais</dt><dd>Si on ne garde qu'un jeu, plutôt celui-là : il parle d'opinions et d'amitié. Encore mieux, en faire un take : « Devine ce que je pense ».</dd>
-          </dl>
-        </div>
-      </article>
+  <article class="idea"><div class="txt"><span class="tag go">À faire</span><h3>Ouvrir sur « Takes », pas sur un mur</h3>
+    <p><b>Aujourd'hui :</b> « Découvrir sans compte » mène sur « Amis », qui n'est qu'un écran « Connecte-toi ». Le premier écran de Take est un mur.</p>
+    <p><b>L'idée :</b> sans compte, on arrive sur le fil « Takes ». On voit tout de suite des questions et on a envie de voter.</p></div>
+    <div class="pair"><div class="col"><span>Aujourd'hui</span><img src="img/02-invite.png" alt="Sans compte : Amis est un mur Connecte-toi" loading="lazy"></div>
+      <div class="col"><span>Imaginé</span><div class="phone" role="img" aria-label="Croquis : l'app s'ouvre sur Takes">
+        <div class="tabs"><b>Takes</b><span>Amis</span><span>À proximité</span></div><div class="who">Léa · il y a 1 h</div>
+        <div class="q">Tu préfères un lundi sans cours ou un vendredi sans cours ?</div><div class="opt">Lundi</div><div class="opt">Vendredi</div>
+        <div class="who">Noah · il y a 2 h</div><div class="q">Le meilleur kebab de ta ville est chez toi ?</div>
+        <div class="row"><div class="opt" style="flex:1;text-align:center;color:#D92D20">Non</div><div class="opt" style="flex:1;text-align:center;color:#0B8A4C">Oui</div></div></div></div></div>
+    <p class="jev">Jev : faire, 0,90.</p></article>
 
-      <article class="point noimg">
-        <div class="body">
-          <div class="top"><h3>Les pourboires</h3><span class="tag ask">Reste au tableau</span></div>
-          <dl>
-            <dt>Ce que c'est</dt><dd>Donner de l'argent à quelqu'un dont tu aimes les takes. Aujourd'hui personne ne le voit : c'est éteint.</dd>
-            <dt>Ce que je ferais</dt><dd>Rien, tant qu'on n'a pas décidé si Take manipule de l'argent avec des utilisateurs aussi jeunes.</dd>
-          </dl>
-        </div>
-      </article>
-    </div>
-  </section>
+  <article class="idea"><div class="txt"><span class="tag go">À faire, c'est ta règle</span><h3>Lire un take sans compte</h3>
+    <p><b>Aujourd'hui :</b> sans compte, ouvrir un take affiche « Connecte-toi pour lire la discussion ». Tu l'avais dit le 25/09 : on se connecte pour agir, pas pour lire.</p>
+    <p><b>L'idée :</b> la page et les commentaires s'ouvrent pour tout le monde. La connexion n'arrive que pour voter, commenter ou liker.</p></div>
+    <div class="pair"><div class="col"><span>Aujourd'hui</span><img src="img/05-page-take-invite.png" alt="Connecte-toi pour lire la discussion" loading="lazy"></div>
+      <div class="col"><span>Imaginé</span><div class="phone" role="img" aria-label="Croquis : la page du take lisible sans compte">
+        <div class="who">‹ Retour</div><div class="q" style="font-size:13px">Qu'est-ce qui changerait le plus ta vie ?</div>
+        <div class="opt">Transports moins chers</div><div class="opt">Semaine plus courte</div>
+        <div class="comment"><b>Léo</b><span>Une semaine de 4 jours, clairement.</span></div><div class="comment"><b>Emma</b><span>Les transports, je paie 80 € par mois…</span></div>
+        <div class="input">Connecte-toi pour répondre…</div></div></div></div>
+    <p class="jev">Jev : faire, 0,85.</p></article>
 
-  <section id="simplifier">
-    <div class="sec-head">
-      <p class="eyebrow">Même idée, en plus simple</p>
-      <h2>À simplifier</h2>
-    </div>
-    <div class="list">
+  <article class="idea"><div class="txt"><span class="tag go">À faire</span><h3>Garder le vote choisi avant l'inscription</h3>
+    <p><b>Aujourd'hui :</b> sans compte, toucher une réponse demande de se connecter (normal, c'est une action). Mais une fois inscrit, le vote a disparu et il faut retrouver le take.</p>
+    <p><b>L'idée :</b> l'app garde la réponse touchée et la compte juste après la connexion, puis montre les résultats.</p></div>
+    <div class="pair"><div class="col"><span>Aujourd'hui</span><img src="img/04-invite-vote.png" alt="Voter sans compte ouvre Connecte-toi" loading="lazy"></div>
+      <div class="col"><span>Imaginé, après l'inscription</span><div class="phone" role="img" aria-label="Croquis : le vote est compté après l'inscription">
+        <div class="tabs"><b>Takes</b><span>Amis</span><span>À proximité</span></div><div class="q">Qu'est-ce qui changerait le plus ta vie ?</div>
+        <div class="opt">Transports moins chers <span style="float:right">31 %</span></div><div class="opt sel">Semaine plus courte ✓ <span style="float:right">42 %</span></div>
+        <div class="opt">Logement <span style="float:right">18 %</span></div>
+        <div class="sheet" style="text-align:left"><b>Ton vote est compté ✓</b><span class="small">Tu as voté comme 42 % des gens.</span></div></div></div></div>
+    <p class="jev">Jev : faire, 0,77.</p></article>
 
-      <article class="point">
-        <div class="body">
-          <div class="top"><h3>« À proximité » ouvre une carte vide</h3><span class="tag slim">Simplifier</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>Tu touches « À proximité » et tu tombes sur une grande carte. Ici, elle est vide.</dd>
-            <dt>Le souci</dt><dd>Tu viens voir ce qui se dit autour de toi, pas une carte. C'est l'idée d'Imo, façon Yik Yak : d'abord la liste des takes autour de toi, et la carte seulement si tu veux fouiller.</dd>
-            <dt>Ce que je ferais</dt><dd>Choisir une des maquettes déjà prêtes : <a href="https://adamlepelletier923-gif.github.io/take-maquettes/185/proximite/">https://adamlepelletier923-gif.github.io/take-maquettes/185/proximite/</a></dd>
-          </dl>
-        </div>
-        <figure><img src="img/26-proximite.png" alt="À proximité : une carte de Séoul sans take" loading="lazy"><figcaption>« À proximité » aujourd'hui.</figcaption></figure>
-      </article>
+  <article class="idea"><div class="txt"><span class="tag go">À faire</span><h3>Écrire son take d'abord, se connecter à « Publier »</h3>
+    <p><b>Aujourd'hui :</b> sans compte, le « + » affiche tout de suite « Connecte-toi pour publier ».</p>
+    <p><b>L'idée :</b> tu écris ta question, et c'est au moment de « Publier » qu'on te demande de te connecter. Ton texte reste là après.</p></div>
+    <div class="pair"><div class="col"><span>Aujourd'hui</span><img src="img/08-plus-invite.png" alt="Le + sans compte ouvre Connecte-toi" loading="lazy"></div>
+      <div class="col"><span>Imaginé</span><div class="phone" role="img" aria-label="Croquis : take écrit, connexion à la publication">
+        <div class="who" style="font-weight:700;letter-spacing:.8px">NOUVEAU TAKE</div><div class="q" style="font-size:13px">Le meilleur prof de ta vie, c'était en quelle matière ?</div>
+        <div class="row" style="justify-content:flex-start;gap:5px"><span class="chip">Oui / Non</span><span class="chip">Amis</span></div>
+        <div class="sheet"><b>Ton take est prêt</b><span class="small">Connecte-toi pour le publier. Ton texte reste là.</span><div class="btn light">Continuer avec un e-mail</div></div></div></div></div>
+    <p class="jev">Jev : faire, 0,89.</p></article>
 
-      <article class="point">
-        <div class="body">
-          <div class="top"><h3>Quatre onglets dans ton profil</h3><span class="tag slim">Simplifier</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>Takes, Questions, Jeu, Reposts.</dd>
-            <dt>Le souci</dt><dd>Quatre onglets pour un profil, c'est beaucoup. « Jeu » dépend de la décision sur Take Rush. Et « Reposts » pourrait vivre dans « Takes », avec une petite étiquette « repost ».</dd>
-            <dt>Ce que je ferais</dt><dd>Deux onglets : « Takes », qui inclut les reposts, et « Questions ».</dd>
-          </dl>
-        </div>
-        <figure><img src="img/27-questions.png" alt="Profil : onglets Takes, Questions, Jeu, Reposts" loading="lazy"><figcaption>Les quatre onglets du profil.</figcaption></figure>
-      </article>
+  <article class="idea"><div class="txt"><span class="tag slim">À adapter</span><h3>« Se connecter » et « S'inscrire » mènent au même écran</h3>
+    <p><b>Aujourd'hui :</b> cinq boutons à l'accueil. « Se connecter » et « S'inscrire » ouvrent le même écran (e-mail puis code), seul le titre change.</p>
+    <p><b>L'idée :</b> un seul « Continuer avec ton e-mail », comme dans l'app, avec la ligne « Déjà un compte ? C'est le même bouton ». Jev hésite (rejeter 0,43, adapter 0,39) : quelqu'un qui revient cherche le mot « Se connecter », il faut le lui dire.</p></div>
+    <div class="pair"><div class="col"><span>Aujourd'hui</span><img src="img/00.png" alt="Accueil à cinq boutons" loading="lazy"></div>
+      <div class="col"><span>Imaginé</span><div class="phone" role="img" aria-label="Croquis : un seul bouton e-mail" style="background:#0C0C0C;color:#fff">
+        <div style="margin-top:auto;font-weight:800;font-size:26px;text-align:center">take</div><div class="small" style="text-align:center;color:#B8BCC2">Ton avis sur tout. En un tap.</div>
+        <div class="row"><div class="btn light" style="flex:1">Google</div><div class="btn light" style="flex:1">Apple</div></div>
+        <div class="btn light">Continuer avec ton e-mail</div><div class="small" style="text-align:center;color:#B8BCC2">Déjà un compte ? C'est le même bouton.</div>
+        <div style="text-align:center;font-weight:700">Découvrir sans compte</div></div></div></div></article>
+</section>
 
-      <article class="point">
-        <div class="body">
-          <div class="top"><h3>Un take n'a pas la même tête partout</h3><span class="tag slim">Simplifier</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>Dans le fil, un take est une grande carte. Dans Explorer, c'est une ligne numérotée avec deux petits boutons. Ailleurs, c'est encore autre chose.</dd>
-            <dt>Ce que je ferais</dt><dd>Garder la même carte partout, juste plus petite quand il faut. Tu reconnais un take au premier coup d'œil.</dd>
-          </dl>
-        </div>
-        <figure><img src="img/10-explorer-doublons.png" alt="Explorer : takes en lignes numérotées" loading="lazy"><figcaption>Explorer : des lignes, pas des cartes.</figcaption></figure>
-      </article>
+<section id="connecte">
+  <div class="sec"><p class="eyebrow">Tours 2 à 7 · avec un compte</p><h2>Voter, lire, publier, les autres, parler, chercher</h2></div>
 
-      <article class="point">
-        <div class="body">
-          <div class="top"><h3>Des boutons de période sur un take à 8 votes</h3><span class="tag slim">Simplifier</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>Sous la courbe d'un take, quatre boutons : 1 h, 1 j, 1 sem., Tout. Même quand il n'y a que 8 votes.</dd>
-            <dt>Ce que je ferais</dt><dd>La courbe reste toujours, comme tu l'as voulu. Les quatre boutons n'apparaissent que quand il y a assez de votes pour que ça change quelque chose.</dd>
-          </dl>
-        </div>
-        <figure><img src="img/09-page-take.png" alt="Page d'un take : courbe et quatre boutons de période, 8 votes" loading="lazy"><figcaption>La page d'un take, 8 votes.</figcaption></figure>
-      </article>
-    </div>
-  </section>
+  <article class="idea"><div class="txt"><span class="tag go">Tour 3 · Lire · à faire</span><h3>Voir ce que chacun a voté, dans la discussion</h3>
+    <p><b>Aujourd'hui :</b> sous un take, on lit les commentaires sans savoir quelle réponse chacun défend. C'est pourtant tout l'intérêt d'un débat.</p>
+    <p><b>L'idée :</b> une petite étiquette à côté du nom, avec la réponse votée, seulement pour les votes publics. Un vote anonyme reste anonyme.</p></div>
+    <div class="pair"><div class="col"><span>Aujourd'hui</span><img src="img/b2-commentaires.png" alt="Commentaires sans le vote de chacun" loading="lazy"></div>
+      <div class="col"><span>Imaginé</span><div class="phone" role="img" aria-label="Croquis : chaque commentaire porte la réponse votée">
+        <div class="q">Quel changement du littoral t'inquiète le plus ?</div>
+        <div class="comment"><span><b>Emma</b><span class="vtag">Érosion</span></span><span>Ce qui m'inquiète, c'est qu'il n'y a pas de plan.</span></div>
+        <div class="comment"><span><b>Sofia</b><span class="vtag">Qualité de l'eau</span></span><span>L'eau salée dans les champs derrière les dunes.</span></div>
+        <div class="comment"><span><b>Lucas</b><span class="vtag">Érosion</span></span><span>La plage de mes parents a perdu les trois quarts.</span></div>
+        <div class="comment"><span><b>Léo</b></span><span>Les inondations, l'assurance le sait déjà.</span></div>
+        <div class="input">Donne ton avis…</div></div></div></div>
+    <p class="jev">Jev : faire, 0,44 (adapter 0,35).</p></article>
 
-  <section id="rajouter">
-    <div class="sec-head">
-      <p class="eyebrow">Enlever, puis remettre ce qui manque</p>
-      <h2>Ce qu'on rajouterait</h2>
-      <p class="note">La règle de Musk : si on ne remet jamais rien, c'est qu'on n'a pas assez enlevé.</p>
-    </div>
-    <div class="cards">
-      <div class="card"><b>La liste « autour de toi »</b><span>Dans « À proximité », avant la carte.</span></div>
-      <div class="card"><b>Les votes regroupés</b><span>« Maya, Lucas et 12 autres ont voté sur ton take ».</span></div>
-      <div class="card"><b>Un seul écran « Partager »</b><span>À la place des quatre d'aujourd'hui.</span></div>
-      <div class="card"><b>Ta langue d'abord</b><span>Et une seule fois chaque question.</span></div>
-      <div class="card"><b>L'invitation au bon moment</b><span>Aussi après trois votes, ou quand un pote te rejoint.</span></div>
-      <div class="card"><b>Le prénom déjà rempli</b><span>Avec Apple ou Google.</span></div>
-    </div>
-  </section>
+  <article class="idea"><div class="txt"><span class="tag go">Tour 5 · Parler · à faire</span><h3>Poser un take à un pote, dans la conversation</h3>
+    <p><b>Aujourd'hui :</b> dans une conversation, il y a l'appareil photo, le micro, et une manette pour défier au jeu. Rien pour lui demander son avis, alors que c'est le cœur de Take.</p>
+    <p><b>L'idée :</b> à la place de la manette, un bouton « Pose-lui un take » : un mini-sondage entre vous deux, avec les deux votes quand chacun a répondu.</p></div>
+    <div class="pair"><div class="col"><span>Aujourd'hui</span><img src="img/e1-conversation.png" alt="Conversation : photo, manette, micro" loading="lazy"></div>
+      <div class="col"><span>Imaginé</span><div class="phone" role="img" aria-label="Croquis : un take posé dans la conversation">
+        <div class="row" style="justify-content:flex-start"><b>‹ Noah Williams</b></div>
+        <div class="bubble" style="margin-top:auto">Tu viens au café demain ?</div>
+        <div class="card"><b>Pizza ou burger ce soir ?</b><div class="opt sel">Pizza ✓ <span style="float:right">Toi</span></div><div class="opt">Burger</div><span class="small">Noah n'a pas encore voté</span></div>
+        <div class="row" style="border:1px solid #E3E6EA;border-radius:14px;padding:6px 9px;color:#8B9197"><span>📷</span><span style="flex:1">Message…</span><span class="chip" style="color:#141414;font-weight:700">+ Take</span><span>🎤</span></div></div></div></div>
+    <p class="jev">Jev : faire, 0,59.</p></article>
 
-  <section id="bien">
-    <div class="sec-head">
-      <p class="eyebrow">Rien à enlever</p>
-      <h2>Ce qui est déjà bien</h2>
-    </div>
-    <div class="cards">
-      <div class="card"><b>Messages</b><span>Une liste simple de conversations, avec une recherche.</span></div>
-      <div class="card"><b>Le menu « … » d'un take</b><span>Épingler ou archiver le tien ; masquer ou signaler celui d'un autre. C'est court.</span></div>
-      <div class="card"><b>La barre du bas</b><span>Accueil, Explorer, Messages, Profil, et le « + ».</span></div>
-      <div class="card"><b>Créer un take</b><span>Une question, un contexte si tu veux, et « Publier ». Il n'y a que la durée à cacher.</span></div>
-    </div>
-    <p class="note">Tour fait le 29 septembre sur le simulateur, avec le compte de test Ava Martin et les données de test. Chaque verdict a été vérifié par Jev, notre modèle de jugement : 36 questions en trois passages.</p>
-  </section>
+  <article class="idea"><div class="txt"><span class="tag go">Tour 6 · Revenir · à faire</span><h3>Dire où en est ton take, pas seulement qui a voté</h3>
+    <p><b>Aujourd'hui :</b> « Maya a voté sur ton take », « Lucas a voté sur ton take »… On apprend qui, mais pas l'essentiel. Et chaque « a accepté ta demande d'ami » porte une étiquette grise « Amis » qui répète la phrase.</p>
+    <p><b>L'idée :</b> « Ton take : 62 % Oui, 3 nouveaux votes ». C'est ça qui donne envie d'ouvrir. Et enlever l'étiquette « Amis ».</p></div>
+    <div class="pair"><div class="col"><span>Aujourd'hui</span><img src="img/f1-activite.png" alt="Activité : un vote par ligne, étiquette Amis" loading="lazy"></div>
+      <div class="col"><span>Imaginé</span><div class="phone" role="img" aria-label="Croquis : activité qui dit l'état du take">
+        <div style="font-weight:800;font-size:15px">Activité</div><div class="h">Aujourd'hui</div>
+        <div class="li"><span class="t">Ton take « Pizza ou burger ? » : <b>62 % Pizza</b> · 3 nouveaux votes</span></div>
+        <div class="li"><span class="t">Noah, Sofia et Léo ont accepté ta demande d'ami</span></div>
+        <div class="li"><span class="t">Ton take « Le littoral » : Érosion passe en tête</span></div></div></div></div>
+    <p class="jev">Jev : faire, 0,92 (l'état du take) et 0,90 (l'étiquette).</p></article>
+
+  <article class="idea"><div class="txt"><span class="tag go">Tour 7 · Chercher · à faire</span><h3>Une vraie page de résultats</h3>
+    <p><b>Aujourd'hui :</b> le champ promet « des takes, des gens, des lieux ». Taper « café » affiche « Tendances liées — ce qui buzze autour de café » et seulement des takes.</p>
+    <p><b>L'idée :</b> « Résultats pour café », avec trois parties : Takes, Personnes, Lieux.</p></div>
+    <div class="pair"><div class="col"><span>Aujourd'hui</span><img src="img/g1-recherche.png" alt="Recherche café : Tendances liées" loading="lazy"></div>
+      <div class="col"><span>Imaginé</span><div class="phone" role="img" aria-label="Croquis : résultats groupés">
+        <div class="opt">café</div><div style="font-weight:800;font-size:14px">Résultats pour « café »</div>
+        <div class="h">Takes</div><div class="li"><span class="t">Travailler depuis un café, c'est productif ?</span><span class="mini">Voter</span></div>
+        <div class="h">Personnes</div><div class="li"><span class="t">@cafe_lea · Léa</span></div>
+        <div class="h">Lieux</div><div class="li"><span class="t">Café de Flore, Paris</span></div></div></div></div>
+    <p class="jev">Jev : faire, 0,88.</p></article>
+
+  <article class="idea"><div class="txt"><span class="tag go">Tour 7 · Chercher · à faire</span><h3>Une seule façon de voter dans Explorer</h3>
+    <p><b>Aujourd'hui :</b> dans la même liste : quatre grandes réponses pour le premier, des pastilles « Non / Oui » pour d'autres, un bouton « Voter » pour d'autres encore.</p>
+    <p><b>L'idée :</b> le même bouton partout.</p></div>
+    <div class="pair"><div class="col"><span>Aujourd'hui</span><img src="img/06-explorer-invite.png" alt="Explorer : trois façons de voter" loading="lazy"></div>
+      <div class="col"><span>Imaginé</span><div class="phone" role="img" aria-label="Croquis : même bouton Voter partout">
+        <div class="opt" style="color:#8B9197">Cherche des takes, des gens, des lieux</div>
+        <div class="li"><span class="num">1</span><span class="t">Qu'est-ce qui changerait le plus ta vie ?</span><span class="mini">Voter</span></div>
+        <div class="li"><span class="num">2</span><span class="t">Plus de place aux vélos en ville ?</span><span class="mini">Voter</span></div>
+        <div class="li"><span class="num">3</span><span class="t">Les modèles climatiques, tu y crois ?</span><span class="mini">Voter</span></div>
+        <div class="li"><span class="num">4</span><span class="t">Le dimanche lent, meilleur moment ?</span><span class="mini">Voter</span></div></div></div></div>
+    <p class="jev">Jev : faire, 0,92.</p></article>
+
+  <div class="cards">
+    <div class="card2"><span class="tag go">Tour 4 · Publier · à faire</span><b>« Takes » devient « Tout le monde »</b><span>Dans « Qui peut le voir », les choix sont « Amis / Zone / Takes ». « Takes » veut dire tout le monde, mais c'est aussi le nom d'un fil. Jev : 0,93.</span></div>
+    <div class="card2"><span class="tag go">Tour 4 · Publier · à faire</span><b>Deviner le format pendant qu'on tape</b><span>Quatre formats (Oui / Non, Choix, Question, Note). « Ta note pour… » donne Note ; ajouter des réponses donne Choix ; on peut toujours changer. C'est l'étape 5 de Musk : automatiser. Jev : 0,49.</span></div>
+    <div class="card2"><span class="tag slim">Tour 2 · Voter · à adapter</span><b>Voter en anonyme avant de voter</b><span>Le fantôme « anonyme » est sous les réponses, donc on vote avant de le voir. Il faut l'offrir avant, par exemple en restant appuyé sur une réponse. Jev : adapter, 0,53.</span></div>
+    <div class="card2"><span class="tag slim">Tour 5 · Les autres · à adapter</span><b>« Vous êtes d'accord sur 7 takes sur 10 »</b><span>Sur le profil d'un ami, calculé sur vos votes publics. Une raison d'aller voir les profils. Seulement entre amis. Jev : adapter, 0,43.</span></div>
+  </div>
+  <p class="note">Écartée : mettre les réponses avant la courbe sur la page d'un take (Jev : rejeter 0,70). Ta règle « la courbe toujours » prime.</p>
+</section>
+
+<section id="decider">
+  <div class="sec"><p class="eyebrow">Les gros morceaux</p><h2>À décider avec Imo</h2></div>
+  <div class="cards">
+    <div class="card2"><span class="tag ask">À décider</span><b>Take Rush et son « Score » en haut du profil</b><span>Un jeu d'arcade dans une app d'avis. Et le « Score » en haut du profil fait croire que les gens te notent. Au minimum : enlever « Score » du haut du profil.</span></div>
+    <div class="card2"><span class="tag ask">À décider</span><b>Le Top 8</b><span>Tes 8 potes prennent le haut du profil, avant ce que tu penses. Le garder, mais plus petit et plus bas.</span></div>
+    <div class="card2"><span class="tag ask">À décider</span><b>Know me</b><span>Un deuxième jeu, dans les conversations. Si on n'en garde qu'un, plutôt lui, ou le transformer en take « Devine ce que je pense ».</span></div>
+    <div class="card2"><span class="tag ask">Reste au tableau</span><b>Les pourboires</b><span>Éteints. Rien à faire tant qu'on n'a pas décidé si Take manipule de l'argent avec des jeunes.</span></div>
+  </div>
+</section>
+
+<section id="reste">
+  <div class="sec"><p class="eyebrow">Déjà repérés</p><h2>Encore à simplifier</h2></div>
+  <div class="cards">
+    <div class="card2"><b>« À proximité » ouvre une carte vide</b><span>D'abord la liste autour de toi, la carte si tu veux fouiller (idée d'Imo). Maquettes : <a href="https://adamlepelletier923-gif.github.io/take-maquettes/185/proximite/">https://adamlepelletier923-gif.github.io/take-maquettes/185/proximite/</a></span></div>
+    <div class="card2"><b>Quatre onglets dans le profil</b><span>Takes, Questions, Jeu, Reposts. Deux suffisent : Takes (reposts inclus) et Questions.</span></div>
+    <div class="card2"><b>Un take n'a pas la même tête partout</b><span>Grande carte dans le fil, ligne numérotée dans Explorer. La même carte partout, plus petite quand il faut.</span></div>
+    <div class="card2"><b>Boutons de période sur un take à 8 votes</b><span>La courbe reste toujours ; les boutons 1 h / 1 j / 1 sem. / Tout n'apparaissent qu'avec assez de votes.</span></div>
+  </div>
+  <p class="note">Tours faits le 29 septembre entre 21 h 09 et 21 h 29 sur le simulateur, avec et sans le compte de test Ava Martin, sur les données de test. Les photos manquantes et les textes en anglais viennent de ces données. Chaque verdict a été vérifié par Jev (52 questions en cinq passages). Méthode : les cinq étapes d'Elon Musk (rendre l'exigence moins bête, supprimer, simplifier, accélérer, automatiser) et sa règle des 10 %.</p>
+</section>
 </div>
 </body>
 </html>
