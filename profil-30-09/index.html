@@ -76,15 +76,15 @@ section .rail + .rail{ margin-top:6px; }
     <div class="meta"><i></i>Profil, planète et brume · 30 septembre 2026</div>
     <h1>Tes cinq points, avec la solution à côté</h1>
     <div class="lead">
-      <p><strong>La brume est codée</strong> et vérifiée sur mon simulateur : elle part dès que la CI est verte.</p>
-      <p><strong>Les onglets, la planète et le glissement</strong> attendent ton oui sur ces maquettes avant d'être fusionnés.</p>
+      <p><strong>La brume :</strong> ta 9.6 et ta 9.1 refaites dans la vraie app, dis-moi laquelle.</p>
+      <p><strong>Onglets :</strong> tu as pris A. <strong>Planète :</strong> oui à « tourner puis ouvrir ». Les deux partent dans main après la CI.</p>
       <p>Captures et vidéos : la vraie app sur mon simulateur, API locale et compte de démo (pas staging). La roue grise est l'outil du build de dev, absente de l'app publiée.</p>
     </div>
   </header>
 
   <nav aria-label="Points">
     <ul>
-      <li><a href="#brume">3 · La brume</a></li>
+      <li><a href="#brume">3 · La brume (9.6 ou 9.1)</a></li>
       <li><a href="#onglets">1 · Les onglets</a></li>
       <li><a href="#glissement">4 · Le glissement</a></li>
       <li><a href="#planete">2 · La planète</a></li>
@@ -94,23 +94,26 @@ section .rail + .rail{ margin-top:6px; }
 
   <section id="brume">
     <div class="sec-head">
-      <div class="eyebrow">Point 3 · codé, PR #2356</div>
-      <h2>Le vote anonyme passe du noir à la brume</h2>
-      <blockquote>« Le mode ano c'est toujours noir alors que ça devait être du brouillard qu'on avait choisi. »<cite>Toi, 30/09. Décidé le 29/09 à 14 h 47 : « On change ? oui ».</cite></blockquote>
-      <p class="note"><b>Ce qui s'est passé :</b> les maquettes A1 à A5 sont en ligne depuis le 29, mais aucune n'a été choisie ni codée. Rien n'est parti dans main.</p>
-      <p class="note"><b>Ce que j'ai codé :</b> A1, la brume qui se condense sur place, choisie par Jev (0,56). Aucun rebond, le texte ne bouge pas.</p>
+      <div class="eyebrow">Point 3 · maquettes, à choisir</div>
+      <h2>La brume : la 9.6 et la 9.1, refaites dans la vraie app</h2>
+      <blockquote>« Moi je veux 9.6 justement ou 9.1, je m'en souviens plus, faut tu me les redonnes. »<cite>Toi, 30/09, après avoir refusé ma première brume grise.</cite></blockquote>
+      <p class="note"><b>Ce qui clochait :</b> j'avais teinté la brume en gris et je l'avais affaiblie de moitié. Du coup, elle ne ressemblait plus à ta 9.6.</p>
+      <p class="note"><b>Ici :</b> chaque fois, ta maquette du 29/09, puis la même brume sur le vrai composant, sans rien committer.</p>
     </div>
     <div class="rail">
-      <figure class="today"><div class="phone"><img src="img/p3-avant.jpg" alt="Aujourd'hui : le take voté en anonyme devient une carte noire" width="804" height="720" loading="lazy"></div><figcaption><div class="name"><span class="num">Auj.</span>Carte noire</div><p class="why">Ce que tu vois aujourd'hui dans le fil.</p></figcaption></figure>
-      <figure><div class="phone"><img src="img/p3-apres-clair.jpg" alt="Après : le même take couvert d'une brume, en clair" width="804" height="720" loading="lazy"></div><figcaption><div class="name"><span class="num">A1</span>Brume, en clair</div><p class="why">Nappes grises aux bords flous sur tout le take.</p></figcaption></figure>
-      <figure><div class="phone"><img src="img/p3-apres-sombre.jpg" alt="Après : le même take couvert d'une brume, en sombre" width="804" height="720" loading="lazy"></div><figcaption><div class="name"><span class="num">A1</span>Brume, en sombre</div><p class="why">En sombre, elle se lit comme une fumée.</p></figcaption></figure>
-      <figure><div class="phone"><img src="img/p3-take-ouvert.jpg" alt="Après : la page du take ouvert, couverte de brume" width="804" height="1320" loading="lazy"></div><figcaption><div class="name"><span class="num">A1</span>Take ouvert</div><p class="why">La page du take se voile pareil, plus de page noire.</p></figcaption></figure>
+      <figure class="today"><div class="phone"><img src="img/ref-9-6.jpg" alt="Ta maquette 9.6 du 29 septembre" width="804" height="1000" loading="lazy"></div><figcaption><div class="name"><span class="num">9.6</span>Ta maquette</div><p class="why">Nappes de brouillard sur tout le take.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/m96-takes-clair.jpg" alt="La 9.6 dans la vraie app, en clair" width="804" height="1120" loading="lazy"></div><figcaption><div class="name"><span class="num">9.6</span>Dans l'app</div><p class="why">Nappes blanches, texte délavé par endroits, comme ta maquette.</p></figcaption></figure>
+      <figure class="today"><div class="phone"><img src="img/ref-9-1.jpg" alt="Ta maquette 9.1 du 29 septembre" width="804" height="1000" loading="lazy"></div><figcaption><div class="name"><span class="num">9.1</span>Ta maquette</div><p class="why">Le nuage monte des bords et couvre le take.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/m91-takes-clair.jpg" alt="La 9.1 dans la vraie app, en clair" width="804" height="1120" loading="lazy"></div><figcaption><div class="name"><span class="num">9.1</span>Dans l'app</div><p class="why">Bords embrumés, carte lilas, texte du milieu bien net.</p></figcaption></figure>
     </div>
     <div class="rail">
-      <figure><div class="phone"><video src="vid/p3-fil-clair.mp4" autoplay loop muted playsinline width="804" height="800"></video></div><figcaption><div class="name"><span class="num">Vidéo</span>Fil, en clair</div><p class="why">Toucher le fantôme : la brume se pose en 2 s, puis se lève.</p></figcaption></figure>
-      <figure><div class="phone"><video src="vid/p3-fil-sombre.mp4" autoplay loop muted playsinline width="804" height="800"></video></div><figcaption><div class="name"><span class="num">Vidéo</span>Fil, en sombre</div><p class="why">La même animation sur fond noir.</p></figcaption></figure>
-      <figure><div class="phone"><video src="vid/p3-take-ouvert.mp4" autoplay loop muted playsinline width="804" height="1320"></video></div><figcaption><div class="name"><span class="num">Vidéo</span>Take ouvert</div><p class="why">Levée puis pose de la brume sur la page du take.</p></figcaption></figure>
+      <figure><div class="phone"><video src="vid/m96-anim.mp4" autoplay loop muted playsinline width="804" height="680"></video></div><figcaption><div class="name"><span class="num">9.6</span>Elle se pose</div><p class="why">Toucher le fantôme : la brume se lève, puis revient en 2 s.</p></figcaption></figure>
+      <figure><div class="phone"><video src="vid/m91-anim.mp4" autoplay loop muted playsinline width="804" height="680"></video></div><figcaption><div class="name"><span class="num">9.1</span>Elle se pose</div><p class="why">Même geste, même animation, sans rebond.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/m96-takes-sombre.jpg" alt="La 9.6 en sombre" width="804" height="1120" loading="lazy"></div><figcaption><div class="name"><span class="num">9.6</span>En sombre</div><p class="why">Une fumée grise sur tout le take.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/m91-takes-sombre.jpg" alt="La 9.1 en sombre" width="804" height="1120" loading="lazy"></div><figcaption><div class="name"><span class="num">9.1</span>En sombre</div><p class="why">La même, un peu plus claire sur les bords.</p></figcaption></figure>
     </div>
+    <p class="note"><b>Une limite :</b> ta maquette passait la photo en noir et blanc ; l'app ne sait pas le faire proprement, la brume la délave seulement.</p>
+    <p class="note"><b>Refusée :</b> ma première version grise, plus bas dans l'historique de la PR #2356.</p>
   </section>
 
   <section id="onglets">
@@ -176,7 +179,7 @@ section .rail + .rail{ margin-top:6px; }
   </section>
 
   <div class="answer">
-    <p><b>Pour choisir :</b> donne une lettre pour les onglets (A2, A, B ou C) et dis oui ou non pour la planète et le glissement.</p>
+    <p><b>Pour choisir :</b> dis 9.6 ou 9.1 pour la brume, et oui ou non pour le glissement quand sa vidéo arrive.</p>
   </div>
 </div>
 </body>
