@@ -83,6 +83,7 @@ section{ display:grid; gap:16px; padding-block:36px 6px; scroll-margin-top:64px;
   <nav aria-label="Sections">
     <ul>
       <li><a href="#fait">Déjà enlevé</a></li>
+      <li><a href="#idees">Nouvelles idées</a></li>
       <li><a href="#trancher">À décider</a></li>
       <li><a href="#simplifier">À simplifier</a></li>
       <li><a href="#rajouter">À rajouter</a></li>
@@ -100,6 +101,15 @@ section{ display:grid; gap:16px; padding-block:36px 6px; scroll-margin-top:64px;
       <span>« Liens partagés » dans les réglages</span>
       <span>Choisir l'icône de l'app</span>
       <span>« Rechercher une mise à jour »</span>
+    </div>
+    <p class="note"><b>En cours de réalisation</b>, validés par toi le 29/09 à 21 h 07 : les takes dans ta langue d'abord, les votes regroupés dans « Activité », « Sans limite » rangé dans « Plus d'options », un seul écran « Partager », le ménage des réglages, le prénom prérempli et « Passer » à l'inscription, et la demande de notifications après ton premier take.</p>
+  </section>
+
+  <section id="idees">
+    <div class="sec-head">
+      <p class="eyebrow">Nouveau</p>
+      <h2>Sept tours de plus, avec des croquis</h2>
+      <p class="note">Les premiers pas dans Take, sans compte : ouvrir sur un vrai fil, lire un take, garder son vote, écrire avant de se connecter. Chaque idée avec la capture d'aujourd'hui et un croquis de ce que j'imagine : <a href="https://adamlepelletier923-gif.github.io/take-maquettes/musk/idees/">https://adamlepelletier923-gif.github.io/take-maquettes/musk/idees/</a></p>
     </div>
   </section>
 
@@ -163,18 +173,6 @@ section{ display:grid; gap:16px; padding-block:36px 6px; scroll-margin-top:64px;
       <h2>À simplifier</h2>
     </div>
     <div class="list">
-      <article class="point">
-        <div class="body">
-          <div class="top"><h3>Des takes dans des langues que tu ne parles pas</h3><span class="tag slim">Simplifier</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>En français, le fil « Takes » et Explorer te montrent aussi des takes en anglais, espagnol, portugais, et même en japonais. Parfois, c'est la même question plusieurs fois, dans plusieurs langues.</dd>
-            <dt>Le souci</dt><dd>Tu ne peux pas voter sur une question que tu ne comprends pas. Et voir trois fois la même, ça fait bug.</dd>
-            <dt>Ce que je ferais</dt><dd>Montrer d'abord les takes dans ta langue, ou traduits, et une seule fois chaque question.</dd>
-            <dt>Attention</dt><dd>Vu sur les données de test. À vérifier chez les testeurs.</dd>
-          </dl>
-        </div>
-        <figure><img src="img/22-explorer-langues.png" alt="Explorer : takes en français, anglais, espagnol, japonais" loading="lazy"><figcaption>Explorer, catégorie Actu.</figcaption></figure>
-      </article>
 
       <article class="point">
         <div class="body">
@@ -190,18 +188,6 @@ section{ display:grid; gap:16px; padding-block:36px 6px; scroll-margin-top:64px;
 
       <article class="point">
         <div class="body">
-          <div class="top"><h3>Une notification par personne qui vote</h3><span class="tag slim">Simplifier</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>« Maya a voté sur ton take », puis « Lucas a voté sur ton take », puis « Emma a voté sur ton take »… une ligne pour chacun.</dd>
-            <dt>Le souci</dt><dd>Si ton take marche, ta liste devient un mur de lignes toutes pareilles. Pourtant, les questions sont déjà regroupées : « Léo, Noah et 2 autres t'ont posé une question ».</dd>
-            <dt>Ce que je ferais</dt><dd>Pareil pour les votes : « Maya, Lucas et 12 autres ont voté sur ton take ».</dd>
-          </dl>
-        </div>
-        <figure><img src="img/25-notifs.png" alt="Activité : questions regroupées, votes un par un" loading="lazy"><figcaption>L'écran « Activité ».</figcaption></figure>
-      </article>
-
-      <article class="point">
-        <div class="body">
           <div class="top"><h3>Quatre onglets dans ton profil</h3><span class="tag slim">Simplifier</span></div>
           <dl>
             <dt>Ce que tu vois</dt><dd>Takes, Questions, Jeu, Reposts.</dd>
@@ -210,29 +196,6 @@ section{ display:grid; gap:16px; padding-block:36px 6px; scroll-margin-top:64px;
           </dl>
         </div>
         <figure><img src="img/27-questions.png" alt="Profil : onglets Takes, Questions, Jeu, Reposts" loading="lazy"><figcaption>Les quatre onglets du profil.</figcaption></figure>
-      </article>
-
-      <article class="point">
-        <div class="body">
-          <div class="top"><h3>Créer un take : le bouton « Sans limite »</h3><span class="tag slim">Simplifier</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>Ta question, un contexte si tu veux, puis trois boutons : « Oui / Non », « Amis », « Sans limite ».</dd>
-            <dt>Le souci</dt><dd>« Sans limite », c'est la durée du take. Presque personne ne veut la changer, mais tout le monde se demande ce que ça veut dire.</dd>
-            <dt>Ce que je ferais</dt><dd>Garder « Oui / Non » et « Amis », et ranger la durée derrière un petit « Plus d'options ».</dd>
-          </dl>
-        </div>
-        <figure><img src="img/24-creer.png" alt="Nouveau take : question, contexte, Oui/Non, Amis, Sans limite" loading="lazy"><figcaption>L'écran « Nouveau take ».</figcaption></figure>
-      </article>
-
-      <article class="point noimg">
-        <div class="body">
-          <div class="top"><h3>Partager : un écran différent à chaque fois</h3><span class="tag slim">Simplifier</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>Partager un take, ton profil, une réponse ou ton Top 8 ouvre à chaque fois un écran qui n'a pas la même tête.</dd>
-            <dt>Le souci</dt><dd>C'est le même geste, partager, qui change d'aspect selon l'endroit. Et quand on en améliore un, les autres restent en retard.</dd>
-            <dt>Ce que je ferais</dt><dd>Un seul écran « Partager », toujours le même, avec l'aperçu de ce que tu envoies.</dd>
-          </dl>
-        </div>
       </article>
 
       <article class="point">
@@ -255,39 +218,6 @@ section{ display:grid; gap:16px; padding-block:36px 6px; scroll-margin-top:64px;
           </dl>
         </div>
         <figure><img src="img/09-page-take.png" alt="Page d'un take : courbe et quatre boutons de période, 8 votes" loading="lazy"><figcaption>La page d'un take, 8 votes.</figcaption></figure>
-      </article>
-
-      <article class="point">
-        <div class="body">
-          <div class="top"><h3>Les réglages : ce qui ne sert à personne</h3><span class="tag cut">Enlever</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>Une langue « arabe » grisée avec « Bientôt ». Une ligne « Mise à jour : Intégrée ». La version écrite deux fois.</dd>
-            <dt>Le souci</dt><dd>Une option qu'on ne peut pas choisir, ça fait « app pas finie ». Le reste, c'est du vocabulaire de développeur.</dd>
-            <dt>Ce que je ferais</dt><dd>Enlever l'arabe grisé et « Mise à jour », et écrire la version une seule fois.</dd>
-          </dl>
-        </div>
-        <figure><img src="img/07-langue-bientot.png" alt="Choix de la langue : arabe grisé, Bientôt" loading="lazy"><figcaption>Réglages › Langue.</figcaption></figure>
-      </article>
-
-      <article class="point noimg">
-        <div class="body">
-          <div class="top"><h3>L'inscription</h3><span class="tag slim">Simplifier un peu</span></div>
-          <dl>
-            <dt>Ce qui est déjà bien</dt><dd>Après ton prénom et tes centres d'intérêt, l'app te fait voter sur un vrai take, et seulement ensuite elle te propose d'inviter tes potes. C'est exactement l'idée : ton premier geste, c'est voter. Dans la version 2, j'avais écrit le contraire ; c'était une erreur de ma part.</dd>
-            <dt>Ce que je ferais</dt><dd>Si tu t'inscris avec Apple ou Google, on connaît déjà ton prénom : le remplir pour toi. Et mettre un « Passer » sur les centres d'intérêt, parce que tes premiers votes en disent plus que trois cases cochées.</dd>
-          </dl>
-        </div>
-      </article>
-
-      <article class="point noimg">
-        <div class="body">
-          <div class="top"><h3>La demande pour les notifications</h3><span class="tag slim">Mieux placer</span></div>
-          <dl>
-            <dt>Ce que tu vois</dt><dd>Avant la fenêtre de l'iPhone « Autoriser les notifications ? », un écran de Take explique pourquoi.</dd>
-            <dt>Le souci</dt><dd>L'iPhone ne pose sa question qu'une fois : si tu dis non, c'est fini. Posée trop tôt, tu dis non.</dd>
-            <dt>Ce que je ferais</dt><dd>La poser au bon moment, juste après ton premier take : « Tu veux savoir quand on te répond ? ».</dd>
-          </dl>
-        </div>
       </article>
     </div>
   </section>
