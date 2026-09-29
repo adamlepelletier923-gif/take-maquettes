@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Take · jeux et signature</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{ color-scheme:light; --bg:#F6F7F8; --surface:#FFFFFF; --ink:#141414; --ink-2:#62656A; --line:#E3E6EA; --chip:#F0F2F5;
+  --yes:#008B45; --yes-bg:#E8F5EE; --no:#C53637; --no-bg:#FDECEA; --ask:#3538CD; --ask-bg:#EEF0FF; --gold:#B54708; --gold-bg:#FEF4E6; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ color-scheme:dark; --bg:#000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327;
+  --yes:#3CCB7F; --yes-bg:#0F2E1D; --no:#FF6B5E; --no-bg:#3A1714; --ask:#9EA2FF; --ask-bg:#1E2045; --gold:#F5A94A; --gold-bg:#3A2710; } }
+:root[data-theme="dark"]{ color-scheme:dark; --bg:#000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327;
+  --yes:#3CCB7F; --yes-bg:#0F2E1D; --no:#FF6B5E; --no-bg:#3A1714; --ask:#9EA2FF; --ask-bg:#1E2045; --gold:#F5A94A; --gold-bg:#3A2710; }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:Inter,-apple-system,"Helvetica Neue",Arial,sans-serif; font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+.wrap{ max-width:980px; margin:0 auto; padding-inline:18px; padding-block:26px 80px; }
+h1,h2,h3,h4{ margin:0; text-wrap:balance; } h1{ font-size:31px; line-height:37px; letter-spacing:-.4px; } h2{ font-size:23px; line-height:29px; } h3{ font-size:19px; line-height:25px; } h4{ font-size:16.5px; line-height:22px; }
+p{ margin:0; }
+a{ color:var(--ask); }
+.eyebrow{ font-size:12px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; color:var(--ink-2); }
+.lead{ color:var(--ink-2); max-width:62ch; display:grid; gap:8px; font-size:16.5px; } .lead b{ color:var(--ink); }
+header{ display:grid; gap:14px; padding-bottom:16px; }
+nav{ position:sticky; top:env(safe-area-inset-top,0px); z-index:5; background:var(--bg); padding-block:10px; border-bottom:1px solid var(--line); }
+nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; }
+nav a{ display:inline-flex; align-items:center; height:34px; padding:0 14px; border-radius:17px; background:var(--chip); color:var(--ink); text-decoration:none; font-size:14.5px; font-weight:600; white-space:nowrap; }
+section{ display:grid; gap:18px; padding-block:34px 6px; scroll-margin-top:64px; }
+.sec{ display:grid; gap:8px; max-width:66ch; } .note{ font-size:14.5px; color:var(--ink-2); max-width:68ch; }
+.box{ background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:18px; display:grid; gap:14px; min-width:0; }
+.box ul{ margin:0; padding-left:18px; display:grid; gap:8px; } .box li{ padding-left:2px; }
+.pick{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.pick .one{ display:flex; gap:14px; align-items:center; }
+.pick img{ width:84px; height:84px; flex:none; }
+.pick b{ font-size:21px; display:block; } .pick span{ font-size:14px; color:var(--ink-2); }
+.duo{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.duo figure{ margin:0; display:grid; gap:6px; min-width:0; }
+.duo figcaption{ font-size:12px; font-weight:700; color:var(--ink-2); text-transform:uppercase; letter-spacing:.5px; }
+.duo img{ width:100%; height:auto; border-radius:14px; border:1px solid var(--line); display:block; }
+.logos{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.logo{ background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:14px; display:grid; gap:8px; align-content:start; min-width:0; }
+.logo img{ width:100%; max-width:150px; height:auto; aspect-ratio:1; display:block; }
+.logo b{ font-size:18px; } .logo .l{ font-size:12.5px; color:var(--ink-2); } .logo p{ font-size:14px; }
+.jev{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--ask); background:var(--ask-bg); border-radius:11px; padding:2px 9px; width:max-content; }
+.pills{ display:flex; flex-wrap:wrap; gap:8px; }
+.pills span{ display:inline-flex; align-items:center; min-height:32px; padding:3px 13px; border-radius:16px; background:var(--surface); border:1px solid var(--line); font-size:14.5px; font-weight:600; }
+.idea{ background:var(--surface); border:1px solid var(--line); border-radius:22px; padding:18px; display:grid; gap:14px; scroll-margin-top:64px; min-width:0; }
+.idea .top{ display:flex; gap:12px; align-items:flex-start; }
+.idea .n{ flex:none; width:32px; height:32px; border-radius:16px; background:var(--ink); color:var(--bg); font-weight:800; font-size:15px; display:grid; place-items:center; }
+.idea .t{ display:grid; gap:4px; min-width:0; }
+.idea .pitch{ font-size:16.5px; font-weight:600; }
+.idea .grid{ display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:20px; align-items:start; }
+.idea .body{ display:grid; gap:12px; min-width:0; }
+.idea details dl{ margin-top:10px; }
+.idea dl{ margin:0; display:grid; gap:10px; }
+.idea dt{ font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--ink-2); }
+.idea dd{ margin:0; font-size:15px; }
+.idea .shots{ display:grid; gap:10px; }
+.idea .shots img{ width:100%; height:auto; border-radius:22px; border:1px solid var(--line); display:block; }
+.idea .shots.two{ display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:4px; }
+.idea .shots.two img{ flex:none; width:82%; max-width:280px; scroll-snap-align:start; }
+.tags{ display:flex; flex-wrap:wrap; gap:6px; }
+.tag{ display:inline-flex; align-items:center; height:24px; padding:0 10px; border-radius:12px; font-size:12.5px; font-weight:700; white-space:nowrap; }
+.tag.new{ background:var(--yes-bg); color:var(--yes); } .tag.back{ background:var(--gold-bg); color:var(--gold); } .tag.mix{ background:var(--ask-bg); color:var(--ask); }
+.more{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+.more li{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:14px 16px; display:grid; gap:6px; min-width:0; scroll-margin-top:64px; }
+.more li .h{ display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; }
+.more li .k{ font-size:13px; font-weight:800; color:var(--ink-2); font-variant-numeric:tabular-nums; }
+.more li p{ font-size:14.5px; } .more li .why{ color:var(--ink-2); }
+.table{ overflow-x:auto; border:1px solid var(--line); border-radius:16px; background:var(--surface); }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:14px; }
+th,td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+th{ font-size:12px; letter-spacing:.5px; text-transform:uppercase; color:var(--ink-2); }
+tr:last-child td{ border-bottom:0; }
+.src{ font-size:13.5px; color:var(--ink-2); display:grid; gap:4px; } .src a{ overflow-wrap:anywhere; }
+details > summary{ cursor:pointer; font-size:14px; font-weight:600; color:var(--ink-2); }
+@media (max-width:640px){
+  .pick{ grid-template-columns:1fr; }
+  .logos{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .idea .grid{ grid-template-columns:1fr; }
+  .idea .shots img{ max-width:300px; }
+  .duo{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Take · 30 septembre 2026</p>
+  <h1>Les noms des jeux, et la signature de Take</h1>
+  <div class="lead"><p>Deux missions : des noms et des logos pour les deux jeux, puis la fonction qui ferait de Take un réseau à part, comme l'éphémère pour Snap ou la photo pour Insta.</p>
+<p><b>Rien n'est codé.</b> Chaque idée est dessinée dans une vraie capture de l'app (simulateur, données de test), avec la police de l'app.</p></div>
+</header>
+<nav aria-label="Sections"><ul>
+  <li><a href="#noms">Noms des jeux</a></li><li><a href="#signature">La signature</a></li><li><a href="#idees">Les 12 idées dessinées</a></li><li><a href="#plus">40 autres idées</a></li><li><a href="#recherche">La recherche</a></li>
+</ul></nav>
+
+<section id="noms">
+  <div class="sec"><p class="eyebrow">Mission 1</p><h2>Les noms des jeux</h2>
+  <p class="note">Tous les logos partent de la sphère en points de l'icône Take ; celui de Take Rush garde la Terre du jeu, dessinée en points à partir de la vraie carte des continents de l'app.</p></div>
+  <div class="box"><h3>Mon choix</h3>
+    <div class="pick">
+      <div class="one"><img src="img/logo-slalom.png" alt="Logo Slalom"><div><b>Slalom</b><span>à la place de Take Rush</span></div></div>
+      <div class="one"><img src="img/logo-devinemoi.png" alt="Logo Devine-moi"><div><b>Devine-moi</b><span>à la place de KnowMe</span></div></div>
+    </div>
+    <p class="note">Jev les met aussi en tête : Slalom à 33 % des six noms de Take Rush (le seul qui marche tel quel dans les six langues), Devine-moi à 61 % des six noms de KnowMe. Les logos se lisent bien en grand ; en tout petit (le menu Jeux, 26 pt), il faudra une version simplifiée qui ne garde que la forme principale.</p>
+  </div>
+  <div class="box"><h4>Le menu Jeux d&#x27;une conversation</h4><div class="duo">
+<figure><figcaption>Aujourd'hui</figcaption><img src="img/nom-menu-avant.jpg" alt="Le menu Jeux d&#x27;une conversation aujourd'hui" loading="lazy"></figure>
+<figure><figcaption>Après</figcaption><img src="img/nom-menu-apres.jpg" alt="Le menu Jeux d&#x27;une conversation avec les nouveaux noms" loading="lazy"></figure>
+</div></div>
+  <div class="box"><h4>Les cartes de défi dans la conversation</h4><div class="duo">
+<figure><figcaption>Aujourd'hui</figcaption><img src="img/nom-cartes-avant.jpg" alt="Les cartes de défi dans la conversation aujourd'hui" loading="lazy"></figure>
+<figure><figcaption>Après</figcaption><img src="img/nom-cartes-apres.jpg" alt="Les cartes de défi dans la conversation avec les nouveaux noms" loading="lazy"></figure>
+</div></div>
+  <div class="box"><h4>Le titre du jeu</h4><div class="duo">
+<figure><figcaption>Aujourd'hui</figcaption><img src="img/nom-titre-avant.jpg" alt="Le titre du jeu aujourd'hui" loading="lazy"></figure>
+<figure><figcaption>Après</figcaption><img src="img/nom-titre-apres.jpg" alt="Le titre du jeu avec les nouveaux noms" loading="lazy"></figure>
+</div></div>
+  <div class="box"><h4>L&#x27;accueil des quiz</h4><div class="duo">
+<figure><figcaption>Aujourd'hui</figcaption><img src="img/nom-knowme-avant.jpg" alt="L&#x27;accueil des quiz aujourd'hui" loading="lazy"></figure>
+<figure><figcaption>Après</figcaption><img src="img/nom-knowme-apres.jpg" alt="L&#x27;accueil des quiz avec les nouveaux noms" loading="lazy"></figure>
+</div></div>
+  <div class="sec"><h3>Take Rush : 6 noms</h3></div>
+  <div class="logos"><div class="logo"><img src="img/logo-slalom.png" alt="Logo Slalom" width="150" height="150" loading="lazy">
+<b>Slalom</b><span class="l">Le même mot dans les six langues de l&#x27;app.</span><p>Tu te faufiles entre les portes : le nom dit le jeu.</p><span class="jev">Jev 33 %</span></div><div class="logo"><img src="img/logo-hop.png" alt="Logo Hop!" width="150" height="150" loading="lazy">
+<b>Hop!</b><span class="l">Pareil partout.</span><p>Un tap, un saut. Le nom le plus court, et on l&#x27;entend en jouant.</p><span class="jev">Jev 26 %</span></div><div class="logo"><img src="img/logo-dotdash.png" alt="Logo Dot Dash" width="150" height="150" loading="lazy">
+<b>Dot Dash</b><span class="l">En anglais partout.</span><p>Le point de Take qui file : la balle en trame de points laisse des traits de vitesse.</p><span class="jev">Jev 19 %</span></div><div class="logo"><img src="img/logo-takeoff.png" alt="Logo Take Off" width="150" height="150" loading="lazy">
+<b>Take Off</b><span class="l">En anglais partout.</span><p>La balle décolle de la Terre du jeu, et le nom garde « Take ».</p><span class="jev">Jev 10 %</span></div><div class="logo"><img src="img/logo-orbite.png" alt="Logo Orbite" width="150" height="150" loading="lazy">
+<b>Orbite</b><span class="l">Orbit, Órbita, Orbita.</span><p>La balle fait le tour de la planète, comme dans le décor du jeu.</p><span class="jev">Jev 9 %</span></div><div class="logo"><img src="img/logo-comete.png" alt="Logo Comète" width="150" height="150" loading="lazy">
+<b>Comète</b><span class="l">Comet, Cometa, Komet.</span><p>La vitesse, et une traînée de points derrière la balle.</p><span class="jev">Jev 3 %</span></div></div>
+  <div class="sec"><h3>KnowMe : 6 noms</h3></div>
+  <div class="logos"><div class="logo"><img src="img/logo-devinemoi.png" alt="Logo Devine-moi" width="150" height="150" loading="lazy">
+<b>Devine-moi</b><span class="l">Guess Me, Adivíname, Errate mich, Indovinami, Adivinha-me.</span><p>Le jeu en deux mots : ton ami devine tes réponses. Le « ? » se cache dans la sphère de Take.</p><span class="jev">Jev 61 %</span></div><div class="logo"><img src="img/logo-quimecapte.png" alt="Logo Qui me capte ?" width="150" height="150" loading="lazy">
+<b>Qui me capte ?</b><span class="l">Who Gets Me?, ¿Quién me entiende?, Wer versteht mich?</span><p>L&#x27;argot des 15-25 ans : qui me comprend vraiment ? Les ondes partent de toi.</p><span class="jev">Jev 24 %</span></div><div class="logo"><img src="img/logo-faceb.png" alt="Logo Face B" width="150" height="150" loading="lazy">
+<b>Face B</b><span class="l">B-Side, Lado B, B-Seite, Lato B.</span><p>Ta face cachée, celle que seuls tes proches connaissent. Un vinyle en points.</p><span class="jev">Jev 5 %</span></div><div class="logo"><img src="img/logo-montake.png" alt="Logo Mon Take" width="150" height="150" loading="lazy">
+<b>Mon Take</b><span class="l">My Take.</span><p>Tes amis devinent ton avis, et « take » veut dire avis. La bulle de pensée sort de la sphère.</p><span class="jev">Jev 4 %</span></div><div class="logo"><img src="img/logo-vraissavent.png" alt="Logo Les vrais savent" width="150" height="150" loading="lazy">
+<b>Les vrais savent</b><span class="l">Real Ones Know.</span><p>Ce qu&#x27;on dit entre potes : prouve que t&#x27;es un vrai. Seuls les vrais ont la clé.</p><span class="jev">Jev 3 %</span></div><div class="logo"><img src="img/logo-synchro.png" alt="Logo Synchro" width="150" height="150" loading="lazy">
+<b>Synchro</b><span class="l">Sync, Sincro.</span><p>Le score en pourcentage de synchro entre deux amis, en jauge autour de la sphère.</p><span class="jev">Jev 3 %</span></div></div>
+  <div class="box"><h4>D'autres noms, sans logo</h4>
+    <p class="note">Take Rush</p><div class="pills"><span>Envol</span><span>Zigzag</span><span>Rebond</span><span>Faufile</span><span>Apesanteur</span><span>Tap Tap</span><span>Gravité</span><span>Pixel</span></div>
+    <p class="note">KnowMe</p><div class="pills"><span>Tu me connais ?</span><span>Miroir</span><span>Radar</span><span>Même vibe</span><span>BFF Test</span><span>100 % moi</span><span>Bestie</span><span>Carte d&#x27;identité</span></div>
+  </div>
+</section>
+
+<section id="signature">
+  <div class="sec"><p class="eyebrow">Mission 2</p><h2>La signature de Take</h2><p class="note">Chaque grand réseau a un geste à lui : Snap l'éphémère, Insta la photo puis la story, TikTok le « Pour toi », BeReal l'heure surprise. Take a déjà son objet, le take. Il lui manque son geste.</p>
+<div class="box">
+<h3>Ma proposition : « La Vraie Majorité »</h3>
+<p>Sur chaque take, Take montre trois choses : <b>ce qu'on dit</b> (les votes signés), <b>ce qu'on pense</b> (tous les votes, anonymes compris) et <b>ce qu'on croit</b> que les autres pensent (l'estimation de chaque votant). Puis il dit l'écart en une phrase : « Vous pensiez être 30 %. Vous êtes 64 %. Seuls 41 % osent le signer. »</p>
+<p>Autour, quatre pièces qui la font vivre :</p>
+<ul>
+<li><b>Le Moment</b> : le même take pour tout le monde, une fois par jour, à une heure surprise. C'est le rendez-vous.</li>
+<li><b>Bascule</b> : tu changes d'avis, tu dis quel commentaire t'a convaincu. On gagne en convainquant, pas en criant.</li>
+<li><b>Le Pont</b> : le commentaire aimé par les deux camps passe en tête.</li>
+<li><b>Vote brouillé</b> : sur les sujets sensibles, même Take ne sait pas ce que tu as voté.</li>
+</ul>
+<p>Et côté amis, <b>les Flammes</b> (des questions gentilles sur tes amis, à la tbh) ramènent chaque jour dans la boucle.</p>
+<p>La phrase de Take : <b>« Ton avis compte, sans t'exposer. »</b></p>
+</div>
+<div class="box">
+<h4>Pourquoi celle-là</h4>
+<ul>
+<li><b>Personne d'autre n'a cette donnée.</b> Sur Take, le même take reçoit des votes signés et des votes anonymes, et on peut changer d'avis après le débat. Un autocollant sondage d'Instagram n'a ni l'un ni l'autre : il ne peut pas copier ça en deux mois, comme il l'a fait avec les Stories de Snap et avec BeReal.</li>
+<li><b>La science est derrière.</b> On se trompe sur la majorité : aux États-Unis, 66 à 80 % soutiennent les grandes mesures pour le climat, mais les gens estiment ce soutien à 37-43 % (Sparkman, 2022). 59 % des étudiants n'osent pas contredire en public (FIRE, 2026). Et corriger cette croyance change ce que les gens font (Bursztyn, 2020).</li>
+<li><b>Les recherches arrivent au même endroit</b>, par des chemins différents : les innovations récentes (La Vraie Majorité), les besoins des jeunes (« Le Miroir » : tu n'es pas le seul, choisi par Jev à 0,67), les grands réseaux (Bascule et le Pont, portés par un take du jour), les fonctions disparues (les Flammes pour les amis).</li>
+<li><b>C'est ce qui manque aux jeunes.</b> 66 % des étudiants n'osent pas donner un avis impopulaire sous leur nom (FIRE, 2025) ; en un an, r/teenagers a vu 400 posts avec « opinion » dans le titre, dont 181 qui demandent l'avis des autres. Une question y revient : « si tu pouvais dire une chose sans être jugé ? ».</li>
+<li><b>Jev est d'accord.</b> La Vraie Majorité est choisie à 0,43 parmi 20 pistes (la suivante à 0,10). Le Moment est la plus virale (0,60). Le « delta » de r/changemyview, la base de Bascule, est jugé la mécanique la moins copiable (0,63). Le take du jour gagne comme moteur quotidien (0,86).</li>
+</ul>
+</div></div>
+</section>
+
+<section id="idees">
+  <div class="sec"><h2>Les 12 idées, dessinées dans l'app</h2><p class="note">Chaque idée dit comment ça marche, pourquoi c'est Take, pourquoi c'est cool, quel besoin elle couvre et d'où elle vient. Les chiffres Jev sont sur 3 sauf mention.</p></div>
+  <article class="idea" id="i1"><div class="top"><span class="n">1</span><div class="t"><h3>La Vraie Majorité</h3>
+<p class="pitch">Ce qu'on dit, ce qu'on pense, et ce qu'on croit que les autres pensent. La signature.</p><div class="tags"><span class="tag new">Invention</span><span class="tag mix">Signature</span></div></div></div>
+<div class="grid"><div class="shots two"><img src="img/idee-estimation.jpg" alt="La Vraie Majorité dans Take" loading="lazy"><img src="img/idee-vraiemajorite.jpg" alt="La Vraie Majorité dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Après ton vote (signé ou anonyme), un curseur : « combien pensent comme toi ? ». Ta réponse reste privée. Sur le take, trois barres : les votes signés, tous les votes, et la moyenne des estimations, puis la phrase qui dit l'écart.</dd><dt>Pourquoi c&#x27;est Take</dt><dd>Take est la seule app où la même question reçoit des votes signés et anonymes. L'écart entre ce qu'on dit et ce qu'on pense se mesure en direct, sans enquête.</dd><dt>Pourquoi c&#x27;est cool</dt><dd>Le moment « attends… je suis pas seul ?! ». Chaque take finit sur une révélation, plus sur un simple pourcentage. La carte se partage.</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>Le besoin</dt><dd>Donner son avis sans être jugé : 66 % des étudiants n'osent pas un avis impopulaire sous leur nom (FIRE 2025), et le silence est le plus fort entre proches, c'est-à-dire exactement le cercle d'amis de Take. Avec le groupe choisi (lycée, ville, âge), ça devient « Le Miroir » : tu n'es pas le seul.</dd><dt>D&#x27;où ça vient</dt><dd>La recherche sur l'ignorance pluraliste (Prentice et Miller 1993, Sparkman 2022) et la règle « plus populaire que prévu » (Prelec, Nature 2017). Aucune app grand public ne croise les trois barres.</dd><dt>Garde-fous</dt><dd>Une barre n'apparaît qu'au-delà de 30 votants. Jamais de barre anonyme à 0 % ou 100 %, sinon le vote anonyme d'un ami se devine. Rien sur un take qui vise une personne.</dd><dt>Jev</dt><dd>Choisie comme signature à 0,43 parmi 20 pistes (la suivante à 0,10). Lien avec Take 2,78, attrait 2,53, existe déjà 0,08. Sa version « Le Miroir » est choisie à 0,67 dans la recherche sur les besoins des jeunes.</dd></dl></details></div></div></article><article class="idea" id="i2"><div class="top"><span class="n">2</span><div class="t"><h3>Le Moment</h3>
+<p class="pitch">Le même take pour tout le monde, une fois par jour, à une heure surprise.</p><div class="tags"><span class="tag back">Repris de BeReal et Wordle</span></div></div></div>
+<div class="grid"><div class="shots"><img src="img/idee-moment.jpg" alt="Le Moment dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Une notification à une heure au hasard : 90 secondes pour voter et estimer la majorité. Les réponses des amis ne s'affichent qu'après ton vote. Puis le résultat tombe sur la carte (monde, pays, ville) et les commentaires restent ouverts 24 h.</dd><dt>Pourquoi c&#x27;est Take</dt><dd>C'est la porte d'entrée de La Vraie Majorité : chaque jour, tout le monde vit la même révélation. Un rendez-vous autour d'une opinion, pas d'une photo.</dd><dt>Pourquoi c&#x27;est cool</dt><dd>Tout le lycée vote à la même seconde, et le soir tout le monde en parle. Une grille à partager sans rien dévoiler, comme celle de Wordle : « Take du jour : 68 % oui, j'avais dit 40 % ».</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>Le besoin</dt><dd>Un sujet commun pour la cour de récré, et une raison de revenir chaque jour qui ne soit pas une corvée.</dd><dt>D&#x27;où ça vient</dt><dd>BeReal (heure au hasard, « poste pour voir »), HQ Trivia (2,38 millions de joueurs en même temps), Wordle (le même puzzle pour tous).</dd><dt>Garde-fous</dt><dd>BeReal est passé de 73,5 à 23 millions d'utilisateurs quand le rituel est devenu une corvée : pas de série punitive, un jour sauté ne coûte rien, pas de notification la nuit pour les mineurs.</dd><dt>Jev</dt><dd>La plus virale (0,60) ; moteur quotidien choisi à 0,86 dans une autre recherche. Attrait 2,80, le plus haut.</dd></dl></details></div></div></article><article class="idea" id="i3"><div class="top"><span class="n">3</span><div class="t"><h3>Bascule</h3>
+<p class="pitch">Tu changes d'avis, tu dis quel commentaire t'a convaincu. Son auteur gagne une Bascule.</p><div class="tags"><span class="tag back">Repris de r/changemyview</span></div></div></div>
+<div class="grid"><div class="shots two"><img src="img/idee-bascule.jpg" alt="Bascule dans Take" loading="lazy"><img src="img/idee-bascule-badge.jpg" alt="Bascule dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Quand tu passes de Non à Oui, Take te propose les commentaires que tu as lus : tu choisis celui qui t'a fait basculer. Le take affiche combien ont basculé, le commentaire combien il en a convaincu, et le profil combien de bascules on a provoquées. Personne ne voit qui a changé.</dd><dt>Pourquoi c&#x27;est Take</dt><dd>Take connaît ton vote avant et après le débat. C'est une donnée que personne d'autre n'a : comment les avis changent, et grâce à quoi.</dd><dt>Pourquoi c&#x27;est cool</dt><dd>« Ce commentaire a fait basculer 12 personnes. » Un statut qui se gagne en convainquant, pas en criant plus fort.</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>Le besoin</dt><dd>Des débats qui ne finissent pas en clash, et une reconnaissance qui récompense une vraie compétence.</dd><dt>D&#x27;où ça vient</dt><dd>Le « delta » de r/changemyview : l'auteur d'un post donne un Δ à qui l'a fait changer d'avis (Tan et al. 2016). Aucun réseau ne l'a rendu natif.</dd><dt>Garde-fous</dt><dd>Les fausses bascules (s'échanger des bascules entre amis) sont à surveiller : une bascule ne compte que si le vote avait été posé avant la lecture.</dd><dt>Jev</dt><dd>Le delta est jugé la mécanique la moins copiable des 56 étudiées (0,63). Idée « native » à 3,00 sur 3.</dd></dl></details></div></div></article><article class="idea" id="i4"><div class="top"><span class="n">4</span><div class="t"><h3>Le Pont</h3>
+<p class="pitch">Le commentaire aimé par les deux camps passe en tête de la discussion.</p><div class="tags"><span class="tag back">Repris des notes de communauté</span></div></div></div>
+<div class="grid"><div class="shots"><img src="img/idee-pont.jpg" alt="Le Pont dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Dans Relevant, les commentaires ne sont plus classés par le nombre de cœurs, mais par les cœurs venus des deux camps. Celui qui plaît au Non et au Oui prend la tête avec l'étiquette « Le pont ».</dd><dt>Pourquoi c&#x27;est Take</dt><dd>Le vote du take définit les camps tout seul : Take n'a pas besoin de l'algorithme compliqué de X pour savoir qui est de quel côté.</dd><dt>Pourquoi c&#x27;est cool</dt><dd>Les commentaires utiles remontent, les clashs descendent. Être « le pont » d'un gros take, c'est une fierté.</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>Le besoin</dt><dd>Moins de toxicité sous les débats ; trouver ce qui rassemble.</dd><dt>D&#x27;où ça vient</dt><dd>Les notes de communauté de X (algorithme de pont), reprises par Meta et TikTok en 2025 ; X teste depuis juillet 2025 les « likes qui font pont ».</dd><dt>Jev</dt><dd>Premier choix comme signature dans la recherche sur les grands réseaux (0,66). Plutôt une brique de classement qu'une signature seule (existe déjà 0,39).</dd></dl></details></div></div></article><article class="idea" id="i5"><div class="top"><span class="n">5</span><div class="t"><h3>Vote brouillé</h3>
+<p class="pitch">Sur un sujet sensible, ton téléphone mélange ta réponse au hasard : même Take ne sait pas ce que tu as voté.</p><div class="tags"><span class="tag new">Invention</span><span class="tag mix">Protection</span></div></div></div>
+<div class="grid"><div class="shots"><img src="img/idee-brouille.jpg" alt="Vote brouillé dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Avant l'envoi, le téléphone remplace parfois ta réponse par un tirage au sort, avec une probabilité connue. Take corrige le total par le calcul et affiche la vraie proportion, avec sa marge.</dd><dt>Pourquoi c&#x27;est Take</dt><dd>La promesse d'anonymat de Take devient une preuve mathématique. Elle ouvre des questions qu'aucune app d'ados n'ose poser honnêtement (harcèlement, santé mentale), et elle protège les barres anonymes de La Vraie Majorité.</dd><dt>Pourquoi c&#x27;est cool</dt><dd>« Même nous, on ne sait pas ce que tu as répondu. » Un petit dé animé au moment du vote rend la garantie visible.</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>Le besoin</dt><dd>Pouvoir répondre vrai sur un sujet dur sans risquer d'être reconnu, même en cas de fuite.</dd><dt>D&#x27;où ça vient</dt><dd>La « réponse aléatoire » des sondeurs (Warner 1965), que Google utilise pour ses statistiques. Contre-exemples : Tea (1,1 million de messages fuités en 2025), NGL (interdit aux mineurs par la FTC en 2024).</dd><dt>Limite</dt><dd>Il faut quelques centaines de votants pour une marge correcte, et la marge doit être affichée honnêtement.</dd><dt>Jev</dt><dd>La plus neuve (0,84) et la plus protectrice (0,74). Peu attirante seule (1,12) : elle se glisse dans La Vraie Majorité.</dd></dl></details></div></div></article><article class="idea" id="i6"><div class="top"><span class="n">6</span><div class="t"><h3>Les Flammes</h3>
+<p class="pitch">Des questions gentilles sur tes amis ; la personne choisie reçoit une flamme sans savoir de qui.</p><div class="tags"><span class="tag back">Repris de tbh et Gas</span></div></div></div>
+<div class="grid"><div class="shots two"><img src="img/idee-flammes.jpg" alt="Les Flammes dans Take" loading="lazy"><img src="img/idee-flamme-recue.jpg" alt="Les Flammes dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Chaque jour, une douzaine de questions positives écrites par Take (« qui a le rire le plus contagieux ? »), quatre amis proposés, un toucher. La personne choisie reçoit une flamme dans son Activité, et peut répondre par un take.</dd><dt>Pourquoi c&#x27;est Take</dt><dd>Chaque flamme est un vote, la brique de base de Take. tbh et Gas sont morts de ne faire que ça ; dans Take, la flamme ramène au reste (répondre, voter, débattre).</dd><dt>Pourquoi c&#x27;est cool</dt><dd>La notification la plus forte qui soit : « un ami t'a choisi ». tbh et Gas ont tous deux été numéro 1 de l'App Store.</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>Le besoin</dt><dd>Savoir ce que les autres pensent de soi, sans la cruauté de l'anonymat en texte libre (Formspring, Ask.fm).</dd><dt>D&#x27;où ça vient</dt><dd>tbh (2017, racheté par Facebook), Gas (2022, racheté par Discord, fermé en 2023), les « trois cœurs par jour » de Bebo.</dd><dt>Garde-fous</dt><dd>Seulement des questions positives écrites par Take, jamais de texte libre, et jamais de révélation du votant, même payante (le « God Mode » de Gas).</dd><dt>Jev</dt><dd>Choisie comme signature côté amis à 0,71 (0,54 avec l'ordre inversé). Risque bas (0,89).</dd></dl></details></div></div></article><article class="idea" id="i7"><div class="top"><span class="n">7</span><div class="t"><h3>Signature collective</h3>
+<p class="pitch">« Je signe si 40 élèves de mon lycée signent aussi. » Tous les noms apparaissent en même temps, ou jamais.</p><div class="tags"><span class="tag new">Invention</span></div></div></div>
+<div class="grid"><div class="shots"><img src="img/idee-signature-collective.jpg" alt="Signature collective dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Tu votes en anonyme et tu coches « je signe si au moins N élèves de mon lycée qui pensent comme moi signent aussi ». Les signatures restent scellées jusqu'au seuil ; si le seuil n'est jamais atteint, rien n'est jamais montré.</dd><dt>Pourquoi c&#x27;est Take</dt><dd>Elle transforme l'écart révélé par La Vraie Majorité en action : passer de l'anonyme au signé devient collectif, donc sans risque d'être le seul.</dd><dt>Pourquoi c&#x27;est cool</dt><dd>« On était 40 à le penser ; maintenant on le dit ensemble. » Un compteur qui monte, puis une révélation d'un coup.</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>D&#x27;où ça vient</dt><dd>Les cascades d'avis cachés (Kuran), les seuils (Granovetter 1978), la masse critique d'environ 25 % (Centola 2018), et PledgeBank (2005-2015).</dd><dt>Garde-fous</dt><dd>Interdite sur un take qui vise une personne, seuil élevé, modération avant publication, retrait possible avant le seuil.</dd><dt>Jev</dt><dd>Reformulée sur le vote, elle tombe à 0,22 pour « existe déjà » et monte à 3,00 pour le lien avec le débat. Risque 2,32, le plus élevé des quatre premières.</dd></dl></details></div></div></article><article class="idea" id="i8"><div class="top"><span class="n">8</span><div class="t"><h3>Lis la salle</h3>
+<p class="pitch">Devine combien vont dire Oui ; à la fin, l'avis surprenant est révélé et ton flair est noté.</p><div class="tags"><span class="tag mix">Mode de jeu</span></div></div></div>
+<div class="grid"><div class="shots"><img src="img/idee-pronostic.jpg" alt="Lis la salle dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Après ton vote, tu estimes la part de Oui. Quand le vote se termine, Take montre la prévision moyenne contre le vrai résultat, et un score de flair. Ça devient aussi un mode de jeu : de vrais takes de ton lycée, tu devines le pourcentage, en solo ou en duel.</dd><dt>Pourquoi c&#x27;est Take</dt><dd>La base de votes devient un jeu sans fin, qui se branche sur les jeux et leurs pièces. Et c'est le même curseur que La Vraie Majorité.</dd><dt>Pourquoi c&#x27;est cool</dt><dd>« Je connais mon lycée mieux que toi. » Des parties de 30 secondes.</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>D&#x27;où ça vient</dt><dd>Family Feud (depuis 1976), Wavelength, et le « sens social » : les gens savent bien lire leur entourage (Galesic 2018).</dd><dt>Garde-fous</dt><dd>Jamais d'argent ni de mise : un pronostic se note, il ne se parie pas (les « Pronos » avec points sont jugés risqués par Jev, 2,47 sur 3).</dd></dl></details></div></div></article><article class="idea" id="i9"><div class="top"><span class="n">9</span><div class="t"><h3>Le Verdict, à deux versions</h3>
+<p class="pitch">Les deux personnes d'une embrouille écrivent chacune leur version, en anonyme ; tout le monde tranche.</p><div class="tags"><span class="tag back">Repris de r/AmItheAsshole</span><span class="tag new">La version à deux est nouvelle</span></div></div></div>
+<div class="grid"><div class="shots"><img src="img/idee-quiaraison.jpg" alt="Le Verdict, à deux versions dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Tu racontes une situation sans nommer personne et tu invites l'autre personne à écrire sa version. Le take montre les deux versions ; les amis votent « A a raison » ou « B a raison ». Au bout de 12 h, le verdict est scellé, avec le commentaire le plus approuvé comme motif.</dd><dt>Pourquoi c&#x27;est Take</dt><dd>C'est un take à deux camps par nature, et l'anonymat de Take protège les deux personnes.</dd><dt>Pourquoi c&#x27;est cool</dt><dd>Le plaisir de juger, et enfin les deux côtés de l'histoire, pas seulement celui qui raconte.</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>Le besoin</dt><dd>Demander conseil et se sentir validé : r/AmItheAsshole est un des plus gros forums de Reddit.</dd><dt>Garde-fous</dt><dd>Aucun nom, aucune photo de l'autre personne ; modération avant publication.</dd><dt>Jev</dt><dd>Le verdict d'AITA est parmi les mécaniques les plus transposables (0,84) ; « Le Verdict » : natif 2,99, risque 1,89.</dd></dl></details></div></div></article><article class="idea" id="i10"><div class="top"><span class="n">10</span><div class="t"><h3>Taux d&#x27;accord</h3>
+<p class="pitch">Sur le profil d'un ami, votre pourcentage d'accord et votre plus gros désaccord. Toi seul le vois.</p><div class="tags"><span class="tag back">Repris de Spotify Blend</span></div></div></div>
+<div class="grid"><div class="shots"><img src="img/idee-jumeaux.jpg" alt="Taux d&#x27;accord dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Take calcule en privé la part de takes où vous avez voté pareil, à partir des seuls votes publics. Tu vois aussi ton « jumeau d'avis » et ton « opposé » de la semaine.</dd><dt>Pourquoi c&#x27;est Take</dt><dd>Les votes sont la matière de Take ; aucun autre réseau ne sait sur quoi deux amis sont d'accord.</dd><dt>Pourquoi c&#x27;est cool</dt><dd>La curiosité sur ses amis, et un sujet de conversation tout trouvé (« 82 % ? et le vote obligatoire alors ? »).</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>D&#x27;où ça vient</dt><dd>Spotify Blend (le pourcentage de goûts communs), les émojis d'amis de Snapchat, et Know Me.</dd><dt>Garde-fous</dt><dd>Privé, calculé sur les votes signés seulement ; jamais affiché aux autres.</dd><dt>Jev</dt><dd>La plus difficile à copier des quinze idées de la recherche « grands réseaux » (2,10), mais peu de retour quotidien.</dd></dl></details></div></div></article><article class="idea" id="i11"><div class="top"><span class="n">11</span><div class="t"><h3>Frontières</h3>
+<p class="pitch">La carte colore les quartiers et les villes selon leur réponse, et trace la frontière du Oui.</p><div class="tags"><span class="tag mix">Carte</span></div></div></div>
+<div class="grid"><div class="shots"><img src="img/idee-frontieres.jpg" alt="Frontières dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Sur « À proximité », un take peut s'afficher par grande zone (« Paris 5e : 71 % Oui ») et montrer la ligne où la majorité bascule. Toucher une zone ouvre ses takes les plus débattus.</dd><dt>Pourquoi c&#x27;est Take</dt><dd>La carte existe déjà. TikTok, Instagram et Snap montrent des lieux ; Take montrerait ce que pense un lieu.</dd><dt>Pourquoi c&#x27;est cool</dt><dd>Des cartes qui tournent (Paris contre banlieue, Nord contre Sud) et la fierté locale.</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>D&#x27;où ça vient</dt><dd>Snap Map et Zenly, les leçons de Yik Yak, la liste chaude de Weibo. Trois recherches sur cinq l'ont proposée.</dd><dt>Garde-fous</dt><dd>Jamais à l'échelle d'un établissement ou d'une rue, jamais de position de personne, un minimum de votants par zone.</dd><dt>Jev</dt><dd>Lien avec Take 2,95, le plus haut de toutes les idées notées.</dd></dl></details></div></div></article><article class="idea" id="i12"><div class="top"><span class="n">12</span><div class="t"><h3>Les camps du week-end</h3>
+<p class="pitch">Un débat léger devient deux équipes, et les parties de Slalom rapportent des points à ton camp.</p><div class="tags"><span class="tag back">Repris des Splatfest de Nintendo</span></div></div></div>
+<div class="grid"><div class="shots"><img src="img/idee-camps.jpg" alt="Les camps du week-end dans Take" loading="lazy"></div><div class="body"><dl><dt>Comment ça marche</dt><dd>Du vendredi au dimanche, un débat drôle (« chocolatine ou pain au chocolat ? ») : ton vote devient ton équipe. Chaque partie de Slalom ou de Devine-moi rapporte des points à ton camp, et le gagnant est annoncé dimanche soir.</dd><dt>Pourquoi c&#x27;est Take</dt><dd>Ça relie enfin les jeux et les takes : ton avis choisit ton équipe, ton jeu la fait gagner.</dd><dt>Pourquoi c&#x27;est cool</dt><dd>Une rivalité pour rire, une raison de jouer tout le week-end, un résultat qu'on attend.</dd></dl><details><summary>Le besoin, d'où ça vient, garde-fous, Jev</summary><dl><dt>D&#x27;où ça vient</dt><dd>Les Splatfest de Splatoon : les joueurs choisissent un camp d'un débat (chiens ou chats) et jouent pour lui. Aussi r/place et ses équipes.</dd><dt>Garde-fous</dt><dd>Seulement des débats légers choisis par Take, jamais politiques ni sur une personne.</dd></dl></details></div></div></article>
+</section>
+
+<section id="plus">
+  <div class="sec"><h2>40 autres idées</h2><p class="note">Moins centrales, ou à garder pour plus tard. Classées par famille, avec leur origine.</p></div>
+  <ul class="more"><li id="i13"><div class="h"><span class="k">13</span><h4>Précurseur</h4></div>
+<p>Tu as signé un avis minoritaire qui devient majoritaire plus tard : badge « Précurseur » sur ton profil.</p><p class="why">Récompense le courage de signer. Minorité constante (Moscovici 1969). Ne montrer que les réussites, jamais « tu avais tort ». Jev : existe déjà 0,12, nouveauté 1,96.</p></li><li id="i14"><div class="h"><span class="k">14</span><h4>Bulle-mètre</h4></div>
+<p>Trois barres : tes amis, ton lycée, tout Take. « Tes amis surestiment le Oui de 30 points. »</p><p class="why">L'illusion de majorité en une image (Lerman 2016). La barre « amis » seulement au-delà de 5 à 10 amis votants. Jev : lien avec Take 2,87.</p></li><li id="i15"><div class="h"><span class="k">15</span><h4>La Courbe</h4></div>
+<p>Pendant un match ou une émission, chacun garde le doigt sur un curseur ; Take trace la courbe des amis contre celle de tous.</p><p class="why">Le vote en direct devant la télé, et la seconde où tout le monde a changé d'avis. Jev : attrait 2,87, le deuxième plus haut.</p></li><li id="i16"><div class="h"><span class="k">16</span><h4>Capsule d&#x27;avis</h4></div>
+<p>Tu scelles ton vote : dans un an, Take te repose la question et te montre ce qui a changé, chez toi et dans ta promo.</p><p class="why">On croit qu'on ne changera plus, et on change toujours (Quoidbach 2013). Une révélation synchronisée façon Wrapped.</p></li><li id="i17"><div class="h"><span class="k">17</span><h4>Face-à-face à l&#x27;aveugle</h4></div>
+<p>Après ton vote, cinq messages chacun avec quelqu'un qui a voté l'inverse, sans savoir qui c'est.</p><p class="why">Les discussions anonymes entre camps réduisent la polarisation (Combs 2023). Par tranches d'âge, texte seul, identités révélées seulement si les deux acceptent.</p></li><li id="i18"><div class="h"><span class="k">18</span><h4>Radio du débat</h4></div>
+<p>Des raisons vocales de 15 secondes ; Take monte un clip de 60 secondes qui alterne les meilleures voix des deux camps.</p><p class="why">Les takes audio existent déjà, avec transcription et modération. Jamais sur un vote anonyme : une voix se reconnaît.</p></li><li id="i19"><div class="h"><span class="k">19</span><h4>Terrain d&#x27;entente</h4></div>
+<p>Une IA rédige une phrase commune à partir des raisons des deux camps ; publiée seulement si chaque camp l'approuve.</p><p class="why">La « Habermas Machine » de DeepMind (Science, 2024). L'IA rapproche, elle ne tranche jamais. Plutôt une couche de fond.</p></li><li id="i20"><div class="h"><span class="k">20</span><h4>Le Jury</h4></div>
+<p>Sur un take très débattu, 12 votants tirés au sort délibèrent 20 minutes et publient un verdict motivé à côté du vote.</p><p class="why">Une convention citoyenne de poche. Plutôt pour des partenariats avec les lycées (CVL) que pour tout le monde.</p></li><li id="i21"><div class="h"><span class="k">21</span><h4>Crédits de voix</h4></div>
+<p>25 crédits par semaine ; mettre k voix sur un take en coûte k². On mesure enfin l'intensité.</p><p class="why">Le vote quadratique (Lalley et Weyl 2018). Les crédits ne s'achètent jamais.</p></li><li id="i22"><div class="h"><span class="k">22</span><h4>Contre-take</h4></div>
+<p>Tu cites un take avec son résultat, et tu publies ta question en réponse. Le take d'origine liste ses contre-takes.</p><p class="why">Répondre coûte moins qu'inventer. Stitch de TikTok, reblog de Tumblr.</p></li><li id="i23"><div class="h"><span class="k">23</span><h4>Formats qui tournent</h4></div>
+<p>« Red flag ou green flag », « surcoté ou sous-coté » : un format, une page, un bouton « fais le tien ».</p><p class="why">Comme les sons de TikTok ou « Ajoute la tienne » d'Instagram. Le risque le plus bas des idées notées (0,90).</p></li><li id="i24"><div class="h"><span class="k">24</span><h4>Cercle</h4></div>
+<p>Un take publié pour un cercle choisi : votes et commentaires restent dedans.</p><p class="why">Dire ce qu'on pense sans tout le lycée (Amis proches d'Instagram). Un minimum de votants avant d'afficher un résultat, sinon on devine les votes.</p></li><li id="i25"><div class="h"><span class="k">25</span><h4>Mon take du moment</h4></div>
+<p>Un avis d'une ligne au-dessus des conversations pendant 24 h ; les amis tapent « d'accord » ou « pas d'accord ».</p><p class="why">Les Notes d'Instagram, en version vote. Jev : habitude 2,63.</p></li><li id="i26"><div class="h"><span class="k">26</span><h4>Le grand vote</h4></div>
+<p>Quelques fois par an (bac, finale), une seule question en direct pour tout Take, avec un objectif collectif.</p><p class="why">r/place, les enveloppes rouges du Nouvel An chinois. Un million de votes débloque un objet d'avatar pour tout le monde.</p></li><li id="i27"><div class="h"><span class="k">27</span><h4>Take à emporter</h4></div>
+<p>Un take se partage en lien dans un groupe ; on vote sur le web sans compte, et on ouvre Take pour voir qui a voté quoi.</p><p class="why">Trancher les débats des groupes de classe, et faire venir de nouveaux utilisateurs.</p></li><li id="i28"><div class="h"><span class="k">28</span><h4>Les Trophées de la classe</h4></div>
+<p>Chaque semaine, une classe vote des titres positifs (« le meilleur conseil »), portés une semaine sur le profil.</p><p class="why">Les albums de fin d'année et les blogs de classe. Jev : l'idée la plus forte pour le bouche-à-oreille (0,60). Groupe d'au moins 8, on peut sortir.</p></li><li id="i29"><div class="h"><span class="k">29</span><h4>Trois cœurs par jour</h4></div>
+<p>Au lieu de likes illimités, trois cœurs par jour à donner. En recevoir un veut dire quelque chose.</p><p class="why">Les cœurs de Bebo, limités à trois. Aucun total public. Risque le plus bas du haut du classement.</p></li><li id="i30"><div class="h"><span class="k">30</span><h4>La Une des potes</h4></div>
+<p>Chaque matin, une une de deux minutes avec les takes les plus votés par tes amis la veille. Elle se termine.</p><p class="why">Le regret n°1 : voir ses amis dans l'ordre, avec une fin (pétition Instagram de 2022, plus de 150 000 signatures). Au minimum, un fil Amis qui s'arrête sur « tu as tout vu ».</p></li><li id="i31"><div class="h"><span class="k">31</span><h4>Soirée Take</h4></div>
+<p>Un hôte ouvre un salon entre amis et lance des takes l'un après l'autre ; dix secondes pour voter, puis qui a voté quoi.</p><p class="why">Le jeu de groupe de Houseparty, sans caméra. Pourrait devenir un troisième jeu.</p></li><li id="i32"><div class="h"><span class="k">32</span><h4>Le Mur</h4></div>
+<p>Un ami publie sur ton profil un take qui parle de toi ; il n'apparaît qu'avec ton accord.</p><p class="why">Le mur de Facebook, les com's des Skyblogs, les témoignages de Friendster.</p></li><li id="i33"><div class="h"><span class="k">33</span><h4>Mon son</h4></div>
+<p>Le morceau que tu écoutes, épinglé sur ton profil ; tes amis le notent de 1 à 5.</p><p class="why">La chanson de profil de MySpace, « écoute actuellement » sur MSN.</p></li><li id="i34"><div class="h"><span class="k">34</span><h4>La Chaîne</h4></div>
+<p>Tu passes un take à trois amis, qui le passent à leur tour ; le take montre l'arbre qui grandit.</p><p class="why">Les chaînes de questionnaires, « Ajoute la tienne ». Jev : la meilleure boucle (2,99). Casser la chaîne ne coûte rien.</p></li><li id="i35"><div class="h"><span class="k">35</span><h4>« Prénom est… »</h4></div>
+<p>Une phrase d'humeur 24 h en haut du fil des amis (« Léa est… en panique pour le bac ») ; réponse en un toucher.</p><p class="why">Les statuts de MSN et de Facebook. La réponse est un vote, pas une publication.</p></li><li id="i36"><div class="h"><span class="k">36</span><h4>Ils votent</h4></div>
+<p>Un bandeau montre les amis qui votent en ce moment, et sur quel take.</p><p class="why">La présence de MSN. Se masque comme le statut en ligne, qui existe déjà dans Take.</p></li><li id="i37"><div class="h"><span class="k">37</span><h4>Toi en 3 mots</h4></div>
+<p>Tes amis te décrivent en choisissant des adjectifs positifs ; ton profil affiche les trois plus choisis.</p><p class="why">Les notes d'Orkut. Pas de texte libre à modérer.</p></li><li id="i38"><div class="h"><span class="k">38</span><h4>Wizz</h4></div>
+<p>Depuis un take, tu envoies un Wizz à un ami : son écran vibre et le take s'ouvre. Trois par jour.</p><p class="why">Le Wizz de MSN, le poke de Facebook (multiplié par 13 en 2024).</p></li><li id="i39"><div class="h"><span class="k">39</span><h4>Le Cercle des 50</h4></div>
+<p>Un seul cercle privé, limité à 50 amis, pour poser les vraies questions devant les vrais amis.</p><p class="why">Path, les cercles de Google+.</p></li><li id="i40"><div class="h"><span class="k">40</span><h4>Le CVL dans la poche</h4></div>
+<p>Les élèves proposent et votent des idées pour leur lycée ; les élus (CVL, BDE) portent les gagnantes et racontent la suite dans l'app.</p><p class="why">Être entendu : l'engagement monte quand on se sent écouté, et les mandats reculent (DJEPVA 2025). Jev : originalité 2,43, la plus haute des idées « besoins ».</p></li><li id="i41"><div class="h"><span class="k">41</span><h4>La Voix des jeunes</h4></div>
+<p>Une grande question par semaine, résultats par âge et région, remis à un décideur ou un média qui s'engage à répondre dans l'app.</p><p class="why">40 % des jeunes défendent des causes en ligne pendant que les consultations reculent. Une personne, une voix.</p></li><li id="i42"><div class="h"><span class="k">42</span><h4>Vote révélé aux alliés</h4></div>
+<p>Après ton vote, tu vois quels amis ont voté pareil, s'ils l'ont accepté aussi. L'accord se découvre sans exposer le désaccord.</p><p class="why">Pour ceux qui n'osent pas (FIRE, CNIL). Rien n'apparaît si l'ami n'a pas accepté.</p></li><li id="i43"><div class="h"><span class="k">43</span><h4>Take qui agit</h4></div>
+<p>« On nettoie le parc samedi ? » devient un vrai événement avec une association quand assez de gens votent « je m'y mets ».</p><p class="why">77 % des 15-29 ans s'inquiètent pour l'environnement, et agir ensemble aide. Lieux publics, association, accord parental pour les mineurs.</p></li><li id="i44"><div class="h"><span class="k">44</span><h4>Mon portrait vu par mes amis</h4></div>
+<p>Tes amis votent sur tes forces et le métier qu'ils t'imaginent ; tu compares avec tes propres réponses.</p><p class="why">68 % des jeunes sont inquiets pour leur avenir. Questions positives ou neutres, résultats privés.</p></li><li id="i45"><div class="h"><span class="k">45</span><h4>Premier pas</h4></div>
+<p>Deux personnes du même âge et du même coin ont voté pareil sur des questions pointues ; Take propose une conversation qui part de là, si les deux acceptent.</p><p class="why">20,9 % des 13-17 ans se disent seuls (OMS). C'est là que le risque de prédation est le plus fort : tranches d'âge étanches, pas de photo.</p></li><li id="i46"><div class="h"><span class="k">46</span><h4>Météo de la classe</h4></div>
+<p>Chaque semaine, chacun note sa semaine de 1 à 5 en anonyme ; seule la tendance de la classe est visible, et des ressources s'affichent si elle baisse.</p><p class="why">24 % n'osent pas consulter par peur du jugement. Ce sont des données de santé : seuil de votants et rien d'individuel en clair.</p></li><li id="i47"><div class="h"><span class="k">47</span><h4>Le Jury des aînés</h4></div>
+<p>« Prépa ou fac ? » : des étudiants vérifiés passés par chaque voie votent et disent s'ils referaient le même choix.</p><p class="why">L'orientation est le deuxième besoin le plus fort. Aînés vérifiés, messages modérés.</p></li><li id="i48"><div class="h"><span class="k">48</span><h4>Rush de classe</h4></div>
+<p>Classe contre classe : chaque équipe devine comment une autre classe a voté. La classe qui lit le mieux les autres gagne la semaine.</p><p class="why">Appartenir à sa classe. Questions choisies par l'app, pour qu'aucun élève ne soit pris pour cible.</p></li><li id="i49"><div class="h"><span class="k">49</span><h4>On fait quoi ?</h4></div>
+<p>Une question de groupe (où, quand, quoi) devient un plan confirmé quand assez d'amis votent « je viens ».</p><p class="why">Partiful est adoré pour ça (4,95 sur 5). L'app propose des lieux gratuits : parcs, médiathèques, maisons des jeunes.</p></li><li id="i50"><div class="h"><span class="k">50</span><h4>Démasque-toi</h4></div>
+<p>Ton take anonyme cartonne ? Tu peux révéler que c'était toi, quand tu veux.</p><p class="why">Un moment de révélation choisi par l'auteur seulement ; l'anonymat reste le réglage par défaut.</p></li><li id="i51"><div class="h"><span class="k">51</span><h4>A ou B</h4></div>
+<p>Deux photos, une question (« je mets laquelle ce soir ? »), tes amis tranchent en dix minutes.</p><p class="why">Wishbone (2015), très populaire chez les ados avant de fermer.</p></li><li id="i52"><div class="h"><span class="k">52</span><h4>Ton type d&#x27;avis</h4></div>
+<p>Une fois par an, une carte à partager : « Le Rebelle, tu votes avec la minorité 64 % du temps ».</p><p class="why">Spotify Wrapped, pour les avis. Se nourrit de La Vraie Majorité, de Bascule et du flair.</p></li></ul>
+</section>
+
+<section id="recherche">
+  <div class="sec"><h2>Ce que la recherche a trouvé</h2><p class="note">Cinq recherches menées en parallèle le 30/09, environ 400 sources datées, chaque jugement passé par Jev. Les rapports complets restent sur le Mac.</p>
+<div class="table"><table>
+<thead><tr><th>Réseau</th><th>Sa signature</th><th>Ce que Take en retient</th></tr></thead>
+<tbody>
+<tr><td>Snapchat</td><td>L'éphémère, les flammes, la Snap Map</td><td>Une flamme doit récompenser un geste qui a du sens, pas un tap vide (86 % des jeunes entretiennent des flammes, 42 % les supprimeraient)</td></tr>
+<tr><td>Instagram</td><td>Les filtres, puis la story</td><td>Instagram a dépassé Snapchat en huit mois en copiant les Stories : une signature doit reposer sur une donnée qu'on est seul à avoir</td></tr>
+<tr><td>TikTok</td><td>Le fil « Pour toi », les sons, le Stitch</td><td>Le Contre-take et les Formats qui tournent</td></tr>
+<tr><td>X</td><td>Le message court, le retweet, les notes de communauté</td><td>Le Pont</td></tr>
+<tr><td>Reddit</td><td>Les votes, les communautés, r/changemyview et r/AmItheAsshole</td><td>Bascule et le Verdict</td></tr>
+<tr><td>BeReal</td><td>L'heure surprise, « poste pour voir »</td><td>Le Moment, sans l'usure</td></tr>
+<tr><td>Facebook</td><td>Le tag, le mur, le poke</td><td>Le Mur, le Wizz</td></tr>
+<tr><td>Twitch</td><td>Le direct, le chat, les prédictions à points</td><td>La Courbe ; les pronostics sans mise</td></tr>
+<tr><td>WeChat</td><td>Les enveloppes rouges du Nouvel An</td><td>Le grand vote</td></tr>
+<tr><td>KakaoTalk, LINE</td><td>Les cœurs, les stickers</td><td>Trois cœurs par jour</td></tr>
+<tr><td>tbh, Gas</td><td>Les sondages de compliments entre camarades</td><td>Les Flammes, dans la boucle de Take</td></tr>
+<tr><td>Yik Yak</td><td>L'anonyme local</td><td>Frontières, jamais la position de personne</td></tr>
+</tbody></table></div>
+<div class="box">
+<h4>Les besoins des jeunes, classés</h4>
+<p class="note">Notés par Jev sur les preuves (études, 1 913 posts Reddit, 4 322 avis App Store) : force du besoin, lien avec le vote, et manque dans les applis actuelles.</p>
+<div class="table"><table>
+<thead><tr><th>Besoin</th><th>Force</th><th>Le vote aide ?</th><th>Ce qui manque</th></tr></thead>
+<tbody>
+<tr><td>Être reconnu par ses pairs</td><td>3,2 sur 4</td><td>Oui (3,2)</td><td>Une reconnaissance qui dure, sans classement public</td></tr>
+<tr><td>Donner son avis sans être jugé</td><td>3,0</td><td>Oui, le plus (3,4)</td><td>Un avis anonyme dans un vrai groupe (classe, lycée, amis)</td></tr>
+<tr><td>Être entendu, décider ensemble</td><td>2,5</td><td>Oui (3,1)</td><td>Un résultat auquel quelqu'un répond vraiment</td></tr>
+<tr><td>Se parler au-delà des camps</td><td>3,0</td><td>Oui (2,9)</td><td>Montrer ce sur quoi les camps s'accordent</td></tr>
+<tr><td>Sécurité (harcèlement, inconnus)</td><td>3,8, le plus fort</td><td>Peu (1,0)</td><td>À respecter partout, pas une signature</td></tr>
+<tr><td>S'orienter, se projeter</td><td>3,5</td><td>Un peu (2,1)</td><td>Le passage du lycée au supérieur, qui isole</td></tr>
+<tr><td>Solitude</td><td>3,4</td><td>Un peu (1,8)</td><td>Se faire des amis sans bots ni arnaques (17 % des avis des applis d'amis)</td></tr>
+</tbody></table></div>
+<p class="note">À noter : le Conseil constitutionnel a censuré l'interdiction des réseaux aux moins de 15 ans le 14 août 2026 ; une nouvelle loi est attendue au printemps 2027. Il faut prévoir un parcours dédié aux mineurs.</p>
+</div>
+<div class="box">
+<h4>Ce qu'il ne faut surtout pas refaire</h4>
+<ul>
+<li><b>Le classement public des amis.</b> Snapchat a retiré ses « Meilleurs amis » publics en 2015 après des drames de jalousie. Le Top 8 de Take est public : à passer en privé ou en facultatif.</li>
+<li><b>L'anonymat en texte libre.</b> Formspring, Ask.fm, Yik Yak, NGL (interdit aux mineurs par la FTC en 2024, amende de 5 millions de dollars) : toujours encadrer par des questions écrites par Take.</li>
+<li><b>Révéler le votant, même contre de l'argent.</b> Le « God Mode » de Gas a nourri les rumeurs et la fin de l'app.</li>
+<li><b>Les séries qui punissent.</b> Les flammes de Snapchat sont dans le viseur du régulateur européen.</li>
+<li><b>Une IA qui débat contre un mineur pour le convaincre.</b> L'IA rapproche et reformule, elle ne tranche jamais.</li>
+<li><b>Pousser à la provocation.</b> Un badge pour les takes à 50/50 pousserait aux questions qui divisent (Jev : 0,81) : écarté.</li>
+</ul>
+</div>
+<div class="box">
+<h4>Ce qui a limité la recherche</h4>
+<ul>
+<li><b>X est inaccessible</b> : notre accès n'a plus de crédit. Aucune donnée tirée de X.</li>
+<li><b>Reddit bloque les agents</b> : les fils sont cités à travers les articles qui les compilent.</li>
+<li><b>Le quota de 200 recherches web</b> de la session a été épuisé en cours de route ; la suite s'est faite par pages connues, Wikipédia, Hacker News et les bases d'articles scientifiques. Reddit a quand même été lu en direct pour les besoins des jeunes (1 913 posts).</li>
+</ul>
+</div></div>
+</section>
+</div>
+</body>
+</html>
