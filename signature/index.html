@@ -32,6 +32,7 @@ section{ display:grid; gap:18px; padding-block:34px 6px; scroll-margin-top:64px;
 .pick .one{ display:flex; gap:14px; align-items:center; }
 .pick img{ width:84px; height:84px; flex:none; }
 .pick b{ font-size:21px; display:block; } .pick span{ font-size:14px; color:var(--ink-2); }
+.smalls{ display:flex; align-items:center; gap:10px; font-size:13px; font-weight:600; color:var(--ink-2); } .smalls img{ width:36px; height:36px; }
 .duo{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
 .duo figure{ margin:0; display:grid; gap:6px; min-width:0; }
 .duo figcaption{ font-size:12px; font-weight:700; color:var(--ink-2); text-transform:uppercase; letter-spacing:.5px; }
@@ -102,7 +103,8 @@ details > summary{ cursor:pointer; font-size:14px; font-weight:600; color:var(--
       <div class="one"><img src="img/logo-slalom.png" alt="Logo Slalom"><div><b>Slalom</b><span>à la place de Take Rush</span></div></div>
       <div class="one"><img src="img/logo-devinemoi.png" alt="Logo Devine-moi"><div><b>Devine-moi</b><span>à la place de KnowMe</span></div></div>
     </div>
-    <p class="note">Jev les met aussi en tête : Slalom à 33 % des six noms de Take Rush (le seul qui marche tel quel dans les six langues), Devine-moi à 61 % des six noms de KnowMe. Les logos se lisent bien en grand ; en tout petit (le menu Jeux, 26 pt), il faudra une version simplifiée qui ne garde que la forme principale.</p>
+    <div class="smalls"><span>En petit :</span><img src="img/logo-slalom-petit.png" alt="Slalom en petit"><img src="img/logo-devinemoi-petit.png" alt="Devine-moi en petit"></div>
+    <p class="note">Jev les met aussi en tête : Slalom à 33 % des six noms de Take Rush (le seul qui marche tel quel dans les six langues), Devine-moi à 61 % des six noms de KnowMe. En tout petit (menu Jeux, cartes de défi), chaque logo a une version simplifiée qui ne garde que la forme principale : c'est elle que montrent les écrans ci-dessous.</p>
   </div>
   <div class="box"><h4>Le menu Jeux d&#x27;une conversation</h4><div class="duo">
 <figure><figcaption>Aujourd'hui</figcaption><img src="img/nom-menu-avant.jpg" alt="Le menu Jeux d&#x27;une conversation aujourd'hui" loading="lazy"></figure>
@@ -293,7 +295,7 @@ details > summary{ cursor:pointer; font-size:14px; font-weight:600; color:var(--
 <ul>
 <li><b>X est inaccessible</b> : notre accès n'a plus de crédit. Aucune donnée tirée de X.</li>
 <li><b>Reddit bloque les agents</b> : les fils sont cités à travers les articles qui les compilent.</li>
-<li><b>Le quota de 200 recherches web</b> de la session a été épuisé en cours de route ; la suite s'est faite par pages connues, Wikipédia, Hacker News et les bases d'articles scientifiques. Reddit a quand même été lu en direct pour les besoins des jeunes (1 913 posts).</li>
+<li><b>Le quota de 200 recherches web</b> de la session a été épuisé en cours de route ; la suite s'est faite par pages connues, Wikipédia, Hacker News et les bases d'articles scientifiques. Reddit a quand même été lu par une archive publique (Arctic Shift) pour les besoins des jeunes : 1 913 posts.</li>
 </ul>
 </div></div>
 </section>
