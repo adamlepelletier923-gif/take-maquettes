@@ -138,25 +138,27 @@ section .rail + .rail{ margin-top:6px; }
 
   <section id="glissement">
     <div class="sec-head">
-      <div class="eyebrow">Point 4 · cause trouvée, correction en cours</div>
+      <div class="eyebrow">Point 4 · codé, PR #2370, en attente de ton oui</div>
       <h2>Glisser d'un onglet à l'autre : voir tout le trajet</h2>
       <blockquote>« On voit pas l'entre-deux, on voit le jeu blanc et je suis dans Questions. »<cite>Toi, 30/09.</cite></blockquote>
       <p class="note"><b>Cause :</b> seul le trait suit le doigt. La page d'à côté n'existe pas pendant le geste : la page courante s'efface, puis la suivante apparaît d'un coup.</p>
-      <p class="note"><b>Solution :</b> un vrai pager, la page voisine chargée et collée à côté, qui suit le doigt, sans rebond. Un agent la code, la vidéo « après » arrive ici.</p>
+      <p class="note"><b>Solution :</b> un vrai pager. La page voisine arrive avec son vrai contenu et suit le doigt, sans rebond.</p>
     </div>
     <div class="rail">
       <figure class="today"><div class="phone"><video src="vid/p4-avant.mp4" autoplay loop muted playsinline width="804" height="1288"></video></div><figcaption><div class="name"><span class="num">Auj.</span>Rien entre les deux</div><p class="why">Takes part de 20 pt et s'efface, à droite c'est vide.</p></figcaption></figure>
+      <figure><div class="phone"><video src="vid/p4-apres.mp4" autoplay loop muted playsinline width="804" height="1288"></video></div><figcaption><div class="name"><span class="num">Après</span>Tout le trajet</div><p class="why">Questions arrive avec son contenu pendant que Takes part, puis Jeu.</p></figcaption></figure>
     </div>
   </section>
 
   <section id="planete">
     <div class="sec-head">
-      <div class="eyebrow">Point 2 · PR #2360, en correction</div>
+      <div class="eyebrow">Point 2 · dans main (#2360)</div>
       <h2>La planète tourne quand elle s'ouvre</h2>
       <blockquote>« Quand j'appuie sur la planète, faut qu'il y ait une animation où la planète tourne quand ça s'ouvre. »<cite>Toi, 30/09.</cite></blockquote>
       <p class="note"><b>Codé :</b> un tour complet sur elle-même, 450 ms, qui ralentit jusqu'à l'arrêt, sans rebond (Jev : 0,78).</p>
       <p class="note"><b>Problème vu sur simulateur :</b> l'écran se fige ~0,5 s à l'ouverture, le tour se joue pendant le gel et ne se voit pas.</p>
-      <p class="note"><b>Solution :</b> la planète tourne d'abord, la carte s'ouvre juste après. Essai à droite, l'agent le code.</p>
+      <p class="note"><b>Fait :</b> la planète tourne, puis la carte s'ouvre. Tu as dit oui : c'est dans main (#2360).</p>
+      <p class="note"><b>Le « gel » :</b> mesuré dans l'app, c'était la courbe d'ouverture, invisible 144 ms au départ. Corrigé à 25–41 ms (PR #2373).</p>
     </div>
     <div class="rail">
       <figure class="today"><div class="phone"><video src="vid/p2-avant.mp4" autoplay loop muted playsinline width="804" height="840"></video></div><figcaption><div class="name"><span class="num">Auj.</span>Pas de tour</div><p class="why">La planète reste figée, puis la carte s'ouvre.</p></figcaption></figure>
@@ -170,7 +172,7 @@ section .rail + .rail{ margin-top:6px; }
       <h2>Ce que j'ai trouvé en plus</h2>
     </div>
     <div class="answer">
-      <p><b>Nouveau · Gel à l'ouverture de la carte :</b> ~0,5 s sans une image au toucher de la planète, même sur main. Solution : animer d'abord, ouvrir ensuite (point 2). À remesurer sur TestFlight, le build de dev exagère.</p>
+      <p><b>Nouveau · Temps mort à l'ouverture de la carte :</b> pas un vrai gel, la courbe d'ouverture restait invisible 144 ms. Corrigé à 25–41 ms, PR #2373.</p>
       <p><b>Nouveau · Commentaire anonyme encore noir :</b> le champ de réponse passe en noir quand on commente en anonyme. Solution : la même brume que le take, si tu veux la cohérence.</p>
       <p><b>Déjà dans Musk · Onglet Jeu et Score (points 13 et 14) :</b> si tu dis oui, la rangée passe à deux moitiés, A2 marche pareil.</p>
       <p><b>Déjà dans Musk · Bandeau « Ton vote sera anonyme » :</b> il s'affiche encore à chaque toucher du fantôme, par-dessus la brume.</p>
@@ -179,7 +181,7 @@ section .rail + .rail{ margin-top:6px; }
   </section>
 
   <div class="answer">
-    <p><b>Pour choisir :</b> dis 9.6 ou 9.1 pour la brume, et oui ou non pour le glissement quand sa vidéo arrive.</p>
+    <p><b>Pour choisir :</b> dis 9.6 ou 9.1 pour la brume, et oui ou non pour le nouveau glissement entre onglets.</p>
   </div>
 </div>
 </body>
