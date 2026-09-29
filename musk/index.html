@@ -10,25 +10,25 @@
 :root{
   color-scheme:light;
   --bg:#F6F7F8; --surface:#FFFFFF; --ink:#141414; --ink-2:#6B6E73; --line:#E3E6EA; --chip:#F0F2F5;
-  --cut:#D92D20; --cut-bg:#FDECEA; --slim:#B54708; --slim-bg:#FEF4E6; --keep:#067647; --keep-bg:#E8F5EE; --ask:#3538CD; --ask-bg:#EEF0FF;
+  --cut:#D92D20; --cut-bg:#FDECEA; --slim:#B54708; --slim-bg:#FEF4E6; --keep:#067647; --keep-bg:#E8F5EE; --ask:#3538CD; --ask-bg:#EEF0FF; --on:#0E7090; --on-bg:#E6F6FB;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327;
-    --cut:#FF6B5E; --cut-bg:#3A1714; --slim:#F5A94A; --slim-bg:#3A2710; --keep:#3CCB7F; --keep-bg:#0F2E1D; --ask:#9EA2FF; --ask-bg:#1E2045; }
+    --cut:#FF6B5E; --cut-bg:#3A1714; --slim:#F5A94A; --slim-bg:#3A2710; --keep:#3CCB7F; --keep-bg:#0F2E1D; --ask:#9EA2FF; --ask-bg:#1E2045; --on:#5CC8E6; --on-bg:#0C2A33; }
 }
 :root[data-theme="dark"]{ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327;
-  --cut:#FF6B5E; --cut-bg:#3A1714; --slim:#F5A94A; --slim-bg:#3A2710; --keep:#3CCB7F; --keep-bg:#0F2E1D; --ask:#9EA2FF; --ask-bg:#1E2045; }
+  --cut:#FF6B5E; --cut-bg:#3A1714; --slim:#F5A94A; --slim-bg:#3A2710; --keep:#3CCB7F; --keep-bg:#0F2E1D; --ask:#9EA2FF; --ask-bg:#1E2045; --on:#5CC8E6; --on-bg:#0C2A33; }
 
 body{ margin:0; background:var(--bg); color:var(--ink); font-family:Inter,-apple-system,"Helvetica Neue",Arial,sans-serif; font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; }
 .wrap{ max-width:980px; margin:0 auto; padding-inline:20px; padding-block:28px 72px; }
 h1,h2,h3{ text-wrap:balance; margin:0; }
 h1{ font-size:30px; line-height:36px; font-weight:700; letter-spacing:-0.4px; }
 h2{ font-size:22px; line-height:28px; font-weight:700; letter-spacing:-0.2px; }
-h3{ font-size:16px; line-height:22px; font-weight:700; }
+h3{ font-size:16.5px; line-height:22px; font-weight:700; }
 p{ margin:0; }
 .head{ display:grid; gap:14px; padding-block:8px 18px; }
 .eyebrow{ font-size:12px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:var(--ink-2); }
-.lead{ max-width:64ch; color:var(--ink-2); display:grid; gap:8px; }
+.lead{ max-width:66ch; color:var(--ink-2); display:grid; gap:8px; }
 .lead strong{ color:var(--ink); font-weight:600; }
 
 nav{ position:sticky; top:env(safe-area-inset-top,0px); z-index:5; background:var(--bg); padding-block:10px; border-bottom:1px solid var(--line); }
@@ -40,210 +40,402 @@ section{ display:grid; gap:16px; padding-block:34px 6px; scroll-margin-top:64px;
 .sec-head{ display:grid; gap:8px; max-width:68ch; }
 .note{ font-size:14px; color:var(--ink-2); max-width:68ch; }
 
-.steps{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; counter-reset:s; }
-.steps li{ counter-increment:s; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; display:grid; gap:6px; align-content:start; }
-.steps li::before{ content:counter(s); width:26px; height:26px; border-radius:13px; background:var(--ink); color:var(--bg); font-weight:700; font-size:13px; display:grid; place-items:center; }
-.steps b{ font-size:15px; }
-.steps span{ font-size:13.5px; color:var(--ink-2); line-height:19px; }
-.rule{ padding:14px 16px; border-radius:14px; background:var(--surface); border:1px solid var(--line); max-width:68ch; }
-.rule cite{ display:block; margin-top:6px; font-style:normal; font-size:13px; color:var(--ink-2); }
-
-.top{ list-style:none; margin:0; padding:0; display:grid; gap:10px; counter-reset:t; }
-.top li{ counter-increment:t; display:grid; grid-template-columns:34px 1fr auto; gap:12px; align-items:start; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px; }
-.top li::before{ content:counter(t); width:28px; height:28px; border-radius:14px; background:var(--chip); font-weight:700; font-size:13px; display:grid; place-items:center; font-variant-numeric:tabular-nums; }
-.top .what{ display:grid; gap:4px; }
-.top .what b{ font-size:15.5px; line-height:21px; }
-.top .what span{ font-size:14px; color:var(--ink-2); }
 .tag{ display:inline-flex; align-items:center; height:24px; padding:0 10px; border-radius:12px; font-size:12.5px; font-weight:700; white-space:nowrap; }
 .cut{ background:var(--cut-bg); color:var(--cut); }
 .slim{ background:var(--slim-bg); color:var(--slim); }
 .keep{ background:var(--keep-bg); color:var(--keep); }
 .ask{ background:var(--ask-bg); color:var(--ask); }
+.on{ background:var(--on-bg); color:var(--on); }
 
-.tours{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-.tour{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; display:grid; gap:8px; align-content:start; }
-.tour ul{ margin:0; padding-left:18px; display:grid; gap:6px; font-size:14px; }
-.tour li span{ color:var(--ink-2); }
-code{ font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:12.5px; background:var(--chip); padding:1px 5px; border-radius:5px; }
+.list{ display:grid; gap:10px; }
+.row{ display:grid; grid-template-columns:1fr auto; gap:12px; align-items:start; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px; }
+.row .what{ display:grid; gap:4px; }
+.row .what span{ font-size:14px; color:var(--ink-2); }
+
+.fix{ background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--cut); border-radius:14px; padding:16px; display:grid; gap:8px; max-width:72ch; }
+
+.point{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:18px; display:grid; grid-template-columns:minmax(0,1fr) 190px; gap:18px; align-items:start; }
+.point.noimg{ grid-template-columns:minmax(0,1fr); }
+.point .body{ display:grid; gap:10px; }
+.point .top{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.point dl{ margin:0; display:grid; gap:8px; }
+.point dt{ font-size:12px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; color:var(--ink-2); }
+.point dd{ margin:0; font-size:14.5px; }
+.point figure{ margin:0; display:grid; gap:6px; }
+.point img{ width:100%; height:auto; border-radius:18px; border:1px solid var(--line); display:block; }
+.point figcaption{ font-size:12.5px; color:var(--ink-2); }
+.jev{ font-size:13px; color:var(--ink-2); font-variant-numeric:tabular-nums; }
 
 .table{ overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
-table{ border-collapse:collapse; width:100%; min-width:860px; font-size:13.5px; }
+table{ border-collapse:collapse; width:100%; min-width:760px; font-size:13.5px; }
 th,td{ text-align:left; vertical-align:top; padding:10px 12px; border-bottom:1px solid var(--line); }
 th{ font-size:12px; letter-spacing:0.4px; text-transform:uppercase; color:var(--ink-2); font-weight:700; background:var(--bg); }
 tr:last-child td{ border-bottom:0; }
-td.p{ font-variant-numeric:tabular-nums; white-space:nowrap; }
+td.grp{ font-weight:700; background:var(--chip); }
 
 .cards{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-.card{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; display:grid; gap:6px; }
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; display:grid; gap:6px; align-content:start; }
 .card span{ color:var(--ink-2); font-size:14px; }
 
-@media (max-width:860px){ .steps{ grid-template-columns:repeat(2,minmax(0,1fr)); } .tours,.cards{ grid-template-columns:none; } }
-@media (max-width:480px){ .steps{ grid-template-columns:none; } .top li{ grid-template-columns:30px 1fr; } .top .tag{ grid-column:2; justify-self:start; } h1{ font-size:26px; line-height:32px; } }
+.steps{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; counter-reset:s; }
+.steps li{ counter-increment:s; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; display:grid; gap:6px; align-content:start; }
+.steps li::before{ content:counter(s); width:26px; height:26px; border-radius:13px; background:var(--ink); color:var(--bg); font-weight:700; font-size:13px; display:grid; place-items:center; }
+.steps span{ font-size:13.5px; color:var(--ink-2); line-height:19px; }
+code{ font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:12.5px; background:var(--chip); padding:1px 5px; border-radius:5px; }
+
+@media (max-width:760px){ .point{ grid-template-columns:minmax(0,1fr); } .point figure{ max-width:220px; } .cards{ grid-template-columns:none; } .steps{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:480px){ .steps{ grid-template-columns:none; } h1{ font-size:26px; line-height:32px; } .row{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="head">
-    <p class="eyebrow">Take · 29 septembre 2026, 20 h</p>
-    <h1>Sept tours de Take avec la méthode Musk</h1>
+    <p class="eyebrow">Take · méthode Musk · version 2 · 29 septembre 2026, 20 h 45</p>
+    <h1>Ce qu'on enlève, ce qu'on garde, ce qu'on rajoute</h1>
     <div class="lead">
-      <p>Demande d'Imo, relayée par Adam : faire sept fois le tour de l'app et dire <strong>ce qui ne sert à rien et qu'on peut enlever</strong>.</p>
-      <p>Les tours ont été faits sur le code de l'app telle qu'elle est aujourd'hui dans main. Chaque tour avait son angle : écrans, boutons, inscription, boucle principale, réglages, doublons, textes. Le classement a été vérifié par Jev, notre modèle de jugement.</p>
+      <p>Deuxième version, après le retour d'Adam. Les points qu'il a validés sont en train d'être supprimés. Tout le reste est expliqué en détail, avec une capture quand ça aide.</p>
+      <p>Cette fois, j'ai fait le tour <strong>sur le simulateur</strong>, avec le compte de test Ava Martin, et plus seulement dans le code. Ce tour a apporté de nouveaux points. Il m'a aussi montré deux erreurs de la première version, que je corrige plus bas.</p>
     </div>
   </header>
 
   <nav aria-label="Sections">
     <ul>
+      <li><a href="#decide">Décidé</a></li>
+      <li><a href="#erreurs">Mes erreurs</a></li>
+      <li><a href="#drapeaux">Les 16 fonctions éteintes</a></li>
+      <li><a href="#detail">Chaque point en détail</a></li>
+      <li><a href="#nouveau">Nouveaux points</a></li>
+      <li><a href="#rajouter">À rajouter</a></li>
+      <li><a href="#verifie">Vérifié ou non</a></li>
       <li><a href="#methode">La méthode</a></li>
-      <li><a href="#top">Top 10</a></li>
-      <li><a href="#tours">Les 7 tours</a></li>
-      <li><a href="#tableau">Tout le tableau</a></li>
-      <li><a href="#rajouter">À rajouter peut-être</a></li>
-      <li><a href="#limites">Limites</a></li>
     </ul>
   </nav>
 
-  <section id="methode">
+  <section id="decide">
     <div class="sec-head">
-      <p class="eyebrow">La méthode</p>
-      <h2>L'algorithme en cinq étapes, dans cet ordre</h2>
-      <p class="note">L'ordre compte : on n'optimise jamais une chose qu'on aurait dû supprimer.</p>
+      <p class="eyebrow">Décidé par Adam</p>
+      <h2>Cinq suppressions en cours</h2>
+      <p class="note">Un agent est en train de les retirer du code, dans une seule PR. Je la relis et je la fusionne après une vérification verte. Personne ne les voit disparaître côté utilisateur : c'est du code mort ou des écrans d'initiés.</p>
     </div>
-    <ol class="steps">
-      <li><b>Rendre l'exigence moins bête</b><span>Chaque exigence porte le nom de la personne qui l'a demandée, pas celui d'un service.</span></li>
-      <li><b>Supprimer</b><span>Enlever la pièce ou l'étape. C'est l'étape la plus importante.</span></li>
-      <li><b>Simplifier</b><span>Seulement ce qui a survécu à l'étape 2.</span></li>
-      <li><b>Accélérer</b><span>Réduire le temps de chaque cycle.</span></li>
-      <li><b>Automatiser</b><span>En dernier, une fois que le reste est propre.</span></li>
-    </ol>
-    <div class="rule">
-      <p><b>La règle des 10 % :</b> « If you're not adding things back in at least 10% of the time, you're clearly not deleting enough. »</p>
-      <cite>Elon Musk, entretien avec Everyday Astronaut, résumé par <a href="https://modelthinkers.com/mental-model/musks-5-step-design-process">ModelThinkers</a>. Même méthode dans la biographie <i>Elon Musk</i> de Walter Isaacson (Simon &amp; Schuster, 12 septembre 2023).</cite>
+    <div class="list">
+      <div class="row"><div class="what"><b>« Liens partagés »</b><span>La page de l'historique des partages, sa requête et la route d'API qui la liste. Si une route sert encore ailleurs, par exemple pour révoquer un lien, on la garde.</span></div><span class="tag cut">En cours</span></div>
+      <div class="row"><div class="what"><b>La page de test des GIF</b><span>Un outil de mesure pour les développeurs, qu'on pouvait ouvrir par lien dans l'app des testeurs.</span></div><span class="tag cut">En cours</span></div>
+      <div class="row"><div class="what"><b>L'aperçu d'avatar pour développeurs</b><span>Une page invisible en production. On ne touche à rien de l'avatar réel : rendu, éditeur, selfie, tenues.</span></div><span class="tag cut">En cours</span></div>
+      <div class="row"><div class="what"><b>Le choix de l'icône de l'app</b><span>On retire la ligne des réglages. Les icônes elles-mêmes restent dans l'app jusqu'au prochain build.</span></div><span class="tag cut">En cours</span></div>
+      <div class="row"><div class="what"><b>« Rechercher une mise à jour »</b><span>Les mises à jour s'installent seules. On garde la ligne « Build », utile quand quelqu'un signale un bug.</span></div><span class="tag cut">En cours</span></div>
+    </div>
+    <p class="note">Les pourboires et tous les autres points qu'Adam n'a pas tranchés restent dans le tableau.</p>
+  </section>
+
+  <section id="erreurs">
+    <div class="sec-head">
+      <p class="eyebrow">Honnêteté</p>
+      <h2>Deux erreurs de la première version</h2>
+    </div>
+    <div class="fix">
+      <h3>L'inscription fait déjà voter d'abord</h3>
+      <p>J'avais écrit qu'on demandait de « publier un premier take » avant d'avoir voté, et d'« inviter des amis » avant le premier vote. <b>C'est faux.</b> J'avais lu la liste des textes dans le désordre au lieu de l'ordre des étapes dans le code. L'ordre réel :</p>
+      <p>1. <i>Comment tu t'appelles ?</i> · 2. <i>Qu'est-ce qui t'intéresse ?</i> (trois sujets) · 3. <i>Ton premier take : vote, c'est tout ce qu'il y a à savoir</i>, sur un vrai take du fil · 4. <i>Invite tes proches</i>, avec « Plus tard ».</p>
+      <p>Le premier geste est donc déjà un vote, et l'invitation vient déjà après. Mes deux propositions tombent. Ce qui reste à gagner est dans « Chaque point en détail ».</p>
+    </div>
+    <div class="fix">
+      <h3>Les « douze fonctions éteintes » n'étaient pas toutes des fonctions</h3>
+      <p>J'en avais fait un seul paquet à supprimer. En les lisant une par une, trois sont des réglages techniques qu'il faut au contraire <b>allumer</b>. Une est une sécurité, et une manque carrément : la modération des images. Le détail suit.</p>
     </div>
   </section>
 
-  <section id="top">
+  <section id="drapeaux">
     <div class="sec-head">
-      <p class="eyebrow">Pour Adam et Imo</p>
-      <h2>Le top 10, du plus sûr au plus discuté</h2>
-    </div>
-    <ol class="top">
-      <li><div class="what"><b>Finir de supprimer « Liens partagés »</b><span>Adam l'avait fait retirer des réglages le 26/09. La ligne est partie, mais la page, sa requête et son API sont restées, et plus rien n'y mène.</span></div><span class="tag cut">Supprimer</span></li>
-      <li><div class="what"><b>Sortir la page de test des GIF de l'app publiée</b><span>Une page de mesure pour les développeurs (512 lignes). Rien n'y mène, mais elle s'ouvre encore par un lien dans l'app des testeurs.</span></div><span class="tag cut">Supprimer</span></li>
-      <li><div class="what"><b>Retirer les pourboires</b><span>1 600 lignes d'écran, éteintes sur staging, où sont les testeurs, et par défaut ailleurs. Personne ne les voit, tout le monde les entretient.</span></div><span class="tag cut">Supprimer</span></li>
-      <li><div class="what"><b>Faire le ménage des douze fonctions éteintes</b><span>Stickers perso, boutique du jeu, chat support, Q&amp;R privées dans le fil, salut de l'avatar, notifications de likes, compteurs publics… Pour chacune : on la supprime, ou on lui donne un nom et une date de sortie.</span></div><span class="tag cut">Supprimer</span></li>
-      <li><div class="what"><b>Inscription : ne plus demander de publier un take avant d'avoir voté</b><span>Aujourd'hui : prénom, goûts, inviter des amis, publier un premier take, puis seulement le fil. Le premier geste devrait être un vote.</span></div><span class="tag cut">Supprimer</span></li>
-      <li><div class="what"><b>Inscription : demander d'inviter des amis plus tard</b><span>Après les premiers votes, quand la personne sait ce qu'elle partage.</span></div><span class="tag cut">Déplacer</span></li>
-      <li><div class="what"><b>Un seul écran de partage au lieu de cinq</b><span>Take, profil, réponse et Top 8 ont chacun le leur. Le cinquième, qui ouvre les liens entrants, reste.</span></div><span class="tag slim">Simplifier</span></li>
-      <li><div class="what"><b>Une seule façon d'afficher un take dans une liste</b><span>Cinq variantes coexistent (fil, invité, carte, question, « buzz »), chacune un peu différente.</span></div><span class="tag slim">Simplifier</span></li>
-      <li><div class="what"><b>Take Rush, le jeu d'arcade : à trancher</b><span>8 800 lignes, un classement, une ligne dans le profil et des invitations dans les conversations, sans lien avec les avis ni les votes. Jev dit « supprimer » à 100 %. C'est un choix produit.</span></div><span class="tag ask">À trancher</span></li>
-      <li><div class="what"><b>Know me et le Top 8 : même question</b><span>Deux mini-jeux sociaux à côté de la boucle voter-commenter-publier. Jev : supprimer, à 99 % pour Know me et à 86 % pour le Top 8.</span></div><span class="tag ask">À trancher</span></li>
-    </ol>
-    <p class="note">Hors top 10, et à faire quoi qu'on décide : l'avatar 3D est chargé en arrière-plan sur le profil 2,5 s après chaque lancement (three.js et environ 1 Mo de code). Il faut le charger seulement quand on ouvre l'avatar.</p>
-  </section>
-
-  <section id="tours">
-    <div class="sec-head">
-      <p class="eyebrow">Le détail</p>
-      <h2>Les sept tours</h2>
-    </div>
-    <div class="tours">
-      <div class="tour"><h3>1 · Les écrans</h3><ul>
-        <li>67 écrans. <span>Accueil (Takes et Amis), Explorer, Messages, Profil, et le bouton de création.</span></li>
-        <li><code>gif-bench</code> : aucune entrée, <span>mais ouvrable par lien dans l'app publiée.</span></li>
-        <li><code>settings/shares</code> : aucune entrée <span>depuis #1850.</span></li>
-        <li><code>avatar-design-preview</code> : <span>réservé au développement, il renvoie vers l'accueil en production.</span></li>
-      </ul></div>
-      <div class="tour"><h3>2 · Boutons et menus</h3><ul>
-        <li>Le menu « … » d'un take est déjà court : <span>épingler et archiver pour l'auteur, masquer et signaler pour les autres.</span></li>
-        <li>Le menu d'un profil : partager et copier le lien, <span>« soutenir » seulement si les pourboires s'allument.</span></li>
-        <li>La barre du bas : quatre onglets et le bouton de création. <span>Rien à enlever.</span></li>
-      </ul></div>
-      <div class="tour"><h3>3 · L'inscription</h3><ul>
-        <li>Quatre étapes avant le premier vote : <span>prénom, goûts, inviter des amis, publier un premier take.</span></li>
-        <li>Deux d'entre elles demandent de donner avant d'avoir reçu : <span>publier et inviter.</span></li>
-        <li>Les goûts pourraient se déduire des premiers votes. <span>Jev : simplifier, à 68 %.</span></li>
-      </ul></div>
-      <div class="tour"><h3>4 · La boucle principale</h3><ul>
-        <li>Voir, voter, commenter, publier : <span>la rangée d'un take porte déjà peu d'éléments.</span></li>
-        <li>Cinq composants différents dessinent un take en liste : <span>chaque correctif doit être fait cinq fois.</span></li>
-        <li>« En hausse » et la pastille des nouveaux takes arrivent : <span>ils aident la boucle, on les garde.</span></li>
-      </ul></div>
-      <div class="tour"><h3>5 · Réglages et écrans secondaires</h3><ul>
-        <li>Choix de l'icône de l'app (automatique, noir, blanc). <span>Jev : supprimer, à 70 %.</span></li>
-        <li>« Vérifier une mise à jour » et l'identifiant de build, dans « À propos ». <span>Les mises à jour s'installent seules.</span></li>
-        <li>« Applications connectées » : <span>des apps tierces reliées à une API publique qui n'a pas encore d'utilisateurs.</span></li>
-      </ul></div>
-      <div class="tour"><h3>6 · Doublons et poids morts</h3><ul>
-        <li>Cinq écrans de partage, cinq rangées de take.</li>
-        <li>Douze fonctions éteintes sur staging, <span>plus les pourboires (1 600 lignes).</span></li>
-        <li>Trois jeux à côté de l'app : <span>Take Rush (8 800 lignes), Know me (7 écrans), le Top 8.</span></li>
-        <li>L'avatar pèse 28 000 lignes, <span>le plus gros morceau de l'app.</span></li>
-      </ul></div>
-      <div class="tour"><h3>7 · Textes, états et mesure</h3><ul>
-        <li>La mesure d'usage (analytics produit) est éteinte sur staging et par défaut. <span>On ne peut donc pas savoir ce que les gens utilisent vraiment.</span></li>
-        <li>L'écran qui prépare la demande de notifications : <span>à garder, mais au moment où il sert (Jev partagé : 54 % supprimer, 38 % simplifier).</span></li>
-      </ul></div>
-    </div>
-  </section>
-
-  <section id="tableau">
-    <div class="sec-head">
-      <p class="eyebrow">Tout le tableau</p>
-      <h2>Les 18 candidats, avec l'avis de Jev</h2>
-      <p class="note">Jev a jugé les 18 candidats en un seul appel ; ses probabilités sont notées S (supprimer), Si (simplifier) et G (garder). Quand mon avis diffère du sien, je dis pourquoi.</p>
+      <p class="eyebrow">Demandé par Adam</p>
+      <h2>Les 16 fonctions éteintes sur staging, une par une</h2>
+      <p class="note">Staging, c'est le serveur des testeurs. Une fonction éteinte n'y existe pas pour l'utilisateur : ni écran ni bouton. Je n'ai pas accès au réglage de la production, seulement à celui de staging et aux valeurs par défaut, éteintes.</p>
     </div>
     <div class="table">
       <table>
-        <thead><tr><th>Quoi</th><th>Étape</th><th>Jev</th><th>Mon avis</th><th>Risque, et comment tester</th></tr></thead>
+        <thead><tr><th>Fonction</th><th>Ce qu'elle ferait pour l'utilisateur</th><th>Pourquoi elle est éteinte</th><th>Ma proposition</th></tr></thead>
         <tbody>
-          <tr><td>Liens partagés : page, requête et API</td><td>2</td><td class="p">S 0,99</td><td><span class="tag cut">Supprimer</span></td><td>Aucun : plus rien n'y mène. Test : l'API et le web ne renvoient plus l'historique.</td></tr>
-          <tr><td>Page de test des GIF</td><td>2</td><td class="p">S 0,99</td><td><span class="tag cut">Supprimer</span></td><td>La garder en mode développement si on en a besoin. Test : le lien <code>takeapp://gif-bench</code> ne s'ouvre plus.</td></tr>
-          <tr><td>Pourboires</td><td>2</td><td class="p">S 0,98</td><td><span class="tag cut">Supprimer</span></td><td>Aucun visible. On la réécrira si l'argent arrive un jour.</td></tr>
-          <tr><td>Douze fonctions éteintes sur staging</td><td>1 · 2</td><td class="p">S 0,99</td><td><span class="tag cut">Supprimer ou dater</span></td><td>Chacune a peut-être un demandeur : lui mettre un nom et une date, sinon la supprimer.</td></tr>
-          <tr><td>Aperçu d'avatar pour développeurs</td><td>2</td><td class="p">S 0,99</td><td><span class="tag keep">Laisser</span></td><td>Déjà invisible en production, gain presque nul.</td></tr>
-          <tr><td>Inscription : premier take</td><td>2</td><td class="p">S 0,72</td><td><span class="tag cut">Supprimer</span></td><td>Moins de takes au premier jour ? À mesurer : le taux de premier vote.</td></tr>
-          <tr><td>Inscription : inviter des amis</td><td>2 · 4</td><td class="p">S 0,79</td><td><span class="tag cut">Déplacer</span></td><td>Moins d'invitations ? La redemander après trois votes.</td></tr>
-          <tr><td>Inscription : goûts</td><td>3</td><td class="p">Si 0,68</td><td><span class="tag slim">Simplifier</span></td><td>Fil moins ciblé au début. Test : pertinence des dix premiers takes.</td></tr>
-          <tr><td>Take Rush (jeu d'arcade)</td><td>1 · 2</td><td class="p">S 1,00</td><td><span class="tag ask">À trancher</span></td><td>Choix produit d'Adam et d'Imo. Allumer d'abord la mesure d'usage.</td></tr>
-          <tr><td>Know me (quiz entre amis)</td><td>1 · 2</td><td class="p">S 0,99</td><td><span class="tag ask">À trancher</span></td><td>Même chose. Know me touche l'amitié, plus proche de Take que Take Rush.</td></tr>
-          <tr><td>Top 8</td><td>1 · 2</td><td class="p">S 0,86</td><td><span class="tag ask">À trancher</span></td><td>Même chose.</td></tr>
-          <tr><td>Cinq écrans de partage</td><td>3</td><td class="p">Si 0,99</td><td><span class="tag slim">Simplifier</span></td><td>Garder celui des liens entrants. Test : partager un take, un profil, une réponse.</td></tr>
-          <tr><td>Cinq rangées de take</td><td>3</td><td class="p">Si 0,98</td><td><span class="tag slim">Simplifier</span></td><td>Gros chantier : un seul composant et des variantes. Captures avant et après.</td></tr>
-          <tr><td>Choix de l'icône de l'app</td><td>2</td><td class="p">S 0,70</td><td><span class="tag cut">Supprimer</span></td><td>Petit gain. On peut le garder si quelqu'un y tient.</td></tr>
-          <tr><td>« Vérifier une mise à jour »</td><td>2</td><td class="p">S 0,93</td><td><span class="tag cut">Supprimer</span></td><td>Garder l'identifiant de build pour le support.</td></tr>
-          <tr><td>Applications connectées</td><td>1</td><td class="p">S 0,87</td><td><span class="tag slim">Masquer</span></td><td>Pouvoir retirer un accès est un droit de l'utilisateur, donc l'écran revient dès qu'une app tierce existe.</td></tr>
-          <tr><td>Écran avant la demande de notifications</td><td>3</td><td class="p">S 0,54 · Si 0,38</td><td><span class="tag keep">Garder au bon moment</span></td><td>Jev hésite. Le montrer quand on attend une réponse, pas à l'arrivée.</td></tr>
-          <tr><td>Avatar 3D</td><td>3 · 4</td><td class="p">S 0,92</td><td><span class="tag slim">Alléger</span></td><td>Je m'écarte de Jev : c'est un choix produit porté par Adam. Ne plus le charger à chaque lancement.</td></tr>
+          <tr><td class="grp" colspan="4">Des fonctions produit en attente</td></tr>
+          <tr><td>Stickers perso</td><td>Découper un sticker dans sa propre photo et l'envoyer en message.</td><td>Aucune modération des images envoyées en message.</td><td><span class="tag cut">Supprimer</span> tant que les photos ne sont pas modérées.</td></tr>
+          <tr><td>Boutique du jeu</td><td>Acheter et porter des objets dans Take Rush.</td><td>Archivée (décision D112).</td><td><span class="tag cut">Supprimer</span>, déjà archivée.</td></tr>
+          <tr><td>Chat avec le support</td><td>Une conversation avec l'équipe, ouverte depuis les réglages.</td><td>Il faut une adresse qui reçoit et quelqu'un qui répond.</td><td><span class="tag ask">À trancher</span> : utile au lancement public, si quelqu'un lit.</td></tr>
+          <tr><td>Questions privées dans le fil</td><td>Montrer dans le fil Amis une réponse à une question privée que la personne a choisi de publier.</td><td>Attend une décision produit.</td><td><span class="tag ask">À trancher</span> : ça ajoute du contenu entre amis sans bouton de plus.</td></tr>
+          <tr><td>Salut de l'avatar</td><td>L'avatar fait coucou.</td><td>Éteint par défaut, sans raison écrite dans le code.</td><td><span class="tag slim">Garder éteint</span>, dans le chantier avatar.</td></tr>
+          <tr><td>Notifications de likes</td><td>« X a aimé ton take ou ton commentaire ».</td><td>L'app n'affiche pas encore ces notifications.</td><td><span class="tag ask">À trancher</span> : ça fait revenir les gens, mais ça fait du bruit.</td></tr>
+          <tr><td>Notifications sur le web</td><td>Des notifications dans le navigateur, pour la version web.</td><td>Il faut une clé d'envoi dédiée ; éteinte par défaut.</td><td><span class="tag slim">Plus tard</span> : d'abord « le web = le mobile ».</td></tr>
+          <tr><td>Langues de lecture en plus</td><td>Lire et traduire des takes dans d'autres langues que les six de l'app.</td><td>Éteinte par défaut, sans raison écrite dans le code.</td><td><span class="tag cut">Supprimer</span> pour l'instant, voir aussi « arabe bientôt ».</td></tr>
+          <tr><td>Motif d'un refus de question privée</td><td>Dire à l'auteur pourquoi sa question privée a été refusée.</td><td>La décision (ADR 0022) n'est que proposée.</td><td><span class="tag ask">À trancher</span> avec la modération.</td></tr>
+          <tr><td>Pourboires</td><td>Envoyer de l'argent à un créateur.</td><td>Éteint. L'allumer demanderait un prestataire de paiement, la vérification d'âge et la fiscalité.</td><td><span class="tag ask">Reste au tableau</span>, comme Adam l'a dit.</td></tr>
+          <tr><td class="grp" colspan="4">Des réglages techniques à ALLUMER, pas à supprimer</td></tr>
+          <tr><td>Compteurs de votes précalculés</td><td>Rien de visible : les nombres de votes s'affichent plus vite.</td><td>Il faut d'abord rattraper les anciens votes.</td><td><span class="tag on">Allumer</span> après le rattrapage.</td></tr>
+          <tr><td>Nombre de takes public précalculé</td><td>Rien de visible : le profil se charge plus vite.</td><td>Même raison.</td><td><span class="tag on">Allumer</span> après le rattrapage.</td></tr>
+          <tr><td>Compteurs du fil par heure</td><td>Rien de visible : le fil se calcule plus vite.</td><td>Les compteurs doivent tourner une journée entière d'abord.</td><td><span class="tag on">Allumer</span>.</td></tr>
+          <tr><td class="grp" colspan="4">Des sécurités à laisser telles quelles</td></tr>
+          <tr><td>Envoi des annonces de l'admin</td><td>Envoyer une annonce à tous les utilisateurs.</td><td>Éteint exprès, pour qu'une annonce ne soit pas marquée « envoyée » sans l'être vraiment.</td><td><span class="tag keep">Garder</span>.</td></tr>
+          <tr><td>Budget d'e-mails</td><td>Un plafond d'e-mails envoyés.</td><td>Éteint par défaut.</td><td><span class="tag keep">Garder</span>.</td></tr>
+          <tr><td class="grp" colspan="4">Une fonction qui manque</td></tr>
+          <tr><td>Modération des images</td><td>Juger les photos des takes et des commentaires avant publication.</td><td>Éteinte : aujourd'hui les photos passent sans être jugées, alors que le texte l'est.</td><td><span class="tag on">Allumer</span> avant tout lancement public. Jev : 0,89.</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
+  <section id="detail">
+    <div class="sec-head">
+      <p class="eyebrow">Ce qui reste au tableau</p>
+      <h2>Chaque point, en détail</h2>
+      <p class="note">Pour chacun : ce que c'est, pourquoi la méthode le questionne, ce que ça changerait pour l'utilisateur, et ma proposition concrète.</p>
+    </div>
+
+    <article class="point">
+      <div class="body">
+        <div class="top"><h3>Take Rush, le jeu d'arcade</h3><span class="tag ask">À trancher</span></div>
+        <dl>
+          <dt>Ce que c'est</dt><dd>Un jeu d'arcade dans le profil (onglet « Jeu », bouton « Jouer »), avec un classement entre amis et des défis envoyés en conversation. Il pèse 8 800 lignes de code, soit le deuxième plus gros morceau de l'app après l'avatar.</dd>
+          <dt>Pourquoi le questionner</dt><dd>Il n'a rien à voir avec les avis ni les votes, qui sont le cœur de Take. Chaque correctif du profil ou des messages doit aussi le ménager.</dd>
+          <dt>Trois options</dt><dd>A : le retirer. B : le garder, mais hors du profil, dans un coin « Jeux ». C : le relier aux takes, par exemple un duel où l'on devine les votes de ses amis.</dd>
+          <dt>Ma proposition</dt><dd>B pour l'instant, puis décider avec les chiffres d'usage, une fois la mesure allumée.</dd>
+        </dl>
+        <p class="jev">Jev : supprimer 1,00.</p>
+      </div>
+      <figure><img src="img/03-jeu.png" alt="Onglet Jeu du profil : bouton Jouer, classement, Défie tes amis" loading="lazy"><figcaption>L'onglet « Jeu » du profil.</figcaption></figure>
+    </article>
+
+    <article class="point">
+      <div class="body">
+        <div class="top"><h3>Le Top 8</h3><span class="tag ask">À trancher</span></div>
+        <dl>
+          <dt>Ce que c'est</dt><dd>Les huit amis qu'on met en avant sur son profil, façon MySpace, avec un éditeur, un choix des personnes, une carte à partager et un écran de partage à lui.</dd>
+          <dt>Pourquoi le questionner</dt><dd>Il prend le haut du profil, avant les takes. Il demande aussi un travail (choisir et ordonner huit personnes) qui ne mène pas à voter.</dd>
+          <dt>Ce qui changerait</dt><dd>Sans lui, le profil commence par les takes de la personne, donc par ce qu'elle pense.</dd>
+          <dt>Ma proposition</dt><dd>Le garder, mais plus petit et plus bas dans le profil. Ne supprimer que son écran de partage séparé (voir « Cinq écrans de partage »).</dd>
+        </dl>
+        <p class="jev">Jev : supprimer 0,86.</p>
+      </div>
+      <figure><img src="img/02-profil.png" alt="Profil d'Ava Martin : Top 8 au-dessus des takes" loading="lazy"><figcaption>Le Top 8, au-dessus des onglets du profil.</figcaption></figure>
+    </article>
+
+    <article class="point noimg">
+      <div class="body">
+        <div class="top"><h3>Know me, le quiz entre amis</h3><span class="tag ask">À trancher</span></div>
+        <dl>
+          <dt>Ce que c'est</dt><dd>Depuis une conversation, on remplit un quiz sur soi, on l'envoie, et l'ami devine ses réponses. Il compte sept écrans : créer, envoyer, envoyé, jouer, résultat, partager, modifier. Il est allumé pour les testeurs.</dd>
+          <dt>Pourquoi le questionner</dt><dd>C'est un deuxième jeu à côté de Take Rush, qui ressemble à Take sans en être : on devine au lieu de voter.</dd>
+          <dt>Ce qui changerait</dt><dd>Une action de moins dans le menu d'une conversation, d'où on le lance aujourd'hui.</dd>
+          <dt>Ma proposition</dt><dd>Si on ne garde qu'un seul jeu, c'est plutôt lui, parce qu'il parle d'opinions et d'amitié. On peut aussi le fondre dans Take : un take « Devine ce que je pense ».</dd>
+        </dl>
+        <p class="jev">Jev : supprimer 0,99.</p>
+      </div>
+    </article>
+
+    <article class="point noimg">
+      <div class="body">
+        <div class="top"><h3>Cinq écrans de partage</h3><span class="tag slim">Simplifier</span></div>
+        <dl>
+          <dt>Ce que c'est</dt><dd>Partager un take, un profil, une réponse ou un Top 8 ouvre à chaque fois un écran différent, avec sa propre mise en page. Un cinquième écran ouvre les liens reçus.</dd>
+          <dt>Pourquoi le simplifier</dt><dd>C'est le même geste, partager, fait de quatre façons. Chaque amélioration (un nouveau réseau, le GIF, la langue) doit être faite quatre fois, et un écran finit toujours par être en retard.</dd>
+          <dt>Ce qui changerait</dt><dd>Une seule feuille « Partager », identique partout, avec un aperçu adapté à ce qu'on partage.</dd>
+          <dt>Ma proposition</dt><dd>Maquette d'abord : une feuille unique, quatre aperçus.</dd>
+        </dl>
+        <p class="jev">Jev : simplifier 0,99.</p>
+      </div>
+    </article>
+
+    <article class="point">
+      <div class="body">
+        <div class="top"><h3>Cinq façons d'afficher un take</h3><span class="tag slim">Simplifier</span></div>
+        <dl>
+          <dt>Ce que c'est</dt><dd>Le fil, le fil sans compte, les cartes, les questions et le « buzz » dessinent chacun un take à leur façon.</dd>
+          <dt>Pourquoi le simplifier</dt><dd>Un bug corrigé dans une version reste dans les quatre autres. Les petites différences de marges et de boutons viennent de là.</dd>
+          <dt>Ce qui changerait</dt><dd>Pour l'utilisateur, rien, sauf que tout devient pareil partout. Pour nous, un seul composant à corriger.</dd>
+          <dt>Ma proposition</dt><dd>Un chantier technique sans changement de design, à confier à un agent quand le reste est fini.</dd>
+        </dl>
+        <p class="jev">Jev : simplifier 0,98.</p>
+      </div>
+      <figure><img src="img/12-takes.png" alt="Fil Takes : rangées de takes" loading="lazy"><figcaption>Le fil « Takes » : la rangée de référence.</figcaption></figure>
+    </article>
+
+    <article class="point noimg">
+      <div class="body">
+        <div class="top"><h3>L'inscription (corrigée)</h3><span class="tag slim">Simplifier</span></div>
+        <dl>
+          <dt>Aujourd'hui</dt><dd>Prénom, puis trois centres d'intérêt, puis un vote sur un vrai take, puis « Invite tes proches » avec « Plus tard ».</dd>
+          <dt>Le prénom</dt><dd>Avec Apple ou Google, on connaît déjà le prénom : le préremplir, l'écran devient un simple « C'est moi ».</dd>
+          <dt>Les centres d'intérêt</dt><dd>Les rendre facultatifs, avec un « Passer ». Les premiers votes en disent plus que trois cases cochées. Jev : simplifier 0,55.</dd>
+          <dt>Le premier vote</dt><dd>À garder : c'est exactement ce que dit la méthode. On pourrait même arriver directement dans le fil, avec ce take en haut. Jev : simplifier 0,71.</dd>
+          <dt>L'invitation</dt><dd>La garder après le vote, et la reproposer au bon moment : après trois votes, ou quand un ami rejoint. Jev : simplifier 0,63.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="point noimg">
+      <div class="body">
+        <div class="top"><h3>Les pourboires</h3><span class="tag ask">Reste au tableau</span></div>
+        <dl>
+          <dt>Ce que c'est</dt><dd>Donner de l'argent à un créateur depuis son profil ou un take : 1 600 lignes d'écran, éteintes.</dd>
+          <dt>Ce qu'il faudrait pour l'allumer</dt><dd>Un prestataire de paiement, la vérification d'âge (les utilisateurs sont jeunes), la fiscalité et la modération des abus.</dd>
+          <dt>Ma proposition</dt><dd>Le laisser éteint et ne plus le toucher, jusqu'à une décision.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="point noimg">
+      <div class="body">
+        <div class="top"><h3>Applications connectées</h3><span class="tag slim">Masquer</span></div>
+        <dl>
+          <dt>Ce que c'est</dt><dd>Dans « Compte », la liste des applications extérieures autorisées à utiliser ton compte Take, avec leurs droits et un bouton pour les couper.</dd>
+          <dt>Pourquoi le questionner</dt><dd>Tant qu'aucune application extérieure n'est branchée à Take, la liste est vide. Je n'ai pas pu vérifier s'il en existe déjà une.</dd>
+          <dt>Ma proposition</dt><dd>Cacher la ligne tant que la liste est vide. Dès qu'une app existe, elle revient toute seule : pouvoir couper un accès est un droit de l'utilisateur.</dd>
+        </dl>
+        <p class="jev">Jev : supprimer 0,87 ; je m'en écarte pour la raison ci-dessus.</p>
+      </div>
+    </article>
+
+    <article class="point noimg">
+      <div class="body">
+        <div class="top"><h3>L'écran avant la demande de notifications</h3><span class="tag keep">Garder, mieux placé</span></div>
+        <dl>
+          <dt>Ce que c'est</dt><dd>Un écran à nous qui explique pourquoi activer les notifications, juste avant la fenêtre d'iOS.</dd>
+          <dt>Pourquoi le garder</dt><dd>iOS ne pose sa question qu'une fois. Si la personne refuse, c'est fini. Cet écran évite un refus à froid.</dd>
+          <dt>Ma proposition</dt><dd>Le montrer au moment où il a un sens : quand on vient de publier (« Sois prévenu·e quand on te répond »), plutôt qu'à l'arrivée.</dd>
+        </dl>
+        <p class="jev">Jev : partagé (supprimer 0,54, simplifier 0,38).</p>
+      </div>
+    </article>
+
+    <article class="point noimg">
+      <div class="body">
+        <div class="top"><h3>L'avatar 3D chargé à chaque lancement</h3><span class="tag slim">Alléger</span></div>
+        <dl>
+          <dt>Ce que c'est</dt><dd>2,5 secondes après chaque ouverture de l'app, le profil prépare l'avatar en 3D en arrière-plan (three.js et environ 1 Mo de code), même si on ne va jamais sur son profil.</dd>
+          <dt>Ce qui changerait</dt><dd>Une app plus légère au démarrage, surtout sur les vieux téléphones. L'avatar se charge quand on l'ouvre.</dd>
+          <dt>Ma proposition</dt><dd>Oui, sans rien changer à l'avatar lui-même.</dd>
+        </dl>
+      </div>
+    </article>
+  </section>
+
+  <section id="nouveau">
+    <div class="sec-head">
+      <p class="eyebrow">Deuxième tour, sur le simulateur</p>
+      <h2>Nouveaux points</h2>
+    </div>
+
+    <article class="point">
+      <div class="body">
+        <div class="top"><h3>« العربية — BIENTÔT » dans le choix de la langue</h3><span class="tag cut">Supprimer</span></div>
+        <dl>
+          <dt>Ce qu'on voit</dt><dd>Une septième langue grisée, qu'on ne peut pas choisir.</dd>
+          <dt>Pourquoi</dt><dd>Une option qui ne marche pas donne l'impression d'une app pas finie. On l'ajoutera le jour où l'arabe sera prêt.</dd>
+        </dl>
+        <p class="jev">Jev : supprimer 0,70.</p>
+      </div>
+      <figure><img src="img/07-langue-bientot.png" alt="Choix de la langue avec l'arabe grisé, marqué bientôt" loading="lazy"><figcaption>Réglages › Langue.</figcaption></figure>
+    </article>
+
+    <article class="point">
+      <div class="body">
+        <div class="top"><h3>« Score » dans l'en-tête du profil</h3><span class="tag cut">Supprimer</span></div>
+        <dl>
+          <dt>Ce qu'on voit</dt><dd>« Amis 7 · Takes 10 · Score 7 ». Ce score est le meilleur score au jeu d'arcade, pas une note sur les avis.</dd>
+          <dt>Pourquoi</dt><dd>Sur une app d'opinions, un « Score » en tête du profil laisse croire à une note de la personne. Le score du jeu a sa place dans l'onglet Jeu, où il est déjà.</dd>
+        </dl>
+        <p class="jev">Jev : supprimer 0,95.</p>
+      </div>
+      <figure><img src="img/02-profil.png" alt="En-tête du profil : Amis, Takes, Score" loading="lazy"><figcaption>En-tête du profil.</figcaption></figure>
+    </article>
+
+    <article class="point">
+      <div class="body">
+        <div class="top"><h3>Explorer répète la même question en plusieurs langues</h3><span class="tag slim">Simplifier</span></div>
+        <dl>
+          <dt>Ce qu'on voit</dt><dd>Pour un lecteur francophone, les tendances montrent la même question sur les trottinettes en portugais, anglais et français, et celle du café en portugais et espagnol, les unes sous les autres.</dd>
+          <dt>Ce qu'il faudrait</dt><dd>Un seul exemplaire par question, dans la langue du lecteur.</dd>
+          <dt>Réserve</dt><dd>Vu sur les données de test locales. Je ne peux pas me connecter à staging pour vérifier que les testeurs le voient aussi.</dd>
+        </dl>
+        <p class="jev">Jev : simplifier 0,59.</p>
+      </div>
+      <figure><img src="img/10-explorer-doublons.png" alt="Explorer : la même question en plusieurs langues" loading="lazy"><figcaption>Explorer › Technologie.</figcaption></figure>
+    </article>
+
+    <article class="point">
+      <div class="body">
+        <div class="top"><h3>« Mise à jour : Intégrée » et la version en double</h3><span class="tag cut">Supprimer</span></div>
+        <dl>
+          <dt>Ce qu'on voit</dt><dd>Dans « À propos », une ligne « Mise à jour : Intégrée », du jargon technique. Et la version « 1.0.0 (1) » s'affiche deux fois : sur la ligne « À propos » et en bas de page.</dd>
+          <dt>Ce qu'il faudrait</dt><dd>Garder la ligne « Build » pour le support, retirer « Mise à jour », et afficher la version une seule fois.</dd>
+        </dl>
+        <p class="jev">Jev : supprimer 0,66 (« Mise à jour »), simplifier 0,53 (la version en double).</p>
+      </div>
+      <figure><img src="img/06-apropos-bas.png" alt="À propos de Take : Build, Mise à jour Intégrée, Rechercher une mise à jour" loading="lazy"><figcaption>Réglages › À propos de Take.</figcaption></figure>
+    </article>
+
+    <article class="point">
+      <div class="body">
+        <div class="top"><h3>Les filtres de période d'un take à 8 votes</h3><span class="tag slim">Simplifier</span></div>
+        <dl>
+          <dt>Ce qu'on voit</dt><dd>La courbe d'un take a quatre boutons de période (1 h, 1 j, 1 sem., Tout), même quand il n'a que 8 votes.</dd>
+          <dt>Ma proposition</dt><dd>Garder la courbe sur tous les takes, comme tu l'as demandé. N'afficher les quatre boutons que quand il y a assez de votes pour qu'ils changent quelque chose.</dd>
+        </dl>
+        <p class="jev">Jev : supprimer 0,57 ; je propose de les masquer quand il y a peu de votes, pas de les supprimer, pour garder ta règle sur la courbe.</p>
+      </div>
+      <figure><img src="img/09-page-take.png" alt="Page d'un take : courbe, filtres 1h 1j 1sem Tout, 8 votes" loading="lazy"><figcaption>La page d'un take, 8 votes.</figcaption></figure>
+    </article>
+
+    <article class="point noimg">
+      <div class="body">
+        <div class="top"><h3>Ce qui est déjà bien</h3><span class="tag keep">Garder</span></div>
+        <dl>
+          <dt>Messages</dt><dd>Une liste simple de conversations, avec une recherche. Rien à enlever.</dd>
+          <dt>Le menu « … » d'un take</dt><dd>Épingler et archiver pour l'auteur ; masquer et signaler pour les autres. Déjà au plus court.</dd>
+          <dt>La barre du bas</dt><dd>Accueil, Explorer, Messages, Profil, et le « + ». Rien à enlever.</dd>
+        </dl>
+      </div>
+    </article>
+  </section>
+
   <section id="rajouter">
     <div class="sec-head">
       <p class="eyebrow">La règle des 10 %</p>
-      <h2>Ce qu'on devra peut-être rajouter</h2>
+      <h2>Ce qu'il faut rajouter ou allumer</h2>
     </div>
     <div class="cards">
-      <div class="card"><b>La mesure d'usage</b><span>Elle est éteinte sur staging. Sans elle, les étapes 1 et 2 se décident au jugé.</span></div>
-      <div class="card"><b>L'invitation, au bon moment</b><span>Après trois votes ou un premier commentaire, plutôt qu'à l'inscription.</span></div>
-      <div class="card"><b>Un petit jeu lié aux votes</b><span>Si on retire Take Rush et Know me, un jeu autour des avis peut revenir.</span></div>
-      <div class="card"><b>Retrouver ses liens partagés</b><span>Seulement si un testeur le demande.</span></div>
+      <div class="card"><b>La modération des images</b><span>Aujourd'hui, les photos des takes et des commentaires ne sont pas jugées. C'est le plus urgent de la page. Jev : 0,89.</span></div>
+      <div class="card"><b>La mesure d'usage</b><span>Savoir quels écrans et quels jeux sont vraiment utilisés. Sans elle, Take Rush, Know me et le Top 8 se tranchent au jugé. Jev : 0,94.</span></div>
+      <div class="card"><b>Les trois réglages de vitesse</b><span>Compteurs de votes, nombre de takes et compteurs du fil : allumés après leur rattrapage, sans aucun changement visible. Jev : 0,57.</span></div>
+      <div class="card"><b>L'invitation au bon moment</b><span>La reproposer après trois votes ou quand un ami rejoint, en plus de la fin de l'inscription.</span></div>
+      <div class="card"><b>Une seule feuille de partage</b><span>À rajouter en remplaçant les quatre écrans actuels.</span></div>
+      <div class="card"><b>Le prénom prérempli</b><span>Avec Apple et Google, on a déjà le prénom : une étape de moins.</span></div>
     </div>
   </section>
 
-  <section id="limites">
+  <section id="verifie">
     <div class="sec-head">
-      <p class="eyebrow">Limites</p>
-      <h2>Ce que je n'ai pas pu vérifier</h2>
+      <p class="eyebrow">Ce que je n'avais pas pu vérifier</p>
+      <h2>Ce que j'ai fait, et ce qui reste impossible</h2>
     </div>
     <div class="cards">
-      <div class="card"><b>Pas de tour sur un téléphone</b><span>La mémoire du Mac était saturée, alors les tours ont été faits sur le code de main (<code>d57f98e48</code>), sans simulateur. Les captures viendront avec les maquettes.</span></div>
-      <div class="card"><b>Pas de chiffres d'usage</b><span>La mesure est éteinte, donc personne ne sait quel écran est vraiment ouvert.</span></div>
-      <div class="card"><b>Rien n'est modifié</b><span>Aucune ligne de code n'a changé. Chaque suppression passera par une maquette validée, puis par une PR.</span></div>
-      <div class="card"><b>Jev</b><span>Un seul appel pour 18 questions de type « choix ». Ses verdicts guident, ils ne décident pas : je m'en écarte sur sept lignes, dites dans le tableau.</span></div>
+      <div class="card"><b>Fait : le tour sur le simulateur</b><span>Profil, jeu, réglages, « À propos », langue, Explorer, Messages, page d'un take, fil Takes. Les captures sont sur cette page.</span></div>
+      <div class="card"><b>Fait : l'inscription relue dans le code</b><span>L'ordre réel des étapes, et mes deux erreurs corrigées. Je ne l'ai pas capturée : il faudrait créer un compte neuf.</span></div>
+      <div class="card"><b>Fait : les 16 fonctions éteintes lues une par une</b><span>Leur description dans le code du serveur, et leur réglage sur staging.</span></div>
+      <div class="card"><b>Impossible pour l'instant : les chiffres d'usage</b><span>La mesure est éteinte. Il faut l'allumer pour trancher les jeux et le Top 8 avec des chiffres.</span></div>
+      <div class="card"><b>Impossible : ce que voient les testeurs</b><span>Je n'ai pas le droit de me connecter à staging. Le doublon d'Explorer est donc à vérifier par l'un de vous.</span></div>
+      <div class="card"><b>Jev</b><span>Deux appels : 18 questions pour la première version, puis 12 pour les points nouveaux et corrigés. Ses verdicts guident, ils ne décident pas. Chaque écart est dit sur sa fiche.</span></div>
     </div>
+  </section>
+
+  <section id="methode">
+    <div class="sec-head">
+      <p class="eyebrow">La méthode</p>
+      <h2>L'algorithme en cinq étapes</h2>
+    </div>
+    <ol class="steps">
+      <li><b>Rendre l'exigence moins bête</b><span>Chaque exigence porte le nom de la personne qui l'a demandée.</span></li>
+      <li><b>Supprimer</b><span>Enlever la pièce ou l'étape.</span></li>
+      <li><b>Simplifier</b><span>Seulement ce qui a survécu.</span></li>
+      <li><b>Accélérer</b><span>Réduire chaque cycle.</span></li>
+      <li><b>Automatiser</b><span>En dernier.</span></li>
+    </ol>
+    <p class="note">« If you're not adding things back in at least 10% of the time, you're clearly not deleting enough. » Elon Musk, entretien avec Everyday Astronaut, d'après <a href="https://modelthinkers.com/mental-model/musks-5-step-design-process">ModelThinkers</a>. Même méthode dans la biographie de Walter Isaacson (Simon &amp; Schuster, 12 septembre 2023).</p>
   </section>
 </div>
 </body>
