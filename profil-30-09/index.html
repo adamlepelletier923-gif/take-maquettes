@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Profil, planète et brume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>
+
+:root{
+  --bg:#F6F7F8; --surface:#FFFFFF; --ink:#141414; --ink-2:#6B6E73; --line:#E3E6EA; --chip:#F0F2F5; --dot:#FF3B30; --ok:#008B45;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327; --dot:#FF453A; --ok:#2FBF71; }
+}
+:root[data-theme="dark"]{ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327; --dot:#FF453A; --ok:#2FBF71; }
+
+body{ background:var(--bg); color:var(--ink); font-family:Inter,-apple-system,"Helvetica Neue",Arial,sans-serif; font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+.wrap{ max-width:1180px; margin:0 auto; padding-inline:20px; padding-block:28px 64px; }
+h1,h2{ text-wrap:balance; margin:0; }
+h1{ font-size:30px; line-height:36px; font-weight:700; letter-spacing:-0.4px; }
+h2{ font-size:22px; line-height:28px; font-weight:700; letter-spacing:-0.2px; }
+p{ margin:0; }
+.lead{ max-width:62ch; color:var(--ink-2); display:grid; gap:8px; }
+.lead strong{ color:var(--ink); font-weight:600; }
+.head{ display:grid; gap:14px; padding-block:8px 20px; }
+.meta{ display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--ink-2); letter-spacing:0.3px; text-transform:uppercase; }
+.meta i{ width:7px; height:7px; border-radius:50%; background:var(--dot); animation:pulse 1.8s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{opacity:.35} 50%{opacity:1} }
+@media (prefers-reduced-motion: reduce){ .meta i{ animation:none; } }
+
+nav{ position:sticky; top:env(safe-area-inset-top,0px); z-index:5; background:var(--bg); padding-block:10px; margin-bottom:8px; border-bottom:1px solid var(--line); }
+nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; }
+nav a{ display:inline-flex; align-items:center; height:32px; padding:0 14px; border-radius:16px; background:var(--chip); color:var(--ink); text-decoration:none; font-size:14px; font-weight:600; white-space:nowrap; }
+nav a:hover, nav a:focus-visible{ background:var(--ink); color:var(--bg); outline:none; }
+
+section{ display:grid; gap:18px; padding-block:34px 10px; scroll-margin-top:64px; }
+.sec-head{ display:grid; gap:10px; max-width:70ch; }
+.eyebrow{ font-size:12px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:var(--ink-2); }
+blockquote{ margin:0; padding:12px 14px; border-radius:12px; background:var(--surface); border:1px solid var(--line); font-size:15px; }
+blockquote cite{ display:block; margin-top:6px; font-style:normal; font-size:13px; color:var(--ink-2); }
+.note{ font-size:14px; color:var(--ink-2); }
+
+.rail{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px 18px; }
+figure{ margin:0; display:grid; gap:10px; align-content:start; }
+.phone{ border-radius:22px; overflow:hidden; border:1px solid var(--line); background:#ffffff; box-shadow:0 1px 2px rgba(0,0,0,0.04); }
+.phone img{ display:block; width:100%; height:auto; }
+figcaption{ display:grid; gap:4px; }
+.name{ display:flex; align-items:baseline; gap:8px; font-weight:600; font-size:15px; line-height:20px; }
+.num{ flex-shrink:0; min-width:30px; height:22px; padding:0 7px; border-radius:11px; background:var(--ink); color:var(--bg); font-size:12.5px; font-weight:700; line-height:22px; text-align:center; font-variant-numeric:tabular-nums; }
+.today .num{ background:var(--chip); color:var(--ink-2); }
+.why{ font-size:13.5px; line-height:19px; color:var(--ink-2); }
+.why b{ color:var(--ink); font-weight:600; }
+
+.answer{ margin-top:40px; padding:18px; border-radius:16px; background:var(--surface); border:1px solid var(--line); display:grid; gap:8px; max-width:70ch; }
+
+@media (max-width:980px){ .rail{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media (max-width:720px){
+  .rail{ grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:74%; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; margin-inline:-20px; padding-inline:20px; scroll-padding-inline:20px; }
+  figure{ scroll-snap-align:start; }
+  h1{ font-size:25px; line-height:31px; }
+}
+
+.phone video{ display:block; width:100%; height:auto; background:#ffffff; }
+.note b, .answer b{ color:var(--ink); font-weight:600; }
+.answer p{ font-size:14.5px; line-height:21px; }
+section .rail + .rail{ margin-top:6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <div class="meta"><i></i>Profil, planète et brume · 30 septembre 2026</div>
+    <h1>Tes cinq points, avec la solution à côté</h1>
+    <div class="lead">
+      <p><strong>La brume est codée</strong> et vérifiée sur mon simulateur : elle part dès que la CI est verte.</p>
+      <p><strong>Les onglets, la planète et le glissement</strong> attendent ton oui sur ces maquettes avant d'être fusionnés.</p>
+      <p>Captures et vidéos : la vraie app sur mon simulateur, API locale et compte de démo (pas staging). La roue grise est l'outil du build de dev, absente de l'app publiée.</p>
+    </div>
+  </header>
+
+  <nav aria-label="Points">
+    <ul>
+      <li><a href="#brume">3 · La brume</a></li>
+      <li><a href="#onglets">1 · Les onglets</a></li>
+      <li><a href="#glissement">4 · Le glissement</a></li>
+      <li><a href="#planete">2 · La planète</a></li>
+      <li><a href="#autres">5 · Autres défauts</a></li>
+    </ul>
+  </nav>
+
+  <section id="brume">
+    <div class="sec-head">
+      <div class="eyebrow">Point 3 · codé, PR #2356</div>
+      <h2>Le vote anonyme passe du noir à la brume</h2>
+      <blockquote>« Le mode ano c'est toujours noir alors que ça devait être du brouillard qu'on avait choisi. »<cite>Toi, 30/09. Décidé le 29/09 à 14 h 47 : « On change ? oui ».</cite></blockquote>
+      <p class="note"><b>Ce qui s'est passé :</b> les maquettes A1 à A5 sont en ligne depuis le 29, mais aucune n'a été choisie ni codée. Rien n'est parti dans main.</p>
+      <p class="note"><b>Ce que j'ai codé :</b> A1, la brume qui se condense sur place, choisie par Jev (0,56). Aucun rebond, le texte ne bouge pas.</p>
+    </div>
+    <div class="rail">
+      <figure class="today"><div class="phone"><img src="img/p3-avant.jpg" alt="Aujourd'hui : le take voté en anonyme devient une carte noire" width="804" height="720" loading="lazy"></div><figcaption><div class="name"><span class="num">Auj.</span>Carte noire</div><p class="why">Ce que tu vois aujourd'hui dans le fil.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/p3-apres-clair.jpg" alt="Après : le même take couvert d'une brume, en clair" width="804" height="720" loading="lazy"></div><figcaption><div class="name"><span class="num">A1</span>Brume, en clair</div><p class="why">Nappes grises aux bords flous sur tout le take.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/p3-apres-sombre.jpg" alt="Après : le même take couvert d'une brume, en sombre" width="804" height="720" loading="lazy"></div><figcaption><div class="name"><span class="num">A1</span>Brume, en sombre</div><p class="why">En sombre, elle se lit comme une fumée.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/p3-take-ouvert.jpg" alt="Après : la page du take ouvert, couverte de brume" width="804" height="1320" loading="lazy"></div><figcaption><div class="name"><span class="num">A1</span>Take ouvert</div><p class="why">La page du take se voile pareil, plus de page noire.</p></figcaption></figure>
+    </div>
+    <div class="rail">
+      <figure><div class="phone"><video src="vid/p3-fil-clair.mp4" autoplay loop muted playsinline width="804" height="800"></video></div><figcaption><div class="name"><span class="num">Vidéo</span>Fil, en clair</div><p class="why">Toucher le fantôme : la brume se pose en 2 s, puis se lève.</p></figcaption></figure>
+      <figure><div class="phone"><video src="vid/p3-fil-sombre.mp4" autoplay loop muted playsinline width="804" height="800"></video></div><figcaption><div class="name"><span class="num">Vidéo</span>Fil, en sombre</div><p class="why">La même animation sur fond noir.</p></figcaption></figure>
+      <figure><div class="phone"><video src="vid/p3-take-ouvert.mp4" autoplay loop muted playsinline width="804" height="1320"></video></div><figcaption><div class="name"><span class="num">Vidéo</span>Take ouvert</div><p class="why">Levée puis pose de la brume sur la page du take.</p></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="onglets">
+    <div class="sec-head">
+      <div class="eyebrow">Point 1 · maquettes, PR #2362 en attente</div>
+      <h2>Takes, Questions, Jeu : trois tiers au lieu de trois bords</h2>
+      <blockquote>« Takes, Questions et Jeu sont grave mal placés, ça fait super espacé. »<cite>Toi, 30/09.</cite></blockquote>
+      <p class="note"><b>Cause :</b> la rangée est en « space-between », pensée pour cinq onglets. À trois, 110 pt de vide entre chaque mot.</p>
+      <p class="note"><b>Recommandé : A2</b>, trois tiers d'un bord à l'autre, trait sous tout le tiers, comme Instagram (Jev : 0,70). Déjà codé.</p>
+    </div>
+    <div class="rail">
+      <figure class="today"><div class="phone"><img src="img/p1-today.jpg" alt="Aujourd'hui : Takes au bord gauche, Jeu au bord droit" width="804" height="360" loading="lazy"></div><figcaption><div class="name"><span class="num">Auj.</span>Collés aux bords</div><p class="why">Takes à gauche, Jeu à droite, Questions perdu au milieu.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/p1-A2.jpg" alt="A2 : trois tiers, trait sous tout le tiers" width="804" height="360" loading="lazy"></div><figcaption><div class="name"><span class="num">A2</span>Trois tiers, trait plein</div><p class="why"><b>Recommandé.</b> Chaque mot centré dans son tiers, comme Instagram.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/p1-A.jpg" alt="A : trois tiers, trait court de 44 points" width="804" height="360" loading="lazy"></div><figcaption><div class="name"><span class="num">A</span>Trois tiers, trait court</div><p class="why">Comme le profil public d'aujourd'hui.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/p1-B.jpg" alt="B : les trois mots groupés à gauche" width="804" height="360" loading="lazy"></div><figcaption><div class="name"><span class="num">B</span>Groupés à gauche</div><p class="why">28 pt entre les mots, comme les onglets de X.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/p1-C.jpg" alt="C : les trois mots groupés au centre" width="804" height="360" loading="lazy"></div><figcaption><div class="name"><span class="num">C</span>Groupés au centre</div><p class="why">36 pt entre les mots, bloc centré.</p></figcaption></figure>
+      <figure class="today"><div class="phone"><img src="img/p1-today-sombre.jpg" alt="Aujourd'hui, en sombre" width="804" height="360" loading="lazy"></div><figcaption><div class="name"><span class="num">Auj.</span>En sombre</div><p class="why">Le même écart en thème sombre.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/p1-A2-sombre.jpg" alt="A2, en sombre" width="804" height="360" loading="lazy"></div><figcaption><div class="name"><span class="num">A2</span>En sombre</div><p class="why">A2 en thème sombre.</p></figcaption></figure>
+    </div>
+    <p class="note">Le profil public passe aussi en A2, pour que les deux profils se ressemblent.</p>
+  </section>
+
+  <section id="glissement">
+    <div class="sec-head">
+      <div class="eyebrow">Point 4 · cause trouvée, correction en cours</div>
+      <h2>Glisser d'un onglet à l'autre : voir tout le trajet</h2>
+      <blockquote>« On voit pas l'entre-deux, on voit le jeu blanc et je suis dans Questions. »<cite>Toi, 30/09.</cite></blockquote>
+      <p class="note"><b>Cause :</b> seul le trait suit le doigt. La page d'à côté n'existe pas pendant le geste : la page courante s'efface, puis la suivante apparaît d'un coup.</p>
+      <p class="note"><b>Solution :</b> un vrai pager, la page voisine chargée et collée à côté, qui suit le doigt, sans rebond. Un agent la code, la vidéo « après » arrive ici.</p>
+    </div>
+    <div class="rail">
+      <figure class="today"><div class="phone"><video src="vid/p4-avant.mp4" autoplay loop muted playsinline width="804" height="1288"></video></div><figcaption><div class="name"><span class="num">Auj.</span>Rien entre les deux</div><p class="why">Takes part de 20 pt et s'efface, à droite c'est vide.</p></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="planete">
+    <div class="sec-head">
+      <div class="eyebrow">Point 2 · PR #2360, en correction</div>
+      <h2>La planète tourne quand elle s'ouvre</h2>
+      <blockquote>« Quand j'appuie sur la planète, faut qu'il y ait une animation où la planète tourne quand ça s'ouvre. »<cite>Toi, 30/09.</cite></blockquote>
+      <p class="note"><b>Codé :</b> un tour complet sur elle-même, 450 ms, qui ralentit jusqu'à l'arrêt, sans rebond (Jev : 0,78).</p>
+      <p class="note"><b>Problème vu sur simulateur :</b> l'écran se fige ~0,5 s à l'ouverture, le tour se joue pendant le gel et ne se voit pas.</p>
+      <p class="note"><b>Solution :</b> la planète tourne d'abord, la carte s'ouvre juste après. Essai à droite, l'agent le code.</p>
+    </div>
+    <div class="rail">
+      <figure class="today"><div class="phone"><video src="vid/p2-avant.mp4" autoplay loop muted playsinline width="804" height="840"></video></div><figcaption><div class="name"><span class="num">Auj.</span>Pas de tour</div><p class="why">La planète reste figée, puis la carte s'ouvre.</p></figcaption></figure>
+      <figure><div class="phone"><video src="vid/p2-apres-essai.mp4" autoplay loop muted playsinline width="804" height="840"></video></div><figcaption><div class="name"><span class="num">Essai</span>Tour, puis ouverture</div><p class="why">Les continents défilent, puis le disque s'ouvre sur la carte.</p></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="autres">
+    <div class="sec-head">
+      <div class="eyebrow">Point 5 · vérifiés contre les 122 points Musk</div>
+      <h2>Ce que j'ai trouvé en plus</h2>
+    </div>
+    <div class="answer">
+      <p><b>Nouveau · Gel à l'ouverture de la carte :</b> ~0,5 s sans une image au toucher de la planète, même sur main. Solution : animer d'abord, ouvrir ensuite (point 2). À remesurer sur TestFlight, le build de dev exagère.</p>
+      <p><b>Nouveau · Commentaire anonyme encore noir :</b> le champ de réponse passe en noir quand on commente en anonyme. Solution : la même brume que le take, si tu veux la cohérence.</p>
+      <p><b>Déjà dans Musk · Onglet Jeu et Score (points 13 et 14) :</b> si tu dis oui, la rangée passe à deux moitiés, A2 marche pareil.</p>
+      <p><b>Déjà dans Musk · Bandeau « Ton vote sera anonyme » :</b> il s'affiche encore à chaque toucher du fantôme, par-dessus la brume.</p>
+      <p><b>Fausse piste écartée :</b> le fantôme de la page d'un take semblait mort ; c'était la bulle d'outils du build de dev.</p>
+    </div>
+  </section>
+
+  <div class="answer">
+    <p><b>Pour choisir :</b> donne une lettre pour les onglets (A2, A, B ou C) et dis oui ou non pour la planète et le glissement.</p>
+  </div>
+</div>
+</body>
+</html>
