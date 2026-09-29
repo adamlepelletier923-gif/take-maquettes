@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Take, méthode Musk</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#F6F7F8; --surface:#FFFFFF; --ink:#141414; --ink-2:#6B6E73; --line:#E3E6EA; --chip:#F0F2F5;
+  --cut:#D92D20; --cut-bg:#FDECEA; --slim:#B54708; --slim-bg:#FEF4E6; --keep:#067647; --keep-bg:#E8F5EE; --ask:#3538CD; --ask-bg:#EEF0FF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327;
+    --cut:#FF6B5E; --cut-bg:#3A1714; --slim:#F5A94A; --slim-bg:#3A2710; --keep:#3CCB7F; --keep-bg:#0F2E1D; --ask:#9EA2FF; --ask-bg:#1E2045; }
+}
+:root[data-theme="dark"]{ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327;
+  --cut:#FF6B5E; --cut-bg:#3A1714; --slim:#F5A94A; --slim-bg:#3A2710; --keep:#3CCB7F; --keep-bg:#0F2E1D; --ask:#9EA2FF; --ask-bg:#1E2045; }
+
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:Inter,-apple-system,"Helvetica Neue",Arial,sans-serif; font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+.wrap{ max-width:980px; margin:0 auto; padding-inline:20px; padding-block:28px 72px; }
+h1,h2,h3{ text-wrap:balance; margin:0; }
+h1{ font-size:30px; line-height:36px; font-weight:700; letter-spacing:-0.4px; }
+h2{ font-size:22px; line-height:28px; font-weight:700; letter-spacing:-0.2px; }
+h3{ font-size:16px; line-height:22px; font-weight:700; }
+p{ margin:0; }
+.head{ display:grid; gap:14px; padding-block:8px 18px; }
+.eyebrow{ font-size:12px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:var(--ink-2); }
+.lead{ max-width:64ch; color:var(--ink-2); display:grid; gap:8px; }
+.lead strong{ color:var(--ink); font-weight:600; }
+
+nav{ position:sticky; top:env(safe-area-inset-top,0px); z-index:5; background:var(--bg); padding-block:10px; border-bottom:1px solid var(--line); }
+nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; }
+nav a{ display:inline-flex; align-items:center; height:32px; padding:0 14px; border-radius:16px; background:var(--chip); color:var(--ink); text-decoration:none; font-size:14px; font-weight:600; white-space:nowrap; }
+nav a:hover, nav a:focus-visible{ background:var(--ink); color:var(--bg); outline:none; }
+
+section{ display:grid; gap:16px; padding-block:34px 6px; scroll-margin-top:64px; }
+.sec-head{ display:grid; gap:8px; max-width:68ch; }
+.note{ font-size:14px; color:var(--ink-2); max-width:68ch; }
+
+.steps{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; counter-reset:s; }
+.steps li{ counter-increment:s; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px; display:grid; gap:6px; align-content:start; }
+.steps li::before{ content:counter(s); width:26px; height:26px; border-radius:13px; background:var(--ink); color:var(--bg); font-weight:700; font-size:13px; display:grid; place-items:center; }
+.steps b{ font-size:15px; }
+.steps span{ font-size:13.5px; color:var(--ink-2); line-height:19px; }
+.rule{ padding:14px 16px; border-radius:14px; background:var(--surface); border:1px solid var(--line); max-width:68ch; }
+.rule cite{ display:block; margin-top:6px; font-style:normal; font-size:13px; color:var(--ink-2); }
+
+.top{ list-style:none; margin:0; padding:0; display:grid; gap:10px; counter-reset:t; }
+.top li{ counter-increment:t; display:grid; grid-template-columns:34px 1fr auto; gap:12px; align-items:start; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px; }
+.top li::before{ content:counter(t); width:28px; height:28px; border-radius:14px; background:var(--chip); font-weight:700; font-size:13px; display:grid; place-items:center; font-variant-numeric:tabular-nums; }
+.top .what{ display:grid; gap:4px; }
+.top .what b{ font-size:15.5px; line-height:21px; }
+.top .what span{ font-size:14px; color:var(--ink-2); }
+.tag{ display:inline-flex; align-items:center; height:24px; padding:0 10px; border-radius:12px; font-size:12.5px; font-weight:700; white-space:nowrap; }
+.cut{ background:var(--cut-bg); color:var(--cut); }
+.slim{ background:var(--slim-bg); color:var(--slim); }
+.keep{ background:var(--keep-bg); color:var(--keep); }
+.ask{ background:var(--ask-bg); color:var(--ask); }
+
+.tours{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.tour{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; display:grid; gap:8px; align-content:start; }
+.tour ul{ margin:0; padding-left:18px; display:grid; gap:6px; font-size:14px; }
+.tour li span{ color:var(--ink-2); }
+code{ font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:12.5px; background:var(--chip); padding:1px 5px; border-radius:5px; }
+
+.table{ overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
+table{ border-collapse:collapse; width:100%; min-width:860px; font-size:13.5px; }
+th,td{ text-align:left; vertical-align:top; padding:10px 12px; border-bottom:1px solid var(--line); }
+th{ font-size:12px; letter-spacing:0.4px; text-transform:uppercase; color:var(--ink-2); font-weight:700; background:var(--bg); }
+tr:last-child td{ border-bottom:0; }
+td.p{ font-variant-numeric:tabular-nums; white-space:nowrap; }
+
+.cards{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; display:grid; gap:6px; }
+.card span{ color:var(--ink-2); font-size:14px; }
+
+@media (max-width:860px){ .steps{ grid-template-columns:repeat(2,minmax(0,1fr)); } .tours,.cards{ grid-template-columns:none; } }
+@media (max-width:480px){ .steps{ grid-template-columns:none; } .top li{ grid-template-columns:30px 1fr; } .top .tag{ grid-column:2; justify-self:start; } h1{ font-size:26px; line-height:32px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <p class="eyebrow">Take · 29 septembre 2026, 20 h</p>
+    <h1>Sept tours de Take avec la méthode Musk</h1>
+    <div class="lead">
+      <p>Demande d'Imo, relayée par Adam : faire sept fois le tour de l'app et dire <strong>ce qui ne sert à rien et qu'on peut enlever</strong>.</p>
+      <p>Les tours ont été faits sur le code de l'app telle qu'elle est aujourd'hui dans main. Chaque tour avait son angle : écrans, boutons, inscription, boucle principale, réglages, doublons, textes. Le classement a été vérifié par Jev, notre modèle de jugement.</p>
+    </div>
+  </header>
+
+  <nav aria-label="Sections">
+    <ul>
+      <li><a href="#methode">La méthode</a></li>
+      <li><a href="#top">Top 10</a></li>
+      <li><a href="#tours">Les 7 tours</a></li>
+      <li><a href="#tableau">Tout le tableau</a></li>
+      <li><a href="#rajouter">À rajouter peut-être</a></li>
+      <li><a href="#limites">Limites</a></li>
+    </ul>
+  </nav>
+
+  <section id="methode">
+    <div class="sec-head">
+      <p class="eyebrow">La méthode</p>
+      <h2>L'algorithme en cinq étapes, dans cet ordre</h2>
+      <p class="note">L'ordre compte : on n'optimise jamais une chose qu'on aurait dû supprimer.</p>
+    </div>
+    <ol class="steps">
+      <li><b>Rendre l'exigence moins bête</b><span>Chaque exigence porte le nom de la personne qui l'a demandée, pas celui d'un service.</span></li>
+      <li><b>Supprimer</b><span>Enlever la pièce ou l'étape. C'est l'étape la plus importante.</span></li>
+      <li><b>Simplifier</b><span>Seulement ce qui a survécu à l'étape 2.</span></li>
+      <li><b>Accélérer</b><span>Réduire le temps de chaque cycle.</span></li>
+      <li><b>Automatiser</b><span>En dernier, une fois que le reste est propre.</span></li>
+    </ol>
+    <div class="rule">
+      <p><b>La règle des 10 % :</b> « If you're not adding things back in at least 10% of the time, you're clearly not deleting enough. »</p>
+      <cite>Elon Musk, entretien avec Everyday Astronaut, résumé par <a href="https://modelthinkers.com/mental-model/musks-5-step-design-process">ModelThinkers</a>. Même méthode dans la biographie <i>Elon Musk</i> de Walter Isaacson (Simon &amp; Schuster, 12 septembre 2023).</cite>
+    </div>
+  </section>
+
+  <section id="top">
+    <div class="sec-head">
+      <p class="eyebrow">Pour Adam et Imo</p>
+      <h2>Le top 10, du plus sûr au plus discuté</h2>
+    </div>
+    <ol class="top">
+      <li><div class="what"><b>Finir de supprimer « Liens partagés »</b><span>Adam l'avait fait retirer des réglages le 26/09. La ligne est partie, mais la page, sa requête et son API sont restées, et plus rien n'y mène.</span></div><span class="tag cut">Supprimer</span></li>
+      <li><div class="what"><b>Sortir la page de test des GIF de l'app publiée</b><span>Une page de mesure pour les développeurs (512 lignes). Rien n'y mène, mais elle s'ouvre encore par un lien dans l'app des testeurs.</span></div><span class="tag cut">Supprimer</span></li>
+      <li><div class="what"><b>Retirer les pourboires</b><span>1 600 lignes d'écran, éteintes sur staging, où sont les testeurs, et par défaut ailleurs. Personne ne les voit, tout le monde les entretient.</span></div><span class="tag cut">Supprimer</span></li>
+      <li><div class="what"><b>Faire le ménage des douze fonctions éteintes</b><span>Stickers perso, boutique du jeu, chat support, Q&amp;R privées dans le fil, salut de l'avatar, notifications de likes, compteurs publics… Pour chacune : on la supprime, ou on lui donne un nom et une date de sortie.</span></div><span class="tag cut">Supprimer</span></li>
+      <li><div class="what"><b>Inscription : ne plus demander de publier un take avant d'avoir voté</b><span>Aujourd'hui : prénom, goûts, inviter des amis, publier un premier take, puis seulement le fil. Le premier geste devrait être un vote.</span></div><span class="tag cut">Supprimer</span></li>
+      <li><div class="what"><b>Inscription : demander d'inviter des amis plus tard</b><span>Après les premiers votes, quand la personne sait ce qu'elle partage.</span></div><span class="tag cut">Déplacer</span></li>
+      <li><div class="what"><b>Un seul écran de partage au lieu de cinq</b><span>Take, profil, réponse et Top 8 ont chacun le leur. Le cinquième, qui ouvre les liens entrants, reste.</span></div><span class="tag slim">Simplifier</span></li>
+      <li><div class="what"><b>Une seule façon d'afficher un take dans une liste</b><span>Cinq variantes coexistent (fil, invité, carte, question, « buzz »), chacune un peu différente.</span></div><span class="tag slim">Simplifier</span></li>
+      <li><div class="what"><b>Take Rush, le jeu d'arcade : à trancher</b><span>8 800 lignes, un classement, une ligne dans le profil et des invitations dans les conversations, sans lien avec les avis ni les votes. Jev dit « supprimer » à 100 %. C'est un choix produit.</span></div><span class="tag ask">À trancher</span></li>
+      <li><div class="what"><b>Know me et le Top 8 : même question</b><span>Deux mini-jeux sociaux à côté de la boucle voter-commenter-publier. Jev : supprimer, à 99 % pour Know me et à 86 % pour le Top 8.</span></div><span class="tag ask">À trancher</span></li>
+    </ol>
+    <p class="note">Hors top 10, et à faire quoi qu'on décide : l'avatar 3D est chargé en arrière-plan sur le profil 2,5 s après chaque lancement (three.js et environ 1 Mo de code). Il faut le charger seulement quand on ouvre l'avatar.</p>
+  </section>
+
+  <section id="tours">
+    <div class="sec-head">
+      <p class="eyebrow">Le détail</p>
+      <h2>Les sept tours</h2>
+    </div>
+    <div class="tours">
+      <div class="tour"><h3>1 · Les écrans</h3><ul>
+        <li>67 écrans. <span>Accueil (Takes et Amis), Explorer, Messages, Profil, et le bouton de création.</span></li>
+        <li><code>gif-bench</code> : aucune entrée, <span>mais ouvrable par lien dans l'app publiée.</span></li>
+        <li><code>settings/shares</code> : aucune entrée <span>depuis #1850.</span></li>
+        <li><code>avatar-design-preview</code> : <span>réservé au développement, il renvoie vers l'accueil en production.</span></li>
+      </ul></div>
+      <div class="tour"><h3>2 · Boutons et menus</h3><ul>
+        <li>Le menu « … » d'un take est déjà court : <span>épingler et archiver pour l'auteur, masquer et signaler pour les autres.</span></li>
+        <li>Le menu d'un profil : partager et copier le lien, <span>« soutenir » seulement si les pourboires s'allument.</span></li>
+        <li>La barre du bas : quatre onglets et le bouton de création. <span>Rien à enlever.</span></li>
+      </ul></div>
+      <div class="tour"><h3>3 · L'inscription</h3><ul>
+        <li>Quatre étapes avant le premier vote : <span>prénom, goûts, inviter des amis, publier un premier take.</span></li>
+        <li>Deux d'entre elles demandent de donner avant d'avoir reçu : <span>publier et inviter.</span></li>
+        <li>Les goûts pourraient se déduire des premiers votes. <span>Jev : simplifier, à 68 %.</span></li>
+      </ul></div>
+      <div class="tour"><h3>4 · La boucle principale</h3><ul>
+        <li>Voir, voter, commenter, publier : <span>la rangée d'un take porte déjà peu d'éléments.</span></li>
+        <li>Cinq composants différents dessinent un take en liste : <span>chaque correctif doit être fait cinq fois.</span></li>
+        <li>« En hausse » et la pastille des nouveaux takes arrivent : <span>ils aident la boucle, on les garde.</span></li>
+      </ul></div>
+      <div class="tour"><h3>5 · Réglages et écrans secondaires</h3><ul>
+        <li>Choix de l'icône de l'app (automatique, noir, blanc). <span>Jev : supprimer, à 70 %.</span></li>
+        <li>« Vérifier une mise à jour » et l'identifiant de build, dans « À propos ». <span>Les mises à jour s'installent seules.</span></li>
+        <li>« Applications connectées » : <span>des apps tierces reliées à une API publique qui n'a pas encore d'utilisateurs.</span></li>
+      </ul></div>
+      <div class="tour"><h3>6 · Doublons et poids morts</h3><ul>
+        <li>Cinq écrans de partage, cinq rangées de take.</li>
+        <li>Douze fonctions éteintes sur staging, <span>plus les pourboires (1 600 lignes).</span></li>
+        <li>Trois jeux à côté de l'app : <span>Take Rush (8 800 lignes), Know me (7 écrans), le Top 8.</span></li>
+        <li>L'avatar pèse 28 000 lignes, <span>le plus gros morceau de l'app.</span></li>
+      </ul></div>
+      <div class="tour"><h3>7 · Textes, états et mesure</h3><ul>
+        <li>La mesure d'usage (analytics produit) est éteinte sur staging et par défaut. <span>On ne peut donc pas savoir ce que les gens utilisent vraiment.</span></li>
+        <li>L'écran qui prépare la demande de notifications : <span>à garder, mais au moment où il sert (Jev partagé : 54 % supprimer, 38 % simplifier).</span></li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section id="tableau">
+    <div class="sec-head">
+      <p class="eyebrow">Tout le tableau</p>
+      <h2>Les 18 candidats, avec l'avis de Jev</h2>
+      <p class="note">Jev a jugé les 18 candidats en un seul appel ; ses probabilités sont notées S (supprimer), Si (simplifier) et G (garder). Quand mon avis diffère du sien, je dis pourquoi.</p>
+    </div>
+    <div class="table">
+      <table>
+        <thead><tr><th>Quoi</th><th>Étape</th><th>Jev</th><th>Mon avis</th><th>Risque, et comment tester</th></tr></thead>
+        <tbody>
+          <tr><td>Liens partagés : page, requête et API</td><td>2</td><td class="p">S 0,99</td><td><span class="tag cut">Supprimer</span></td><td>Aucun : plus rien n'y mène. Test : l'API et le web ne renvoient plus l'historique.</td></tr>
+          <tr><td>Page de test des GIF</td><td>2</td><td class="p">S 0,99</td><td><span class="tag cut">Supprimer</span></td><td>La garder en mode développement si on en a besoin. Test : le lien <code>takeapp://gif-bench</code> ne s'ouvre plus.</td></tr>
+          <tr><td>Pourboires</td><td>2</td><td class="p">S 0,98</td><td><span class="tag cut">Supprimer</span></td><td>Aucun visible. On la réécrira si l'argent arrive un jour.</td></tr>
+          <tr><td>Douze fonctions éteintes sur staging</td><td>1 · 2</td><td class="p">S 0,99</td><td><span class="tag cut">Supprimer ou dater</span></td><td>Chacune a peut-être un demandeur : lui mettre un nom et une date, sinon la supprimer.</td></tr>
+          <tr><td>Aperçu d'avatar pour développeurs</td><td>2</td><td class="p">S 0,99</td><td><span class="tag keep">Laisser</span></td><td>Déjà invisible en production, gain presque nul.</td></tr>
+          <tr><td>Inscription : premier take</td><td>2</td><td class="p">S 0,72</td><td><span class="tag cut">Supprimer</span></td><td>Moins de takes au premier jour ? À mesurer : le taux de premier vote.</td></tr>
+          <tr><td>Inscription : inviter des amis</td><td>2 · 4</td><td class="p">S 0,79</td><td><span class="tag cut">Déplacer</span></td><td>Moins d'invitations ? La redemander après trois votes.</td></tr>
+          <tr><td>Inscription : goûts</td><td>3</td><td class="p">Si 0,68</td><td><span class="tag slim">Simplifier</span></td><td>Fil moins ciblé au début. Test : pertinence des dix premiers takes.</td></tr>
+          <tr><td>Take Rush (jeu d'arcade)</td><td>1 · 2</td><td class="p">S 1,00</td><td><span class="tag ask">À trancher</span></td><td>Choix produit d'Adam et d'Imo. Allumer d'abord la mesure d'usage.</td></tr>
+          <tr><td>Know me (quiz entre amis)</td><td>1 · 2</td><td class="p">S 0,99</td><td><span class="tag ask">À trancher</span></td><td>Même chose. Know me touche l'amitié, plus proche de Take que Take Rush.</td></tr>
+          <tr><td>Top 8</td><td>1 · 2</td><td class="p">S 0,86</td><td><span class="tag ask">À trancher</span></td><td>Même chose.</td></tr>
+          <tr><td>Cinq écrans de partage</td><td>3</td><td class="p">Si 0,99</td><td><span class="tag slim">Simplifier</span></td><td>Garder celui des liens entrants. Test : partager un take, un profil, une réponse.</td></tr>
+          <tr><td>Cinq rangées de take</td><td>3</td><td class="p">Si 0,98</td><td><span class="tag slim">Simplifier</span></td><td>Gros chantier : un seul composant et des variantes. Captures avant et après.</td></tr>
+          <tr><td>Choix de l'icône de l'app</td><td>2</td><td class="p">S 0,70</td><td><span class="tag cut">Supprimer</span></td><td>Petit gain. On peut le garder si quelqu'un y tient.</td></tr>
+          <tr><td>« Vérifier une mise à jour »</td><td>2</td><td class="p">S 0,93</td><td><span class="tag cut">Supprimer</span></td><td>Garder l'identifiant de build pour le support.</td></tr>
+          <tr><td>Applications connectées</td><td>1</td><td class="p">S 0,87</td><td><span class="tag slim">Masquer</span></td><td>Pouvoir retirer un accès est un droit de l'utilisateur, donc l'écran revient dès qu'une app tierce existe.</td></tr>
+          <tr><td>Écran avant la demande de notifications</td><td>3</td><td class="p">S 0,54 · Si 0,38</td><td><span class="tag keep">Garder au bon moment</span></td><td>Jev hésite. Le montrer quand on attend une réponse, pas à l'arrivée.</td></tr>
+          <tr><td>Avatar 3D</td><td>3 · 4</td><td class="p">S 0,92</td><td><span class="tag slim">Alléger</span></td><td>Je m'écarte de Jev : c'est un choix produit porté par Adam. Ne plus le charger à chaque lancement.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="rajouter">
+    <div class="sec-head">
+      <p class="eyebrow">La règle des 10 %</p>
+      <h2>Ce qu'on devra peut-être rajouter</h2>
+    </div>
+    <div class="cards">
+      <div class="card"><b>La mesure d'usage</b><span>Elle est éteinte sur staging. Sans elle, les étapes 1 et 2 se décident au jugé.</span></div>
+      <div class="card"><b>L'invitation, au bon moment</b><span>Après trois votes ou un premier commentaire, plutôt qu'à l'inscription.</span></div>
+      <div class="card"><b>Un petit jeu lié aux votes</b><span>Si on retire Take Rush et Know me, un jeu autour des avis peut revenir.</span></div>
+      <div class="card"><b>Retrouver ses liens partagés</b><span>Seulement si un testeur le demande.</span></div>
+    </div>
+  </section>
+
+  <section id="limites">
+    <div class="sec-head">
+      <p class="eyebrow">Limites</p>
+      <h2>Ce que je n'ai pas pu vérifier</h2>
+    </div>
+    <div class="cards">
+      <div class="card"><b>Pas de tour sur un téléphone</b><span>La mémoire du Mac était saturée, alors les tours ont été faits sur le code de main (<code>d57f98e48</code>), sans simulateur. Les captures viendront avec les maquettes.</span></div>
+      <div class="card"><b>Pas de chiffres d'usage</b><span>La mesure est éteinte, donc personne ne sait quel écran est vraiment ouvert.</span></div>
+      <div class="card"><b>Rien n'est modifié</b><span>Aucune ligne de code n'a changé. Chaque suppression passera par une maquette validée, puis par une PR.</span></div>
+      <div class="card"><b>Jev</b><span>Un seul appel pour 18 questions de type « choix ». Ses verdicts guident, ils ne décident pas : je m'en écarte sur sept lignes, dites dans le tableau.</span></div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
