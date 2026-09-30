@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=402">
+<meta name="robots" content="noindex,nofollow">
+<title>Take · 122 interactif</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="proto.css">
+<style>
+:root{ --bubble:#ECECF0; --pill:#E9EBEF; --pill-line:#DEE0E4; --pill-ink:#6B6E73; --me:#0A0A0A; --me-ink:#FFFFFF; --push-dim:rgba(0,0,0,.1);
+  --t-ink:#141414; --t-muted:#6B6E73; --t-card:#FFFFFF; --t-line:#E3E6EA; --t-soft:rgba(20,20,20,.08); --t-field:#F0F2F5; --t-send:#959698;
+  --tabs:rgba(20,20,20,.025); --tab-on:#FFFFFF; --vy:#008B45; --vn:#C53637; --cy:#16A34A; --cn:#DC2626; }
+:root[data-t="sombre"]{ --bubble:#26262A; --pill:#0F0F0F; --pill-line:#313131; --pill-ink:#83898F; --me:#E7E9EA; --me-ink:#000000; --push-dim:rgba(0,0,0,.55);
+  --t-ink:#E7E9EA; --t-muted:#83898F; --t-card:#1E2126; --t-line:#2F3336; --t-soft:rgba(255,255,255,.1); --t-field:#16181C; --t-send:#4B4F55;
+  --tabs:rgba(255,255,255,.06); --tab-on:rgba(255,255,255,.16); --vy:#16A34A; --vn:#DC5551; }
+
+.scr{ position:absolute; inset:0; overflow:hidden; background:var(--bg); transition:transform .3s cubic-bezier(.32,.72,0,1); }
+.conv{ z-index:1; }
+.conv::after{ content:""; position:absolute; inset:0; z-index:5; background:var(--push-dim); opacity:0; pointer-events:none; transition:opacity .3s cubic-bezier(.32,.72,0,1); }
+.take{ z-index:2; transform:translateX(calc(100% + 32px)); box-shadow:-10px 0 28px rgba(0,0,0,.16); }
+.phone.pushed .take{ transform:none; }
+.phone.pushed .conv{ transform:translateX(-30%); }
+.phone.pushed .conv::after{ opacity:1; }
+.status{ position:absolute; left:0; top:0; width:402px; height:54px; overflow:hidden; z-index:25; pointer-events:none; }
+.status img{ display:block; width:402px; height:122px; }
+
+.t{ position:absolute; margin:0; white-space:nowrap; line-height:1.21; }
+.hier{ position:absolute; left:164.67px; width:73px; height:23.33px; box-sizing:border-box; border:1px solid var(--pill-line); border-radius:11.67px; background:var(--pill);
+  display:flex; align-items:center; justify-content:center; font-weight:500; font-size:12px; letter-spacing:-.3px; color:var(--pill-ink); }
+.moi{ position:absolute; left:104.67px; width:281.33px; height:63.33px; box-sizing:border-box; margin:0; padding:9.5px 14px; border-radius:22px;
+  background:var(--me); color:var(--me-ink); font-family:-apple-system, system-ui, Inter, sans-serif; font-size:17px; line-height:22px; }
+.av{ position:absolute; left:16px; top:734px; width:28px; height:28px; border-radius:14px; }
+
+.card{ position:absolute; left:52px; width:290px; margin:0; padding:0; border:0; border-radius:20px; overflow:hidden; background:var(--bubble); color:var(--text);
+  text-align:left; font:inherit; transition:transform .15s cubic-bezier(.32,.72,0,1); -webkit-user-select:none; user-select:none; }
+.card:active{ transform:scale(.98); }
+.card .tk{ position:absolute; left:14px; top:14px; width:18px; height:18px; border-radius:5px; }
+.card .muted{ color:var(--muted); }
+.card .vote{ font-weight:600; color:var(--side, var(--green)); }
+.card .chev{ position:absolute; fill:none; stroke:var(--muted); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.card .cta{ position:absolute; left:14px; top:98px; width:262px; height:34px; border-radius:17px; background:var(--bg); display:flex; align-items:center; justify-content:center;
+  font-weight:600; font-size:14px; }
+.card .bar{ position:absolute; left:14px; top:118px; width:262px; height:8px; border-radius:4px; overflow:hidden; background:var(--green); }
+.card .bar i{ display:block; height:100%; width:100.56px; background:var(--red); border-right:2px solid var(--bubble); transition:width .3s cubic-bezier(.32,.72,0,1); }
+.card.lien .head{ position:absolute; left:0; top:0; width:290px; height:130px; background:linear-gradient(#3A3A40, #0C0C0E) top/100% 150px no-repeat; }
+.card.portrait{ width:188px; background:#000; }
+.card.portrait .photo{ position:absolute; left:0; top:0; width:188px; height:262px; }
+.card.portrait .vote{ color:var(--side-photo, #3DCD80); }
+.card.ligne{ border-radius:18px; }
+.card.ligne .tk{ left:12px; top:15px; width:28px; height:28px; border-radius:8px; }
+
+.hit{ position:absolute; margin:0; padding:0; border:0; background:transparent; transition:background .15s; }
+.hit:active{ background:rgba(128,128,128,.1); }
+
+:where(.take) button{ margin:0; padding:0; border:0; background:none; color:inherit; font:inherit; }
+.t-back{ position:absolute; left:6px; top:64px; width:44px; height:44px; color:var(--t-ink); }
+.t-back svg, .t-cat svg{ display:block; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; }
+.t-cat{ position:absolute; left:18px; top:118px; display:flex; align-items:center; gap:4px; font-weight:600; font-size:12px; line-height:1.21; color:var(--t-muted); }
+.t-author{ position:absolute; left:18px; right:18px; top:142px; height:32px; display:flex; align-items:center; }
+.t-av{ flex:none; width:32px; height:32px; border-radius:16px; }
+.t-who{ flex:1; min-width:0; margin-left:10px; text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:12.5px; line-height:1.21; }
+.t-who b{ font-weight:600; font-size:15px; letter-spacing:-.2px; color:var(--t-ink); }
+.t-who span{ font-size:12.5px; letter-spacing:-.1px; color:var(--t-muted); }
+.t-photo{ flex:none; margin-left:6px; height:28px; padding:0 10px 0 8px; border-radius:14px; background:var(--t-soft);
+  display:inline-flex; align-items:center; gap:4px; font-weight:600; font-size:12.5px; color:var(--t-ink); transition:transform .12s; }
+.t-photo:active{ transform:scale(.97); }
+.t-photo svg{ display:block; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linejoin:round; stroke-linecap:round; }
+.t-body{ position:absolute; left:18px; right:18px; top:184px; display:flex; flex-direction:column; color:var(--t-ink); }
+.t-q{ margin:0; font-weight:600; font-size:22px; line-height:25px; letter-spacing:-.4px; }
+.t-chart{ position:relative; flex:none; margin-top:14px; height:337.67px; border-radius:20px; background:var(--t-card); box-shadow:inset 0 0 0 1px var(--t-line); }
+.t-ctitle{ position:absolute; left:17px; top:20.64px; margin:0; font-weight:600; font-size:10px; line-height:1.21; letter-spacing:.3px; text-transform:uppercase; color:var(--t-muted); }
+.t-range{ position:absolute; right:16px; top:64px; display:flex; gap:2px; padding:2px; border-radius:8px; background:var(--t-soft); }
+.t-range button{ padding:5px 8px; border:0; border-radius:6px; background:transparent; font-weight:600; font-size:10px; line-height:1.21; color:var(--t-muted); }
+.t-range button.on{ background:var(--t-card); color:var(--t-ink); }
+.t-legend{ position:absolute; left:16px; right:16px; top:98.4px; display:flex; justify-content:space-between; font-weight:600; font-size:12px; line-height:1.21; color:var(--t-muted); }
+.t-legend span{ display:flex; align-items:center; gap:5px; }
+.t-legend i{ width:7px; height:7px; border-radius:3.5px; }
+.t-svg{ position:absolute; left:16px; top:126.7px; overflow:visible; }
+.t-svg .grid{ stroke:var(--t-muted); stroke-width:.5; }
+.t-svg text{ fill:var(--t-muted); font-size:9px; }
+.t-svg .halo{ fill:none; stroke:var(--t-card); stroke-width:5; stroke-linejoin:round; stroke-linecap:round; }
+.t-svg .line{ fill:none; stroke-width:2; stroke-linejoin:round; stroke-linecap:round; }
+.t-svg .dot{ stroke:var(--t-card); stroke-width:2; }
+.t-svg .end{ font-size:10px; font-weight:700; }
+.t-pct{ display:flex; justify-content:space-between; margin-top:17.13px; font-weight:700; font-size:15px; line-height:1.21; }
+.t-pct .n{ color:var(--vn); } .t-pct .y{ color:var(--vy); }
+.t-bar{ flex:none; margin-top:10.72px; height:8px; border-radius:4px; overflow:hidden; background:var(--vy); }
+.t-bar i{ display:block; height:100%; width:38%; background:var(--vn); transition:width .3s cubic-bezier(.32,.72,0,1); }
+.t-votes{ display:flex; gap:7px; margin-top:8px; }
+.t-votes button{ flex:1; height:37px; border-radius:18.5px; border:1.5px solid var(--side); background:transparent; color:var(--side); font-weight:600; font-size:15px;
+  transition:background .2s, color .2s, transform .12s; }
+.t-votes button:active{ transform:scale(.97); }
+.t-votes .non{ --side:var(--vn); } .t-votes .oui{ --side:var(--vy); }
+.t-votes button.on{ background:var(--side); color:#FFFFFF; }
+.t-count{ margin:21.92px 0 0; font-size:13.5px; line-height:1.21; color:var(--t-muted); }
+.t-tabs{ flex:none; display:grid; grid-template-columns:1fr 1fr; margin-top:15.77px; height:27.3px; padding:1.5px; box-sizing:border-box; border-radius:13.65px;
+  background:var(--tabs); box-shadow:0 2px 10px rgba(0,0,0,.05); }
+.t-tabs button{ border:0; border-radius:12.15px; background:transparent; font-weight:500; font-size:14px; color:var(--t-muted); }
+.t-tabs button.on{ background:var(--tab-on); color:var(--t-ink); font-weight:600; box-shadow:0 1px 4px rgba(0,0,0,.1); }
+.t-input{ position:absolute; left:16px; top:774px; width:370px; height:53.33px; box-sizing:border-box; border-radius:26.67px; background:var(--t-field);
+  box-shadow:inset 0 0 0 1px var(--t-line); display:flex; align-items:center; padding:0 17px 0 0; }
+.t-field{ flex:1; align-self:stretch; padding-left:17px; text-align:left; font-size:15px; color:var(--t-muted); }
+.t-send{ flex:none; width:32px; height:32px; border-radius:16px; background:var(--t-send); color:#FFFFFF; display:grid; place-items:center; }
+
+#photo .ph{ display:block; width:366px; height:159px; border-radius:16px; object-fit:cover; }
+</style>
+</head>
+<body data-proto="122">
+<div class="phone">
+  <div class="scr conv" id="conv">
+    <img class="layer" data-src="img/122-head-{t}.jpg" style="top:0;height:122px" alt="">
+
+    <section data-v="D" data-start="Touche la carte, ou son bouton «&nbsp;Voir le take&nbsp;»&nbsp;: le take de Léo s’ouvre.">
+      <span class="hier" style="top:511.67px">Hier 10:12</span>
+      <p class="moi" style="top:543px">You always find the divisive<br>ones.</p>
+      <img class="av" data-src="img/122-leo-{t}.png" alt="Léo">
+      <button class="card" style="top:618px;height:146px" data-take aria-label="Take de Léo&nbsp;: ouvrir le take">
+        <img class="tk" src="img/take-icon.png" alt="">
+        <span class="t muted" style="left:39px;top:15.74px;font-size:12px;font-weight:600">Take de Léo · Travail</span>
+        <b class="t vote" style="right:14px;top:15.74px;font-size:12px" data-k="vote" data-when="apres" hidden></b>
+        <span class="t" style="left:14px;top:41.86px;font-size:15.5px;font-weight:600;line-height:21px">Accepterais-tu une semaine de<br>quatre jours un peu plus longs&nbsp;?</span>
+        <span class="cta">Voir le take</span>
+      </button>
+    </section>
+
+    <section data-v="E" data-start="Le graphique se voit déjà sur la carte. Touche-la pour ouvrir le take et voter.">
+      <span class="hier" style="top:485.67px">Hier 10:12</span>
+      <p class="moi" style="top:517px">You always find the divisive<br>ones.</p>
+      <img class="av" data-src="img/122-leo-{t}.png" alt="Léo">
+      <button class="card" style="top:592px;height:172px" data-take aria-label="Take de Léo&nbsp;: ouvrir le take">
+        <img class="tk" src="img/take-icon.png" alt="">
+        <span class="t muted" style="left:39px;top:15.74px;font-size:12px;font-weight:600">Take de Léo · Travail</span>
+        <span class="t" style="left:14px;top:41.86px;font-size:15.5px;font-weight:600;line-height:21px">Accepterais-tu une semaine de<br>quatre jours un peu plus longs&nbsp;?</span>
+        <b class="t" style="left:14px;top:97.41px;font-size:13px;color:var(--red)" data-k="pnon">Non 38&nbsp;%</b>
+        <b class="t" style="right:14px;top:97.41px;font-size:13px;color:var(--green)" data-k="poui">Oui 62&nbsp;%</b>
+        <span class="bar"><i data-k="bar"></i></span>
+        <span class="t muted" style="left:14px;top:142.44px;font-size:12.5px;font-weight:500"><span data-k="count">13 votes</span> · <span data-when="avant">Touche pour voter</span><b class="vote" data-k="vote" data-when="apres" hidden></b></span>
+        <svg class="chev" style="left:267px;top:143px" width="10" height="14" viewBox="0 0 10 14"><path d="M2.5 2 7.5 7 2.5 12"/></svg>
+      </button>
+    </section>
+
+    <section data-v="F" data-start="Touche la carte, comme un lien&nbsp;: le take de Léo s’ouvre.">
+      <span class="hier" style="top:477.67px">Hier 10:12</span>
+      <p class="moi" style="top:509px">You always find the divisive<br>ones.</p>
+      <img class="av" data-src="img/122-leo-{t}.png" alt="Léo">
+      <button class="card lien" style="top:584px;height:180px" data-take aria-label="Take de Léo&nbsp;: ouvrir le take">
+        <span class="head"></span>
+        <img class="tk" src="img/take-icon.png" alt="">
+        <span class="t" style="left:39px;top:15.74px;font-size:12px;font-weight:600;color:#C8C8CE">take.cc</span>
+        <span class="t" style="left:14px;top:40.32px;font-size:17px;font-weight:700;line-height:23px;color:#FFFFFF">Accepterais-tu une semaine de<br>quatre jours un peu plus<br>longs&nbsp;?</span>
+        <span class="t" style="left:14px;top:147.14px;font-size:13px;font-weight:600">Take de Léo Bernard</span>
+        <span class="t muted" style="right:14px;top:147.44px;font-size:12.5px" data-when="avant">13 votes</span>
+        <b class="t vote" style="right:14px;top:147.44px;font-size:12.5px" data-k="vote" data-when="apres" hidden></b>
+      </button>
+    </section>
+
+    <section data-v="G" data-start="Touche la photo&nbsp;: le take de Léo s’ouvre.">
+      <span class="hier" style="top:395.67px">Hier 10:12</span>
+      <p class="moi" style="top:427px">You always find the divisive<br>ones.</p>
+      <img class="av" data-src="img/122-leo-{t}.png" alt="Léo">
+      <button class="card portrait" style="top:502px;height:262px" data-take aria-label="Take de Léo&nbsp;: ouvrir le take">
+        <img class="photo" src="img/122-G-photo.jpg" alt="">
+        <span class="t" style="left:10px;top:10px;width:106px;height:26px;border-radius:13px;background:#141416"></span>
+        <img class="tk" src="img/take-icon.png" alt="">
+        <span class="t" style="left:39px;top:15.74px;font-size:12px;font-weight:600;color:#EBEBF0">Take de Léo</span>
+        <span class="t" style="left:13px;top:142.54px;font-size:15px;font-weight:600;line-height:20px;color:#FFFFFF">Un congé paternité<br>aussi long que le<br>congé maternité, t’es<br>pour&nbsp;?</span>
+        <span class="t" style="left:13px;top:234.86px;font-size:11.5px;font-weight:500;color:#D7D7DE"><span data-k="count">21 votes</span> · <span data-when="avant">Touche pour voter</span><b class="vote" data-k="vote" data-when="apres" hidden></b></span>
+      </button>
+    </section>
+
+    <section data-v="H" data-start="Touche la ligne «&nbsp;Take de Léo&nbsp;»&nbsp;: le take s’ouvre.">
+      <span class="hier" style="top:584.67px">Hier 10:12</span>
+      <p class="moi" style="top:616px">You always find the divisive<br>ones.</p>
+      <img class="av" data-src="img/122-leo-{t}.png" alt="Léo">
+      <button class="card ligne" style="top:706px;height:58px" data-take aria-label="Take de Léo&nbsp;: ouvrir le take">
+        <img class="tk" src="img/take-icon.png" alt="">
+        <span class="t muted" style="left:50px;top:14.74px;font-size:12px;font-weight:600">Take de Léo<span data-when="apres" hidden> · <b class="vote" data-k="vote"></b></span></span>
+        <span class="t" style="left:50px;top:31.23px;font-size:14.5px;font-weight:600">Accepterais-tu une semain…</span>
+        <svg class="chev" style="left:267px;top:21.5px" width="10" height="15" viewBox="0 0 10 15"><path d="M2.25 2 7.75 7.5 2.25 13"/></svg>
+      </button>
+    </section>
+
+    <img class="layer" data-src="img/122-input-{t}.jpg" style="top:776px;height:98px" alt="">
+    <button class="hit" style="left:16px;top:776px;width:370px;height:54px;border-radius:27px" data-say="Dans l’app&nbsp;: écrire un message à Léo." aria-label="Écrire un message à Léo"></button>
+  </div>
+
+  <div class="scr take" id="take" inert aria-hidden="true">
+    <button class="t-back" data-take-back aria-label="Retour à la conversation">
+      <svg width="44" height="44" viewBox="0 0 44 44" stroke-width="2.1"><path d="M26.2 14.6 18.6 22l7.6 7.4"/></svg>
+    </button>
+    <button class="t-cat" data-bind-say="cat"><span data-bind="cat"></span><svg width="6" height="10" viewBox="0 0 6 10" stroke-width="1.4"><path d="M1.2 1.2 4.8 5 1.2 8.8"/></svg></button>
+    <div class="t-author">
+      <img class="t-av" data-src="img/122-auteur-{t}.png" alt="">
+      <button class="t-who" data-say="Dans l’app, le nom ouvre le profil de Léo."><b>Léo Bernard</b> <span>@leo_bernard · hier</span></button>
+      <button class="t-photo" data-photo hidden><svg width="15" height="15" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="3"/><circle cx="9" cy="10" r="1.7"/><path d="m4 17.5 5-4.5 4 3.5 3-2.5 4.5 3.5"/></svg>Voir la photo</button>
+    </div>
+    <div class="t-body">
+      <h1 class="t-q" data-bind="q"></h1>
+      <div class="t-chart">
+        <p class="t-ctitle">Évolution des votes</p>
+        <div class="t-range">
+          <button data-say="Dans l’app, «&nbsp;1 h&nbsp;» resserre la courbe sur la dernière heure.">1 h</button><button data-say="Dans l’app, «&nbsp;1 j&nbsp;» resserre la courbe sur le dernier jour.">1 j</button><button data-say="Dans l’app, «&nbsp;1 sem.&nbsp;» resserre la courbe sur la dernière semaine.">1 sem.</button><button class="on" data-say="«&nbsp;Tout&nbsp;» est la vue affichée&nbsp;: toute l’histoire du take.">Tout</button>
+        </div>
+        <div class="t-legend"><span><i style="background:var(--cn)"></i>Non</span><span><i style="background:var(--cy)"></i>Oui</span></div>
+        <svg class="t-svg" width="330" height="180" viewBox="0 0 330 180" aria-hidden="true"></svg>
+      </div>
+      <div class="t-pct"><span class="n" data-bind="pnon"></span><span class="y" data-bind="poui"></span></div>
+      <div class="t-bar"><i data-bind="bar"></i></div>
+      <div class="t-votes"><button class="non" data-vote="non">Non</button><button class="oui" data-vote="oui">Oui</button></div>
+      <p class="t-count" data-bind="count"></p>
+      <div class="t-tabs"><button class="on" data-say="Dans l’app, «&nbsp;Relevant&nbsp;» range les avis les plus pertinents en premier.">Relevant</button><button data-say="Dans l’app, «&nbsp;Live&nbsp;» montre les avis en direct.">Live</button></div>
+    </div>
+    <div class="t-input">
+      <button class="t-field" data-say="Dans l’app&nbsp;: donner ton avis sous le take de Léo.">Donne ton avis…</button>
+      <span class="t-send" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></span>
+    </div>
+  </div>
+
+  <div class="status"><img data-src="img/122-head-{t}.jpg" alt=""></div>
+  <div class="dim"></div>
+
+  <div class="sheet" id="photo">
+    <div class="grab"></div>
+    <h3>La photo du take</h3>
+    <p class="sub">Dans le take, le graphique passe devant la photo.</p>
+    <img class="ph" src="img/122-photo.jpg" alt="La photo du take de Léo">
+    <button class="btn soft" data-photo-close>Fermer</button>
+  </div>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+</div>
+<script src="proto.js"></script>
+<script>
+(() => {
+  const P = window.Proto;
+  const NB = ' ';
+  const phone = document.querySelector('.phone');
+  const conv = document.getElementById('conv');
+  const take = document.getElementById('take');
+  const svg = take.querySelector('.t-svg');
+  const card = P.current.querySelector('.card');
+  const TAKES = {
+    semaine: { cat: 'Travail', q: `Accepterais-tu une semaine de quatre jours un peu plus longs${NB}?`, oui: 8, non: 5,
+      curve: [100, 50, 75, 67, 56, 64, 62], ticks: ['29 sept.', '18:40', '30 sept.'], photo: false },
+    conge: { cat: 'Société', q: `Un congé paternité aussi long que le congé maternité, t’es pour${NB}?`, oui: 14, non: 7,
+      curve: [100, 67, 75, 60, 71, 65, 67], ticks: ['29 sept.', '21:05', '30 sept.'], photo: true },
+  };
+  const T = TAKES[P.v === 'G' ? 'conge' : 'semaine'];
+  let vote = null;
+
+  const tally = () => {
+    const oui = T.oui + (vote === 'oui' ? 1 : 0);
+    const non = T.non + (vote === 'non' ? 1 : 0);
+    const total = oui + non;
+    const py = Math.round((oui / total) * 100);
+    return { total, py, pn: 100 - py };
+  };
+  const word = (v) => (v === 'oui' ? 'Oui' : 'Non');
+  const bind = (root, key, text) => root.querySelectorAll(`[data-bind="${key}"]`).forEach((el) => { el.textContent = text; });
+
+  const W = 330, H = 180, PL = 54, PR = 34, PT = 12, PB = 22, INSET = 5;
+  const IW = W - PL - PR, IH = H - PT - PB;
+  const xs = (i, n) => PL + (i / (n - 1)) * IW;
+  const ys = (v) => PT + INSET + (1 - v / 100) * (IH - INSET * 2);
+  const spread = (a, b, gap) => {
+    if (Math.abs(a - b) >= gap) return [a, b];
+    const mid = (a + b) / 2;
+    return a <= b ? [mid - gap / 2, mid + gap / 2] : [mid + gap / 2, mid - gap / 2];
+  };
+  const drawChart = (py) => {
+    const curve = [...T.curve.slice(0, -1), py];
+    const n = curve.length;
+    const path = (f) => curve.map((v, i) => `${i ? 'L' : 'M'} ${xs(i, n).toFixed(2)} ${ys(f(v)).toFixed(2)}`).join(' ');
+    const pOui = path((v) => v);
+    const pNon = path((v) => 100 - v);
+    const ex = xs(n - 1, n);
+    const [lo, ln] = spread(ys(py), ys(100 - py), 12);
+    const grid = [100, 50, 0].map((p) => `<line class="grid" x1="${PL}" x2="${W - PR}" y1="${ys(p)}" y2="${ys(p)}"${p === 50 ? ' opacity=".5"' : ' stroke-dasharray="2 3" opacity=".35"'}/>`
+      + `<text x="${PL - 14}" y="${ys(p) + 3}" text-anchor="end">${p}${NB}%</text>`).join('');
+    const mid = Math.floor((n - 1) / 2);
+    const ticks = [[0, 'start'], [mid, 'middle'], [n - 1, 'end']]
+      .map(([i, a], k) => `<text x="${xs(i, n).toFixed(2)}" y="${H - 6}" text-anchor="${a}">${T.ticks[k]}</text>`).join('');
+    svg.innerHTML = grid
+      + `<path class="halo" d="${pNon}"/><path class="line" d="${pNon}" style="stroke:var(--cn)"/>`
+      + `<path class="halo" d="${pOui}"/><path class="line" d="${pOui}" style="stroke:var(--cy)"/>`
+      + `<circle class="dot" cx="${ex}" cy="${ys(py)}" r="4" style="fill:var(--cy)"/><text class="end" x="${ex + 9}" y="${lo + 3.5}" style="fill:var(--cy)">Oui</text>`
+      + `<circle class="dot" cx="${ex}" cy="${ys(100 - py)}" r="4" style="fill:var(--cn)"/><text class="end" x="${ex + 9}" y="${ln + 3.5}" style="fill:var(--cn)">Non</text>`
+      + ticks;
+  };
+
+  const renderTake = () => {
+    const { total, py, pn } = tally();
+    bind(take, 'pnon', `${pn}${NB}%`);
+    bind(take, 'poui', `${py}${NB}%`);
+    bind(take, 'count', `${total} votes`);
+    take.querySelector('[data-bind="bar"]').style.width = `${pn}%`;
+    take.querySelectorAll('[data-vote]').forEach((b) => {
+      b.classList.toggle('on', b.dataset.vote === vote);
+      b.setAttribute('aria-pressed', String(b.dataset.vote === vote));
+    });
+    drawChart(py);
+  };
+
+  const renderCard = () => {
+    if (!vote) return;
+    const { total, py, pn } = tally();
+    card.style.setProperty('--side', vote === 'oui' ? 'var(--green)' : 'var(--red)');
+    card.style.setProperty('--side-photo', vote === 'oui' ? '#3DCD80' : '#FF6961');
+    card.querySelectorAll('[data-when]').forEach((el) => { el.hidden = el.dataset.when !== 'apres'; });
+    card.querySelectorAll('[data-k="vote"]').forEach((el) => { el.textContent = `Tu as voté ${word(vote)}`; });
+    card.querySelectorAll('[data-k="count"]').forEach((el) => { el.textContent = `${total} votes`; });
+    card.querySelectorAll('[data-k="pnon"]').forEach((el) => { el.textContent = `Non ${pn}${NB}%`; });
+    card.querySelectorAll('[data-k="poui"]').forEach((el) => { el.textContent = `Oui ${py}${NB}%`; });
+    card.querySelectorAll('[data-k="bar"]').forEach((el) => { el.style.width = `${(262 * pn) / 100 + 1}px`; });
+    card.setAttribute('aria-label', `Take de Léo, tu as voté ${word(vote)}${NB}: rouvrir le take`);
+  };
+
+  const push = (on) => {
+    phone.classList.toggle('pushed', on);
+    take.inert = !on;
+    conv.inert = on;
+    take.setAttribute('aria-hidden', String(!on));
+    conv.setAttribute('aria-hidden', String(on));
+  };
+
+  bind(take, 'q', T.q);
+  bind(take, 'cat', T.cat);
+  take.querySelector('[data-bind-say="cat"]').dataset.say = `Dans l’app, «${NB}${T.cat}${NB}» ouvre les takes de cette catégorie.`;
+  take.querySelector('[data-photo]').hidden = !T.photo;
+  renderTake();
+
+  P.actions.take = () => {
+    renderTake();
+    push(true);
+    const { total, py, pn } = tally();
+    P.state(vote
+      ? `Take de Léo rouvert${NB}: tu as voté ${word(vote)}. Touche ${word(vote === 'oui' ? 'non' : 'oui')} pour changer ton vote.`
+      : `Take de Léo ouvert. Le graphique se voit avant de voter${NB}: Non ${pn}${NB}%, Oui ${py}${NB}%, ${total} votes. Touche Non ou Oui.`);
+  };
+  P.actions.takeBack = () => {
+    push(false);
+    P.state(vote
+      ? `Retour à la conversation${NB}: la carte dit «${NB}Tu as voté ${word(vote)}${NB}». Seulement ton vote, jamais celui de Léo.`
+      : `Retour à la conversation, sans voter. Touche la carte pour rouvrir le take.`);
+  };
+  P.actions.vote = (b) => {
+    const choice = b.dataset.vote;
+    if (choice === vote) {
+      P.state(`Tu as déjà voté ${word(vote)}. Touche ${word(vote === 'oui' ? 'non' : 'oui')} pour changer ton vote.`);
+      return;
+    }
+    const changed = vote !== null;
+    vote = choice;
+    renderTake();
+    renderCard();
+    P.toast('Vote enregistré');
+    const { total, py, pn } = tally();
+    P.state(`${changed ? 'Vote changé' : 'Vote enregistré'}${NB}: tu as voté ${word(vote)}. ${total} votes, Non ${pn}${NB}%, Oui ${py}${NB}%. La flèche retour ramène à la conversation.`);
+  };
+  P.actions.photo = () => {
+    P.openSheet(document.getElementById('photo'));
+    P.state(`La photo du take s’ouvre. Dans le take, elle reste en second plan${NB}: le graphique passe devant.`);
+  };
+  P.actions.photoClose = () => {
+    P.closeSheet();
+    P.state(`Photo fermée${NB}: retour au take.`);
+  };
+  document.querySelector('.dim').addEventListener('click', (e) => {
+    e.stopImmediatePropagation();
+    P.closeSheet();
+    P.state(`Photo fermée${NB}: retour au take.`);
+  }, true);
+  document.addEventListener('touchstart', () => {}, { passive: true });
+})();
+</script>
+</body>
+</html>
