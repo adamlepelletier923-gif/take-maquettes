@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=402">
+<meta name="robots" content="noindex,nofollow">
+<title>Take · 98 interactif</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="proto.css">
+<style>
+:root{ --ink98:#141414; --mut98:#6B6E73; --faint98:#84888E; --chip98:#F0F2F5; --line98:#E3E6EA; --inv98:#FFFFFF; --ease98:cubic-bezier(.32,.72,0,1); }
+:root[data-t="sombre"]{ --ink98:#E7E9EA; --mut98:#83898F; --faint98:#6B6F75; --chip98:#16181C; --line98:#2F3336; --inv98:#000000; }
+.nt98 *{ transition:none !important; }
+section[data-v], .content98{ pointer-events:none; }
+section[data-v] > *, .content98 > *{ pointer-events:auto; }
+
+.blk, .free98 .free, .free98 .emp98.on{ opacity:1; visibility:visible; transition:opacity .2s var(--ease98) .12s, visibility 0s, transform .12s var(--ease98); }
+.free98 .blk, .free, .emp98{ opacity:0; visibility:hidden; transition:opacity .14s var(--ease98), visibility 0s linear .14s, transform .12s var(--ease98); }
+
+.hit98{ position:absolute; top:68px; width:38px; height:38px; border-radius:19px; border:0; padding:0; background:transparent; transition:background .15s var(--ease98); }
+.hit98:active{ background:rgba(128,128,128,.22); }
+.ava98{ position:absolute; left:16px; top:118px; width:92px; height:96px; background:var(--bg); pointer-events:none; }
+.ava98 img{ display:block; width:92px; height:96px; transition:filter .32s var(--ease98), opacity .32s var(--ease98); }
+.gray98 .ava98 img{ filter:grayscale(1); opacity:.55; }
+.badge98{ position:absolute; left:75.5px; top:185.5px; width:25px; height:25px; border-radius:12.5px; background:var(--bg); display:grid; place-items:center; }
+.badge98::before{ content:""; grid-area:1/1; width:20px; height:20px; border-radius:10px; background:var(--red); }
+.badge98::after{ content:""; grid-area:1/1; width:11px; height:2.4px; background:#fff; }
+
+.pill98{ position:absolute; left:253px; top:126.5px; height:19px; padding:0 8px; border-radius:9.5px; background:var(--chip); color:var(--mut98);
+  font:600 11.5px/19px Inter, sans-serif; white-space:nowrap; }
+.pb98{ position:absolute; top:226px; width:180px; height:41px; border-radius:20.5px; border:0; padding:0; background:var(--btn); color:var(--text);
+  font:600 15px/20px Inter, sans-serif; display:flex; align-items:center; justify-content:center; white-space:nowrap; box-sizing:border-box; }
+.pb98:active{ transform:scale(.97); }
+.pb98.red{ color:var(--red); }
+.pb98.prim{ background:var(--ink98); color:var(--inv98); font:600 14px/18px Inter, sans-serif; }
+.pb98.outl{ background:var(--chip98); color:var(--ink98); font:500 14px/18px Inter, sans-serif; border:.5px solid var(--line98); }
+
+.since98{ position:absolute; left:16px; top:221.1px; margin:0; font:400 13.5px/20px Inter, sans-serif; color:var(--muted); white-space:nowrap; }
+.lk98{ position:relative; border:0; padding:0; background:none; font:inherit; font-weight:600; line-height:inherit; color:var(--text); }
+.lk98::after{ content:""; position:absolute; left:0; right:0; top:calc(50% + .3633em + 3px); height:1.1px; background:currentColor; }
+.lk98::before{ content:""; position:absolute; inset:-12px -8px; }
+.lk98:active{ opacity:.55; }
+
+.content98{ position:absolute; left:0; top:0; width:402px; height:874px; transform:translateY(var(--shift98, 0px)); transition:transform .26s var(--ease98) .08s; }
+.free98 .content98{ transition:transform .32s var(--ease98); }
+.tabs98{ position:absolute; left:16px; top:282px; width:370px; height:46px; display:flex; }
+.tabs98 button{ flex:1; height:46px; border:0; padding:0; background:none; display:flex; align-items:center; justify-content:center;
+  font:500 16px/20px Inter, sans-serif; color:var(--mut98); transition:color .2s var(--ease98), opacity .12s var(--ease98); }
+.tabs98 button[aria-selected="true"]{ font-weight:600; color:var(--ink98); }
+.tabs98 button:active{ opacity:.55; }
+/* 2,5 pt exacts : 5 px réduits de moitié ; une boîte de 2,5 px sortait à 2 ou 3 px dans Chrome sans écran. */
+.ul98{ position:absolute; left:0; top:39.5px; width:44px; height:5px; border-radius:2.5px; background:var(--ink98); transform-origin:0 0; transition:transform .3s var(--ease98); pointer-events:none; }
+
+.masked98{ position:absolute; left:0; top:380px; width:402px; height:150px; }
+.lock98{ position:absolute; left:181px; top:0; width:40px; height:40px; border-radius:20px; background:var(--chip); color:var(--muted); }
+.lock98 svg{ position:absolute; left:0; top:0; }
+.t98, .s98{ position:absolute; left:0; right:0; margin:0; text-align:center; white-space:nowrap; }
+.t98{ top:50.55px; font:600 15px/20px Inter, sans-serif; color:var(--text); }
+.s98{ top:72.91px; font:400 14px/20px Inter, sans-serif; color:var(--muted); }
+.masked98 .lk98{ position:absolute; left:0; right:0; top:108.73px; width:fit-content; margin:0 auto; font:600 14.5px/20px Inter, sans-serif; }
+.masked98 .lk98::after{ height:1.2px; }
+.phone:not([data-ver="4"]) .masked98 .lk98{ display:none; }
+
+.emp98{ position:absolute; left:0; top:380px; width:402px; height:140px; }
+.emp98 img{ position:absolute; left:110px; top:0; width:182px; height:136px; }
+.emp98 .circ{ position:absolute; left:157px; top:8.33px; width:88px; height:88px; border-radius:44px; background:var(--chip98); color:var(--faint98); display:grid; place-items:center; }
+.emp98 p{ position:absolute; left:0; right:0; top:108.41px; margin:0; text-align:center; font:400 14px/21px Inter, sans-serif; color:var(--mut98); }
+
+.rows98{ margin:0 -18px; display:grid; }
+.rows98.top{ border-top:1px solid var(--hair); }
+.row98{ height:48px; padding:0 20px; display:flex; align-items:center; justify-content:space-between; gap:12px; border:0; border-bottom:1px solid var(--hair);
+  background:transparent; font:500 15px/20px Inter, sans-serif; color:var(--text); text-align:left; transition:opacity .12s var(--ease98); }
+.row98:last-child{ border-bottom:0; }
+.row98:active{ opacity:.55; }
+.row98.red{ color:var(--red); }
+.row98 svg{ flex:none; }
+#c98[data-mode="block"] [data-confirm]{ background:var(--red); color:var(--on); }
+</style>
+</head>
+<body data-proto="98">
+<div class="phone nt98">
+  <img class="layer" data-src="img/98-top-{t}.jpg" style="top:0;height:216px" alt="">
+  <div class="ava98"><img data-src="img/98-avatar-{t}.jpg" alt="Avatar de @musktest0930184"></div>
+  <button class="hit98" style="left:16px" aria-label="Retour" data-say="Dans l’app, la flèche revient à l’écran d’avant."></button>
+  <button class="hit98" style="left:348px" aria-label="Plus d’options" data-menu></button>
+
+  <section data-v="1" data-start="La pastille « Bloqué » est à côté du nom : touche « Débloquer », un onglet, ou « ⋯ » en haut à droite.">
+    <span class="pill98 blk">Bloqué</span>
+    <button class="pb98 blk" style="left:16px;width:370px" data-unblock>Débloquer</button>
+  </section>
+
+  <section data-v="2" data-start="Deux boutons sous le profil : « Débloquer » ou « Signaler ».">
+    <button class="pb98 blk" style="left:16px" data-unblock>Débloquer</button>
+    <button class="pb98 blk red" style="left:205.7px" data-report>Signaler</button>
+  </section>
+
+  <section data-v="3" data-shift="28" data-start="Une phrase sous le profil dit depuis quand tu l’as bloqué : touche « Débloquer » dedans.">
+    <p class="since98 blk">Bloqué depuis le 30 septembre · <button class="lk98" data-unblock>Débloquer</button></p>
+  </section>
+
+  <section data-v="4" data-shift="40" data-gray data-start="L’avatar grisé, avec la pastille rouge, veut dire que tu l’as bloqué : touche « Débloquer » sous le message.">
+    <span class="badge98 blk" role="img" aria-label="Bloqué"></span>
+  </section>
+
+  <button class="pb98 free prim" style="left:16px" data-say="Dans l’app, « Suivre » t’abonne à @musktest0930184 ; si vous vous suivez tous les deux, vous devenez amis.">Suivre</button>
+  <button class="pb98 free outl" style="left:205.7px" data-say="Dans l’app, « Message » ouvre la conversation avec @musktest0930184.">Message</button>
+
+  <div class="content98">
+    <div class="tabs98" role="tablist" aria-label="Contenu du profil">
+      <button role="tab" data-tab="takes" aria-selected="true">Takes</button>
+      <button role="tab" data-tab="questions" aria-selected="false">Questions</button>
+      <button role="tab" data-tab="reposts" aria-selected="false">Reposts</button>
+      <span class="ul98"></span>
+    </div>
+    <div class="masked98 blk">
+      <span class="lock98"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M15 16a5 7 0 0 1 10 0" fill="none" stroke="currentColor" stroke-width="2"/><rect x="12" y="16" width="16" height="13" rx="3" fill="currentColor"/></svg></span>
+      <p class="t98">Ses takes sont masqués</p>
+      <p class="s98">tant que tu le bloques.</p>
+      <button class="lk98" data-unblock>Débloquer</button>
+    </div>
+    <div class="emp98" data-for="takes"><img data-src="img/98-empty-{t}.jpg" alt="Aucun take pour l'instant"></div>
+    <div class="emp98" data-for="questions">
+      <span class="circ"><svg width="40" height="40" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg></span>
+      <p>Aucune question publiée pour l'instant</p>
+    </div>
+    <div class="emp98" data-for="reposts">
+      <span class="circ"><svg width="40" height="40" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M24,128A72.08,72.08,0,0,1,96,56H204.69L194.34,45.66a8,8,0,0,1,11.32-11.32l24,24a8,8,0,0,1,0,11.32l-24,24a8,8,0,0,1-11.32-11.32L204.69,72H96a56.06,56.06,0,0,0-56,56,8,8,0,0,1-16,0Zm200-8a8,8,0,0,0-8,8,56.06,56.06,0,0,1-56,56H51.31l10.35-10.34a8,8,0,0,0-11.32-11.32l-24,24a8,8,0,0,0,0,11.32l24,24a8,8,0,0,0,11.32-11.32L51.31,200H160a72.08,72.08,0,0,0,72-72A8,8,0,0,0,224,120Z"/></svg></span>
+      <p>Aucun repost pour l'instant</p>
+    </div>
+  </div>
+
+  <img class="layer tabbar" data-src="img/98-tabbar-{t}.jpg" style="top:750px;height:124px" alt="">
+  <div class="dim"></div>
+
+  <div class="sheet" id="m98" role="dialog" aria-label="Options du profil de @musktest0930184">
+    <div class="grab"></div>
+    <div class="rows98">
+      <button class="row98" data-toggle><span class="lab98">Débloquer</span><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm88,104a87.56,87.56,0,0,1-20.41,56.28L71.72,60.4A88,88,0,0,1,216,128ZM40,128A87.56,87.56,0,0,1,60.41,71.72L184.28,195.6A88,88,0,0,1,40,128Z"/></svg></button>
+      <button class="row98 red" data-report><span>Signaler</span><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M42.76,50A8,8,0,0,0,40,56V224a8,8,0,0,0,16,0V179.77c26.79-21.16,49.87-9.75,76.45,3.41,16.4,8.11,34.06,16.85,53,16.85,13.93,0,28.54-4.75,43.82-18a8,8,0,0,0,2.76-6V56A8,8,0,0,0,218.76,50c-28,24.23-51.72,12.49-79.21-1.12C111.07,34.76,78.78,18.79,42.76,50ZM216,172.25c-26.79,21.16-49.87,9.74-76.45-3.41-25-12.35-52.81-26.13-83.55-8.4V59.79c26.79-21.16,49.87-9.75,76.45,3.4,25,12.35,52.82,26.13,83.55,8.4Z"/></svg></button>
+    </div>
+    <button class="btn soft" data-cancel>Annuler</button>
+  </div>
+
+  <div class="sheet" id="c98" data-mode="unblock" role="dialog" aria-label="Confirmation">
+    <div class="grab"></div>
+    <h3><span data-show="unblock">Débloquer @musktest0930184&nbsp;?</span><span data-show="block">Bloquer @musktest0930184&nbsp;?</span></h3>
+    <p class="sub"><span data-show="unblock">Vous pourrez de nouveau voir vos takes et vous écrire.</span><span data-show="block">Cette personne ne pourra plus interagir avec toi, et vous ne serez plus amis.</span></p>
+    <button class="btn" data-confirm><span data-show="unblock">Débloquer</span><span data-show="block">Bloquer</span></button>
+    <button class="btn soft" data-cancel>Annuler</button>
+  </div>
+
+  <div class="sheet" id="r98" role="dialog" aria-label="Signaler cette personne">
+    <div class="grab"></div>
+    <h3>Signaler cette personne</h3>
+    <p class="sub">Pourquoi signales-tu cette personne&nbsp;?</p>
+    <div class="rows98 top">
+      <button class="row98" data-reason="Harcèlement">Harcèlement</button>
+      <button class="row98" data-reason="Contenu choquant">Contenu choquant</button>
+      <button class="row98" data-reason="Faux compte">Faux compte</button>
+      <button class="row98" data-reason="Autre">Autre</button>
+    </div>
+    <button class="btn soft" data-cancel>Annuler</button>
+  </div>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+</div>
+<script src="proto.js"></script>
+<script>
+(() => {
+  const P = window.Proto;
+  const phone = document.querySelector('.phone');
+  const HANDLE = '@musktest0930184';
+  const shift = Number(P.current.dataset.shift || 0);
+  const gray = 'gray' in P.current.dataset;
+  const TABS = {
+    takes: ['Takes', 'Ses takes sont masqués', 'aucun take pour l’instant'],
+    questions: ['Questions', 'Ses questions sont masquées', 'aucune question publiée pour l’instant'],
+    reposts: ['Reposts', 'Ses reposts sont masqués', 'aucun repost pour l’instant'],
+  };
+  const $ = (s) => document.querySelector(s);
+  const menu = $('#m98');
+  const confirmSheet = $('#c98');
+  const reasons = $('#r98');
+  const title = $('.t98');
+  const underline = $('.ul98');
+  const toggleRow = $('#m98 [data-toggle]');
+  let blocked = true;
+  let tab = 'takes';
+  phone.dataset.ver = P.v;
+
+  const paint = () => {
+    phone.classList.toggle('free98', !blocked);
+    phone.classList.toggle('gray98', blocked && gray);
+    phone.style.setProperty('--shift98', `${blocked ? -shift : 0}px`);
+    document.querySelectorAll('[data-tab]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
+    const active = $(`[data-tab="${tab}"]`);
+    underline.style.transform = `translateX(${active.offsetLeft + active.offsetWidth / 2 - 22}px) scaleY(.5)`;
+    title.textContent = TABS[tab][1];
+    document.querySelectorAll('.emp98').forEach((e) => e.classList.toggle('on', e.dataset.for === tab));
+    toggleRow.querySelector('.lab98').textContent = blocked ? 'Débloquer' : 'Bloquer';
+    toggleRow.classList.toggle('red', !blocked);
+  };
+  paint();
+  requestAnimationFrame(() => requestAnimationFrame(() => phone.classList.remove('nt98')));
+
+  const only = (sheet) => { P.closeSheet(); P.openSheet(sheet); };
+  const ask = (mode) => {
+    P.setMode(confirmSheet, mode);
+    only(confirmSheet);
+    P.state(mode === 'unblock'
+      ? `Confirmation : débloquer ${HANDLE} ? Touche « Débloquer » pour confirmer, ou « Annuler ».`
+      : `Confirmation : bloquer de nouveau ${HANDLE} ? Touche « Bloquer » pour confirmer, ou « Annuler ».`);
+  };
+
+  Object.assign(P.actions, {
+    unblock() { ask('unblock'); },
+    toggle() { ask(blocked ? 'unblock' : 'block'); },
+    menu() {
+      only(menu);
+      P.state(`Menu « ⋯ » ouvert : « ${blocked ? 'Débloquer' : 'Bloquer'} », « Signaler » ou « Annuler ».`);
+    },
+    confirm() {
+      blocked = !blocked;
+      P.closeSheet();
+      paint();
+      if (blocked) {
+        P.toast('Compte bloqué');
+        P.state(`${HANDLE} est de nouveau bloqué : ses takes, ses questions et ses reposts sont masqués.`);
+      } else {
+        P.toast('Compte débloqué');
+        P.state(`Compte débloqué : le profil de ${HANDLE} redevient normal, avec « Suivre » et « Message », et ses takes s’affichent de nouveau.`);
+      }
+    },
+    cancel(b) {
+      const id = b.closest('.sheet').id;
+      P.closeSheet();
+      if (id === 'r98') P.state('Signalement annulé : rien n’a été envoyé.');
+      else if (id === 'm98') P.state('Menu fermé : rien n’a changé.');
+      else P.state(blocked ? `Annulé : ${HANDLE} reste bloqué.` : `Annulé : ${HANDLE} n’est pas bloqué.`);
+    },
+    report() { only(reasons); P.state('Signaler : choisis une raison dans la liste.'); },
+    reason(b) {
+      P.closeSheet();
+      P.toast('Signalement envoyé');
+      P.state(`Signalement envoyé, motif « ${b.dataset.reason} ».${blocked ? ' Le compte reste bloqué.' : ''}`);
+    },
+    tab(b) {
+      const changed = b.dataset.tab !== tab;
+      tab = b.dataset.tab;
+      paint();
+      const [name, masked, empty] = TABS[tab];
+      if (changed && blocked) title.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 220, easing: 'cubic-bezier(.32,.72,0,1)' });
+      P.state(blocked ? `Onglet ${name} : ${masked.toLowerCase()} tant que tu le bloques.` : `Onglet ${name} : ${empty}.`);
+    },
+  });
+
+  $('.dim').addEventListener('click', () => {
+    P.state(blocked ? `Fermé sans rien changer : ${HANDLE} reste bloqué.` : 'Fermé sans rien changer.');
+  });
+})();
+</script>
+</body>
+</html>
