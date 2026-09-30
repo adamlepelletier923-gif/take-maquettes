@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=402">
+<meta name="robots" content="noindex,nofollow">
+<title>Take · 58 interactif</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="proto.css">
+<style>
+:root{ --tint-red:#FDECEA; --tint-green:#E8F5EE; --tint-gray:#F0F0F3; --thumb:#FFFFFF; --press:rgba(0,0,0,.05); }
+:root[data-t="sombre"]{ --tint-red:#3A1714; --tint-green:#0F2E1D; --tint-gray:#242428; --thumb:#404046; --press:rgba(255,255,255,.08); }
+
+/* Texte posé sur sa ligne de base, aux cotes des maquettes fixes (1 pt = 1 px) : --x, --y (ligne de base). */
+.tx{ position:absolute; margin:0; white-space:nowrap; line-height:20px; left:calc(var(--x) * 1px); top:calc((var(--y) - var(--o)) * 1px); }
+/* --o : où Chrome pose la ligne de base d'Inter dans une ligne de 20 px (mesuré), pour tomber pile sur --y. */
+.s12{ font-size:12px; --o:14; } .s125{ font-size:12.5px; --o:14; } .s13{ font-size:13px; --o:15; } .s15{ font-size:15px; --o:15; } .s155{ font-size:15.5px; --o:15; }
+.tx.m{ transform:translateX(-50%); } .tx.r{ transform:translateX(-100%); }
+.w4{ font-weight:400; } .w5{ font-weight:500; } .w6{ font-weight:600; } .w7{ font-weight:700; }
+.mu{ color:var(--muted); } .rd{ color:var(--red); } .gr{ color:var(--green); }
+
+.q58{ position:absolute; left:18px; top:117px; margin:0; font-size:13px; line-height:18px; color:var(--muted); white-space:nowrap; }
+.backhit{ position:absolute; left:14px; top:68.67px; width:36px; height:36px; border-radius:18px; border:0; padding:0; background:transparent; z-index:5;
+  transition:background .15s; }
+.backhit:active{ background:var(--press); }
+
+.face{ position:absolute; display:block; border-radius:50%; pointer-events:none; }
+.gface{ position:absolute; border-radius:50%; background:var(--tint-gray); color:var(--muted); display:grid; place-items:center; }
+.gface .gh{ width:52%; height:52%; }
+
+.pr, .anonline, .anonblock{ position:absolute; padding:0; border:0; background:transparent; text-align:left; isolation:isolate; }
+.pr::before, .anonline::before, .anonblock::before{ content:""; position:absolute; inset:var(--hit, -6px); border-radius:14px; z-index:-1; transition:background .15s; }
+.pr:active::before, .anonline:active::before, .anonblock:active::before{ background:var(--press); }
+.anonline{ left:18px; width:366px; height:24px; --hit:-6px -8px; }
+.anonline .gh{ position:absolute; left:0; top:4px; width:16px; height:16px; color:var(--muted); }
+
+/* B · Deux colonnes */
+.colhead{ position:absolute; top:175px; width:179px; height:36px; border-radius:18px; display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:14.5px; padding-bottom:2px; box-sizing:border-box; }
+.pr.b{ width:179px; height:40px; --hit:-6px -4px; }
+
+/* C · Les visages */
+.pr.c{ width:56px; height:78px; --hit:-5px -9px -6px; }
+.pr.c:active .face{ transform:scale(.96); }
+.pr.c .face{ transition:transform .12s; }
+.anonblock{ left:18px; top:433px; width:366px; height:116px; --hit:-4px -8px -2px; }
+
+/* D · Une seule liste */
+.filters{ position:absolute; right:18px; top:169px; display:flex; gap:6px; }
+.filters .pill{ height:30px; padding:0 12px; border-radius:15px; }
+.dlist{ position:absolute; left:0; top:203px; width:402px; display:flex; flex-direction:column; }
+.pr.d{ position:relative; flex:none; width:402px; height:60px; overflow:hidden; --hit:0; transition:height .28s cubic-bezier(.32,.72,0,1), opacity .2s; }
+.pr.d::before{ border-radius:0; }
+.pr.d.out{ height:0; opacity:0; }
+.vote{ position:absolute; left:330px; top:13px; width:54px; height:26px; border-radius:13px; display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:13px; padding-bottom:2px; box-sizing:border-box; }
+.vote.oui{ background:var(--tint-green); color:var(--green); } .vote.non{ background:var(--tint-red); color:var(--red); }
+
+/* E · Deux onglets */
+.etabs{ position:absolute; left:18px; top:175px; width:366px; height:38px; border-radius:19px; background:var(--tint-gray); }
+.etabs .thumb{ position:absolute; left:183px; top:3px; width:180px; height:32px; border-radius:16px; background:var(--thumb);
+  transition:transform .28s cubic-bezier(.32,.72,0,1); }
+section[data-now="non"] .etabs .thumb{ transform:translateX(-180px); }
+.etabs button{ position:absolute; top:0; height:38px; border:0; padding:0 0 2px; background:transparent; font-size:14px; font-weight:600; color:var(--muted);
+  transition:color .2s; }
+.etabs [data-side="non"]{ left:0; width:183px; } .etabs [data-side="oui"]{ left:183px; width:180px; }
+.etabs button.on{ font-weight:700; }
+.etabs [data-side="oui"].on{ color:var(--green); } .etabs [data-side="non"].on{ color:var(--red); }
+.elist{ position:absolute; left:0; top:221px; width:402px; transition:opacity .2s .06s, transform .28s cubic-bezier(.32,.72,0,1); }
+.elist:not(.on){ opacity:0; pointer-events:none; transition:opacity .12s, transform .28s cubic-bezier(.32,.72,0,1); }
+.elist[data-list="non"]:not(.on){ transform:translateX(-28px); }
+.elist[data-list="oui"]:not(.on){ transform:translateX(28px); }
+.erow{ position:absolute; left:0; width:402px; height:64px; }
+.pr.e{ left:0; top:0; width:290px; height:64px; --hit:0; }
+.pr.e::before{ border-radius:0 14px 14px 0; }
+.ebtn{ position:absolute; left:296px; top:16px; width:88px; height:32px; border-radius:16px; border:0; padding:0; background:var(--tint-gray); color:var(--text);
+  font-weight:600; font-size:13.5px; transition:transform .12s; }
+.ebtn:active{ transform:scale(.96); }
+section[data-letter="E"] .anonline{ transition:transform .28s cubic-bezier(.32,.72,0,1); }
+section[data-now="non"] .anonline{ transform:translateY(-192px); }
+
+/* La fiche d'une personne */
+#fiche{ gap:12px; }
+#fiche .f-face{ justify-self:center; width:64px; height:64px; border-radius:32px; margin-top:4px; }
+#fiche h3{ margin-top:-2px; }
+#fiche .sub{ margin:-10px 0 0; }
+#fiche .f-vote{ justify-self:center; margin:2px 0 0; height:30px; padding:0 14px; border-radius:15px; display:flex; align-items:center; font-weight:700; font-size:14px; }
+#fiche .f-vote[data-camp="oui"]{ background:var(--tint-green); color:var(--green); }
+#fiche .f-vote[data-camp="non"]{ background:var(--tint-red); color:var(--red); }
+#fiche .f-why{ margin:-4px 0 4px; text-align:center; font-size:12.5px; color:var(--muted); }
+#fiche .f-btns{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+</style>
+</head>
+<body data-proto="58">
+<div class="phone">
+  <img class="layer" data-src="img/58-top-{t}.jpg" style="top:0;height:108px" alt="">
+  <button class="backhit" aria-label="Retour" data-say="Dans l’app : la flèche retour revient à ton take."></button>
+  <p class="q58">« Tu penses que des îles entières vont disparaître à cause<br>de la montée des eaux de notre vivant ? »</p>
+
+  <section data-v="1" data-letter="B" data-start="Touche une personne pour voir sa fiche et son vote, ou la ligne des votes anonymes.">
+    <div class="colhead" style="left:18px;background:var(--tint-red);color:var(--red)">Non · 1</div>
+    <div class="colhead" style="left:205px;background:var(--tint-green);color:var(--green)">Oui · 4</div>
+    <button class="pr b" data-person="leo" style="left:18px;top:227px"><img class="face" data-src="img/58-face-leo-{t}.png" style="left:1px;top:1px;width:38px;height:38px" alt="">
+      <span class="tx s15 w6" style="--x:48;--y:17">Léo</span><span class="tx s12 w4 mu" style="--x:48;--y:35">@leo_bernard</span></button>
+    <button class="pr b" data-person="noah" style="left:205px;top:227px"><img class="face" data-src="img/58-face-noah-{t}.png" style="left:1px;top:1px;width:38px;height:38px" alt="">
+      <span class="tx s15 w6" style="--x:48;--y:17">Noah</span><span class="tx s12 w4 mu" style="--x:48;--y:35">@noah_williams</span></button>
+    <button class="pr b" data-person="emma" style="left:205px;top:285px"><img class="face" data-src="img/58-face-emma-{t}.png" style="left:1px;top:1px;width:38px;height:38px" alt="">
+      <span class="tx s15 w6" style="--x:48;--y:17">Emma</span><span class="tx s12 w4 mu" style="--x:48;--y:35">@emma_fischer</span></button>
+    <button class="pr b" data-person="maya" style="left:205px;top:343px"><img class="face" data-src="img/58-face-maya-{t}.png" style="left:1px;top:1px;width:38px;height:38px" alt="">
+      <span class="tx s15 w6" style="--x:48;--y:17">Maya</span><span class="tx s12 w4 mu" style="--x:48;--y:35">@maya_patel</span></button>
+    <button class="pr b" data-person="amir" style="left:205px;top:401px"><img class="face" data-src="img/58-face-amir-{t}.png" style="left:1px;top:1px;width:38px;height:38px" alt="">
+      <span class="tx s15 w6" style="--x:48;--y:17">Amir</span><span class="tx s12 w4 mu" style="--x:48;--y:35">@amir_haddad</span></button>
+    <button class="anonline" data-anonymes style="top:463px"><i class="gh"></i><span class="tx s13 w4 mu" style="--x:22;--y:16">3 votes en anonyme : on ne montre jamais qui.</span></button>
+  </section>
+
+  <section data-v="2" data-letter="C" data-start="Touche un visage : sa fiche s’ouvre, avec son vote. Les fantômes, ce sont les votes anonymes.">
+    <span class="tx s15 w7 rd" style="--x:18;--y:189">Non</span><span class="tx s13 r w5 mu" style="--x:384;--y:189">1</span>
+    <button class="pr c" data-person="leo" style="left:18px;top:205px"><img class="face" data-src="img/58-face-leo-{t}.png" style="left:0;top:0;width:56px;height:56px" alt="">
+      <span class="tx s125 m w5" style="--x:28;--y:76">Léo</span></button>
+    <span class="tx s15 w7 gr" style="--x:18;--y:319">Oui</span><span class="tx s13 r w5 mu" style="--x:384;--y:319">4</span>
+    <button class="pr c" data-person="noah" style="left:18px;top:335px"><img class="face" data-src="img/58-face-noah-{t}.png" style="left:0;top:0;width:56px;height:56px" alt="">
+      <span class="tx s125 m w5" style="--x:28;--y:76">Noah</span></button>
+    <button class="pr c" data-person="emma" style="left:96px;top:335px"><img class="face" data-src="img/58-face-emma-{t}.png" style="left:0;top:0;width:56px;height:56px" alt="">
+      <span class="tx s125 m w5" style="--x:28;--y:76">Emma</span></button>
+    <button class="pr c" data-person="maya" style="left:174px;top:335px"><img class="face" data-src="img/58-face-maya-{t}.png" style="left:0;top:0;width:56px;height:56px" alt="">
+      <span class="tx s125 m w5" style="--x:28;--y:76">Maya</span></button>
+    <button class="pr c" data-person="amir" style="left:252px;top:335px"><img class="face" data-src="img/58-face-amir-{t}.png" style="left:0;top:0;width:56px;height:56px" alt="">
+      <span class="tx s125 m w5" style="--x:28;--y:76">Amir</span></button>
+    <button class="anonblock" data-anonymes aria-label="3 votes en anonyme">
+      <span class="tx s15 w7 mu" style="--x:0;--y:16">En anonyme</span><span class="tx s13 r w5 mu" style="--x:366;--y:16">3</span>
+      <span class="gface" style="left:0;top:32px;width:56px;height:56px"><i class="gh"></i></span>
+      <span class="gface" style="left:78px;top:32px;width:56px;height:56px"><i class="gh"></i></span>
+      <span class="gface" style="left:156px;top:32px;width:56px;height:56px"><i class="gh"></i></span>
+      <span class="tx s125 m w5 mu" style="--x:28;--y:108">Anonyme</span><span class="tx s125 m w5 mu" style="--x:106;--y:108">Anonyme</span><span class="tx s125 m w5 mu" style="--x:184;--y:108">Anonyme</span></button>
+    <span class="tx s125 w4 mu" style="--x:18;--y:583">Touche un visage pour voir son vote et son profil.</span>
+  </section>
+
+  <section data-v="3" data-letter="D" data-start="Touche « Oui » ou « Non » en haut pour trier la liste, ou une personne pour voir sa fiche.">
+    <span class="tx s15 w7" id="dHead" style="--x:18;--y:189">8 votes</span>
+    <div class="filters" role="group" aria-label="Filtrer les votes">
+      <button class="pill on" data-filter="tous" aria-pressed="true">Tous</button><button class="pill" data-filter="oui" aria-pressed="false">Oui</button><button class="pill" data-filter="non" aria-pressed="false">Non</button>
+    </div>
+    <div class="dlist">
+      <button class="pr d" data-person="noah" data-camp="oui"><img class="face" data-src="img/58-face-noah-{t}.png" style="left:18px;top:6px;width:40px;height:40px" alt="">
+        <span class="tx s155 w6" style="--x:70;--y:22">Noah Williams</span><span class="tx s13 w4 mu" style="--x:70;--y:41">@noah_williams</span><span class="vote oui">Oui</span></button>
+      <button class="pr d" data-person="leo" data-camp="non"><img class="face" data-src="img/58-face-leo-{t}.png" style="left:18px;top:6px;width:40px;height:40px" alt="">
+        <span class="tx s155 w6" style="--x:70;--y:22">Léo Bernard</span><span class="tx s13 w4 mu" style="--x:70;--y:41">@leo_bernard</span><span class="vote non">Non</span></button>
+      <button class="pr d" data-person="emma" data-camp="oui"><img class="face" data-src="img/58-face-emma-{t}.png" style="left:18px;top:6px;width:40px;height:40px" alt="">
+        <span class="tx s155 w6" style="--x:70;--y:22">Emma Fischer</span><span class="tx s13 w4 mu" style="--x:70;--y:41">@emma_fischer</span><span class="vote oui">Oui</span></button>
+      <button class="pr d" data-person="maya" data-camp="oui"><img class="face" data-src="img/58-face-maya-{t}.png" style="left:18px;top:6px;width:40px;height:40px" alt="">
+        <span class="tx s155 w6" style="--x:70;--y:22">Maya Patel</span><span class="tx s13 w4 mu" style="--x:70;--y:41">@maya_patel</span><span class="vote oui">Oui</span></button>
+      <button class="pr d" data-person="amir" data-camp="oui"><img class="face" data-src="img/58-face-amir-{t}.png" style="left:18px;top:6px;width:40px;height:40px" alt="">
+        <span class="tx s155 w6" style="--x:70;--y:22">Amir Haddad</span><span class="tx s13 w4 mu" style="--x:70;--y:41">@amir_haddad</span><span class="vote oui">Oui</span></button>
+      <button class="pr d" data-anonymes><span class="gface" style="left:18px;top:6px;width:40px;height:40px"><i class="gh"></i></span>
+        <span class="tx s155 w6" style="--x:70;--y:22">3 votes en anonyme</span><span class="tx s13 w4 mu" style="--x:70;--y:41">On ne montre jamais qui.</span></button>
+    </div>
+  </section>
+
+  <section data-v="4" data-letter="E" data-now="oui" data-start="Touche « Non · 1 » pour changer d’onglet, « Message » pour écrire, ou une personne pour voir sa fiche.">
+    <div class="etabs" role="group" aria-label="Voir les votes Non ou Oui">
+      <span class="thumb"></span>
+      <button data-side="non" aria-pressed="false">Non · 1</button><button class="on" data-side="oui" aria-pressed="true">Oui · 4</button>
+    </div>
+    <div class="elist" data-list="non" inert>
+      <div class="erow" style="top:0"><button class="pr e" data-person="leo"><img class="face" data-src="img/58-face-leo-{t}.png" style="left:18px;top:10px;width:44px;height:44px" alt="">
+        <span class="tx s155 w6" style="--x:74;--y:28">Léo Bernard</span><span class="tx s13 w4 mu" style="--x:74;--y:48">@leo_bernard</span></button>
+        <button class="ebtn" data-write="leo">Message</button></div>
+    </div>
+    <div class="elist on" data-list="oui">
+      <div class="erow" style="top:0"><button class="pr e" data-person="noah"><img class="face" data-src="img/58-face-noah-{t}.png" style="left:18px;top:10px;width:44px;height:44px" alt="">
+        <span class="tx s155 w6" style="--x:74;--y:28">Noah Williams</span><span class="tx s13 w4 mu" style="--x:74;--y:48">@noah_williams</span></button>
+        <button class="ebtn" data-write="noah">Message</button></div>
+      <div class="erow" style="top:64px"><button class="pr e" data-person="emma"><img class="face" data-src="img/58-face-emma-{t}.png" style="left:18px;top:10px;width:44px;height:44px" alt="">
+        <span class="tx s155 w6" style="--x:74;--y:28">Emma Fischer</span><span class="tx s13 w4 mu" style="--x:74;--y:48">@emma_fischer</span></button>
+        <button class="ebtn" data-write="emma">Message</button></div>
+      <div class="erow" style="top:128px"><button class="pr e" data-person="maya"><img class="face" data-src="img/58-face-maya-{t}.png" style="left:18px;top:10px;width:44px;height:44px" alt="">
+        <span class="tx s155 w6" style="--x:74;--y:28">Maya Patel</span><span class="tx s13 w4 mu" style="--x:74;--y:48">@maya_patel</span></button>
+        <button class="ebtn" data-write="maya">Message</button></div>
+      <div class="erow" style="top:192px"><button class="pr e" data-person="amir"><img class="face" data-src="img/58-face-amir-{t}.png" style="left:18px;top:10px;width:44px;height:44px" alt="">
+        <span class="tx s155 w6" style="--x:74;--y:28">Amir Haddad</span><span class="tx s13 w4 mu" style="--x:74;--y:48">@amir_haddad</span></button>
+        <button class="ebtn" data-write="amir">Message</button></div>
+    </div>
+    <button class="anonline" data-anonymes style="top:491px"><i class="gh"></i><span class="tx s13 w4 mu" style="--x:22;--y:16">3 votes en anonyme : on ne montre jamais qui.</span></button>
+  </section>
+
+  <div class="dim"></div>
+
+  <div class="sheet" id="fiche" role="dialog" aria-modal="true" aria-labelledby="fName">
+    <div class="grab"></div>
+    <img class="f-face" alt="">
+    <h3 id="fName">Noah Williams</h3>
+    <p class="sub">@noah_williams</p>
+    <p class="f-vote" data-camp="oui">A voté Oui</p>
+    <p class="f-why">Tu le vois parce que c’est ton take.</p>
+    <div class="f-btns"><button class="btn" data-profile>Voir son profil</button><button class="btn soft" data-write>Lui écrire</button></div>
+  </div>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+</div>
+<script>
+{ const v = new URLSearchParams(location.search).get('v');
+  const s = v && document.querySelector(`section[data-letter="${CSS.escape(v.toUpperCase())}"]`);
+  if (s) s.dataset.v = v; }
+</script>
+<script src="proto.js"></script>
+<script>
+(() => {
+  const P = window.Proto;
+  const PEOPLE = {
+    leo: { name: 'Léo Bernard', first: 'Léo', handle: '@leo_bernard', vote: 'Non' },
+    noah: { name: 'Noah Williams', first: 'Noah', handle: '@noah_williams', vote: 'Oui' },
+    emma: { name: 'Emma Fischer', first: 'Emma', handle: '@emma_fischer', vote: 'Oui' },
+    maya: { name: 'Maya Patel', first: 'Maya', handle: '@maya_patel', vote: 'Oui' },
+    amir: { name: 'Amir Haddad', first: 'Amir', handle: '@amir_haddad', vote: 'Oui' },
+  };
+  const fiche = document.getElementById('fiche');
+  const face = fiche.querySelector('.f-face');
+  const vote = fiche.querySelector('.f-vote');
+  let who = 'noah';
+  const first = (w) => PEOPLE[w].first;
+  const de = (w) => (/^[aeiouyàâéèêîôh]/i.test(first(w)) ? `d’${first(w)}` : `de ${first(w)}`);
+  const live = (fn) => (b) => { if (!b.closest('[inert]')) fn(b); };
+
+  P.actions.person = live((b) => {
+    who = b.dataset.person;
+    const p = PEOPLE[who];
+    face.src = `img/58-face-${who}-${P.theme}.png`;
+    face.alt = p.name;
+    fiche.querySelector('h3').textContent = p.name;
+    fiche.querySelector('.sub').textContent = p.handle;
+    vote.textContent = `A voté ${p.vote}`;
+    vote.dataset.camp = p.vote === 'Oui' ? 'oui' : 'non';
+    P.openSheet(fiche);
+    P.state(`Fiche ${de(who)} : ${p.first} a voté ${p.vote}. Tu le vois parce que c’est ton take.`);
+  });
+  P.actions.profile = () => {
+    P.closeSheet();
+    P.state(`Dans l’app : ouvre le profil ${de(who)}.`);
+  };
+  P.actions.write = live((b) => {
+    const w = b.dataset.write || who;
+    if (fiche.classList.contains('on')) P.closeSheet();
+    P.state(`Dans l’app : ouvre la conversation avec ${first(w)}.`);
+  });
+  P.actions.anonymes = live(() => {
+    P.toast('Les votes anonymes restent anonymes');
+    P.state('Rien ne s’ouvre : ces 3 votes sont anonymes. Personne ne peut savoir qui a voté, pas même toi.');
+  });
+
+  const FILTERS = {
+    tous: ['8 votes', 'Filtre « Tous » : les 8 votes, dont 3 en anonyme.'],
+    oui: ['4 votes Oui', 'Filtre « Oui » : les 4 personnes qui ont voté Oui. Les votes anonymes ne sont dans aucun filtre.'],
+    non: ['1 vote Non', 'Filtre « Non » : la personne qui a voté Non. Les votes anonymes ne sont dans aucun filtre.'],
+  };
+  P.actions.filter = (b) => {
+    const f = b.dataset.filter;
+    const sec = b.closest('section');
+    sec.querySelectorAll('[data-filter]').forEach((x) => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', String(x === b)); });
+    sec.querySelectorAll('.dlist .pr').forEach((row) => {
+      const out = f !== 'tous' && row.dataset.camp !== f;
+      row.classList.toggle('out', out);
+      row.inert = out;
+    });
+    sec.querySelector('#dHead').textContent = FILTERS[f][0];
+    P.state(FILTERS[f][1]);
+  };
+
+  P.actions.side = (b) => {
+    const now = b.dataset.side;
+    const sec = b.closest('section');
+    sec.dataset.now = now;
+    sec.querySelectorAll('[data-side]').forEach((x) => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', String(x === b)); });
+    sec.querySelectorAll('.elist').forEach((list) => {
+      const on = list.dataset.list === now;
+      list.classList.toggle('on', on);
+      list.inert = !on;
+    });
+    P.state(now === 'non' ? 'Onglet « Non · 1 » : Léo a voté Non.' : 'Onglet « Oui · 4 » : Noah, Emma, Maya et Amir ont voté Oui.');
+  };
+
+  document.querySelector('.dim').addEventListener('click', () => P.state('Fiche fermée.'));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && fiche.classList.contains('on')) { P.closeSheet(); P.state('Fiche fermée.'); }
+  });
+})();
+</script>
+</body>
+</html>
