@@ -23,15 +23,18 @@
   video, img { width: 100%; height: auto; aspect-ratio: 600 / 1304; object-fit: cover; border-radius: 16px; border: 1px solid var(--line); display: block; background: var(--bg); }
   .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); margin-left: 6px; vertical-align: 2px; }
   .legende { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .paysage { flex-direction: column; overflow-x: visible; }
+  .paysage > * { width: 100%; max-width: none; }
+  .paysage video { aspect-ratio: 1548 / 802; object-fit: contain; }
 </style>
 </head>
 <body>
 <main>
   <h1>L'avatar en entier</h1>
-  <p class="intro">Point 82 : trois façons de montrer l'avatar de la tête aux pieds. Rien n'est activé dans l'app. Réponds A, B ou C.</p>
+  <p class="intro">Point 82 : <strong>tranché, c'est A</strong> (Adam, le 30/09) : un appui sur la photo de profil ouvre l'avatar en pied, et le coucou part tout de suite. C'est fusionné dans l'app, derrière un drapeau encore éteint. B et C restent ici pour mémoire.</p>
 
   <section>
-    <h2>A · La visionneuse en pied <span class="tag">recommandée</span></h2>
+    <h2>A · La visionneuse en pied <span class="tag">choisie</span></h2>
     <p class="desc">On touche la photo de profil : l'avatar grandit, apparaît en pied et fait coucou. « Refaire coucou » le relance.</p>
     <div class="row">
       <div><video src="../signature/img/entier/82a-entree-clair.mp4" poster="../signature/img/entier/82a-clair.jpg" autoplay muted loop playsinline preload="auto"></video><div class="legende">En clair</div></div>
@@ -59,9 +62,12 @@
 
   <section>
     <h2>Le nouveau coucou</h2>
-    <p class="desc">Avant et après : le coude plie vraiment, la paume se voit, le bras passe devant les cheveux.</p>
-    <div class="row">
-      <div><video src="../signature/img/coucou/avant-apres-face.mp4" autoplay muted loop playsinline preload="auto"></video><div class="legende">Avant / après</div></div>
+    <p class="desc">Plus fluide et plus vivant : le bras démarre et s'arrête en douceur, le corps penche un peu, la tête suit la main et les doigts bougent.</p>
+    <div class="row paysage">
+      <div><video src="../signature/img/coucou/version-precedente-vs-nouvelle-face.mp4" autoplay muted loop playsinline preload="auto"></video><div class="legende">Version précédente / nouvelle version, de face</div></div>
+      <div><video src="../signature/img/coucou/avant-apres-face.mp4" autoplay muted loop playsinline preload="auto"></video><div class="legende">Premier coucou / nouveau, de face</div></div>
+      <div><video src="../signature/img/coucou/avant-apres-35deg.mp4" autoplay muted loop playsinline preload="auto"></video><div class="legende">Premier coucou / nouveau, à 35°</div></div>
+      <div><video src="../signature/img/coucou/avant-apres-profil.mp4" autoplay muted loop playsinline preload="auto"></video><div class="legende">Premier coucou / nouveau, de profil</div></div>
     </div>
   </section>
 </main>
