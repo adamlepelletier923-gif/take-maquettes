@@ -149,6 +149,8 @@
     }
   });
 
+  window.Proto = { theme, v: current.dataset.v, current, toast, state, openSheet, closeSheet, setMode, actions };
+
   const coarse = matchMedia('(pointer: coarse)').matches;
   const kbd = document.querySelector('.kbd');
   if (kbd && !coarse) {
