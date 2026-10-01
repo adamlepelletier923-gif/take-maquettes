@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Icône d'iOS 26</title>
+<style>
+:root{
+  color-scheme:light;
+  --bg:#F6F7F8; --surface:#FFFFFF; --ink:#141414; --ink-2:#6B6E73; --line:#E3E6EA; --accent:#141414;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --accent:#E7E9EA; }
+}
+:root[data-theme="dark"]{ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --accent:#E7E9EA; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;line-height:1.45}
+main{max-width:1100px;margin:0 auto;padding:28px 16px 64px}
+h1{font-size:26px;margin:0 0 6px}
+h2{font-size:19px;margin:0 0 4px}
+p{margin:6px 0;color:var(--ink-2)}
+.lead{font-size:16px;color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;margin:22px 0}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--line);color:var(--ink);margin-left:8px;vertical-align:middle}
+.tag.bad{background:#FF3B30;color:#fff}
+.tag.ok{background:#34C759;color:#fff}
+.phones{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px}
+.phone-wrap{display:flex;flex-direction:column;align-items:center;gap:8px}
+.phone-wrap small{color:var(--ink-2);font-size:13px}
+.phone{width:240px;height:500px;border-radius:40px;padding:10px;background:#0b0b0c;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.screen{position:relative;width:100%;height:100%;border-radius:31px;overflow:hidden;padding:46px 12px 0}
+.screen.light{background:radial-gradient(120% 80% at 20% 10%,#ffe9c9 0%,#f8c8d4 40%,#c9d7ff 100%)}
+.screen.dark{background:radial-gradient(120% 80% at 20% 10%,#3a2a4d 0%,#161a2e 45%,#05060a 100%)}
+.clock{position:absolute;top:12px;left:0;right:0;text-align:center;font-weight:600;font-size:13px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 6px}
+.app{display:flex;flex-direction:column;align-items:center;gap:4px}
+.app i,.app img,.glass{width:40px;height:40px;border-radius:9.5px;display:block}
+.app span{font-size:9.5px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.light .app i{background:rgba(255,255,255,.55)}
+.dark .app i{background:rgba(255,255,255,.12)}
+.app.take span{font-weight:600}
+.app.take span{font-size:10.5px}
+.glass{position:relative;overflow:hidden;-webkit-backdrop-filter:blur(10px) saturate(160%);backdrop-filter:blur(10px) saturate(160%)}
+.glass img{position:absolute;inset:0;width:100%;height:100%;border-radius:9.5px}
+.dock{position:absolute;left:10px;right:10px;bottom:12px;height:68px;border-radius:24px;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;justify-items:center}
+.light .dock{background:rgba(255,255,255,.35)}
+.dark .dock{background:rgba(255,255,255,.10)}
+.dock i{width:40px;height:40px;border-radius:9.5px;display:block}
+.light .dock i{background:rgba(255,255,255,.6)}
+.dark .dock i{background:rgba(255,255,255,.14)}
+.big{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px}
+.big figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.big img{width:104px;height:104px}
+.big figcaption{font-size:12.5px;color:var(--ink-2);text-align:center;max-width:120px}
+ul{margin:8px 0 0 18px;padding:0;color:var(--ink-2)}
+li{margin:4px 0}
+code{font-size:12.5px;background:var(--line);padding:1px 5px;border-radius:5px;color:var(--ink)}
+.src{font-size:12.5px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Icône d'iOS 26 : sombre, teintée, transparente</h1>
+  <p class="lead">Une proposition seulement : rien n'a changé dans l'app. L'icône reste ton dessin, les points en trame. Seule la façon dont iOS l'affiche dans ses modes change.</p>
+  <p>Depuis iOS 18, et plus encore avec iOS 26, l'iPhone affiche chaque icône dans quatre apparences : <b>par défaut</b>, <b>sombre</b>, <b>teintée</b> et <b>transparente</b>. Si l'app ne fournit pas une version, le système en fabrique une à sa façon.</p>
+
+  <div class="card">
+    <h2>Aujourd'hui <span class="tag bad">carré blanc en mode sombre</span></h2>
+    <p>Le mode sombre de Take affiche l'icône inversée : un PNG opaque à fond blanc (<code>icon-light.png</code>). Sur un écran d'accueil sombre, c'est un carré blanc au milieu des icônes foncées. Apple demande pour le mode sombre un dessin sur fond transparent, pour que le fond sombre du système passe dessous.</p>
+    <div class="phones">
+      <div class="phone-wrap"><div class="phone"><div class="screen light"><div class="clock">9:41</div><div class="grid"><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app take"><img src="img/actuel-clair.png" alt="Icône actuelle, écran clair"><span>Take</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div></div><div class="dock"><i></i><i></i><i></i><i></i></div></div></div><small>Écran clair : l'icône noire</small></div>
+      <div class="phone-wrap"><div class="phone"><div class="screen dark"><div class="clock">9:41</div><div class="grid"><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app take"><img src="img/actuel-sombre.png" alt="Icône actuelle, écran sombre"><span>Take</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div></div><div class="dock"><i></i><i></i><i></i><i></i></div></div></div><small>Écran sombre : le carré blanc</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>A. Sombre, selon Apple <span class="tag ok">proposé</span></h2>
+    <p>On garde les points blancs, on enlève le fond : en mode sombre, iOS pose son propre fond sombre dessous. Take reste la même icône noire dans les deux modes, comme sur l'écran clair d'aujourd'hui.</p>
+    <div class="phones">
+      <div class="phone-wrap"><div class="phone"><div class="screen light"><div class="clock">9:41</div><div class="grid"><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app take"><img src="img/actuel-clair.png" alt="Icône par défaut, écran clair"><span>Take</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div></div><div class="dock"><i></i><i></i><i></i><i></i></div></div></div><small>Écran clair : inchangé</small></div>
+      <div class="phone-wrap"><div class="phone"><div class="screen dark"><div class="clock">9:41</div><div class="grid"><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app take"><img src="img/propose-sombre.png" alt="Icône sombre proposée"><span>Take</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div></div><div class="dock"><i></i><i></i><i></i><i></i></div></div></div><small>Écran sombre : plus de carré blanc</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>B. Teintée</h2>
+    <p>Quand quelqu'un choisit le mode « Teinté », iOS colore toutes les icônes d'une seule teinte. Apple demande une version en niveaux de gris : les points prennent la couleur choisie, sur fond sombre. Ici, deux teintes d'exemple.</p>
+    <div class="phones">
+      <div class="phone-wrap"><div class="phone"><div class="screen dark"><div class="clock">9:41</div><div class="grid"><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app take"><img src="img/propose-teinte-ambre.png" alt="Icône teintée ambre"><span>Take</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div></div><div class="dock"><i></i><i></i><i></i><i></i></div></div></div><small>Teinte ambre</small></div>
+      <div class="phone-wrap"><div class="phone"><div class="screen dark"><div class="clock">9:41</div><div class="grid"><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app take"><img src="img/propose-teinte-bleu.png" alt="Icône teintée bleue"><span>Take</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div></div><div class="dock"><i></i><i></i><i></i><i></i></div></div></div><small>Teinte bleue</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>C. Transparente (iOS 26)</h2>
+    <p>Le mode « Transparent » d'iOS 26 rend les icônes en verre : le fond d'écran se voit à travers, et les points restent lisibles en blanc laiteux. La maquette l'approche avec un flou du navigateur. Le vrai rendu vient d'iOS, avec ses reflets.</p>
+    <div class="phones">
+      <div class="phone-wrap"><div class="phone"><div class="screen light"><div class="clock">9:41</div><div class="grid"><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app take"><div class="glass"><img src="img/propose-transparent-clair.png" alt="Icône transparente, écran clair"></div><span>Take</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div></div><div class="dock"><i></i><i></i><i></i><i></i></div></div></div><small>Écran clair</small></div>
+      <div class="phone-wrap"><div class="phone"><div class="screen dark"><div class="clock">9:41</div><div class="grid"><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app take"><div class="glass"><img src="img/propose-transparent-sombre.png" alt="Icône transparente, écran sombre"></div><span>Take</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div><div class="app"><i></i><span>App</span></div></div><div class="dock"><i></i><i></i><i></i><i></i></div></div></div><small>Écran sombre</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Les quatre, côte à côte</h2>
+    <div class="big">
+      <figure><img src="img/actuel-clair.png" alt=""><figcaption>Par défaut (inchangée)</figcaption></figure>
+      <figure><img src="img/actuel-sombre.png" alt=""><figcaption>Sombre aujourd'hui (carré blanc)</figcaption></figure>
+      <figure><img src="img/propose-sombre.png" alt=""><figcaption>A. Sombre proposée</figcaption></figure>
+      <figure><img src="img/propose-teinte-ambre.png" alt=""><figcaption>B. Teintée</figcaption></figure>
+      <figure style="background:radial-gradient(120% 80% at 20% 10%,#3a2a4d 0%,#161a2e 60%);border-radius:18px;padding:8px"><img src="img/propose-transparent-sombre.png" alt=""><figcaption style="color:#ddd">C. Transparente</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Si tu choisis, comment ça se fait</h2>
+    <ul>
+      <li>Un fichier Icon Composer (<code>.icon</code>) à deux couches : le fond noir et les points blancs. iOS en tire lui-même les modes sombre, teinté et transparent, et les reflets d'iOS 26.</li>
+      <li>Expo l'accepte depuis le SDK 54 sous <code>ios.icon</code>. Il faut un nouveau build, mais aucun code.</li>
+      <li>Les icônes alternatives (Noir et Blanc) ont aussi besoin de leurs propres variantes.</li>
+      <li>Si tu veux garder l'inversion actuelle (blanc en mode sombre), c'est possible aussi : on fournit alors le blanc en variante sombre, mais Apple le déconseille.</li>
+    </ul>
+    <p class="src">Sources : Apple, Human Interface Guidelines « App icons » (apparences par défaut, sombre, teintée et transparente ; le système génère celles qui manquent) ; documentation Xcode « Configuring your app icon » (icône sombre à fond transparent, teintée en niveaux de gris) ; Expo, notes du SDK 54 (fichier <code>.icon</code> sous <code>ios.icon</code>).</p>
+  </div>
+</main>
+</body>
+</html>
