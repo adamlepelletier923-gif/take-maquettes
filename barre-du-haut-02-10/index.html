@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Barre du haut sur le fil</title>
+<style>
+  :root { color-scheme: light dark; --bg: #ffffff; --ink: #141414; --soft: #6b6b6b; --card: #f3f3f3; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0e0e0e; --ink: #f2f2f2; --soft: #a3a3a3; --card: #1b1b1b; } }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 20px 16px 40px; }
+  h1 { font-size: 22px; margin: 4px 0 8px; }
+  p { color: var(--soft); line-height: 1.45; margin: 6px 0; }
+  video { width: 100%; height: auto; border-radius: 14px; background: var(--card); margin: 14px 0; }
+  ul { padding-left: 18px; line-height: 1.5; }
+  li { margin: 4px 0; }
+  .q { background: var(--card); border-radius: 12px; padding: 12px 14px; color: var(--ink); }
+</style>
+</head>
+<body>
+<main>
+  <h1>La barre du haut, revenue sur le fil</h1>
+  <p>Même geste des deux côtés : en haut du fil, on descend (la barre se cache), puis on remonte un peu (la barre revient au-dessus d’un take).</p>
+  <video src="barre-du-haut.mp4" poster="poster.jpg" muted loop playsinline autoplay controls></video>
+  <ul>
+    <li><b>Aujourd’hui</b> (build 185 compris) : rien derrière les mots ni l’heure. Revenus au-dessus d’un take, ils se posent sur son texte.</li>
+    <li><b>Avec #3194</b> : quand du contenu passe sous la barre, la barre entière, heure comprise, prend le fond blanc de la page, comme sur Instagram. Pas de verre, pas de dégradé.</li>
+    <li><b>Tout en haut du fil</b> : les deux sont identiques. Rien n’est peint derrière les mots, comme tu l’avais demandé le 28/09 (« pas de nuage »).</li>
+  </ul>
+  <p class="q">À trancher : on garde « rien derrière » partout, ou le fond blanc seulement quand du contenu passe dessous ?</p>
+  <p>Maquette composée sur de vraies captures de l’app (main du 02/10, compte de démo). Cotes lues dans le code : barre d’état + 40 pt.</p>
+</main>
+</body>
+</html>
