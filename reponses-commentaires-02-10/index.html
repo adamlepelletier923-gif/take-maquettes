@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réponses aux commentaires — maquettes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--field:#f1f2f6;--ink:#111;--muted:#8a8a8f;--soft:#6b6b70;--line:#d9d9de;--bg:#f6f6f7;--card:#fff;--red:#e0262f;--accent:#111}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,system-ui,sans-serif;line-height:1.5}
+main{max-width:1180px;margin:0 auto;padding:28px 16px 64px}
+h1{font-size:28px;line-height:1.2;margin:0 0 6px}
+h2{font-size:20px;margin:40px 0 8px}
+p,li{font-size:16px;max-width:72ch}
+.lede{color:var(--soft);margin:0 0 18px}
+.grid{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;margin-top:16px}
+figure{margin:0;width:322px}
+figcaption{font-size:14px;color:var(--soft);margin-top:10px}
+figcaption b{color:var(--ink)}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:#e9e9ec;color:#333;margin-bottom:6px}
+.frame{width:322px;height:700px;border-radius:44px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.14),0 0 0 8px #1a1a1a;background:#fff;position:relative}
+.phone{width:402px;height:874px;transform:scale(.8);transform-origin:0 0;position:absolute;inset:0 auto auto 0;background:#fff;overflow:hidden}
+.head{position:absolute;top:0;left:0;width:402px;height:119px;background:url(img/entete.jpg) 0 0/402px 119px no-repeat;z-index:3}
+.foot{position:absolute;bottom:0;left:0;width:402px;height:104px;background:url(img/champ.jpg) 0 0/402px 104px no-repeat;z-index:3}
+.list{position:absolute;top:119px;left:0;right:0;bottom:104px;overflow:hidden;padding-top:10px}
+.c{display:flex;gap:10px;padding:10px 16px 6px 16px;position:relative}
+.av{flex:none;width:32px;height:32px;border-radius:50%;background-size:cover;background-position:center}
+.r .av{width:24px;height:24px}
+.body{min-width:0}
+.who{font-size:15px;font-weight:600}
+.who span{font-weight:400;color:var(--muted);font-size:14px;margin-left:5px}
+.txt{font-size:16px;line-height:22px;margin-top:1px}
+.acts{display:flex;gap:16px;align-items:center;margin-top:6px;font-size:15px;color:var(--soft);font-weight:600}
+.acts i{font-style:normal;font-weight:500;display:inline-flex;align-items:center;gap:5px}
+.heart{width:18px;height:16px;display:inline-block;background:no-repeat center/18px 16px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 21'%3E%3Cpath d='M12 20s-9-5.6-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.4-9 12-9 12z' fill='none' stroke='%236b6b70' stroke-width='2'/%3E%3C/svg%3E")}
+.r{padding:6px 16px 4px 58px}
+.r .who{font-size:14px}.r .txt{font-size:15px;line-height:20px}.r .acts{font-size:14px;margin-top:4px}
+.more{display:flex;align-items:center;gap:10px;height:30px;padding:4px 16px 8px 58px;font-size:14px;font-weight:600;color:var(--soft);overflow:hidden}
+.more::before{content:"";width:24px;height:1px;background:var(--line)}
+.thread{overflow:hidden}
+.chip{position:absolute;left:16px;right:16px;bottom:104px;height:40px;border-radius:14px;background:#efeff2;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:14px;color:#3a3a3f;z-index:4}
+.chip b{font-weight:600}
+.cover{position:absolute;left:30px;bottom:43px;width:190px;height:36px;background:var(--field);z-index:5;opacity:0}
+.typed{position:absolute;left:37px;bottom:49px;height:26px;line-height:26px;font-size:17px;color:var(--ink);z-index:6;white-space:nowrap;overflow:hidden}
+.tap{position:absolute;width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.18);z-index:9;opacity:0;pointer-events:none}
+.hl{position:absolute;inset:0;background:#fff4c2;z-index:-1}
+.static .tap{display:none}
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:12px}
+.card{background:var(--card);border-radius:18px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h3{margin:0 0 6px;font-size:16px}
+.card q{display:block;font-size:14px;color:#333;margin:8px 0;font-style:italic}
+.card a{font-size:13px;color:#555;word-break:break-all}
+.choice{background:var(--card);border-radius:18px;padding:16px 18px;margin-top:12px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.note{font-size:14px;color:var(--soft)}
+@media (max-width:700px){.grid{justify-content:center}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* ── A : répondre ─────────────────────────────────────────────── */
+.a .tap1{left:222px;top:178px;animation:a-tap1 9s infinite}
+.a .chip{animation:a-chip 9s infinite}
+.a .cover{animation:a-cover 9s infinite}
+.a .typed{animation:a-type 9s infinite steps(28,end)}
+.a .tap2{left:340px;top:812px;animation:a-tap2 9s infinite}
+.a .mine{animation:a-mine 9s infinite}
+.a .mine .hl{animation:a-hl 9s infinite}
+@keyframes a-tap1{0%,9%{opacity:0;transform:scale(.6)}11%{opacity:1;transform:scale(1)}15%,100%{opacity:0;transform:scale(1.3)}}
+@keyframes a-cover{0%,15%{opacity:0}17%,52%{opacity:1}56%,100%{opacity:0}}
+@keyframes a-chip{0%,13%{opacity:0;transform:translateY(12px)}17%,52%{opacity:1;transform:none}56%,100%{opacity:0;transform:translateY(12px)}}
+@keyframes a-type{0%,18%{max-width:0}46%,52%{max-width:290px}54%,100%{max-width:0;opacity:0}}
+@keyframes a-tap2{0%,49%{opacity:0;transform:scale(.6)}51%{opacity:1;transform:scale(1)}55%,100%{opacity:0;transform:scale(1.3)}}
+@keyframes a-mine{0%,53%{max-height:0;opacity:0}60%,96%{max-height:90px;opacity:1}100%{max-height:0;opacity:0}}
+@keyframes a-hl{0%,58%{opacity:1}80%,100%{opacity:0}}
+
+/* ── B : fil replié, façon Instagram ──────────────────────────── */
+.b .tap1{left:70px;top:226px;animation:b-tap1 9s infinite}
+.b .thread{animation:b-open 9s infinite}
+.b .see{animation:b-see 9s infinite}
+.b .hide{animation:b-hide 9s infinite}
+.b .tap2{left:70px;top:458px;animation:b-tap2 9s infinite}
+@keyframes b-tap1{0%,14%{opacity:0;transform:scale(.6)}16%{opacity:1;transform:scale(1)}20%,100%{opacity:0;transform:scale(1.3)}}
+@keyframes b-open{0%,18%{max-height:0}28%,72%{max-height:300px}82%,100%{max-height:0}}
+@keyframes b-see{0%,18%{opacity:1;height:30px;padding-top:4px;padding-bottom:8px}19%,78%{opacity:0;height:0;padding-top:0;padding-bottom:0}82%,100%{opacity:1;height:30px;padding-top:4px;padding-bottom:8px}}
+@keyframes b-hide{0%,26%{opacity:0;height:0;padding-top:0;padding-bottom:0}30%,72%{opacity:1;height:30px;padding-top:4px;padding-bottom:8px}76%,100%{opacity:0;height:0;padding-top:0;padding-bottom:0}}
+@keyframes b-tap2{0%,68%{opacity:0;transform:scale(.6)}70%{opacity:1;transform:scale(1)}74%,100%{opacity:0;transform:scale(1.3)}}
+
+/* ── C : la première réponse visible, façon X et Threads ─────── */
+.cc .tap1{left:70px;top:300px;animation:b-tap1 9s infinite}
+.cc .thread{animation:c-open 9s infinite}
+.cc .see{animation:b-see 9s infinite}
+.cc .hide{animation:b-hide 9s infinite}
+.cc .tap2{left:70px;top:458px;animation:b-tap2 9s infinite}
+@keyframes c-open{0%,18%{max-height:0}28%,72%{max-height:170px}82%,100%{max-height:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>Répondre à un commentaire, et lire un fil</h1>
+<p class="lede">Maquettes du 02/10/2026 pour Adam, sur une vraie capture iOS de la discussion d'un take (main du 01/10). Aucune ligne de code avant ton accord : c'est la règle pour une nouvelle fonction.</p>
+
+<p><b>Ce qui ne va pas aujourd'hui.</b> Les réponses arrivent mêlées aux commentaires, 30 par 30. Du coup, «&nbsp;Voir N réponses&nbsp;» donne un nombre faux, une réponse neuve à un vieux commentaire reste cachée, et un fil déplié ne se replie plus. Ces maquettes montrent comment ça marcherait comme chez Instagram et X : les réponses de chaque commentaire, comptées par le serveur, chargées quand on les ouvre, repliables.</p>
+
+<h2>1. Répondre à un commentaire</h2>
+<div class="grid">
+  <figure>
+    <span class="tag">A · répondre</span>
+    <div class="frame"><div class="phone a">
+      <div class="head"></div>
+      <div class="list">
+        <div class="c"><div class="av" style="background-image:url(img/av-noah.jpg)"></div><div class="body"><div class="who">Noah Williams<span>il y a 1 j</span></div><div class="txt">I pay it and complain, which is the problem.</div><div class="acts"><i><span class="heart"></span>2</i>Répondre</div></div></div>
+        <div class="thread mine" style="max-height:0">
+          <div class="c r"><div class="hl"></div><div class="av" style="background-image:url(img/av-ava.jpg)"></div><div class="body"><div class="who">Toi<span>à l'instant</span></div><div class="txt">Exactly, and the fees double it.</div><div class="acts"><i><span class="heart"></span>0</i>Répondre</div></div></div>
+        </div>
+        <div class="c"><div class="av" style="background-image:url(img/av-amir.jpg)"></div><div class="body"><div class="who">Amir Haddad<span>il y a 1 j</span></div><div class="txt">Dynamic pricing broke the whole thing.</div><div class="acts"><i><span class="heart"></span>2</i>Répondre</div></div></div>
+        <div class="c"><div class="av" style="background-image:url(img/av-lucas.jpg)"></div><div class="body"><div class="who">Lucas Costa<span>il y a 1 j</span></div><div class="txt">Two hundred euros before you have had a drink.</div><div class="acts"><i><span class="heart"></span>2</i>Répondre</div></div></div>
+        <div class="c"><div class="av" style="background-image:url(img/av-leo.jpg)"></div><div class="body"><div class="who">Léo Bernard<span>il y a 1 j</span></div><div class="txt">Worth it once a year, not once a month.</div><div class="acts"><i><span class="heart"></span>2</i>Répondre</div></div></div>
+        <div class="c"><div class="av" style="background-image:url(img/av-maya.jpg)"></div><div class="body"><div class="who">Maya Patel<span>il y a 1 j</span></div><div class="txt">Past it years ago, and the resale is worse.</div><div class="acts"><i><span class="heart"></span>2</i>Répondre</div></div></div>
+      </div>
+      <div class="chip" style="opacity:0"><span>Réponse à <b>Noah Williams</b></span><span>✕</span></div>
+      <div class="foot"></div>
+      <div class="cover"></div>
+      <div class="typed" style="max-width:0">Exactly, and the fees double it.</div>
+      <div class="tap tap1"></div><div class="tap tap2"></div>
+    </div></div>
+    <figcaption><b>On touche «&nbsp;Répondre&nbsp;».</b> Le champ dit «&nbsp;Réponse à Noah Williams&nbsp;», avec une croix pour annuler, et le clavier monte comme aujourd'hui. À l'envoi, la réponse s'ouvre sous le commentaire de Noah, en retrait, surlignée un instant. Une réponse à une réponse va dans le même fil, sur un seul niveau, comme sur Instagram.</figcaption>
+  </figure>
+</div>
+
+<h2>2. Un fil, replié puis déplié : deux façons, à choisir</h2>
+<div class="grid">
+  <figure>
+    <span class="tag">B · tout replié, façon Instagram</span>
+    <div class="frame"><div class="phone b">
+      <div class="head"></div>
+      <div class="list">
+        <div class="c"><div class="av" style="background-image:url(img/av-noah.jpg)"></div><div class="body"><div class="who">Noah Williams<span>il y a 1 j</span></div><div class="txt">I pay it and complain, which is the problem.</div><div class="acts"><i><span class="heart"></span>12</i>Répondre</div></div></div>
+        <div class="more see">Voir 3 réponses</div>
+        <div class="thread" style="max-height:0">
+          <div class="c r"><div class="av" style="background-image:url(img/av-amir.jpg)"></div><div class="body"><div class="who">Amir Haddad<span>il y a 20 h</span></div><div class="txt">Same. The fees on top are the worst part.</div><div class="acts"><i><span class="heart"></span>4</i>Répondre</div></div></div>
+          <div class="c r"><div class="av" style="background-image:url(img/av-lucas.jpg)"></div><div class="body"><div class="who">Lucas Costa<span>il y a 18 h</span></div><div class="txt">Complaining is free, at least.</div><div class="acts"><i><span class="heart"></span>2</i>Répondre</div></div></div>
+          <div class="c r"><div class="av" style="background-image:url(img/av-maya.jpg)"></div><div class="body"><div class="who">Maya Patel<span>il y a 2 h</span></div><div class="txt">Small venues fixed it for me.</div><div class="acts"><i><span class="heart"></span>1</i>Répondre</div></div></div>
+        </div>
+        <div class="more hide" style="opacity:0;height:0;padding-top:0;padding-bottom:0">Masquer les réponses</div>
+        <div class="c"><div class="av" style="background-image:url(img/av-leo.jpg)"></div><div class="body"><div class="who">Léo Bernard<span>il y a 1 j</span></div><div class="txt">Worth it once a year, not once a month.</div><div class="acts"><i><span class="heart"></span>2</i>Répondre</div></div></div>
+        <div class="c"><div class="av" style="background-image:url(img/av-ava.jpg)"></div><div class="body"><div class="who">Ava Martin<span>il y a 1 j</span></div><div class="txt">Small venues are still fair. Arenas are not.</div><div class="acts"><i><span class="heart"></span>2</i>Répondre</div></div></div>
+      </div>
+      <div class="foot"></div>
+      <div class="tap tap1"></div><div class="tap tap2"></div>
+    </div></div>
+    <figcaption><b>La discussion reste courte.</b> Sous chaque commentaire, une seule ligne, «&nbsp;Voir 3 réponses&nbsp;», avec le vrai nombre donné par le serveur. Un toucher les ouvre, en retrait, et «&nbsp;Masquer les réponses&nbsp;» les replie.</figcaption>
+  </figure>
+
+  <figure>
+    <span class="tag">C · la première réponse visible, façon X</span>
+    <div class="frame"><div class="phone cc">
+      <div class="head"></div>
+      <div class="list">
+        <div class="c"><div class="av" style="background-image:url(img/av-noah.jpg)"></div><div class="body"><div class="who">Noah Williams<span>il y a 1 j</span></div><div class="txt">I pay it and complain, which is the problem.</div><div class="acts"><i><span class="heart"></span>12</i>Répondre</div></div></div>
+        <div class="c r"><div class="av" style="background-image:url(img/av-amir.jpg)"></div><div class="body"><div class="who">Amir Haddad<span>il y a 20 h</span></div><div class="txt">Same. The fees on top are the worst part.</div><div class="acts"><i><span class="heart"></span>4</i>Répondre</div></div></div>
+        <div class="more see">Voir 2 autres réponses</div>
+        <div class="thread" style="max-height:0">
+          <div class="c r"><div class="av" style="background-image:url(img/av-lucas.jpg)"></div><div class="body"><div class="who">Lucas Costa<span>il y a 18 h</span></div><div class="txt">Complaining is free, at least.</div><div class="acts"><i><span class="heart"></span>2</i>Répondre</div></div></div>
+          <div class="c r"><div class="av" style="background-image:url(img/av-maya.jpg)"></div><div class="body"><div class="who">Maya Patel<span>il y a 2 h</span></div><div class="txt">Small venues fixed it for me.</div><div class="acts"><i><span class="heart"></span>1</i>Répondre</div></div></div>
+        </div>
+        <div class="more hide" style="opacity:0;height:0;padding-top:0;padding-bottom:0">Masquer les réponses</div>
+        <div class="c"><div class="av" style="background-image:url(img/av-leo.jpg)"></div><div class="body"><div class="who">Léo Bernard<span>il y a 1 j</span></div><div class="txt">Worth it once a year, not once a month.</div><div class="acts"><i><span class="heart"></span>2</i>Répondre</div></div></div>
+        <div class="c"><div class="av" style="background-image:url(img/av-ava.jpg)"></div><div class="body"><div class="who">Ava Martin<span>il y a 1 j</span></div><div class="txt">Small venues are still fair. Arenas are not.</div><div class="acts"><i><span class="heart"></span>2</i>Répondre</div></div></div>
+      </div>
+      <div class="foot"></div>
+      <div class="tap tap1"></div><div class="tap tap2"></div>
+    </div></div>
+    <figcaption><b>On voit tout de suite qu'on a répondu.</b> La réponse la plus aimée reste visible sous le commentaire, et «&nbsp;Voir 2 autres réponses&nbsp;» ouvre le reste. C'est le plus proche de l'app d'aujourd'hui, qui montre déjà deux réponses, mais avec un nombre juste et un fil qu'on peut replier.</figcaption>
+  </figure>
+</div>
+
+<div class="choice">
+  <b>Ton choix : B ou C.</b>
+  <p class="note">Dans les deux cas, la réponse va dans le fil du commentaire, sur un seul niveau, avec le bandeau «&nbsp;Réponse à…&nbsp;», et sans squelette pendant le chargement, comme le veut ta règle. Les commentaires anonymes gardent leur fantôme. Le tout reste derrière un interrupteur du serveur, éteint tant que tu n'as pas validé.</p>
+</div>
+
+<h2>3. Comment font Instagram et X, nos références</h2>
+<div class="cmp">
+  <div class="card"><h3>Instagram (B)</h3>
+    <p class="note">Une réponse se range sous son commentaire, dans un fil en retrait, et on touche pour voir toutes les réponses.</p>
+    <q>«&nbsp;Now, when you hit reply underneath any comment, your response will automatically be grouped right underneath it in a thread.&nbsp;»</q>
+    <a href="https://about.instagram.com/blog/announcements/introducing-instagram-comment-threads">about.instagram.com, 15/08/2017</a>
+    <q>«&nbsp;Threaded comments, which are displayed with indentations to help easily identify replies…&nbsp;» ; «&nbsp;You can then tap on a comment to see a list of all replies to the original comment.&nbsp;»</q>
+    <a href="https://9to5mac.com/2017/08/15/instagram-threaded-comments/">9to5Mac, Jeff Benjamin, 15/08/2017</a>
+  </div>
+  <div class="card"><h3>X (C)</h3>
+    <p class="note">Des retraits et des traits pour savoir qui répond à qui ; les réponses en plus sont derrière «&nbsp;Show replies&nbsp;».</p>
+    <q>«&nbsp;new layout for replies with lines and indentations that make it clearer who is talking to whom&nbsp;»</q>
+    <q>«&nbsp;Extra replies are also hidden beneath the 'Show replies' label, which you have to tap to continue to read through a given thread.&nbsp;»</q>
+    <a href="https://techcrunch.com/2020/05/05/twitter-rolls-out-changes-to-threaded-conversations-following-tests-in-its-prototype-app-twttr/">TechCrunch, Sarah Perez, 05/05/2020</a>
+  </div>
+  <div class="card"><h3>Threads</h3>
+    <p class="note">D'abord les réponses de premier niveau ; les réponses plus profondes se chargent à la demande.</p>
+    <q>«&nbsp;GET {media-id}/replies only returns the top-level replies under the Threads ID provided in the request&nbsp;»</q>
+    <a href="https://developers.facebook.com/docs/threads/retrieve-and-manage-replies/replies-and-conversations">developers.facebook.com, doc de l'API Threads</a>
+  </div>
+</div>
+
+<p class="note" style="margin-top:28px">Base : vraie capture iOS de la discussion, en-tête et champ d'origine ; les rangées sont redessinées à l'identique pour montrer les réponses. Le sélecteur «&nbsp;Relevant / Live&nbsp;» de la capture n'apparaît pas, puisque le mode en direct est retiré. Écart C1 n° 1 du rapport «&nbsp;interactions sociales&nbsp;» du 02/10.</p>
+</main>
+<script>
+  // ?t=3 fige les animations à 3 s : pour revoir un instant précis.
+  const t = new URLSearchParams(location.search).get('t')
+  if (t !== null) {
+    const style = document.createElement('style')
+    style.textContent = `*{animation-delay:-${Number(t)}s!important;animation-play-state:paused!important}`
+    document.head.appendChild(style)
+  }
+</script>
+</body>
+</html>
