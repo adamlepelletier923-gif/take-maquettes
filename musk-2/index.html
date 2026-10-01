@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Take · Musk, 2e passage</title>
+<style>
+:root { --bg:#fafafa; --card:#fff; --ink:#141414; --soft:#5f6368; --line:#e6e6e6; --red:#dc2626; --green:#16a34a; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0f0f10; --card:#18181a; --ink:#f2f2f2; --soft:#a1a1a6; --line:#2a2a2e; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 80px; }
+h1 { font-size:28px; line-height:1.2; margin:0 0 8px; }
+.lead { color:var(--soft); margin:0 0 16px; }
+nav { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 8px; }
+nav a { color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:999px; padding:4px 12px; text-decoration:none; font-size:14px; }
+h2 { font-size:20px; margin:40px 0 8px; padding-top:8px; border-top:1px solid var(--line); }
+.pt { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; margin:16px 0; }
+.pt h3 { font-size:18px; line-height:1.3; margin:0 0 12px; }
+.n { display:inline-block; min-width:28px; height:28px; line-height:28px; text-align:center; border-radius:14px; background:var(--ink); color:var(--bg); font-size:14px; margin-right:4px; }
+.tag { font-size:12px; font-weight:600; color:var(--soft); border:1px solid var(--line); border-radius:999px; padding:1px 8px; margin-right:4px; vertical-align:2px; }
+.shots { display:flex; gap:10px; margin:0 0 12px; }
+figure { margin:0; flex:1 1 0; min-width:0; }
+figure img { width:100%; height:auto; aspect-ratio:300/652; border-radius:12px; border:1px solid var(--line); background:var(--line); display:block; }
+figcaption { font-size:13px; color:var(--soft); text-align:center; margin-top:4px; }
+.pt p { margin:6px 0; }
+.proof { font-size:13px; color:var(--soft); }
+code { font-size:12px; background:var(--bg); border:1px solid var(--line); border-radius:6px; padding:0 4px; }
+.box { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:12px 16px; }
+.box li { margin:4px 0; }
+</style>
+</head>
+<body>
+<main>
+<h1>Take · loi de Musk, 2e passage</h1>
+<p class="lead">36 choses à enlever ou à simplifier (26 à supprimer · 5 à fusionner · 2 à cacher · 2 à simplifier · 1 à déplacer), tirées de 7 tours complets de l'app (275 écrans), chacune vérifiée dans le code de main. Aucune n'ajoute d'écran ni de bouton.</p>
+<div class="box">
+<p><b>Comment lire.</b> À gauche, l'écran d'aujourd'hui, ce qui part en rouge. À droite, la solution, faite avec les vrais pixels de l'app, ce qui change en vert.</p>
+<p><b>Ce qui n'y est pas.</b> Les 122 points du premier passage, les 40 d'Unification et les 20 d'Espaces ne sont pas repris. Les points que tu as déjà refusés non plus.</p>
+<p><b>Contrôle.</b> Jev a relu chaque proposition contre les règles déjà tranchées. Il a écarté la barre des takes à note, que tu avais rendue noire le 25/09.</p>
+</div>
+<nav><a href="#t1">Navigation et réglages</a><a href="#t2">Le fil et un take</a><a href="#t3">La création</a><a href="#t4">Le profil et l&#x27;avatar</a><a href="#t5">Les messages</a><a href="#t6">L&#x27;activité et Explorer</a><a href="#t7">Sans compte et connexion</a><a href="#ecartes">Écartés</a></nav>
+<h2 id="t1">Tour 1 · Navigation et réglages</h2>
+<article class="pt" id="p1">
+  <h3><span class="n">1</span> <span class="tag">Supprimer</span> « 0 take » au-dessus de « Aucun take à proximité »</h3>
+  <div class="shots"><figure><img data-src="img/M01-avant.jpg" alt="« 0 take » au-dessus de « Aucun take à proximité »" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M01-apres.jpg" alt="Le compteur s&#x27;efface quand la liste est vide : l&#x27;état vide le dit déjà, avec « Changer de lieu »." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> À proximité vide : l&#x27;en-tête dit « 0 take » et, juste dessous, l&#x27;écran dit « Aucun take à proximité ».</p>
+  <p><b>Solution.</b> Le compteur s&#x27;efface quand la liste est vide : l&#x27;état vide le dit déjà, avec « Changer de lieu ».</p>
+  <p class="proof">Dans le code : app/(app)/(home)/index.tsx:884 : <code>count</code> part dès que <code>nearbyTotal !== null</code>, zéro compris.</p>
+</article>
+<article class="pt" id="p2">
+  <h3><span class="n">2</span> <span class="tag">Supprimer</span> « Utiliser ma position » / « Utilise ta position actuelle »</h3>
+  <div class="shots"><figure><img data-src="img/M02-avant.jpg" alt="« Utiliser ma position » / « Utilise ta position actuelle »" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M02-apres.jpg" alt="Le titre seul, centré dans la rangée." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Dans « Changer de lieu », le bouton dit deux fois la même chose : son titre et son sous-titre. Même doublon dans le composeur, sous « Publier ici précisément ».</p>
+  <p><b>Solution.</b> Le titre seul, centré dans la rangée.</p>
+  <p class="proof">Dans le code : AreaPickerSheet.tsx:521 : <code>nearby.locationSourceHint</code> sous les deux titres.</p>
+</article>
+<article class="pt" id="p3">
+  <h3><span class="n">3</span> <span class="tag">Déplacer</span> Le crédit GeoNames sous « Appliquer »</h3>
+  <div class="shots"><figure><img data-src="img/M03-avant.jpg" alt="Le crédit GeoNames sous « Appliquer »" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M03-apres.jpg" alt="Le crédit rejoint À propos › Licences, à côté des autres crédits CC BY : la licence demande un crédit raisonnable, pas sur chaque écran." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> « Données des villes © GeoNames (CC BY 4.0) » sous le bouton de chaque feuille de lieu, et dans la recherche de la carte.</p>
+  <p><b>Solution.</b> Le crédit rejoint À propos › Licences, à côté des autres crédits CC BY : la licence demande un crédit raisonnable, pas sur chaque écran.</p>
+  <p class="proof">Dans le code : AreaPickerSheet.tsx:734, 739 et 753 : trois rendus de <code>nearby.cityDataAttribution</code>.</p>
+</article>
+<article class="pt" id="p4">
+  <h3><span class="n">4</span> <span class="tag">Supprimer</span> « Build f3450f4a8254 » dans À propos</h3>
+  <div class="shots"><figure><img data-src="img/M17-avant.jpg" alt="« Build f3450f4a8254 » dans À propos" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M17-apres.jpg" alt="La version suffit à l&#x27;utilisateur ; l&#x27;identifiant reste dans les journaux et pour le support." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> La version « v1.0.0 (1) » est sur la ligne À propos, et la ligne dépliée ajoute « Build f3450f4a8254 », un identifiant de déploiement.</p>
+  <p><b>Solution.</b> La version suffit à l&#x27;utilisateur ; l&#x27;identifiant reste dans les journaux et pour le support.</p>
+  <p class="proof">Dans le code : app/(app)/settings/index.tsx:211-216 : <code>settings.buildId</code> → <code>RUNTIME_ID</code>.</p>
+</article>
+<article class="pt" id="p5">
+  <h3><span class="n">5</span> <span class="tag">Supprimer</span> Nom et nom d&#x27;utilisateur, à deux endroits</h3>
+  <div class="shots"><figure><img data-src="img/M18-avant.jpg" alt="Nom et nom d&#x27;utilisateur, à deux endroits" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M18-apres.jpg" alt="Une seule porte, Modifier le profil. Compte garde Apps connectées (et la suppression du compte quand elle est ouverte)." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Paramètres › Compte ouvre « Nom d&#x27;utilisateur » et « Nom », exactement le même éditeur que Modifier le profil, à deux écrans de là.</p>
+  <p><b>Solution.</b> Une seule porte, Modifier le profil. Compte garde Apps connectées (et la suppression du compte quand elle est ouverte).</p>
+  <p class="proof">Dans le code : app/(app)/settings/account.tsx:48 et 55 poussent <code>/(app)/edit-field</code> avec <code>username</code> et <code>name</code>, comme edit-profile.tsx:106.</p>
+</article>
+<article class="pt" id="p6">
+  <h3><span class="n">6</span> <span class="tag">Supprimer</span> « Un jeton d&#x27;accès déjà émis… »</h3>
+  <div class="shots"><figure><img data-src="img/M19-avant.jpg" alt="« Un jeton d&#x27;accès déjà émis… »" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M19-apres.jpg" alt="Le bouton « Déconnecter » suffit ; ce délai technique va dans la politique de confidentialité." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Sous chaque app connectée : « Un jeton d&#x27;accès déjà émis peut rester valide pendant 10 minutes au maximum. »</p>
+  <p><b>Solution.</b> Le bouton « Déconnecter » suffit ; ce délai technique va dans la politique de confidentialité.</p>
+  <p class="proof">Dans le code : src/i18n/locales/fr.json:262 : <code>tokenWindow</code>, affiché sous la carte.</p>
+</article>
+<article class="pt" id="p7">
+  <h3><span class="n">7</span> <span class="tag">Supprimer</span> « Liens partagés » : une section sans réglage</h3>
+  <div class="shots"><figure><img data-src="img/M20-avant.jpg" alt="« Liens partagés » : une section sans réglage" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M20-apres.jpg" alt="La section part ; sa phrase rejoint la politique de confidentialité." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Confidentialité et sécurité finit par une section « Liens partagés » qui n&#x27;est qu&#x27;un paragraphe, sans interrupteur ni lien.</p>
+  <p><b>Solution.</b> La section part ; sa phrase rejoint la politique de confidentialité.</p>
+  <p class="proof">Dans le code : app/(app)/settings/privacy.tsx:172-174 : <code>shareLinksTitle</code> + <code>shareLinksDisclosure</code>, rien d&#x27;autre.</p>
+</article>
+<article class="pt" id="p8">
+  <h3><span class="n">8</span> <span class="tag">Cacher</span> « Comptes bloqués 0 › » vers une page vide</h3>
+  <div class="shots"><figure><img data-src="img/M21-avant.jpg" alt="« Comptes bloqués 0 › » vers une page vide" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M21-apres.jpg" alt="La ligne n&#x27;apparaît qu&#x27;à partir d&#x27;un compte bloqué." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> La ligne « Comptes bloqués 0 › » ouvre une page qui dit « Aucun compte bloqué. » (t1-31). Même règle que le 142, accepté pour Apps connectées vide.</p>
+  <p><b>Solution.</b> La ligne n&#x27;apparaît qu&#x27;à partir d&#x27;un compte bloqué.</p>
+  <p class="proof">Dans le code : app/(app)/settings/privacy.tsx:165-170 : la ligne s&#x27;affiche avec <code>blockedCount</code>, zéro compris.</p>
+</article>
+<article class="pt" id="p9">
+  <h3><span class="n">9</span> <span class="tag">Supprimer</span> Sept fichiers de police chargés au lancement, jamais utilisés</h3>
+  <div class="shots"><figure><img data-src="img/M22-avant.jpg" alt="Sept fichiers de police chargés au lancement, jamais utilisés" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M22-apres.jpg" alt="Les sept fichiers sortent du paquet et de Licences : l&#x27;app démarre plus légère, la liste des licences raccourcit." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> L&#x27;app charge 17 fichiers de police avant d&#x27;afficher quoi que ce soit. Baloo 2, Fraunces (2), Work Sans (2) et deux graisses de JetBrains Mono ne sont utilisés nulle part ; Baloo 2 figure même dans Licences.</p>
+  <p><b>Solution.</b> Les sept fichiers sortent du paquet et de Licences : l&#x27;app démarre plus légère, la liste des licences raccourcit.</p>
+  <p class="proof">Dans le code : src/constants/fonts.ts:86-104 : <code>GAME_FONTS</code> chargé par <code>useFonts</code> (app/_layout.tsx:66) ; <code>FONT_DISPLAY</code>, <code>FONT_MONO</code>, <code>FONT_MONO_MEDIUM</code>, Fraunces et Work Sans : zéro usage ailleurs.</p>
+</article><h2 id="t2">Tour 2 · Le fil et un take</h2>
+<article class="pt" id="p10">
+  <h3><span class="n">10</span> <span class="tag">Supprimer</span> L&#x27;étiquette « CONTEXTE » dans sa propre carte</h3>
+  <div class="shots"><figure><img data-src="img/M07-avant.jpg" alt="L&#x27;étiquette « CONTEXTE » dans sa propre carte" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M07-apres.jpg" alt="La carte seule, sa phrase centrée." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Le contexte de l&#x27;auteur est déjà dans une carte grise sous la question, et la carte porte encore le mot « CONTEXTE » en capitales.</p>
+  <p><b>Solution.</b> La carte seule, sa phrase centrée.</p>
+  <p class="proof">Dans le code : src/components/poll/TakeBackFace.tsx:93 : <code>pollComments.contextTitle</code>.</p>
+</article>
+<article class="pt" id="p11">
+  <h3><span class="n">11</span> <span class="tag">Simplifier</span> 1 h, 1 j, 1 sem., Tout sur un take d&#x27;un jour</h3>
+  <div class="shots"><figure><img data-src="img/M08-avant.jpg" alt="1 h, 1 j, 1 sem., Tout sur un take d&#x27;un jour" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M08-apres.jpg" alt="La courbe entière, sans sélecteur, tant que le take a moins d&#x27;une semaine ; le sélecteur revient quand les durées montrent vraiment autre chose." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Le graphique propose quatre durées. Sur un take d&#x27;un jour, 1 j, 1 sem. et Tout tracent la même courbe (captures t2-25).</p>
+  <p><b>Solution.</b> La courbe entière, sans sélecteur, tant que le take a moins d&#x27;une semaine ; le sélecteur revient quand les durées montrent vraiment autre chose.</p>
+  <p class="proof">Dans le code : src/components/poll/OddsChart.tsx:42-55 : les quatre durées, affichées quel que soit l&#x27;âge du take.</p>
+</article>
+<article class="pt" id="p12">
+  <h3><span class="n">12</span> <span class="tag">Fusionner</span> Deux fantômes sur le même take</h3>
+  <div class="shots"><figure><img data-src="img/M24-avant.jpg" alt="Deux fantômes sur le même take" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M24-apres.jpg" alt="Un seul fantôme, en haut, pour le take entier : voter et commenter en anonyme vont ensemble." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Le take ouvert a un fantôme dans la ligne de l&#x27;auteur (voter en anonyme) et un autre dans « Donne ton avis… » (commenter en anonyme). Deux réglages distincts, à deux endroits du même écran.</p>
+  <p><b>Solution.</b> Un seul fantôme, en haut, pour le take entier : voter et commenter en anonyme vont ensemble.</p>
+  <p class="proof">Dans le code : app/(app)/poll-comments.tsx:709 (<code>anonymousVote</code>) et 1472 (<code>toggleAnonymousComment</code>) : deux états séparés.</p>
+</article>
+<article class="pt" id="p13">
+  <h3><span class="n">13</span> <span class="tag">Fusionner</span> « Enregistrer en GIF » et « Partager la carte »</h3>
+  <div class="shots"><figure><img data-src="img/M25-avant.jpg" alt="« Enregistrer en GIF » et « Partager la carte »" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M25-apres.jpg" alt="Un seul « Partager la carte » ; la feuille iOS qui s&#x27;ouvre propose déjà « Enregistrer l&#x27;image »." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> La visionneuse d&#x27;une photo du fil propose deux boutons qui fabriquent chacun une image du take : un GIF enregistré dans Photos, et une carte à partager.</p>
+  <p><b>Solution.</b> Un seul « Partager la carte » ; la feuille iOS qui s&#x27;ouvre propose déjà « Enregistrer l&#x27;image ».</p>
+  <p class="proof">Dans le code : src/components/ImageViewerModal.tsx:176 et 478-499 : <code>saveGifToPhotos</code> et <code>shareCard</code>, deux boutons.</p>
+</article><h2 id="t3">Tour 3 · La création</h2>
+<article class="pt" id="p14">
+  <h3><span class="n">14</span> <span class="tag">Simplifier</span> « 0/280 » avant la première lettre</h3>
+  <div class="shots"><figure><img data-src="img/M12-avant.jpg" alt="« 0/280 » avant la première lettre" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M12-apres.jpg" alt="La même règle partout : le compteur apparaît quand on écrit, et ne vire au rouge qu&#x27;à 30 caractères de la limite." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Le champ de la question compte « 0/280 » à vide. Le champ contexte, lui, ne compte qu&#x27;une fois qu&#x27;on écrit, parce qu&#x27;« une boîte vide qui compte 0/280 se lit comme un champ à remplir ». Même chose pour Nom 10/50, Nom d&#x27;utilisateur 10/20, Bio 53/160.</p>
+  <p><b>Solution.</b> La même règle partout : le compteur apparaît quand on écrit, et ne vire au rouge qu&#x27;à 30 caractères de la limite.</p>
+  <p class="proof">Dans le code : src/components/create/ComposeInput.tsx:61 affiche toujours <code>{value.length}/{maxLength}</code> ; ComposeBio.tsx:13 pose la règle inverse.</p>
+</article>
+<article class="pt" id="p15">
+  <h3><span class="n">15</span> <span class="tag">Fusionner</span> Deux boutons pour le son</h3>
+  <div class="shots"><figure><img data-src="img/M13-avant.jpg" alt="Deux boutons pour le son" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M13-apres.jpg" alt="Un seul bouton son : appui, on enregistre ; l&#x27;import reste dans son menu. « Publier » reprend la place." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Sous le composeur : photo, micro (enregistrer) et fichier audio (importer). L&#x27;import ouvre Fichiers, vide chez presque tout le monde (t3-16 « Rien de récent »).</p>
+  <p><b>Solution.</b> Un seul bouton son : appui, on enregistre ; l&#x27;import reste dans son menu. « Publier » reprend la place.</p>
+  <p class="proof">Dans le code : app/(app)/create.tsx:1419 : <code>importAudio</code> sur un bouton à part (<code>FileAudioIcon</code>).</p>
+</article>
+<article class="pt" id="p16">
+  <h3><span class="n">16</span> <span class="tag">Supprimer</span> « Plus d&#x27;options » pour une seule option : Expire</h3>
+  <div class="shots"><figure><img data-src="img/M26-avant.jpg" alt="« Plus d&#x27;options » pour une seule option : Expire" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M26-apres.jpg" alt="Plus de puce ni d&#x27;expiration : un take reste. (Variante : la puce « Sans limite » directement, sans « Plus d&#x27;options ».)" width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Dans le composeur, « Plus d&#x27;options » n&#x27;ouvre qu&#x27;un réglage : Expire (Sans limite, 24h, 3j, 7j). Un take qui disparaît tout seul, c&#x27;est une option de plus que presque personne ne touche.</p>
+  <p><b>Solution.</b> Plus de puce ni d&#x27;expiration : un take reste. (Variante : la puce « Sans limite » directement, sans « Plus d&#x27;options ».)</p>
+  <p class="proof">Dans le code : app/(app)/create.tsx:157 (<code>EXPIRY_CHOICES</code>) et 257 (<code>moreOptionsOpen</code>) : le panneau ne contient que l&#x27;expiration.</p>
+</article>
+<article class="pt" id="p17">
+  <h3><span class="n">17</span> <span class="tag">Cacher</span> Un classement d&#x27;une ligne : « 1 Toi 0 »</h3>
+  <div class="shots"><figure><img data-src="img/M27-avant.jpg" alt="Un classement d&#x27;une ligne : « 1 Toi 0 »" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M27-apres.jpg" alt="Pas de classement tant qu&#x27;on est seul : « JOUER » puis « Défie tes amis »." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> L&#x27;onglet Jeu du profil montre un classement avec une seule ligne, soi-même à 0, puis « Défie tes amis : tes amis n&#x27;ont pas encore de score ».</p>
+  <p><b>Solution.</b> Pas de classement tant qu&#x27;on est seul : « JOUER » puis « Défie tes amis ».</p>
+  <p class="proof">Dans le code : Capture t3-23 : le classement s&#x27;affiche avec une seule entrée (la sienne).</p>
+</article><h2 id="t4">Tour 4 · Le profil et l&#x27;avatar</h2>
+<article class="pt" id="p18">
+  <h3><span class="n">18</span> <span class="tag">Supprimer</span> « Score 0 » dans l&#x27;en-tête du profil</h3>
+  <div class="shots"><figure><img data-src="img/M15-avant.jpg" alt="« Score 0 » dans l&#x27;en-tête du profil" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M15-apres.jpg" alt="« Amis 7 · Takes 18 » ; le score reste dans l&#x27;onglet Jeu." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> « Amis 7 · Takes 18 · Score 0 » : le score est le meilleur score de Take Rush, et l&#x27;onglet Jeu, trois rangs plus bas, l&#x27;affiche déjà avec le classement.</p>
+  <p><b>Solution.</b> « Amis 7 · Takes 18 » ; le score reste dans l&#x27;onglet Jeu.</p>
+  <p class="proof">Dans le code : app/(app)/(home)/profile.tsx:884-891 : <code>bestScore</code>, qui ouvre <code>/(app)/game</code> ; même chose dans u/[username].tsx:1246.</p>
+</article>
+<article class="pt" id="p19">
+  <h3><span class="n">19</span> <span class="tag">Supprimer</span> Un bouton « Message » sur chaque ami</h3>
+  <div class="shots"><figure><img data-src="img/M16-avant.jpg" alt="Un bouton « Message » sur chaque ami" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M16-apres.jpg" alt="Des lignes simples : le visage, le nom, le « … »." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> La liste Amis pose « Message » et « … » sur chaque ligne. Toucher la ligne ouvre déjà le profil, qui a son « Message ».</p>
+  <p><b>Solution.</b> Des lignes simples : le visage, le nom, le « … ».</p>
+  <p class="proof">Dans le code : app/(app)/friends.tsx:486-496 : <code>handleMessage</code> sur un bouton par ami.</p>
+</article>
+<article class="pt" id="p20">
+  <h3><span class="n">20</span> <span class="tag">Supprimer</span> Pronoms, Genre, Catégorie : trois champs que personne ne voit</h3>
+  <div class="shots"><figure><img data-src="img/M23-avant.jpg" alt="Pronoms, Genre, Catégorie : trois champs que personne ne voit" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M23-apres.jpg" alt="Les trois lignes partent, et leur éditeur avec ; le profil garde Nom, Nom d&#x27;utilisateur, Bio et Lien." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Modifier le profil propose Pronoms, Genre et Catégorie. Le profil ne les affiche nulle part, ni sur l&#x27;app ni sur le web. Le code le dit : ils restent « parce que ce sont les seules entrées de leur éditeur ».</p>
+  <p><b>Solution.</b> Les trois lignes partent, et leur éditeur avec ; le profil garde Nom, Nom d&#x27;utilisateur, Bio et Lien.</p>
+  <p class="proof">Dans le code : app/(app)/edit-profile.tsx:43-46 (« NOT in the pen frame ») ; aucun écran de profil ne lit <code>pronouns</code>, <code>gender</code> ni <code>category_id</code>.</p>
+</article>
+<article class="pt" id="p21">
+  <h3><span class="n">21</span> <span class="tag">Supprimer</span> Le menu « … » de ses propres takes : une seule ligne</h3>
+  <div class="shots"><figure><img data-src="img/M28-avant.jpg" alt="Le menu « … » de ses propres takes : une seule ligne" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M28-apres.jpg" alt="Plus de « … » sur ses propres takes dans la liste ; « Archiver » se trouve dans le menu du take ouvert, qui a déjà ses autres actions." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Sur son profil, le « … » d&#x27;un take à soi ouvre une feuille avec une seule ligne, « Archiver » (même motif que le 97, ailleurs).</p>
+  <p><b>Solution.</b> Plus de « … » sur ses propres takes dans la liste ; « Archiver » se trouve dans le menu du take ouvert, qui a déjà ses autres actions.</p>
+  <p class="proof">Dans le code : Captures t4-06 (feuille à une ligne) et t1-23 (le « … » sur chaque take).</p>
+</article>
+<article class="pt" id="p22">
+  <h3><span class="n">22</span> <span class="tag">Supprimer</span> « Ajuster » les cheveux : une feuille pour un dégradé</h3>
+  <div class="shots"><figure><img data-src="img/M30-avant.jpg" alt="« Ajuster » les cheveux : une feuille pour un dégradé" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M30-apres.jpg" alt="Plus de bouton ni de feuille : une couleur de cheveux, unie." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Le bouton « Ajuster » des cheveux ouvre une feuille avec une seule option, « Unie » ou « Dégradée », et « Réinitialiser les détails ».</p>
+  <p><b>Solution.</b> Plus de bouton ni de feuille : une couleur de cheveux, unie.</p>
+  <p class="proof">Dans le code : fr.json : <code>hairColorStyle</code>, <code>gradient</code> et <code>resetHairDetails</code>, seuls contenus de la feuille.</p>
+</article>
+<article class="pt" id="p23">
+  <h3><span class="n">23</span> <span class="tag">Supprimer</span> Joues, cils, taches de rousseur : les réglages fins qui restent</h3>
+  <div class="shots"><figure><img data-src="img/M31-avant.jpg" alt="Joues, cils, taches de rousseur : les réglages fins qui restent" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M31-apres.jpg" alt="Les trois sections partent ; chaque sous-onglet garde sa forme principale." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Après les rides et les curseurs (80, accepté), l&#x27;atelier garde « Définition des joues », « Cils » et « Taches de rousseur », invisibles à la taille d&#x27;un avatar dans le fil.</p>
+  <p><b>Solution.</b> Les trois sections partent ; chaque sous-onglet garde sa forme principale.</p>
+  <p class="proof">Dans le code : fr.json:981-994 : <code>freckles</code>, <code>cheekDefinition</code>, <code>eyelashes</code>.</p>
+</article><h2 id="t5">Tour 5 · Les messages</h2>
+<article class="pt" id="p24">
+  <h3><span class="n">24</span> <span class="tag">Supprimer</span> La légende au-dessus de chaque défi Know me</h3>
+  <div class="shots"><figure><img data-src="img/M14-avant.jpg" alt="La légende au-dessus de chaque défi Know me" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M14-apres.jpg" alt="Les cartes seules, comme les autres messages." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Dans une conversation à deux, chaque carte de défi porte une ligne au-dessus : « Sofia Rossi te lance un défi · 3 questions », « Défi envoyé à Sofia Rossi · 3 questions ». Le côté de la bulle dit déjà qui l&#x27;a envoyé.</p>
+  <p><b>Solution.</b> Les cartes seules, comme les autres messages.</p>
+  <p class="proof">Dans le code : src/components/knowme/KnowMeChallengeCard.tsx:83-125 : <code>knowMe.card.invite</code> / <code>sentTo</code> + <code>knowMe.questionCount</code> au-dessus de la carte.</p>
+</article>
+<article class="pt" id="p25">
+  <h3><span class="n">25</span> <span class="tag">Supprimer</span> « @gonlien2852 » deux fois</h3>
+  <div class="shots"><figure><img data-src="img/M33-avant.jpg" alt="« @gonlien2852 » deux fois" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M33-apres.jpg" alt="Le pseudo une fois, en titre." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Les Détails d&#x27;un compte sans nom affiché répètent le pseudo : en titre, puis en sous-titre.</p>
+  <p><b>Solution.</b> Le pseudo une fois, en titre.</p>
+  <p class="proof">Dans le code : app/(app)/(home)/messages/details.tsx:78-90 : titre et sous-titre tombent tous deux sur <code>username</code> quand le nom manque.</p>
+</article>
+<article class="pt" id="p26">
+  <h3><span class="n">26</span> <span class="tag">Supprimer</span> 100 %, 3 sur 3, sans-faute : trois fois la même chose</h3>
+  <div class="shots"><figure><img data-src="img/M34-avant.jpg" alt="100 %, 3 sur 3, sans-faute : trois fois la même chose" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M34-apres.jpg" alt="Le grand pourcentage et la phrase qui réagit ; le détail est dans « Voir les réponses »." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Le résultat d&#x27;un Know me dit « 100 % », puis « 3 bonnes réponses sur 3 », puis « Un sans-faute ! ».</p>
+  <p><b>Solution.</b> Le grand pourcentage et la phrase qui réagit ; le détail est dans « Voir les réponses ».</p>
+  <p class="proof">Dans le code : fr.json:2947-2950 : <code>count_other</code> et <code>perfect</code>, affichés sous le pourcentage.</p>
+</article>
+<article class="pt" id="p27">
+  <h3><span class="n">27</span> <span class="tag">Supprimer</span> « Question 1 », « Question 2 »… sur chaque réponse</h3>
+  <div class="shots"><figure><img data-src="img/M35-avant.jpg" alt="« Question 1 », « Question 2 »… sur chaque réponse" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M35-apres.jpg" alt="La question et la réponse, sans numéro : l&#x27;ordre se voit." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Les réponses d&#x27;un Know me numérotent chaque carte en petit gris au-dessus de la question.</p>
+  <p><b>Solution.</b> La question et la réponse, sans numéro : l&#x27;ordre se voit.</p>
+  <p class="proof">Dans le code : fr.json:2833 : <code>questionNumber</code>.</p>
+</article>
+<article class="pt" id="p28">
+  <h3><span class="n">28</span> <span class="tag">Supprimer</span> « Précédente » dans un quiz de deux questions</h3>
+  <div class="shots"><figure><img data-src="img/M36-avant.jpg" alt="« Précédente » dans un quiz de deux questions" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M36-apres.jpg" alt="Plus de retour en arrière : on répond, la question suivante arrive (125, accepté)." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Un Know me de deux ou trois questions a un bouton « Précédente », grisé à la première.</p>
+  <p><b>Solution.</b> Plus de retour en arrière : on répond, la question suivante arrive (125, accepté).</p>
+  <p class="proof">Dans le code : fr.json:2928 : <code>previous</code>.</p>
+</article><h2 id="t6">Tour 6 · L&#x27;activité et Explorer</h2>
+<article class="pt" id="p29">
+  <h3><span class="n">29</span> <span class="tag">Supprimer</span> La pastille sur l&#x27;avatar qui redit le verbe</h3>
+  <div class="shots"><figure><img data-src="img/M04-avant.jpg" alt="La pastille sur l&#x27;avatar qui redit le verbe" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M04-apres.jpg" alt="L&#x27;avatar seul : la phrase porte l&#x27;action." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Chaque ligne d&#x27;Activité pose une pastille sur l&#x27;avatar (repost, vote, Top 8) alors que la phrase dit déjà « a reposté », « a voté ».</p>
+  <p><b>Solution.</b> L&#x27;avatar seul : la phrase porte l&#x27;action.</p>
+  <p class="proof">Dans le code : app/(app)/notifications.tsx:188 : <code>NotificationBadge</code> sur chaque ligne à un seul acteur, sauf les amis acceptés.</p>
+</article>
+<article class="pt" id="p30">
+  <h3><span class="n">30</span> <span class="tag">Fusionner</span> Trois lignes « a accepté ta demande d&#x27;ami » le même jour</h3>
+  <div class="shots"><figure><img data-src="img/M05-avant.jpg" alt="Trois lignes « a accepté ta demande d&#x27;ami » le même jour" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M05-apres.jpg" alt="Une ligne, deux visages : « Noah Williams, Sofia Rossi et 1 autre ont accepté ta demande d&#x27;ami »." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Noah, Sofia et Léo ont accepté le même jour : trois lignes presque identiques, quand deux reposts du même take tiennent déjà en une.</p>
+  <p><b>Solution.</b> Une ligne, deux visages : « Noah Williams, Sofia Rossi et 1 autre ont accepté ta demande d&#x27;ami ».</p>
+  <p class="proof">Dans le code : app/(app)/notifications.tsx:169 : <code>NotificationFaces</code> existe déjà pour les groupes ; les acceptations d&#x27;amis ne sont pas regroupées.</p>
+</article>
+<article class="pt" id="p31">
+  <h3><span class="n">31</span> <span class="tag">Supprimer</span> Cinq filtres pour une vingtaine de lignes</h3>
+  <div class="shots"><figure><img data-src="img/M06-avant.jpg" alt="Cinq filtres pour une vingtaine de lignes" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M06-apres.jpg" alt="Une seule liste, celle de « Tout » : on lit son activité, on ne la trie pas." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Tout, Votes, Commentaires, Questions et Abonnements (caché à droite). Au tour 6, Commentaires et Questions étaient vides, chacun avec son « Lancer un take », et Votes mêlait reposts et votes.</p>
+  <p><b>Solution.</b> Une seule liste, celle de « Tout » : on lit son activité, on ne la trie pas.</p>
+  <p class="proof">Dans le code : app/(app)/notifications.tsx:87 : <code>ACTIVITY_FILTERS</code> = all, votes, comments, questions, follows.</p>
+</article>
+<article class="pt" id="p32">
+  <h3><span class="n">32</span> <span class="tag">Supprimer</span> « · Politique » dans l&#x27;onglet Politique</h3>
+  <div class="shots"><figure><img data-src="img/M09-avant.jpg" alt="« · Politique » dans l&#x27;onglet Politique" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M09-apres.jpg" alt="« 5 votes » seul dans une rubrique ; le nom ne sert que dans Tendances, qui mêle les rubriques." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> Le n°1 de chaque rubrique d&#x27;Explorer porte le nom de la rubrique : « 5 votes · Politique » sous l&#x27;onglet Politique souligné, « 7 votes · Divertissement » sous Divertissement…</p>
+  <p><b>Solution.</b> « 5 votes » seul dans une rubrique ; le nom ne sert que dans Tendances, qui mêle les rubriques.</p>
+  <p class="proof">Dans le code : src/components/search/ExploreScreen.tsx:1034 : <code>explore.trendMeta</code> reçoit toujours la catégorie.</p>
+</article>
+<article class="pt" id="p33">
+  <h3><span class="n">33</span> <span class="tag">Supprimer</span> Le point rouge qui pulse en continu</h3>
+  <div class="shots"><figure><img data-src="img/M10-avant.jpg" alt="Le point rouge qui pulse en continu" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M10-apres.jpg" alt="Rien : le rang « 1 » dit déjà que c&#x27;est le premier." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> À droite du n°1 de chaque rubrique, un point rouge pulse sans fin, sans légende ni action. Le même genre de pastille pulsante avait déjà été refusé dans le direct.</p>
+  <p><b>Solution.</b> Rien : le rang « 1 » dit déjà que c&#x27;est le premier.</p>
+  <p class="proof">Dans le code : src/components/search/TrendRanking.tsx:67 : <code>TrendLiveDot</code>, un halo répété sans fin (<code>withRepeat(…, -1)</code>) tant que l&#x27;écran est visible.</p>
+</article>
+<article class="pt" id="p34">
+  <h3><span class="n">34</span> <span class="tag">Supprimer</span> « Tendances liées » au-dessus des résultats</h3>
+  <div class="shots"><figure><img data-src="img/M11-avant.jpg" alt="« Tendances liées » au-dessus des résultats" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M11-apres.jpg" alt="Les résultats directement sous le champ, qui dit déjà ce qu&#x27;on cherche." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> On tape « vote » : un grand titre « • Tendances liées » et « Ce qui buzze autour de « vote » » précèdent les takes trouvés.</p>
+  <p><b>Solution.</b> Les résultats directement sous le champ, qui dit déjà ce qu&#x27;on cherche.</p>
+  <p class="proof">Dans le code : src/components/search/ExploreScreen.tsx : <code>explore.relatedTrends</code> et <code>explore.relatedSub</code> au-dessus de <code>relatedTrends</code>.</p>
+</article><h2 id="t7">Tour 7 · Sans compte et connexion</h2>
+<article class="pt" id="p35">
+  <h3><span class="n">35</span> <span class="tag">Fusionner</span> « Se connecter » et « S&#x27;inscrire » mènent au même écran</h3>
+  <div class="shots"><figure><img data-src="img/M37-avant.jpg" alt="« Se connecter » et « S&#x27;inscrire » mènent au même écran" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M37-apres.jpg" alt="Un seul « Continuer avec un e-mail », le bouton que le mur sans compte utilise déjà." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> L&#x27;accueil propose les deux. Le premier ouvre « Ton e-mail », le second « Crée ton compte » : même champ, même « Recevoir le code ». Seul le titre change.</p>
+  <p><b>Solution.</b> Un seul « Continuer avec un e-mail », le bouton que le mur sans compte utilise déjà.</p>
+  <p class="proof">Dans le code : app/(auth)/email.tsx:42 et 144 : <code>signingUp</code> ne change que le titre.</p>
+</article>
+<article class="pt" id="p36">
+  <h3><span class="n">36</span> <span class="tag">Supprimer</span> Le bouton « Coller le code »</h3>
+  <div class="shots"><figure><img data-src="img/M38-avant.jpg" alt="Le bouton « Coller le code »" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M38-apres.jpg" alt="Plus de bouton : la suggestion d&#x27;iOS, ou un appui long pour coller." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
+  <p><b>Aujourd'hui.</b> L&#x27;écran du code a un bouton « Coller le code », alors que le champ est déjà marqué pour iOS : le code reçu par Mail s&#x27;affiche au-dessus du clavier, en un appui.</p>
+  <p><b>Solution.</b> Plus de bouton : la suggestion d&#x27;iOS, ou un appui long pour coller.</p>
+  <p class="proof">Dans le code : app/(auth)/code.tsx:237 (<code>textContentType=&quot;oneTimeCode&quot;</code>) et 263-271 (<code>pasteCode</code>).</p>
+</article>
+<h2 id="ecartes">Regardés, puis écartés</h2>
+<ul class="box"><li><b>« Tu es en public » quand on quitte l&#x27;anonymat</b> : voulu par toi (25/09, puis message universel le 30/09).</li><li><b>Le « ● 1 » des présents dans le direct</b> : décidé : le zéro et le un s&#x27;affichent, la pastille pulsante avait été refusée.</li><li><b>Le faux profil « @toi » sans compte</b> : voulu par toi le 25/09 : sans compte, les écrans personnels gardent leur forme vide.</li><li><b>La barre des takes à note</b> : tu l&#x27;as rendue noire le 25/09 ; Jev : la retirer contredit cette décision (0,92).</li><li><b>Les croix sur Choix 1 et Choix 2</b> : elles servent dès qu&#x27;il y a trois choix : on peut retirer n&#x27;importe lequel.</li><li><b>Google et Apple qui répondent « bientôt disponible »</b> : le refus vient de la machine locale, sans clés ; à vérifier sur staging avant d&#x27;en faire un point.</li><li><b>« Partager » dans le menu du take ouvert</b> : c&#x27;est le seul bouton de partage de cet écran.</li><li><b>« Actuellement @ava_martin » sous le nom d&#x27;utilisateur</b> : utile pendant qu&#x27;on tape le nouveau.</li><li><b>Le champ « Une question à laquelle tu veux répondre… »</b> : c&#x27;est une fonction (se poser une question), pas un doublon.</li><li><b>Tendances et Actu vides en tête d&#x27;Explorer</b> : données locales ; rien ne prouve le cas en production.</li></ul>
+</main>
+<script>
+(function () {
+  var imgs = [].slice.call(document.querySelectorAll('img[data-src]'));
+  function show(img) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); }
+  if (!('IntersectionObserver' in window)) { imgs.forEach(show); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+  }, { rootMargin: '1200px 0px' });
+  imgs.forEach(function (img) { io.observe(img); });
+})();
+</script>
+</body>
+</html>
