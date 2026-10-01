@@ -34,13 +34,13 @@ code { font-size:12px; background:var(--bg); border:1px solid var(--line); borde
 <body>
 <main>
 <h1>Take · loi de Musk, 2e passage</h1>
-<p class="lead">36 choses à enlever ou à simplifier (26 à supprimer · 5 à fusionner · 2 à cacher · 2 à simplifier · 1 à déplacer), tirées de 7 tours complets de l'app (275 écrans), chacune vérifiée dans le code de main. Aucune n'ajoute d'écran ni de bouton.</p>
+<p class="lead">34 choses à enlever ou à simplifier (25 à supprimer · 4 à fusionner · 2 à cacher · 2 à simplifier · 1 à déplacer), tirées de 7 tours complets de l'app (275 écrans), chacune vérifiée dans le code de main. Aucune n'ajoute d'écran ni de bouton.</p>
 <div class="box">
 <p><b>Comment lire.</b> À gauche, l'écran d'aujourd'hui, ce qui part en rouge. À droite, la solution, faite avec les vrais pixels de l'app, ce qui change en vert.</p>
 <p><b>Ce qui n'y est pas.</b> Les 122 points du premier passage, les 40 d'Unification et les 20 d'Espaces ne sont pas repris. Les points que tu as déjà refusés non plus.</p>
 <p><b>Contrôle.</b> Jev a relu chaque proposition contre les règles déjà tranchées. Il a écarté la barre des takes à note, que tu avais rendue noire le 25/09.</p>
 </div>
-<nav><a href="#t1">Navigation et réglages</a><a href="#t2">Le fil et un take</a><a href="#t3">La création</a><a href="#t4">Le profil et l&#x27;avatar</a><a href="#t5">Les messages</a><a href="#t6">L&#x27;activité et Explorer</a><a href="#t7">Sans compte et connexion</a><a href="#ecartes">Écartés</a></nav>
+<nav><a href="#t1">Navigation et réglages</a><a href="#t2">Le fil et un take</a><a href="#t3">La création</a><a href="#t4">Le profil et l&#x27;avatar</a><a href="#t5">Les messages</a><a href="#t6">L&#x27;activité et Explorer</a><a href="#t7">Sans compte et connexion</a><a href="#decides">Déjà décidés</a><a href="#ecartes">Écartés</a></nav>
 <h2 id="t1">Tour 1 · Navigation et réglages</h2>
 <article class="pt" id="p1">
   <h3><span class="n">1</span> <span class="tag">Supprimer</span> « 0 take » au-dessus de « Aucun take à proximité »</h3>
@@ -218,82 +218,70 @@ code { font-size:12px; background:var(--bg); border:1px solid var(--line); borde
   <p class="proof">Dans le code : app/(app)/(home)/messages/details.tsx:78-90 : titre et sous-titre tombent tous deux sur <code>username</code> quand le nom manque.</p>
 </article>
 <article class="pt" id="p26">
-  <h3><span class="n">26</span> <span class="tag">Supprimer</span> 100 %, 3 sur 3, sans-faute : trois fois la même chose</h3>
-  <div class="shots"><figure><img data-src="img/M34-avant.jpg" alt="100 %, 3 sur 3, sans-faute : trois fois la même chose" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M34-apres.jpg" alt="Le grand pourcentage et la phrase qui réagit ; le détail est dans « Voir les réponses »." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
-  <p><b>Aujourd'hui.</b> Le résultat d&#x27;un Know me dit « 100 % », puis « 3 bonnes réponses sur 3 », puis « Un sans-faute ! ».</p>
-  <p><b>Solution.</b> Le grand pourcentage et la phrase qui réagit ; le détail est dans « Voir les réponses ».</p>
-  <p class="proof">Dans le code : fr.json:2947-2950 : <code>count_other</code> et <code>perfect</code>, affichés sous le pourcentage.</p>
-</article>
-<article class="pt" id="p27">
-  <h3><span class="n">27</span> <span class="tag">Supprimer</span> « Question 1 », « Question 2 »… sur chaque réponse</h3>
+  <h3><span class="n">26</span> <span class="tag">Supprimer</span> « Question 1 », « Question 2 »… sur chaque réponse</h3>
   <div class="shots"><figure><img data-src="img/M35-avant.jpg" alt="« Question 1 », « Question 2 »… sur chaque réponse" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M35-apres.jpg" alt="La question et la réponse, sans numéro : l&#x27;ordre se voit." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
-  <p><b>Aujourd'hui.</b> Les réponses d&#x27;un Know me numérotent chaque carte en petit gris au-dessus de la question.</p>
+  <p><b>Aujourd'hui.</b> Les réponses d&#x27;un Know me numérotent chaque carte en petit gris au-dessus de la question. (Capture du 1er passage : le décompte et la phrase de niveau au-dessus sont déjà partis avec le point 134.)</p>
   <p><b>Solution.</b> La question et la réponse, sans numéro : l&#x27;ordre se voit.</p>
   <p class="proof">Dans le code : fr.json:2833 : <code>questionNumber</code>.</p>
 </article>
-<article class="pt" id="p28">
-  <h3><span class="n">28</span> <span class="tag">Supprimer</span> « Précédente » dans un quiz de deux questions</h3>
+<article class="pt" id="p27">
+  <h3><span class="n">27</span> <span class="tag">Supprimer</span> « Précédente » dans un quiz de deux questions</h3>
   <div class="shots"><figure><img data-src="img/M36-avant.jpg" alt="« Précédente » dans un quiz de deux questions" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M36-apres.jpg" alt="Plus de retour en arrière : on répond, la question suivante arrive (125, accepté)." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
   <p><b>Aujourd'hui.</b> Un Know me de deux ou trois questions a un bouton « Précédente », grisé à la première.</p>
   <p><b>Solution.</b> Plus de retour en arrière : on répond, la question suivante arrive (125, accepté).</p>
   <p class="proof">Dans le code : fr.json:2928 : <code>previous</code>.</p>
 </article><h2 id="t6">Tour 6 · L&#x27;activité et Explorer</h2>
-<article class="pt" id="p29">
-  <h3><span class="n">29</span> <span class="tag">Supprimer</span> La pastille sur l&#x27;avatar qui redit le verbe</h3>
+<article class="pt" id="p28">
+  <h3><span class="n">28</span> <span class="tag">Supprimer</span> La pastille sur l&#x27;avatar qui redit le verbe</h3>
   <div class="shots"><figure><img data-src="img/M04-avant.jpg" alt="La pastille sur l&#x27;avatar qui redit le verbe" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M04-apres.jpg" alt="L&#x27;avatar seul : la phrase porte l&#x27;action." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
   <p><b>Aujourd'hui.</b> Chaque ligne d&#x27;Activité pose une pastille sur l&#x27;avatar (repost, vote, Top 8) alors que la phrase dit déjà « a reposté », « a voté ».</p>
   <p><b>Solution.</b> L&#x27;avatar seul : la phrase porte l&#x27;action.</p>
   <p class="proof">Dans le code : app/(app)/notifications.tsx:188 : <code>NotificationBadge</code> sur chaque ligne à un seul acteur, sauf les amis acceptés.</p>
 </article>
-<article class="pt" id="p30">
-  <h3><span class="n">30</span> <span class="tag">Fusionner</span> Trois lignes « a accepté ta demande d&#x27;ami » le même jour</h3>
+<article class="pt" id="p29">
+  <h3><span class="n">29</span> <span class="tag">Fusionner</span> Trois lignes « a accepté ta demande d&#x27;ami » le même jour</h3>
   <div class="shots"><figure><img data-src="img/M05-avant.jpg" alt="Trois lignes « a accepté ta demande d&#x27;ami » le même jour" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M05-apres.jpg" alt="Une ligne, deux visages : « Noah Williams, Sofia Rossi et 1 autre ont accepté ta demande d&#x27;ami »." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
   <p><b>Aujourd'hui.</b> Noah, Sofia et Léo ont accepté le même jour : trois lignes presque identiques, quand deux reposts du même take tiennent déjà en une.</p>
   <p><b>Solution.</b> Une ligne, deux visages : « Noah Williams, Sofia Rossi et 1 autre ont accepté ta demande d&#x27;ami ».</p>
   <p class="proof">Dans le code : app/(app)/notifications.tsx:169 : <code>NotificationFaces</code> existe déjà pour les groupes ; les acceptations d&#x27;amis ne sont pas regroupées.</p>
 </article>
-<article class="pt" id="p31">
-  <h3><span class="n">31</span> <span class="tag">Supprimer</span> Cinq filtres pour une vingtaine de lignes</h3>
+<article class="pt" id="p30">
+  <h3><span class="n">30</span> <span class="tag">Supprimer</span> Cinq filtres pour une vingtaine de lignes</h3>
   <div class="shots"><figure><img data-src="img/M06-avant.jpg" alt="Cinq filtres pour une vingtaine de lignes" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M06-apres.jpg" alt="Une seule liste, celle de « Tout » : on lit son activité, on ne la trie pas." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
   <p><b>Aujourd'hui.</b> Tout, Votes, Commentaires, Questions et Abonnements (caché à droite). Au tour 6, Commentaires et Questions étaient vides, chacun avec son « Lancer un take », et Votes mêlait reposts et votes.</p>
   <p><b>Solution.</b> Une seule liste, celle de « Tout » : on lit son activité, on ne la trie pas.</p>
   <p class="proof">Dans le code : app/(app)/notifications.tsx:87 : <code>ACTIVITY_FILTERS</code> = all, votes, comments, questions, follows.</p>
 </article>
-<article class="pt" id="p32">
-  <h3><span class="n">32</span> <span class="tag">Supprimer</span> « · Politique » dans l&#x27;onglet Politique</h3>
+<article class="pt" id="p31">
+  <h3><span class="n">31</span> <span class="tag">Supprimer</span> « · Politique » dans l&#x27;onglet Politique</h3>
   <div class="shots"><figure><img data-src="img/M09-avant.jpg" alt="« · Politique » dans l&#x27;onglet Politique" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M09-apres.jpg" alt="« 5 votes » seul dans une rubrique ; le nom ne sert que dans Tendances, qui mêle les rubriques." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
   <p><b>Aujourd'hui.</b> Le n°1 de chaque rubrique d&#x27;Explorer porte le nom de la rubrique : « 5 votes · Politique » sous l&#x27;onglet Politique souligné, « 7 votes · Divertissement » sous Divertissement…</p>
   <p><b>Solution.</b> « 5 votes » seul dans une rubrique ; le nom ne sert que dans Tendances, qui mêle les rubriques.</p>
   <p class="proof">Dans le code : src/components/search/ExploreScreen.tsx:1034 : <code>explore.trendMeta</code> reçoit toujours la catégorie.</p>
 </article>
-<article class="pt" id="p33">
-  <h3><span class="n">33</span> <span class="tag">Supprimer</span> Le point rouge qui pulse en continu</h3>
+<article class="pt" id="p32">
+  <h3><span class="n">32</span> <span class="tag">Supprimer</span> Le point rouge qui pulse en continu</h3>
   <div class="shots"><figure><img data-src="img/M10-avant.jpg" alt="Le point rouge qui pulse en continu" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M10-apres.jpg" alt="Rien : le rang « 1 » dit déjà que c&#x27;est le premier." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
   <p><b>Aujourd'hui.</b> À droite du n°1 de chaque rubrique, un point rouge pulse sans fin, sans légende ni action. Le même genre de pastille pulsante avait déjà été refusé dans le direct.</p>
   <p><b>Solution.</b> Rien : le rang « 1 » dit déjà que c&#x27;est le premier.</p>
   <p class="proof">Dans le code : src/components/search/TrendRanking.tsx:67 : <code>TrendLiveDot</code>, un halo répété sans fin (<code>withRepeat(…, -1)</code>) tant que l&#x27;écran est visible.</p>
 </article>
-<article class="pt" id="p34">
-  <h3><span class="n">34</span> <span class="tag">Supprimer</span> « Tendances liées » au-dessus des résultats</h3>
+<article class="pt" id="p33">
+  <h3><span class="n">33</span> <span class="tag">Supprimer</span> « Tendances liées » au-dessus des résultats</h3>
   <div class="shots"><figure><img data-src="img/M11-avant.jpg" alt="« Tendances liées » au-dessus des résultats" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M11-apres.jpg" alt="Les résultats directement sous le champ, qui dit déjà ce qu&#x27;on cherche." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
   <p><b>Aujourd'hui.</b> On tape « vote » : un grand titre « • Tendances liées » et « Ce qui buzze autour de « vote » » précèdent les takes trouvés.</p>
   <p><b>Solution.</b> Les résultats directement sous le champ, qui dit déjà ce qu&#x27;on cherche.</p>
   <p class="proof">Dans le code : src/components/search/ExploreScreen.tsx : <code>explore.relatedTrends</code> et <code>explore.relatedSub</code> au-dessus de <code>relatedTrends</code>.</p>
 </article><h2 id="t7">Tour 7 · Sans compte et connexion</h2>
-<article class="pt" id="p35">
-  <h3><span class="n">35</span> <span class="tag">Fusionner</span> « Se connecter » et « S&#x27;inscrire » mènent au même écran</h3>
-  <div class="shots"><figure><img data-src="img/M37-avant.jpg" alt="« Se connecter » et « S&#x27;inscrire » mènent au même écran" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M37-apres.jpg" alt="Un seul « Continuer avec un e-mail », le bouton que le mur sans compte utilise déjà." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
-  <p><b>Aujourd'hui.</b> L&#x27;accueil propose les deux. Le premier ouvre « Ton e-mail », le second « Crée ton compte » : même champ, même « Recevoir le code ». Seul le titre change.</p>
-  <p><b>Solution.</b> Un seul « Continuer avec un e-mail », le bouton que le mur sans compte utilise déjà.</p>
-  <p class="proof">Dans le code : app/(auth)/email.tsx:42 et 144 : <code>signingUp</code> ne change que le titre.</p>
-</article>
-<article class="pt" id="p36">
-  <h3><span class="n">36</span> <span class="tag">Supprimer</span> Le bouton « Coller le code »</h3>
+<article class="pt" id="p34">
+  <h3><span class="n">34</span> <span class="tag">Supprimer</span> Le bouton « Coller le code »</h3>
   <div class="shots"><figure><img data-src="img/M38-avant.jpg" alt="Le bouton « Coller le code »" width="300" height="652" loading="lazy"><figcaption>Aujourd'hui</figcaption></figure><figure><img data-src="img/M38-apres.jpg" alt="Plus de bouton : la suggestion d&#x27;iOS, ou un appui long pour coller." width="300" height="652" loading="lazy"><figcaption>Solution</figcaption></figure></div>
   <p><b>Aujourd'hui.</b> L&#x27;écran du code a un bouton « Coller le code », alors que le champ est déjà marqué pour iOS : le code reçu par Mail s&#x27;affiche au-dessus du clavier, en un appui.</p>
   <p><b>Solution.</b> Plus de bouton : la suggestion d&#x27;iOS, ou un appui long pour coller.</p>
   <p class="proof">Dans le code : app/(auth)/code.tsx:237 (<code>textContentType=&quot;oneTimeCode&quot;</code>) et 263-271 (<code>pasteCode</code>).</p>
 </article>
+<h2 id="decides">Déjà décidés ailleurs</h2>
+<ul class="box"><li><b>« Se connecter » et « S'inscrire » mènent au même écran</b> : c'est le point Musk 33, déjà décidé, en cours chez a8.</li><li><b>« 100 % », « 3 bonnes réponses sur 3 » et « Un sans-faute ! »</b> : réglé par le point 134 (#2674), le résultat garde le grand chiffre et sa phrase.</li></ul>
 <h2 id="ecartes">Regardés, puis écartés</h2>
 <ul class="box"><li><b>« Tu es en public » quand on quitte l&#x27;anonymat</b> : voulu par toi (25/09, puis message universel le 30/09).</li><li><b>Le « ● 1 » des présents dans le direct</b> : décidé : le zéro et le un s&#x27;affichent, la pastille pulsante avait été refusée.</li><li><b>Le faux profil « @toi » sans compte</b> : voulu par toi le 25/09 : sans compte, les écrans personnels gardent leur forme vide.</li><li><b>La barre des takes à note</b> : tu l&#x27;as rendue noire le 25/09 ; Jev : la retirer contredit cette décision (0,92).</li><li><b>Les croix sur Choix 1 et Choix 2</b> : elles servent dès qu&#x27;il y a trois choix : on peut retirer n&#x27;importe lequel.</li><li><b>Google et Apple qui répondent « bientôt disponible »</b> : le refus vient de la machine locale, sans clés ; à vérifier sur staging avant d&#x27;en faire un point.</li><li><b>« Partager » dans le menu du take ouvert</b> : c&#x27;est le seul bouton de partage de cet écran.</li><li><b>« Actuellement @ava_martin » sous le nom d&#x27;utilisateur</b> : utile pendant qu&#x27;on tape le nouveau.</li><li><b>Le champ « Une question à laquelle tu veux répondre… »</b> : c&#x27;est une fonction (se poser une question), pas un doublon.</li><li><b>Tendances et Actu vides en tête d&#x27;Explorer</b> : données locales ; rien ne prouve le cas en production.</li></ul>
 </main>
