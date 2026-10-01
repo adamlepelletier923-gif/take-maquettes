@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Contacts et invitation</title>
+<script>
+  // Clair ou sombre : le choix fait sur la page, sinon celui du téléphone.
+  (function () {
+    var shot = null
+    try { shot = localStorage.getItem('contacts-shot') } catch (e) {}
+    if (shot !== 'clair' && shot !== 'sombre') {
+      shot = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'sombre' : 'clair'
+    }
+    document.documentElement.dataset.shot = shot
+  })()
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#F6F7F8; --surface:#FFFFFF; --ink:#141414; --ink-2:#6B6E73; --line:#E3E6EA; --chip:#F0F2F5; --dot:#FF3B30;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327; --dot:#FF453A; }
+}
+:root[data-theme="dark"]{ color-scheme:dark; --bg:#000000; --surface:#16181C; --ink:#E7E9EA; --ink-2:#8B9197; --line:#2F3336; --chip:#202327; --dot:#FF453A; }
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:Inter,-apple-system,"Helvetica Neue",Arial,sans-serif; font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+img{ max-width:100%; }
+.wrap{ max-width:1180px; margin:0 auto; padding-inline:16px; padding-block:28px 64px; }
+h1,h2{ text-wrap:balance; margin:0; }
+h1{ font-size:30px; line-height:36px; font-weight:700; letter-spacing:-0.4px; }
+h2{ font-size:22px; line-height:28px; font-weight:700; letter-spacing:-0.2px; }
+h3{ margin:8px 0 0; font-size:13px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:var(--ink-2); }
+p{ margin:0; }
+.lead{ max-width:64ch; color:var(--ink-2); display:grid; gap:8px; }
+.lead strong{ color:var(--ink); font-weight:600; }
+.head{ display:grid; gap:14px; padding-block:8px 20px; }
+.meta{ display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--ink-2); letter-spacing:0.3px; text-transform:uppercase; }
+.meta i{ width:7px; height:7px; border-radius:50%; background:var(--dot); }
+
+nav{ position:sticky; top:env(safe-area-inset-top,0px); z-index:5; background:var(--bg); padding:10px 16px; margin:0 -16px 8px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px; }
+nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; flex:1; min-width:0; }
+nav a{ display:inline-flex; align-items:center; height:32px; padding:0 14px; border-radius:16px; background:var(--chip); color:var(--ink); text-decoration:none; font-size:14px; font-weight:600; white-space:nowrap; }
+.shot{ display:flex; flex-shrink:0; padding:3px; border-radius:18px; background:var(--chip); }
+.shot button{ border:0; height:28px; padding:0 12px; border-radius:14px; background:transparent; color:var(--ink-2); font:600 13px Inter,sans-serif; cursor:pointer; }
+html[data-shot="clair"] .shot [data-set="clair"], html[data-shot="sombre"] .shot [data-set="sombre"]{ background:var(--ink); color:var(--bg); }
+
+section{ display:grid; gap:16px; padding-block:34px 10px; scroll-margin-top:64px; }
+.sec-head{ display:grid; gap:10px; max-width:70ch; }
+.eyebrow{ font-size:12px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:var(--ink-2); }
+blockquote{ margin:0; padding:12px 14px; border-radius:12px; background:var(--surface); border:1px solid var(--line); font-size:15px; }
+blockquote cite{ display:block; margin-top:6px; font-style:normal; font-size:13px; color:var(--ink-2); }
+
+.rail{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px 18px; }
+figure{ margin:0; display:grid; gap:10px; align-content:start; }
+.phone{ border-radius:22px; overflow:hidden; border:1px solid var(--line); background:#ffffff; aspect-ratio:804/1748; }
+html[data-shot="sombre"] .phone{ background:#000000; }
+.phone img{ display:block; width:100%; height:auto; }
+html[data-shot="clair"] .phone .so, html[data-shot="sombre"] .phone .cl{ display:none; }
+figcaption{ display:grid; gap:4px; }
+.name{ display:flex; align-items:baseline; gap:8px; font-weight:600; font-size:15px; line-height:20px; }
+.num{ flex-shrink:0; min-width:30px; height:22px; padding:0 7px; border-radius:11px; background:var(--ink); color:var(--bg); font-size:12.5px; font-weight:700; line-height:22px; text-align:center; font-variant-numeric:tabular-nums; }
+.today .num, .case .num{ background:var(--chip); color:var(--ink-2); }
+.why{ font-size:13.5px; line-height:19px; color:var(--ink-2); }
+
+.answer{ margin-top:40px; padding:18px; border-radius:16px; background:var(--surface); border:1px solid var(--line); display:grid; gap:10px; max-width:72ch; }
+.answer ul{ margin:0; padding-left:18px; display:grid; gap:6px; color:var(--ink-2); }
+
+@media (max-width:980px){ .rail{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media (max-width:720px){
+  .rail{ grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:74%; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; margin-inline:-16px; padding-inline:16px; scroll-padding-inline:16px; }
+  figure{ scroll-snap-align:start; }
+  h1{ font-size:25px; line-height:31px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <div class="meta"><i></i>Contacts et invitation · 1er octobre 2026</div>
+    <h1>Contacts et invitation : les maquettes à choisir</h1>
+    <div class="lead">
+      <p>Ta demande : « au prochain build faut une page d'autorisation des contacts et invite mais avant de la mettre je veux plusieurs maquettes de a quoi ça pourrait ressembler ».</p>
+      <p>Voici <strong>deux écrans</strong> : la demande d'accès aux contacts à l'inscription, puis l'invitation après le premier vote. Pour chacun, l'écran d'aujourd'hui, <strong>6 propositions</strong> et les cas à prévoir. Tout est fait avec les vrais composants de l'app (boutons, états vides, grille d'amis, couleurs) et de vrais avatars. Rien n'est encore codé.</p>
+      <p>Le bouton <strong>Clair · Sombre</strong>, en haut, montre chaque maquette dans les deux thèmes.</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#inscription">1. À l'inscription</a></li>
+      <li><a href="#invitation">2. Après le premier vote</a></li>
+      <li><a href="#repondre">Pour répondre</a></li>
+    </ul>
+    <div class="shot" role="group" aria-label="Thème des maquettes">
+      <button type="button" data-set="clair">Clair</button>
+      <button type="button" data-set="sombre">Sombre</button>
+    </div>
+  </nav>
+
+  <section id="inscription">
+    <div class="sec-head">
+      <div class="eyebrow">Écran 1</div>
+      <h2>À la création du compte : pourquoi on demande les contacts</h2>
+      <blockquote>« quand tu crée ton compte faut un truc pour autoriser à l'accès au contact pour proposer des choses vis à vis de ça »<cite>Toi, page Musk, point 47 (30/09)</cite></blockquote>
+      <p class="why">Notre page vient juste après le prénom, avant la demande d'iOS : on explique d'abord, et c'est seulement ensuite qu'iOS pose sa question.</p>
+    </div>
+    <div class="rail">
+      <figure class="today"><div class="phone"><img class="cl" src="img/e1-0-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e1-0-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">Auj.</span>Aujourd'hui</div><p class="why">Aucune page : après le prénom, on passe au premier take, et l'app ne demande jamais les contacts.</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e1-1-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e1-1-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">1.1</span>Comme les autres étapes</div><p class="why">Le gabarit des étapes : une icône, une phrase, un bouton, et « Plus tard ».</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e1-2-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e1-2-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">1.2</span>Les visages d'abord</div><p class="why">Des visages, puis trois promesses courtes sur ce qu'on fait des contacts.</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e1-3-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e1-3-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">1.3</span>La liste floutée</div><p class="why">On montre ce qu'il y a derrière : la liste des amis, floutée jusqu'à l'accord.</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e1-4-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e1-4-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">1.4</span>Le choix d'iOS expliqué</div><p class="why">On prépare au choix qu'iOS va proposer : tous les contacts, ou seulement certains.</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e1-5-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e1-5-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">1.5</span>Une feuille, pas un écran</div><p class="why">Une feuille par-dessus l'inscription, plus légère qu'une étape de plus.</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e1-6-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e1-6-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">1.6</span>L'ami qui t'a invité</div><p class="why">Si un ami t'a invité, on part de lui : le lien d'invitation le sait déjà.</p></figcaption></figure>
+    </div>
+    <h3>Les cas à prévoir</h3>
+    <div class="rail">
+      <figure class="case"><div class="phone"><img class="cl" loading="lazy" src="img/e1-a-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e1-a-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">1.A</span>La demande d'iOS</div><p class="why">Juste après notre page : la demande d'iOS, avec notre phrase. Ses libellés exacts sont à vérifier sur un vrai iPhone.</p></figcaption></figure>
+      <figure class="case"><div class="phone"><img class="cl" loading="lazy" src="img/e1-b-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e1-b-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">1.B</span>Après un refus ou « Plus tard »</div><p class="why">Rien ne bloque : un rappel discret en haut d'Amis, qui ouvre les Réglages.</p></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="invitation">
+    <div class="sec-head">
+      <div class="eyebrow">Écran 2</div>
+      <h2>Après le premier vote : inviter ses amis</h2>
+      <blockquote>« c'est après ton premier vote que la page pour inviter des amis dans tes contacts devraient s'afficher »<cite>Toi, page Musk, point 29 (30/09)</cite></blockquote>
+      <p class="why">D'abord les contacts déjà sur Take, à ajouter en un toucher, puis les autres, à inviter par message ou par lien.</p>
+    </div>
+    <div class="rail">
+      <figure class="today"><div class="phone"><img class="cl" src="img/e2-0-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e2-0-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">Auj.</span>Aujourd'hui</div><p class="why">Une seule action : la feuille de partage du téléphone, avec un lien.</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e2-1-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e2-1-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">2.1</span>Deux listes</div><p class="why">Les amis déjà sur Take, un toucher pour les ajouter, puis les contacts à inviter.</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e2-2-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e2-2-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">2.2</span>La grille des visages</div><p class="why">La grille de la feuille Partager : tout est coché, et un bouton ajoute tout le monde.</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e2-3-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e2-3-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">2.3</span>Un par un</div><p class="why">Une carte par ami trouvé : Ajouter ou Passer, comme un tri rapide.</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e2-4-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e2-4-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">2.4</span>Ton take comme invitation</div><p class="why">On invite avec le premier take : « et toi, t'en penses quoi ? ».</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e2-5-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e2-5-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">2.5</span>Sur le résultat du vote</div><p class="why">Une feuille au-dessus du résultat de ton vote : on reste dans le moment.</p></figcaption></figure>
+      <figure><div class="phone"><img class="cl" src="img/e2-6-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e2-6-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">2.6</span>Le message prêt</div><p class="why">Le message d'invitation déjà écrit ; tu coches qui le reçoit.</p></figcaption></figure>
+    </div>
+    <h3>Les cas à prévoir</h3>
+    <div class="rail">
+      <figure class="case"><div class="phone"><img class="cl" loading="lazy" src="img/e2-a-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e2-a-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">2.A</span>Sans autorisation</div><p class="why">Contacts refusés ou remis à plus tard : on garde le lien d'invitation, et un bouton vers les Réglages.</p></figcaption></figure>
+      <figure class="case"><div class="phone"><img class="cl" loading="lazy" src="img/e2-b-clair.jpg" alt=""><img class="so" loading="lazy" src="img/e2-b-sombre.jpg" alt=""></div><figcaption><div class="name"><span class="num">2.B</span>Aucun ami sur Take</div><p class="why">Autorisé, mais personne n'a Take : l'état vide de l'app, puis les contacts à inviter.</p></figcaption></figure>
+    </div>
+  </section>
+
+  <div class="answer" id="repondre">
+    <h2>Pour répondre</h2>
+    <p>Un numéro par écran suffit, par exemple <strong>1.2</strong> et <strong>2.5</strong>. Tu peux aussi garder un morceau d'une proposition et le mettre dans une autre.</p>
+    <p class="why">À savoir avant de coder :</p>
+    <ul>
+      <li>L'accès aux contacts est une nouvelle permission du téléphone : il faut un build, une mise à jour à distance ne suffit pas.</li>
+      <li>Côté serveur, il faut une route qui trouve les amis à partir des numéros, sans garder le carnet d'adresses : c'est la promesse de 1.2.</li>
+      <li>La phrase de la demande d'iOS est à écrire dans les six langues.</li>
+    </ul>
+  </div>
+</div>
+<script>
+  document.querySelectorAll('.shot button').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var shot = button.dataset.set
+      document.documentElement.dataset.shot = shot
+      try { localStorage.setItem('contacts-shot', shot) } catch (e) {}
+    })
+  })
+</script>
+</body>
+</html>

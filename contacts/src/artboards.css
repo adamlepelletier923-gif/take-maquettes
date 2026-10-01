@@ -1,0 +1,161 @@
+/* Jetons de apps/mobile/src/constants/design-tokens.ts (clair, puis sombre). */
+:root[data-theme="light"] {
+  --bg: #FFFFFF; --raised: #FFFFFF; --muted: #F0F2F5; --t1: #141414; --t2: #6B6E73;
+  --border: #E3E6EA; --glass: #F0F2F5; --glassB: #1414140D; --fg: #141414; --fgInv: #FFFFFF;
+  --sheet: #FFFFFFF2; --info: #0A84FF; --alert: #F2F2F7; --alertLine: #3C3C4336;
+}
+:root[data-theme="dark"] {
+  --bg: #000000; --raised: #1E2126; --muted: #16181C; --t1: #E7E9EA; --t2: #83898F;
+  --border: #2F3336; --glass: #FFFFFF14; --glassB: #FFFFFF24; --fg: #E7E9EA; --fgInv: #000000;
+  --sheet: #1E2126F5; --info: #2A92FF; --alert: #2C2C2E; --alertLine: #54545899;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #8a8f96; font-family: Inter, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; padding: 20px; }
+.ab { width: 402px; height: 874px; position: relative; overflow: hidden; background: var(--bg); color: var(--t1); display: inline-block; vertical-align: top; margin: 0 20px 20px 0; }
+.i { display: block; flex-shrink: 0; }
+
+/* Barre d'état et indicateur d'accueil, d'après les captures du build 185. */
+.sb { position: absolute; inset: 0 0 auto 0; height: 54px; z-index: 30; color: var(--t1); }
+.time { position: absolute; left: 34px; width: 80px; top: 19px; text-align: center; font: 600 17px/22px Inter; letter-spacing: -0.2px; }
+.island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 125px; height: 37px; border-radius: 19px; background: #000; }
+.sbr { position: absolute; right: 30px; top: 22px; display: flex; align-items: center; gap: 7px; }
+.bat { width: 26px; height: 12.5px; border-radius: 4px; border: 1px solid currentColor; opacity: .9; position: relative; padding: 1.5px; display: block; }
+.bat i { display: block; height: 100%; width: 78%; border-radius: 2px; background: currentColor; }
+.home { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 134px; height: 5px; border-radius: 3px; background: var(--t1); z-index: 30; }
+
+/* Gabarit des étapes de l'onboarding (onboarding.tsx : px-8, haut = zone sûre + 20). */
+.ob { position: absolute; inset: 0; padding: 82px 32px 34px; display: flex; flex-direction: column; }
+.dots { display: flex; justify-content: center; gap: 6px; margin-bottom: 28px; }
+.dot { width: 8px; height: 8px; border-radius: 4px; background: var(--border); display: block; }
+.dot.on { width: 22px; background: var(--fg); }
+.grow { flex: 1; }
+.center { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 0 8px; }
+.title { font: 700 22px/28px Inter; letter-spacing: -0.4px; color: var(--t1); }
+.stitle { font: 700 20px/26px Inter; letter-spacing: -0.3px; color: var(--t1); }
+.sub { font: 400 15px/21px Inter; color: var(--t2); }
+.tc { text-align: center; }
+.w300 { max-width: 300px; }
+.mb16 { margin-bottom: 16px; }
+.mt8 { margin-top: 8px; }
+.gcircle { width: 88px; height: 88px; border-radius: 44px; background: var(--glass); border: 1px solid var(--glassB); display: flex; align-items: center; justify-content: center; color: var(--t1); }
+.gcircle.sm { width: 72px; height: 72px; }
+.ecircle { width: 64px; height: 64px; border-radius: 32px; background: var(--muted); display: flex; align-items: center; justify-content: center; color: var(--t2); }
+
+/* AppButton : pilule de 44, libellé 15/600 ; compact 30 ; secondaire gris. */
+.btn { min-height: 44px; border-radius: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; font: 600 15px/18px Inter; border: 0.5px solid transparent; padding: 0 16px; flex-shrink: 0; }
+.btn.primary { background: var(--fg); color: var(--fgInv); }
+.btn.muted { background: var(--muted); color: var(--t1); border-color: var(--border); }
+.btn.compact { min-height: 30px; height: 30px; padding: 0 16px; font-size: 14px; }
+.btn.inline { align-self: center; }
+.later { text-align: center; padding: 14px 0 0; height: 46px; font: 500 14px/20px Inter; color: var(--t2); flex-shrink: 0; }
+
+/* Champ de l'étape du prénom (AuthField). */
+.field { border-radius: 14px; background: var(--muted); border: 1px solid var(--border); padding: 9px 14px 10px; display: grid; gap: 2px; }
+.flabel { font: 500 12px/16px Inter; color: var(--t2); }
+.fval { font: 400 17px/22px Inter; color: var(--t1); display: flex; align-items: center; }
+.caret { display: inline-block; width: 2px; height: 22px; background: var(--info); margin-left: 1px; }
+.dim { opacity: 1; }
+
+/* Rangées de personnes (avatar 44, nom 15/600, sous-titre 13). */
+.row { display: flex; align-items: center; gap: 12px; min-height: 60px; }
+.rt { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.rt b { font: 600 15px/20px Inter; color: var(--t1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rt span { font: 400 13px/18px Inter; color: var(--t2); }
+.av { border-radius: 50%; display: block; flex-shrink: 0; }
+.av.ring { box-shadow: 0 0 0 3px var(--bg); }
+.ini { border-radius: 50%; background: var(--muted); color: var(--t2); display: inline-flex; align-items: center; justify-content: center; font: 600 15px Inter; flex-shrink: 0; }
+.label { font: 600 10px/12px Inter; letter-spacing: 0.4px; text-transform: uppercase; color: var(--t2); }
+.secth { display: flex; align-items: center; justify-content: space-between; margin: 22px 0 4px; }
+.link { font: 600 14px/18px Inter; color: var(--t1); }
+.more { color: var(--t2); }
+
+/* 1.2 : visages qui se chevauchent, et raisons. */
+.stack { display: flex; }
+.stack .av + .av { margin-left: -14px; }
+.reasons { display: grid; gap: 12px; margin-top: 4px; width: 100%; }
+.reason { display: flex; align-items: center; gap: 12px; font: 400 15px/20px Inter; color: var(--t1); }
+.reason .i { color: var(--t2); }
+
+/* 1.3 : la liste floutée derrière l'accord. */
+.peek { position: relative; margin-top: 24px; padding: 14px 16px 6px; border-radius: 26px; background: var(--glass); border: 1px solid var(--glassB); overflow: hidden; }
+.peek .label { margin-bottom: 4px; }
+.row.blur { filter: blur(5px); opacity: .85; }
+.peeklock { position: absolute; inset: 34px 0 0 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font: 600 14px/18px Inter; color: var(--t1); }
+.peeklock span { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 6px 12px; }
+.peeklock .i { background: var(--bg); border-radius: 50%; padding: 8px; width: 38px; height: 38px; border: 1px solid var(--border); }
+
+/* 1.4 : les deux choix d'iOS. */
+.opts { display: grid; gap: 12px; margin-top: 24px; }
+.opt { border-radius: 18px; border: 1px solid var(--border); padding: 14px 16px; display: grid; gap: 4px; background: var(--raised); }
+.opt.on { border: 2px solid var(--fg); padding: 13px 15px; }
+.opt b { font: 600 15px/20px Inter; }
+.opt span { font: 400 13px/18px Inter; color: var(--t2); }
+.opth { display: flex; align-items: center; justify-content: space-between; }
+.pill { font: 600 11px/14px Inter !important; color: var(--fgInv) !important; background: var(--fg); border-radius: 10px; padding: 3px 8px; }
+
+/* Feuilles (SheetHeader : poignée, contenu à 16 du bord). */
+.scrim { position: absolute; inset: 0; background: rgba(0, 0, 0, .42); z-index: 10; }
+.scrim.light { background: rgba(0, 0, 0, .3); }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--sheet); border-radius: 34px 34px 0 0; padding: 26px 16px 34px; display: flex; flex-direction: column; gap: 14px; }
+.grab { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 36px; height: 5px; border-radius: 3px; background: var(--border); }
+.sheet .center { gap: 12px; padding: 6px 8px 4px; }
+.sheet .row { min-height: 56px; }
+
+/* Demande d'iOS (aperçu). */
+.alert { position: absolute; z-index: 20; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 270px; border-radius: 14px; background: var(--alert); text-align: center; overflow: hidden; color: var(--t1); }
+.alert b { display: block; padding: 19px 16px 2px; font: 600 17px/22px -apple-system, Inter; }
+.alert > span { display: block; padding: 0 16px 19px; font: 400 13px/16px -apple-system, Inter; }
+.abtns { display: grid; border-top: 0.5px solid var(--alertLine); }
+.abtns i { font: 400 17px/44px -apple-system, Inter; font-style: normal; color: var(--info); }
+.abtns i + i { border-top: 0.5px solid var(--alertLine); }
+.abtns i.bold { font-weight: 600; }
+
+/* En-tête commun (AppHeader : 56, retour 36 à 16 du bord, titre 18 centré). */
+.hdr { position: absolute; top: 62px; left: 0; right: 0; height: 56px; display: flex; align-items: center; justify-content: center; }
+.hdr b { font: 700 18px/22px Inter; }
+.back { position: absolute; left: 16px; top: 10px; width: 36px; height: 36px; border-radius: 18px; background: var(--glass); border: 1px solid var(--glassB); display: flex; align-items: center; justify-content: center; }
+.pad { position: absolute; top: 134px; left: 16px; right: 16px; }
+.search { height: 40px; border-radius: 20px; background: var(--muted); display: flex; align-items: center; gap: 8px; padding: 0 14px; color: var(--t2); font: 400 15px Inter; }
+.nudge { margin: 16px 0 8px; padding: 12px 12px 12px 14px; border-radius: 22px; background: var(--glass); border: 1px solid var(--glassB); display: flex; align-items: center; gap: 12px; }
+.nudgei { width: 40px; height: 40px; border-radius: 20px; background: var(--bg); display: flex; align-items: center; justify-content: center; color: var(--t1); }
+
+/* 2.2 : la grille de FriendGrid (visage 48 dans un anneau de 52, coche de 22). */
+.grid { display: flex; gap: 22px; justify-content: center; margin-top: 34px; }
+.cell { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 76px; }
+.face { position: relative; width: 56px; height: 56px; }
+.face .av { position: absolute; left: 4px; top: 4px; }
+.face.sel::before { content: ""; position: absolute; left: 2px; top: 2px; width: 52px; height: 52px; border-radius: 26px; border: 2px solid var(--fg); box-sizing: border-box; }
+.chk { position: absolute; right: -2px; bottom: -2px; width: 22px; height: 22px; border-radius: 11px; background: var(--fg); color: var(--fgInv); border: 2.5px solid var(--bg); display: flex; align-items: center; justify-content: center; }
+.cn { font: 600 12px/16px Inter; color: var(--t1); }
+.linkrow { display: flex; align-items: center; justify-content: center; gap: 8px; height: 46px; padding-top: 14px; font: 500 14px/20px Inter; color: var(--t2); }
+
+/* 2.3 : un par un. */
+.counter { text-align: center; font: 600 13px/18px Inter; color: var(--t2); margin-bottom: 18px; }
+.card1 { position: relative; z-index: 2; border-radius: 30px; background: var(--raised); border: 1px solid var(--border); padding: 30px 20px 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, .08); }
+.card1 .title { margin-top: 6px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; margin-top: 14px; }
+.ghostcard { height: 18px; margin: -6px 18px 0; border-radius: 0 0 26px 26px; background: var(--muted); border: 1px solid var(--border); border-top: 0; }
+
+/* 2.4 et 2.5 : la carte d'un take (question, barres de vote). */
+.take { margin-top: 20px; border-radius: 26px; background: var(--raised); border: 1px solid var(--border); padding: 16px; display: grid; gap: 8px; }
+.tq { font: 600 17px/22px Inter; letter-spacing: -0.2px; margin-bottom: 4px; }
+.bar { position: relative; height: 44px; border-radius: 22px; background: var(--muted); display: flex; align-items: center; justify-content: space-between; padding: 0 16px; overflow: hidden; font: 600 15px Inter; }
+.bar i { position: absolute; inset: 0 auto 0 0; background: var(--border); z-index: 0; }
+.bar.on i { background: var(--fg); opacity: .14; }
+.bar span, .bar b { position: relative; z-index: 1; }
+.tmeta { font: 400 13px/18px Inter; color: var(--t2); margin-top: 2px; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px 0 5px; border-radius: 16px; background: var(--muted); border: 1px solid var(--border); font: 500 14px Inter; }
+.chip .ini { font-size: 10px; background: var(--bg); }
+.chip.add { padding: 0 12px; font-weight: 600; }
+.bgtake { position: absolute; inset: 0; padding: 120px 16px 0; display: grid; align-content: start; gap: 12px; }
+.cat { font: 600 13px/18px Inter; color: var(--t2); }
+.byline { display: flex; align-items: center; gap: 10px; }
+.byline b { font: 600 15px Inter; }
+.byline span { font: 400 13px Inter; color: var(--t2); }
+.bq { font: 700 22px/28px Inter; letter-spacing: -0.4px; margin-bottom: 6px; }
+
+/* 2.6 : le message d'invitation. */
+.bubble { margin: 18px 0 10px auto; max-width: 290px; background: var(--info); color: #fff; border-radius: 20px 20px 6px 20px; padding: 10px 14px; font: 400 15px/20px Inter; }
+.tick { width: 26px; height: 26px; border-radius: 13px; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--fgInv); }
+.tick.on { background: var(--fg); border-color: var(--fg); }
