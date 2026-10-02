@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Choix du tour</title>
+<style>
+  :root {
+    --bg: #f6f6f8;
+    --card: #ffffff;
+    --ink: #121212;
+    --muted: #6b6b75;
+    --line: #e4e4ea;
+    --tag: #121212;
+    --tag-ink: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101014;
+      --card: #18181d;
+      --ink: #f2f2f5;
+      --muted: #a2a2ad;
+      --line: #2a2a31;
+      --tag: #f2f2f5;
+      --tag-ink: #121212;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101014;
+    --card: #18181d;
+    --ink: #f2f2f5;
+    --muted: #a2a2ad;
+    --line: #2a2a31;
+    --tag: #f2f2f5;
+    --tag-ink: #121212;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
+  }
+  main { max-width: 820px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 0 0 8px; }
+  h2 { font-size: 21px; line-height: 1.25; margin: 0 0 6px; }
+  .intro { color: var(--muted); margin: 0 0 28px; }
+  section { margin: 0 0 40px; }
+  .question { margin: 0 0 14px; }
+  .compare {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(86vw, 380px);
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+  }
+  .option {
+    scroll-snap-align: start;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 12px;
+  }
+  .option h3 { font-size: 16px; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .today {
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--tag);
+    color: var(--tag-ink);
+    border-radius: 999px;
+    padding: 2px 9px;
+  }
+  .option img, .option video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .option p { margin: 10px 0 0; font-size: 15px; }
+  .swipe { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+  .sources { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+  .sources a { color: var(--ink); }
+  .sources ul { margin: 6px 0 0; padding-left: 18px; }
+  .note { font-size: 14px; color: var(--muted); }
+  @media (min-width: 800px) {
+    .compare { grid-auto-columns: 1fr; overflow: visible; }
+    .swipe { display: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Trois choix pour ton tour</h1>
+  <p class="intro">Pour chaque choix : ce que fait Take aujourd’hui (marqué), les deux options côte à côte, et les sources. Tout part de vraies captures de Take, retouchées. Les vidéos se lancent seules.</p>
+
+  <section>
+    <h2>1. La photo dans le fil</h2>
+    <p class="question">Une photo dans un take : on la coupe en bandeau, ou on la montre entière ?</p>
+    <div class="compare">
+      <div class="option">
+        <h3>Bandeau recadré <span class="today">Aujourd’hui</span></h3>
+        <img src="img/photo-aujourdhui.jpg" alt="Un take avec la photo coupée en bandeau" loading="lazy" width="600" height="632">
+        <p>La photo est coupée en bande. Pour placer la bande, le téléphone cherche la partie la plus détaillée de chaque photo, pendant qu’on fait défiler. C’est une des causes du lag.</p>
+        <p class="note">Si on garde le bandeau, on peut faire cette recherche à l’envoi, sur le serveur, comme X l’a fait en 2018.</p>
+      </div>
+      <div class="option">
+        <h3>Photo entière dans son format</h3>
+        <img src="img/photo-entiere.jpg" alt="Le même take avec la photo entière" loading="lazy" width="600" height="1137">
+        <p>La photo garde le format où elle a été prise (ici 3:4). Rien à mesurer. Elle prend plus de place à l’écran.</p>
+        <p class="note">Comme Instagram (photos 3:4 telles quelles depuis mai 2025) et X (images 16:9 et 4:3 en entier depuis mai 2021 ; les très hautes restent coupées au centre).</p>
+      </div>
+    </div>
+    <p class="swipe">Glisse pour voir l’autre option.</p>
+    <div class="sources">Sources
+      <ul>
+        <li><a href="https://www.socialmediatoday.com/news/instagram-adds-support-phone-camera-aspect-ratio-images/749205/">Social Media Today, 28/05/2025</a> : « when you upload a 3:4 image it’ll now appear exactly as you shot it ».</li>
+        <li><a href="https://9to5mac.com/2025/05/29/instagram-changes-standard-photo-aspect-ratio/">9to5Mac, 29/05/2025</a> : avant, Instagram montait à 4:5 au plus haut.</li>
+        <li><a href="https://techcrunch.com/2021/05/05/twitter-image-cropping-changes/">TechCrunch, 05/05/2021</a> : « standard aspect ratio images (16:9 and 4:3) will now display in full without any cropping ».</li>
+        <li><a href="https://blog.twitter.com/engineering/en_us/topics/infrastructure/2018/Smart-Auto-Cropping-of-Images.html">Twitter Engineering, 2018</a> : le cadrage était calculé à l’envoi, sur le serveur.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. L’onglet vide du profil</h2>
+    <p class="question">L’en-tête est replié, et on passe sur un onglet vide (ici Questions) : il reste replié, ou il redescend ?</p>
+    <div class="compare">
+      <div class="option">
+        <h3>Il reste replié, comme Instagram <span class="today">Aujourd’hui</span></h3>
+        <video muted loop playsinline preload="none" poster="vid/onglet-vide-instagram.jpg" width="600" height="1304">
+          <source src="vid/onglet-vide-instagram.mp4" type="video/mp4">
+        </video>
+        <p>La page garde sa place, et le message de l’onglet vide s’affiche sous les onglets.</p>
+      </div>
+      <div class="option">
+        <h3>Il redescend, comme X</h3>
+        <video muted loop playsinline preload="none" poster="vid/onglet-vide-x.jpg" width="600" height="1304">
+          <source src="vid/onglet-vide-x.mp4" type="video/mp4">
+        </video>
+        <p>La page n’a rien à faire défiler, donc l’en-tête revient.</p>
+      </div>
+    </div>
+    <p class="swipe">Glisse pour voir l’autre option.</p>
+    <p class="note">Ta règle du 2 octobre (garder l’en-tête et la position de chaque onglet, comme Instagram) va dans le sens de l’option de gauche.</p>
+    <div class="sources">Sources
+      <ul>
+        <li>Pas de documentation officielle d’Instagram ni de X trouvée.</li>
+        <li><a href="https://github.com/ramssutharr/react-native-collapsible-tabs-native">Une bibliothèque qui reproduit « the Instagram / Twitter profile layout »</a> décrit les deux : par défaut, un onglet trop court replie l’en-tête quand même ; « the Twitter-style alternative » le fait redescendre (« the header instead eases back »).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. Le toucher d’un onglet du profil</h2>
+    <p class="question">On touche un onglet du profil : la page change d’un coup, ou elle glisse ?</p>
+    <div class="compare">
+      <div class="option">
+        <h3>Saut direct <span class="today">Aujourd’hui</span></h3>
+        <video muted loop playsinline preload="none" poster="vid/toucher-saut.jpg" width="600" height="1304">
+          <source src="vid/toucher-saut.mp4" type="video/mp4">
+        </video>
+        <p>La page change d’un coup, depuis le 2 octobre (#3312). Avec le glissement, iOS laissait parfois tomber un toucher rapide, et l’écran restait sur le mauvais onglet.</p>
+      </div>
+      <div class="option">
+        <h3>Glissement</h3>
+        <video muted loop playsinline preload="none" poster="vid/toucher-glisse.jpg" width="600" height="1304">
+          <source src="vid/toucher-glisse.mp4" type="video/mp4">
+        </video>
+        <p>Les pages glissent jusqu’à l’onglet touché, comme quand on les fait glisser au doigt. Il faudrait d’abord régler la perte de touchers.</p>
+      </div>
+    </div>
+    <p class="swipe">Glisse pour voir l’autre option.</p>
+    <div class="sources">Sources
+      <ul>
+        <li>Aucune source écrite trouvée sur ce que font Instagram et X au toucher d’un onglet du profil (recherches du 2 octobre, déjà vides pour #3273 et #3312).</li>
+        <li>Dans les deux apps, comme sur Take, on peut aussi passer d’un onglet à l’autre en faisant glisser au doigt (<a href="https://github.com/rileysay/react-native-collapsible-fluid-tabs">une bibliothèque qui reproduit les profils d’Instagram et de X</a> décrit un « swipeable pager »). Sur Take, ce glissé reste animé.</li>
+        <li>Le plus simple pour trancher : toucher les onglets d’un profil sur Instagram et sur X, sur ton téléphone.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<script>
+  // Plays the videos on screen and pauses the others; a muted inline video may start from script on iPhone.
+  const videos = document.querySelectorAll('video')
+  const watcher = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      const video = entry.target
+      if (entry.isIntersecting) video.play().catch(() => {})
+      else video.pause()
+    }
+  }, { threshold: 0.4 })
+  videos.forEach((video) => watcher.observe(video))
+</script>
+</body>
+</html>
