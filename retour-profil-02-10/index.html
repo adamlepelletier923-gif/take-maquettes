@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retour toujours visible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f6f8;
+    --card: #ffffff;
+    --ink: #121212;
+    --muted: #6b6b75;
+    --line: #e4e4ea;
+    --accent: #121212;
+    --dot: rgba(18, 18, 18, 0.35);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101014;
+      --card: #18181d;
+      --ink: #f2f2f5;
+      --muted: #a2a2ad;
+      --line: #2a2a31;
+      --accent: #f2f2f5;
+      --dot: rgba(255, 255, 255, 0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101014;
+    --card: #18181d;
+    --ink: #f2f2f5;
+    --muted: #a2a2ad;
+    --line: #2a2a31;
+    --accent: #f2f2f5;
+    --dot: rgba(255, 255, 255, 0.4);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Inter, -apple-system, system-ui, sans-serif;
+    line-height: 1.5;
+  }
+  main { max-width: 960px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; text-wrap: balance; }
+  h2 { font-size: 20px; margin: 40px 0 12px; text-wrap: balance; }
+  p { margin: 0 0 12px; text-wrap: pretty; }
+  .lead { color: var(--muted); font-size: 16px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-top: 24px; }
+  figure { margin: 0; text-align: center; }
+  figcaption { margin-top: 12px; font-weight: 600; font-size: 16px; }
+  figcaption span { display: block; font-weight: 400; color: var(--muted); font-size: 14px; max-width: 300px; margin: 4px auto 0; }
+  .phone {
+    --s: calc(300 / 1206);
+    position: relative;
+    width: 300px;
+    height: calc(2622px * var(--s));
+    border-radius: 36px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 0 8px #1b1b1f, 0 18px 40px rgba(0, 0, 0, 0.18);
+  }
+  .phone img { position: absolute; left: 0; width: 100%; display: block; }
+  .status { top: 0; z-index: 3; }
+  .nav { bottom: 0; z-index: 3; }
+  .bar { top: calc(157px * var(--s)); z-index: 2; }
+  .today .scroll { top: calc(157px * var(--s)); animation: today 9s ease-in-out infinite; }
+  .after .scroll { top: calc(347px * var(--s)); animation: after 9s ease-in-out infinite; }
+  .name {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    top: calc(157px * var(--s));
+    height: calc(190px * var(--s));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: calc(34px * var(--s));
+    font-weight: 600;
+    font-size: 15px;
+    color: #121212;
+    animation: name 9s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .finger {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: -15px;
+    border-radius: 50%;
+    background: var(--dot);
+    animation: finger 9s ease-in-out infinite;
+  }
+  @keyframes today {
+    0%, 22% { transform: translateY(0); }
+    44%, 78% { transform: translateY(calc(-837px * var(--s))); }
+    94%, 100% { transform: translateY(0); }
+  }
+  @keyframes after {
+    0%, 22% { transform: translateY(0); }
+    44%, 78% { transform: translateY(calc(-647px * var(--s))); }
+    94%, 100% { transform: translateY(0); }
+  }
+  @keyframes name {
+    0%, 38% { opacity: 0; }
+    46%, 76% { opacity: 1; }
+    84%, 100% { opacity: 0; }
+  }
+  @keyframes finger {
+    0%, 18% { top: 78%; opacity: 0; }
+    22% { top: 78%; opacity: 1; }
+    44% { top: 34%; opacity: 1; }
+    48%, 100% { top: 34%; opacity: 0; }
+  }
+  .stills { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+  .stills img { width: 240px; border-radius: 24px; box-shadow: 0 0 0 6px #1b1b1f; display: block; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; margin-top: 16px; }
+  .card h3 { margin: 0 0 6px; font-size: 16px; }
+  blockquote { margin: 8px 0; padding-left: 12px; border-left: 3px solid var(--line); color: var(--muted); }
+  a { color: inherit; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll, .name, .finger { animation-play-state: paused; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Le Retour reste en haut, sur le profil d’un autre</h1>
+  <p class="lead">Maquette du 02/10/2026, faite sur de vraies captures iOS de la 2e boucle (profil d’un ami). Sur ton propre profil, rien ne change : il n’a pas de Retour.</p>
+  <p>Aujourd’hui, quand l’en-tête se replie, le bouton Retour part avec lui. Il ne reste en haut que les onglets, et la seule sortie est le glissé depuis le bord. Après : une barre reste fixée en haut, avec Retour et « … ». Les onglets s’épinglent dessous, et le nom apparaît dans la barre une fois l’en-tête replié, comme chez Instagram et X.</p>
+
+  <div class="pair">
+    <figure>
+      <div class="phone today" aria-label="Aujourd’hui : le Retour part avec l’en-tête">
+        <img class="scroll" src="img/profil-avec-barre.jpg" alt="">
+        <img class="status" src="img/statut.jpg" alt="">
+        <img class="nav" src="img/navigation.jpg" alt="">
+        <div class="finger"></div>
+      </div>
+      <figcaption>Aujourd’hui<span>Tout l’en-tête défile, Retour compris : en haut, il ne reste que les onglets.</span></figcaption>
+    </figure>
+    <figure>
+      <div class="phone after" aria-label="Après : la barre avec Retour reste en haut">
+        <img class="scroll" src="img/profil-sous-barre.jpg" alt="">
+        <img class="bar" src="img/barre.jpg" alt="">
+        <div class="name">Noah Williams</div>
+        <img class="status" src="img/statut.jpg" alt="">
+        <img class="nav" src="img/navigation.jpg" alt="">
+        <div class="finger"></div>
+      </div>
+      <figcaption>Après<span>La barre reste en haut avec Retour et « … » ; les onglets s’épinglent dessous, le nom apparaît une fois replié.</span></figcaption>
+    </figure>
+  </div>
+
+  <h2>Replié, sur un vrai onglet Reposts</h2>
+  <div class="stills">
+    <figure><img src="img/avant-replie.jpg" alt="Aujourd’hui, replié : plus de Retour"><figcaption>Aujourd’hui</figcaption></figure>
+    <figure><img src="img/apres-replie.jpg" alt="Après, replié : la barre avec Retour et le nom"><figcaption>Après</figcaption></figure>
+  </div>
+
+  <h2>Comment font Instagram et X</h2>
+  <div class="card">
+    <h3>Instagram</h3>
+    <p>La barre du haut est fixe. L’en-tête du profil défile, et les onglets s’épinglent en haut du contenu.</p>
+    <blockquote>« fixed application top bar », « profile header scrolls away normally », « profile tabs stick at the top of the content »</blockquote>
+    <p><a href="https://github.com/Bruno-ADH/instagram-profile-sticky-demo">instagram-profile-sticky-demo</a>, un projet qui reproduit le profil d’Instagram.</p>
+  </div>
+  <div class="card">
+    <h3>X</h3>
+    <p>L’en-tête rétrécit jusqu’à la taille d’une barre de navigation, puis reste collé en haut, avec le nom.</p>
+    <blockquote>« When scrolling up, the header resizes down until it reaches Navigation Bar default size and then it sticks to the top of the screen. »</blockquote>
+    <p><a href="https://www.thinkandbuild.it/implementing-the-twitter-ios-app-ui/">Implementing the Twitter iOS App UI</a> (Think and Build).</p>
+  </div>
+  <div class="card">
+    <h3>Ce qui ne change pas</h3>
+    <ul>
+      <li>Ton propre profil : pas de Retour, l’en-tête se replie comme aujourd’hui.</li>
+      <li>Le repli lui-même, l’en-tête gardé d’un onglet à l’autre, et la position de chaque onglet.</li>
+      <li>Le glissé depuis le bord pour revenir.</li>
+    </ul>
+  </div>
+  <p class="lead" style="margin-top:24px">Trouvé par la 2e boucle (flow 18). Instagram et X gardent tous les deux le Retour visible, donc pas besoin du go d’Adam, selon sa règle.</p>
+</main>
+<script>
+  (function () {
+    var t = Number(new URLSearchParams(location.search).get('t'));
+    if (!isFinite(t) || t <= 0) return;
+    document.querySelectorAll('.scroll, .name, .finger').forEach(function (el) {
+      el.style.animationDelay = (-t) + 's';
+      el.style.animationPlayState = 'paused';
+    });
+  })();
+</script>
+</body>
+</html>
