@@ -58,31 +58,26 @@
   <label class="item"><input type="checkbox" data-k="5a"><span><b>Ferme Take, puis demande à quelqu’un de t’envoyer un message.</b><span class="see">L’icône de Take montre un nombre en rouge.</span></span></label>
   <label class="item"><input type="checkbox" data-k="5b"><span><b>Ouvre Take et lis tout : messages et notifications.</b><span class="see">Le nombre disparaît de l’icône.</span></span></label>
 
-  <h2>6. Partager une photo ou un lien vers Take</h2>
-  <p class="where">Seulement si le partage vers Take est dans ce build. Dans Photos et dans Safari, bouton Partager.</p>
-  <label class="item"><input type="checkbox" data-k="6a"><span><b>Dans Photos, ouvre une photo, touche Partager, puis Take.</b><span class="see">Take s’ouvre sur le composeur, avec la photo déjà posée.</span></span></label>
-  <label class="item"><input type="checkbox" data-k="6b"><span><b>Dans Safari, sur une page, touche Partager, puis Take.</b><span class="see">Le composeur s’ouvre, avec le lien comme question.</span></span></label>
-  <p class="note">Si la feuille de partage se ferme sans ouvrir Take, dis-le tout de suite : c’est le point qu’on ne pouvait vérifier que sur un iPhone en iOS 26.</p>
-
-  <h2>7. VoiceOver, Contrôle vocal et réglages d’affichage</h2>
+  <h2>6. VoiceOver, Contrôle vocal et réglages d’affichage</h2>
   <p class="where">Réglages de l’iPhone, puis Accessibilité. Garde Take ouvert pendant que tu changes un réglage.</p>
   <label class="item"><input type="checkbox" data-k="7a"><span><b>Allume VoiceOver, puis, dans le fil, glisse un doigt vers la droite pour passer d’un élément à l’autre.</b><span class="see">Chaque take se lit en une seule fois : la question, l’auteur, l’âge. En glissant vers le haut ou le bas, tu as ses actions : Reposter, Partager, les commentaires, Plus d’options.</span></span></label>
   <label class="item"><input type="checkbox" data-k="7b"><span><b>Éteins VoiceOver, allume le Contrôle vocal, puis dis « Toucher Partager » sur le fil.</b><span class="see">Le bouton Partager d’un take réagit, comme si tu l’avais touché.</span></span></label>
   <label class="item"><input type="checkbox" data-k="7c"><span><b>Allume « Texte en gras », puis « Augmenter le contraste », puis « Réduire les animations ».</b><span class="see">Take change tout de suite, sans être relancé : texte plus épais, contrastes plus marqués, moins de mouvement.</span></span></label>
   <p class="note">Sur un commentaire, VoiceOver ne propose peut-être pas encore « J’aime » et « Répondre » : la correction est en cours.</p>
 
-  <h2>8. Ce qui marche seulement avec les services en ligne</h2>
+  <h2>7. Ce qui marche seulement avec les services en ligne</h2>
   <p class="where">L’app entière. La connexion par Apple et Google se teste en dernier, puisqu’il faut se déconnecter.</p>
   <label class="item"><input type="checkbox" data-k="8a"><span><b>Dans Explorer, ouvre un take écrit en anglais.</b><span class="see">Il s’affiche en français, ainsi que ses commentaires.</span></span></label>
   <label class="item"><input type="checkbox" data-k="8b"><span><b>Dans un commentaire ou un message, touche le bouton des GIF, à côté du champ, cherche un GIF et envoie-le.</b><span class="see">Les GIF s’affichent pendant la recherche, et le tien part.</span></span></label>
   <label class="item"><input type="checkbox" data-k="8c"><span><b>Sur un take, touche Partager, puis « Copier le lien », et envoie ce lien à quelqu’un dans Messages.</b><span class="see">Le message montre un aperçu du take. Toucher le lien ouvre Take directement sur ce take.</span></span></label>
   <label class="item"><input type="checkbox" data-k="8d"><span><b>Déconnecte-toi (Profil, Paramètres, « Se déconnecter »), puis reconnecte-toi avec « Continuer avec Apple », puis avec « Continuer avec Google ».</b><span class="see">Les deux connexions passent sans erreur.</span></span></label>
 
-  <h2>9. Un refus qui dit pourquoi</h2>
+  <h2>8. Un refus qui dit pourquoi</h2>
   <p class="where">Les commentaires d’un take.</p>
   <label class="item"><input type="checkbox" data-k="9a"><span><b>Écris un commentaire avec une grosse insulte et envoie-le.</b><span class="see">Il ne part pas, et le message dit quelle règle il enfreint, par exemple le langage offensant, au lieu d’un refus sans explication.</span></span></label>
 
   <p class="soft" style="margin-top:28px">Le reste a été vérifié sur le simulateur, dans la boucle de régression.</p>
+  <p class="soft">Le partage depuis Photos revient au build suivant, une fois les réglages Apple faits.</p>
 </main>
 <script>
 (function () {
