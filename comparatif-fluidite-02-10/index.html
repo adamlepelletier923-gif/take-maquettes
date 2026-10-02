@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Fluidité, hier soir et maintenant</title>
+<style>
+  :root { color-scheme: light dark; --bg: #ffffff; --ink: #141414; --soft: #6b6b6b; --card: #f3f3f3; --line: #e3e3e3; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0e0e0e; --ink: #f2f2f2; --soft: #a3a3a3; --card: #1b1b1b; --line: #2a2a2a; } }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, system-ui, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 20px 16px 48px; }
+  h1 { font-size: 22px; margin: 4px 0 8px; }
+  h2 { font-size: 17px; margin: 26px 0 6px; }
+  p { color: var(--soft); line-height: 1.45; margin: 6px 0; }
+  video { width: 100%; height: auto; border-radius: 14px; background: var(--card); margin: 12px 0 4px; }
+  .table { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--soft); font-weight: 600; }
+  td:nth-child(2), td:nth-child(3) { white-space: nowrap; }
+  small { color: var(--soft); }
+  ul { padding-left: 18px; line-height: 1.5; }
+  li { margin: 5px 0; }
+  .q { background: var(--card); border-radius: 12px; padding: 12px 16px; color: var(--ink); }
+  .q ul { margin: 6px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>La fluidité, hier soir et maintenant</h1>
+  <p>Même simulateur (iPhone, iOS 26.5), même compte, mêmes données, et les mêmes gestes rejoués à l'identique par un script : 40 glissés réguliers du fil Takes, un lancer, puis le toucher du premier take jusqu'à son graphique. « Hier soir », c'est la version que tu testais (b772ef5959) ; « Maintenant », c'est main après tout ce qu'on a fait cette nuit (d5971c6df1).</p>
+
+  <div class="q">
+  <b>En bref</b>
+  <ul>
+    <li><b>Défilement du fil</b> : pas de différence nette sur le travail de l'app. Les mises à jour de React, leur durée et les redessins sont les mêmes, à moins de 10 % près.</li>
+    <li><b>Images à l'écran</b> : résultat mitigé sur la seule paire filmée. Maintenant perd plus de petites images (394 contre 254 trous de plus de 25 ms), mais a deux fois moins de gros à-coups (7 contre 14 de plus de 100 ms). Le Mac était plus chargé pendant le passage « maintenant » (6,60 contre 4,30), donc pas de conclusion ferme.</li>
+    <li><b>Toucher un take</b> : pareil à l'œil. Des deux côtés, le take glisse en place en 0,2 s avec son graphique déjà dessiné. La médiane chronométrée est un peu plus basse maintenant, mais l'écart reste dans le bruit.</li>
+    <li><b>Bugs</b> : aucun plantage, écran figé ni erreur, ni cette nuit ni maintenant. Rien n'a été écrit en base par erreur pendant les mesures.</li>
+  </ul>
+  </div>
+
+  <h2>Le défilement, côte à côte</h2>
+  <p>Passages filmés à chaud (2e passage depuis le lancement de l'app), calés sur le premier glissé. Les glissés sont les mêmes des deux côtés, mais l'outil ne bat pas exactement au même rythme : les deux côtés se décalent d'une fraction de seconde au fil du clip. Vers la moitié, le fil arrive à son dernier take (la base locale n'en a qu'une vingtaine), et les derniers glissés butent sur la fin, des deux côtés.</p>
+  <video src="a-chaud-defilement.mp4" poster="a-chaud-defilement.jpg" muted loop playsinline controls preload="metadata"></video>
+  <h2>Le toucher d'un take, côte à côte</h2>
+  <p>Le même take des deux côtés (« Which one would actually change your daily life the most? »), calé sur l'instant du toucher.</p>
+  <video src="a-chaud-toucher.mp4" poster="a-chaud-toucher.jpg" muted loop playsinline controls preload="metadata"></video>
+
+  <h2>Les chiffres : 6 passages alternés</h2>
+  <p>Hier soir, maintenant, hier soir, maintenant… Chaque passage part d'une app relancée à froid, sur le fil Takes. Chaque case donne la médiane des 3 passages, et en petit l'écart entre le plus bas et le plus haut.</p>
+  <div class="table"><table>
+  <tr><th>Mesure (pendant les 40 glissés et le lancer)</th><th>Hier soir</th><th>Maintenant</th><th>Ce qui change</th></tr>
+  <tr><td>Mises à jour de l&#x27;écran par React pendant le geste</td><td>123<br><small>118 à 131</small></td><td>126<br><small>120 à 131</small></td><td>Pas de différence nette (moins de 10 %).</td></tr>
+<tr><td>Temps de calcul de ces mises à jour, au total</td><td>556 ms<br><small>517 ms à 601 ms</small></td><td>545 ms<br><small>513 ms à 630 ms</small></td><td>Pas de différence nette (moins de 10 %).</td></tr>
+<tr><td>La plus longue mise à jour</td><td>65,3 ms<br><small>52,8 ms à 185 ms</small></td><td>59,9 ms<br><small>55,3 ms à 70,2 ms</small></td><td>Pas de différence nette (moins de 10 %).</td></tr>
+<tr><td>Mises à jour de plus de 16,7 ms (plus d&#x27;une image)</td><td>10<br><small>8 à 11</small></td><td>10<br><small>9 à 15</small></td><td>Pareil.</td></tr>
+<tr><td>Fois où l&#x27;écran du fil entier se redessine</td><td>2<br><small>2 à 2</small></td><td>2<br><small>2 à 2</small></td><td>Pareil.</td></tr>
+<tr><td>Rangées du fil redessinées</td><td>57<br><small>48 à 57</small></td><td>57<br><small>57 à 57</small></td><td>Pareil.</td></tr>
+<tr><td>Du toucher d&#x27;un take à son graphique (outil compris)</td><td>2034 ms<br><small>1328 ms à 2309 ms</small></td><td>1806 ms<br><small>1509 ms à 2026 ms</small></td><td>11 % de mieux maintenant en médiane, mais dans le bruit : les passages des deux côtés se chevauchent.</td></tr>
+  </table></div>
+
+  <h2>Les images à l'écran : la paire filmée</h2>
+  <p>Comptées dans la vidéo de l'écran : on ne garde que les images qui changent vraiment, puis on mesure le temps entre deux. Une seule paire, donc à prendre avec prudence ; charge du Mac au départ : 4,30 hier soir, 6,60 maintenant.</p>
+  <div class="table"><table>
+  <tr><th>Mesure (pendant le mouvement)</th><th>Hier soir</th><th>Maintenant</th><th>Ce qui change</th></tr>
+  <tr><td>Images différentes affichées par seconde, en mouvement</td><td>49,4<br></td><td>45,3<br></td><td>Pas de différence nette (moins de 10 %).</td></tr>
+<tr><td>Images perdues (plus de 25 ms sans nouvelle image)</td><td>254<br></td><td>394<br></td><td>55 % de moins bien maintenant.</td></tr>
+<tr><td>À-coups visibles (plus de 50 ms)</td><td>69<br></td><td>93<br></td><td>35 % de moins bien maintenant.</td></tr>
+<tr><td>Gros à-coups (plus de 100 ms)</td><td>14<br></td><td>7<br></td><td>50 % de mieux maintenant.</td></tr>
+  </table></div>
+
+  <h2>Le singe : des gestes au hasard, pendant des minutes</h2>
+  <ul>
+  <li><b>Cette nuit</b> (05:33, sur b0ac220bc3) : 430 gestes au hasard en 11 min 28. 0 plantage, 0 écran figé, 0 erreur JS, 0 écran rouge. En base : 0 vote ou message involontaire. Les « désynchros » d'onglets signalées (33, toutes de faux positifs vérifiés à l&#x27;image (le détecteur prenait le conteneur de la rangée)) viennent de l'outil.</li>
+  <li><b>Maintenant</b> (08:28, sur d5971c6df1) : 349 gestes au hasard en 10 min 37. 0 plantage, 0 écran figé, 0 erreur JS, 0 écran rouge. En base : 0 (ni vote, ni message, ni réaction, ni commentaire, ni j&#x27;aime, ni repost, ni amitié modifiée) vote ou message involontaire. Les « désynchros » d'onglets signalées (22, toutes de faux positifs vérifiés à l&#x27;image) viennent de l'outil.</li>
+  </ul>
+
+  <h2>Ce qui a changé entre les deux versions</h2>
+  <p>Le pager natif du profil était déjà dans « hier soir ». Le lot de cette nuit touche surtout :</p>
+  <ul>
+    <li>le fil : 20 takes par page, avec la suite demandée 10 takes avant la fin, comme X (#3210) ; l'intérieur des takes posés à l'écran lu avant le toucher (#3211) ; une rangée sombre sous la barre d'état ne redessine plus l'écran (#3212) ; la barre du haut prend le fond de la page sur un fil défilé (#3194) ;</li>
+    <li>l'accessibilité : VoiceOver, texte en gras, contraste augmenté, animations réduites, suivis en direct (#3186, #3225, #3208, #3195, #3202) ;</li>
+    <li>des correctifs de vidéo, de compteurs, du toucher de la barre d'état et de profil (#3189, #3177, #3218, #3214, #3215, #3222).</li>
+  </ul>
+  <p>Dans cette mesure, l'écran du fil se redessine 2 fois par passage des deux côtés, à cause du même état interne. Ces 2 rendus arrivent vers le 4e glissé maintenant, contre le 8e hier soir. C'est cohérent avec la page suivante demandée plus tôt (#3210), mais ce n'est pas prouvé. La rangée sombre de #3212 n'a pas été sollicitée par ces données.</p>
+
+  <h2>Ce que cette mesure ne dit pas</h2>
+  <ul>
+    <li>C'est une version de développement (Debug, avec Metro), sur simulateur : plus lente que l'app installée. Seuls les écarts entre les deux colonnes comptent, pas les valeurs elles-mêmes.</li>
+    <li>Le compteur d'images d'Apple (perf frames) n'existe que sur un vrai iPhone ; ici, les images sont comptées dans la vidéo.</li>
+    <li>Seul le fil Takes est mesuré. Le profil (le nouveau pager natif), Messages, la carte et les vidéos du fil ne le sont pas.</li>
+    <li>La page suivante du fil est peu sollicitée : la base locale n'a qu'une vingtaine de takes. L'app ne journalise pas ses requêtes, donc leur délai n'est pas mesuré.</li>
+    <li>Le Mac restait chargé par un service de macOS (mediaanalysisd), d'où l'alternance des passages : une dérive de charge touche les deux côtés pareil. Charge au départ de chaque passage : hier soir 6,8, 7,4, 6,0 ; maintenant 5,6, 8,6, 6,2.</li>
+  </ul>
+  <p>Mesures prises le 02/10 entre 08:55 et 09:28 avec agent-device (gestes, profileur React DevTools, chronomètre autour du toucher), et screencapture pour les vidéos.</p>
+</main>
+</body>
+</html>
