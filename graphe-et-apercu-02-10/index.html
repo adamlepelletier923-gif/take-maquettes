@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Graphique et aperçu des commentaires — maquettes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+/* Jetons de l'app (design-tokens.ts), clair puis sombre. */
+body{
+  --t-surface:#FFFFFF;--t-ink:#141414;--t-soft:#6B6E73;--t-muted:#9A9DA4;--t-line:#E3E6EA;
+  --t-chipbg:rgba(20,20,20,.078);--t-chipon:#FFFFFF;--t-glass:rgba(242,243,245,.84);--t-menu:rgba(255,255,255,.9);
+  --t-plate:#E7E9EC;--t-yes:#008B45;--t-no:#C53637;--t-grab:rgba(20,20,20,.22);
+  --img-detail:url(img/detail-actuel.jpg);--img-haut:url(img/detail-haut.jpg);--h-haut:341px;
+  --img-bas:url(img/detail-bas.jpg);--h-bas:247px;--img-plot:url(img/courbe.png);
+  --img-fil:url(img/fil-takes.jpg);--img-row:url(img/take-amir.png);--img-champ:url(img/champ-avis.png);
+  --ring-top:352px;
+}
+body[data-theme=sombre]{
+  --t-surface:#1E2126;--t-ink:#E7E9EA;--t-soft:#83898F;--t-muted:#6B6F75;--t-line:#2F3336;
+  --t-chipbg:rgba(255,255,255,.10);--t-chipon:#1E2126;--t-glass:rgba(30,33,38,.82);--t-menu:rgba(30,33,38,.93);
+  --t-plate:#B9BDC2;--t-yes:#16A34A;--t-no:#DC5551;--t-grab:rgba(255,255,255,.3);
+  --img-detail:url(img/detail-sombre.jpg);--img-haut:url(img/detail-sombre-haut.jpg);--h-haut:258px;
+  --img-bas:url(img/detail-sombre-bas.jpg);--h-bas:328.67px;--img-plot:url(img/courbe-sombre.png);
+  --img-fil:url(img/fil-sombre.jpg);--img-row:url(img/take-amir-sombre.png);--img-champ:url(img/champ-avis-sombre.png);
+  --ring-top:269px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#f6f6f7;color:#141414;font-family:Inter,-apple-system,system-ui,sans-serif;line-height:1.5}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
+h1{font-size:28px;line-height:1.2;margin:0 0 6px}
+h2{font-size:21px;margin:44px 0 6px}
+p,li{font-size:16px;max-width:76ch}
+.lede{color:#6b6b70;margin:0 0 10px}
+.ask{background:#fff;border-radius:18px;padding:14px 18px;box-shadow:0 1px 3px rgba(0,0,0,.06);max-width:76ch}
+.ask b{font-size:17px}
+q.adam{display:block;font-style:italic;color:#333;margin:6px 0 4px}
+.irritant{margin:6px 0 0}
+.theme{position:sticky;top:0;z-index:20;display:flex;gap:8px;align-items:center;padding:10px 0;background:#f6f6f7;font-size:15px}
+.theme button{font:600 15px Inter,sans-serif;border:0;border-radius:999px;padding:7px 16px;background:#e6e6ea;color:#141414;cursor:pointer}
+.theme button.on{background:#141414;color:#fff}
+.grid{display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start;margin-top:18px}
+figure{margin:0;width:322px}
+figcaption{font-size:14px;color:#6b6b70;margin-top:12px}
+figcaption b{color:#141414}
+.tag{display:inline-block;font-size:13px;font-weight:700;padding:2px 10px;border-radius:999px;background:#141414;color:#fff;margin-right:6px}
+.tag.now{background:#e9e9ec;color:#333}
+.frame{width:322px;height:700px;border-radius:44px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.14),0 0 0 8px #1a1a1a;background:#000;position:relative}
+.phone{width:402px;height:874px;transform:scale(.8);transform-origin:0 0;position:absolute;left:0;top:0;overflow:hidden;background:var(--t-surface)}
+.ic{display:inline-block;width:20px;height:20px;fill:currentColor;flex:none;vertical-align:middle}
+.note{font-size:14px;color:#6b6b70;max-width:76ch}
+.src li{font-size:14px;margin:4px 0}
+.src a{color:#333;word-break:break-word}
+.ring{position:absolute;left:26px;top:var(--ring-top);width:150px;height:38px;border:3px solid #ff3b30;border-radius:12px;pointer-events:none}
+.bg{position:absolute;left:0;top:0;width:402px;height:874px;background:0 0/402px 874px no-repeat}
+.bg.detail{background-image:var(--img-detail)}
+.bg.fil{background-image:var(--img-fil)}
+
+/* ── G : la carte de la courbe, aux cotes de TakeBackFace, OddsChart et RangeChips ── */
+.sl{width:402px;background:0 0/402px auto no-repeat}
+.sl.haut{height:var(--h-haut);background-image:var(--img-haut)}
+.sl.bas{height:var(--h-bas);background-image:var(--img-bas)}
+.card{margin:0 16px;border:1px solid var(--t-line);border-radius:26px;background:var(--t-surface);padding:16px 16px 30px;position:relative}
+.hrow{display:flex;align-items:center;gap:12px;min-height:20px}
+.ttl{flex:1;min-width:0;font:600 11px/14px Inter,sans-serif;text-transform:uppercase;letter-spacing:.4px;color:var(--t-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.share{color:var(--t-ink)}
+.chips{display:inline-flex;gap:2px;padding:2px;border-radius:8px;background:var(--t-chipbg)}
+.chips b{font:600 11px/13px Inter,sans-serif;color:var(--t-soft);padding:5px 8px;border-radius:6px}
+.chips b.on{background:var(--t-chipon);color:var(--t-ink)}
+.plot{width:368px;height:198px;margin:14px -16px 0;background:var(--img-plot) 0 0/368px 198px no-repeat}
+.under{display:flex;justify-content:center;margin-top:6px}
+.under .chips b{padding:6px 12px;font-size:12px;line-height:15px}
+.card.g1{padding-bottom:16px}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:2px;border-radius:10px;background:var(--t-chipbg);margin-top:12px}
+.seg b{font:600 12px/16px Inter,sans-serif;text-align:center;padding:6px 0;border-radius:8px;color:var(--t-soft)}
+.seg b.on{background:var(--t-chipon);color:var(--t-ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.card.g2 .plot{margin-top:8px}
+.pill{display:inline-flex;align-items:center;gap:3px;padding:5px 7px 5px 10px;border-radius:8px;background:var(--t-chipbg);font:600 11px/13px Inter,sans-serif;color:var(--t-ink)}
+.pill .ic{width:12px;height:12px}
+.menu{position:absolute;top:46px;right:49px;width:206px;border-radius:14px;background:var(--t-menu);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);box-shadow:0 12px 32px rgba(0,0,0,.22),0 0 0 .5px rgba(0,0,0,.1);overflow:hidden;z-index:4}
+.mi{display:flex;align-items:center;gap:10px;height:42px;padding:0 14px;font:500 15px Inter,sans-serif;color:var(--t-ink);border-top:.5px solid var(--t-line)}
+.mi:first-child{border-top:0}
+.mi .ic{width:16px;height:16px}
+.mi i{display:inline-block;width:16px}
+
+/* ── A : l'appui long sur un take du fil ── */
+.blur{filter:blur(14px) saturate(1.05);transform:scale(1.06)}
+.blur.more{filter:blur(20px) saturate(1.05)}
+.veil{position:absolute;inset:0;background:rgba(0,0,0,.35)}
+.glass{background:var(--t-glass);-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%)}
+.sheet{position:absolute;left:0;right:0;bottom:0;border-radius:26px 26px 0 0}
+.grab{width:36px;height:5px;border-radius:3px;background:var(--t-grab);margin:10px auto 6px}
+.cms{display:flex;flex-direction:column;gap:12px;padding:4px 16px 12px}
+.cm{display:flex;gap:12px}
+.av{width:32px;height:32px;border-radius:50%;flex:none;background:var(--t-plate) center/cover no-repeat;display:flex;align-items:center;justify-content:center}
+.av.leo{background-image:url(img/avatar-leo.png)}
+.av .ic{width:20px;height:20px;color:#0E0E0F}
+.cb{min-width:0;flex:1}
+.cl{display:flex;align-items:baseline;gap:8px}
+.cn{font:700 14px/18px Inter,sans-serif;color:var(--t-ink)}
+.ctime{font:400 12px/16px Inter,sans-serif;color:var(--t-soft)}
+.cx{font:400 14px/19px Inter,sans-serif;color:var(--t-ink);margin-top:2px}
+.hair{height:1px;background:var(--t-line)}
+.lift{position:absolute;left:8px;width:386px;height:216px;border-radius:24px;overflow:hidden;background:var(--img-row) 0 0/386px auto no-repeat;box-shadow:0 18px 50px rgba(0,0,0,.3)}
+.ctx{position:absolute;left:8px;width:386px;border-radius:24px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.22)}
+.ctx .mh{font:600 13px/16px Inter,sans-serif;color:var(--t-soft);padding:12px 16px 2px}
+.ctx .cms{padding:10px 16px 14px}
+.row{display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 16px;font:500 15px Inter,sans-serif;color:var(--t-ink)}
+.peek{position:absolute;left:16px;width:370px;border-radius:26px;background:var(--t-surface);box-shadow:0 22px 60px rgba(0,0,0,.35);overflow:hidden}
+.ph{display:flex;align-items:center;gap:8px;padding:16px 16px 0}
+.pav{width:28px;height:28px;border-radius:50%;background:url(img/avatar-amir.png) center/cover}
+.ph b{font:600 15px Inter,sans-serif;color:var(--t-ink)}
+.ph span{font:400 14px Inter,sans-serif;color:var(--t-muted)}
+.pq{font:600 19px/25px Inter,sans-serif;padding:10px 16px 0;color:var(--t-ink)}
+.pr{display:flex;justify-content:space-between;padding:12px 16px 0;font:700 15px Inter,sans-serif}
+.pbar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin:6px 16px 0}
+.pbar i{display:block;height:100%}
+.peek .cms{padding:14px 16px 14px;gap:14px}
+.peek .cx{font-size:15px;line-height:21px}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--t-line)}
+.acts div{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0 12px;font:600 12px Inter,sans-serif;color:var(--t-soft)}
+.acts div .ic{width:22px;height:22px;color:var(--t-ink)}
+.hint{position:absolute;left:0;right:0;text-align:center;font:600 13px Inter,sans-serif;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+.sh-head{text-align:center;padding:2px 16px 10px}
+.sh-head b{font:600 16px/20px Inter,sans-serif;color:var(--t-ink)}
+.sh-head b span{color:var(--t-soft);font-weight:500;margin-left:6px}
+.sh-head div{font:400 13px/18px Inter,sans-serif;color:var(--t-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sheet .cms.full{padding:14px 16px 6px;gap:16px}
+.sheet .cms.full .cx{font-size:15px;line-height:20px}
+.rep{display:flex;align-items:center;gap:14px;margin-top:6px;font:600 13px Inter,sans-serif;color:var(--t-soft)}
+.likes{display:flex;flex-direction:column;align-items:center;gap:1px;font:500 12px Inter,sans-serif;color:var(--t-soft);padding-top:2px}
+.likes .ic{width:18px;height:18px}
+.field{width:370px;height:54px;margin:8px 16px 0;background:var(--img-champ) 0 0/370px 54px no-repeat}
+@media (max-width:700px){.grid{justify-content:center}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-share" viewBox="0 0 256 256"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></symbol>
+<symbol id="i-down" viewBox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
+<symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 256 256"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"/></symbol>
+<symbol id="i-chat" viewBox="0 0 256 256"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></symbol>
+<symbol id="i-send" viewBox="0 0 256 256"><path d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.49,29.8L102,154l41.3,84.87A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14,0-.07-40.06-82.3,48-48a8,8,0,0,0-11.31-11.31l-48,48L24.08,98.25l-.07,0,.14,0L216,40Z"/></symbol>
+<symbol id="i-reply" viewBox="0 0 256 256"><path d="M232,200a8,8,0,0,1-16,0,88.1,88.1,0,0,0-88-88H51.31l34.35,34.34a8,8,0,0,1-11.32,11.32l-48-48a8,8,0,0,1,0-11.32l48-48A8,8,0,0,1,85.66,61.66L51.31,96H128A104.11,104.11,0,0,1,232,200Z"/></symbol>
+<symbol id="i-ghost" viewBox="0 0 256 256"><path d="M128,24a96.11,96.11,0,0,0-96,96v96a8,8,0,0,0,13.07,6.19l24.26-19.85L93.6,222.19a8,8,0,0,0,10.13,0L128,202.34l24.27,19.85a8,8,0,0,0,10.13,0l24.27-19.85,24.26,19.85A8,8,0,0,0,224,216V120A96.11,96.11,0,0,0,128,24ZM100,128a12,12,0,1,1,12-12A12,12,0,0,1,100,128Zm56,0a12,12,0,1,1,12-12A12,12,0,0,1,156,128Z"/></symbol>
+</svg>
+<main>
+<h1>Le graphique et l'aperçu des commentaires : à toi de choisir</h1>
+<p class="lede">Deux retours de ta vérification à la main. Pour chacun : ce qu'on voit aujourd'hui, puis trois propositions posées sur de vraies captures de l'app, avec ses couleurs, sa police et son verre, en clair et en sombre. Rien n'est codé avant ton choix.</p>
+<div class="ask"><b>Réponds avec deux mots : G1, G2 ou G3, puis A1, A2 ou A3.</b></div>
+<div class="theme" role="group" aria-label="Thème des maquettes">Voir en <button type="button" data-t="clair" class="on">Clair</button><button type="button" data-t="sombre">Sombre</button></div>
+
+<h2>G · Les durées du graphique</h2>
+<div class="ask">
+<q class="adam">« placer ailleurs dans le graph l'heure, le j, la semaine et tout, car là on voit pas en entier l'évolution du vote »</q>
+<p class="irritant">Aujourd'hui, le titre, les quatre durées et le bouton de partage tiennent sur une seule ligne. Le titre n'a plus la place : il s'affiche « ÉVOLUTION DES VOT… ». Les trois propositions gardent la courbe identique, au pixel près : seules les durées changent de place, et le titre redevient entier.</p>
+</div>
+<div class="grid">
+
+<figure>
+<div class="frame"><div class="phone"><div class="bg detail"></div><div class="ring"></div></div></div>
+<figcaption><span class="tag now">Aujourd'hui</span><b>Le titre est coupé.</b> La ligne d'en-tête de la carte porte le titre, les quatre durées et le partage : « Évolution des votes » perd ses dernières lettres.</figcaption>
+</figure>
+
+<figure>
+<div class="frame"><div class="phone">
+<div class="sl haut"></div>
+<div class="card g1">
+<div class="hrow"><span class="ttl">Évolution des votes</span><svg class="ic share"><use href="#i-share"/></svg></div>
+<div class="plot"></div>
+<div class="under"><div class="chips"><b>1 h</b><b>1 j</b><b>1 sem.</b><b class="on">Tout</b></div></div>
+</div>
+<div class="sl bas"></div>
+</div></div>
+<figcaption><span class="tag">G1</span><b>Sous la courbe.</b> Le titre et le partage gardent leur ligne, et le titre est entier. Les durées passent sous l'axe des dates, centrées, un peu plus grandes : on lit la courbe d'abord, puis on change de durée.</figcaption>
+</figure>
+
+<figure>
+<div class="frame"><div class="phone">
+<div class="sl haut"></div>
+<div class="card g2">
+<div class="hrow"><span class="ttl">Évolution des votes</span><svg class="ic share"><use href="#i-share"/></svg></div>
+<div class="seg"><b>1 h</b><b>1 j</b><b>1 sem.</b><b class="on">Tout</b></div>
+<div class="plot"></div>
+</div>
+<div class="sl bas"></div>
+</div></div>
+<figcaption><span class="tag">G2</span><b>Une rangée à elle, en haut.</b> Le titre entier, le partage à droite, puis les durées sur toute la largeur de la carte, juste au-dessus de la courbe. C'est l'iPhone : dans Bourse, on choisit la durée en haut de la courbe.</figcaption>
+</figure>
+
+<figure>
+<div class="frame"><div class="phone">
+<div class="sl haut"></div>
+<div class="card g3">
+<div class="hrow"><span class="ttl">Évolution des votes</span><span class="pill">Tout<svg class="ic"><use href="#i-down"/></svg></span><svg class="ic share"><use href="#i-share"/></svg></div>
+<div class="plot"></div>
+</div>
+<div class="sl bas"></div>
+</div></div>
+<figcaption><span class="tag">G3</span><b>Un seul bouton « Tout ⌄ ».</b> La ligne ne garde que la durée choisie, dans une petite pastille, donc le titre entre en entier. Un toucher ouvre la liste (image suivante). C'est Instagram : dans ses statistiques, la plage de dates est un menu en haut.</figcaption>
+</figure>
+
+<figure>
+<div class="frame"><div class="phone">
+<div class="sl haut"></div>
+<div class="card g3">
+<div class="hrow"><span class="ttl">Évolution des votes</span><span class="pill">Tout<svg class="ic"><use href="#i-down"/></svg></span><svg class="ic share"><use href="#i-share"/></svg></div>
+<div class="plot"></div>
+<div class="menu">
+<div class="mi"><i></i>Dernière heure</div>
+<div class="mi"><i></i>Dernier jour</div>
+<div class="mi"><i></i>Dernière semaine</div>
+<div class="mi"><svg class="ic"><use href="#i-check"/></svg>Tout</div>
+</div>
+</div>
+<div class="sl bas"></div>
+</div></div>
+<figcaption><span class="tag">G3</span><b>G3, menu ouvert.</b> La liste s'ouvre sous la pastille, sur le verre des menus de l'app, et se referme au choix. Une durée sans assez de votes reste grisée, comme aujourd'hui.</figcaption>
+</figure>
+</div>
+<p class="note">Pourquoi pas « au glissé » : sur la courbe, le doigt sert déjà à lire un point (il affiche la valeur à cette heure-là). Changer de durée par un glissé se cacherait derrière ce geste, et personne ne le trouverait.</p>
+
+<h2>A · L'aperçu des commentaires à l'appui long</h2>
+<div class="ask">
+<q class="adam">« l'aperçu des commentaires quand tu appuies longtemps sur un take, car là c'est moche »</q>
+<p class="irritant">Aujourd'hui, l'appui long ouvre la feuille d'actions du bas, mais sans aucune action. On voit la poignée, les premiers commentaires, un trait, puis un vide. Rien ne dit de quel take il s'agit, ni qu'un toucher ouvre la discussion. Exemple utilisé : le take d'Amir, « Le vote devrait-il devenir obligatoire en France ? », et ses 2 commentaires, dont un anonyme : on ne voit que sa pastille, jamais de nom.</p>
+</div>
+<div class="grid">
+
+<figure>
+<div class="frame"><div class="phone">
+<div class="bg fil"></div>
+<div class="veil"></div>
+<div class="sheet glass">
+<div class="grab"></div>
+<div class="cms">
+<div class="cm"><div class="av leo"></div><div class="cb"><div class="cl"><span class="cn">Léo Bernard</span><span class="ctime">il y a 1 j</span></div><div class="cx">Oui, mais seulement si le vote blanc est enfin reconnu.</div></div></div>
+<div class="cm"><div class="av"><svg class="ic"><use href="#i-ghost"/></svg></div><div class="cb"><div class="cl"><span class="ctime">il y a 20 h</span></div><div class="cx">En Belgique c'est obligatoire, et ça marche plutôt bien.</div></div></div>
+</div>
+<div class="hair"></div>
+<div style="height:42px"></div>
+</div>
+</div></div>
+<figcaption><span class="tag now">Aujourd'hui</span><b>Une feuille d'actions sans actions.</b> Dessiné d'après le code (ActionSheet et CommentsPeekCard), pas une capture : la poignée, deux commentaires, un trait, puis le vide.</figcaption>
+</figure>
+
+<figure>
+<div class="frame"><div class="phone">
+<div class="bg fil blur"></div>
+<div class="veil" style="background:rgba(0,0,0,.2)"></div>
+<div class="lift" style="top:118px"></div>
+<div class="ctx glass" style="top:346px">
+<div class="mh">2 commentaires</div>
+<div class="cms">
+<div class="cm"><div class="av leo"></div><div class="cb"><div class="cl"><span class="cn">Léo Bernard</span><span class="ctime">il y a 1 j</span></div><div class="cx">Oui, mais seulement si le vote blanc est enfin reconnu.</div></div></div>
+<div class="cm"><div class="av"><svg class="ic"><use href="#i-ghost"/></svg></div><div class="cb"><div class="cl"><span class="ctime">il y a 20 h</span></div><div class="cx">En Belgique c'est obligatoire, et ça marche plutôt bien.</div></div></div>
+</div>
+<div class="hair"></div>
+<div class="row">Ouvrir la discussion<svg class="ic"><use href="#i-chat"/></svg></div>
+</div>
+</div></div>
+<figcaption><span class="tag">A1</span><b>Comme le menu d'un iPhone.</b> Le take appuyé se soulève, net, et tout le reste se floute. Ses commentaires s'ouvrent juste dessous, sur le verre de l'app, et la dernière ligne dit où l'on va : « Ouvrir la discussion ». Un toucher à côté referme.</figcaption>
+</figure>
+
+<figure>
+<div class="frame"><div class="phone">
+<div class="bg fil blur more"></div>
+<div class="veil" style="background:rgba(0,0,0,.28)"></div>
+<div class="peek" style="top:150px">
+<div class="ph"><div class="pav"></div><b>Amir Haddad</b><span>· il y a 2 j</span></div>
+<div class="pq">Le vote devrait-il devenir obligatoire en France&nbsp;?</div>
+<div class="pr"><span style="color:var(--t-no)">40 %</span><span style="color:var(--t-yes)">60 %</span></div>
+<div class="pbar"><i style="width:40%;background:var(--t-no)"></i><i style="width:60%;background:var(--t-yes)"></i></div>
+<div class="hair" style="margin-top:16px"></div>
+<div class="cms">
+<div class="cm"><div class="av leo"></div><div class="cb"><div class="cl"><span class="cn">Léo Bernard</span><span class="ctime">il y a 1 j</span></div><div class="cx">Oui, mais seulement si le vote blanc est enfin reconnu.</div></div></div>
+<div class="cm"><div class="av"><svg class="ic"><use href="#i-ghost"/></svg></div><div class="cb"><div class="cl"><span class="ctime">il y a 20 h</span></div><div class="cx">En Belgique c'est obligatoire, et ça marche plutôt bien.</div></div></div>
+</div>
+<div class="acts"><div><svg class="ic"><use href="#i-reply"/></svg>Répondre</div><div><svg class="ic"><use href="#i-send"/></svg>Envoyer</div><div><svg class="ic"><use href="#i-chat"/></svg>Discussion</div></div>
+</div>
+<div class="hint" style="top:640px">Glisse jusqu'à une action, puis lâche</div>
+</div></div>
+<figcaption><span class="tag">A2</span><b>Comme le « peek » d'Instagram.</b> Une carte au centre, sur un fil flouté : le take en plus grand, son résultat, puis ses commentaires en plus gros. En bas, trois actions vers lesquelles on glisse le doigt sans le lever, comme Instagram : Répondre, Envoyer, Discussion.</figcaption>
+</figure>
+
+<figure>
+<div class="frame"><div class="phone">
+<div class="bg fil"></div>
+<div class="veil"></div>
+<div class="sheet glass">
+<div class="grab"></div>
+<div class="sh-head"><b>Commentaires<span>2</span></b><div>Le vote devrait-il devenir obligatoire en France ?</div></div>
+<div class="hair"></div>
+<div class="cms full">
+<div class="cm"><div class="av leo"></div><div class="cb"><div class="cl"><span class="cn">Léo Bernard</span><span class="ctime">il y a 1 j</span></div><div class="cx">Oui, mais seulement si le vote blanc est enfin reconnu.</div><div class="rep">Répondre</div></div><div class="likes"><svg class="ic"><use href="#i-heart"/></svg>3</div></div>
+<div class="cm"><div class="av"><svg class="ic"><use href="#i-ghost"/></svg></div><div class="cb"><div class="cl"><span class="ctime">il y a 20 h</span></div><div class="cx">En Belgique c'est obligatoire, et ça marche plutôt bien.</div><div class="rep">Répondre</div></div><div class="likes"><svg class="ic"><use href="#i-heart"/></svg>1</div></div>
+</div>
+<div class="field"></div>
+<div style="height:34px"></div>
+</div>
+</div></div>
+<figcaption><span class="tag">A3</span><b>La feuille, mais complète.</b> Même geste qu'aujourd'hui et même verre, comme la feuille de commentaires d'Instagram. En tête, « Commentaires », leur nombre et la question du take. Chaque commentaire porte son j'aime et « Répondre », et en bas le vrai champ « Donne ton avis… ». Plus de vide.</figcaption>
+</figure>
+</div>
+
+<h2>Sources</h2>
+<ul class="src">
+<li><b>A1</b> · Apple, Human Interface Guidelines, « Context menus » : l'aperçu sort du contenu et l'écran derrière l'aperçu et le menu s'assombrit. <a href="https://developer.apple.com/design/human-interface-guidelines/context-menus">developer.apple.com/design/human-interface-guidelines/context-menus</a></li>
+<li><b>A2</b> · Instagram « Peek » : un appui long sur une photo de la grille l'ouvre par-dessus les autres, le reste se floute, et on glisse le doigt vers ♥, commenter ou partager. <a href="https://www.techspot.com/community/topics/instagram-tests-3d-touch-feature-in-its-android-app.221843/">techspot.com</a> · <a href="https://www.ubergizmo.com/2016/01/instagram-peek-returns-to-android/">ubergizmo.com</a></li>
+<li><b>G2</b> · Apple, Bourse sur iPhone : on choisit 1J, 1S, 1M… en haut de la courbe. <a href="https://support.apple.com/guide/iphone/iph1ac0b1bc/ios">support.apple.com/guide/iphone/iph1ac0b1bc</a></li>
+<li><b>G3</b> · Instagram, statistiques : la plage de dates est la première chose en haut de la page (7, 14, 30, 90 jours ou mois précédent). <a href="https://www.sesamecommunications.com/blog/tracking-instagram-performance-a-brief-overview/">sesamecommunications.com</a></li>
+<li><b>G1</b> · Pas de source officielle sur l'emplacement : c'est la proposition « courbe d'abord, réglage ensuite ».</li>
+<li><b>X</b> · X n'a pas de courbe de vote, et je n'ai pas trouvé de source vérifiable sur l'emplacement de ses durées : je ne m'en sers pas comme référence ici.</li>
+</ul>
+<p class="note">Maquettes : 2e, 02/10. Bases : captures de la boucle finale (main aa3c8517e6) en clair, et captures en sombre de musk-122 (#3440, take « Do notifications make your phone more useful? »). La courbe, l'en-tête du take, la barre de résultat, le champ « Donne ton avis… » et le fil sont des captures. Le reste est dessiné aux cotes du code (TakeBackFace, OddsChart, RangeChips, ActionSheet, CommentsPeekCard) et aux jetons des deux thèmes.</p>
+</main>
+<script>
+(function(){
+  var buttons=document.querySelectorAll('.theme button');
+  function set(t){document.body.setAttribute('data-theme',t);buttons.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-t')===t)})}
+  buttons.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-t'))})});
+  if(location.hash==='#sombre')set('sombre');
+})();
+</script>
+</body>
+</html>
