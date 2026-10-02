@@ -37,7 +37,7 @@
     <li><b>Défilement du fil</b> : pas de différence nette sur le travail de l'app. Les mises à jour de React, leur durée et les redessins sont les mêmes, à moins de 10 % près.</li>
     <li><b>Images à l'écran</b> : résultat mitigé sur la seule paire filmée. Maintenant perd plus de petites images (394 contre 254 trous de plus de 25 ms), mais a deux fois moins de gros à-coups (7 contre 14 de plus de 100 ms). Le Mac était plus chargé pendant le passage « maintenant » (6,60 contre 4,30), donc pas de conclusion ferme.</li>
     <li><b>Toucher un take</b> : pareil à l'œil. Des deux côtés, le take glisse en place en 0,2 s avec son graphique déjà dessiné. La médiane chronométrée est un peu plus basse maintenant, mais l'écart reste dans le bruit.</li>
-    <li><b>Bugs</b> : aucun plantage, écran figé ni erreur, ni cette nuit ni maintenant. Rien n'a été écrit en base par erreur pendant les mesures.</li>
+    <li><b>Bugs</b> : aucun plantage, écran figé ni erreur, ni cette nuit ni maintenant. Mais le singe de ce matin a voté une fois par erreur : ce vote est retiré, et la garde du singe corrigée. Les premiers contrôles en base avaient lu la mauvaise base. Celui de la fenêtre de mesure est refait sur la bonne base, résultat à venir.</li>
   </ul>
   </div>
 
@@ -73,8 +73,8 @@
 
   <h2>Le singe : des gestes au hasard, pendant des minutes</h2>
   <ul>
-  <li><b>Cette nuit</b> (05:33, sur b0ac220bc3) : 430 gestes au hasard en 11 min 28. 0 plantage, 0 écran figé, 0 erreur JS, 0 écran rouge. En base : 0 vote ou message involontaire. Les « désynchros » d'onglets signalées (33, toutes de faux positifs vérifiés à l&#x27;image (le détecteur prenait le conteneur de la rangée)) viennent de l'outil.</li>
-  <li><b>Maintenant</b> (08:28, sur d5971c6df1) : 349 gestes au hasard en 10 min 37. 0 plantage, 0 écran figé, 0 erreur JS, 0 écran rouge. En base : 0 (ni vote, ni message, ni réaction, ni commentaire, ni j&#x27;aime, ni repost, ni amitié modifiée) vote ou message involontaire. Les « désynchros » d'onglets signalées (22, toutes de faux positifs vérifiés à l&#x27;image) viennent de l'outil.</li>
+  <li><b>Cette nuit</b> (05:33, sur b0ac220bc3) : 430 gestes au hasard en 11 min 28. 0 plantage, 0 écran figé, 0 erreur JS, 0 écran rouge. En base : le contrôle « 0 vote ni message involontaire » a été fait sur la mauvaise base (un Postgres local figé au 21/09, pas celle de l&#x27;API) : à revérifier. Les « désynchros » d'onglets signalées (33, toutes de faux positifs vérifiés à l&#x27;image : le détecteur prenait le conteneur de la rangée) viennent de l'outil.</li>
+  <li><b>Maintenant</b> (08:28, sur d5971c6df1) : 349 gestes au hasard en 10 min 37. 0 plantage, 0 écran figé, 0 erreur JS, 0 écran rouge. En base : 1 vote involontaire, retiré depuis : ava_martin a voté sur son propre take à 08:38:49 (geste 329). La garde du singe est corrigée. Le premier contrôle avait lu la mauvaise base. Les « désynchros » d'onglets signalées (22, toutes de faux positifs vérifiés à l&#x27;image) viennent de l'outil.</li>
   </ul>
 
   <h2>Ce qui a changé entre les deux versions</h2>
