@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Bugs corrigés du jour</title>
+<style>
+  :root { color-scheme: light dark; --bg: #ffffff; --ink: #141414; --soft: #5f5f5f; --card: #f3f3f3; --line: #e2e2e2;
+    --main: #1f6fd1; --sim: #1f8a4c; --phone: #8a5a00; --wait: #9a3b3b; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0e0e0e; --ink: #f2f2f2; --soft: #a8a8a8; --card: #1b1b1b; --line: #2c2c2c;
+    --main: #6aa8ff; --sim: #4cc27f; --phone: #e0a83a; --wait: #ff8a8a; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, system-ui, sans-serif; -webkit-text-size-adjust: 100%; }
+  main { max-width: 760px; margin: 0 auto; padding: 20px 16px 48px; }
+  h1 { font-size: 24px; line-height: 1.2; margin: 4px 0 8px; }
+  h2 { font-size: 17px; line-height: 1.3; margin: 0 0 8px; }
+  p { line-height: 1.45; margin: 6px 0; }
+  a { color: var(--main); }
+  .soft { color: var(--soft); }
+  article { background: var(--card); border-radius: 14px; padding: 14px 16px; margin: 12px 0; }
+  dl { margin: 0; }
+  dt { font-size: 13px; font-weight: 600; color: var(--soft); text-transform: uppercase; letter-spacing: 0.02em; margin-top: 8px; }
+  dd { margin: 2px 0 0; line-height: 1.45; }
+  .states { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .s { font-size: 13px; font-weight: 600; border: 1px solid currentColor; border-radius: 999px; padding: 2px 9px; }
+  .main { color: var(--main); } .sim { color: var(--sim); } .phone { color: var(--phone); } .wait { color: var(--wait); }
+  .legend { display: grid; gap: 6px; margin: 10px 0 18px; }
+  .legend div { display: flex; gap: 8px; align-items: baseline; }
+  .legend .s { flex: none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Les bugs corrigés aujourd’hui</h1>
+  <p class="soft">Une fiche par bug : ce que tu voyais avant, ce qui se passe maintenant, la preuve, et où il en est. Les plus visibles d’abord. Pour la fluidité, voir <a href="../comparatif-fluidite-02-10/">le comparatif de fluidité</a>.</p>
+  <div class="legend">
+    <div><span class="s main">Dans main</span><span class="soft">le correctif est dans le code du build.</span></div>
+    <div><span class="s sim">Vu sur le simulateur</span><span class="soft">vérifié dans la boucle de tests de ce matin.</span></div>
+    <div><span class="s phone">À voir sur l’iPhone</span><span class="soft">seul un vrai téléphone peut le montrer.</span></div>
+    <div><span class="s wait">À confirmer</span><span class="soft">pas encore vérifié dans la deuxième boucle, ou pas encore dans main.</span></div>
+  </div>
+
+  <article>
+    <h2>Explorer : les onglets ne changeaient plus au toucher</h2>
+    <dl>
+      <dt>Avant</dt><dd>Le premier changement de thème au toucher marchait. Ensuite, les touchers d’onglet ne faisaient plus rien jusqu’au prochain glissé : le trait sous l’onglet bougeait, mais la page restait sur l’ancien thème.</dd>
+      <dt>Maintenant</dt><dd>Un toucher d’onglet amène la page au thème touché à chaque fois, d’un saut, sans l’animation que l’iPhone laissait tomber quand beaucoup de pages sont prêtes. Même chose dans Notifications et « Ton activité ». Le glissé au doigt ne change pas.</dd>
+      <dt>Preuve</dt><dd>Essais sur le simulateur, un changement à la fois : sans l’animation, 6 touchers sur 6 arrivent sur leur page.</dd>
+    </dl>
+    <div class="states"><span class="s wait">À confirmer</span></div>
+  </article>
+
+  <article>
+    <h2>Après un partage vers Take, deux accueils chargés</h2>
+    <dl>
+      <dt>Avant</dt><dd>Quand on partageait vers Take avec l’app déjà ouverte, revenir à l’accueil en ouvrait un deuxième par-dessus le premier. L’app portait deux accueils en mémoire, soit deux fois plus d’éléments, et une alerte d’un autre écran n’était plus trouvée par les tests.</dd>
+      <dt>Maintenant</dt><dd>Le retour à l’accueil revient à celui qui est déjà ouvert. Un autre chemin, à la fin de l’inscription d’un nouveau compte, en empile encore un deuxième : son correctif suit.</dd>
+      <dt>Preuve</dt><dd>Mesuré dans la boucle : deux accueils et 18 783 éléments après le partage, contre un seul et 9 838 sans lui. Le code de la navigation, rejoué sur cette pile d’écrans, donne deux accueils avant le correctif et un seul après. Un test, rouge avant, vert après.</dd>
+    </dl>
+    <div class="states"><span class="s wait">À confirmer</span></div>
+  </article>
+
+  <article>
+    <h2>Hors ligne, une publication avec médias tenue comme un simple texte</h2>
+    <dl>
+      <dt>Avant</dt><dd>Si le premier essai échouait tout de suite, hors ligne, avant que l’app ait demandé au téléphone de tenir la publication, un take avec photo ou vidéo était tenu comme un simple texte. Il n’avait pas d’Activité en direct, et son bouton d’arrêt n’arrêtait rien.</dd>
+      <dt>Maintenant</dt><dd>Un take qui attend déjà son prochain essai est tenu avec ses médias, quel que soit l’ordre des deux.</dd>
+      <dt>Preuve</dt><dd>Un nouveau test, rouge avant le correctif. Tous les tests de la publication passent 36 sur 36, dix fois de suite, puis sous charge.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s phone">À voir sur l’iPhone</span></div>
+  </article>
+
+  <article>
+    <h2>« J’aime » et « Répondre » impossibles sous VoiceOver</h2>
+    <dl>
+      <dt>Avant</dt><dd>Un commentaire était lu d’un bloc, « J’aime » et « Répondre » compris, sans pouvoir les toucher : sous VoiceOver, on ne pouvait ni aimer ni répondre. Le Contrôle vocal ne les trouvait pas non plus.</dd>
+      <dt>Maintenant</dt><dd>VoiceOver éteint, chaque bouton reste trouvable. VoiceOver allumé, le commentaire se lit en une fois, avec ses actions : J’aime, Répondre, Voir les réponses, Plus d’options et le profil de l’auteur.</dd>
+      <dt>Preuve</dt><dd>Tests de l’écran des commentaires, avec et sans lecteur d’écran : « Répondre » répond, et « Plus d’options » ouvre la feuille.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s phone">À voir sur l’iPhone</span></div>
+  </article>
+
+  <article>
+    <h2>Arrêter une publication en attente ne l’arrêtait pas</h2>
+    <dl>
+      <dt>Avant</dt><dd>Si on arrêtait la publication depuis l’Activité en direct pendant qu’elle attendait un nouvel essai, l’arrêt était ignoré, et le take partait au retour dans l’app.</dd>
+      <dt>Maintenant</dt><dd>Après n’importe quel arrêt, rien ne part tout seul. La carte propose « Reprendre », qui publie le take une seule fois.</dd>
+      <dt>Preuve</dt><dd>Un test : arrêtée pendant l’attente, la publication ne part ni au retour dans l’app ni au retour du réseau, et « Reprendre » la publie une fois. Rouge avant le correctif.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s phone">À voir sur l’iPhone</span></div>
+  </article>
+
+  <article>
+    <h2>Un take publié affiché « pas fini d’être publié »</h2>
+    <dl>
+      <dt>Avant</dt><dd>Un arrêt tombé pendant la mise en ligne finale laissait « Un take n’a pas fini d’être publié », avec « Reprendre », sur un take déjà public.</dd>
+      <dt>Maintenant</dt><dd>Le take publié est rangé comme publié, et l’attente est effacée.</dd>
+      <dt>Preuve</dt><dd>Un test qui coupe la publication pendant sa mise en ligne. Il tombe sur l’ancien code.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s phone">À voir sur l’iPhone</span></div>
+  </article>
+
+  <article>
+    <h2>Les boutons du fil introuvables pour le Contrôle vocal</h2>
+    <dl>
+      <dt>Avant</dt><dd>Pour que VoiceOver lise un take d’un bloc, ses boutons avaient été retirés de l’accessibilité pour tout le monde. Le Contrôle vocal (« Toucher Partager ») et nos tests automatiques ne les trouvaient plus.</dd>
+      <dt>Maintenant</dt><dd>Le regroupement ne se fait que quand VoiceOver tourne. Sinon, chaque bouton reste trouvable.</dd>
+      <dt>Preuve</dt><dd>Boucle de ce matin : les tests du fil, d’Explorer et d’un take, qui tombaient, sont verts.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s sim">Vu sur le simulateur</span><span class="s phone">À voir sur l’iPhone</span></div>
+  </article>
+
+  <article>
+    <h2>Le profil : erreur sur Questions, et Jeu qui ne s’ouvrait plus</h2>
+    <dl>
+      <dt>Avant</dt><dd>Avec les nouvelles pages du profil, chaque passage sur Questions levait une erreur, et un toucher sur Jeu ne changeait plus d’onglet. Trouvé sur le simulateur.</dd>
+      <dt>Maintenant</dt><dd>Plus d’erreur, et chaque onglet s’ouvre.</dd>
+      <dt>Preuve</dt><dd>Un test qui reproduit l’erreur exacte sans le correctif. Dans la boucle de ce matin, le test du profil, qui passe par Questions puis Jeu, est vert, sans écran d’erreur.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s sim">Vu sur le simulateur</span></div>
+  </article>
+
+  <article>
+    <h2>Sur le profil de quelqu’un d’autre, le retour par le bord ne marchait plus</h2>
+    <dl>
+      <dt>Avant</dt><dd>Glisser depuis le bord gauche ne ramenait plus en arrière, ni depuis les onglets ni depuis le haut du profil. Constaté sur le simulateur, au geste automatique puis à la vraie souris.</dd>
+      <dt>Maintenant</dt><dd>Une bande le long du bord gauche laisse passer le glissé de retour, comme avant les nouvelles pages. Les boutons du haut gardent leurs touchers.</dd>
+      <dt>Preuve</dt><dd>Un test qui tombe si la bande du bord manque.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s wait">À confirmer</span></div>
+  </article>
+
+  <article>
+    <h2>L’heure invisible, blanche sur une bande blanche</h2>
+    <dl>
+      <dt>Avant</dt><dd>En haut du fil, au-dessus d’un take sombre, l’heure passait en blanc alors que la bande sous elle était déjà blanche : elle devenait invisible.</dd>
+      <dt>Maintenant</dt><dd>Sur le fond blanc, l’heure reste sombre. Revenue sur un fil défilé, la barre du haut prend le fond blanc de la page. Voir <a href="../barre-du-haut-02-10/">la barre du haut, avant et après</a>.</dd>
+      <dt>Preuve</dt><dd>Tests de la barre du haut. Le test de la barre dans la deuxième boucle capture ses trois états.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s wait">À confirmer</span></div>
+  </article>
+
+  <article>
+    <h2>Le message d’un onglet vide du profil collé sous les onglets</h2>
+    <dl>
+      <dt>Avant</dt><dd>Un onglet vide du profil, chez soi ou chez quelqu’un d’autre, collait son message juste sous la rangée d’onglets.</dd>
+      <dt>Maintenant</dt><dd>Le message se centre dans la place libre, et la liste s’arrête là, sans défiler dans le vide.</dd>
+      <dt>Preuve</dt><dd>Tests de l’onglet vide. Le test des états vides de la deuxième boucle le vérifie.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s wait">À confirmer</span></div>
+  </article>
+
+  <article>
+    <h2>Toucher l’heure ne remontait pas la liste</h2>
+    <dl>
+      <dt>Avant</dt><dd>Toucher l’heure en haut de l’écran ne remontait pas la liste affichée. Plusieurs listes se disputaient ce geste, galeries et pages voisines comprises, et l’iPhone n’en fait rien dans ce cas.</dd>
+      <dt>Maintenant</dt><dd>Seule la liste de l’onglet affiché garde le geste, et elle remonte.</dd>
+      <dt>Preuve</dt><dd>Une vérification qui refuse toute liste qui défile de côté et garderait le geste, et un test du profil.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s phone">À voir sur l’iPhone</span></div>
+  </article>
+
+  <article>
+    <h2>Le passage d’une vidéo coupée restait sur le téléphone</h2>
+    <dl>
+      <dt>Avant</dt><dd>Le passage coupé sur l’iPhone, soit des dizaines de Mo par vidéo, restait sur le téléphone une fois le take publié ou le brouillon jeté.</dd>
+      <dt>Maintenant</dt><dd>Il est supprimé. Reste un cas, avec son correctif prêt mais pas encore entré : une vidéo envoyée en message.</dd>
+      <dt>Preuve</dt><dd>Deux tests qui tombent sans le correctif.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s phone">À voir sur l’iPhone</span></div>
+  </article>
+
+  <article>
+    <h2>Un partage reçu pouvait ressortir plus tard</h2>
+    <dl>
+      <dt>Avant</dt><dd>Un partage reçu restait enregistré après sa lecture, et pouvait ressortir plus tard, y compris sous un autre compte du téléphone.</dd>
+      <dt>Maintenant</dt><dd>Il est oublié dès qu’il est lu.</dd>
+      <dt>Preuve</dt><dd>Deux tests qui tombent sur l’ancien code.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s phone">À voir sur l’iPhone</span></div>
+  </article>
+
+  <article>
+    <h2>Une réponse égarée hors de son fil</h2>
+    <dl>
+      <dt>Avant</dt><dd>Une réponse à une réponse, dont l’auteur ne voyait pas le commentaire de départ, restait à part, invisible pour les autres. Et on pouvait répondre dans le fil de quelqu’un qui nous bloque.</dd>
+      <dt>Maintenant</dt><dd>Elle va sous le commentaire de départ, où tout le monde la voit. Une réponse dans le fil de quelqu’un qui bloque, ou qu’on bloque, est refusée.</dd>
+      <dt>Preuve</dt><dd>Deux tests qui tombaient sur l’ancien serveur ; tous passent maintenant (21 sur 21).</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s wait">À confirmer</span></div>
+  </article>
+
+  <article>
+    <h2>Des compteurs en nombre brut, muets pour VoiceOver</h2>
+    <dl>
+      <dt>Avant</dt><dd>Les compteurs de reposts, de commentaires et de « j’aime » s’affichaient en nombre brut, et VoiceOver ne les lisait pas : on entendait « J’aime » sans le nombre.</dd>
+      <dt>Maintenant</dt><dd>Ils s’écrivent en court, comme les votes (« 12,3k »), et VoiceOver lit le nombre exact.</dd>
+      <dt>Preuve</dt><dd>Tests du fil, du profil et des commentaires : « 12,3k » à l’écran, le nombre exact pour VoiceOver.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s phone">À voir sur l’iPhone</span></div>
+  </article>
+
+  <article>
+    <h2>Sans compte, la vidéo d’un take s’ouvrait comme une photo</h2>
+    <dl>
+      <dt>Avant</dt><dd>Pour un visiteur sans compte, la vidéo d’un take public s’ouvrait comme une photo, et ses médias pouvaient changer d’ordre.</dd>
+      <dt>Maintenant</dt><dd>Elle se joue comme une vidéo, et les médias gardent l’ordre choisi par l’auteur.</dd>
+      <dt>Preuve</dt><dd>Huit cas du serveur, rouges avant le changement, et la forme publique de chaque média testée.</dd>
+    </dl>
+    <div class="states"><span class="s main">Dans main</span><span class="s wait">À confirmer</span></div>
+  </article>
+
+  <p class="soft" style="margin-top:24px">Chaque fiche s’appuie sur un correctif relu ou sur une observation. « À confirmer » passe à « Vu sur le simulateur » après la deuxième boucle.</p>
+</main>
+</body>
+</html>
