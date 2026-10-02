@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Tour iPhone du build</title>
+<style>
+  :root { color-scheme: light dark; --bg: #ffffff; --ink: #141414; --soft: #5f5f5f; --card: #f3f3f3; --line: #e2e2e2; --ok: #1f8a4c; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0e0e0e; --ink: #f2f2f2; --soft: #a8a8a8; --card: #1b1b1b; --line: #2c2c2c; --ok: #4cc27f; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, system-ui, sans-serif; -webkit-text-size-adjust: 100%; }
+  main { max-width: 760px; margin: 0 auto; padding: 20px 16px 48px; }
+  h1 { font-size: 24px; line-height: 1.2; margin: 4px 0 8px; }
+  h2 { font-size: 18px; margin: 30px 0 4px; }
+  p { line-height: 1.45; margin: 6px 0; }
+  .soft { color: var(--soft); }
+  .where { color: var(--soft); font-size: 15px; margin: 0 0 10px; }
+  .progress { position: sticky; top: 0; background: var(--bg); padding: 10px 0; border-bottom: 1px solid var(--line); font-weight: 600; z-index: 1; }
+  label.item { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border-radius: 14px; padding: 12px 14px; margin: 8px 0; cursor: pointer; }
+  label.item input { width: 22px; height: 22px; margin: 2px 0 0; flex: none; accent-color: var(--ok); }
+  label.item span { display: block; line-height: 1.45; }
+  label.item b { font-weight: 600; }
+  label.item:has(input:checked) { opacity: 0.55; }
+  .see { display: block; margin-top: 4px; }
+  .note { border-left: 3px solid var(--line); padding: 2px 0 2px 12px; margin: 10px 0; color: var(--soft); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Ce que tu testes sur ton iPhone avec ce build</h1>
+  <p class="soft">Le simulateur ne peut pas prouver ces points : ils ont besoin d’un vrai iPhone, de la vraie connexion ou des services en ligne. Pour chacun : quoi faire, et ce que tu dois voir. Coche au fur et à mesure. Si quelque chose cloche, fais une capture d’écran et envoie-la avec le numéro du point.</p>
+  <p class="progress" id="progress">0 point fait</p>
+
+  <h2>1. Publier en quittant l’app</h2>
+  <p class="where">Sur iOS 26. Le bouton + du fil, puis l’écran verrouillé ou le haut de l’écran.</p>
+  <label class="item"><input type="checkbox" data-k="1a"><span><b>Publie un take avec une vidéo, puis quitte l’app tout de suite.</b><span class="see">Tu dois voir « Publication de ton take » dans une Activité en direct, avec l’étape et la barre qui avance. Le take est en ligne quand tu reviens dans l’app.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="1b"><span><b>Mets le mode Avion, publie un take vidéo, quitte l’app, puis arrête l’Activité en direct avec son bouton d’arrêt. Enlève le mode Avion et rouvre Take.</b><span class="see">Rien ne doit partir tout seul. La carte dit « Un take n’a pas fini d’être publié », avec « Reprendre ». Touche « Reprendre » : le take apparaît une seule fois dans le fil.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="1c"><span><b>Publie un take avec seulement du texte.</b><span class="see">Pas d’Activité en direct : il part tout de suite.</span></span></label>
+
+  <h2>2. Couper une longue vidéo</h2>
+  <p class="where">Le composeur, bouton des photos et vidéos.</p>
+  <label class="item"><input type="checkbox" data-k="2a"><span><b>Choisis une vidéo de 3 à 5 minutes.</b><span class="see">Le rogneur s’ouvre avec un cadre d’une minute. Dis-nous si l’attente avant qu’il s’ouvre te paraît longue.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="2b"><span><b>Choisis un passage au milieu, puis publie.</b><span class="see">Le take montre exactement ce passage, à partir de l’image choisie, avec le son.</span></span></label>
+
+  <h2>3. Une vidéo du fil agrandie</h2>
+  <p class="where">Le fil, sur un take vidéo.</p>
+  <label class="item"><input type="checkbox" data-k="3a"><span><b>Laisse une vidéo jouer quelques secondes, puis touche-la pour l’agrandir.</b><span class="see">Elle continue où elle en était, sans recommencer. En revenant au fil, elle reprend au même endroit.</span></span></label>
+
+  <h2>4. Répondre aux commentaires, comme sur X</h2>
+  <p class="where">Un take, puis ses commentaires. Pour le dernier point, il faut un deuxième compte ou un ami.</p>
+  <label class="item"><input type="checkbox" data-k="4a"><span><b>Touche « Répondre » sous un commentaire, écris et envoie.</b><span class="see">Ta réponse apparaît sous ce commentaire.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="4b"><span><b>Ouvre un commentaire qui a plusieurs réponses.</b><span class="see">Une seule réponse est montrée, puis « Voir 2 autres réponses » (ou le bon nombre). Touche-le : elles s’ouvrent, et « Masquer les réponses » les replie.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="4c"><span><b>Réponds à une réponse écrite par quelqu’un d’autre.</b><span class="see">Ta réponse se range sous le commentaire de départ, pas plus loin. La personne à qui tu réponds reçoit une notification.</span></span></label>
+
+  <h2>5. Le nombre sur l’icône</h2>
+  <p class="where">L’écran d’accueil de l’iPhone. Les notifications de Take doivent être autorisées.</p>
+  <label class="item"><input type="checkbox" data-k="5a"><span><b>Ferme Take, puis demande à quelqu’un de t’envoyer un message.</b><span class="see">L’icône de Take montre un nombre en rouge.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="5b"><span><b>Ouvre Take et lis tout : messages et notifications.</b><span class="see">Le nombre disparaît de l’icône.</span></span></label>
+
+  <h2>6. Partager une photo ou un lien vers Take</h2>
+  <p class="where">Seulement si le partage vers Take est dans ce build. Dans Photos et dans Safari, bouton Partager.</p>
+  <label class="item"><input type="checkbox" data-k="6a"><span><b>Dans Photos, ouvre une photo, touche Partager, puis Take.</b><span class="see">Take s’ouvre sur le composeur, avec la photo déjà posée.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="6b"><span><b>Dans Safari, sur une page, touche Partager, puis Take.</b><span class="see">Le composeur s’ouvre, avec le lien comme question.</span></span></label>
+  <p class="note">Si la feuille de partage se ferme sans ouvrir Take, dis-le tout de suite : c’est le point qu’on ne pouvait vérifier que sur un iPhone en iOS 26.</p>
+
+  <h2>7. VoiceOver, Contrôle vocal et réglages d’affichage</h2>
+  <p class="where">Réglages de l’iPhone, puis Accessibilité. Garde Take ouvert pendant que tu changes un réglage.</p>
+  <label class="item"><input type="checkbox" data-k="7a"><span><b>Allume VoiceOver, puis, dans le fil, glisse un doigt vers la droite pour passer d’un élément à l’autre.</b><span class="see">Chaque take se lit en une seule fois : la question, l’auteur, l’âge. En glissant vers le haut ou le bas, tu as ses actions : Reposter, Partager, les commentaires, Plus d’options.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="7b"><span><b>Éteins VoiceOver, allume le Contrôle vocal, puis dis « Toucher Partager » sur le fil.</b><span class="see">Le bouton Partager d’un take réagit, comme si tu l’avais touché.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="7c"><span><b>Allume « Texte en gras », puis « Augmenter le contraste », puis « Réduire les animations ».</b><span class="see">Take change tout de suite, sans être relancé : texte plus épais, contrastes plus marqués, moins de mouvement.</span></span></label>
+  <p class="note">Sur un commentaire, VoiceOver ne propose peut-être pas encore « J’aime » et « Répondre » : la correction est en cours.</p>
+
+  <h2>8. Ce qui marche seulement avec les services en ligne</h2>
+  <p class="where">L’app entière. La connexion par Apple et Google se teste en dernier, puisqu’il faut se déconnecter.</p>
+  <label class="item"><input type="checkbox" data-k="8a"><span><b>Dans Explorer, ouvre un take écrit en anglais.</b><span class="see">Il s’affiche en français, ainsi que ses commentaires.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="8b"><span><b>Dans un commentaire ou un message, touche le bouton des GIF, à côté du champ, cherche un GIF et envoie-le.</b><span class="see">Les GIF s’affichent pendant la recherche, et le tien part.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="8c"><span><b>Sur un take, touche Partager, puis « Copier le lien », et envoie ce lien à quelqu’un dans Messages.</b><span class="see">Le message montre un aperçu du take. Toucher le lien ouvre Take directement sur ce take.</span></span></label>
+  <label class="item"><input type="checkbox" data-k="8d"><span><b>Déconnecte-toi (Profil, Paramètres, « Se déconnecter »), puis reconnecte-toi avec « Continuer avec Apple », puis avec « Continuer avec Google ».</b><span class="see">Les deux connexions passent sans erreur.</span></span></label>
+
+  <h2>9. Un refus qui dit pourquoi</h2>
+  <p class="where">Les commentaires d’un take.</p>
+  <label class="item"><input type="checkbox" data-k="9a"><span><b>Écris un commentaire avec une grosse insulte et envoie-le.</b><span class="see">Il ne part pas, et le message dit quelle règle il enfreint, par exemple le langage offensant, au lieu d’un refus sans explication.</span></span></label>
+
+  <p class="soft" style="margin-top:28px">Le reste a été vérifié sur le simulateur, dans la boucle de régression.</p>
+</main>
+<script>
+(function () {
+  var KEY = 'tour-iphone-build-02-10';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('input[data-k]'));
+  var done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { done = {}; }
+  function count() {
+    var n = boxes.filter(function (b) { return b.checked; }).length;
+    document.getElementById('progress').textContent =
+      n + ' point' + (n > 1 ? 's' : '') + ' fait' + (n > 1 ? 's' : '') + ' sur ' + boxes.length;
+  }
+  boxes.forEach(function (b) {
+    b.checked = !!done[b.dataset.k];
+    b.addEventListener('change', function () {
+      done[b.dataset.k] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {}
+      count();
+    });
+  });
+  count();
+})();
+</script>
+</body>
+</html>
