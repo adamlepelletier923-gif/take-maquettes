@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Banc de fluidité</title>
+<style>
+  :root { color-scheme: light dark; --bg: #ffffff; --ink: #141414; --soft: #6b6b6b; --card: #f3f3f3; --line: #e3e3e3; --ok: #15803d; --presque: #a16207; --ko: #b91c1c; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0e0e0e; --ink: #f2f2f2; --soft: #a3a3a3; --card: #1b1b1b; --line: #2a2a2a; --ok: #4ade80; --presque: #facc15; --ko: #f87171; } }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, system-ui, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 20px 16px 48px; }
+  h1 { font-size: 22px; margin: 4px 0 8px; }
+  h2 { font-size: 17px; margin: 28px 0 6px; }
+  p { color: var(--soft); line-height: 1.45; margin: 6px 0; }
+  .table { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 600px; }
+  th, td { text-align: left; padding: 7px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--soft); font-weight: 600; }
+  tr.geste th { color: var(--ink); padding-top: 16px; font-size: 15px; }
+  td.n { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .ok { color: var(--ok); font-weight: 600; }
+  .presque { color: var(--presque); font-weight: 600; }
+  .ko { color: var(--ko); font-weight: 600; }
+  ul { padding-left: 18px; line-height: 1.5; }
+  li { margin: 5px 0; }
+  .q { background: var(--card); border-radius: 12px; padding: 12px 16px; }
+  .q ul { margin: 6px 0; }
+  .images { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 12px 0; }
+  figure { margin: 0; }
+  figure img, figure video { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: var(--card); }
+  figcaption { color: var(--soft); font-size: 13px; margin-top: 4px; line-height: 1.4; }
+  code { font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Banc de fluidité, en JS de production</h1>
+  <p>Avant = <code>b772ef5959</code> (hier soir) · après = <code>5512a99b18</code> (lot 1 fusionné) · 3 passages avant, 3 après, en alternance · 02/10/2026, passages filmés de 17:03:54 à 17:34:32</p>
+
+  <div class="q">
+  <b>En bref</b>
+  <ul>
+    <li><b>Onglets du profil</b> : le trait passe sous l'onglet touché en <b>21 à 22 ms</b>, contre 496 à 624 ms avant. X le fait dans l'image du toucher (17 ms).</li>
+    <li><b>Thèmes d'Explorer</b> : le contenu est posé en <b>19 à 26 ms</b>, contre 283 à 336 ms avant.</li>
+    <li><b>Retour sur Takes</b> : la page arrive tout de suite, mais la barre de résultat du premier take se vidait puis se remplissait de nouveau, jusqu'à environ 800 ms. Avant le lot 1 aussi. La cause est trouvée, le correctif est écrit pour le lot 2 (plus bas).</li>
+    <li><b>Lancers de l'Accueil</b> : pas de différence nette entre les deux côtés, et le lot 1 ne touchait pas le fil. Le 3e lancer de chaque passage perd 9 à 13 images à son départ, avec un à-coup, des deux côtés : c'est à creuser.</li>
+  </ul>
+  </div>
+
+  <h2>Le même toucher, avant et après</h2>
+  <p>Takes → Questions sur le profil, ralenti deux fois, calé sur l'instant où l'app reçoit le toucher (tour 2 d'AVANT-3 et d'APRÈS-2).</p>
+  <div class="images">
+    <figure><video src="avant-takes-questions.mp4" poster="avant-takes-questions.jpg" autoplay muted loop playsinline></video><figcaption>Avant : rien ne bouge pendant environ 450 ms, puis la page glisse.</figcaption></figure>
+    <figure><video src="apres-takes-questions.mp4" poster="apres-takes-questions.jpg" autoplay muted loop playsinline></video><figcaption>Après : le trait et la page partent dans l'image du toucher.</figcaption></figure>
+  </div>
+
+  <h2>Touchers d'onglets</h2>
+  <p>Millisecondes depuis l'instant où l'app reçoit le toucher, p50 / p75, tours 2 à 5 de chaque passage mis en commun. Le verdict juge la colonne « après » face à la cible de X. « À une image près » : dans l'incertitude de la mesure (17 ms).</p>
+  <div class="table"><table>
+  <thead><tr><th>Mesure</th><th>Avant</th><th>Après</th><th>Cible</th><th>Après</th></tr></thead>
+  <tbody>
+<tr class="geste"><th colspan="5">Profil : Takes → Questions</th></tr>
+<tr><td>Premier changement visible</td><td class="n">-31 / -24</td><td class="n">-31 / -27</td><td>retour visuel ≤ 100 ms (Apple : à 250 ms, ce n&#x27;est plus instantané)</td><td class="ok">tenu</td></tr>
+<tr><td>Trait sous l&#x27;onglet visé</td><td class="n">496 / 505</td><td class="n">21 / 24</td><td>dans l&#x27;image du toucher (une image : 17 ms)</td><td class="presque">à une image près</td></tr>
+<tr><td>Contenu posé</td><td class="n">594 / 602</td><td class="n">21 / 24</td><td>&lt; 500 ms au p75</td><td class="ok">tenu</td></tr>
+<tr class="geste"><th colspan="5">Profil : Questions → Takes</th></tr>
+<tr><td>Premier changement visible</td><td class="n">-34 / -32</td><td class="n">-36 / -31</td><td>retour visuel ≤ 100 ms (Apple : à 250 ms, ce n&#x27;est plus instantané)</td><td class="ok">tenu</td></tr>
+<tr><td>Trait sous l&#x27;onglet visé</td><td class="n">590 / 634</td><td class="n">22 / 25</td><td>dans l&#x27;image du toucher (une image : 17 ms)</td><td class="presque">à une image près</td></tr>
+<tr><td>Contenu posé</td><td class="n">697 / 735</td><td class="n">606 / 628</td><td>&lt; 500 ms au p75</td><td class="ko">manqué</td></tr>
+<tr class="geste"><th colspan="5">Profil : Takes → Jeu</th></tr>
+<tr><td>Premier changement visible</td><td class="n">-29 / -26</td><td class="n">-31 / -26</td><td>retour visuel ≤ 100 ms (Apple : à 250 ms, ce n&#x27;est plus instantané)</td><td class="ok">tenu</td></tr>
+<tr><td>Trait sous l&#x27;onglet visé</td><td class="n">624 / 685</td><td class="n">22 / 23</td><td>dans l&#x27;image du toucher (une image : 17 ms)</td><td class="presque">à une image près</td></tr>
+<tr><td>Contenu qui arrive</td><td class="n">623 / 666</td><td class="n">22 / 23</td><td>ouverture d&#x27;écran &lt; 500 ms au p75</td><td class="ok">tenu</td></tr>
+<tr><td>Contenu posé</td><td class="n">689 / 737</td><td class="n">22 / 23</td><td>&lt; 500 ms au p75</td><td class="ok">tenu</td></tr>
+<tr class="geste"><th colspan="5">Profil : Jeu → Takes</th></tr>
+<tr><td>Premier changement visible</td><td class="n">-28 / -23</td><td class="n">-37 / -28</td><td>retour visuel ≤ 100 ms (Apple : à 250 ms, ce n&#x27;est plus instantané)</td><td class="ok">tenu</td></tr>
+<tr><td>Trait sous l&#x27;onglet visé</td><td class="n">564 / 608</td><td class="n">21 / 25</td><td>dans l&#x27;image du toucher (une image : 17 ms)</td><td class="presque">à une image près</td></tr>
+<tr><td>Contenu qui arrive</td><td class="n">546 / 576</td><td class="n">21 / 25</td><td>ouverture d&#x27;écran &lt; 500 ms au p75</td><td class="ok">tenu</td></tr>
+<tr><td>Contenu posé</td><td class="n">639 / 694</td><td class="n">570 / 590</td><td>&lt; 500 ms au p75</td><td class="ko">manqué</td></tr>
+<tr class="geste"><th colspan="5">Explorer : Tendances → Actu</th></tr>
+<tr><td>Premier changement visible</td><td class="n">76 / 81</td><td class="n">19 / 24</td><td>retour visuel ≤ 100 ms (Apple : à 250 ms, ce n&#x27;est plus instantané)</td><td class="ok">tenu</td></tr>
+<tr><td>Trait sous l&#x27;onglet visé</td><td class="n">105 / 107</td><td class="n">19 / 24</td><td>dans l&#x27;image du toucher (une image : 17 ms)</td><td class="presque">à une image près</td></tr>
+<tr><td>Contenu posé</td><td class="n">283 / 290</td><td class="n">19 / 24</td><td>&lt; 500 ms au p75</td><td class="ok">tenu</td></tr>
+<tr class="geste"><th colspan="5">Explorer : Actu → Tendances</th></tr>
+<tr><td>Premier changement visible</td><td class="n">21 / 24</td><td class="n">26 / 31</td><td>retour visuel ≤ 100 ms (Apple : à 250 ms, ce n&#x27;est plus instantané)</td><td class="ok">tenu</td></tr>
+<tr><td>Trait sous l&#x27;onglet visé</td><td class="n">138 / 156</td><td class="n">26 / 31</td><td>dans l&#x27;image du toucher (une image : 17 ms)</td><td class="presque">à une image près</td></tr>
+<tr><td>Contenu posé</td><td class="n">336 / 343</td><td class="n">26 / 31</td><td>&lt; 500 ms au p75</td><td class="ok">tenu</td></tr>
+  </tbody>
+  </table></div>
+  <p>« Premier changement » est négatif parce que l'onglet s'assombrit dès l'appui du doigt, avant le relâché qui sert d'origine. Les deux « manqué » du retour sur Takes viennent de la barre rejouée, expliquée plus bas : la page, elle, est là en 21 ms.</p>
+
+  <h2>Lancers dans le fil de l'Accueil</h2>
+  <p>Les 800 premières millisecondes de chaque lancer, comptées image par image (9 lancers avant, 9 après, médiane ; à-coups : le pire).</p>
+  <div class="table"><table>
+  <thead><tr><th>Mesure</th><th>Avant</th><th>Après</th><th>Cible</th><th>Après</th></tr></thead>
+  <tbody>
+<tr><td>Images par seconde</td><td class="n">56,1</td><td class="n">57,1</td><td>60 sur cet écran (une image toutes les 16,7 ms)</td><td class="">—</td></tr>
+<tr><td>Images perdues (%)</td><td class="n">6,2</td><td class="n">4,2</td><td>moins de 1 % d&#x27;images perdues</td><td class="ko">manqué</td></tr>
+<tr><td>À-coups de plus de 50 ms</td><td class="n">1</td><td class="n">1</td><td>aucun à-coup &gt; 50 ms</td><td class="ko">manqué</td></tr>
+<tr><td>Saccades (ms par seconde)</td><td class="n">62,4</td><td class="n">41,4</td><td>saccades &lt; 5 ms/s (5 à 10 à examiner, &gt; 10 critique)</td><td class="ko">manqué</td></tr>
+  </tbody>
+  </table></div>
+  <p>Ces lancers ne sont pas au niveau de X sur ce simulateur. Le natif y tourne en Debug. Le verdict se fera sur un iPhone, avec le build.</p>
+
+  <h2>Ce que le banc a trouvé : la barre rejouée</h2>
+  <div class="images">
+    <figure><img src="barre-1-saut.png" alt="Onglet Takes affiché, barre de résultat pleine"><figcaption>+36 ms : la page Takes est là, sa barre est pleine.</figcaption></figure>
+    <figure><img src="barre-2-vide.png" alt="La même barre, vide"><figcaption>+383 ms : la barre se vide d'un coup.</figcaption></figure>
+    <figure><img src="barre-3-deroule.png" alt="La barre à moitié remplie"><figcaption>+531 ms : elle se redéroule, jusqu'à environ +800 ms.</figcaption></figure>
+  </div>
+  <ul>
+    <li><b>Cause</b> : le « tirer pour rafraîchir » n'était donné qu'à la page affichée. Sur iPhone, React Native le place juste avant le contenu de la liste. Une page qui le gagne ou le perd reconstruit donc toutes ses rangées, et la barre d'un take rejoue son animation d'arrivée. À chaque changement d'onglet, les deux pages concernées étaient reconstruites. Le mot de l'onglet passait en gras à +398 ms, sans doute pour la même raison.</li>
+    <li><b>Où</b> : les onglets du profil (le sien et celui des autres) et les filtres des Notifications. Sur Android, la liste entière était reconstruite, et elle perdait sa position.</li>
+    <li><b>Correctif</b> : chaque page garde son contrôle, et celles d'à côté en tiennent une copie éteinte. Il y a aussi un test qui vérifie qu'un toucher ne reconstruit aucune rangée, et un garde-fou contre le retour du motif. C'est la première PR du lot 2 : elle sera fusionnée dès que ses tests et sa CI seront verts.</li>
+  </ul>
+
+  <h2>Comment c'est mesuré</h2>
+  <ul>
+    <li>Le simulateur d'Adam (iPhone, iOS 26.5), le client de dev (natif en Debug), et le JS de production servi par Metro : <code>--no-dev --minify</code>, sans chargement en morceaux (<code>EXPO_NO_METRO_LAZY=1</code>). Les valeurs absolues sont un peu pessimistes. L'écart entre avant et après tient.</li>
+    <li>Chaque passage : relance à froid, profil d'Ava sur la base locale (données de démo), puis les mêmes 48 gestes par script, filmés à l'écran. Après chaque passage, une bascule de version.</li>
+    <li>L'heure de chaque toucher vient de l'outil de pilotage. Son retard est retiré grâce à 5 touchers de la barre d'état, auxquels iOS répond sans le JS. Décalage par passage : avant-2 : 263 ms ± 5,5 ; avant-3 : 320 ms ± 2,5 ; avant-4 : 317 ms ± 9,3 ; apres-1 : 255 ms ± 5,2 ; apres-2 : 276 ms ± 8,1 ; apres-3 : 332 ms ± 16,5.</li>
+    <li>AVANT-1 est écarté : le client tournait encore sur l'ancienne adresse du bundle, celle en morceaux. Il est remplacé par AVANT-4, filmé en dernier.</li>
+    <li>Journaux de Metro, un par passage, gardés par musk-122 : <ul><li>APRÈS-1 : journal écrasé par la bascule suivante ; sa première ligne était le bundle sans morceaux de 5512a99b18 (4339 modules)</li><li>AVANT-2 : metro-b772ef5959-171347.log, un seul bundle (4301 modules)</li><li>APRÈS-2 : metro-5512a99b18-171946.log, un seul bundle (4339 modules)</li><li>AVANT-3 : metro-b772ef5959-172514.log, un seul bundle (4301 modules)</li><li>APRÈS-3 : metro-5512a99b18-173040.log, un seul bundle (4339 modules)</li><li>AVANT-4 : un seul bundle (4301 modules), selon musk-122 au moment du « prêt » ; journal copié à la remise de fin</li></ul></li>
+    <li>Non mesuré ici : le travail du fil principal à chaque image (Instruments), et un vrai iPhone.</li>
+  </ul>
+</main>
+</body>
+</html>
