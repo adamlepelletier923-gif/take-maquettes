@@ -37,7 +37,7 @@
     <li><b>Défilement du fil</b> : pas de différence nette sur le travail de l'app. Les mises à jour de React, leur durée et les redessins sont les mêmes, à moins de 10 % près.</li>
     <li><b>Images à l'écran</b> : résultat mitigé sur la seule paire filmée. Maintenant perd plus de petites images (394 contre 254 trous de plus de 25 ms), mais a deux fois moins de gros à-coups (7 contre 14 de plus de 100 ms). Le Mac était plus chargé pendant le passage « maintenant » (6,60 contre 4,30), donc pas de conclusion ferme.</li>
     <li><b>Toucher un take</b> : pareil à l'œil. Des deux côtés, le take glisse en place en 0,2 s avec son graphique déjà dessiné. La médiane chronométrée est un peu plus basse maintenant, mais l'écart reste dans le bruit.</li>
-    <li><b>Bugs</b> : aucun plantage, écran figé ni erreur, ni cette nuit ni maintenant. Mais le singe de ce matin a voté une fois par erreur : ce vote est retiré, et la garde du singe corrigée. Les premiers contrôles en base avaient lu la mauvaise base. Celui de la fenêtre de mesure est refait sur la bonne base, résultat à venir.</li>
+    <li><b>Bugs</b> : aucun plantage, écran figé ni erreur, ni cette nuit ni maintenant. Mais chacun des deux singes a voté une fois par erreur, cette nuit puis ce matin. Les deux votes sont retirés, et la garde du singe est corrigée. Les premiers contrôles en base avaient lu la mauvaise base. Sur la bonne, mes mesures n'ont rien écrit.</li>
   </ul>
   </div>
 
@@ -45,7 +45,7 @@
   <p>Passages filmés à chaud (2e passage depuis le lancement de l'app), calés sur le premier glissé. Les glissés sont les mêmes des deux côtés, mais l'outil ne bat pas exactement au même rythme : les deux côtés se décalent d'une fraction de seconde au fil du clip. Vers la moitié, le fil arrive à son dernier take (la base locale n'en a qu'une vingtaine), et les derniers glissés butent sur la fin, des deux côtés.</p>
   <video src="a-chaud-defilement.mp4" poster="a-chaud-defilement.jpg" muted loop playsinline controls preload="metadata"></video>
   <h2>Le toucher d'un take, côte à côte</h2>
-  <p>Le même take des deux côtés (« Which one would actually change your daily life the most? »), calé sur l'instant du toucher.</p>
+  <p>Le même take des deux côtés (« Which one would actually change your daily life the most? »), calé sur l'instant du toucher. Le vote « Shorter week » qu'on y voit venait du singe de cette nuit : involontaire, retiré depuis. Il était là pendant tous les passages, des deux côtés, donc la comparaison n'en est pas faussée.</p>
   <video src="a-chaud-toucher.mp4" poster="a-chaud-toucher.jpg" muted loop playsinline controls preload="metadata"></video>
 
   <h2>Les chiffres : 6 passages alternés</h2>
@@ -73,8 +73,8 @@
 
   <h2>Le singe : des gestes au hasard, pendant des minutes</h2>
   <ul>
-  <li><b>Cette nuit</b> (05:33, sur b0ac220bc3) : 430 gestes au hasard en 11 min 28. 0 plantage, 0 écran figé, 0 erreur JS, 0 écran rouge. En base : le contrôle « 0 vote ni message involontaire » a été fait sur la mauvaise base (un Postgres local figé au 21/09, pas celle de l&#x27;API) : à revérifier. Les « désynchros » d'onglets signalées (33, toutes de faux positifs vérifiés à l&#x27;image : le détecteur prenait le conteneur de la rangée) viennent de l'outil.</li>
-  <li><b>Maintenant</b> (08:28, sur d5971c6df1) : 349 gestes au hasard en 10 min 37. 0 plantage, 0 écran figé, 0 erreur JS, 0 écran rouge. En base : 1 vote involontaire, retiré depuis : ava_martin a voté sur son propre take à 08:38:49 (geste 329). La garde du singe est corrigée. Le premier contrôle avait lu la mauvaise base. Les « désynchros » d'onglets signalées (22, toutes de faux positifs vérifiés à l&#x27;image) viennent de l'outil.</li>
+  <li><b>Cette nuit</b> (05:33, sur b0ac220bc3) : 430 gestes au hasard en 11 min 28. 0 plantage, 0 écran figé, 0 erreur JS, 0 écran rouge. En base : 1 vote involontaire, retiré depuis : Ava a voté « Shorter week » sur « Which one would actually change your daily life the most? » à 05:35:54 (geste 130). Le premier contrôle avait lu la mauvaise base. Les « désynchros » d'onglets signalées (33, toutes de faux positifs vérifiés à l&#x27;image : le détecteur prenait le conteneur de la rangée) viennent de l'outil.</li>
+  <li><b>Maintenant</b> (08:28, sur d5971c6df1) : 349 gestes au hasard en 10 min 37. 0 plantage, 0 écran figé, 0 erreur JS, 0 écran rouge. En base : 1 vote involontaire, retiré depuis : un vote d&#x27;Ava (« La mer ») à 08:38:49 (geste 329), plus un vote posé puis retiré à 08:32:00, sans effet. La garde du singe est corrigée. Le premier contrôle avait lu la mauvaise base. Les « désynchros » d'onglets signalées (22, toutes de faux positifs vérifiés à l&#x27;image) viennent de l'outil.</li>
   </ul>
 
   <h2>Ce qui a changé entre les deux versions</h2>
