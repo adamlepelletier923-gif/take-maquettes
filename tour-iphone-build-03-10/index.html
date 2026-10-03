@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#faf9f6">
+  <title>À tester sur ton iPhone — Take</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<main>
+  <a class="back" href="../pas-dans-le-build/">Ce qui n’est PAS dans le build</a>
+  <p class="eyebrow">Le build du 3 octobre · sur un vrai iPhone</p>
+  <h1>À tester sur ton iPhone</h1>
+  <p class="intro">Pour chaque point : un geste, puis ce que tu dois voir. Coche seulement après l’avoir vu sur l’iPhone. Si un point manque ou rate, laisse-le vide et note son numéro.</p>
+  <p class="muted">Le simulateur et les tests automatiques ne suffisent pas pour valider ces points. Cette page décrit ce qu’on attend de ce build ; elle n’annonce aucun résultat déjà obtenu.</p>
+
+  <div class="setup">
+    <label for="version">Version de Take testée</label>
+    <input id="version" type="text" maxlength="60" autocomplete="off" placeholder="Numéro indiqué dans TestFlight" aria-describedby="version-help storage-status">
+    <p id="version-help">Change ce numéro pour tester une autre version : ses coches seront séparées.</p>
+    <p id="storage-status" role="status">Tes coches et tes notes restent dans ce navigateur. Rien n’est envoyé.</p>
+  </div>
+  <p class="progress" id="progress" role="status" aria-live="polite">Indique la version de Take avant de cocher.</p>
+  <nav aria-label="Les points à tester">
+    <a href="#avatar">Avatar</a><a href="#photos">Photos</a><a href="#video">Vidéos</a><a href="#profil">Profil</a>
+    <a href="#images">Images</a><a href="#recherche">Recherche</a><a href="#notifications">Notifications</a><a href="#gestes">Touchers</a>
+  </nav>
+  <noscript><p>Active JavaScript dans Safari pour utiliser et garder les coches. Tu peux aussi imprimer cette page et cocher sur papier.</p></noscript>
+
+  <section id="avatar" aria-labelledby="avatar-title">
+    <h2 id="avatar-title">1. L’avatar en 3D</h2>
+    <p class="where">La page 3D manque sur le banc de test : ces points doivent être essayés dans l’app installée, avec un avatar 3D déjà créé.</p>
+    <label class="item"><input type="checkbox" data-k="avatar-greeting" disabled><span class="copy"><b>1a · Sur ton profil, touche ton avatar, puis Refaire coucou et Voir la photo de profil.</b><span class="see">L’avatar en 3D fait un coucou puis s’arrête. Refaire coucou le relance ; Voir la photo de profil ouvre son image. Aucune page vide ni erreur.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="avatar-editor" disabled><span class="copy"><b>1b · Sur le profil, maintiens ton avatar et touche Créer un avatar. Tourne-le, change son apparence puis enregistre.</b><span class="see">Tu vois la 3D pendant les changements. Ton nouvel avatar apparaît sur le profil et reste après avoir fermé puis rouvert Take.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="avatar-reduced-motion" disabled><span class="copy"><b>1c · Active Réduire les animations dans les réglages de l’iPhone, puis touche l’avatar.</b><span class="see">L’avatar apparaît sans coucou animé ni bouton Refaire coucou. Remets ensuite ton réglage habituel.</span></span></label>
+  </section>
+
+  <section id="photos" aria-labelledby="photos-title">
+    <h2 id="photos-title">2. Partager depuis Photos</h2>
+    <p class="where">Utilise une photo de test, Take connecté à ton compte. Ne publie rien pour ces essais.</p>
+    <label class="item"><input type="checkbox" data-k="share-online" disabled><span class="copy"><b>2a · Dans Photos, touche Partager, puis Take.</b><span class="see">Take propose un nouveau take avec la bonne photo, une seule fois. Rien n’est publié tout seul.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="share-offline" disabled><span class="copy"><b>2b · Ferme complètement Take, coupe le Wi-Fi et les données mobiles, puis partage une autre photo vers Take.</b><span class="see">La photo n’est pas perdue. L’absence de réseau ne vide pas le partage et ne fait pas planter l’app.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="share-reconnect" disabled><span class="copy"><b>2c · Remets le réseau, puis ouvre ou remets Take au premier plan.</b><span class="see">La photo partagée sans réseau devient disponible dans le nouveau take, sans revenir la choisir dans Photos et sans doublon.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="share-ios26" disabled><span class="copy"><b>2d · Sur iOS 26, partage depuis Photos. Si Take ne se rouvre pas, ouvre-le toi-même.</b><span class="see">Le partage t’attend au lancement suivant, avec la bonne photo, une seule fois. Si Take s’ouvre tout seul, ce cas reste à essayer.</span></span></label>
+  </section>
+
+  <section id="video" aria-labelledby="video-title">
+    <h2 id="video-title">3. Des vidéos prêtes à jouer</h2>
+    <p class="where">En Wi-Fi, choisis plusieurs vidéos du fil que tu n’as pas déjà regardées. Essaie aussi en revenant dans le fil.</p>
+    <label class="item"><input type="checkbox" data-k="video-next" disabled><span class="copy"><b>3a · Regarde une vidéo, puis descends vers la suivante.</b><span class="see">La suivante commence dès qu’elle doit jouer ; pas d’attente visible pendant son arrivée à l’écran.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="video-white" disabled><span class="copy"><b>3b · Ouvre une vidéo en grand, referme-la, puis ouvre-en une autre.</b><span class="see">Une image de la vidéo reste visible jusqu’à la lecture. Aucun éclair d’écran blanc à l’ouverture.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="video-memory-feel" disabled><span class="copy"><b>3c · Parcours une vingtaine de vidéos, puis refais un passage.</b><span class="see">Take reste fluide : pas de fermeture, de redémarrage ni de lenteur qui augmente au fil des vidéos.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="video-memory-measure" disabled><span class="copy"><b>3d · Fais mesurer la mémoire utilisée sur l’iPhone avant, pendant et après ces passages.</b><span class="see">La mesure confirme que les vidéos déjà quittées ne s’accumulent pas en mémoire. Ne coche pas ce point sans mesure ; une app fluide ne suffit pas à le prouver.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="video-width" disabled><span class="copy"><b>3e · Compare une vidéo verticale et une horizontale dans le fil.</b><span class="see">Le cadre prend au plus 65 % de la largeur réservée au média, comme le choix A3, et peut être plus étroit si la vidéo est très haute. Il reste de la place à côté.</span></span></label>
+  </section>
+
+  <section id="profil" aria-labelledby="profil-title">
+    <h2 id="profil-title">4. Les onglets du profil</h2>
+    <p class="where">Sur ton profil : Takes, Questions, Jeu. Essaie un toucher et un glissé avec le doigt.</p>
+    <label class="item"><input type="checkbox" data-k="profile-one-page" disabled><span class="copy"><b>4a · Depuis Takes, touche Jeu, puis reviens à Takes.</b><span class="see">Chaque choix fait glisser une seule page, façon X. Pas de visite visible des onglets intermédiaires ; le mot touché devient noir tout de suite en mode clair.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="profile-retap" disabled><span class="copy"><b>4b · Touche Questions, puis Jeu avant la fin du mouvement.</b><span class="see">Le dernier toucher gagne : Jeu s’ouvre et son trait s’aligne. Rien ne reste entre deux pages.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="profile-swipe" disabled><span class="copy"><b>4c · Glisse d’un onglet au suivant, puis reviens avec le doigt.</b><span class="see">La page et le trait suivent ton doigt ensemble, sans arrêt ni saut ; le bon onglet est sélectionné à la fin.</span></span></label>
+  </section>
+
+  <section id="images" aria-labelledby="images-title">
+    <h2 id="images-title">5. Les images, 20 par 20</h2>
+    <p class="where">Les vraies images du fil de test, dans des takes encore jamais ouverts. Pour la 4G, choisis d’autres images afin de ne pas réutiliser celles déjà chargées en Wi-Fi.</p>
+    <label class="item"><input type="checkbox" data-k="images-wifi" disabled><span class="copy"><b>5a · En Wi-Fi, descends dans le fil sur au moins deux séries de 20 takes.</b><span class="see">Les images sont prêtes quand tu arrives dessus. Elles n’apparaissent pas l’une après l’autre pendant que tu descends.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="images-mobile" disabled><span class="copy"><b>5b · Coupe le Wi-Fi, vérifie que l’iPhone utilise la 4G, puis recommence sur de nouvelles images.</b><span class="see">Même résultat : images prêtes à l’arrivée et série suivante demandée avant le bas du fil. Note toute attente et l’état du réseau.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="images-batch-measure" disabled><span class="copy"><b>5c · Fais vérifier les chargements réels pendant un passage en Wi-Fi, puis en 4G.</b><span class="see">La première image affichée pour chacun des 20 takes est préparée dès réception de la série, sans attendre le défilement. Les téléchargements avancent deux à la fois. La suivante est demandée avec 15 takes encore à lire. Ne coche pas sans cette vérification : le seul défilement ne prouve pas le nombre.</span></span></label>
+  </section>
+
+  <section id="recherche" aria-labelledby="recherche-title">
+    <h2 id="recherche-title">6. La recherche et le tri</h2>
+    <p class="where">Choisis un mot présent dans plusieurs takes de test, avec des photos, des vidéos et des dates différentes.</p>
+    <label class="item"><input type="checkbox" data-k="search-tabs" disabled><span class="copy"><b>6a · Recherche ce mot et ouvre les cinq onglets.</b><span class="see">Top, Plus récents, Comptes, Photos et Vidéos sont présents. Chaque onglet affiche les bons résultats pour le même mot.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="search-order" disabled><span class="copy"><b>6b · Ouvre les filtres : essaie Pertinence, Plus récents, puis Plus votés.</b><span class="see">Plus récents met les dates les plus nouvelles en premier ; Plus votés met les plus grands nombres de votes en premier. Le choix de tri reste indiqué et change réellement les résultats.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="search-filter" disabled><span class="copy"><b>6c · Essaie une date récente et Mes amis, puis ouvre Comptes.</b><span class="see">Les takes correspondent à la date et aux amis choisis. Dans Comptes, aucun tri de takes ni filtre de date n’est proposé.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="search-media" disabled><span class="copy"><b>6d · Dans Photos puis Vidéos, touche un résultat ; reviens et change le mot recherché.</b><span class="see">Le bon take s’ouvre. Les nouvelles réponses remplacent celles de l’ancien mot ; aucun mélange entre les deux recherches.</span></span></label>
+  </section>
+
+  <section id="notifications" aria-labelledby="notifications-title">
+    <h2 id="notifications-title">7. Les j’aime sur les commentaires</h2>
+    <p class="where">Deux comptes de test. Autorise les notifications de Take sur l’iPhone qui reçoit le j’aime.</p>
+    <label class="item"><input type="checkbox" data-k="comment-like-push" disabled><span class="copy"><b>7a · Écris un commentaire avec le premier compte, quitte Take, puis aime ce commentaire avec le second.</b><span class="see">L’iPhone du premier compte reçoit une notification pour le j’aime de son commentaire. C’est bien le commentaire, pas le take.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="comment-like-open" disabled><span class="copy"><b>7b · Touche cette notification, puis retrouve-la dans l’Activité.</b><span class="see">Le bon take et le commentaire concerné s’ouvrent. Le bon compte est indiqué et le même j’aime n’apparaît pas en double.</span></span></label>
+  </section>
+
+  <section id="gestes" aria-labelledby="gestes-title">
+    <h2 id="gestes-title">8. Les touchers pendant le mouvement</h2>
+    <p class="where">Essaie dans le fil, sur le profil et dans la recherche. Fais chaque geste plusieurs fois.</p>
+    <label class="item"><input type="checkbox" data-k="touch-momentum" disabled><span class="copy"><b>8a · Lance un défilement vertical, puis touche un onglet pendant que la liste bouge encore.</b><span class="see">Le premier toucher suffit : le bon onglet s’ouvre. Pas besoin d’attendre l’arrêt puis de toucher une deuxième fois.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="touch-cancel" disabled><span class="copy"><b>8b · Commence un petit glissé horizontal, reviens au point de départ puis relâche.</b><span class="see">Le même onglet reste ouvert, le trait revient à sa place et les touchers suivants fonctionnent.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="touch-rest" disabled><span class="copy"><b>8c · Touche un onglet puis pose un doigt immobile sur la page pendant son glissement.</b><span class="see">Le mouvement se termine sur l’onglet choisi. Le doigt simplement posé ne laisse pas la page à moitié glissée.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="touch-interrupt" disabled><span class="copy"><b>8d · Lance un changement d’onglet, puis prends la page avec le doigt et glisse en sens inverse.</b><span class="see">Ton geste reprend la main. À la fin, page, mot et trait désignent tous le même onglet.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="bottom-cancel" disabled><span class="copy"><b>8e · Maintiens puis glisse la barre du bas ; interromps avec un geste de l’iPhone et reviens dans Take.</b><span class="see">Le glissé annulé revient à sa page de départ. La barre est libérée et le toucher suivant fonctionne.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="bottom-hold" disabled><span class="copy"><b>8f · Maintiens la barre du bas, déplace-la un peu puis garde le doigt posé deux secondes ; reprends le glissé.</b><span class="see">La barre reste sous ton doigt pendant la pause. Elle ne repart pas toute seule et suit de nouveau ton geste.</span></span></label>
+  </section>
+
+  <div class="notes">
+    <label for="notes">Ce qui a raté ou reste à mesurer</label>
+    <textarea id="notes" disabled placeholder="Ex. 2c : la photo n’est pas revenue après le réseau. 3d : mesure de mémoire à faire."></textarea>
+    <p class="muted">Note le numéro, ton modèle d’iPhone et la version d’iOS. Pas de photo ni de contenu privé dans les notes. Elles ne sont pas envoyées à l’équipe : transmets ton constat toi-même.</p>
+  </div>
+  <footer>
+    <p>Aucun de ces essais sur iPhone n’a été effectué par cette page.</p>
+    <details><summary>Repères, à part</summary><p>Liste préparée le 3 octobre 2026, à partir du code et des changements demandés pour ce build. Le choix <a href="../video-fil-03-10/#axe-a">A3 : largeur 65 %</a> se compare dans sa zone média. La disponibilité finale se recoupe avec <a href="../pas-dans-le-build/">la page des absents</a>, rafraîchie juste avant le build.</p></details>
+  </footer>
+</main>
+</body>
+</html>
