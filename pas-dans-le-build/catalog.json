@@ -178,12 +178,12 @@
     },
     "3411": {
       "scope": "mobile",
-      "userSummaryFr": "Affiche le premier écran sans attendre les polices propres au jeu et aux pourboires.",
+      "userSummaryFr": "Prépare les polices du jeu après le lancement de l’app.",
       "exclusionReasonFr": "Prévu dans ce build ; attend encore son intégration à la version préparée.",
       "waitingOn": [
         "chef f8"
       ],
-      "headSha": "c741caae1b3cd5dd9c826d09b522a9acf409a419"
+      "headSha": "9122e8597ddc786e68d54f83b1badd666ac8660a"
     },
     "3429": {
       "headSha": "c9bf191c79fa2c8beb91e755082c53cdcda380cd",
@@ -309,7 +309,7 @@
         "chef f8",
         "essai sur appareil"
       ],
-      "headSha": "e29ede868061a3a4c9d37112f997b45e8773ed0e"
+      "headSha": "fbfc324de05aeb409d32d5bb733737d9dd0c9fb7"
     },
     "3646": {
       "headSha": "1e6796e736a680237e1811b820db1baaa001ea74",
