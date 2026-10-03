@@ -3,7 +3,7 @@
 Published at `/tour-iphone-build-03-10/`. This is a manual acceptance plan for the
 requested build, not a report of completed device tests. Real phone memory,
 mobile network behavior, physical finger interaction, and the requested TestFlight
-startup measurement belong in the checkbox section. The ten simulator evidence fields are intentionally empty; their heading
+startup measurement belong in the checkbox section. The eleven simulator evidence fields are intentionally empty; their heading
 does not assert that the missing films or tests were completed. The installed build
 number must be entered before checking any case. Results are stored only in the
 current browser, separately for each entered version.
@@ -55,3 +55,12 @@ fully closed-app launches and compare with the previous version on the same
 iPhone under the same conditions. This checklist does not claim a measured gain.
 The new case uses the existing per-version storage without resetting prior cases
 or filling simulator evidence fields.
+
+The build owner additionally requested physical-iPhone checks for campaign
+notification opening/counting (#3660) and password change followed by sign-in
+(#3661), both merged. The campaign uses two notifications prepared for opening
+measurement because counting depends on the existing analytics consent and
+sampling. The lead verifies the recorded opening; no real notification was sent
+or opened by this page change. The password flow also has an empty simulator-film
+field, and uses a test account with existing credentials. No password is entered
+or stored by this checklist. Its new case keys preserve prior per-version results.
