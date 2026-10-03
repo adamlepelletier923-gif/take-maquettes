@@ -1,25 +1,22 @@
 {
-  "observedAt": "2026-10-03T08:19:16.852Z",
-  "sourceMainSha": "758da0591e5a1cfd0882b781e78f21578f42301c",
-  "totalOpen": 30,
+  "observedAt": "2026-10-03T08:22:37.981Z",
+  "sourceMainSha": "8a9f4e4aac2f6e654873190158f7dccee90f9586",
+  "totalOpen": 29,
   "prs": [
     {
       "number": 3632,
       "url": "https://github.com/TakeAppAIOrg/take-app/pull/3632",
-      "headSha": "88029f8660afa0cb1b0cc8dd669a1e53f4366bb5",
+      "headSha": "fcde09d534b3a9cd22b2ff4a79f07debe395202c",
       "isDraft": false,
       "scope": "mobile",
       "userSummaryFr": "Lance le chargement de la première image de chaque Take dès l’arrivée des vingt Takes et demande la suite plus tôt.",
-      "exclusionReasonFr": "Un défaut doit encore être corrigé : les téléchargements en attente continuent après la fermeture du fil ou un changement de compte.",
-      "waitingOn": [
-        "correctif",
-        "mesure sur appareil"
-      ],
-      "unreviewed": false,
+      "exclusionReasonFr": "Les contrôles ont échoué ; le changement n’est pas encore intégré.",
+      "waitingOn": [],
+      "unreviewed": true,
       "group": "Équipe",
       "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
+        "label": "Contrôles à corriger",
+        "state": "failed"
       }
     },
     {
@@ -188,22 +185,6 @@
       "check": {
         "label": "Contrôles réussis",
         "state": "passed"
-      }
-    },
-    {
-      "number": 3266,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3266",
-      "headSha": "d1841bd833e3a6b076716024eb76067aee4fe294",
-      "isDraft": false,
-      "scope": "mobile",
-      "userSummaryFr": "Ouvre le texte, le lien ou la photo partagés à la prochaine ouverture de Take si iOS 26 n’a pas rouvert l’app.",
-      "exclusionReasonFr": "Les contrôles sont encore en cours ; le changement n’est pas encore intégré.",
-      "waitingOn": [],
-      "unreviewed": true,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles en cours",
-        "state": "pending"
       }
     },
     {
