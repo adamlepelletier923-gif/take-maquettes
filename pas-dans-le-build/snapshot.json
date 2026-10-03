@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-03T10:06:00.921Z",
+  "observedAt": "2026-10-03T10:13:56.711Z",
   "sourceMainSha": "bad93ace59041bb4c09dea0b23da20b91b707d64",
   "totalOpen": 24,
   "prs": [
@@ -28,33 +28,32 @@
       "isDraft": true,
       "scope": "mobile-api",
       "userSummaryFr": "Montre dans Amis les questions privées publiées avec leur réponse, au nom de la personne qui répond.",
-      "exclusionReasonFr": "Le changement n’est pas encore intégré. Son motif de report reste à confirmer.",
-      "waitingOn": [],
-      "unreviewed": true,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles non trouvés",
-        "state": "unknown"
-      }
-    },
-    {
-      "number": 3649,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3649",
-      "headSha": "6a8dffa0590a34f0338f668d6b16b6b17311954e",
-      "isDraft": true,
-      "scope": "mobile",
-      "userSummaryFr": "Fait suivre le trait des onglets au glissement et empêche la barre de l’Accueil de réapparaître sur Messages.",
-      "exclusionReasonFr": "Le brouillon attend l’accord du chef et des essais avec une nouvelle version installée de l’app.",
+      "exclusionReasonFr": "Le brouillon attend le contrôle du rendu sur iPhone par le chef et son accord.",
       "waitingOn": [
         "chef f8",
-        "mesure sur appareil",
-        "nouveau client"
+        "essai sur appareil"
       ],
       "unreviewed": false,
       "group": "Équipe",
       "check": {
         "label": "Contrôles réussis",
         "state": "passed"
+      }
+    },
+    {
+      "number": 3649,
+      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3649",
+      "headSha": "3ef6882dee8bce4730833f5d979438276033debd",
+      "isDraft": true,
+      "scope": "mobile",
+      "userSummaryFr": "Fait suivre le trait des onglets au glissement et empêche la barre de l’Accueil de réapparaître sur Messages.",
+      "exclusionReasonFr": "Les contrôles ont échoué ; le changement n’est pas encore intégré.",
+      "waitingOn": [],
+      "unreviewed": true,
+      "group": "Équipe",
+      "check": {
+        "label": "Contrôles à corriger",
+        "state": "failed"
       }
     },
     {
@@ -97,7 +96,7 @@
       "number": 3521,
       "url": "https://github.com/TakeAppAIOrg/take-app/pull/3521",
       "headSha": "313848ebc7479da73e702fe4305bd5205d4b4725",
-      "isDraft": true,
+      "isDraft": false,
       "scope": "mobile-api",
       "userSummaryFr": "Retire les anciens J’aime des Takes et leurs notifications du serveur, sans ajouter de bouton à l’app.",
       "exclusionReasonFr": "Il faut encore sauvegarder les données, vérifier leur restauration et obtenir l’accord explicite de suppression avant de l’appliquer.",
@@ -115,17 +114,19 @@
     {
       "number": 3411,
       "url": "https://github.com/TakeAppAIOrg/take-app/pull/3411",
-      "headSha": "a0cf4099e17fba08b383dfaf71458fdb88cc67a3",
-      "isDraft": true,
+      "headSha": "9122e8597ddc786e68d54f83b1badd666ac8660a",
+      "isDraft": false,
       "scope": "mobile",
-      "userSummaryFr": "Affiche le premier écran sans attendre les polices propres au jeu et aux pourboires.",
-      "exclusionReasonFr": "Le changement n’est pas encore intégré. Son motif de report reste à confirmer.",
-      "waitingOn": [],
-      "unreviewed": true,
+      "userSummaryFr": "Prépare les polices du jeu après le lancement de l’app.",
+      "exclusionReasonFr": "Prévu dans ce build ; attend encore son intégration à la version préparée.",
+      "waitingOn": [
+        "chef f8"
+      ],
+      "unreviewed": false,
       "group": "Équipe",
       "check": {
-        "label": "Contrôles non trouvés",
-        "state": "unknown"
+        "label": "Contrôles réussis",
+        "state": "passed"
       }
     },
     {
