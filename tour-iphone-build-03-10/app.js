@@ -1,10 +1,11 @@
 (() => {
-  const key = 'take-iphone-2026-10-03-v1';
+  const key = 'take-iphone-2026-10-03-v2';
   const version = document.getElementById('version');
   const notes = document.getElementById('notes');
   const progress = document.getElementById('progress');
   const storageStatus = document.getElementById('storage-status');
   const boxes = Array.from(document.querySelectorAll('input[data-k]'));
+  const films = Array.from(document.querySelectorAll('input[data-proof]'));
   let activeVersion = '';
 
   function storage(action) {
@@ -26,7 +27,8 @@
   function save() {
     if (!activeVersion) return;
     const checked = boxes.filter(box => box.checked).map(box => box.dataset.k);
-    storage(store => store.setItem(`${key}:${activeVersion}`, JSON.stringify({ checked, notes: notes.value })));
+    const proofs = Object.fromEntries(films.map(field => [field.dataset.proof, field.value]));
+    storage(store => store.setItem(`${key}:${activeVersion}`, JSON.stringify({ checked, notes: notes.value, proofs })));
     updateProgress();
   }
 
@@ -48,6 +50,11 @@
     });
     notes.value = typeof result.notes === 'string' ? result.notes : '';
     notes.disabled = activeVersion === '';
+    films.forEach(field => {
+      const saved = result.proofs?.[field.dataset.proof];
+      field.value = typeof saved === 'string' ? saved : field.defaultValue || '';
+      field.disabled = activeVersion === '';
+    });
     storage(store => store.setItem(key, activeVersion));
     updateProgress();
   }
@@ -56,5 +63,6 @@
   version.addEventListener('change', load);
   boxes.forEach(box => box.addEventListener('change', save));
   notes.addEventListener('input', save);
+  films.forEach(field => field.addEventListener('input', save));
   load();
 })();

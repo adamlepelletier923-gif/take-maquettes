@@ -5,6 +5,7 @@ import { runInNewContext } from 'node:vm';
 const script = readFileSync(new URL('./app.js', import.meta.url), 'utf8');
 const html = readFileSync(new URL('./index.html', import.meta.url), 'utf8');
 const ids = [...html.matchAll(/data-k="([^"]+)"/g)].map(match => match[1]);
+const proofIds = [...html.matchAll(/data-proof="([^"]+)"/g)].map(match => match[1]);
 
 function openPage(saved = new Map(), blocked = false) {
   function element() {
@@ -17,10 +18,11 @@ function openPage(saved = new Map(), blocked = false) {
   }
   const fields = Object.fromEntries(['version', 'notes', 'progress', 'storage-status'].map(id => [id, element()]));
   const boxes = ids.map(id => ({ ...element(), dataset: { k: id } }));
+  const films = proofIds.map(id => ({ ...element(), defaultValue: '', dataset: { proof: id } }));
   runInNewContext(script, {
     document: {
       getElementById: id => fields[id],
-      querySelectorAll: () => boxes,
+      querySelectorAll: selector => selector === 'input[data-k]' ? boxes : films,
     },
     localStorage: {
       getItem(key) { if (blocked) throw new Error('Storage unavailable'); return saved.get(key) ?? null; },
@@ -28,7 +30,7 @@ function openPage(saved = new Map(), blocked = false) {
     },
   });
   return {
-    ...fields, boxes,
+    ...fields, boxes, films,
     choose(version) { fields.version.value = version; fields.version.fire('change'); },
     check(index) { boxes[index].checked = true; boxes[index].fire('change'); },
   };
@@ -79,9 +81,27 @@ test('blocked storage keeps the checklist usable and announces the lost persiste
 });
 
 test('a corrupt saved record is reported and does not create checked cases', () => {
-  const saved = new Map([['take-iphone-2026-10-03-v1:190', '{broken']]);
+  const saved = new Map([['take-iphone-2026-10-03-v2:190', '{broken']]);
   const page = openPage(saved);
   page.choose('190');
   expect(page.boxes.every(box => !box.checked)).toBe(true);
   expect(page['storage-status'].textContent).toContain('illisibles');
+});
+
+test('film evidence starts empty and is saved separately for each version', () => {
+  const saved = new Map();
+  const page = openPage(saved);
+  page.choose('190');
+  expect(page.films).toHaveLength(10);
+  expect(page.films.every(field => field.value === '')).toBe(true);
+  expect(page.boxes).toHaveLength(8);
+  page.films[0].value = 'https://example.com/film.mp4';
+  page.films[0].fire('input');
+  page.choose('191');
+  expect(page.films[0].value).toBe('');
+  expect(page.boxes.every(box => !box.checked)).toBe(true);
+  const reopened = openPage(saved);
+  reopened.choose('190');
+  expect(reopened.films[0].value).toBe('https://example.com/film.mp4');
+  expect(reopened.boxes.every(box => !box.checked)).toBe(true);
 });

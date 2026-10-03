@@ -1,7 +1,10 @@
 # Physical iPhone checklist — 3 October 2026
 
 Published at `/tour-iphone-build-03-10/`. This is a manual acceptance plan for the
-requested build, not a report of completed device tests. The installed build
+requested build, not a report of completed device tests. Only real phone memory,
+mobile network behavior, and physical finger interaction remain in the checkbox
+section. The ten simulator evidence fields are intentionally empty; their heading
+does not assert that the missing films or tests were completed. The installed build
 number must be entered before checking any case. Results are stored only in the
 current browser, separately for each entered version.
 
