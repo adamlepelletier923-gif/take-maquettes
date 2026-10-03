@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f2f0e9">
+  <title>La vidéo dans le fil — choix pour Take</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../">take<span> / studio</span></a>
+    <span class="edition">Maquette · 03.10.2026</span>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot"></span> À choisir avant de coder</span>
+        <h1 id="title">La vidéo peut prendre <em>moins de place.</em></h1>
+        <p>Tu trouvais le format de X plus discret. Voici des choix indépendants pour la taille, le cadrage, les contrôles et la lecture. Chaque proposition est posée sur une vraie capture de Take ; seul le rectangle vidéo est redessiné.</p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#choix">Voir les choix <span aria-hidden="true">↘</span></a>
+          <a class="text-link" href="#references">Comparer avec X <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="hero-measure" aria-label="Mesures sur les captures d'Adam">
+        <div class="measure-label">Sur les captures d'Adam</div>
+        <div class="measure"><span>Take</span><strong>404 × 505 <small>pt</small></strong><i style="--bar:100%"></i></div>
+        <div class="measure"><span>X</span><strong>256 × 455 <small>pt</small></strong><i style="--bar:63%"></i></div>
+        <p>Largeur mesurée sur un écran de 440 pt. Un exemple, pas une règle de produit.</p>
+      </div>
+    </section>
+
+    <nav class="picker" aria-label="Choix et thèmes">
+      <div class="theme-group" role="group" aria-label="Fond des propositions">
+        <span>Sur Take</span>
+        <button type="button" class="theme-button is-active" data-theme="clair" aria-pressed="true">Clair</button>
+        <button type="button" class="theme-button" data-theme="sombre" aria-pressed="false">Sombre</button>
+        <button type="button" class="theme-button" data-theme="anonyme" aria-pressed="false">Anonyme</button>
+      </div>
+      <div class="selection"><span class="selection-label">Ma combinaison</span><strong id="selection-text">A3 + B3 + C1 + D1 + E2 + F2 + G1 + H1</strong><button type="button" id="copy-choice" aria-label="Copier ma combinaison">Copier</button></div>
+    </nav>
+
+    <section id="references" class="panel references" aria-labelledby="references-title">
+      <div class="section-head">
+        <div><span class="kicker">01 / Le point de départ</span><h2 id="references-title">Les captures côte à côte</h2></div>
+        <p>Les quatre images viennent d'Adam. L'exemple X à deux médias rappelle qu'une carte peut aussi prendre toute la colonne selon le contenu.</p>
+      </div>
+      <div class="reference-grid">
+        <figure class="reference"><div class="reference-screen"><img src="img/take-2928.png" alt="Capture Take : vidéo très grande dans une carte sombre" loading="lazy"></div><figcaption><b>Take aujourd'hui</b><span>404 × 505 pt environ · carte sombre</span></figcaption></figure>
+        <figure class="reference"><div class="reference-screen"><img src="img/x-2926.png" alt="Capture X : vidéo verticale étroite dans le fil" loading="lazy"></div><figcaption><b>X · 2926</b><span>256 × 455 pt environ · source et son</span></figcaption></figure>
+        <figure class="reference"><div class="reference-screen"><img src="img/x-2929.png" alt="Deuxième capture X de la vidéo verticale" loading="lazy"></div><figcaption><b>X · 2929</b><span>Le même post plus bas dans le fil</span></figcaption></figure>
+        <figure class="reference"><div class="reference-screen"><img src="img/x-2927.png" alt="Capture X avec deux médias dans une grille plus large" loading="lazy"></div><figcaption><b>X · 2927</b><span>Deux médias : autre géométrie</span></figcaption></figure>
+      </div>
+      <p class="fine-print">Les dimensions sont relevées sur ces captures à 3× (1320 px ÷ 3 = 440 pt). Elles ne décrivent ni tous les posts X ni une contrainte imposée par X.</p>
+    </section>
+
+    <section class="recommendation" aria-labelledby="recommendation-title">
+      <div class="recommendation-heading"><span class="kicker">02 / Le résultat de tes choix</span><h2 id="recommendation-title">Ta combinaison, sur trois fonds Take</h2><p id="preview-description">Le même choix en clair, en sombre et dans la carte anonyme sombre d'Adam.</p></div>
+      <div id="three-scenes" class="three-scenes"></div>
+      <p class="fine-print">Le fichier vidéo d'origine n'est pas fourni. La proposition 9:16 simule un recadrage central depuis l'image 4:5 visible dans la capture Take ; le contenu hors de cette image ne peut pas être inventé.</p>
+    </section>
+
+    <div id="choix" class="choices-heading"><span class="kicker">03 / À composer librement</span><h2>Huit décisions, une réponse courte.</h2><p>Choisis un numéro par ligne, par exemple <strong>A3 + B3 + C1 + D1 + E2 + F2 + G1 + H1</strong>. Les cartes comparent un seul paramètre à la fois ; la bande au-dessus retient tes choix.</p></div>
+
+    <section class="axis panel" id="axe-a" aria-labelledby="axis-a-title"><div class="section-head"><div><span class="kicker">A / Taille</span><h2 id="axis-a-title">Quelle largeur ?</h2></div><p>Même image en 4:5, même alignement à gauche. La largeur est relative à l'espace média de Take, pas à tout l'écran.</p></div><div class="choice-grid" data-axis="A"></div></section>
+    <section class="axis panel" id="axe-b" aria-labelledby="axis-b-title"><div class="section-head"><div><span class="kicker">B / Hauteur</span><h2 id="axis-b-title">Jusqu'où peut-elle monter ?</h2></div><p>Largeur maximale de 80 % et ratio 9:16. Quand le plafond est atteint, la largeur rétrécit aussi pour garder les proportions.</p></div><div class="choice-grid" data-axis="B"></div></section>
+    <section class="axis panel" id="axe-c" aria-labelledby="axis-c-title"><div class="section-head"><div><span class="kicker">C / Format</span><h2 id="axis-c-title">Quel ratio dans la carte ?</h2></div><p>Largeur 65 %, hauteur maximale 460 pt. « Original » garderait le ratio du vrai fichier ; ici l'aperçu 9:16 reste une simulation.</p></div><div class="choice-grid" data-axis="C"></div></section>
+    <section class="axis panel" id="axe-d" aria-labelledby="axis-d-title"><div class="section-head"><div><span class="kicker">D / Placement</span><h2 id="axis-d-title">Dans l'axe du texte ou au centre ?</h2></div><p>Deux positions pour la même carte 65 % en portrait. Sur X, la vidéo d'Adam commence à l'aplomb du texte du post.</p></div><div class="choice-grid" data-axis="D"></div></section>
+    <section class="axis panel" id="axe-e" aria-labelledby="axis-e-title"><div class="section-head"><div><span class="kicker">E / Silhouette</span><h2 id="axis-e-title">Quel arrondi ?</h2></div><p>Le même cadre, avec trois rayons de coin. Les coins de X sont ici une observation visuelle, pas une valeur publiée.</p></div><div class="choice-grid" data-axis="E"></div></section>
+    <section class="axis panel" id="axe-f" aria-labelledby="axis-f-title"><div class="section-head"><div><span class="kicker">F / Signaux</span><h2 id="axis-f-title">Que voit-on sur l'image ?</h2></div><p>Durée, son, provenance et lecture. Le fil doit rester lisible sans couvrir les visages ; la marque intégrée au fichier source peut subsister.</p></div><div class="choice-grid" data-axis="F"></div></section>
+    <section class="axis panel" id="axe-g" aria-labelledby="axis-g-title"><div class="section-head"><div><span class="kicker">G / Lecture</span><h2 id="axis-g-title">Quand la vidéo démarre-t-elle ?</h2></div><p>Ces vignettes sont fixes : les pictogrammes montrent la règle proposée, pas une vraie lecture vidéo. Son désactivé au départ dans tous les choix qui démarrent seuls.</p></div><div class="choice-grid" data-axis="G"></div></section>
+    <section class="axis panel" id="axe-h" aria-labelledby="axis-h-title"><div class="section-head"><div><span class="kicker">H / Après un toucher</span><h2 id="axis-h-title">Comment regarder en grand ?</h2></div><p>Trois destinations pour le toucher sur la vidéo. Le choix du lecteur peut se faire séparément du démarrage dans le fil.</p></div><div class="choice-grid" data-axis="H"></div></section>
+
+    <section class="panel evidence" id="sources" aria-labelledby="sources-title">
+      <div class="section-head"><div><span class="kicker">04 / Recherche</span><h2 id="sources-title">Ce qui est documenté, et ce qui ne l'est pas</h2></div><p>Les dimensions précises du fil organique ne sont pas publiées pour ces plateformes dans les sources retenues. Les formats publicitaires ne sont pas des spécifications du fil.</p></div>
+      <div class="evidence-table-wrap"><table><thead><tr><th>Plateforme</th><th>Dans le fil : format et signaux</th><th>Lecture / réglage</th><th>Après toucher</th></tr></thead><tbody>
+        <tr><th scope="row">X</th><td>Sur <a href="img/x-2926.png">la capture d'Adam</a> : 256 × 455 pt, portrait arrondi, provenance et son superposés. Ce n'est pas un format universel ; <a href="img/x-2927.png">sa grille à deux médias</a> est plus large.</td><td><a href="https://help.x.com/en/using-x/x-videos">Autoplay dans le fil</a> ; sur iOS : cellulaire + Wi-Fi, Wi-Fi seulement ou jamais. Son initial non établi.</td><td>L'aide confirme le lecteur plein écran et les sauts de 5 s. L'entrée exacte depuis cette carte n'y est pas détaillée.</td></tr>
+        <tr><th scope="row">Instagram</th><td>Les <a href="https://about.fb.com/news/2020/08/introducing-instagram-reels/">Reels peuvent paraître dans le Feed</a> ; <a href="https://about.fb.com/news/2022/07/new-ways-to-create-instagram-reels-remix/">les nouvelles vidéos deviennent des Reels</a>. Largeur, hauteur, crop, coins et badges du Feed : non établis.</td><td>Autoplay, Wi-Fi et son au départ du Feed : non établis par ces sources.</td><td>Expérience Reels plein écran documentée ; transition exacte depuis chaque aperçu non établie.</td></tr>
+        <tr><th scope="row">Threads</th><td><a href="https://about.fb.com/news/2025/03/new-threads-features-more-personalized-experience-you-control/">Lecteur avec lecture/pause, saut et barre de progression fixe</a>. Dimensions, ratio et superpositions du fil : non établis.</td><td>Autoplay, Wi-Fi et son initial : non établis.</td><td>Lecteur documenté ; geste et présentation de l'agrandissement non établis.</td></tr>
+        <tr><th scope="row">Bluesky</th><td><a href="https://bsky.social/about/blog/09-11-2024-video">Une vidéo par post, sous-titres possibles</a>. Dimensions, ratio, coins et badges : non établis.</td><td>Autoplay par défaut, désactivable dans les réglages. Wi-Fi et son initial non établis.</td><td>Vue agrandie et geste : non établis par cette annonce.</td></tr>
+        <tr><th scope="row">TikTok</th><td><a href="https://support.tiktok.com/en/getting-started/for-you/test-for-you">For You est le premier fil</a>. <a href="https://www.tiktok.com/safety/en/inclusion-and-belonging-lgbtq-spotlight?sc_version=2024">Clear Display</a> masque des commandes superposées. Dimensions, crop et coins : non quantifiés.</td><td>« Mute on Opening » existe dans Playback. Autoplay, Wi-Fi et son par défaut : non établis par ces pages.</td><td>Appui long : Clear Display et vitesse. Transition carte → vue agrandie non établie.</td></tr>
+      </tbody></table></div>
+      <p class="fine-print">Recherche détaillée et limites de chaque source : <a href="recherche.md">lire la note</a>. Les captures d'Adam sont des observations locales ; les articles Meta de 2020 et 2022 datent leur description du produit. Toutes les propositions ci-dessus sont des pistes de design pour Take, pas des copies certifiées du comportement actuel des autres apps.</p>
+    </section>
+
+    <footer class="footer"><span>Take / studio · Maquette seulement, aucune modification de l'app.</span><a href="#title">Retour en haut ↑</a></footer>
+  </main>
+</body>
+</html>
