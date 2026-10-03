@@ -64,3 +64,9 @@ sampling. The lead verifies the recorded opening; no real notification was sent
 or opened by this page change. The password flow also has an empty simulator-film
 field, and uses a test account with existing credentials. No password is entered
 or stored by this checklist. Its new case keys preserve prior per-version results.
+
+Two more physical-iPhone cases remain pending: animated WebP GIFs in a comment
+and a message, and expanding an already-playing feed video without a black frame
+or playback interruption (#3669, merged). The local bench has no GIF-provider key
+and its video storage returns 404. The existing checklist script handles the two
+new case keys; prior results and the eleven empty simulator-film fields are kept.

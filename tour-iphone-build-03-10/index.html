@@ -25,7 +25,7 @@
   </div>
   <p class="progress" id="progress" role="status" aria-live="polite">Indique la version de Take avant de cocher.</p>
   <nav aria-label="Les points à tester">
-    <a href="#memoire">Mémoire</a><a href="#mobile">4G</a><a href="#doigt">Gestes au doigt</a><a href="#demarrage">Ouverture sur TestFlight</a><a href="#notifications-compte">Notifications et compte</a><a href="#simulateur">Films du simulateur</a>
+    <a href="#memoire">Mémoire</a><a href="#mobile">4G</a><a href="#doigt">Gestes au doigt</a><a href="#demarrage">Ouverture sur TestFlight</a><a href="#notifications-compte">Notifications, compte et médias</a><a href="#simulateur">Films du simulateur</a>
   </nav>
   <noscript><p>Active JavaScript dans Safari pour utiliser et garder les coches. Tu peux aussi imprimer cette page et cocher sur papier.</p></noscript>
 
@@ -59,10 +59,13 @@
   </section>
 
   <section id="notifications-compte" aria-labelledby="notifications-compte-title">
-    <h2 id="notifications-compte-title">Seulement sur l’iPhone · 5. Notifications et compte</h2>
+    <h2 id="notifications-compte-title">Seulement sur l’iPhone · 5. Notifications, compte et médias</h2>
     <p class="where">Une vraie notification reçue sur l’iPhone ne se remplace pas par un essai sur le simulateur. Le changement de mot de passe se filme aussi sur le simulateur : son champ de preuve est plus bas.</p>
     <label class="item"><input type="checkbox" data-k="campaign-notification-open" disabled><span class="copy"><b>5a · Toucher une notification de campagne ouvre bien la bonne page et compte l’ouverture.</b><span>Demande deux notifications de test préparées pour mesurer les ouvertures. Touche la première avec Take entièrement fermé, puis la deuxième avec Take en arrière-plan.</span><span class="see">La page annoncée s’ouvre dans les deux cas. Gon vérifie qu’une ouverture est comptée pour chaque notification touchée, sans doublon.</span></span></label>
     <label class="item"><input type="checkbox" data-k="password-relogin" disabled><span class="copy"><b>5b · Changer son mot de passe, puis se reconnecter.</b><span>Sur un compte de test qui a déjà un mot de passe, ouvre les réglages du compte. Saisis le mot de passe actuel et un nouveau, puis confirme-le. Déconnecte-toi et reconnecte-toi avec le nouveau.</span><span class="see">Le changement est confirmé et la reconnexion fonctionne. L’ancien mot de passe est refusé. Aucun mot de passe ne doit être écrit dans les notes de cette page.</span></span></label>
+    <p class="where">Les deux essais suivants restent à faire sur l’iPhone : le banc local n’a aucune clé de fournisseur de GIF, et son stockage vidéo répond 404.</p>
+    <label class="item"><input type="checkbox" data-k="gif-webp-comment-message" disabled><span class="copy"><b>5c · Les GIF animés en WebP dans un commentaire et un message.</b><span>Choisis un GIF animé au format WebP et envoie-le dans un commentaire, puis dans un message.</span><span class="see">Le GIF reste animé dans le commentaire et dans le message.</span></span></label>
+    <label class="item"><input type="checkbox" data-k="video-feed-expand-continue" disabled><span class="copy"><b>5d · Toucher une vidéo qui joue dans le fil l’agrandit sans écran noir, et elle continue.</b><span>Touche une vidéo déjà en lecture dans le fil pour l’ouvrir en grand.</span><span class="see">Aucun écran noir à l’agrandissement ; la vidéo continue sans interruption.</span></span></label>
   </section>
 
   <section id="simulateur" aria-labelledby="simulateur-title">
@@ -143,7 +146,7 @@
   </div>
   <footer>
     <p>Les coches concernent seulement les essais sur ton iPhone. Les films du simulateur restent à joindre.</p>
-    <details><summary>Repères, à part</summary><p>Liste préparée le 3 octobre 2026, à partir du code et des changements demandés pour ce build. Le choix <a href="../video-fil-03-10/#axe-a">A3 : largeur 65 %</a> se compare dans sa zone média. La disponibilité finale se recoupe avec <a href="../pas-dans-le-build/">la page des absents</a>, rafraîchie juste avant le build.</p><p><small>Notifications de campagne : <a href="https://github.com/TakeAppAIOrg/take-app/pull/3660">#3660</a>. Changement de mot de passe : <a href="https://github.com/TakeAppAIOrg/take-app/pull/3661">#3661</a>. Les deux changements sont fusionnés ; les essais et films restent à faire.</small></p></details>
+    <details><summary>Repères, à part</summary><p>Liste préparée le 3 octobre 2026, à partir du code et des changements demandés pour ce build. Le choix <a href="../video-fil-03-10/#axe-a">A3 : largeur 65 %</a> se compare dans sa zone média. La disponibilité finale se recoupe avec <a href="../pas-dans-le-build/">la page des absents</a>, rafraîchie juste avant le build.</p><p><small>Notifications de campagne : <a href="https://github.com/TakeAppAIOrg/take-app/pull/3660">#3660</a>. Changement de mot de passe : <a href="https://github.com/TakeAppAIOrg/take-app/pull/3661">#3661</a>. Les deux changements sont fusionnés ; les essais et films restent à faire.</small></p><p><small>Agrandir une vidéo déjà en lecture : <a href="https://github.com/TakeAppAIOrg/take-app/pull/3669">#3669</a> fusionnée. Les essais 5c et 5d sur l’iPhone restent à faire.</small></p></details>
   </footer>
 </main>
 </body>
