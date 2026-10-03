@@ -1,0 +1,632 @@
+{
+  "recommendation": {
+    "type": "choice",
+    "choice": "01",
+    "confidence": 0.46,
+    "probabilities": {
+      "08": 0.0,
+      "02": 0.12,
+      "10": 0.03,
+      "05": 0.18,
+      "07": 0.0,
+      "04": 0.03,
+      "09": 0.0,
+      "01": 0.52,
+      "03": 0.0,
+      "06": 0.12,
+      "none": 0.0
+    }
+  },
+  "ranking": [
+    {
+      "id": "02",
+      "legibility": 2.56,
+      "coherence": 2.13,
+      "fidelity": 2.78,
+      "weighted": 2.551
+    },
+    {
+      "id": "05",
+      "legibility": 2.4,
+      "coherence": 2.36,
+      "fidelity": 2.84,
+      "weighted": 2.546
+    },
+    {
+      "id": "01",
+      "legibility": 2.65,
+      "coherence": 1.67,
+      "fidelity": 2.75,
+      "weighted": 2.489
+    },
+    {
+      "id": "04",
+      "legibility": 2.46,
+      "coherence": 1.56,
+      "fidelity": 2.67,
+      "weighted": 2.3535
+    },
+    {
+      "id": "10",
+      "legibility": 2.27,
+      "coherence": 2.03,
+      "fidelity": 2.54,
+      "weighted": 2.3165
+    },
+    {
+      "id": "07",
+      "legibility": 1.5,
+      "coherence": 2.13,
+      "fidelity": 2.45,
+      "weighted": 1.9585
+    },
+    {
+      "id": "09",
+      "legibility": 1.56,
+      "coherence": 1.89,
+      "fidelity": 2.46,
+      "weighted": 1.941
+    },
+    {
+      "id": "06",
+      "legibility": 1.19,
+      "coherence": 2.41,
+      "fidelity": 2.43,
+      "weighted": 1.868
+    },
+    {
+      "id": "03",
+      "legibility": 1.44,
+      "coherence": 1.51,
+      "fidelity": 2.52,
+      "weighted": 1.832
+    },
+    {
+      "id": "08",
+      "legibility": 1.42,
+      "coherence": 1.87,
+      "fidelity": 2.26,
+      "weighted": 1.804
+    }
+  ],
+  "answers": {
+    "legibility_01": {
+      "type": "score",
+      "score": 2.65,
+      "confidence": 0.65,
+      "legend": {
+        "0": "Comment reading obstructed by dense or too-small text.",
+        "1": "Comments readable but competing context or navigation friction remains.",
+        "2": "Comments prominent and comfortably readable with adequate width and leading.",
+        "3": "Comments dominate the preview and need no effort or unnecessary interaction to scan."
+      },
+      "probabilities": {
+        "0": 0.02,
+        "1": 0.05,
+        "2": 0.21,
+        "3": 0.72
+      }
+    },
+    "coherence_01": {
+      "type": "score",
+      "score": 1.67,
+      "confidence": 0.33,
+      "legend": {
+        "0": "Conflicts with stated app invariants or has unfamiliar unrelated surface.",
+        "1": "Major visual or interaction departure from app, requires careful adaptation.",
+        "2": "Mostly reuses app type, opaque palette, consistent gesture and clear dismissal/open action.",
+        "3": "Directly extends the existing app vocabulary and preview behavior with minimal new interaction."
+      },
+      "probabilities": {
+        "0": 0.15,
+        "1": 0.21,
+        "2": 0.47,
+        "3": 0.17
+      }
+    },
+    "fidelity_01": {
+      "type": "score",
+      "score": 2.75,
+      "confidence": 0.75,
+      "legend": {
+        "0": "Does not deliver either requested family or barely changes current issue.",
+        "1": "Partially addresses comment prominence but retains visible separation or clutter.",
+        "2": "Clearly delivers one requested family and improves comment prominence.",
+        "3": "Directly delivers comments-first or unified-block request with a substantial reading improvement."
+      },
+      "probabilities": {
+        "0": 0.03,
+        "1": 0.03,
+        "2": 0.11,
+        "3": 0.83
+      }
+    },
+    "legibility_02": {
+      "type": "score",
+      "score": 2.56,
+      "confidence": 0.56,
+      "legend": {
+        "0": "Comment reading obstructed by dense or too-small text.",
+        "1": "Comments readable but competing context or navigation friction remains.",
+        "2": "Comments prominent and comfortably readable with adequate width and leading.",
+        "3": "Comments dominate the preview and need no effort or unnecessary interaction to scan."
+      },
+      "probabilities": {
+        "0": 0.0,
+        "1": 0.06,
+        "2": 0.31,
+        "3": 0.63
+      }
+    },
+    "coherence_02": {
+      "type": "score",
+      "score": 2.13,
+      "confidence": 0.61,
+      "legend": {
+        "0": "Conflicts with stated app invariants or has unfamiliar unrelated surface.",
+        "1": "Major visual or interaction departure from app, requires careful adaptation.",
+        "2": "Mostly reuses app type, opaque palette, consistent gesture and clear dismissal/open action.",
+        "3": "Directly extends the existing app vocabulary and preview behavior with minimal new interaction."
+      },
+      "probabilities": {
+        "0": 0.04,
+        "1": 0.06,
+        "2": 0.64,
+        "3": 0.26
+      }
+    },
+    "fidelity_02": {
+      "type": "score",
+      "score": 2.78,
+      "confidence": 0.78,
+      "legend": {
+        "0": "Does not deliver either requested family or barely changes current issue.",
+        "1": "Partially addresses comment prominence but retains visible separation or clutter.",
+        "2": "Clearly delivers one requested family and improves comment prominence.",
+        "3": "Directly delivers comments-first or unified-block request with a substantial reading improvement."
+      },
+      "probabilities": {
+        "0": 0.01,
+        "1": 0.04,
+        "2": 0.11,
+        "3": 0.84
+      }
+    },
+    "legibility_03": {
+      "type": "score",
+      "score": 1.44,
+      "confidence": 0.53,
+      "legend": {
+        "0": "Comment reading obstructed by dense or too-small text.",
+        "1": "Comments readable but competing context or navigation friction remains.",
+        "2": "Comments prominent and comfortably readable with adequate width and leading.",
+        "3": "Comments dominate the preview and need no effort or unnecessary interaction to scan."
+      },
+      "probabilities": {
+        "0": 0.01,
+        "1": 0.6,
+        "2": 0.32,
+        "3": 0.07
+      }
+    },
+    "coherence_03": {
+      "type": "score",
+      "score": 1.51,
+      "confidence": 0.38,
+      "legend": {
+        "0": "Conflicts with stated app invariants or has unfamiliar unrelated surface.",
+        "1": "Major visual or interaction departure from app, requires careful adaptation.",
+        "2": "Mostly reuses app type, opaque palette, consistent gesture and clear dismissal/open action.",
+        "3": "Directly extends the existing app vocabulary and preview behavior with minimal new interaction."
+      },
+      "probabilities": {
+        "0": 0.1,
+        "1": 0.36,
+        "2": 0.47,
+        "3": 0.07
+      }
+    },
+    "fidelity_03": {
+      "type": "score",
+      "score": 2.52,
+      "confidence": 0.52,
+      "legend": {
+        "0": "Does not deliver either requested family or barely changes current issue.",
+        "1": "Partially addresses comment prominence but retains visible separation or clutter.",
+        "2": "Clearly delivers one requested family and improves comment prominence.",
+        "3": "Directly delivers comments-first or unified-block request with a substantial reading improvement."
+      },
+      "probabilities": {
+        "0": 0.04,
+        "1": 0.06,
+        "2": 0.26,
+        "3": 0.64
+      }
+    },
+    "legibility_04": {
+      "type": "score",
+      "score": 2.46,
+      "confidence": 0.46,
+      "legend": {
+        "0": "Comment reading obstructed by dense or too-small text.",
+        "1": "Comments readable but competing context or navigation friction remains.",
+        "2": "Comments prominent and comfortably readable with adequate width and leading.",
+        "3": "Comments dominate the preview and need no effort or unnecessary interaction to scan."
+      },
+      "probabilities": {
+        "0": 0.01,
+        "1": 0.02,
+        "2": 0.47,
+        "3": 0.5
+      }
+    },
+    "coherence_04": {
+      "type": "score",
+      "score": 1.56,
+      "confidence": 0.24,
+      "legend": {
+        "0": "Conflicts with stated app invariants or has unfamiliar unrelated surface.",
+        "1": "Major visual or interaction departure from app, requires careful adaptation.",
+        "2": "Mostly reuses app type, opaque palette, consistent gesture and clear dismissal/open action.",
+        "3": "Directly extends the existing app vocabulary and preview behavior with minimal new interaction."
+      },
+      "probabilities": {
+        "0": 0.17,
+        "1": 0.26,
+        "2": 0.41,
+        "3": 0.16
+      }
+    },
+    "fidelity_04": {
+      "type": "score",
+      "score": 2.67,
+      "confidence": 0.67,
+      "legend": {
+        "0": "Does not deliver either requested family or barely changes current issue.",
+        "1": "Partially addresses comment prominence but retains visible separation or clutter.",
+        "2": "Clearly delivers one requested family and improves comment prominence.",
+        "3": "Directly delivers comments-first or unified-block request with a substantial reading improvement."
+      },
+      "probabilities": {
+        "0": 0.02,
+        "1": 0.03,
+        "2": 0.21,
+        "3": 0.74
+      }
+    },
+    "legibility_05": {
+      "type": "score",
+      "score": 2.4,
+      "confidence": 0.47,
+      "legend": {
+        "0": "Comment reading obstructed by dense or too-small text.",
+        "1": "Comments readable but competing context or navigation friction remains.",
+        "2": "Comments prominent and comfortably readable with adequate width and leading.",
+        "3": "Comments dominate the preview and need no effort or unnecessary interaction to scan."
+      },
+      "probabilities": {
+        "0": 0.01,
+        "1": 0.05,
+        "2": 0.47,
+        "3": 0.47
+      }
+    },
+    "coherence_05": {
+      "type": "score",
+      "score": 2.36,
+      "confidence": 0.36,
+      "legend": {
+        "0": "Conflicts with stated app invariants or has unfamiliar unrelated surface.",
+        "1": "Major visual or interaction departure from app, requires careful adaptation.",
+        "2": "Mostly reuses app type, opaque palette, consistent gesture and clear dismissal/open action.",
+        "3": "Directly extends the existing app vocabulary and preview behavior with minimal new interaction."
+      },
+      "probabilities": {
+        "0": 0.05,
+        "1": 0.1,
+        "2": 0.29,
+        "3": 0.56
+      }
+    },
+    "fidelity_05": {
+      "type": "score",
+      "score": 2.84,
+      "confidence": 0.84,
+      "legend": {
+        "0": "Does not deliver either requested family or barely changes current issue.",
+        "1": "Partially addresses comment prominence but retains visible separation or clutter.",
+        "2": "Clearly delivers one requested family and improves comment prominence.",
+        "3": "Directly delivers comments-first or unified-block request with a substantial reading improvement."
+      },
+      "probabilities": {
+        "0": 0.01,
+        "1": 0.01,
+        "2": 0.09,
+        "3": 0.89
+      }
+    },
+    "legibility_06": {
+      "type": "score",
+      "score": 1.19,
+      "confidence": 0.73,
+      "legend": {
+        "0": "Comment reading obstructed by dense or too-small text.",
+        "1": "Comments readable but competing context or navigation friction remains.",
+        "2": "Comments prominent and comfortably readable with adequate width and leading.",
+        "3": "Comments dominate the preview and need no effort or unnecessary interaction to scan."
+      },
+      "probabilities": {
+        "0": 0.04,
+        "1": 0.73,
+        "2": 0.22,
+        "3": 0.01
+      }
+    },
+    "coherence_06": {
+      "type": "score",
+      "score": 2.41,
+      "confidence": 0.41,
+      "legend": {
+        "0": "Conflicts with stated app invariants or has unfamiliar unrelated surface.",
+        "1": "Major visual or interaction departure from app, requires careful adaptation.",
+        "2": "Mostly reuses app type, opaque palette, consistent gesture and clear dismissal/open action.",
+        "3": "Directly extends the existing app vocabulary and preview behavior with minimal new interaction."
+      },
+      "probabilities": {
+        "0": 0.06,
+        "1": 0.06,
+        "2": 0.29,
+        "3": 0.59
+      }
+    },
+    "fidelity_06": {
+      "type": "score",
+      "score": 2.43,
+      "confidence": 0.43,
+      "legend": {
+        "0": "Does not deliver either requested family or barely changes current issue.",
+        "1": "Partially addresses comment prominence but retains visible separation or clutter.",
+        "2": "Clearly delivers one requested family and improves comment prominence.",
+        "3": "Directly delivers comments-first or unified-block request with a substantial reading improvement."
+      },
+      "probabilities": {
+        "0": 0.02,
+        "1": 0.09,
+        "2": 0.33,
+        "3": 0.56
+      }
+    },
+    "legibility_07": {
+      "type": "score",
+      "score": 1.5,
+      "confidence": 0.48,
+      "legend": {
+        "0": "Comment reading obstructed by dense or too-small text.",
+        "1": "Comments readable but competing context or navigation friction remains.",
+        "2": "Comments prominent and comfortably readable with adequate width and leading.",
+        "3": "Comments dominate the preview and need no effort or unnecessary interaction to scan."
+      },
+      "probabilities": {
+        "0": 0.02,
+        "1": 0.47,
+        "2": 0.5,
+        "3": 0.01
+      }
+    },
+    "coherence_07": {
+      "type": "score",
+      "score": 2.13,
+      "confidence": 0.36,
+      "legend": {
+        "0": "Conflicts with stated app invariants or has unfamiliar unrelated surface.",
+        "1": "Major visual or interaction departure from app, requires careful adaptation.",
+        "2": "Mostly reuses app type, opaque palette, consistent gesture and clear dismissal/open action.",
+        "3": "Directly extends the existing app vocabulary and preview behavior with minimal new interaction."
+      },
+      "probabilities": {
+        "0": 0.08,
+        "1": 0.1,
+        "2": 0.44,
+        "3": 0.38
+      }
+    },
+    "fidelity_07": {
+      "type": "score",
+      "score": 2.45,
+      "confidence": 0.45,
+      "legend": {
+        "0": "Does not deliver either requested family or barely changes current issue.",
+        "1": "Partially addresses comment prominence but retains visible separation or clutter.",
+        "2": "Clearly delivers one requested family and improves comment prominence.",
+        "3": "Directly delivers comments-first or unified-block request with a substantial reading improvement."
+      },
+      "probabilities": {
+        "0": 0.01,
+        "1": 0.09,
+        "2": 0.31,
+        "3": 0.59
+      }
+    },
+    "legibility_08": {
+      "type": "score",
+      "score": 1.42,
+      "confidence": 0.56,
+      "legend": {
+        "0": "Comment reading obstructed by dense or too-small text.",
+        "1": "Comments readable but competing context or navigation friction remains.",
+        "2": "Comments prominent and comfortably readable with adequate width and leading.",
+        "3": "Comments dominate the preview and need no effort or unnecessary interaction to scan."
+      },
+      "probabilities": {
+        "0": 0.01,
+        "1": 0.59,
+        "2": 0.37,
+        "3": 0.03
+      }
+    },
+    "coherence_08": {
+      "type": "score",
+      "score": 1.87,
+      "confidence": 0.33,
+      "legend": {
+        "0": "Conflicts with stated app invariants or has unfamiliar unrelated surface.",
+        "1": "Major visual or interaction departure from app, requires careful adaptation.",
+        "2": "Mostly reuses app type, opaque palette, consistent gesture and clear dismissal/open action.",
+        "3": "Directly extends the existing app vocabulary and preview behavior with minimal new interaction."
+      },
+      "probabilities": {
+        "0": 0.13,
+        "1": 0.14,
+        "2": 0.46,
+        "3": 0.27
+      }
+    },
+    "fidelity_08": {
+      "type": "score",
+      "score": 2.26,
+      "confidence": 0.26,
+      "legend": {
+        "0": "Does not deliver either requested family or barely changes current issue.",
+        "1": "Partially addresses comment prominence but retains visible separation or clutter.",
+        "2": "Clearly delivers one requested family and improves comment prominence.",
+        "3": "Directly delivers comments-first or unified-block request with a substantial reading improvement."
+      },
+      "probabilities": {
+        "0": 0.02,
+        "1": 0.17,
+        "2": 0.33,
+        "3": 0.48
+      }
+    },
+    "legibility_09": {
+      "type": "score",
+      "score": 1.56,
+      "confidence": 0.45,
+      "legend": {
+        "0": "Comment reading obstructed by dense or too-small text.",
+        "1": "Comments readable but competing context or navigation friction remains.",
+        "2": "Comments prominent and comfortably readable with adequate width and leading.",
+        "3": "Comments dominate the preview and need no effort or unnecessary interaction to scan."
+      },
+      "probabilities": {
+        "0": 0.02,
+        "1": 0.46,
+        "2": 0.47,
+        "3": 0.05
+      }
+    },
+    "coherence_09": {
+      "type": "score",
+      "score": 1.89,
+      "confidence": 0.44,
+      "legend": {
+        "0": "Conflicts with stated app invariants or has unfamiliar unrelated surface.",
+        "1": "Major visual or interaction departure from app, requires careful adaptation.",
+        "2": "Mostly reuses app type, opaque palette, consistent gesture and clear dismissal/open action.",
+        "3": "Directly extends the existing app vocabulary and preview behavior with minimal new interaction."
+      },
+      "probabilities": {
+        "0": 0.09,
+        "1": 0.15,
+        "2": 0.54,
+        "3": 0.22
+      }
+    },
+    "fidelity_09": {
+      "type": "score",
+      "score": 2.46,
+      "confidence": 0.46,
+      "legend": {
+        "0": "Does not deliver either requested family or barely changes current issue.",
+        "1": "Partially addresses comment prominence but retains visible separation or clutter.",
+        "2": "Clearly delivers one requested family and improves comment prominence.",
+        "3": "Directly delivers comments-first or unified-block request with a substantial reading improvement."
+      },
+      "probabilities": {
+        "0": 0.01,
+        "1": 0.1,
+        "2": 0.3,
+        "3": 0.59
+      }
+    },
+    "legibility_10": {
+      "type": "score",
+      "score": 2.27,
+      "confidence": 0.27,
+      "legend": {
+        "0": "Comment reading obstructed by dense or too-small text.",
+        "1": "Comments readable but competing context or navigation friction remains.",
+        "2": "Comments prominent and comfortably readable with adequate width and leading.",
+        "3": "Comments dominate the preview and need no effort or unnecessary interaction to scan."
+      },
+      "probabilities": {
+        "0": 0.02,
+        "1": 0.16,
+        "2": 0.36,
+        "3": 0.46
+      }
+    },
+    "coherence_10": {
+      "type": "score",
+      "score": 2.03,
+      "confidence": 0.43,
+      "legend": {
+        "0": "Conflicts with stated app invariants or has unfamiliar unrelated surface.",
+        "1": "Major visual or interaction departure from app, requires careful adaptation.",
+        "2": "Mostly reuses app type, opaque palette, consistent gesture and clear dismissal/open action.",
+        "3": "Directly extends the existing app vocabulary and preview behavior with minimal new interaction."
+      },
+      "probabilities": {
+        "0": 0.07,
+        "1": 0.13,
+        "2": 0.5,
+        "3": 0.3
+      }
+    },
+    "fidelity_10": {
+      "type": "score",
+      "score": 2.54,
+      "confidence": 0.54,
+      "legend": {
+        "0": "Does not deliver either requested family or barely changes current issue.",
+        "1": "Partially addresses comment prominence but retains visible separation or clutter.",
+        "2": "Clearly delivers one requested family and improves comment prominence.",
+        "3": "Directly delivers comments-first or unified-block request with a substantial reading improvement."
+      },
+      "probabilities": {
+        "0": 0.04,
+        "1": 0.06,
+        "2": 0.22,
+        "3": 0.68
+      }
+    },
+    "recommendation": {
+      "type": "choice",
+      "choice": "01",
+      "confidence": 0.46,
+      "probabilities": {
+        "08": 0.0,
+        "02": 0.12,
+        "10": 0.03,
+        "05": 0.18,
+        "07": 0.0,
+        "04": 0.03,
+        "09": 0.0,
+        "01": 0.52,
+        "03": 0.0,
+        "06": 0.12,
+        "none": 0.0
+      }
+    },
+    "reference_scope": {
+      "type": "noul",
+      "noul": 0.93
+    }
+  },
+  "weights": {
+    "legibility": 0.45,
+    "coherence": 0.2,
+    "fidelity": 0.35
+  },
+  "evidence": "Mechanism descriptions and measured code baseline, not image or device validation."
+}
