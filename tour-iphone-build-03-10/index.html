@@ -14,7 +14,7 @@
   <a class="back" href="../pas-dans-le-build/">Ce qui n’est PAS dans le build</a>
   <p class="eyebrow">Le build du 3 octobre · sur un vrai iPhone</p>
   <h1>À tester sur ton iPhone</h1>
-  <p class="intro">Sur ton iPhone, il reste trois choses à vérifier : la mémoire, la 4G et les vrais gestes au doigt. Coche seulement après les avoir essayées sur ton téléphone.</p>
+  <p class="intro">Sur ton iPhone, vérifie la mémoire, la 4G et les vrais gestes au doigt. Mesure aussi le temps d’ouverture de ce build installé avec TestFlight. Coche seulement après les avoir essayés sur ton téléphone.</p>
   <p class="muted">Les autres points sont regroupés plus bas avec un champ vide pour le film qui les prouve sur le simulateur.</p>
 
   <div class="setup">
@@ -25,7 +25,7 @@
   </div>
   <p class="progress" id="progress" role="status" aria-live="polite">Indique la version de Take avant de cocher.</p>
   <nav aria-label="Les points à tester">
-    <a href="#memoire">Mémoire</a><a href="#mobile">4G</a><a href="#doigt">Gestes au doigt</a><a href="#simulateur">Films du simulateur</a>
+    <a href="#memoire">Mémoire</a><a href="#mobile">4G</a><a href="#doigt">Gestes au doigt</a><a href="#demarrage">Ouverture sur TestFlight</a><a href="#simulateur">Films du simulateur</a>
   </nav>
   <noscript><p>Active JavaScript dans Safari pour utiliser et garder les coches. Tu peux aussi imprimer cette page et cocher sur papier.</p></noscript>
 
@@ -50,6 +50,12 @@
     <label class="item"><input type="checkbox" data-k="touch-cancel" disabled><span class="copy"><b>3b · Commence un glissé horizontal puis reviens en arrière sans changer de page. Essaie aussi d’interrompre un glissé de la barre du bas avec un geste de l’iPhone.</b><span class="see">Le glissé annulé revient à sa page de départ. Le trait et la barre retrouvent leur place ; le toucher suivant fonctionne.</span></span></label>
     <label class="item"><input type="checkbox" data-k="touch-rest" disabled><span class="copy"><b>3c · Touche un onglet puis pose un doigt immobile sur la page pendant son glissement.</b><span class="see">Le mouvement se termine sur l’onglet choisi. Le doigt simplement posé ne laisse pas la page à moitié glissée.</span></span></label>
     <label class="item"><input type="checkbox" data-k="bottom-hold" disabled><span class="copy"><b>3d · Maintiens la barre du bas, déplace-la un peu puis garde le doigt posé deux secondes ; reprends le glissé.</b><span class="see">La barre reste sous ton doigt pendant la pause. Elle ne repart pas toute seule et suit de nouveau ton geste.</span></span></label>
+  </section>
+
+  <section id="demarrage" aria-labelledby="demarrage-title">
+    <h2 id="demarrage-title">Sur ton iPhone · 4. Le temps d’ouverture avec TestFlight</h2>
+    <p class="where">Le changement des polices entre dans ce build ; son gain reste à mesurer sur iPhone avec TestFlight. Un essai sur le simulateur ne remplace pas cette mesure.</p>
+    <label class="item"><input type="checkbox" data-k="startup-testflight-measure" disabled><span class="copy"><b>4 · Installe ce build avec TestFlight. Ferme entièrement Take puis rouvre-le cinq fois. Fais mesurer le temps jusqu’au premier écran prêt à toucher et note les cinq durées.</b><span class="see">Compare avec la version précédente sur le même iPhone, dans les mêmes conditions. Note aussi toute police qui change après l’apparition de l’écran. Sans mesure comparable, ne conclus pas que l’app est plus rapide.</span></span></label>
   </section>
 
   <section id="simulateur" aria-labelledby="simulateur-title">

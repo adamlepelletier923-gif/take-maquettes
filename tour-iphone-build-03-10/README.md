@@ -1,9 +1,9 @@
 # Physical iPhone checklist — 3 October 2026
 
 Published at `/tour-iphone-build-03-10/`. This is a manual acceptance plan for the
-requested build, not a report of completed device tests. Only real phone memory,
-mobile network behavior, and physical finger interaction remain in the checkbox
-section. The ten simulator evidence fields are intentionally empty; their heading
+requested build, not a report of completed device tests. Real phone memory,
+mobile network behavior, physical finger interaction, and the requested TestFlight
+startup measurement belong in the checkbox section. The ten simulator evidence fields are intentionally empty; their heading
 does not assert that the missing films or tests were completed. The installed build
 number must be entered before checking any case. Results are stored only in the
 current browser, separately for each entered version.
@@ -43,9 +43,15 @@ Take source reviewed at `d81a649213b7c651973abb63738ac3bfdcd09dc7`:
 - `apps/mobile/src/components/nav/HomeBottomBar.tsx` and
   `navigation/SlideTabs.tsx`: cancellation and held-finger behavior.
 
-A3 is the requested design from `../video-fil-03-10/`: requested width of 65% of
-the media area, reduced further if the height limit is reached. It is an
-acceptance target; the source inspected still draws feed video at full width.
-Do not mark it as included or validated from this page. Final availability must
-be checked against the freshly regenerated `../pas-dans-le-build/` report and
-the actual installed build.
+A3 was integrated by #3648 at `044823604c2b8f3b996b34485982e098492c7f35`:
+requested width of 65% of the media area, reduced further if the height limit is
+reached. Inclusion does not prove its native rendering; its simulator film field
+remains empty. Final availability must be checked against the freshly regenerated
+`../pas-dans-le-build/` report and the actual installed build.
+
+The build owner requested inclusion of the font-startup change (#3411) and a
+Release measurement on the real iPhone using TestFlight afterward. Record five
+fully closed-app launches and compare with the previous version on the same
+iPhone under the same conditions. This checklist does not claim a measured gain.
+The new case uses the existing per-version storage without resetting prior cases
+or filling simulator evidence fields.
