@@ -1,44 +1,30 @@
 {
-  "observedAt": "2026-10-03T09:58:57.348Z",
-  "sourceMainSha": "c04c9fc06a0da22e8ee4b23e21fb97b7a02f927c",
-  "totalOpen": 26,
+  "observedAt": "2026-10-03T10:06:00.921Z",
+  "sourceMainSha": "bad93ace59041bb4c09dea0b23da20b91b707d64",
+  "totalOpen": 24,
   "prs": [
     {
       "number": 3654,
       "url": "https://github.com/TakeAppAIOrg/take-app/pull/3654",
       "headSha": "856f650a6c3bb87406c2e58ba2cfbaecb4a73e75",
       "isDraft": true,
-      "scope": "unreviewed",
-      "userSummaryFr": "Une nouvelle proposition pour l’app doit encore être décrite en français.",
-      "exclusionReasonFr": "Le changement n’est pas encore intégré. Son motif de report reste à confirmer.",
-      "waitingOn": [],
-      "unreviewed": true,
+      "scope": "mobile",
+      "userSummaryFr": "Sur Android, garde la position de lecture quand on change d’onglet du profil puis qu’on revient.",
+      "exclusionReasonFr": "Le brouillon attend des essais sur Android, prévus après le build iOS ; aucun appareil n’a encore validé ce changement.",
+      "waitingOn": [
+        "mesure sur appareil"
+      ],
+      "unreviewed": false,
       "group": "Équipe",
       "check": {
-        "label": "Contrôles non trouvés",
-        "state": "unknown"
-      }
-    },
-    {
-      "number": 3651,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3651",
-      "headSha": "e41575ffa32cea1b1816175dfd65ef5ebf52127e",
-      "isDraft": false,
-      "scope": "mobile-api",
-      "userSummaryFr": "Évite que la recherche de Takes se coupe à l’arrivée de nouveaux Takes et améliore le traitement des notifications.",
-      "exclusionReasonFr": "Le changement n’est pas encore intégré. Son motif de report reste à confirmer.",
-      "waitingOn": [],
-      "unreviewed": true,
-      "group": "Outil automatique",
-      "check": {
-        "label": "Contrôles non trouvés",
-        "state": "unknown"
+        "label": "Contrôles réussis",
+        "state": "passed"
       }
     },
     {
       "number": 3650,
       "url": "https://github.com/TakeAppAIOrg/take-app/pull/3650",
-      "headSha": "e29ede868061a3a4c9d37112f997b45e8773ed0e",
+      "headSha": "fbfc324de05aeb409d32d5bb733737d9dd0c9fb7",
       "isDraft": true,
       "scope": "mobile-api",
       "userSummaryFr": "Montre dans Amis les questions privées publiées avec leur réponse, au nom de la personne qui répond.",
@@ -114,6 +100,25 @@
       "isDraft": true,
       "scope": "mobile-api",
       "userSummaryFr": "Retire les anciens J’aime des Takes et leurs notifications du serveur, sans ajouter de bouton à l’app.",
+      "exclusionReasonFr": "Il faut encore sauvegarder les données, vérifier leur restauration et obtenir l’accord explicite de suppression avant de l’appliquer.",
+      "waitingOn": [
+        "personne avec accès à la base",
+        "chef f8"
+      ],
+      "unreviewed": false,
+      "group": "Équipe",
+      "check": {
+        "label": "Contrôles réussis",
+        "state": "passed"
+      }
+    },
+    {
+      "number": 3411,
+      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3411",
+      "headSha": "a0cf4099e17fba08b383dfaf71458fdb88cc67a3",
+      "isDraft": true,
+      "scope": "mobile",
+      "userSummaryFr": "Affiche le premier écran sans attendre les polices propres au jeu et aux pourboires.",
       "exclusionReasonFr": "Le changement n’est pas encore intégré. Son motif de report reste à confirmer.",
       "waitingOn": [],
       "unreviewed": true,
@@ -121,24 +126,6 @@
       "check": {
         "label": "Contrôles non trouvés",
         "state": "unknown"
-      }
-    },
-    {
-      "number": 3411,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3411",
-      "headSha": "c741caae1b3cd5dd9c826d09b522a9acf409a419",
-      "isDraft": true,
-      "scope": "mobile",
-      "userSummaryFr": "Affiche le premier écran sans attendre les polices propres au jeu et aux pourboires.",
-      "exclusionReasonFr": "Hors de ce build : le gain au lancement n’a pas encore été mesuré sur iPhone avec l’app finale ; cette mesure est prévue après.",
-      "waitingOn": [
-        "mesure sur appareil"
-      ],
-      "unreviewed": false,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
       }
     },
     {
@@ -158,25 +145,6 @@
       "check": {
         "label": "Contrôles à corriger",
         "state": "failed"
-      }
-    },
-    {
-      "number": 3259,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3259",
-      "headSha": "eeff22e0dbb2e230b6431d1ff89779f07d751f07",
-      "isDraft": false,
-      "scope": "mobile",
-      "userSummaryFr": "Arrête la coupe d’un passage vidéo quand on ferme l’écran de création.",
-      "exclusionReasonFr": "Prévu dans ce build ; un correctif est proposé, sa validation et son intégration restent à faire.",
-      "waitingOn": [
-        "relecture du correctif",
-        "chef f8"
-      ],
-      "unreviewed": false,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
       }
     },
     {
@@ -1503,6 +1471,10 @@
     {
       "title": "Autorisation des notifications sur iPhone",
       "text": "Il reste à vérifier sur un iPhone que le premier lancement reste silencieux et que la demande d’autorisation apparaît au bon moment. Les essais Android de ce lot ne prouvent pas ce comportement sur iPhone."
+    },
+    {
+      "title": "Mesure du lancement sur iPhone",
+      "text": "Après ce build, mesurer sur le même iPhone avec TestFlight le temps entre l’ouverture et le premier écran prêt à toucher. Aucun gain de vitesse n’est encore démontré."
     }
   ]
 }
