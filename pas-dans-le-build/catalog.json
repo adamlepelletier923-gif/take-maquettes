@@ -1,0 +1,630 @@
+{
+  "proposals": {
+    "1454": {
+      "headSha": "e621aa7e187dfb572a215dc20a8e8e25fc491804",
+      "scope": "mobile-tooling",
+      "userSummaryFr": "Met à jour la réutilisation des fichiers dans plusieurs contrôles et livraisons, sans changer les écrans.",
+      "exclusionReasonFr": "Cette demande technique est encore ouverte ; aucun motif plus précis n’est documenté.",
+      "waitingOn": []
+    },
+    "1456": {
+      "headSha": "60949159f94e027480b8f8179139a02658ccb2a9",
+      "scope": "outside-mobile",
+      "userSummaryFr": "Met à jour un outil utilisé pour déployer le service d’images.",
+      "exclusionReasonFr": "Cette demande technique est encore ouverte ; elle ne change pas l’app et son dernier contrôle est en échec.",
+      "waitingOn": []
+    },
+    "1457": {
+      "headSha": "da0e796725ec7dc32ae61bf258fc5da4ac2fd059",
+      "scope": "mobile-tooling",
+      "userSummaryFr": "Met à jour la réutilisation des fichiers pendant la construction de l’app, sans changer ses écrans.",
+      "exclusionReasonFr": "Cette demande technique est encore ouverte ; aucun motif plus précis n’est documenté.",
+      "waitingOn": []
+    },
+    "1593": {
+      "headSha": "fb24e8bbb81c4b7a542710af346237e870705994",
+      "scope": "mobile-api-already-present",
+      "userSummaryFr": "Cherchait à raccourcir le délai de réception des messages.",
+      "exclusionReasonFr": "L’ancienne demande est encore ouverte, mais le placement qu’elle visait est déjà dans la version préparée ; Jordan doit examiner le reste avant de la reprendre.",
+      "waitingOn": [
+        "Jordan"
+      ]
+    },
+    "1681": {
+      "headSha": "38c990b84fc4752cb587eb39a5a57e5178138865",
+      "scope": "outside-mobile",
+      "userSummaryFr": "Ajoute une capture de l’accueil du site quand son chargement échoue.",
+      "exclusionReasonFr": "Ce travail concerne les essais du site, pas l’app mobile.",
+      "waitingOn": []
+    },
+    "1758": {
+      "headSha": "9c6800a469306844bbed0a565015fd680ff36b90",
+      "scope": "outside-mobile",
+      "userSummaryFr": "Met à jour une dépendance du service qui prépare les cartes.",
+      "exclusionReasonFr": "Ce changement concerne un service, pas une nouvelle fonction mobile ; son dernier contrôle est en échec.",
+      "waitingOn": []
+    },
+    "1772": {
+      "headSha": "6d7a9456881f226db73f74ba3838380308c42017",
+      "scope": "mobile-api",
+      "userSummaryFr": "Change l’ordre des accès au serveur pour éviter que deux résultats de jeu simultanés se bloquent.",
+      "exclusionReasonFr": "Le brouillon reste ouvert et son dernier contrôle complet est en échec ; son texte de présentation décrit encore l’étape de test précédente.",
+      "waitingOn": [
+        "correctif et contrôle"
+      ]
+    },
+    "2185": {
+      "headSha": "d3f1839dda51fabf5db975b97c2ddacd51d1b0b8",
+      "scope": "outside-mobile",
+      "userSummaryFr": "Rend les lignes de la file de modération accessibles avec les flèches du clavier.",
+      "exclusionReasonFr": "Ce travail concerne l’administration, pas l’app mobile.",
+      "waitingOn": []
+    },
+    "2605": {
+      "headSha": "84b7b8ee5ee8d5b6380f903bdb467aad729a3b04",
+      "scope": "outside-mobile",
+      "userSummaryFr": "Met à jour un outil de connexion utilisé par les déploiements des services.",
+      "exclusionReasonFr": "Cette demande technique est encore ouverte et ne change pas l’app mobile.",
+      "waitingOn": []
+    },
+    "2606": {
+      "headSha": "1ac5e36e99e20f6ef50e4637e63f6ac5494d6031",
+      "scope": "mobile-tooling",
+      "userSummaryFr": "Met à jour la réutilisation des fichiers dans les contrôles avant livraison, sans changer l’app.",
+      "exclusionReasonFr": "Cette demande technique est encore ouverte ; aucun motif plus précis n’est documenté.",
+      "waitingOn": []
+    },
+    "2790": {
+      "headSha": "0ed7ab5fca7c576cf0051a935fb4c766dc8c3a71",
+      "scope": "outside-mobile",
+      "userSummaryFr": "Met à jour une dépendance du service qui livre les mises à jour de l’app.",
+      "exclusionReasonFr": "Ce changement concerne le service de livraison, pas une fonction de l’app ; le dernier contrôle est en échec.",
+      "waitingOn": []
+    },
+    "2801": {
+      "headSha": "94ac7d42564a5ef1e45595ba7fafe624104441e0",
+      "scope": "mobile-tooling",
+      "userSummaryFr": "Réduit le travail des contrôles et change quelles vérifications des avatars sont conservées ; les écrans restent les mêmes.",
+      "exclusionReasonFr": "Jordan doit reprendre les conflits et décider des contrôles à garder après les changements récents de la chaîne de vérification.",
+      "waitingOn": [
+        "Jordan"
+      ]
+    },
+    "2989": {
+      "headSha": "4b544ecd1dff3ed4db8debf90440d45ec1f46844",
+      "scope": "outside-mobile",
+      "userSummaryFr": "Met à jour une dépendance d’un outil utilisé pour préparer des diagrammes.",
+      "exclusionReasonFr": "Ce travail n’est pas du code de l’app mobile.",
+      "waitingOn": []
+    },
+    "3229": {
+      "headSha": "95ca5620d2a0e9969e6da390b049ab69fda0a0fc",
+      "scope": "mobile",
+      "userSummaryFr": "Centre le message d’un onglet vide dans la place qui reste sous le champ de question.",
+      "exclusionReasonFr": "Le brouillon attend la fin du tour de vérification et le feu vert du chef ; il n’a pas été vu sur appareil.",
+      "waitingOn": [
+        "chef f8",
+        "essai sur appareil"
+      ]
+    },
+    "3258": {
+      "headSha": "dce5c0c3060a7317be65f43b487e2c4f06a7b324",
+      "scope": "mobile-api",
+      "userSummaryFr": "Prépare le rangement des anciennes réponses pour rendre leur lecture plus légère.",
+      "exclusionReasonFr": "Adam ou Jordan doit faire exécuter le rangement sur le serveur d’essai puis sur le serveur public après validation ; rien n’a encore été lancé ici.",
+      "waitingOn": [
+        "Adam ou Jordan",
+        "personne avec accès aux bases",
+        "chef f8"
+      ]
+    },
+    "3259": {
+      "headSha": "cb0e6b943fc230f8d24a40bbefd356f7bed2e724",
+      "scope": "mobile",
+      "userSummaryFr": "Arrête la coupe d’un passage vidéo quand on ferme le composeur.",
+      "exclusionReasonFr": "Le brouillon est réservé à la suite du build au signal du chef et n’a pas encore été vu sur appareil.",
+      "waitingOn": [
+        "chef f8",
+        "essai sur appareil"
+      ]
+    },
+    "3261": {
+      "headSha": "29bbc4eecdbfe46c60ed4ce8f89747428b5ac614",
+      "scope": "mobile-api",
+      "userSummaryFr": "Allège la lecture des réponses d’un Take sans changer leur contenu.",
+      "exclusionReasonFr": "Les anciennes réponses doivent d’abord être rangées correctement sur le serveur d’essai puis sur le serveur public, sinon certaines pourraient manquer.",
+      "waitingOn": [
+        "personne avec accès aux bases",
+        "chef f8"
+      ]
+    },
+    "3262": {
+      "headSha": "fed58065ba32f36a1d90375ba6bd44a12f0c726d",
+      "scope": "mobile",
+      "userSummaryFr": "Supprime la copie temporaire d’un passage vidéo après son envoi réussi dans une conversation.",
+      "exclusionReasonFr": "Le brouillon est réservé à la suite du build ; son dernier contrôle complet est en échec et il n’a pas été vu sur appareil.",
+      "waitingOn": [
+        "chef f8",
+        "essai sur appareil"
+      ]
+    },
+    "3266": {
+      "headSha": "6719009923242b2b106e0533a5f5fba0d9747cab",
+      "scope": "mobile",
+      "userSummaryFr": "Ouvre le texte, le lien ou la photo partagés à la prochaine ouverture de Take si iOS 26 n’a pas rouvert l’app.",
+      "exclusionReasonFr": "Un défaut hors réseau peut perdre le partage ; Carapuce le corrige avant les contrôles et l’accord commun du chef.",
+      "waitingOn": [
+        "Carapuce",
+        "essai sur appareil signé",
+        "chef f8"
+      ]
+    },
+    "3317": {
+      "headSha": "6539ac6e0897f439394c67b4cd5e11b60a15f66b",
+      "scope": "mobile",
+      "userSummaryFr": "Affiche une explication et un retour à l’accueil quand un lien est cassé, même sans compte.",
+      "exclusionReasonFr": "Le brouillon est gardé pour la suite des essais ; le comportement n’a pas encore été vu sur appareil.",
+      "waitingOn": [
+        "essai sur appareil",
+        "chef f8"
+      ]
+    },
+    "3353": {
+      "headSha": "274367bb46ac7369da831da743194e4c07e98ff1",
+      "scope": "mobile",
+      "userSummaryFr": "Prépare des correctifs du moteur qui anime les écrans et le jeu.",
+      "exclusionReasonFr": "Le brouillon demande une nouvelle version installée de l’app et des essais sur appareil ; ses changements sont aussi repris dans le travail des onglets fluides.",
+      "waitingOn": [
+        "mesure sur appareil",
+        "nouveau client"
+      ]
+    },
+    "3411": {
+      "headSha": "08689bc479c447f501240fd690608e20325a0d65",
+      "scope": "mobile",
+      "userSummaryFr": "Reporte les polices du jeu et des pourboires après l’affichage du premier écran.",
+      "exclusionReasonFr": "Aucun gain n’a été démontré par l’essai actuel ; la décision attend une mesure sur l’iPhone avec un vrai build.",
+      "waitingOn": [
+        "mesure sur appareil"
+      ]
+    },
+    "3429": {
+      "headSha": "c9bf191c79fa2c8beb91e755082c53cdcda380cd",
+      "scope": "mobile",
+      "userSummaryFr": "Fait glisser les pages du profil quand on touche un onglet, en gardant les deux pages dessinées.",
+      "exclusionReasonFr": "Le brouillon attend encore la fin des contrôles et une vérification image par image sur un version reconstruite de l’app.",
+      "waitingOn": [
+        "mesure sur appareil",
+        "nouveau client",
+        "chef f8"
+      ]
+    },
+    "3514": {
+      "headSha": "86d44711e166728b7ff45a860c518211731eefe2",
+      "scope": "mobile",
+      "userSummaryFr": "Change la façon dont le trait des onglets se déplace et se redimensionne.",
+      "exclusionReasonFr": "Ce changement seul ne suffit pas ; il attend la validation des autres changements d’animation sur une nouvelle version installée de l’app.",
+      "waitingOn": [
+        "mesure sur appareil",
+        "nouveau client"
+      ]
+    },
+    "3515": {
+      "headSha": "79eb3de7d694e35ca95bc1d2199736fa57d59985",
+      "scope": "mobile",
+      "userSummaryFr": "Prépare le déplacement direct du trait des onglets pour qu’il suive immédiatement la page.",
+      "exclusionReasonFr": "Un essai a laissé l’en-tête de l’Accueil visible sur Messages ; il faut valider le correctif avec la nouvelle version des animations.",
+      "waitingOn": [
+        "mesure sur appareil",
+        "nouveau client"
+      ]
+    },
+    "3516": {
+      "headSha": "5738eaf7460fb673371453baa9f250e48f45bdc3",
+      "scope": "mobile",
+      "userSummaryFr": "Simplifie le lien qui ouvre les votes d’un Take depuis une notification.",
+      "exclusionReasonFr": "Le brouillon est réservé à la suite du build au signal du chef ; il n’ajoute aucune nouvelle vue.",
+      "waitingOn": [
+        "chef f8"
+      ]
+    },
+    "3521": {
+      "headSha": "6dd872fce2d70d42c193b02ed9c7494149f0da19",
+      "scope": "mobile-api",
+      "userSummaryFr": "Retire les anciens J’aime des Takes et leurs notifications du serveur, sans ajouter de bouton à l’app.",
+      "exclusionReasonFr": "Le brouillon demande un comptage des données à supprimer et doit attendre le petit nettoyage des liens de notification.",
+      "waitingOn": [
+        "personne avec accès à la base",
+        "chef f8"
+      ]
+    },
+    "3588": {
+      "headSha": "bbc6d7f6817bb9b8cc304242d5b8328e267232e0",
+      "scope": "outside-mobile",
+      "userSummaryFr": "Garde les messages en place quand un envoi est refusé sur le site.",
+      "exclusionReasonFr": "Ce travail concerne le site, pas l’app mobile.",
+      "waitingOn": []
+    },
+    "3591": {
+      "headSha": "82d220455a7fba4a307e6546fd05618f7d31cc81",
+      "scope": "mobile",
+      "userSummaryFr": "Prépare une animation du trait des onglets qui démarre sans pause.",
+      "exclusionReasonFr": "Il faut encore vérifier sur une nouvelle version installée de l’app que les changements n’affichent pas un ancien écran par-dessus le suivant.",
+      "waitingOn": [
+        "mesure sur appareil",
+        "nouveau client"
+      ]
+    },
+    "3600": {
+      "headSha": "fcb467be4798a33716469c505f94057593acf4b1",
+      "scope": "outside-mobile",
+      "userSummaryFr": "Empêche le contexte arrivé en retard de déplacer les réponses sur le site.",
+      "exclusionReasonFr": "Ce travail concerne le site, pas l’app mobile ; une vérification du rendu reste prévue.",
+      "waitingOn": [
+        "mesure web"
+      ]
+    },
+    "3615": {
+      "headSha": "667bdd1097820bed793b98fb5b1d053f8957e171",
+      "scope": "mobile-tooling",
+      "userSummaryFr": "Évite que les essais automatiques confondent une réponse à un vote avec un onglet.",
+      "exclusionReasonFr": "Le brouillon est ouvert ; il améliore les essais et ne change aucun écran de l’app.",
+      "waitingOn": [
+        "chef f8"
+      ]
+    },
+    "3617": {
+      "headSha": "789dbd234b8c2ca95b726348baec49a043256f90",
+      "scope": "mobile",
+      "userSummaryFr": "Fait réapparaître Take dans le partage de Photos et de Safari, sans écrire le nom de la photo dans le journal.",
+      "exclusionReasonFr": "Le correctif a passé les contrôles ; le chef attend de réunir le retour du partage sur iOS 26 avant de donner son accord.",
+      "waitingOn": [
+        "chef f8",
+        "essai sur appareil signé"
+      ]
+    },
+    "3632": {
+      "headSha": "88029f8660afa0cb1b0cc8dd669a1e53f4366bb5",
+      "scope": "mobile",
+      "userSummaryFr": "Lance le chargement de la première image de chaque Take dès l’arrivée des vingt Takes et demande la suite plus tôt.",
+      "exclusionReasonFr": "Un défaut doit encore être corrigé : les téléchargements en attente continuent après la fermeture du fil ou un changement de compte.",
+      "waitingOn": [
+        "correctif",
+        "mesure sur appareil"
+      ]
+    }
+  },
+  "flags": {
+    "OTEL_ENABLED": {
+      "capability": null,
+      "titleFr": "Suivi technique des lenteurs",
+      "userEffectFr": "Aucun écran supplémentaire ; ce suivi aiderait l’équipe à comprendre les lenteurs.",
+      "reasonFr": "Pas activé dans les réglages actuels ; le serveur d’essai refuse cette option non prise en charge.",
+      "workerRoles": [
+        "api"
+      ],
+      "visibility": "technical-only",
+      "waitingOn": "Aucun responsable nommé"
+    },
+    "REQUEST_TIMING_ENABLED": {
+      "capability": null
+    },
+    "PRODUCT_ANALYTICS_ENABLED": {
+      "capability": null
+    },
+    "PRODUCT_ANALYTICS_EXPORT_ENABLED": {
+      "capability": null
+    },
+    "PRIVATE_CURATOR_PUBLICATION_ENABLED": {
+      "capability": null
+    },
+    "PRIVATE_CURATOR_IMAGES_ENABLED": {
+      "capability": null
+    },
+    "ACCOUNT_DELETION_ENABLED": {
+      "capability": "accountDeletion"
+    },
+    "SUPPORT_CHAT_ENABLED": {
+      "capability": "supportChat",
+      "titleFr": "Écrire à l’aide depuis l’app",
+      "userEffectFr": "Ajoute une conversation d’aide dans les réglages.",
+      "reasonFr": "Pas activé dans les réglages actuels ; il faut aussi une adresse qui reçoit les demandes.",
+      "workerRoles": [
+        "api",
+        "jobs"
+      ],
+      "visibility": "user-facing",
+      "waitingOn": "Choisir qui reçoit et lit les demandes"
+    },
+    "SOCIAL_SIGN_IN_GOOGLE_ENABLED": {
+      "capability": "socialSignIn.google"
+    },
+    "SOCIAL_SIGN_IN_APPLE_ENABLED": {
+      "capability": "socialSignIn.apple"
+    },
+    "QA_OTP_ENDPOINT_ENABLED": {
+      "capability": null
+    },
+    "QA_CRON_ENDPOINT_ENABLED": {
+      "capability": null
+    },
+    "CLOUDFLARE_TRANSLATION_ENABLED": {
+      "capability": "serverTranslation"
+    },
+    "IMAGE_MODERATION_ENABLED": {
+      "capability": null
+    },
+    "VIDEO_MEDIA_ENABLED": {
+      "capability": "videoMedia"
+    },
+    "POLL_AUDIO_ENABLED": {
+      "capability": "pollAudio"
+    },
+    "COMMENT_AUDIO_ENABLED": {
+      "capability": "commentAudio"
+    },
+    "COMMENT_MENTIONS_ENABLED": {
+      "capability": "commentMentions"
+    },
+    "PUBLIC_COMMENTS_ENABLED": {
+      "capability": "publicComments"
+    },
+    "COMMENT_THREADS_ENABLED": {
+      "capability": "commentThreads"
+    },
+    "CONTACT_MATCHING_ENABLED": {
+      "capability": "contactMatching"
+    },
+    "APP_ICON_BADGE_ENABLED": {
+      "capability": "appIconBadge"
+    },
+    "INCOMING_SHARE_ENABLED": {
+      "capability": "incomingShare"
+    },
+    "NATIVE_TAB_PAGER_ENABLED": {
+      "capability": "nativeTabPager"
+    },
+    "VIDEO_CUT_ON_PHONE_ENABLED": {
+      "capability": "videoMedia.cutOnPhone"
+    },
+    "BACKGROUND_PUBLICATION_ENABLED": {
+      "capability": "backgroundPublication"
+    },
+    "AVATAR_FAMILIES_ENABLED": {
+      "capability": "avatarFamilies"
+    },
+    "AVATAR_SELFIE_ENABLED": {
+      "capability": "avatarSelfie"
+    },
+    "AVATAR_GREETING_ENABLED": {
+      "capability": "avatarGreeting"
+    },
+    "PUSH_NOTIFICATIONS_ENABLED": {
+      "capability": "pushNotificationsEnabled"
+    },
+    "PUSH_BUDGET_ENABLED": {
+      "capability": null
+    },
+    "PUSH_DURABLE_RETRY_ENABLED": {
+      "capability": null,
+      "titleFr": "Réessayer les notifications en échec",
+      "userEffectFr": "Réessaie les notifications qui échouent, avec des pauses de plus en plus longues.",
+      "reasonFr": "Pas activé dans les réglages actuels ; décision d’activation non documentée.",
+      "workerRoles": [
+        "jobs"
+      ],
+      "visibility": "technical-only",
+      "waitingOn": "Aucun responsable nommé"
+    },
+    "PUSH_DECISION_ANALYTICS_ENABLED": {
+      "capability": null
+    },
+    "POLL_RESULTS_NOTIFICATIONS_ENABLED": {
+      "capability": null
+    },
+    "REMINDER_NOTIFICATIONS_ENABLED": {
+      "capability": null
+    },
+    "NOTIFICATION_LIKES_ENABLED": {
+      "capability": null
+    },
+    "PRIVATE_QUESTION_REFUSAL_NOTICE_ENABLED": {
+      "capability": null,
+      "titleFr": "Expliquer pourquoi une question privée a été refusée",
+      "userEffectFr": "Indique à l’auteur pourquoi sa question privée ne sera pas envoyée.",
+      "reasonFr": "Cette règle attend sa validation ; le fonctionnement actuel garde le refus silencieux.",
+      "workerRoles": [
+        "jobs"
+      ],
+      "visibility": "user-facing",
+      "waitingOn": "Validation de cette règle"
+    },
+    "PUSH_CAMPAIGNS_ENABLED": {
+      "capability": null,
+      "titleFr": "Envoyer une annonce à un groupe de personnes",
+      "userEffectFr": "Permet à l’équipe d’envoyer une annonce à plusieurs personnes.",
+      "reasonFr": "Pas activé dans les réglages actuels ; les annonces demandent aussi un service d’envoi et un stockage dédiés.",
+      "workerRoles": [
+        "api",
+        "jobs"
+      ],
+      "visibility": "user-facing",
+      "waitingOn": "Aucun responsable nommé"
+    },
+    "WEB_PUSH_ENABLED": {
+      "capability": "webPushPublicKey",
+      "titleFr": "Notifications du site",
+      "userEffectFr": "Permet de recevoir les notifications de Take depuis le navigateur.",
+      "reasonFr": "Les réglages du serveur d’essai le laissent éteint, avec une étape de clés d’envoi encore indiquée dans le fichier.",
+      "workerRoles": [
+        "api",
+        "jobs"
+      ],
+      "visibility": "user-facing",
+      "waitingOn": "Configurer les clés d’envoi du site"
+    },
+    "GIF_WEBP_ENABLED": {
+      "capability": null,
+      "titleFr": "GIF plus légers",
+      "userEffectFr": "Envoie les GIF dans un format animé plus léger.",
+      "reasonFr": "Attend une vérification sur un vrai téléphone.",
+      "workerRoles": [
+        "api"
+      ],
+      "visibility": "user-facing",
+      "waitingOn": "Vérification sur un vrai téléphone"
+    },
+    "EMAIL_SEND_BUDGET_ENABLED": {
+      "capability": null,
+      "titleFr": "Limiter les envois d’e-mails",
+      "userEffectFr": "Protège le service d’envoi contre un trop grand nombre d’e-mails.",
+      "reasonFr": "Pas activé dans les réglages actuels ; les limites et leur périmètre doivent être définis avant activation.",
+      "workerRoles": [
+        "api"
+      ],
+      "visibility": "technical-only",
+      "waitingOn": "Définir les limites d’envoi"
+    },
+    "ADMIN_ANNOUNCEMENTS_SEND_ENABLED": {
+      "capability": null,
+      "titleFr": "Publier les annonces de l’équipe",
+      "userEffectFr": "Affiche les annonces envoyées dans l’app et permet leur notification.",
+      "reasonFr": "L’envoi est laissé éteint pour éviter de déclarer une annonce livrée alors que personne ne l’a reçue ; il dépend de l’envoi groupé, lui aussi éteint.",
+      "workerRoles": [
+        "api",
+        "jobs"
+      ],
+      "visibility": "user-facing",
+      "waitingOn": "Activation de l’envoi groupé"
+    },
+    "TIPS_ENABLED": {
+      "capability": "tipsEnabled",
+      "titleFr": "Donner de l’argent à l’auteur d’un Take",
+      "userEffectFr": "Ajoute les pourboires et les écrans de paiement associés.",
+      "reasonFr": "Le paiement n’est pas activé sur le serveur d’essai ; il faut une activation explicite et les réglages de paiement complets.",
+      "workerRoles": [
+        "api",
+        "jobs"
+      ],
+      "visibility": "user-facing",
+      "waitingOn": "Activation explicite du paiement"
+    },
+    "NEARBY_MAP_ENABLED": {
+      "capability": "nearbyMap"
+    },
+    "NEARBY_MAP_ACTIVITY_ENABLED": {
+      "capability": "nearbyMap.activity"
+    },
+    "NEARBY_MAP_SPOTS_ENABLED": {
+      "capability": null
+    },
+    "PRIVATE_QA_IN_FEED_ENABLED": {
+      "capability": null,
+      "titleFr": "Lire les réponses de ses amis dans le fil",
+      "userEffectFr": "Affiche, avec leurs Takes, les réponses privées que des amis ont déjà choisi de rendre publiques.",
+      "reasonFr": "Pas activé dans les réglages actuels ; décision d’activation non documentée.",
+      "workerRoles": [
+        "api"
+      ],
+      "visibility": "user-facing",
+      "waitingOn": "Aucun responsable nommé"
+    },
+    "FOLLOWING_FEED_FRESH_ONLY_ENABLED": {
+      "capability": "friendsFeedFreshOnly"
+    },
+    "FEED_RISING_ENABLED": {
+      "capability": null
+    },
+    "CLIENT_CRASH_REPORT_ENABLED": {
+      "capability": "crashReport"
+    },
+    "FEED_PRECOMPUTED_FIRST_PAGE_ENABLED": {
+      "capability": null
+    },
+    "KNOWME_ENABLED": {
+      "capability": "knowMe"
+    },
+    "CUSTOM_STICKERS_ENABLED": {
+      "capability": "customStickers"
+    },
+    "GAME_SHOP_ENABLED": {
+      "capability": "gameShop",
+      "titleFr": "Boutique du jeu",
+      "userEffectFr": "Permet d’acheter et d’équiper les éléments de la boutique du jeu.",
+      "reasonFr": "La boutique a été archivée ; le reste du jeu reste disponible.",
+      "workerRoles": [
+        "api"
+      ],
+      "visibility": "user-facing",
+      "waitingOn": "Aucune attente : boutique archivée"
+    },
+    "EXTENDED_READING_LANGUAGES_ENABLED": {
+      "capability": "extendedReadingLanguages",
+      "titleFr": "Lire et publier dans davantage de langues",
+      "userEffectFr": "Ajoute des langues au-delà des six langues actuelles pour la lecture et les Takes.",
+      "reasonFr": "Pas activé dans les réglages actuels ; décision d’activation non documentée.",
+      "workerRoles": [
+        "api",
+        "jobs"
+      ],
+      "visibility": "user-facing",
+      "waitingOn": "Aucun responsable nommé"
+    },
+    "SHARED_READING_LANGUAGE_ENABLED": {
+      "capability": "sharedReadingLanguage",
+      "titleFr": "Retrouver sa langue de lecture sur le site",
+      "userEffectFr": "Partage la préférence de langue de lecture avec le site web.",
+      "reasonFr": "La préférence partagée attend une décision d’activation après contrôle des coûts de traduction.",
+      "workerRoles": [
+        "api"
+      ],
+      "visibility": "user-facing",
+      "waitingOn": "Décision après contrôle des coûts"
+    },
+    "SHARE_ATTRIBUTION_ENABLED": {
+      "capability": "shareAttribution"
+    },
+    "SHARE_EMBEDS_ENABLED": {
+      "capability": "shareEmbeds"
+    },
+    "FEED_RANKING_V2_ENABLED": {
+      "capability": "personalizedFeed"
+    },
+    "POLL_SEARCH_V2_ENABLED": {
+      "capability": "pollSearch",
+      "titleFr": "Un autre moteur de recherche reste indisponible",
+      "userEffectFr": "Aucun onglet ne manque pour cette raison : la recherche de main utilise déjà le chemin actif.",
+      "reasonFr": "Le serveur n’annonce pas ce moteur comme prêt ; la cause précise n’est pas donnée par la réponse publique.",
+      "workerRoles": [
+        "api",
+        "jobs"
+      ],
+      "visibility": "technical-only",
+      "waitingOn": "Cause de l’absence à identifier"
+    },
+    "EXPLORE_SEARCH_FILTERS_ENABLED": {
+      "capability": "exploreSearch"
+    }
+  },
+  "extraFlags": [
+    {
+      "configKey": "captchaRequired",
+      "titleFr": "Vérification anti-robot à l’entrée",
+      "userEffectFr": "Demande une vérification anti-robot lors de la connexion par e-mail.",
+      "reasonFr": "Le serveur d’essai ne demande pas cette vérification ; la réponse publique ne précise pas si le service est coupé ou non configuré.",
+      "flag": "TURNSTILE_VERIFICATION_DISABLED",
+      "waitingOn": "Cause à identifier"
+    }
+  ],
+  "notes": [
+    {
+      "title": "Apple",
+      "text": "Les identifiants du partage depuis Photos sont prêts. Il reste à vérifier la signature et l’installation lors du premier build signé ; aucune création d’identifiant n’est encore demandée."
+    },
+    {
+      "title": "Recherche déjà disponible",
+      "capability": "exploreSearch",
+      "text": "Le serveur propose la recherche avec Plus récents, Photos et Vidéos. L’ancien moteur non annoncé ne retire plus ces onglets."
+    }
+  ]
+}
