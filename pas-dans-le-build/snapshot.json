@@ -1,22 +1,81 @@
 {
-  "observedAt": "2026-10-03T08:22:37.981Z",
-  "sourceMainSha": "8a9f4e4aac2f6e654873190158f7dccee90f9586",
-  "totalOpen": 29,
+  "observedAt": "2026-10-03T09:53:18.314Z",
+  "sourceMainSha": "c04c9fc06a0da22e8ee4b23e21fb97b7a02f927c",
+  "totalOpen": 25,
   "prs": [
     {
-      "number": 3632,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3632",
-      "headSha": "fcde09d534b3a9cd22b2ff4a79f07debe395202c",
+      "number": 3651,
+      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3651",
+      "headSha": "951d7d7be0f26c3e11eb925319de751ede44516a",
       "isDraft": false,
-      "scope": "mobile",
-      "userSummaryFr": "Lance le chargement de la première image de chaque Take dès l’arrivée des vingt Takes et demande la suite plus tôt.",
-      "exclusionReasonFr": "Les contrôles ont échoué ; le changement n’est pas encore intégré.",
-      "waitingOn": [],
-      "unreviewed": true,
+      "scope": "mobile-api",
+      "userSummaryFr": "Évite que la recherche de Takes se coupe à l’arrivée de nouveaux Takes et améliore le traitement des notifications.",
+      "exclusionReasonFr": "Il reste à préparer le serveur d’essai et les données de recherche, puis à mesurer le résultat ; le responsable de ces étapes n’est pas précisé ici.",
+      "waitingOn": [
+        "déploiement et mesure serveur"
+      ],
+      "unreviewed": false,
+      "group": "Outil automatique",
+      "check": {
+        "label": "Contrôles non trouvés",
+        "state": "unknown"
+      }
+    },
+    {
+      "number": 3650,
+      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3650",
+      "headSha": "5ba4fb4791f1e279da8e4ae4f15785bdb333d881",
+      "isDraft": true,
+      "scope": "mobile-api",
+      "userSummaryFr": "Montre dans Amis les questions privées publiées avec leur réponse, au nom de la personne qui répond.",
+      "exclusionReasonFr": "Le brouillon attend le contrôle du rendu sur iPhone par le chef et son accord.",
+      "waitingOn": [
+        "chef f8",
+        "essai sur appareil"
+      ],
+      "unreviewed": false,
       "group": "Équipe",
       "check": {
-        "label": "Contrôles à corriger",
-        "state": "failed"
+        "label": "Contrôles réussis",
+        "state": "passed"
+      }
+    },
+    {
+      "number": 3649,
+      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3649",
+      "headSha": "6a8dffa0590a34f0338f668d6b16b6b17311954e",
+      "isDraft": true,
+      "scope": "mobile",
+      "userSummaryFr": "Fait suivre le trait des onglets au glissement et empêche la barre de l’Accueil de réapparaître sur Messages.",
+      "exclusionReasonFr": "Le brouillon attend l’accord du chef et des essais avec une nouvelle version installée de l’app.",
+      "waitingOn": [
+        "chef f8",
+        "mesure sur appareil",
+        "nouveau client"
+      ],
+      "unreviewed": false,
+      "group": "Équipe",
+      "check": {
+        "label": "Contrôles réussis",
+        "state": "passed"
+      }
+    },
+    {
+      "number": 3646,
+      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3646",
+      "headSha": "1e6796e736a680237e1811b820db1baaa001ea74",
+      "isDraft": true,
+      "scope": "mobile",
+      "userSummaryFr": "Prépare une autre façon d’afficher le fil sans compte, pour comparer sa fluidité et sa mémoire.",
+      "exclusionReasonFr": "Hors de ce build : il faut d’abord comparer la fluidité et la mémoire sur iPhone avant de choisir un remplacement.",
+      "waitingOn": [
+        "mesure sur appareil"
+      ],
+      "unreviewed": false,
+      "group": "Équipe",
+      "check": {
+        "label": "Contrôles réussis",
+        "state": "passed"
       }
     },
     {
@@ -38,32 +97,13 @@
       }
     },
     {
-      "number": 3591,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3591",
-      "headSha": "82d220455a7fba4a307e6546fd05618f7d31cc81",
-      "isDraft": true,
-      "scope": "mobile",
-      "userSummaryFr": "Prépare une animation du trait des onglets qui démarre sans pause.",
-      "exclusionReasonFr": "Il faut encore vérifier sur une nouvelle version installée de l’app que les changements n’affichent pas un ancien écran par-dessus le suivant.",
-      "waitingOn": [
-        "mesure sur appareil",
-        "nouveau client"
-      ],
-      "unreviewed": false,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
-      }
-    },
-    {
       "number": 3521,
       "url": "https://github.com/TakeAppAIOrg/take-app/pull/3521",
-      "headSha": "6dd872fce2d70d42c193b02ed9c7494149f0da19",
+      "headSha": "7dd3cdaa8b90686a2350e7bf3e809b052069693e",
       "isDraft": true,
       "scope": "mobile-api",
       "userSummaryFr": "Retire les anciens J’aime des Takes et leurs notifications du serveur, sans ajouter de bouton à l’app.",
-      "exclusionReasonFr": "Le brouillon demande un comptage des données à supprimer et doit attendre le petit nettoyage des liens de notification.",
+      "exclusionReasonFr": "Il faut encore sauvegarder les données, vérifier leur restauration et obtenir l’accord explicite de suppression avant de l’appliquer.",
       "waitingOn": [
         "personne avec accès à la base",
         "chef f8"
@@ -76,69 +116,13 @@
       }
     },
     {
-      "number": 3516,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3516",
-      "headSha": "5738eaf7460fb673371453baa9f250e48f45bdc3",
-      "isDraft": true,
-      "scope": "mobile",
-      "userSummaryFr": "Simplifie le lien qui ouvre les votes d’un Take depuis une notification.",
-      "exclusionReasonFr": "Le brouillon est réservé à la suite du build au signal du chef ; il n’ajoute aucune nouvelle vue.",
-      "waitingOn": [
-        "chef f8"
-      ],
-      "unreviewed": false,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
-      }
-    },
-    {
-      "number": 3515,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3515",
-      "headSha": "79eb3de7d694e35ca95bc1d2199736fa57d59985",
-      "isDraft": true,
-      "scope": "mobile",
-      "userSummaryFr": "Prépare le déplacement direct du trait des onglets pour qu’il suive immédiatement la page.",
-      "exclusionReasonFr": "Un essai a laissé l’en-tête de l’Accueil visible sur Messages ; il faut valider le correctif avec la nouvelle version des animations.",
-      "waitingOn": [
-        "mesure sur appareil",
-        "nouveau client"
-      ],
-      "unreviewed": false,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
-      }
-    },
-    {
-      "number": 3514,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3514",
-      "headSha": "86d44711e166728b7ff45a860c518211731eefe2",
-      "isDraft": true,
-      "scope": "mobile",
-      "userSummaryFr": "Change la façon dont le trait des onglets se déplace et se redimensionne.",
-      "exclusionReasonFr": "Ce changement seul ne suffit pas ; il attend la validation des autres changements d’animation sur une nouvelle version installée de l’app.",
-      "waitingOn": [
-        "mesure sur appareil",
-        "nouveau client"
-      ],
-      "unreviewed": false,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
-      }
-    },
-    {
       "number": 3411,
       "url": "https://github.com/TakeAppAIOrg/take-app/pull/3411",
-      "headSha": "08689bc479c447f501240fd690608e20325a0d65",
+      "headSha": "c741caae1b3cd5dd9c826d09b522a9acf409a419",
       "isDraft": true,
       "scope": "mobile",
-      "userSummaryFr": "Reporte les polices du jeu et des pourboires après l’affichage du premier écran.",
-      "exclusionReasonFr": "Aucun gain n’a été démontré par l’essai actuel ; la décision attend une mesure sur l’iPhone avec un vrai build.",
+      "userSummaryFr": "Affiche le premier écran sans attendre les polices propres au jeu et aux pourboires.",
+      "exclusionReasonFr": "Hors de ce build : le gain au lancement n’a pas encore été mesuré sur iPhone avec l’app finale ; cette mesure est prévue après.",
       "waitingOn": [
         "mesure sur appareil"
       ],
@@ -147,63 +131,6 @@
       "check": {
         "label": "Contrôles réussis",
         "state": "passed"
-      }
-    },
-    {
-      "number": 3353,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3353",
-      "headSha": "274367bb46ac7369da831da743194e4c07e98ff1",
-      "isDraft": true,
-      "scope": "mobile",
-      "userSummaryFr": "Prépare des correctifs du moteur qui anime les écrans et le jeu.",
-      "exclusionReasonFr": "Le brouillon demande une nouvelle version installée de l’app et des essais sur appareil ; ses changements sont aussi repris dans le travail des onglets fluides.",
-      "waitingOn": [
-        "mesure sur appareil",
-        "nouveau client"
-      ],
-      "unreviewed": false,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
-      }
-    },
-    {
-      "number": 3317,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3317",
-      "headSha": "6539ac6e0897f439394c67b4cd5e11b60a15f66b",
-      "isDraft": true,
-      "scope": "mobile",
-      "userSummaryFr": "Affiche une explication et un retour à l’accueil quand un lien est cassé, même sans compte.",
-      "exclusionReasonFr": "Le brouillon est gardé pour la suite des essais ; le comportement n’a pas encore été vu sur appareil.",
-      "waitingOn": [
-        "essai sur appareil",
-        "chef f8"
-      ],
-      "unreviewed": false,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
-      }
-    },
-    {
-      "number": 3262,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3262",
-      "headSha": "fed58065ba32f36a1d90375ba6bd44a12f0c726d",
-      "isDraft": true,
-      "scope": "mobile",
-      "userSummaryFr": "Supprime la copie temporaire d’un passage vidéo après son envoi réussi dans une conversation.",
-      "exclusionReasonFr": "Le brouillon est réservé à la suite du build ; son dernier contrôle complet est en échec et il n’a pas été vu sur appareil.",
-      "waitingOn": [
-        "chef f8",
-        "essai sur appareil"
-      ],
-      "unreviewed": false,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles à corriger",
-        "state": "failed"
       }
     },
     {
@@ -228,14 +155,13 @@
     {
       "number": 3259,
       "url": "https://github.com/TakeAppAIOrg/take-app/pull/3259",
-      "headSha": "cb0e6b943fc230f8d24a40bbefd356f7bed2e724",
-      "isDraft": true,
+      "headSha": "eeff22e0dbb2e230b6431d1ff89779f07d751f07",
+      "isDraft": false,
       "scope": "mobile",
-      "userSummaryFr": "Arrête la coupe d’un passage vidéo quand on ferme le composeur.",
-      "exclusionReasonFr": "Le brouillon est réservé à la suite du build au signal du chef et n’a pas encore été vu sur appareil.",
+      "userSummaryFr": "Arrête la coupe d’un passage vidéo quand on ferme l’écran de création.",
+      "exclusionReasonFr": "Prévu dans ce build après correction du défaut restant.",
       "waitingOn": [
-        "chef f8",
-        "essai sur appareil"
+        "correctif"
       ],
       "unreviewed": false,
       "group": "Équipe",
@@ -262,25 +188,6 @@
       "check": {
         "label": "Contrôles à corriger",
         "state": "failed"
-      }
-    },
-    {
-      "number": 3229,
-      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3229",
-      "headSha": "95ca5620d2a0e9969e6da390b049ab69fda0a0fc",
-      "isDraft": true,
-      "scope": "mobile",
-      "userSummaryFr": "Centre le message d’un onglet vide dans la place qui reste sous le champ de question.",
-      "exclusionReasonFr": "Le brouillon attend la fin du tour de vérification et le feu vert du chef ; il n’a pas été vu sur appareil.",
-      "waitingOn": [
-        "chef f8",
-        "essai sur appareil"
-      ],
-      "unreviewed": false,
-      "group": "Équipe",
-      "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
       }
     },
     {
@@ -626,12 +533,12 @@
       "state": "unconfirmed-off",
       "titleFr": "Lire les réponses de ses amis dans le fil",
       "userEffectFr": "Affiche, avec leurs Takes, les réponses privées que des amis ont déjà choisi de rendre publiques.",
-      "reasonFr": "Pas activé dans les réglages actuels ; décision d’activation non documentée.",
+      "reasonFr": "Son activation attend encore le contrôle du rendu sur iPhone et l’accord du chef.",
       "workerRoles": [
         "api"
       ],
       "visibility": "user-facing",
-      "waitingOn": "Aucun responsable nommé",
+      "waitingOn": "chef f8",
       "unreviewed": false
     },
     {
@@ -1576,13 +1483,17 @@
   ],
   "notes": [
     {
-      "title": "Apple",
-      "text": "Les identifiants du partage depuis Photos sont prêts. Il reste à vérifier la signature et l’installation lors du premier build signé ; aucune création d’identifiant n’est encore demandée."
+      "title": "Partage depuis Photos déjà intégré",
+      "text": "Le partage depuis Photos et le retour du partage sur iOS 26 sont déjà intégrés. Les identifiants Apple sont prêts ; il reste à vérifier le partage dans l’app signée lors des essais."
     },
     {
       "title": "Recherche déjà disponible",
       "capability": "exploreSearch",
       "text": "Le serveur propose la recherche avec Plus récents, Photos et Vidéos. L’ancien moteur non annoncé ne retire plus ces onglets."
+    },
+    {
+      "title": "Autorisation des notifications sur iPhone",
+      "text": "Il reste à vérifier sur un iPhone que le premier lancement reste silencieux et que la demande d’autorisation apparaît au bon moment. Les essais Android de ce lot ne prouvent pas ce comportement sur iPhone."
     }
   ]
 }

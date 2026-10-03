@@ -98,14 +98,13 @@
       "waitingOn": []
     },
     "3229": {
-      "headSha": "95ca5620d2a0e9969e6da390b049ab69fda0a0fc",
       "scope": "mobile",
       "userSummaryFr": "Centre le message d’un onglet vide dans la place qui reste sous le champ de question.",
-      "exclusionReasonFr": "Le brouillon attend la fin du tour de vérification et le feu vert du chef ; il n’a pas été vu sur appareil.",
+      "exclusionReasonFr": "Prévu dans ce build ; attend encore son intégration à la version préparée.",
       "waitingOn": [
-        "chef f8",
-        "essai sur appareil"
-      ]
+        "chef f8"
+      ],
+      "headSha": "23512b8a8594a5b90e9274bfb0f5d01da59f12eb"
     },
     "3258": {
       "headSha": "dce5c0c3060a7317be65f43b487e2c4f06a7b324",
@@ -119,14 +118,14 @@
       ]
     },
     "3259": {
-      "headSha": "cb0e6b943fc230f8d24a40bbefd356f7bed2e724",
       "scope": "mobile",
-      "userSummaryFr": "Arrête la coupe d’un passage vidéo quand on ferme le composeur.",
-      "exclusionReasonFr": "Le brouillon est réservé à la suite du build au signal du chef et n’a pas encore été vu sur appareil.",
+      "userSummaryFr": "Arrête la coupe d’un passage vidéo quand on ferme l’écran de création.",
+      "exclusionReasonFr": "Prévu dans ce build ; un correctif est proposé, sa validation et son intégration restent à faire.",
       "waitingOn": [
-        "chef f8",
-        "essai sur appareil"
-      ]
+        "relecture du correctif",
+        "chef f8"
+      ],
+      "headSha": "eeff22e0dbb2e230b6431d1ff89779f07d751f07"
     },
     "3261": {
       "headSha": "29bbc4eecdbfe46c60ed4ce8f89747428b5ac614",
@@ -139,14 +138,13 @@
       ]
     },
     "3262": {
-      "headSha": "fed58065ba32f36a1d90375ba6bd44a12f0c726d",
       "scope": "mobile",
       "userSummaryFr": "Supprime la copie temporaire d’un passage vidéo après son envoi réussi dans une conversation.",
-      "exclusionReasonFr": "Le brouillon est réservé à la suite du build ; son dernier contrôle complet est en échec et il n’a pas été vu sur appareil.",
+      "exclusionReasonFr": "Prévu dans ce build ; attend encore son intégration à la version préparée.",
       "waitingOn": [
-        "chef f8",
-        "essai sur appareil"
-      ]
+        "chef f8"
+      ],
+      "headSha": "61d09668fe4dcd54a9f8d695a0cc5dd9714eb17a"
     },
     "3266": {
       "headSha": "6719009923242b2b106e0533a5f5fba0d9747cab",
@@ -160,14 +158,13 @@
       ]
     },
     "3317": {
-      "headSha": "6539ac6e0897f439394c67b4cd5e11b60a15f66b",
       "scope": "mobile",
       "userSummaryFr": "Affiche une explication et un retour à l’accueil quand un lien est cassé, même sans compte.",
-      "exclusionReasonFr": "Le brouillon est gardé pour la suite des essais ; le comportement n’a pas encore été vu sur appareil.",
+      "exclusionReasonFr": "Prévu dans ce build ; attend encore son intégration à la version préparée.",
       "waitingOn": [
-        "essai sur appareil",
         "chef f8"
-      ]
+      ],
+      "headSha": "f4149e61b98be9dac4bd9b4fdba7111c956a641c"
     },
     "3353": {
       "headSha": "274367bb46ac7369da831da743194e4c07e98ff1",
@@ -180,13 +177,13 @@
       ]
     },
     "3411": {
-      "headSha": "08689bc479c447f501240fd690608e20325a0d65",
       "scope": "mobile",
-      "userSummaryFr": "Reporte les polices du jeu et des pourboires après l’affichage du premier écran.",
-      "exclusionReasonFr": "Aucun gain n’a été démontré par l’essai actuel ; la décision attend une mesure sur l’iPhone avec un vrai build.",
+      "userSummaryFr": "Affiche le premier écran sans attendre les polices propres au jeu et aux pourboires.",
+      "exclusionReasonFr": "Hors de ce build : le gain au lancement n’a pas encore été mesuré sur iPhone avec l’app finale ; cette mesure est prévue après.",
       "waitingOn": [
         "mesure sur appareil"
-      ]
+      ],
+      "headSha": "c741caae1b3cd5dd9c826d09b522a9acf409a419"
     },
     "3429": {
       "headSha": "c9bf191c79fa2c8beb91e755082c53cdcda380cd",
@@ -229,14 +226,14 @@
       ]
     },
     "3521": {
-      "headSha": "6dd872fce2d70d42c193b02ed9c7494149f0da19",
       "scope": "mobile-api",
       "userSummaryFr": "Retire les anciens J’aime des Takes et leurs notifications du serveur, sans ajouter de bouton à l’app.",
-      "exclusionReasonFr": "Le brouillon demande un comptage des données à supprimer et doit attendre le petit nettoyage des liens de notification.",
+      "exclusionReasonFr": "Il faut encore sauvegarder les données, vérifier leur restauration et obtenir l’accord explicite de suppression avant de l’appliquer.",
       "waitingOn": [
         "personne avec accès à la base",
         "chef f8"
-      ]
+      ],
+      "headSha": "7dd3cdaa8b90686a2350e7bf3e809b052069693e"
     },
     "3588": {
       "headSha": "bbc6d7f6817bb9b8cc304242d5b8328e267232e0",
@@ -292,6 +289,59 @@
         "correctif",
         "mesure sur appareil"
       ]
+    },
+    "3649": {
+      "scope": "mobile",
+      "userSummaryFr": "Fait suivre le trait des onglets au glissement et empêche la barre de l’Accueil de réapparaître sur Messages.",
+      "exclusionReasonFr": "Le brouillon attend l’accord du chef et des essais avec une nouvelle version installée de l’app.",
+      "waitingOn": [
+        "chef f8",
+        "mesure sur appareil",
+        "nouveau client"
+      ],
+      "headSha": "6a8dffa0590a34f0338f668d6b16b6b17311954e"
+    },
+    "3650": {
+      "scope": "mobile-api",
+      "userSummaryFr": "Montre dans Amis les questions privées publiées avec leur réponse, au nom de la personne qui répond.",
+      "exclusionReasonFr": "Le brouillon attend le contrôle du rendu sur iPhone par le chef et son accord.",
+      "waitingOn": [
+        "chef f8",
+        "essai sur appareil"
+      ],
+      "headSha": "5ba4fb4791f1e279da8e4ae4f15785bdb333d881"
+    },
+    "3646": {
+      "headSha": "1e6796e736a680237e1811b820db1baaa001ea74",
+      "scope": "mobile",
+      "userSummaryFr": "Prépare une autre façon d’afficher le fil sans compte, pour comparer sa fluidité et sa mémoire.",
+      "exclusionReasonFr": "Hors de ce build : il faut d’abord comparer la fluidité et la mémoire sur iPhone avant de choisir un remplacement.",
+      "waitingOn": [
+        "mesure sur appareil"
+      ]
+    },
+    "3651": {
+      "headSha": "951d7d7be0f26c3e11eb925319de751ede44516a",
+      "scope": "mobile-api",
+      "userSummaryFr": "Évite que la recherche de Takes se coupe à l’arrivée de nouveaux Takes et améliore le traitement des notifications.",
+      "exclusionReasonFr": "Il reste à préparer le serveur d’essai et les données de recherche, puis à mesurer le résultat ; le responsable de ces étapes n’est pas précisé ici.",
+      "waitingOn": [
+        "déploiement et mesure serveur"
+      ]
+    },
+    "3652": {
+      "headSha": "353ffa2e275fc157db962155e9bb41d077a6479a",
+      "scope": "outside-mobile",
+      "userSummaryFr": "Consigne les essais des notifications sur Android et les contrôles qui restent à faire.",
+      "exclusionReasonFr": "Cette demande ajoute un compte rendu d’essais ; elle ne change pas le fonctionnement de l’app.",
+      "waitingOn": []
+    },
+    "3653": {
+      "headSha": "4ca3cf25ad27d989c7a758bc32b774d3b347d861",
+      "scope": "outside-mobile",
+      "userSummaryFr": "Remet le gel des changements avant le dernier tour de vérification.",
+      "exclusionReasonFr": "Cette demande règle le travail de l’équipe ; elle ne change aucun écran ni aucune fonction de l’app.",
+      "waitingOn": []
     }
   },
   "flags": {
@@ -522,12 +572,12 @@
       "capability": null,
       "titleFr": "Lire les réponses de ses amis dans le fil",
       "userEffectFr": "Affiche, avec leurs Takes, les réponses privées que des amis ont déjà choisi de rendre publiques.",
-      "reasonFr": "Pas activé dans les réglages actuels ; décision d’activation non documentée.",
+      "reasonFr": "Son activation attend encore le contrôle du rendu sur iPhone et l’accord du chef.",
       "workerRoles": [
         "api"
       ],
       "visibility": "user-facing",
-      "waitingOn": "Aucun responsable nommé"
+      "waitingOn": "chef f8"
     },
     "FOLLOWING_FEED_FRESH_ONLY_ENABLED": {
       "capability": "friendsFeedFreshOnly"
@@ -618,13 +668,17 @@
   ],
   "notes": [
     {
-      "title": "Apple",
-      "text": "Les identifiants du partage depuis Photos sont prêts. Il reste à vérifier la signature et l’installation lors du premier build signé ; aucune création d’identifiant n’est encore demandée."
+      "title": "Partage depuis Photos déjà intégré",
+      "text": "Le partage depuis Photos et le retour du partage sur iOS 26 sont déjà intégrés. Les identifiants Apple sont prêts ; il reste à vérifier le partage dans l’app signée lors des essais."
     },
     {
       "title": "Recherche déjà disponible",
       "capability": "exploreSearch",
       "text": "Le serveur propose la recherche avec Plus récents, Photos et Vidéos. L’ancien moteur non annoncé ne retire plus ces onglets."
+    },
+    {
+      "title": "Autorisation des notifications sur iPhone",
+      "text": "Il reste à vérifier sur un iPhone que le premier lancement reste silencieux et que la demande d’autorisation apparaît au bon moment. Les essais Android de ce lot ne prouvent pas ce comportement sur iPhone."
     }
   ]
 }
