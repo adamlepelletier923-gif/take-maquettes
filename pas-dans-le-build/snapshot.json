@@ -1,20 +1,34 @@
 {
-  "observedAt": "2026-10-03T09:53:18.314Z",
+  "observedAt": "2026-10-03T09:58:57.348Z",
   "sourceMainSha": "c04c9fc06a0da22e8ee4b23e21fb97b7a02f927c",
-  "totalOpen": 25,
+  "totalOpen": 26,
   "prs": [
+    {
+      "number": 3654,
+      "url": "https://github.com/TakeAppAIOrg/take-app/pull/3654",
+      "headSha": "856f650a6c3bb87406c2e58ba2cfbaecb4a73e75",
+      "isDraft": true,
+      "scope": "unreviewed",
+      "userSummaryFr": "Une nouvelle proposition pour l’app doit encore être décrite en français.",
+      "exclusionReasonFr": "Le changement n’est pas encore intégré. Son motif de report reste à confirmer.",
+      "waitingOn": [],
+      "unreviewed": true,
+      "group": "Équipe",
+      "check": {
+        "label": "Contrôles non trouvés",
+        "state": "unknown"
+      }
+    },
     {
       "number": 3651,
       "url": "https://github.com/TakeAppAIOrg/take-app/pull/3651",
-      "headSha": "951d7d7be0f26c3e11eb925319de751ede44516a",
+      "headSha": "e41575ffa32cea1b1816175dfd65ef5ebf52127e",
       "isDraft": false,
       "scope": "mobile-api",
       "userSummaryFr": "Évite que la recherche de Takes se coupe à l’arrivée de nouveaux Takes et améliore le traitement des notifications.",
-      "exclusionReasonFr": "Il reste à préparer le serveur d’essai et les données de recherche, puis à mesurer le résultat ; le responsable de ces étapes n’est pas précisé ici.",
-      "waitingOn": [
-        "déploiement et mesure serveur"
-      ],
-      "unreviewed": false,
+      "exclusionReasonFr": "Le changement n’est pas encore intégré. Son motif de report reste à confirmer.",
+      "waitingOn": [],
+      "unreviewed": true,
       "group": "Outil automatique",
       "check": {
         "label": "Contrôles non trouvés",
@@ -24,20 +38,17 @@
     {
       "number": 3650,
       "url": "https://github.com/TakeAppAIOrg/take-app/pull/3650",
-      "headSha": "5ba4fb4791f1e279da8e4ae4f15785bdb333d881",
+      "headSha": "e29ede868061a3a4c9d37112f997b45e8773ed0e",
       "isDraft": true,
       "scope": "mobile-api",
       "userSummaryFr": "Montre dans Amis les questions privées publiées avec leur réponse, au nom de la personne qui répond.",
-      "exclusionReasonFr": "Le brouillon attend le contrôle du rendu sur iPhone par le chef et son accord.",
-      "waitingOn": [
-        "chef f8",
-        "essai sur appareil"
-      ],
-      "unreviewed": false,
+      "exclusionReasonFr": "Le changement n’est pas encore intégré. Son motif de report reste à confirmer.",
+      "waitingOn": [],
+      "unreviewed": true,
       "group": "Équipe",
       "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
+        "label": "Contrôles non trouvés",
+        "state": "unknown"
       }
     },
     {
@@ -99,20 +110,17 @@
     {
       "number": 3521,
       "url": "https://github.com/TakeAppAIOrg/take-app/pull/3521",
-      "headSha": "7dd3cdaa8b90686a2350e7bf3e809b052069693e",
+      "headSha": "313848ebc7479da73e702fe4305bd5205d4b4725",
       "isDraft": true,
       "scope": "mobile-api",
       "userSummaryFr": "Retire les anciens J’aime des Takes et leurs notifications du serveur, sans ajouter de bouton à l’app.",
-      "exclusionReasonFr": "Il faut encore sauvegarder les données, vérifier leur restauration et obtenir l’accord explicite de suppression avant de l’appliquer.",
-      "waitingOn": [
-        "personne avec accès à la base",
-        "chef f8"
-      ],
-      "unreviewed": false,
+      "exclusionReasonFr": "Le changement n’est pas encore intégré. Son motif de report reste à confirmer.",
+      "waitingOn": [],
+      "unreviewed": true,
       "group": "Équipe",
       "check": {
-        "label": "Contrôles réussis",
-        "state": "passed"
+        "label": "Contrôles non trouvés",
+        "state": "unknown"
       }
     },
     {
@@ -159,9 +167,10 @@
       "isDraft": false,
       "scope": "mobile",
       "userSummaryFr": "Arrête la coupe d’un passage vidéo quand on ferme l’écran de création.",
-      "exclusionReasonFr": "Prévu dans ce build après correction du défaut restant.",
+      "exclusionReasonFr": "Prévu dans ce build ; un correctif est proposé, sa validation et son intégration restent à faire.",
       "waitingOn": [
-        "correctif"
+        "relecture du correctif",
+        "chef f8"
       ],
       "unreviewed": false,
       "group": "Équipe",
