@@ -70,3 +70,10 @@ and a message, and expanding an already-playing feed video without a black frame
 or playback interruption (#3669, merged). The local bench has no GIF-provider key
 and its video storage returns 404. The existing checklist script handles the two
 new case keys; prior results and the eleven empty simulator-film fields are kept.
+
+The merged common-text migration (#3685) also needs a physical-iPhone check for
+very large accessibility text and Bold Text on the affected messages, profile
+and settings screens. Check Bold Text on and off in both themes for readability,
+clipping, overlap and reachable controls. Native evidence remains pending in the
+regression loop and on iPhone. The new case uses the existing per-version storage
+and preserves all prior case keys and simulator evidence fields.
