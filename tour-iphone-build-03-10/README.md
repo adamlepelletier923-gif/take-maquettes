@@ -77,3 +77,12 @@ and settings screens. Check Bold Text on and off in both themes for readability,
 clipping, overlap and reachable controls. Native evidence remains pending in the
 regression loop and on iPhone. The new case uses the existing per-version storage
 and preserves all prior case keys and simulator evidence fields.
+
+The 2026-10-04 capability decision adds two physical-iPhone cases: animated WebP
+GIFs in the picker and messages (5f), and the latest-search tab (5g). Staging
+announces both capabilities; the local bench has neither the GIF-provider key
+nor classic signed-search dependencies. No secret is read or copied. The new
+Explore search also offers Latest through Postgres when exploreSearch is true,
+so that existing local flow coverage remains required independently of the
+classic pollSearch capability. Existing case keys and all eleven empty film
+fields remain unchanged. These additions record planned acceptance checks only.

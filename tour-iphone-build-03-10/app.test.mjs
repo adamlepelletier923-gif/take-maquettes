@@ -94,7 +94,7 @@ test('film evidence starts empty and is saved separately for each version', () =
   page.choose('190');
   expect(page.films).toHaveLength(11);
   expect(page.films.every(field => field.value === '')).toBe(true);
-  expect(page.boxes).toHaveLength(13);
+  expect(page.boxes).toHaveLength(16);
   page.films[0].value = 'https://example.com/film.mp4';
   page.films[0].fire('input');
   page.choose('191');
