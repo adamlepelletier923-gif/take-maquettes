@@ -79,10 +79,31 @@ regression loop and on iPhone. The new case uses the existing per-version storag
 and preserves all prior case keys and simulator evidence fields.
 
 The 2026-10-04 capability decision adds two physical-iPhone cases: animated WebP
-GIFs in the picker and messages (5f), and the latest-search tab (5g). Staging
+GIFs in the picker and messages (now 6l), and the latest-search tab (now 6m). Staging
 announces both capabilities; the local bench has neither the GIF-provider key
 nor classic signed-search dependencies. No secret is read or copied. The new
 Explore search also offers Latest through Postgres when exploreSearch is true,
 so that existing local flow coverage remains required independently of the
 classic pollSearch capability. Existing case keys and all eleven empty film
 fields remain unchanged. These additions record planned acceptance checks only.
+
+## 4 October handoff
+
+The daily iPhone section has thirteen single-line manual cases: relative time on
+every requested surface, voting inside the curve frame, category return, stable
+home header, automatic Take translation, immediate return/reopening, deleted
+comments, compact whole-block previews and native image actions, prepared Poll
+GIF export, short image dismissal, common text at accessibility sizes and Bold
+Text, animated WebP GIFs, and Latest search. The three existing text/GIF/search
+keys move into that section unchanged; ten new keys bring the total to 26.
+Existing storage, all prior keys and the eleven empty film fields are preserved.
+
+The requested scenarios and the published PR source/behavior descriptions were
+cross-checked, notably #3684 (curve containment), #3693 (focus return), #3697
+(deleted markers), #3700 (compact preview and image menu), #3712 (short dismissal)
+and #3716 (on-device GIF preparation). The French menu source on #3700 head
+`a3d90b5134de4e2154b298d949c989ff833621db` uses “Enregistrer en GIF” and “Partager”.
+At preparation time #3700 and #3716 are still open: the page asks for testing in
+the next installed build and does not assert that these changes are installed,
+merged or natively proven. The GIF export case is separate from provider WebP
+GIFs. Local search coverage remains independent of classic pollSearch.
