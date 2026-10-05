@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Graphique du take ouvert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+/* Jetons de l'app (design-tokens.ts), clair puis sombre. */
+:root{
+  --t-page:#FFFFFF;--t-pane:#FCFCFE;--t-raised:#FFFFFF;--t-ink:#141414;--t-soft:#6B6E73;--t-muted:#9A9DA4;
+  --t-line:#E3E6EA;--t-glass:#F0F2F5;--t-chip:#ECEDEF;--t-no:#D25F63;--t-yes:#2C9E65;--t-grab:#D3D7DC;
+  --t-dim:rgba(0,0,0,.35);--slice-filter:none;
+  --ui-bg:#f6f6f7;--ui-card:#ffffff;--ui-ink:#141414;--ui-soft:#6b6b70;--ui-chip:#e6e6ea;
+}
+body[data-theme=sombre]{
+  --t-page:#000000;--t-pane:#050506;--t-raised:#1E2126;--t-ink:#E7E9EA;--t-soft:#83898F;--t-muted:#6B6F75;
+  --t-line:#2F3336;--t-glass:#FFFFFF14;--t-chip:#FFFFFF1A;--t-no:#D25F63;--t-yes:#2C9E65;--t-grab:#2F3336;
+  --t-dim:rgba(0,0,0,.6);--slice-filter:invert(1) hue-rotate(180deg);
+  --ui-bg:#0d0d0f;--ui-card:#18191c;--ui-ink:#ececee;--ui-soft:#9a9aa2;--ui-chip:#2a2b30;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ui-bg);color:var(--ui-ink);font-family:Inter,-apple-system,system-ui,sans-serif;line-height:1.5}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
+h1{font-size:28px;line-height:1.2;margin:0 0 6px}
+h2{font-size:22px;margin:56px 0 4px;line-height:1.25}
+h2 .n{display:inline-block;min-width:34px;height:34px;line-height:34px;text-align:center;border-radius:999px;background:var(--ui-ink);color:var(--ui-bg);font-size:16px;margin-right:8px;vertical-align:2px}
+p,li{font-size:16px;max-width:76ch}
+.lede{color:var(--ui-soft);margin:0 0 10px}
+.box{background:var(--ui-card);border-radius:18px;padding:14px 18px;max-width:80ch;margin:14px 0}
+.theme{position:sticky;top:0;z-index:50;display:flex;gap:8px;align-items:center;padding:10px 0;background:var(--ui-bg);font-size:15px;flex-wrap:wrap}
+.theme button,.ctl button{font:600 14px Inter,sans-serif;border:0;border-radius:999px;padding:7px 14px;background:var(--ui-chip);color:var(--ui-ink);cursor:pointer}
+.theme button.on,.ctl button.on{background:var(--ui-ink);color:var(--ui-bg)}
+.warn{font-size:13px;color:var(--ui-soft)}
+body:not([data-theme=sombre]) .warn{display:none}
+.grid{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;margin-top:16px}
+figure{margin:0;width:322px}
+figcaption{font-size:14px;color:var(--ui-soft);margin-top:12px}
+figcaption b{color:var(--ui-ink)}
+.ctl{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--ui-ink);color:var(--ui-bg);margin-right:6px}
+.tag.now{background:var(--ui-chip);color:var(--ui-ink)}
+.frame{width:322px;height:700px;border-radius:44px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.14),0 0 0 8px #1a1a1a;background:#000;position:relative}
+.phone{width:402px;height:874px;transform:scale(.8);transform-origin:0 0;position:absolute;left:0;top:0;overflow:hidden;background:var(--t-page);font-family:Inter,-apple-system,system-ui,sans-serif;color:var(--t-ink)}
+.big{font-size:14px;color:var(--ui-soft);max-width:76ch}
+table{border-collapse:collapse;font-size:14px;margin-top:10px;width:100%;max-width:900px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--ui-chip)}
+th{font-weight:600;color:var(--ui-soft)}
+td.num{font-variant-numeric:tabular-nums}
+.podium{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+.podium a{flex:1 1 220px;background:var(--ui-card);border-radius:16px;padding:12px 14px;color:var(--ui-ink);text-decoration:none}
+.podium b{font-size:22px;margin-right:6px}
+.src li{font-size:14px;margin:4px 0}
+.src a{color:var(--ui-ink);word-break:break-word}
+.apps{font-size:14px;color:var(--ui-soft);max-width:76ch;margin:6px 0 0}
+
+/* ── Écran : tranches de vraies captures (1206 × 2622, 05/10, boucle de 09:34) ── */
+.ct{position:absolute;left:0;top:0;width:402px}
+.sl{width:402px;background:0 0/402px auto no-repeat;filter:var(--slice-filter);position:relative}
+.saisie{position:absolute;left:0;bottom:0;z-index:30}
+.rel{position:relative}
+.pane{background:var(--t-pane)}
+.fix3{position:absolute;left:10px;top:16px;width:120px;height:26px;background:var(--t-page);font:400 15px/26px Inter,sans-serif;color:var(--t-soft);padding-left:6px;z-index:2}
+.fold{overflow:hidden;height:0;transition:height .34s cubic-bezier(.2,.8,.2,1)}
+.ph.b .fold.open-b,.ph.c .fold.open-c{height:285px}
+.static .fold,.static *{transition:none!important}
+.ttl{font:600 13px/16px Inter,sans-serif;text-transform:uppercase;letter-spacing:.4px;color:var(--t-soft);white-space:nowrap}
+.chipT{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:9px;background:var(--t-chip);font:600 15px/1 Inter,sans-serif;color:var(--t-ink)}
+.ic{width:20px;height:20px;flex:none}
+
+/* 1 — mini-courbe */
+.mini{position:absolute;left:141px;top:7px;width:120px;height:30px;z-index:2;transition:opacity .2s}
+.mini::after{content:"";position:absolute;inset:-4px -6px;border-radius:8px}
+
+/* 2 — carte pliée */
+.pliW{overflow:hidden;height:54px;transition:height .34s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.ph.b .pliW{height:0;opacity:0}
+.pli{margin:1px 16px 0;height:52px;border:1px solid var(--t-line);border-radius:26px;background:var(--t-raised);display:flex;align-items:center;gap:10px;padding:0 16px}
+.pli .ttl{flex:1}
+.trend{font:600 13px/1 Inter,sans-serif;color:var(--t-no);display:inline-flex;align-items:center;gap:5px}
+
+/* 3 — bouton en haut + feuille */
+.topic{position:absolute;left:318px;top:74px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;z-index:5;color:var(--t-ink)}
+.dim{position:absolute;inset:0;background:var(--t-dim);opacity:0;transition:opacity .3s;z-index:40;pointer-events:none}
+.sheet{position:absolute;left:0;right:0;bottom:0;height:430px;background:var(--t-raised);border-radius:26px 26px 0 0;z-index:41;transform:translateY(105%);transition:transform .36s cubic-bezier(.2,.8,.2,1);padding-top:8px}
+.ph.b .dim{opacity:1}.ph.b .sheet{transform:none}
+.grab{width:36px;height:5px;border-radius:3px;background:var(--t-grab);margin:0 auto 12px}
+.sheet h4{margin:0 20px 10px;font:700 18px/24px Inter,sans-serif;color:var(--t-ink)}
+
+/* 4 — filigrane */
+.wm{position:absolute;left:16px;top:2px;width:370px;height:56px;opacity:.28;z-index:2;transition:opacity .25s}
+.ph.b .wm{opacity:0}
+
+/* 5 — réduit */
+.cmpW{overflow:hidden;height:132px;transition:height .34s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.ph.b .cmpW{height:0;opacity:0}
+.cmp{margin:1px 16px 0;height:130px;border:1px solid var(--t-line);border-radius:26px;background:var(--t-raised);padding:14px 16px 0}
+.cmp .row{display:flex;align-items:center;gap:12px}
+.cmp .row .ttl{flex:1}
+
+/* 6 — après le vote */
+.unv{position:absolute;left:0;top:58px;width:402px;height:42px;background:var(--t-pane);z-index:2;display:flex;gap:8px;padding:2px 16px 0;transition:opacity .25s}
+.unv span{flex:1;height:36px;border-radius:22px;border:1.5px solid;display:flex;align-items:center;justify-content:center;font:600 17px/1 Inter,sans-serif}
+.unv .no{border-color:var(--t-no);color:var(--t-no)}.unv .yes{border-color:var(--t-yes);color:var(--t-yes)}
+.ph.b .unv,.ph.c .unv{opacity:0}
+.linkW{overflow:hidden;height:0;transition:height .3s cubic-bezier(.2,.8,.2,1)}
+.ph.b .linkW,.ph.c .linkW{height:40px}
+.link{height:40px;display:flex;align-items:center;gap:8px;padding:0 16px;font:600 15px/1 Inter,sans-serif;color:var(--t-soft)}
+.ph.c .link .chev{transform:rotate(90deg)}
+.chev{transition:transform .3s}
+
+/* 7 — onglets */
+.tabs{position:absolute;left:0;top:10px;width:402px;height:42px;background:var(--t-page);z-index:3;display:flex;border-bottom:1px solid var(--t-line)}
+.tabs span{flex:1;display:flex;align-items:center;justify-content:center;font:600 15px/1 Inter,sans-serif;color:var(--t-soft);position:relative;transition:color .2s}
+.tabs i{position:absolute;bottom:-1px;left:0;width:201px;height:3px;display:flex;justify-content:center;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.tabs i::after{content:"";width:56px;height:3px;border-radius:2px;background:var(--t-ink)}
+.tabs .a{color:var(--t-ink)}
+.ph.b .tabs .a{color:var(--t-soft)}.ph.b .tabs .e{color:var(--t-ink)}
+.ph.b .tabs i{transform:translateX(201px)}
+.swap{position:relative}
+.swap>.cm{transition:opacity .2s}
+.swap>.gr{position:absolute;left:0;top:6px;opacity:0;transition:opacity .25s}
+.ph.b .swap>.cm{opacity:0}
+.pc{position:absolute;left:0;top:52px;width:402px;height:14px;background:var(--t-page);z-index:3;opacity:0;transition:opacity .2s}.ph.b .pc{opacity:1}.ph.b .swap>.gr{opacity:1}
+
+/* 8 — pastille */
+.chipRow{height:40px;display:flex;align-items:center;padding:0 16px}
+.tchip{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;background:var(--t-glass);font:600 14px/1 Inter,sans-serif;color:var(--t-ink)}
+.tchip b{color:var(--t-no);font-weight:600}
+.pop{position:absolute;left:0;top:526px;z-index:41;transform:scale(.4);transform-origin:90px 0;opacity:0;transition:transform .32s cubic-bezier(.2,.8,.2,1.1),opacity .2s;filter:drop-shadow(0 12px 30px rgba(0,0,0,.18))}
+.ph.b .pop{transform:none;opacity:1}
+
+/* 9 — carrousel */
+.car{position:absolute;left:0;top:298px;width:402px;height:84px;background:var(--t-pane);z-index:3;padding:6px 16px 0}
+.carV{width:370px;height:74px;border-radius:20px;background:var(--t-glass);overflow:hidden;position:relative}
+.carT{display:flex;width:740px;transition:transform .36s cubic-bezier(.2,.8,.2,1)}
+.ph.b .carT{transform:translateX(-370px)}
+.pg{width:370px;height:74px;padding:11px 16px 0}
+.pg .txt{font:400 16px/22px Inter,sans-serif;color:var(--t-ink);margin-top:4px}
+.dots{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;gap:5px}
+.dots s{width:6px;height:6px;border-radius:3px;background:var(--t-muted);opacity:.45;transition:opacity .2s}
+.dots s:first-child{opacity:1}
+.ph.b .dots s:first-child{opacity:.45}.ph.b .dots s:last-child{opacity:1}
+
+/* 10 — en bas */
+.scroll{transition:transform .6s cubic-bezier(.3,.7,.2,1)}
+.ph.b .scroll{transform:translateY(-418px)}
+.ent{position:absolute;left:0;top:0;z-index:20;opacity:0;transition:opacity .2s .25s}
+.ph.b .ent{opacity:1}
+.goto{position:absolute;left:10px;top:16px;width:230px;height:26px;background:var(--t-page);font:400 15px/26px Inter,sans-serif;color:var(--t-soft);padding-left:6px;z-index:3}
+.goto b{color:var(--t-ink);font-weight:600}
+.sec{height:40px;background:var(--t-page);padding:16px 16px 0}
+.endc{height:20px;background:var(--t-page)}
+</style>
+</head>
+<body>
+<main>
+<h1>Le graphique quand on ouvre un take : 10 maquettes</h1>
+<p class="lede">05/10/2026 · TAK-357 · Des propositions à choisir : c'est Adam qui décide.</p>
+<div class="box">
+<p style="margin:0"><b>Le point de départ.</b> Sur le take ouvert, la carte « Évolution des votes » fait 283 pt sur un écran de 874 pt. Elle passe avant les boutons de vote, et on ne voit aucun commentaire sans défiler. L'idée, c'est que la courbe ne gêne plus ceux qui ne la regardent pas, et qu'elle reste à un toucher pour les autres.</p>
+</div>
+
+<div class="theme">
+  <span>Thème :</span>
+  <button data-t="clair" class="on">Clair</button>
+  <button data-t="sombre">Sombre</button>
+  <span class="warn">En sombre, les parties issues des captures sont des captures claires inversées en attendant de vraies captures sombres, déjà demandées. Seuls les éléments redessinés portent les vrais jetons sombres.</span>
+</div>
+
+<h2 style="margin-top:28px">Top 3 du classement Jev</h2>
+<div class="podium" id="podium"></div>
+<p class="big">Jev a noté chaque proposition sur trois points. D'abord, la place qu'elle retire au graphique pour qui ne s'y intéresse pas (de 0 à 4). Ensuite, si on obtient la courbe en un toucher évident (de 0 à 3). Enfin, si elle ressemble à ce que font X et Instagram (de 0 à 3). Chaque note est ramenée sur 1, puis les trois sont moyennées à poids égal. Ce classement aide à choisir, il ne tranche pas.</p>
+<table id="rank"><thead><tr><th>#</th><th>Proposition</th><th>Place retirée /4</th><th>Un toucher /3</th><th>Comme X et Insta /3</th><th>Total</th></tr></thead><tbody></tbody></table>
+
+<div class="box">
+<p style="margin:0 0 6px"><b>Ce que font les grandes apps</b> (seulement ce qu'une source dit) :</p>
+<ul style="margin:0;padding-left:20px">
+<li><b>X</b> : après le vote, on voit les résultats du moment, son choix coché, le nombre de votes et le temps restant. Les sources ne parlent d'aucune courbe dans le temps (<a href="https://buffer.com/resources/twitter-polls/">Buffer</a>). La page d'aide de X a répondu 403.</li>
+<li><b>Instagram</b> : une fois qu'on a voté à un sondage de story, on voit quelle réponse mène, sous forme de pourcentages. La source ne décrit aucun historique (<a href="https://socialrails.com/blog/instagram-poll-features-guide">SocialRails</a>).</li>
+<li><b>Threads</b> : on reçoit une notification à la fin du sondage pour voir le résultat final (<a href="https://www.socialmediatoday.com/news/threads-adds-polls-gifs-continues-expand-engagement-option/697969/">Social Media Today</a>). Aucune courbe n'est décrite.</li>
+<li><b>Kalshi</b> : le graphique a des durées (LIVE, 1H… ALL). Il s'affiche en entier dans la vue de trading et « sous une forme compacte » dans les tuiles. La page ne dit pas si on peut le masquer (<a href="https://kalshi.com/pro/help/charts">aide Kalshi Pro</a>).</li>
+<li><b>Robinhood</b> : sur la fiche d'une action, on change la durée de la courbe et on garde le doigt appuyé pour lire un point. La page ne parle ni de plier ni d'agrandir (<a href="https://robinhood.com/us/en/support/articles/360001380846/viewing-stock-detail-pages/">aide Robinhood</a>).</li>
+<li><b>Polymarket</b> : le site répond 451 (indisponible pour raisons légales), et l'article de Finextra répond 403. Rien n'est donc vérifié de première main. Un guide tiers dit que l'app mobile montre « moins de graphiques » au premier coup d'œil que sur ordinateur (<a href="https://blog.polymarket.tips/polymarket-mobile-app-ios-android-trading-guide-2026">polymarket.tips</a>). C'est une source non officielle.</li>
+<li><b>Manifold</b> : rien de vérifiable trouvé sur la place de la courbe dans une question.</li>
+</ul>
+</div>
+
+<div id="props"></div>
+
+<h2>Ce que les maquettes ne couvrent pas</h2>
+<ul>
+<li>Toutes les maquettes partent d'un seul take : un oui / non sans photo (« Un congé paternité… », boucle du 05/10 à 09:34, sur le code du jour). Aucune capture du jour ne montre un take ouvert avec photo, à choix multiple ou à note. Les propositions s'appliquent pareil à ces types : seule la courbe change de lignes.</li>
+<li>Les commentaires viennent d'un autre take, capturé à 07:38 : c'est la seule capture où ils se voient. Celle de 09:34 a été prise en pleine transition, elle est inutilisable. Le compteur y a été corrigé en « 3 votes ».</li>
+<li>Le sombre est approché (voir le bandeau en haut). Les vraies captures sombres sont demandées.</li>
+<li>Les états « avant ton vote » (proposition 6) sont redessinés, pas capturés : boutons au contour seulement, comme dans le fil.</li>
+</ul>
+<p class="big">Sources : captures de la boucle de régression du 05/10 (iPhone, 402 × 874 pt) et cotes lues dans <code>TakeBackFace.tsx</code>, <code>OddsChart.tsx</code> et <code>design-tokens.ts</code> de main. Classement fait par Jev (TypeSafe).</p>
+</main>
+
+<script>
+const S={haut:383.33,carte:285,votes:99.67,pied:60,commentaires:318,saisie:102,entete:119};
+const sl=(n,extra='')=>`<div class="sl ${extra}" style="height:${S[n]}px;background-image:url(img/${n}.png)"></div>`;
+const pied=(extra='')=>`<div class="rel">${sl('pied')}<div class="fix3">3 votes</div>${extra}</div>`;
+const IC={
+  trend:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>`,
+  chevD:`<svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`,
+  chevR:`<svg class="ic chev" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>`,
+  share:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.4M8.3 13.2l7.4 4.4"/></svg>`,
+  arrow:`<svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>`
+};
+// Courbe du take capturé : 50 % → Non 67 %, Oui 33 %.
+function curve(w,h,{labels=false,grid=false,sw=2,pad=5,lr=0,lo=0,hi=1}={}){
+  const x0=grid?30:2,x1=w-(labels?34:4)-lr,y=p=>pad+(1-(p-lo)/(hi-lo))*(h-2*pad);
+  const id='g'+Math.random().toString(36).slice(2,7);
+  let g='';
+  if(grid){g+=[1,.5,0].map(p=>`<line x1="${x0}" x2="${x1}" y1="${y(p)}" y2="${y(p)}" stroke="var(--t-line)" stroke-width=".75" ${p==.5?'':'stroke-dasharray="3 3"'}/><text x="${x0-6}" y="${y(p)+3.5}" text-anchor="end" font-size="10" fill="var(--t-muted)" font-family="Inter">${p*100} %</text>`).join('');}
+  const ln=(c,p1,lab)=>`<line x1="${x0}" y1="${y(.5)}" x2="${x1}" y2="${y(p1)}" stroke="url(#${id}${lab})" stroke-width="${sw}" stroke-linecap="round"/><circle cx="${x1}" cy="${y(p1)}" r="${sw+1}" fill="${c}"/>`+(labels?`<text x="${x1+8}" y="${y(p1)+3.5}" font-size="10" font-weight="600" fill="${c}" font-family="Inter">${lab}</text>`:'');
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><defs>
+  <linearGradient id="${id}Non"><stop offset="0" stop-color="var(--t-no)" stop-opacity=".35"/><stop offset="1" stop-color="var(--t-no)"/></linearGradient>
+  <linearGradient id="${id}Oui"><stop offset="0" stop-color="var(--t-yes)" stop-opacity=".35"/><stop offset="1" stop-color="var(--t-yes)"/></linearGradient></defs>
+  ${g}${ln('var(--t-no)',.67,'Non')}${ln('var(--t-yes)',.33,'Oui')}</svg>`;
+}
+const fold=(cls='open-b')=>`<div class="fold ${cls}">${sl('carte')}</div>`;
+const AVANT=()=>`${sl('haut')}${sl('carte')}${sl('votes')}${pied()}${sl('commentaires')}`;
+
+const P=[
+{t:'Mini-courbe dans la ligne des pourcentages',key:'p1',
+ d:'La carte disparaît. Une petite courbe de 120 × 28 pt, sans axes, prend place entre « 67 % » et « 33 % », juste au-dessus de la barre. Un toucher sur la mini-courbe déplie la carte entière à sa place, et un autre la replie.',
+ st:['Plié','Déplié'],
+ b:()=>`${sl('haut')}${fold()}<div class="rel">${sl('votes')}<div class="mini">${curve(120,30,{sw:2,pad:4,lo:.28,hi:.72})}</div></div>${pied()}${sl('commentaires')}`,
+ apps:'Ce qui s\'en rapproche : Kalshi montre ses graphiques « sous une forme compacte » dans ses tuiles.'},
+{t:'Carte pliée sur une ligne',key:'p2',
+ d:'La carte garde sa place, mais pliée en une ligne de 52 pt : le titre, la tendance (« Non +17 pts ») et un chevron. Un toucher la déplie à sa taille actuelle, un autre la replie, et l\'app retient ton dernier choix.',
+ st:['Plié','Déplié'],
+ b:()=>`${sl('haut')}<div class="pane pliW"><div class="pli"><span class="ttl">Évolution des votes</span><span class="trend">${IC.arrow}Non +17 pts</span><span style="color:var(--t-soft);display:flex">${IC.chevD}</span></div></div>${fold()}${sl('votes')}${pied()}${sl('commentaires')}`},
+{t:'Un bouton dans la barre du haut, le graphique en feuille',key:'p3',
+ d:'Il n\'y a plus de carte dans le take : une icône de courbe rejoint le « … » en haut à droite. Un toucher ouvre une feuille du bas, avec le graphique entier, ses durées et l\'export.',
+ st:['Fermé','Feuille ouverte'],
+ b:()=>`${sl('haut')}${sl('votes')}${pied()}${sl('commentaires')}`,
+ o:()=>`<div class="topic">${IC.trend}</div><div class="dim"></div><div class="sheet"><div class="grab"></div><h4>Un congé paternité aussi long…</h4>${sl('carte')}</div>`,
+ apps:'Feuille du bas : le geste iOS habituel pour un contenu secondaire.'},
+{t:'Courbe en filigrane derrière les pourcentages',key:'p4',
+ d:'La carte disparaît, et la courbe se dessine très pâle derrière « 67 % / 33 % » et la barre. Un toucher sur cette zone déplie la carte entière, et le filigrane s\'efface.',
+ st:['Filigrane','Déplié'],
+ b:()=>`${sl('haut')}${fold()}<div class="rel">${sl('votes')}<div class="wm">${curve(370,56,{sw:2.5,pad:6,lo:.2,hi:.8})}</div></div>${pied()}${sl('commentaires')}`},
+{t:'Graphique réduit de moitié',key:'p5',
+ d:'La carte reste au même endroit, mais passe de 283 à 130 pt : une courbe de 72 pt sans graduations, avec le titre et la durée sur une ligne. Un toucher sur la courbe l\'agrandit à sa taille actuelle.',
+ st:['Réduit','Agrandi'],
+ b:()=>`${sl('haut')}<div class="pane cmpW"><div class="cmp"><div class="row"><span class="ttl">Évolution des votes</span><span class="chipT">Tout ${IC.chevD.replace('class="ic chev"','class="chev" style="width:14px;height:14px"')}</span><span style="color:var(--t-ink);display:flex">${IC.share}</span></div><div style="margin-top:10px">${curve(336,72,{labels:true,sw:2,pad:6})}</div></div></div>${fold()}${sl('votes')}${pied()}${sl('commentaires')}`,
+ apps:'Kalshi a déjà les deux tailles : compacte dans les tuiles, entière dans la vue de trading.'},
+{t:'Le graphique seulement après le vote',key:'p6',
+ d:'Avant de voter, il n\'y a aucune carte : les boutons montent juste sous le contexte. Une fois le vote posé, une ligne « Voir l\'évolution des votes » apparaît sous la barre, et un toucher déplie la carte.',
+ st:['Avant ton vote','Après ton vote','Déplié'],
+ b:()=>`${sl('haut')}<div class="rel">${sl('votes')}<div class="unv"><span class="no">Non</span><span class="yes">Oui</span></div></div><div class="pane linkW"><div class="link">${IC.trend}Voir l'évolution des votes ${IC.chevR}</div></div>${fold('open-c')}${pied()}${sl('commentaires')}`,
+ apps:'X et Instagram ne montrent les résultats qu\'après le vote (sources plus haut).'},
+{t:'Onglets Commentaires / Évolution',key:'p7',
+ d:'Sous la barre de vote, la ligne « 3 votes · Pertinents » devient deux onglets. Le take s\'ouvre sur les commentaires, et un toucher sur « Évolution » met la carte entière à la place de la liste.',
+ st:['Commentaires','Évolution'],
+ b:()=>`${sl('haut')}${sl('votes')}${pied(`<div class="tabs"><span class="a">Commentaires</span><span class="e">Évolution</span><i></i></div><div class="pc"></div>`)}<div class="swap"><div class="cm">${sl('commentaires')}</div><div class="gr">${sl('carte')}</div></div>`,
+ apps:'Des onglets sous le contenu, comme ceux d\'un profil X ou Instagram.'},
+{t:'Une pastille de tendance',key:'p8',
+ d:'La carte disparaît. Sous la barre, une pastille « Non +17 pts · 5 j » donne la tendance en une ligne. Un toucher ouvre le graphique entier dans une carte flottante, au-dessus du take.',
+ st:['Pastille','Carte ouverte'],
+ b:()=>`${sl('haut')}${sl('votes')}<div class="pane chipRow"><span class="tchip">${IC.arrow.replace('<svg','<svg color="var(--t-no)"')}<b>Non +17 pts</b> · 5 j</span></div>${pied()}${sl('commentaires')}`,
+ o:()=>`<div class="dim"></div><div class="pop">${sl('carte')}</div>`},
+{t:'Contexte et graphique dans un carrousel',key:'p9',
+ d:'Le contexte et la courbe partagent la même case. On glisse de côté pour passer de l\'un à l\'autre, et les points montent la page. Le take s\'ouvre sur le contexte, et la courbe courte est sur la deuxième page.',
+ st:['Contexte','Évolution'],
+ b:()=>`${sl('haut')}${sl('votes')}${pied()}${sl('commentaires')}`,
+ o:()=>`<div class="car"><div class="carV"><div class="carT">
+   <div class="pg"><div class="ttl">Contexte</div><div class="txt">L’Espagne l’a fait, pourquoi pas nous ?</div></div>
+   <div class="pg" style="display:flex;gap:12px;align-items:center;padding-top:6px"><div style="flex:none"><div class="ttl" style="font-size:12px">Évolution</div><div style="font:600 13px/18px Inter;color:var(--t-no);margin-top:2px">Non +17 pts</div><div style="font:400 12px/16px Inter;color:var(--t-soft)">en 5 j</div></div>${curve(230,56,{labels:true,sw:2,pad:6,lo:.25,hi:.75})}</div>
+ </div><div class="dots"><s></s><s></s></div></div></div>`},
+{t:'Le graphique en bas, après les commentaires',key:'p10',
+ d:'À l\'ouverture, on voit les boutons puis directement les commentaires. La carte passe tout en bas du take, et le lien « Voir l\'évolution ↓ » à côté de « 3 votes » y fait défiler.',
+ st:['Ouverture','Défilé en bas'],
+ b:()=>`<div class="scroll">${sl('haut')}${sl('votes')}<div class="rel">${sl('pied')}<div class="goto">3 votes · <b>Voir l'évolution ↓</b></div></div>${sl('commentaires')}<div class="endc"></div><div class="sec"><span class="ttl">Évolution des votes</span></div>${sl('carte')}</div>`,
+ o:()=>`<div class="ent">${sl('entete')}</div>`}
+];
+
+function phone(p,cls){
+  return `<div class="frame"><div class="phone ph ${cls}"><div class="ct">${p.b()}</div>${p.o?p.o():''}<div class="saisie">${sl('saisie')}</div></div></div>`;
+}
+const stCls=['','b','c'];
+let html='';
+P.forEach((p,i)=>{
+  const statics=p.st.slice(1).map((s,k)=>`<figure><div class="static">${phone(p,stCls[k+1])}</div><figcaption><span class="tag">Après</span><b>${s}</b></figcaption></figure>`).join('');
+  html+=`<section id="${p.key}"><h2><span class="n">${i+1}</span>${p.t}</h2><p>${p.d}</p>${p.apps?`<p class="apps">${p.apps}</p>`:''}
+  <div class="grid">
+   <figure>${`<div class="frame"><div class="phone ph static"><div class="ct">${AVANT()}</div><div class="saisie">${sl('saisie')}</div></div></div>`}<figcaption><span class="tag now">Avant</span><b>Aujourd'hui</b> : capture du 05/10.</figcaption></figure>
+   <figure class="live" data-n="${p.st.length}">${phone(p,'')}<figcaption><span class="tag">Après</span><b>${p.st[0]}</b> · en mouvement : touche l'écran ou les boutons.</figcaption>
+    <div class="ctl">${p.st.map((s,k)=>`<button data-s="${k}" class="${k?'':'on'}">${s}</button>`).join('')}<button data-play>▶ Animer</button></div></figure>
+   ${statics}
+  </div></section>`;
+});
+document.getElementById('props').innerHTML=html;
+
+function setState(fig,k){
+  const ph=fig.querySelector('.ph');ph.classList.remove('b','c');
+  if(k>=1)ph.classList.add('b');if(k>=2){ph.classList.remove('b');ph.classList.add('c');}
+  fig.dataset.k=k;
+  fig.querySelectorAll('[data-s]').forEach(b=>b.classList.toggle('on',+b.dataset.s===k));
+}
+document.querySelectorAll('figure.live').forEach(fig=>{
+  const n=+fig.dataset.n;let timer=null;
+  fig.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{clearInterval(timer);timer=null;setState(fig,+b.dataset.s)});
+  fig.querySelector('.frame').onclick=()=>setState(fig,((+fig.dataset.k||0)+1)%n);
+  fig.querySelector('[data-play]').onclick=e=>{
+    if(timer){clearInterval(timer);timer=null;e.target.textContent='▶ Animer';return}
+    e.target.textContent='■ Arrêter';
+    timer=setInterval(()=>setState(fig,((+fig.dataset.k||0)+1)%n),1500);
+  };
+});
+
+const R=[{"k": "p7", "a": 3.96, "b": 2.75, "c": 1.95, "s": 0.852}, {"k": "p6", "a": 3.97, "b": 2.28, "c": 2.36, "s": 0.846}, {"k": "p3", "a": 3.96, "b": 1.91, "c": 2.43, "s": 0.812}, {"k": "p8", "a": 3.35, "b": 2.43, "c": 2.14, "s": 0.787}, {"k": "p1", "a": 3.06, "b": 2.15, "c": 1.92, "s": 0.707}, {"k": "p2", "a": 2.7, "b": 2.87, "c": 1.15, "s": 0.672}, {"k": "p4", "a": 2.9, "b": 1.82, "c": 1.89, "s": 0.654}, {"k": "p9", "a": 3.35, "b": 1.9, "c": 1.23, "s": 0.627}, {"k": "p10", "a": 2.88, "b": 1.55, "c": 1.88, "s": 0.621}, {"k": "p5", "a": 1.95, "b": 2.9, "c": 0.66, "s": 0.558}];
+const tb=document.querySelector('#rank tbody');
+R.forEach((r,i)=>{const p=P.find(x=>x.key===r.k);
+  tb.insertAdjacentHTML('beforeend',`<tr><td>${i+1}</td><td><a href="#${r.k}" style="color:inherit">${P.indexOf(p)+1}. ${p.t}</a></td><td class="num">${r.a.toFixed(2)}</td><td class="num">${r.b.toFixed(2)}</td><td class="num">${r.c.toFixed(2)}</td><td class="num"><b>${(r.s*100).toFixed(0)}</b></td></tr>`)});
+document.getElementById('podium').innerHTML=R.slice(0,3).map((r,i)=>{const p=P.find(x=>x.key===r.k);return `<a href="#${r.k}"><b>${i+1}</b>${p.t}<br><span style="color:var(--ui-soft);font-size:13px">proposition ${P.indexOf(p)+1} · ${(r.s*100).toFixed(0)}/100</span></a>`}).join('');
+
+const setTheme=t=>{document.body.dataset.theme=t;document.querySelectorAll('.theme [data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===t));history.replaceState(null,'',t==='sombre'?'#sombre':location.pathname)};
+document.querySelectorAll('.theme [data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+if(location.hash==='#sombre')setTheme('sombre');
+</script>
+</body>
+</html>
