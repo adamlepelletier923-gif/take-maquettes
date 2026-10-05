@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Début de discussion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{
+  --t-page:#FFFFFF;--t-ink:#141414;--t-soft:#6B6E73;--t-chip:#F0F2F5;--t-line:#E5E7EA;
+  --ui-bg:#f6f6f7;--ui-card:#ffffff;--ui-ink:#141414;--ui-soft:#6b6b70;--ui-chip:#e6e6ea;
+  --k:.9;
+}
+body[data-theme=sombre]{
+  --t-page:#000000;--t-ink:#E7E9EA;--t-soft:#83898F;--t-chip:#16181C;--t-line:#2F3336;
+  --ui-bg:#0d0d0f;--ui-card:#18191c;--ui-ink:#ececee;--ui-soft:#9a9aa2;--ui-chip:#2a2b30;
+}
+*{box-sizing:border-box}
+html,body{background:var(--ui-bg)}
+body{margin:0;color:var(--ui-ink);font-family:Inter,-apple-system,system-ui,sans-serif;line-height:1.5}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
+h1{font-size:28px;line-height:1.2;margin:0 0 6px}
+h2{font-size:22px;margin:0 0 8px;line-height:1.25}
+h2 .n{display:inline-block;min-width:34px;height:34px;line-height:34px;text-align:center;border-radius:999px;background:var(--ui-ink);color:var(--ui-bg);font-size:16px;margin-right:8px;vertical-align:2px}
+p,li{font-size:16px;max-width:76ch}
+.lede{color:var(--ui-soft);margin:0 0 10px}
+.box{background:var(--ui-card);border-radius:18px;padding:14px 18px;max-width:80ch;margin:14px 0}
+.theme{position:sticky;top:0;z-index:50;display:flex;gap:8px;align-items:center;padding:10px 0;background:var(--ui-bg);font-size:14px;flex-wrap:wrap}
+button{font:600 14px Inter,sans-serif;border:0;border-radius:999px;padding:7px 14px;background:var(--ui-chip);color:var(--ui-ink);cursor:pointer}
+button.on{background:var(--ui-ink);color:var(--ui-bg)}
+button:disabled{opacity:.45}
+.grid{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start;margin-top:20px}
+figure{margin:0;width:calc(402px * var(--k))}
+figcaption{font-size:15px;color:var(--ui-soft);margin-top:12px}
+figcaption b{color:var(--ui-ink)}
+.frame{width:calc(402px * var(--k));height:calc(874px * var(--k));border-radius:calc(54px * var(--k));overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.14),0 0 0 6px #1a1a1a;position:relative;background:var(--t-page)}
+.phone{width:402px;height:874px;transform:scale(var(--k));transform-origin:0 0;position:absolute;left:0;top:0;overflow:hidden;background:var(--t-page);color:var(--t-ink);font-family:Inter,-apple-system,system-ui,sans-serif}
+.slice{position:absolute;left:0;width:402px;background-image:var(--img-conv);background-size:402px 874px;background-repeat:no-repeat}
+.s-top{top:0;height:118px;background-position:0 0}
+.s-msgs{height:368px;background-position:0 -398px}
+.s-bottom{top:770px;height:104px;background-position:0 -770px}
+.blk{position:absolute;left:0;right:0;text-align:center}
+.g{color:var(--t-soft);font-size:16px;line-height:20px}
+.g b{color:var(--t-ink);font-weight:600}
+.pill{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 22px;border-radius:20px;background:var(--t-chip);font-size:15px;font-weight:600;color:var(--t-ink)}
+.date{color:var(--t-soft);font-size:14px;line-height:17px}
+.av{border-radius:50%;background:var(--img-avatar) center/cover no-repeat;display:inline-block}
+.nm{font-size:20px;font-weight:700;line-height:24px}
+.ps{font-size:15px;color:var(--t-soft);line-height:19px}
+.row{position:absolute;left:16px;right:16px;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:var(--t-chip)}
+.row .tx{flex:1;text-align:left}
+.row .nm{font-size:16px;line-height:20px}
+.row .g{font-size:14px;line-height:18px}
+.chev{width:9px;height:9px;border-right:2px solid var(--t-soft);border-top:2px solid var(--t-soft);transform:rotate(45deg);margin-right:4px}
+.cote{font-size:13.5px;color:var(--ui-soft)}
+.cmp{font-size:14.5px;background:var(--ui-card);border-radius:14px;padding:10px 14px;margin-top:10px}
+code{font-size:12.5px;background:var(--ui-chip);padding:1px 5px;border-radius:5px}
+.bare main{padding:0}.bare figure>:not(.frame){display:none}.bare .frame{border-radius:0;box-shadow:none}
+.missing{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:40px;background:var(--t-page);color:var(--t-soft);font-size:17px;z-index:9}
+</style>
+</head>
+<body>
+<main>
+<h1>Le début d'une discussion, comme X : 3 maquettes</h1>
+<p class="lede">Pour Adam, le 06/10/2026. Tu as demandé : « je veux qu'elle commence depuis le haut comme X ; en haut, c'est pas son nombre de followers mais le nombre de takes, amis et score ; et en dessous, la date quand y'a une première discussion ». Chaque maquette part de ta vraie discussion avec Noah Williams, avec ses vrais chiffres : Amis 1 · Takes 3 · Score 0. Aucun code de l'app ne change.</p>
+<div class="theme"><span>Thème :</span><button class="on" data-theme-btn="clair">Clair</button><button data-theme-btn="sombre" id="btn-sombre">Sombre</button><span id="note" class="lede" style="margin:0"></span></div>
+
+<div class="box">
+<p style="margin-top:0"><b>Ce que fait X</b> (ta capture de 02:12, mesurée en pt) :</p>
+<ul>
+<li>La barre du haut finit vers 100 pt. Le bloc commence 33 pt plus bas : deux lignes grises centrées d'environ 17 pt, « Joined September 2021 » puis « 51K Followers », espacées de 23 pt.</li>
+<li>Ensuite vient un bouton « View profile » : une pilule de 40 × 135 pt, grise, avec le texte en gras.</li>
+<li>La date « Today 2:11 » est 35 pt sous le bouton, et le premier message 17 pt sous la date.</li>
+<li>Tout part du haut : le vide est en bas.</li>
+</ul>
+<p style="margin-bottom:0"><b>Chez nous.</b> On ne sait pas depuis quand quelqu'un est inscrit : l'API ne renvoie pas de date d'inscription. Je n'ai donc pas mis « Membre depuis », pour ne dessiner que des états réels. Les trois chiffres sont ceux de la ligne du profil, dans le même ordre et avec les mêmes mots : Amis, Takes, Score. Ils ne sont pas dans la discussion, qui ne porte que le nom, le pseudo et la photo (<code>conversations.ts</code>). Il faut trois lectures, celles que fait déjà le profil d'un ami : <code>/users/:id/friends/count</code>, le nombre de takes (<code>profilePollCountsOptions</code>) et le score du jeu (<code>gameTotalScoreOptions</code>), dans <code>u/[username].tsx:702-774</code>. Si le score n'existe pas, le profil ne l'affiche pas, et le bloc non plus. La date, c'est notre séparateur actuel : « samedi 21:41 », texte gris de 14 pt sans bulle.</p>
+</div>
+
+<div class="grid" id="list"></div>
+</main>
+<script>
+var NOAH = { amis: '1', takes: '3', score: '0', pseudo: '@noah_williams' };
+// Comme la ligne du profil d'un ami : tout en gris, chiffres compris.
+var stats = '<span class="g">Amis ' + NOAH.amis + ' · Takes ' + NOAH.takes + ' · Score ' + NOAH.score + '</span>';
+// En pt sur l'écran : la barre du haut finit à 112, la date suit le bloc, les messages 17 pt sous la date.
+function phone(blockHtml, dateTop) {
+  return '<div class="frame"><div class="phone"><div class="slice s-top"></div>' + blockHtml +
+    '<div class="slice s-msgs" style="top:' + (dateTop - 8) + 'px"></div><div class="slice s-bottom"></div><div class="missing">Sombre : captures en cours chez Gon.</div></div></div>';
+}
+var M = [
+ ['La plus proche de X',
+  '<div class="blk" style="top:145px">' + stats + '</div>' +
+  '<div class="blk" style="top:173px"><span class="pill" style="width:135px">Voir le profil</span></div>',
+  248,
+  'Une seule ligne grise centrée, avec nos trois chiffres, puis le bouton « Voir le profil », puis la date et les messages. Les écarts sont ceux de X.',
+  'Ligne en 16/20 pt, tout en gris, comme la ligne du profil d’un ami. 33 pt sous la barre. Pilule de 40 × 135 pt, rayon 20, texte en 15 pt semi-gras, 28 pt sous le début de la ligne. Date 35 pt sous le bouton, premier message 17 pt sous la date.',
+  '<b>À côté de X :</b> même ordre, mêmes écarts, même pilule. <b>Ce qui diffère :</b> une ligne au lieu de deux, parce que nous n’avons pas de date d’inscription. Nos gris sont ceux de l’app (#6B6E73), un peu plus clairs que celui de X (#666666). Notre texte fait 16 pt contre environ 17 pt chez X, et notre date 14 pt. Côte à côte, mesuré : notre date est à 248 pt contre 259 chez X, et le premier message à 276 pt contre environ 290. Avec une ligne de moins, tout remonte d’environ 12 pt.'],
+ ['Avec la photo et le nom, comme Instagram',
+  '<div class="blk" style="top:136px"><span class="av" style="width:88px;height:88px"></span></div>' +
+  '<div class="blk nm" style="top:234px">Noah Williams</div>' +
+  '<div class="blk ps" style="top:260px">' + NOAH.pseudo + '</div>' +
+  '<div class="blk" style="top:286px">' + stats + '</div>' +
+  '<div class="blk" style="top:318px"><span class="pill" style="width:135px">Voir le profil</span></div>',
+  393,
+  'Une grande photo de 88 pt, le nom, le @pseudo, les trois chiffres, « Voir le profil », puis la date et les messages.',
+  'Photo de 88 pt, 24 pt sous la barre. Nom en 20/24 gras, pseudo en 15 pt gris, chiffres en 16 pt. Pilule de 40 × 135 pt. Date 35 pt sous le bouton.',
+  '<b>À côté de X :</b> même ordre sous la photo (texte gris, bouton, date). <b>Ce qui diffère :</b> X n’a ni photo ni nom dans ce bloc, puisqu’ils sont déjà dans sa barre du haut. Chez nous aussi, la photo et le nom sont dans la barre : on les montre deux fois. Le premier message descend à 421 pt, contre 290 pt environ chez X.'],
+ ['Compacte, une carte qui ouvre le profil',
+  '<div class="row" style="top:134px"><span class="av" style="width:44px;height:44px"></span><span class="tx"><span class="nm" style="display:block">Noah Williams</span>' + stats.replace('class="g"', 'class="g" style="font-size:14px"') + '</span><span class="chev"></span></div>',
+  231,
+  'Une seule carte grise, de la forme des autres cartes de l’app : la photo de 44 pt, le nom, les trois chiffres, et un chevron. Toucher la carte ouvre le profil, donc pas de bouton à part.',
+  'Carte à 16 pt des bords, rayon 18, marges intérieures de 12 × 14 pt, fond gris de l’app. Photo de 44 pt, nom en 16 pt semi-gras, chiffres en 14 pt. Date 35 pt sous la carte, premier message 17 pt sous la date.',
+  '<b>À côté de X :</b> les mêmes informations, en moins de place. Le premier message arrive vers 259 pt, plus haut que chez X (290 pt). <b>Ce qui diffère :</b> le bloc n’est pas centré, et il n’y a pas de bouton : c’est la carte entière qu’on touche. C’est notre façon de faire, pas celle de X.'],
+];
+var list = document.getElementById('list');
+M.forEach(function (m, i) {
+  var f = document.createElement('figure');
+  f.innerHTML = '<h2><span class="n">' + (i + 1) + '</span>' + m[0] + '</h2>' + phone(m[1], m[2]) +
+    '<figcaption><p>' + m[3] + '</p><p class="cote">' + m[4] + '</p><div class="cmp">' + m[5] + '</div></figcaption>';
+  list.appendChild(f);
+});
+var THEMES = { clair: true, sombre: true };
+function setTheme(t) {
+  if (!THEMES[t]) return;
+  document.body.dataset.theme = t;
+  document.body.style.setProperty('--img-conv', 'url(img/' + t + '-conv.png)');
+  document.body.style.setProperty('--img-avatar', 'url(img/' + t + '-avatar.png)');
+  document.querySelectorAll('[data-theme-btn]').forEach(function (b) { b.classList.toggle('on', b.dataset.themeBtn === t) });
+}
+document.querySelectorAll('[data-theme-btn]').forEach(function (b) { b.addEventListener('click', function () { setTheme(b.dataset.themeBtn) }) });
+if (!THEMES.sombre) { document.getElementById('btn-sombre').disabled = true; document.getElementById('note').textContent = 'Sombre : captures en cours chez Gon.' }
+var only = /[?&]only=(\d+)/.exec(location.search);
+if (only) { var fig = list.children[+only[1] - 1]; document.querySelector('main').replaceChildren(fig); document.body.classList.add('bare') }
+function fit() { var w = Math.min(402, document.documentElement.clientWidth - 32); document.documentElement.style.setProperty('--k', (w / 402).toFixed(4)) }
+window.addEventListener('resize', fit); fit();
+setTheme(location.hash === '#sombre' && THEMES.sombre ? 'sombre' : 'clair');
+</script>
+</body>
+</html>
