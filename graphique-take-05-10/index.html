@@ -16,8 +16,8 @@
   --ui-bg:#f6f6f7;--ui-card:#ffffff;--ui-ink:#141414;--ui-soft:#6b6b70;--ui-chip:#e6e6ea;
 }
 body[data-theme=sombre]{
-  --t-page:#000000;--t-pane:#050506;--t-raised:#1E2126;--t-ink:#E7E9EA;--t-soft:#83898F;--t-muted:#6B6F75;
-  --t-line:#2F3336;--t-glass:#FFFFFF14;--t-chip:#FFFFFF1A;--t-no:#D25F63;--t-yes:#2C9E65;--t-grab:#2F3336;
+  --t-page:#000000;--t-pane:#000000;--t-raised:#1E2126;--t-ink:#E7E9EA;--t-soft:#83898F;--t-muted:#6B6F75;
+  --t-line:#2F3336;--t-glass:#1A1A1A;--t-chip:#FFFFFF1A;--t-no:#DC5551;--t-yes:#16A34A;--t-grab:#2F3336;
   --t-dim:rgba(0,0,0,.6);--slice-filter:invert(1) hue-rotate(180deg);
   --ui-bg:#0d0d0f;--ui-card:#18191c;--ui-ink:#ececee;--ui-soft:#9a9aa2;--ui-chip:#2a2b30;
 }
@@ -58,7 +58,12 @@ td.num{font-variant-numeric:tabular-nums}
 
 /* ── Écran : tranches de vraies captures (1206 × 2622, 05/10, boucle de 09:34) ── */
 .ct{position:absolute;left:0;top:0;width:402px}
-.sl{width:402px;background:0 0/402px auto no-repeat;filter:var(--slice-filter);position:relative}
+.sl{width:402px;background:0 0/402px auto no-repeat;position:relative}
+.sl.approx{filter:var(--slice-filter)}
+.btns{display:flex;gap:8px;padding:1px 16px 2px;height:39px;background:var(--t-pane)}
+.btns span{flex:1;height:36px;border-radius:22px;border:1.5px solid;display:flex;align-items:center;justify-content:center;font:600 17px/1 Inter,sans-serif}
+.btns .no{border-color:var(--t-no);color:var(--t-no)}.btns .yes{border-color:var(--t-yes);color:var(--t-yes)}
+.btns .yes.on{background:var(--t-yes);color:#fff}
 .saisie{position:absolute;left:0;bottom:0;z-index:30}
 .rel{position:relative}
 .pane{background:var(--t-pane)}
@@ -84,7 +89,7 @@ td.num{font-variant-numeric:tabular-nums}
 /* 3 — bouton en haut + feuille */
 .topic{position:absolute;left:318px;top:74px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;z-index:5;color:var(--t-ink)}
 .dim{position:absolute;inset:0;background:var(--t-dim);opacity:0;transition:opacity .3s;z-index:40;pointer-events:none}
-.sheet{position:absolute;left:0;right:0;bottom:0;height:430px;background:var(--t-raised);border-radius:26px 26px 0 0;z-index:41;transform:translateY(105%);transition:transform .36s cubic-bezier(.2,.8,.2,1);padding-top:8px}
+.sheet{position:absolute;left:0;right:0;bottom:0;height:430px;background:var(--t-pane);border-radius:26px 26px 0 0;z-index:41;transform:translateY(105%);transition:transform .36s cubic-bezier(.2,.8,.2,1);padding-top:8px}
 .ph.b .dim{opacity:1}.ph.b .sheet{transform:none}
 .grab{width:36px;height:5px;border-radius:3px;background:var(--t-grab);margin:0 auto 12px}
 .sheet h4{margin:0 20px 10px;font:700 18px/24px Inter,sans-serif;color:var(--t-ink)}
@@ -146,7 +151,8 @@ td.num{font-variant-numeric:tabular-nums}
 
 /* 10 — en bas */
 .scroll{transition:transform .6s cubic-bezier(.3,.7,.2,1)}
-.ph.b .scroll{transform:translateY(-418px)}
+.ph.b .scroll{transform:translateY(var(--scr))}
+.entT{position:absolute;left:62px;top:66px;width:270px;height:46px;background:var(--t-page);display:flex;flex-direction:column;justify-content:center;font:600 16px/20px Inter,sans-serif;color:var(--t-ink);white-space:nowrap;overflow:hidden}.entT b{display:block;overflow:hidden;text-overflow:ellipsis;font-weight:600}.entT span{font:400 12px/16px Inter,sans-serif;color:var(--t-soft)}
 .ent{position:absolute;left:0;top:0;z-index:20;opacity:0;transition:opacity .2s .25s}
 .ph.b .ent{opacity:1}
 .goto{position:absolute;left:10px;top:16px;width:230px;height:26px;background:var(--t-page);font:400 15px/26px Inter,sans-serif;color:var(--t-soft);padding-left:6px;z-index:3}
@@ -167,7 +173,7 @@ td.num{font-variant-numeric:tabular-nums}
   <span>Thème :</span>
   <button data-t="clair" class="on">Clair</button>
   <button data-t="sombre">Sombre</button>
-  <span class="warn">En sombre, les parties issues des captures sont des captures claires inversées en attendant de vraies captures sombres, déjà demandées. Seuls les éléments redessinés portent les vrais jetons sombres.</span>
+  <span class="warn">En sombre, la base est une vraie capture sombre d'un autre take Oui/Non (« Le vote devrait-il devenir obligatoire en France ? », 12:00), avec ses propres chiffres : 40 % / 60 %, un seul point de courbe, donc des lignes plates. Seuls les commentaires et la barre de titre défilée (dont le titre est réécrit) restent des captures claires inversées, faute de capture sombre qui les montre.</span>
 </div>
 
 <h2 style="margin-top:28px">Top 3 du classement Jev</h2>
@@ -190,20 +196,47 @@ td.num{font-variant-numeric:tabular-nums}
 
 <div id="props"></div>
 
+<h2>Les autres types de takes, en sombre</h2>
+<p class="big">Vraies captures du 05/10 (11:59 à 12:00), montrées telles quelles, dans les deux thèmes. Elles disent ce que chaque proposition devra tenir selon le type de take.</p>
+<div class="grid">
+<figure><div class="frame"><img src="img/autres/sombre-qcm-detail-open.jpg" alt="Take à choix multiple ouvert, en sombre" width="322" height="700" style="display:block"></div><figcaption><b>Choix multiple</b> : même carte de 283 pt, avec une ligne par réponse (ici quatre lignes plates). Les réponses passent sous la carte, et seule la première se voit au-dessus du champ.</figcaption></figure>
+<figure><div class="frame"><img src="img/autres/sombre-qcm-detail-range-menu.jpg" alt="Le même take avec le menu de durée ouvert" width="322" height="700" style="display:block"></div><figcaption><b>Menu de durée</b> : il s'ouvre par-dessus la courbe. Les propositions 3, 7 et 8, qui montrent la carte entière, le gardent tel quel.</figcaption></figure>
+<figure><div class="frame"><img src="img/autres/sombre-photo-qcm-detail-open.jpg" alt="Take à choix multiple avec photo, ouvert" width="322" height="700" style="display:block"></div><figcaption><b>Take avec photo</b> (« Lequel changerait vraiment… ») : une fois ouvert, aucune photo ne s'affiche, seulement « Voir l'original ». Sa courbe bouge vraiment, avec des lignes qui se croisent : c'est le cas où la mini-courbe (1) et la pastille (8) doivent résumer plusieurs réponses.</figcaption></figure>
+<figure><div class="frame"><img src="img/autres/sombre-note-detail-open.jpg" alt="Take à note de 1 à 5, ouvert" width="322" height="700" style="display:block"></div><figcaption><b>Note de 1 à 5</b> : la capture ne montre aucune carte d'évolution, seulement « Moyenne 3,3 / 5 » et les boutons 1 à 5, avec 3 votes. Pour ce type de take, aucune proposition ne change rien aujourd'hui.</figcaption></figure>
+<figure><div class="frame"><img src="img/autres/sombre-ouinon-detail-open.jpg" alt="Take Oui/Non ouvert, en sombre" width="322" height="700" style="display:block"></div><figcaption><b>Oui / Non</b> : c'est la base des maquettes en sombre. Ses boutons sont presque entièrement cachés par le champ « Donne ton avis » : la carte pousse le vote sous le pouce.</figcaption></figure>
+</div>
+
 <h2>Ce que les maquettes ne couvrent pas</h2>
 <ul>
-<li>Toutes les maquettes partent d'un seul take : un oui / non sans photo (« Un congé paternité… », boucle du 05/10 à 09:34, sur le code du jour). Aucune capture du jour ne montre un take ouvert avec photo, à choix multiple ou à note. Les propositions s'appliquent pareil à ces types : seule la courbe change de lignes.</li>
-<li>Les commentaires viennent d'un autre take, capturé à 07:38 : c'est la seule capture où ils se voient. Celle de 09:34 a été prise en pleine transition, elle est inutilisable. Le compteur y a été corrigé en « 3 votes ».</li>
-<li>Le sombre est approché (voir le bandeau en haut). Les vraies captures sombres sont demandées.</li>
+<li>Le clair part d'un take Oui/Non sans photo (« Un congé paternité… », boucle du 05/10 à 09:34, sur le code du jour). Le sombre part d'un autre take Oui/Non (« Le vote devrait-il devenir obligatoire en France ? », 12:00). Chaque thème montre les chiffres de son propre take.</li>
+<li>Les commentaires viennent d'un autre take, capturé à 07:38 : c'est la seule capture où ils se voient. Celle de 09:34 a été prise en pleine transition, elle est inutilisable. En sombre, ces commentaires et la barre de titre défilée (proposition 10) restent des captures claires inversées.</li>
+<li>En sombre, les boutons Non / Oui sont redessinés aux couleurs de la capture : sur celle-ci, le champ du bas les cache presque entièrement.</li>
 <li>Les états « avant ton vote » (proposition 6) sont redessinés, pas capturés : boutons au contour seulement, comme dans le fil.</li>
+<li>Les maquettes ne sont dessinées que sur des takes Oui/Non. Les autres types sont montrés plus haut, tels qu'ils sont aujourd'hui.</li>
 </ul>
 <p class="big">Sources : captures de la boucle de régression du 05/10 (iPhone, 402 × 874 pt) et cotes lues dans <code>TakeBackFace.tsx</code>, <code>OddsChart.tsx</code> et <code>design-tokens.ts</code> de main. Classement fait par Jev (TypeSafe).</p>
 </main>
 
 <script>
-const S={haut:383.33,carte:285,votes:99.67,pied:60,commentaires:318,saisie:102,entete:119};
-const sl=(n,extra='')=>`<div class="sl ${extra}" style="height:${S[n]}px;background-image:url(img/${n}.png)"></div>`;
-const pied=(extra='')=>`<div class="rel">${sl('pied')}<div class="fix3">3 votes</div>${extra}</div>`;
+// Données propres à chaque capture : le clair est le take « congé paternité » (09:34),
+// le sombre le take « vote obligatoire » (12:00). Chaque thème montre SON take.
+const TH={
+ clair:{pre:'',S:{haut:383.33,carte:285,votes:99.67,pied:60,commentaires:318,saisie:102,entete:119},
+  btns:false,unvTop:58,miniTop:7,wmTop:2,wmH:56,car:{top:298,h:84,v:74},
+  title:'Un congé paternité aussi long…',ctx:'L’Espagne l’a fait, pourquoi pas nous ?',
+  start:.5,non:.67,yes:.33,flat:false,trend:'Non +17 pts',lead:'no',since:'5 j',votes:'3 votes'},
+ sombre:{pre:'sombre-',S:{haut:404.33,carte:285,votes:60.67,pied:60,commentaires:318,saisie:108,entete:119},
+  btns:true,unvTop:61.67,miniTop:16,wmTop:4,wmH:56,car:{top:304,h:98,v:82},
+  title:'Le vote devrait-il devenir…',ctx:'En Belgique, c’est déjà le cas depuis longtemps. Pour ou contre ?',
+  start:.4,non:.40,yes:.60,flat:true,ent:['Le vote devrait-il devenir obligatoire…','Amir Haddad'],trend:'Oui 60 %',lead:'yes',since:'stable',votes:''}
+};
+let D=TH.clair;
+const OWN=['haut','carte','votes','saisie'];
+const sl=(n,extra='')=>{const own=OWN.includes(n);const src=own?`img/${D.pre}${n}.png`:`img/${n}.png`;
+  return `<div class="sl ${own?'':'approx'} ${extra}" style="height:${D.S[n]}px;background-image:url(${src})"></div>`};
+const votesH=()=>D.S.votes+(D.btns?39:0);
+const votes=(inner='')=>`<div class="rel">${sl('votes')}${D.btns?`<div class="btns"><span class="no">Non</span><span class="yes on">Oui</span></div>`:''}${inner}</div>`;
+const pied=(extra='')=>`<div class="rel">${sl('pied')}<div class="fix3">${D.votes}</div>${extra}</div>`;
 const IC={
   trend:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>`,
   chevD:`<svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`,
@@ -211,109 +244,115 @@ const IC={
   share:`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.4M8.3 13.2l7.4 4.4"/></svg>`,
   arrow:`<svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>`
 };
-// Courbe du take capturé : 50 % → Non 67 %, Oui 33 %.
-function curve(w,h,{labels=false,grid=false,sw=2,pad=5,lr=0,lo=0,hi=1}={}){
-  const x0=grid?30:2,x1=w-(labels?34:4)-lr,y=p=>pad+(1-(p-lo)/(hi-lo))*(h-2*pad);
+const leadC=()=>D.lead==='no'?'var(--t-no)':'var(--t-yes)';
+// Courbe du take affiché. Un seul point (sombre) : lignes plates en tirets, comme OddsChart.
+function curve(w,h,{labels=false,sw=2,pad=5,zoom=false}={}){
+  const lo=zoom?Math.min(D.non,D.yes,D.start)-.12:0,hi=zoom?Math.max(D.non,D.yes,D.start)+.12:1;
+  const x0=2,x1=w-(labels?34:4),y=p=>pad+(1-(p-lo)/(hi-lo))*(h-2*pad);
   const id='g'+Math.random().toString(36).slice(2,7);
-  let g='';
-  if(grid){g+=[1,.5,0].map(p=>`<line x1="${x0}" x2="${x1}" y1="${y(p)}" y2="${y(p)}" stroke="var(--t-line)" stroke-width=".75" ${p==.5?'':'stroke-dasharray="3 3"'}/><text x="${x0-6}" y="${y(p)+3.5}" text-anchor="end" font-size="10" fill="var(--t-muted)" font-family="Inter">${p*100} %</text>`).join('');}
-  const ln=(c,p1,lab)=>`<line x1="${x0}" y1="${y(.5)}" x2="${x1}" y2="${y(p1)}" stroke="url(#${id}${lab})" stroke-width="${sw}" stroke-linecap="round"/><circle cx="${x1}" cy="${y(p1)}" r="${sw+1}" fill="${c}"/>`+(labels?`<text x="${x1+8}" y="${y(p1)+3.5}" font-size="10" font-weight="600" fill="${c}" font-family="Inter">${lab}</text>`:'');
+  const ln=(c,p1,lab)=>{const p0=D.flat?p1:D.start;return `<line x1="${x0}" y1="${y(p0)}" x2="${x1}" y2="${y(p1)}" stroke="${D.flat?c:`url(#${id}${lab})`}" stroke-width="${sw}" stroke-linecap="round" ${D.flat?'stroke-dasharray="5 4"':''}/><circle cx="${x1}" cy="${y(p1)}" r="${sw+1}" fill="${c}"/>`+(labels?`<text x="${x1+8}" y="${y(p1)+3.5}" font-size="10" font-weight="600" fill="${c}" font-family="Inter">${lab}</text>`:'')};
   return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><defs>
   <linearGradient id="${id}Non"><stop offset="0" stop-color="var(--t-no)" stop-opacity=".35"/><stop offset="1" stop-color="var(--t-no)"/></linearGradient>
   <linearGradient id="${id}Oui"><stop offset="0" stop-color="var(--t-yes)" stop-opacity=".35"/><stop offset="1" stop-color="var(--t-yes)"/></linearGradient></defs>
-  ${g}${ln('var(--t-no)',.67,'Non')}${ln('var(--t-yes)',.33,'Oui')}</svg>`;
+  ${ln('var(--t-no)',D.non,'Non')}${ln('var(--t-yes)',D.yes,'Oui')}</svg>`;
 }
 const fold=(cls='open-b')=>`<div class="fold ${cls}">${sl('carte')}</div>`;
-const AVANT=()=>`${sl('haut')}${sl('carte')}${sl('votes')}${pied()}${sl('commentaires')}`;
+const AVANT=()=>`${sl('haut')}${sl('carte')}${votes()}${pied()}${sl('commentaires')}`;
+const arrowC=()=>D.flat?'':IC.arrow.replace('<svg',`<svg color="${leadC()}"`);
 
 const P=[
 {t:'Mini-courbe dans la ligne des pourcentages',key:'p1',
- d:'La carte disparaît. Une petite courbe de 120 × 28 pt, sans axes, prend place entre « 67 % » et « 33 % », juste au-dessus de la barre. Un toucher sur la mini-courbe déplie la carte entière à sa place, et un autre la replie.',
+ d:'La carte disparaît. Une petite courbe de 120 × 28 pt, sans axes, prend place entre les deux pourcentages, juste au-dessus de la barre. Un toucher sur la mini-courbe déplie la carte entière à sa place, et un autre la replie.',
  st:['Plié','Déplié'],
- b:()=>`${sl('haut')}${fold()}<div class="rel">${sl('votes')}<div class="mini">${curve(120,30,{sw:2,pad:4,lo:.28,hi:.72})}</div></div>${pied()}${sl('commentaires')}`,
+ b:()=>`${sl('haut')}${fold()}${votes(`<div class="mini" style="top:${D.miniTop}px">${curve(120,30,{sw:2,pad:4,zoom:true})}</div>`)}${pied()}${sl('commentaires')}`,
  apps:'Ce qui s\'en rapproche : Kalshi montre ses graphiques « sous une forme compacte » dans ses tuiles.'},
 {t:'Carte pliée sur une ligne',key:'p2',
- d:'La carte garde sa place, mais pliée en une ligne de 52 pt : le titre, la tendance (« Non +17 pts ») et un chevron. Un toucher la déplie à sa taille actuelle, un autre la replie, et l\'app retient ton dernier choix.',
+ d:'La carte garde sa place, mais pliée en une ligne de 52 pt : le titre, la tendance et un chevron. Un toucher la déplie à sa taille actuelle, un autre la replie, et l\'app retient ton dernier choix.',
  st:['Plié','Déplié'],
- b:()=>`${sl('haut')}<div class="pane pliW"><div class="pli"><span class="ttl">Évolution des votes</span><span class="trend">${IC.arrow}Non +17 pts</span><span style="color:var(--t-soft);display:flex">${IC.chevD}</span></div></div>${fold()}${sl('votes')}${pied()}${sl('commentaires')}`},
+ b:()=>`${sl('haut')}<div class="pane pliW"><div class="pli"><span class="ttl">Évolution des votes</span><span class="trend" style="color:${leadC()}">${arrowC()}${D.trend}</span><span style="color:var(--t-soft);display:flex">${IC.chevD}</span></div></div>${fold()}${votes()}${pied()}${sl('commentaires')}`},
 {t:'Un bouton dans la barre du haut, le graphique en feuille',key:'p3',
  d:'Il n\'y a plus de carte dans le take : une icône de courbe rejoint le « … » en haut à droite. Un toucher ouvre une feuille du bas, avec le graphique entier, ses durées et l\'export.',
  st:['Fermé','Feuille ouverte'],
- b:()=>`${sl('haut')}${sl('votes')}${pied()}${sl('commentaires')}`,
- o:()=>`<div class="topic">${IC.trend}</div><div class="dim"></div><div class="sheet"><div class="grab"></div><h4>Un congé paternité aussi long…</h4>${sl('carte')}</div>`,
+ b:()=>`${sl('haut')}${votes()}${pied()}${sl('commentaires')}`,
+ o:()=>`<div class="topic">${IC.trend}</div><div class="dim"></div><div class="sheet"><div class="grab"></div><h4>${D.title}</h4>${sl('carte')}</div>`,
  apps:'Feuille du bas : le geste iOS habituel pour un contenu secondaire.'},
 {t:'Courbe en filigrane derrière les pourcentages',key:'p4',
- d:'La carte disparaît, et la courbe se dessine très pâle derrière « 67 % / 33 % » et la barre. Un toucher sur cette zone déplie la carte entière, et le filigrane s\'efface.',
+ d:'La carte disparaît, et la courbe se dessine très pâle derrière les pourcentages et la barre. Un toucher sur cette zone déplie la carte entière, et le filigrane s\'efface.',
  st:['Filigrane','Déplié'],
- b:()=>`${sl('haut')}${fold()}<div class="rel">${sl('votes')}<div class="wm">${curve(370,56,{sw:2.5,pad:6,lo:.2,hi:.8})}</div></div>${pied()}${sl('commentaires')}`},
+ b:()=>`${sl('haut')}${fold()}${votes(`<div class="wm" style="top:${D.wmTop}px;height:${D.wmH}px">${curve(370,D.wmH,{sw:2.5,pad:6,zoom:true})}</div>`)}${pied()}${sl('commentaires')}`},
 {t:'Graphique réduit de moitié',key:'p5',
  d:'La carte reste au même endroit, mais passe de 283 à 130 pt : une courbe de 72 pt sans graduations, avec le titre et la durée sur une ligne. Un toucher sur la courbe l\'agrandit à sa taille actuelle.',
  st:['Réduit','Agrandi'],
- b:()=>`${sl('haut')}<div class="pane cmpW"><div class="cmp"><div class="row"><span class="ttl">Évolution des votes</span><span class="chipT">Tout ${IC.chevD.replace('class="ic chev"','class="chev" style="width:14px;height:14px"')}</span><span style="color:var(--t-ink);display:flex">${IC.share}</span></div><div style="margin-top:10px">${curve(336,72,{labels:true,sw:2,pad:6})}</div></div></div>${fold()}${sl('votes')}${pied()}${sl('commentaires')}`,
+ b:()=>`${sl('haut')}<div class="pane cmpW"><div class="cmp"><div class="row"><span class="ttl">Évolution des votes</span><span class="chipT">Tout ${IC.chevD.replace('class="ic chev"','class="chev" style="width:14px;height:14px"')}</span><span style="color:var(--t-ink);display:flex">${IC.share}</span></div><div style="margin-top:10px">${curve(336,72,{labels:true,sw:2,pad:6})}</div></div></div>${fold()}${votes()}${pied()}${sl('commentaires')}`,
  apps:'Kalshi a déjà les deux tailles : compacte dans les tuiles, entière dans la vue de trading.'},
 {t:'Le graphique seulement après le vote',key:'p6',
  d:'Avant de voter, il n\'y a aucune carte : les boutons montent juste sous le contexte. Une fois le vote posé, une ligne « Voir l\'évolution des votes » apparaît sous la barre, et un toucher déplie la carte.',
  st:['Avant ton vote','Après ton vote','Déplié'],
- b:()=>`${sl('haut')}<div class="rel">${sl('votes')}<div class="unv"><span class="no">Non</span><span class="yes">Oui</span></div></div><div class="pane linkW"><div class="link">${IC.trend}Voir l'évolution des votes ${IC.chevR}</div></div>${fold('open-c')}${pied()}${sl('commentaires')}`,
+ b:()=>`${sl('haut')}${votes(`<div class="unv" style="top:${D.unvTop}px"><span class="no">Non</span><span class="yes">Oui</span></div>`)}<div class="pane linkW"><div class="link">${IC.trend}Voir l'évolution des votes ${IC.chevR}</div></div>${fold('open-c')}${pied()}${sl('commentaires')}`,
  apps:'X et Instagram ne montrent les résultats qu\'après le vote (sources plus haut).'},
 {t:'Onglets Commentaires / Évolution',key:'p7',
  d:'Sous la barre de vote, la ligne « 3 votes · Pertinents » devient deux onglets. Le take s\'ouvre sur les commentaires, et un toucher sur « Évolution » met la carte entière à la place de la liste.',
  st:['Commentaires','Évolution'],
- b:()=>`${sl('haut')}${sl('votes')}${pied(`<div class="tabs"><span class="a">Commentaires</span><span class="e">Évolution</span><i></i></div><div class="pc"></div>`)}<div class="swap"><div class="cm">${sl('commentaires')}</div><div class="gr">${sl('carte')}</div></div>`,
+ b:()=>`${sl('haut')}${votes()}${pied(`<div class="tabs"><span class="a">Commentaires</span><span class="e">Évolution</span><i></i></div><div class="pc"></div>`)}<div class="swap"><div class="cm">${sl('commentaires')}</div><div class="gr">${sl('carte')}</div></div>`,
  apps:'Des onglets sous le contenu, comme ceux d\'un profil X ou Instagram.'},
 {t:'Une pastille de tendance',key:'p8',
- d:'La carte disparaît. Sous la barre, une pastille « Non +17 pts · 5 j » donne la tendance en une ligne. Un toucher ouvre le graphique entier dans une carte flottante, au-dessus du take.',
+ d:'La carte disparaît. Sous la barre, une pastille donne la tendance en une ligne. Un toucher ouvre le graphique entier dans une carte flottante, au-dessus du take.',
  st:['Pastille','Carte ouverte'],
- b:()=>`${sl('haut')}${sl('votes')}<div class="pane chipRow"><span class="tchip">${IC.arrow.replace('<svg','<svg color="var(--t-no)"')}<b>Non +17 pts</b> · 5 j</span></div>${pied()}${sl('commentaires')}`,
- o:()=>`<div class="dim"></div><div class="pop">${sl('carte')}</div>`},
+ b:()=>`${sl('haut')}${votes()}<div class="pane chipRow"><span class="tchip">${arrowC()}<b style="color:${leadC()}">${D.trend}</b> · ${D.since}</span></div>${pied()}${sl('commentaires')}`,
+ o:()=>`<div class="dim"></div><div class="pop" style="top:${Math.round(D.S.haut+votesH()+43)}px">${sl('carte')}</div>`},
 {t:'Contexte et graphique dans un carrousel',key:'p9',
  d:'Le contexte et la courbe partagent la même case. On glisse de côté pour passer de l\'un à l\'autre, et les points montent la page. Le take s\'ouvre sur le contexte, et la courbe courte est sur la deuxième page.',
  st:['Contexte','Évolution'],
- b:()=>`${sl('haut')}${sl('votes')}${pied()}${sl('commentaires')}`,
- o:()=>`<div class="car"><div class="carV"><div class="carT">
-   <div class="pg"><div class="ttl">Contexte</div><div class="txt">L’Espagne l’a fait, pourquoi pas nous ?</div></div>
-   <div class="pg" style="display:flex;gap:12px;align-items:center;padding-top:6px"><div style="flex:none"><div class="ttl" style="font-size:12px">Évolution</div><div style="font:600 13px/18px Inter;color:var(--t-no);margin-top:2px">Non +17 pts</div><div style="font:400 12px/16px Inter;color:var(--t-soft)">en 5 j</div></div>${curve(230,56,{labels:true,sw:2,pad:6,lo:.25,hi:.75})}</div>
+ b:()=>`${sl('haut')}${votes()}${pied()}${sl('commentaires')}`,
+ o:()=>`<div class="car" style="top:${D.car.top}px;height:${D.car.h}px"><div class="carV" style="height:${D.car.v}px"><div class="carT">
+   <div class="pg" style="height:${D.car.v}px"><div class="ttl">Contexte</div><div class="txt">${D.ctx}</div></div>
+   <div class="pg" style="height:${D.car.v}px;display:flex;gap:12px;align-items:center;padding-top:0"><div style="flex:none"><div class="ttl" style="font-size:12px">Évolution</div><div style="font:600 13px/18px Inter;color:${leadC()};margin-top:2px">${D.trend}</div><div style="font:400 12px/16px Inter;color:var(--t-soft)">${D.since==='stable'?'stable':'en '+D.since}</div></div>${curve(230,56,{labels:true,sw:2,pad:6,zoom:true})}</div>
  </div><div class="dots"><s></s><s></s></div></div></div>`},
 {t:'Le graphique en bas, après les commentaires',key:'p10',
- d:'À l\'ouverture, on voit les boutons puis directement les commentaires. La carte passe tout en bas du take, et le lien « Voir l\'évolution ↓ » à côté de « 3 votes » y fait défiler.',
+ d:'À l\'ouverture, on voit les boutons puis directement les commentaires. La carte passe tout en bas du take, et un lien « Voir l\'évolution ↓ » sous les votes y fait défiler.',
  st:['Ouverture','Défilé en bas'],
- b:()=>`<div class="scroll">${sl('haut')}${sl('votes')}<div class="rel">${sl('pied')}<div class="goto">3 votes · <b>Voir l'évolution ↓</b></div></div>${sl('commentaires')}<div class="endc"></div><div class="sec"><span class="ttl">Évolution des votes</span></div>${sl('carte')}</div>`,
- o:()=>`<div class="ent">${sl('entete')}</div>`}
+ b:()=>`<div class="scroll" style="--scr:${-Math.round(D.S.haut+votesH()+60+318+60+285-788)}px">${sl('haut')}${votes()}<div class="rel">${sl('pied')}<div class="goto">${D.votes?D.votes+' · ':''}<b>Voir l'évolution ↓</b></div></div>${sl('commentaires')}<div class="endc"></div><div class="sec"><span class="ttl">Évolution des votes</span></div>${sl('carte')}</div>`,
+ o:()=>`<div class="ent">${sl('entete')}${D.ent?`<div class="entT"><b>${D.ent[0]}</b><span>${D.ent[1]}</span></div>`:''}</div>`}
 ];
 
 function phone(p,cls){
   return `<div class="frame"><div class="phone ph ${cls}"><div class="ct">${p.b()}</div>${p.o?p.o():''}<div class="saisie">${sl('saisie')}</div></div></div>`;
 }
 const stCls=['','b','c'];
-let html='';
-P.forEach((p,i)=>{
-  const statics=p.st.slice(1).map((s,k)=>`<figure><div class="static">${phone(p,stCls[k+1])}</div><figcaption><span class="tag">Après</span><b>${s}</b></figcaption></figure>`).join('');
-  html+=`<section id="${p.key}"><h2><span class="n">${i+1}</span>${p.t}</h2><p>${p.d}</p>${p.apps?`<p class="apps">${p.apps}</p>`:''}
-  <div class="grid">
-   <figure>${`<div class="frame"><div class="phone ph static"><div class="ct">${AVANT()}</div><div class="saisie">${sl('saisie')}</div></div></div>`}<figcaption><span class="tag now">Avant</span><b>Aujourd'hui</b> : capture du 05/10.</figcaption></figure>
-   <figure class="live" data-n="${p.st.length}">${phone(p,'')}<figcaption><span class="tag">Après</span><b>${p.st[0]}</b> · en mouvement : touche l'écran ou les boutons.</figcaption>
-    <div class="ctl">${p.st.map((s,k)=>`<button data-s="${k}" class="${k?'':'on'}">${s}</button>`).join('')}<button data-play>▶ Animer</button></div></figure>
-   ${statics}
-  </div></section>`;
-});
-document.getElementById('props').innerHTML=html;
-
 function setState(fig,k){
   const ph=fig.querySelector('.ph');ph.classList.remove('b','c');
   if(k>=1)ph.classList.add('b');if(k>=2){ph.classList.remove('b');ph.classList.add('c');}
   fig.dataset.k=k;
   fig.querySelectorAll('[data-s]').forEach(b=>b.classList.toggle('on',+b.dataset.s===k));
 }
-document.querySelectorAll('figure.live').forEach(fig=>{
-  const n=+fig.dataset.n;let timer=null;
-  fig.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{clearInterval(timer);timer=null;setState(fig,+b.dataset.s)});
-  fig.querySelector('.frame').onclick=()=>setState(fig,((+fig.dataset.k||0)+1)%n);
-  fig.querySelector('[data-play]').onclick=e=>{
-    if(timer){clearInterval(timer);timer=null;e.target.textContent='▶ Animer';return}
-    e.target.textContent='■ Arrêter';
-    timer=setInterval(()=>setState(fig,((+fig.dataset.k||0)+1)%n),1500);
-  };
-});
+let timers=[];
+function render(){
+  timers.forEach(clearInterval);timers=[];
+  let html='';
+  P.forEach((p,i)=>{
+    const statics=p.st.slice(1).map((s,k)=>`<figure><div class="static">${phone(p,stCls[k+1])}</div><figcaption><span class="tag">Après</span><b>${s}</b></figcaption></figure>`).join('');
+    html+=`<section id="${p.key}"><h2><span class="n">${i+1}</span>${p.t}</h2><p>${p.d}</p>${p.apps?`<p class="apps">${p.apps}</p>`:''}
+    <div class="grid">
+     <figure><div class="frame"><div class="phone ph static"><div class="ct">${AVANT()}</div><div class="saisie">${sl('saisie')}</div></div></div><figcaption><span class="tag now">Avant</span><b>Aujourd'hui</b> : capture du 05/10.</figcaption></figure>
+     <figure class="live" data-n="${p.st.length}">${phone(p,'')}<figcaption><span class="tag">Après</span><b>${p.st[0]}</b> · en mouvement : touche l'écran ou les boutons.</figcaption>
+      <div class="ctl">${p.st.map((s,k)=>`<button data-s="${k}" class="${k?'':'on'}">${s}</button>`).join('')}<button data-play>▶ Animer</button></div></figure>
+     ${statics}
+    </div></section>`;
+  });
+  document.getElementById('props').innerHTML=html;
+  document.querySelectorAll('figure.live').forEach(fig=>{
+    const n=+fig.dataset.n;let timer=null;
+    const stop=()=>{clearInterval(timer);timer=null;fig.querySelector('[data-play]').textContent='▶ Animer'};
+    fig.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{stop();setState(fig,+b.dataset.s)});
+    fig.querySelector('.frame').onclick=()=>setState(fig,((+fig.dataset.k||0)+1)%n);
+    fig.querySelector('[data-play]').onclick=e=>{
+      if(timer){stop();return}
+      e.target.textContent='■ Arrêter';
+      timer=setInterval(()=>setState(fig,((+fig.dataset.k||0)+1)%n),1500);timers.push(timer);
+    };
+  });
+}
+render();
 
 const R=[{"k": "p7", "a": 3.96, "b": 2.75, "c": 1.95, "s": 0.852}, {"k": "p6", "a": 3.97, "b": 2.28, "c": 2.36, "s": 0.846}, {"k": "p3", "a": 3.96, "b": 1.91, "c": 2.43, "s": 0.812}, {"k": "p8", "a": 3.35, "b": 2.43, "c": 2.14, "s": 0.787}, {"k": "p1", "a": 3.06, "b": 2.15, "c": 1.92, "s": 0.707}, {"k": "p2", "a": 2.7, "b": 2.87, "c": 1.15, "s": 0.672}, {"k": "p4", "a": 2.9, "b": 1.82, "c": 1.89, "s": 0.654}, {"k": "p9", "a": 3.35, "b": 1.9, "c": 1.23, "s": 0.627}, {"k": "p10", "a": 2.88, "b": 1.55, "c": 1.88, "s": 0.621}, {"k": "p5", "a": 1.95, "b": 2.9, "c": 0.66, "s": 0.558}];
 const tb=document.querySelector('#rank tbody');
@@ -321,7 +360,7 @@ R.forEach((r,i)=>{const p=P.find(x=>x.key===r.k);
   tb.insertAdjacentHTML('beforeend',`<tr><td>${i+1}</td><td><a href="#${r.k}" style="color:inherit">${P.indexOf(p)+1}. ${p.t}</a></td><td class="num">${r.a.toFixed(2)}</td><td class="num">${r.b.toFixed(2)}</td><td class="num">${r.c.toFixed(2)}</td><td class="num"><b>${(r.s*100).toFixed(0)}</b></td></tr>`)});
 document.getElementById('podium').innerHTML=R.slice(0,3).map((r,i)=>{const p=P.find(x=>x.key===r.k);return `<a href="#${r.k}"><b>${i+1}</b>${p.t}<br><span style="color:var(--ui-soft);font-size:13px">proposition ${P.indexOf(p)+1} · ${(r.s*100).toFixed(0)}/100</span></a>`}).join('');
 
-const setTheme=t=>{document.body.dataset.theme=t;document.querySelectorAll('.theme [data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===t));history.replaceState(null,'',t==='sombre'?'#sombre':location.pathname)};
+const setTheme=t=>{document.body.dataset.theme=t;D=TH[t];render();document.querySelectorAll('.theme [data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===t));history.replaceState(null,'',(t==='sombre'?'#sombre':location.pathname+location.search))};
 document.querySelectorAll('.theme [data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
 if(location.hash==='#sombre')setTheme('sombre');
 </script>
