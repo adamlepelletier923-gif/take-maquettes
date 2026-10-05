@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Glissé façon X</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{
+  --t-page:#FFFFFF;--t-ink:#141414;--t-soft:#6B6E73;
+  --ui-bg:#f6f6f7;--ui-card:#ffffff;--ui-ink:#141414;--ui-soft:#6b6b70;--ui-chip:#e6e6ea;--ui-bad:#c8402f;--ui-good:#1f8a52;
+  --k:.9;
+}
+body[data-theme=sombre]{
+  --t-page:#000000;--t-ink:#E7E9EA;--t-soft:#83898F;
+  --ui-bg:#0d0d0f;--ui-card:#18191c;--ui-ink:#ececee;--ui-soft:#9a9aa2;--ui-chip:#2a2b30;
+}
+*{box-sizing:border-box}
+html,body{background:var(--ui-bg)}
+body{margin:0;color:var(--ui-ink);font-family:Inter,-apple-system,system-ui,sans-serif;line-height:1.5}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
+h1{font-size:28px;line-height:1.2;margin:0 0 6px}
+h2{font-size:22px;margin:52px 0 6px;line-height:1.25}
+h2 .n{display:inline-block;min-width:34px;height:34px;line-height:34px;text-align:center;border-radius:999px;background:var(--ui-ink);color:var(--ui-bg);font-size:16px;margin-right:8px;vertical-align:2px}
+p,li{font-size:16px;max-width:76ch}
+.lede{color:var(--ui-soft);margin:0 0 10px}
+.box{background:var(--ui-card);border-radius:18px;padding:14px 18px;max-width:80ch;margin:14px 0}
+.theme{position:sticky;top:0;z-index:50;display:flex;gap:8px;align-items:center;padding:10px 0;background:var(--ui-bg);font-size:14px;flex-wrap:wrap}
+button{font:600 14px Inter,sans-serif;border:0;border-radius:999px;padding:7px 14px;background:var(--ui-chip);color:var(--ui-ink);cursor:pointer}
+button.on{background:var(--ui-ink);color:var(--ui-bg)}
+figure{margin:0}
+.duo{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;margin-top:8px}
+.col{width:calc(402px * var(--k))}
+.col h3{font-size:15px;margin:0 0 8px;color:var(--ui-soft)}
+.ctl{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:6px 0 4px}
+.now-label{font-size:13px;font-weight:600;color:var(--ui-soft);margin-left:6px}
+.frame{width:calc(402px * var(--k));height:calc(874px * var(--k));border-radius:calc(54px * var(--k));overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.14),0 0 0 6px #1a1a1a;position:relative;background:var(--t-page)}
+.phone{width:402px;height:874px;transform:scale(var(--k));transform-origin:0 0;position:absolute;left:0;top:0;overflow:hidden;background:var(--t-page);color:var(--t-ink)}
+.phone .pages,.phone .pg{position:absolute;inset:0}
+.phone .pg{background:var(--t-page);will-change:transform}
+.phone .rows{position:absolute;left:0;width:402px;background-size:402px auto;background-repeat:no-repeat}
+.phone .rows.takes{height:772px;background-image:var(--img-takes)}
+.phone .rows.questions{height:300px;background-image:var(--img-questions)}
+.phone .rows.h-takes{height:820px;background-image:var(--img-h-takes)}
+.phone .rows.h-amis{top:102px;height:772px;background-image:var(--img-h-amis)}
+.phone .clip{position:absolute;left:0;right:0;top:54px;bottom:0;overflow:hidden;pointer-events:none}
+.phone .hdr{position:absolute;left:0;right:0;top:0;will-change:transform}
+.phone .head{height:388px;background-size:402px 388px}
+.phone .head.solid{background-image:var(--img-head);background-color:var(--t-page)}
+.phone .head.nu{background-image:var(--img-head-nu)}
+.phone .tabs{position:relative;height:48px}
+.phone .tabs .band{position:absolute;inset:0;background:var(--t-page)}
+.phone .tabs .w{position:absolute;top:12px;width:123.3px;text-align:center;font-size:16.5px;font-weight:600;font-family:Inter,-apple-system,system-ui,sans-serif}
+.phone .tabs .ul{position:absolute;left:0;top:41px;width:44px;height:2.5px;border-radius:1.25px;background:var(--t-ink)}
+.phone .status{position:absolute;left:0;top:0;width:402px;height:54px;background:var(--t-page) var(--img-status) 0 0/402px 54px no-repeat;z-index:3}
+.phone .status.h{background-image:var(--img-h-status)}
+.phone .bar{position:absolute;left:0;bottom:0;width:402px;height:84px;background:var(--img-bar) 0 0/402px 84px no-repeat}
+.phone .hbar{position:absolute;left:0;top:54px;width:402px;height:48px;background:var(--t-page) var(--img-h-bar) 0 0/402px 48px no-repeat;z-index:2;will-change:transform,opacity}
+.phone .dock{position:absolute;left:0;bottom:0;width:402px;height:139px;background:var(--img-h-dock) 0 0/402px 139px no-repeat}
+.phone .finger{position:absolute;left:0;top:0;width:46px;height:46px;margin:-23px;border-radius:50%;background:rgba(120,120,128,.45);border:2px solid rgba(255,255,255,.9);opacity:0;pointer-events:none;z-index:4}
+.missing{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:40px;background:var(--t-page);color:var(--t-soft);font-size:17px;z-index:9}
+body[data-theme=sombre] .phone[data-scene=accueil] .missing{display:var(--home-dark-missing,flex)}
+.cote{font-size:13.5px;color:var(--ui-soft)}
+.cmp{font-size:14.5px;background:var(--ui-card);border-radius:14px;padding:10px 14px;margin-top:10px;max-width:80ch}
+.cmp b{color:var(--ui-ink)}
+code{font-size:12.5px;background:var(--ui-chip);padding:1px 5px;border-radius:5px}
+a{color:inherit}
+body.bare main{padding:0;max-width:none}body.bare figure>:not(.duo){display:none}body.bare .duo{gap:0;margin:0;flex-wrap:nowrap}body.bare .col h3{display:none}body.bare .frame{border-radius:0;box-shadow:none}
+</style>
+</head>
+<body>
+<main>
+<h1>Le haut qui descend, façon X : 5 maquettes</h1>
+<p class="lede">Pour Adam, le 06/10/2026. Tu as dit : « c'est ce qu'il y a en haut qui descend ». Ces cinq maquettes partent de la maquette 1 et suivent ta vidéo de X image par image. Chacune est montrée sur le profil (de Takes, en bas, vers Questions, en haut) et sur l'accueil (de Takes, défilé, vers Amis, en haut). Aucun code de l'app ne change.</p>
+<div class="theme"><span>Thème :</span><button class="on" data-theme-btn="clair">Clair</button><button data-theme-btn="sombre">Sombre</button><a href="../glisse-profil-06-10/" style="margin-left:auto;font-size:14px">Les 10 premières maquettes et le recensement</a></div>
+
+<div class="box">
+<p style="margin-top:0"><b>Ce que fait X</b>, mesuré dans ta vidéo du 06/10 à 120 images par seconde :</p>
+<ul>
+<li>Le haut, c'est-à-dire la recherche et les onglets, glisse <b>vers le bas</b> depuis sous l'heure. Il part au premier mouvement du doigt et arrive en place en <b>175 ms environ</b>, après avoir descendu d'environ 77 pt en ralentissant à la fin. Il descend avant que la page ait vraiment bougé.</li>
+<li>Il descend comme un bloc, sur un fond blanc plein, et <b>recouvre le contenu sans le pousser</b> : le fil reste à sa hauteur. Ensuite, Trending entre par la droite, sous le haut déjà en place, et reprend aux sujets 23 à 30.</li>
+<li>Pendant les 50 premières ms, les mots paraissent pâles, mais l'en-tête lui-même ne se fond pas. Ici, tout est plein du début à la fin.</li>
+</ul>
+<p style="margin-bottom:0"><b>Ce qui change chez nous.</b> Sur le profil, le haut est tout le profil : photo, nom, bio, Top 8 et onglets. Il descend d'un bloc de 388 pt jusqu'à Questions, qui est en haut de sa liste. On n'ajoute jamais de vide sous la dernière question : chaque image montre un état que l'app peut vraiment avoir. Sur l'accueil, c'est la barre « Takes Amis À proximité » et la cloche qui descendent, sur 48 pt. Le bouton « Aujourd'hui » rejoue le défaut actuel sur le même téléphone.</p>
+</div>
+
+<div id="list"></div>
+</main>
+<script>
+window.CMP = {
+ debut: '<b>À côté de X, aux mêmes instants</b> (planche relue) : même départ, puisque le haut commence à descendre 25 à 50 ms après le doigt. Même arrivée aussi, posé vers 175 ms, plein, sans pousser la page. <b>Ce qui diffère :</b> chez X, le haut fait 77 pt ; notre profil en fait 388, alors il recouvre presque toute la page Takes pendant le glissé. Sur l’accueil, la barre fait 48 pt : c’est presque X.',
+ lent: '<b>À côté de X :</b> même départ, mais le haut se pose à 350 ms au lieu de 175. À +175 ms, X est posé et nous sommes encore aux trois quarts du chemin.',
+ doigt: '<b>À côté de X :</b> chez X, le haut descend avant que la page bouge. Ici, il suit la page. Comme la page de la vidéo n’a fait que 15 % de son chemin à +225 ms, le haut n’est descendu que de 15 %. Il finit de descendre au lâcher.',
+ milieu: '<b>À côté de X :</b> chez X, le haut part au premier mouvement. Ici, il attend que la page ait fait la moitié du chemin, vers +520 ms avec le glissé de la vidéo, puis il met 175 ms. Il arrive donc environ 500 ms après celui de X.',
+ lacher: '<b>À côté de X :</b> le haut part au lâcher (+500 ms avec le glissé de la vidéo), soit environ 450 ms après X. Pendant tout le glissé, le profil reste replié et l’accueil sans barre.',
+};
+</script>
+<script>
+var X = [
+ ['debut', 'Comme X : dès que le doigt part, en 175 ms', 'Au premier mouvement du doigt, tout le haut descend d’un bloc, plein, et se pose en 175 ms. Il recouvre la page qui part sans la pousser. Ensuite, Questions (ou Amis) entre par la droite, sous le haut déjà posé.', 'Ease-out, 175 ms, déclenché par le premier mouvement horizontal. Profil : 388 pt. Accueil : 48 pt. Chez X : environ 77 pt en 175 ms.'],
+ ['lent', 'Comme X, mais plus doux : 350 ms', 'C’est la 1, deux fois plus lente. Le profil fait 388 pt, cinq fois la hauteur du haut de X : à 175 ms, la descente peut paraître brusque. Ici, on la voit arriver.', 'Ease-out, 350 ms, dès le premier mouvement.'],
+ ['doigt', 'Avec le doigt', 'Le haut descend au rythme des pages : à mi-glissé, il est à mi-chemin, et si tu reviens en arrière, il remonte. Il reste plein du début à la fin.', 'Profil : 388 pt × la course des pages. Accueil : 48 pt × la course.'],
+ ['milieu', 'À mi-chemin', 'Le haut ne bouge pas tant que la page n’a pas fait la moitié du glissé. Ensuite, il descend d’un bloc en 175 ms. Un glissé commencé puis annulé ne le fait donc pas descendre.', 'Déclenché quand les pages passent la moitié du chemin, puis 175 ms, ease-out.'],
+ ['lacher', 'Au lâcher', 'Tant que le doigt est posé, le haut reste en place : replié sur le profil, caché sur l’accueil. Au lâcher, il descend d’un bloc en 175 ms, pendant que la page finit son glissé.', 'Déclenché au lâcher, 175 ms, ease-out.'],
+];
+var list = document.getElementById('list');
+X.forEach(function (d, i) {
+  var f = document.createElement('figure');
+  f.id = 'm' + (i + 1);
+  f.innerHTML = '<h2><span class="n">' + (i + 1) + '</span>' + d[1] + '</h2>' +
+    '<div class="ctl"><button class="on" data-show="dir">Proposition</button><button data-show="now">Aujourd’hui</button></div>' +
+    '<div class="duo"><div class="col"><h3>Profil : de Takes vers Questions<span class="now-label"></span></h3><div class="frame"><div class="phone" data-scene="profil" data-dir="' + d[0] + '"></div></div></div>' +
+    '<div class="col"><h3>Accueil : de Takes vers Amis</h3><div class="frame"><div class="phone" data-scene="accueil" data-dir="' + d[0] + '"><div class="missing">Accueil en sombre : captures en cours chez Gon.</div></div></div></div></div>' +
+    '<p>' + d[2] + '</p><p class="cote">' + d[3] + '</p><div class="cmp" data-cmp="' + d[0] + '"></div>';
+  list.appendChild(f);
+});
+var CMP = window.CMP || {};
+document.querySelectorAll('[data-cmp]').forEach(function (n) { var t = CMP[n.dataset.cmp]; if (t) n.innerHTML = t; else n.remove() });
+var HOME_DARK = false;
+function setTheme(t) {
+  document.body.dataset.theme = t;
+  ['takes', 'questions', 'head', 'head-nu', 'status', 'bar', 'h-takes', 'h-amis', 'h-bar', 'h-status', 'h-dock'].forEach(function (n) {
+    var home = n.indexOf('h-') === 0;
+    var th = home && t === 'sombre' && !HOME_DARK ? 'clair' : t;
+    var ext = /takes|questions|amis/.test(n) ? 'jpg' : 'png';
+    document.body.style.setProperty('--img-' + n, 'url(img/' + th + '-' + n + '.' + ext + ')');
+  });
+  document.body.style.setProperty('--home-dark-missing', HOME_DARK ? 'none' : 'flex');
+  document.querySelectorAll('[data-theme-btn]').forEach(function (b) { b.classList.toggle('on', b.dataset.themeBtn === t) });
+}
+document.querySelectorAll('[data-theme-btn]').forEach(function (b) { b.addEventListener('click', function () { setTheme(b.dataset.themeBtn) }) });
+var only = /[?&]only=(\d+)/.exec(location.search);
+if (only) { var keep = document.getElementById('m' + only[1]); document.querySelector('main').replaceChildren(keep); if (/[?&]bare=1/.test(location.search)) document.body.classList.add('bare'); }
+setTheme(location.hash === '#sombre' ? 'sombre' : 'clair');
+</script>
+<script src="glisse-x.js"></script>
+</body>
+</html>
