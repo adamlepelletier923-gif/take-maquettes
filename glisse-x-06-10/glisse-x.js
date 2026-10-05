@@ -84,10 +84,11 @@
     var takesRows = el('div', 'rows h-takes', takes)
     var amisRows = el('div', 'rows h-amis', amis)
     var bar = el('div', 'hbar', phone)
+    var hul = el('i', 'hul', bar)
     el('div', 'status h', phone)
     el('div', 'dock', phone)
     var finger = el('div', 'finger', phone)
-    return { takes: takes, amis: amis, takesRows: takesRows, amisRows: amisRows, hbar: bar, finger: finger }
+    return { takes: takes, amis: amis, takesRows: takesRows, amisRows: amisRows, hbar: bar, hul: hul, finger: finger }
   }
 
   function placeFinger(v, c) {
@@ -136,6 +137,8 @@
     v.takesRows.style.top = (TOP + push) + 'px'
     v.hbar.style.transform = 'translateY(' + y + 'px)'
     v.hbar.style.opacity = o
+    // trait sous « Takes » (centre 115,8 pt) puis sous « Amis » (179,8 pt), 39 × 2,5 pt, lu dans les captures
+    v.hul.style.transform = 'translateX(' + lerp(96.3, 160.3, clamp(c.p, 0, 1)) + 'px)'
     placeFinger(v, c)
   }
 

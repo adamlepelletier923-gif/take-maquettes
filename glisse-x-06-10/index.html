@@ -58,6 +58,7 @@ figure{margin:0}
 .phone .status.h{background-image:var(--img-h-status)}
 .phone .bar{position:absolute;left:0;bottom:0;width:402px;height:84px;background:var(--img-bar) 0 0/402px 84px no-repeat}
 .phone .hbar{position:absolute;left:0;top:54px;width:402px;height:48px;background:var(--t-page) var(--img-h-bar) 0 0/402px 48px no-repeat;z-index:2;will-change:transform,opacity}
+.phone .hbar .hul{position:absolute;left:0;top:42.3px;width:39px;height:2.5px;border-radius:1.25px;background:var(--t-ink)}
 .phone .dock{position:absolute;left:0;bottom:0;width:402px;height:139px;background:var(--img-h-dock) 0 0/402px 139px no-repeat}
 .phone .finger{position:absolute;left:0;top:0;width:46px;height:46px;margin:-23px;border-radius:50%;background:rgba(120,120,128,.45);border:2px solid rgba(255,255,255,.9);opacity:0;pointer-events:none;z-index:4}
 .missing{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:40px;background:var(--t-page);color:var(--t-soft);font-size:17px;z-index:9}
@@ -118,7 +119,7 @@ X.forEach(function (d, i) {
 });
 var CMP = window.CMP || {};
 document.querySelectorAll('[data-cmp]').forEach(function (n) { var t = CMP[n.dataset.cmp]; if (t) n.innerHTML = t; else n.remove() });
-var HOME_DARK = false;
+var HOME_DARK = true;
 function setTheme(t) {
   document.body.dataset.theme = t;
   ['takes', 'questions', 'head', 'head-nu', 'status', 'bar', 'h-takes', 'h-amis', 'h-bar', 'h-status', 'h-dock'].forEach(function (n) {
