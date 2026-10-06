@@ -232,7 +232,7 @@
     </ul>
   </section>
 
-  <h3>2. Ce que je corrige (défauts, pas de DA) : état à 17:45</h3>
+  <h3>2. Ce que je corrige (défauts, pas de DA) : état à 18:44</h3>
   <div class="fix"><b>Dans main :</b>
     <ul class="plain">
       <li><b>TAK-474, fuite d'anonymat (#4002).</b> Vérifié au simulateur : une réponse envoyée fantôme allumé est enregistrée anonyme et s'affiche « Anonyme ». Toucher le fantôme d'un take déjà voté passe ce vote en anonyme, sans le compter deux fois. La barre du bas ne noircit plus.</li>
@@ -245,7 +245,7 @@
   </div>
   <div class="fix"><b>Attend ton oui : TAK-476, la suppression du compte (#4004).</b> Elle échoue toujours après 24 h de session. Le correctif ajoute une étape avec un code reçu par e-mail : <a href="../suppression-compte-06-10/">maquette avant/après</a>. La suppression en un toucher reste comme tu l'as décidé (point 144).</div>
   <div class="fix"><b>Prête, attend la PR de Jordan : TAK-479, l'app sans compte (#4011).</b> Elle rend les onglets Questions et Reposts d'un profil public, et Actu, lisibles sans compte, sans rien de privé. Elle touche quatre fichiers que la PR de Jordan (#3948) modifie aussi : sa PR passe d'abord.</div>
-  <div class="fix"><b>En cours (deux agents) :</b> la recherche d'Explorer, qui lit trop de pages avant d'afficher et vide la liste quand on change de filtre ; « Renvoyer le code » avec le captcha ; « Publier » grisé hors ligne ; la vibration à l'appui sur « Publier ».</div>
+  <div class="fix"><b>Aussi dans main, depuis 18:44 :</b> la recherche d'Explorer (#4019) s'affiche dès la première page et garde sa liste quand on change de filtre, et re-toucher un hashtag relance la recherche. Côté création (#4017), « Renvoyer le code » passe le captcha, « Publier » marche hors ligne (le take attend sa file d'envoi) et vibre dès l'appui.</div>
   <div class="fix"><b>À toi de trancher : les préchargements du fil.</b> Chaque take regardé une demi-seconde est lu en entier, soit environ 108 millions de requêtes par jour à 3 millions d'utilisateurs. Et toutes les photos d'une page partent, même en 4G. Les réduire rendrait l'app moins instantanée, alors que ta règle dit « tout précharger avant d'y arriver ». Je ne touche à rien sans ton avis.</div>
 
   <h3>3. Pour Jordan (son code, je n'y touche pas)</h3>
