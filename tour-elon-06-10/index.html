@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Tour loi d'Elon</title>
+<style>
+  @font-face { font-family: "InterTake"; src: url(fonts/Inter_400Regular.ttf); font-weight: 400; }
+  @font-face { font-family: "InterTake"; src: url(fonts/Inter_500Medium.ttf); font-weight: 500; }
+  @font-face { font-family: "InterTake"; src: url(fonts/Inter_600SemiBold.ttf); font-weight: 600; }
+  @font-face { font-family: "InterTake"; src: url(fonts/Inter_700Bold.ttf); font-weight: 700; }
+  :root {
+    --bg: #f6f6f8; --card: #ffffff; --ink: #121212; --muted: #6b6b75; --line: #e4e4ea;
+    --accent: #121212; --accent-ink: #ffffff; --warn: #b4232f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101014; --card: #18181d; --ink: #f2f2f5; --muted: #a2a2ad; --line: #2a2a31;
+      --accent: #f2f2f5; --accent-ink: #121212; --warn: #ff6b76;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101014; --card: #18181d; --ink: #f2f2f5; --muted: #a2a2ad; --line: #2a2a31;
+    --accent: #f2f2f5; --accent-ink: #121212; --warn: #ff6b76;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "InterTake", system-ui, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 16px 72px; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 0 0 8px; }
+  h2 { font-size: 20px; line-height: 1.3; margin: 0 0 6px; }
+  h3 { font-size: 22px; margin: 40px 0 12px; }
+  .intro { color: var(--muted); margin: 0 0 24px; }
+  section.reco { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 16px 20px; margin: 0 0 22px; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 99px; background: var(--accent); color: var(--accent-ink); margin: 0 6px 8px 0; }
+  .tag.soft { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+  p { margin: 0 0 10px; }
+  .why { color: var(--ink); }
+  .prop b { font-weight: 600; }
+  .src { color: var(--muted); font-size: 13px; }
+  .compare { display: grid; grid-auto-flow: column; grid-auto-columns: 282px; gap: 14px; overflow-x: auto; padding: 6px 2px 4px; margin-top: 12px; }
+  figure { margin: 0; }
+  figcaption { font-size: 13px; font-weight: 600; color: var(--muted); margin: 0 0 6px; }
+  .frame { width: 282px; height: 613px; overflow: hidden; border-radius: 26px; border: 1px solid var(--line); position: relative; background: #fff; }
+  .phone { width: 402px; height: 874px; position: absolute; left: 0; top: 0; transform: scale(0.7015); transform-origin: top left;
+    background-size: 402px 874px; background-repeat: no-repeat; font-family: "InterTake", system-ui, sans-serif; color: #121212; }
+  .ov { position: absolute; }
+  ul.plain { margin: 0; padding-left: 20px; }
+  ul.plain li { margin: 0 0 8px; }
+  .muted { color: var(--muted); }
+  .fix { border-left: 3px solid var(--accent); padding-left: 12px; margin: 0 0 14px; }
+  footer { color: var(--muted); font-size: 13px; margin-top: 40px; }
+  /* éléments des maquettes */
+  .pill-btn { position: absolute; height: 30px; padding: 0 14px; border-radius: 15px; border: 1.5px solid; font: 600 14px/27px "InterTake"; text-align: center; background: #fff; }
+  .row { display: flex; gap: 12px; padding: 12px 16px 12px 20px; border-bottom: 1px solid #ECEDEF; align-items: flex-start; }
+  .rank { width: 22px; font: 600 17px/44px "InterTake"; text-align: center; flex: none; }
+  .thumb { width: 44px; height: 44px; border-radius: 8px; flex: none; background-size: 402px 874px; }
+  .q { font: 600 15px/20px "InterTake"; margin: 0 0 8px; }
+  .votes { display: flex; gap: 8px; }
+  .vb { height: 30px; padding: 0 16px; border-radius: 15px; border: 1.5px solid; font: 600 14px/27px "InterTake"; }
+  .menu-row { position: absolute; left: 0; width: 402px; height: 47px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px 0 16.5px; font: 400 14px "InterTake"; color: #121212; }
+  .menu-sep { position: absolute; left: 0; width: 402px; height: 1px; background: rgba(255,255,255,.55); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Grand tour « loi d'Elon » de l'app</h1>
+  <p class="intro">06/10/2026. J'ai coupé l'app en six zones, et un agent a lu chacune dans le code : accueil, take ouvert, Explorer, Messages, profil, création et compte. Au total, environ 250 constats, chacun avec sa preuve dans le code et des sources X et Instagram. J'en ai vérifié une partie au banc, sur le simulateur, avec le compte de test. Jev a classé chaque constat. Sur cette page, tu as d'abord <b>ce que tu dois trancher</b>, avec une maquette avant/après faite sur la vraie capture. Ensuite, <b>ce que je corrige déjà</b>, parce que ce sont des défauts et pas des questions de DA. Enfin, <b>ce qui revient à Jordan</b>.</p>
+
+  <h3>1. À toi de trancher</h3>
+
+  <section class="reco">
+    <span class="tag">1</span><span class="tag soft">Composeur</span><span class="tag soft">Jev 1,94 / 2</span>
+    <h2>Le contexte obligatoire pour Takes ne se voit presque pas</h2>
+    <p class="why">Si tu coches Takes et que tu n'écris pas de contexte, « Publier » reste gris, sans un mot. Le seul indice est le texte du champ, en gris pâle à 2,7:1, donc presque illisible. Vu au banc.</p>
+    <p class="prop"><b>Proposé :</b> le bouton dit ce qui manque, « Ajoute un contexte », et l'indice du champ passe au gris secondaire de l'app (5:1).</p>
+    <div class="compare">
+      <figure><figcaption>Aujourd'hui</figcaption><div class="frame"><div class="phone" style="background-image:url(img/composeur-takes-sans-contexte.jpg)"></div></div></figure>
+      <figure><figcaption>Proposé</figcaption><div class="frame"><div class="phone" style="background-image:url(img/composeur-takes-sans-contexte.jpg)">
+        <div class="ov" style="left:35px;top:291px;width:332px;height:24px;background:#FCFCFC"></div>
+        <div class="ov" style="left:37px;top:292px;width:330px;font:400 15px/22px InterTake;color:#6B6E73">Ajoute un contexte (obligatoire pour Takes)…</div>
+        <div class="ov" style="left:210px;top:490px;width:164px;height:34px;background:#959595"></div>
+        <div class="ov" style="left:197px;top:483px;width:189px;height:47px;font:600 15px/47px InterTake;color:#fff;text-align:center">Ajoute un contexte</div>
+      </div></div></figure>
+    </div>
+  </section>
+
+  <section class="reco">
+    <span class="tag">2</span><span class="tag soft">Après publication</span><span class="tag soft">Jev 1,86</span>
+    <h2>« Publié » alors que le take attend sa vérification pour Takes</h2>
+    <p class="why">Un take demandé pour Takes n'y entre qu'après la modération. La carte de publication dit pourtant « Publié ». Si la vérification échoue, l'auteur ne le saura jamais. Vu au banc, en publiant un take avec le compte de test.</p>
+    <p class="prop"><b>Proposé :</b> « Publié pour tes amis · Takes après vérification ». En cas de refus, la carte dirait ensuite « Pas publié dans Takes ».</p>
+    <div class="compare">
+      <figure><figcaption>Aujourd'hui</figcaption><div class="frame"><div class="phone" style="background-image:url(img/carte-publie.jpg)"></div></div></figure>
+      <figure><figcaption>Proposé</figcaption><div class="frame"><div class="phone" style="background-image:url(img/carte-publie.jpg)">
+        <div class="ov" style="left:20px;top:146px;width:286px;height:19px;background:#F4F4F4"></div>
+        <div class="ov" style="left:24px;top:147px;font:400 12.5px/17px InterTake;color:#6B6E73;white-space:nowrap">Publié pour tes amis · Takes après vérification</div>
+      </div></div></figure>
+    </div>
+  </section>
+
+  <section class="reco">
+    <span class="tag">3</span><span class="tag soft">Messages</span><span class="tag soft">Jev 1,80</span>
+    <h2>Une demande de message ne s'ouvre pas</h2>
+    <p class="why">On ne peut qu'« Accepter » ou « Supprimer ». Impossible de lire le message en entier, de voir le profil, de signaler ou de bloquer. Instagram permet d'accepter, de supprimer ou de signaler une demande (about.instagram.com). X propose la même chose d'après sa page d'aide, que je n'ai lue que par un moteur de recherche.</p>
+    <p class="prop"><b>Proposé :</b> toucher la demande ouvre la conversation en lecture seule. En bas : Bloquer · Signaler · Supprimer, et Accepter en grand. Lire avant d'accepter est un choix produit, que l'API refuse aujourd'hui. Le minimum serait le profil, Signaler et Bloquer. C'est le code de Jordan, donc ce serait à faire avec lui.</p>
+    <div class="compare">
+      <figure><figcaption>Aujourd'hui</figcaption><div class="frame"><div class="phone" style="background-image:url(img/demandes-messages.jpg)"></div></div></figure>
+      <figure><figcaption>Proposé : la demande ouverte</figcaption><div class="frame"><div class="phone" style="background-image:url(img/demandes-messages.jpg)">
+        <div class="ov" style="left:0;top:56px;width:402px;height:818px;background:#fff"></div>
+        <div class="ov" style="left:16px;top:72px;width:36px;height:36px;border-radius:18px;background:#F0F2F5;font:500 20px/34px InterTake;text-align:center">‹</div>
+        <div class="ov" style="left:0;top:78px;width:402px;text-align:center;font:600 17px/24px InterTake">Demande de message</div>
+        <div class="ov" style="left:165px;top:134px;width:72px;height:72px;border-radius:36px;background-image:url(img/demandes-messages.jpg);background-size:603px 1311px;background-position:-12px -175px"></div>
+        <div class="ov" style="left:0;top:216px;width:402px;text-align:center;font:600 16px/22px InterTake">@musktest0930184</div>
+        <div class="ov" style="left:0;top:240px;width:402px;text-align:center;font:400 13px/18px InterTake;color:#6B6E73">Pas dans tes amis · <span style="color:#121212;font-weight:600">Voir le profil</span></div>
+        <div class="ov" style="left:16px;top:300px;max-width:270px;padding:10px 14px;border-radius:18px;background:#F0F2F5;font:400 16px/22px InterTake">Salut Ava ! On s'est croisées au concert samedi, non ?</div>
+        <div class="ov" style="left:0;top:672px;width:402px;padding:0 28px;text-align:center;font:400 13px/18px InterTake;color:#6B6E73">Accepte pour lui répondre. Tant que tu n'as pas accepté, il ne voit pas que tu as lu son message.</div>
+        <div class="ov" style="left:16px;top:728px;width:370px;display:flex;justify-content:space-around;font:600 15px/40px InterTake"><span style="color:#D81E31">Bloquer</span><span style="color:#D81E31">Signaler</span><span>Supprimer</span></div>
+        <div class="ov" style="left:16px;top:776px;width:370px;height:48px;border-radius:24px;background:#121212;color:#fff;text-align:center;font:600 16px/48px InterTake">Accepter</div>
+      </div></div></figure>
+    </div>
+  </section>
+
+  <section class="reco">
+    <span class="tag">4</span><span class="tag soft">Fil</span><span class="tag soft">Jev 1,77</span>
+    <h2>Le menu « … » d'un take n'a ni « Bloquer » ni « Masquer la personne »</h2>
+    <p class="why">Sur le take de quelqu'un d'autre, le menu propose seulement « Masquer ce take » et « Signaler ». Sur X, le menu d'un post propose de masquer, bloquer et signaler l'auteur (help.x.com, « Control your X experience »).</p>
+    <p class="prop"><b>Proposé :</b> quatre lignes. Masquer ce take, Masquer Sofia (ses takes ne s'affichent plus), Bloquer Sofia, Signaler.</p>
+    <div class="compare">
+      <figure><figcaption>Aujourd'hui</figcaption><div class="frame"><div class="phone" style="background-image:url(img/menu-take-autrui.jpg)"></div></div></figure>
+      <figure><figcaption>Proposé</figcaption><div class="frame"><div class="phone" style="background-image:url(img/menu-take-autrui.jpg)">
+        <div class="ov" style="left:0;top:628px;width:402px;height:246px;border-radius:34px 34px 0 0;background:rgba(227,228,227,.88);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)"></div>
+        <div class="ov" style="left:183px;top:637px;width:36px;height:5px;border-radius:3px;background:rgba(255,255,255,.75)"></div>
+        <div class="menu-row" style="top:645px"><span>Masquer ce take</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="1.9" stroke-linecap="round"><path d="M3 3l18 18"/><path d="M10.6 6.1A10 10 0 0 1 12 6c6 0 9.5 6 9.5 6a17 17 0 0 1-3.2 3.9M6.3 7.6A17 17 0 0 0 2.5 12s3.5 6 9.5 6a9.6 9.6 0 0 0 4.1-.9"/></svg></div>
+        <div class="menu-sep" style="top:692px"></div>
+        <div class="menu-row" style="top:692px"><span>Masquer Sofia</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="1.9" stroke-linecap="round"><circle cx="10" cy="8" r="4"/><path d="M3 20c0-3.3 3.1-6 7-6"/><path d="M15 17h6"/></svg></div>
+        <div class="menu-sep" style="top:739px"></div>
+        <div class="menu-row" style="top:739px"><span>Bloquer Sofia</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M5.7 5.7l12.6 12.6"/></svg></div>
+        <div class="menu-sep" style="top:786px"></div>
+        <div class="menu-row" style="top:786px;color:#D81E31"><span>Signaler</span><svg width="15" height="17" viewBox="0 0 22 24" fill="none" stroke="#D81E31" stroke-width="1.9" stroke-linejoin="round"><path d="M4 22V3h13l-2.5 4.5L17 12H4"/></svg></div>
+      </div></div></figure>
+    </div>
+  </section>
+
+  <section class="reco">
+    <span class="tag">5</span><span class="tag soft">Explorer</span><span class="tag soft">Jev 1,73</span>
+    <h2>Dans les classements, la question est coupée à côté de Non / Oui</h2>
+    <p class="why">À partir de la 3e place, la question est coupée à trois lignes pour laisser la place aux boutons : « …meilleur des dimanc… », « …un peu plus lo… ». Une question coupée, on ne peut pas y répondre. Sur un iPhone SE, il reste une trentaine de caractères. Vu au banc.</p>
+    <p class="prop"><b>Proposé :</b> la question en entier, et Non / Oui en dessous, comme dans le fil.</p>
+    <div class="compare">
+      <figure><figcaption>Aujourd'hui</figcaption><div class="frame"><div class="phone" style="background-image:url(img/explorer-tendances.jpg)"></div></div></figure>
+      <figure><figcaption>Proposé</figcaption><div class="frame"><div class="phone" style="background-image:url(img/explorer-tendances.jpg)">
+        <div class="ov" style="left:0;top:569px;width:402px;height:226px;background:#fff;overflow:hidden">
+          <div class="row"><div class="rank">3</div><div class="thumb" style="background-image:url(img/explorer-tendances.jpg);background-position:-56px -590px"></div><div><p class="q">Une matinée tranquille, est-ce le meilleur des dimanches ?</p><div class="votes"><span class="vb" style="border-color:#D81E31;color:#D81E31">Non</span><span class="vb" style="border-color:#008B45;color:#008B45">Oui</span></div></div></div>
+          <div class="row"><div class="rank" style="color:#9A9DA4">4</div><div class="thumb" style="background-image:url(img/explorer-tendances.jpg);background-position:-56px -677px"></div><div><p class="q">Accepterais-tu une semaine de quatre jours un peu plus longs ?</p><div class="votes"><span class="vb" style="border-color:#D81E31;color:#D81E31">Non</span><span class="vb" style="border-color:#008B45;color:#008B45">Oui</span></div></div></div>
+        </div>
+      </div></div></figure>
+    </div>
+  </section>
+
+  <section class="reco">
+    <span class="tag">6</span><span class="tag soft">Fil</span><span class="tag soft">Jev 1,72</span>
+    <h2>Le double-toucher sur une photo</h2>
+    <p class="why">Deux touchers sur la photo d'un take ouvrent le take, à la demande d'un testeur au TF 178. Mais du coup, chaque toucher simple attend environ 200 ms avant d'ouvrir la photo en grand, le temps de savoir si un 2e toucher arrive. Sur Instagram, le double-toucher veut dire « j'aime » (help.instagram.com).</p>
+    <p class="prop"><b>Proposé :</b> supprimer le double-toucher. La photo s'ouvre tout de suite, et le take s'ouvre en touchant la question. C'est un geste, donc pas d'image.</p>
+  </section>
+
+  <section class="reco">
+    <span class="tag">7</span><span class="tag soft">Fil Takes</span><span class="tag soft">Jev 1,58</span>
+    <h2>La pastille « nouveaux takes » n'existe que dans Amis</h2>
+    <p class="why">Instagram a son bouton « New Posts » sur le fil principal (about.instagram.com, 2018), et X sa pastille sur l'onglet Following. Dans Takes, rien ne dit que des takes plus récents sont arrivés.</p>
+    <p class="prop"><b>Proposé :</b> la même pastille que dans Amis, sans visages parce que les takes officiels n'ont pas d'auteur. Un toucher remonte en haut et recharge. Côté serveur, il faut une lecture légère qui ne compte que les nouveaux takes.</p>
+    <div class="compare">
+      <figure><figcaption>Aujourd'hui</figcaption><div class="frame"><div class="phone" style="background-image:url(img/fil-takes.jpg)"></div></div></figure>
+      <figure><figcaption>Proposé</figcaption><div class="frame"><div class="phone" style="background-image:url(img/fil-takes.jpg)">
+        <div class="ov" style="left:50%;transform:translateX(-50%);top:110px;height:36px;padding:0 16px 0 12px;border-radius:18px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.14);display:flex;align-items:center;gap:6px;font:600 14px InterTake;white-space:nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.2" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>3 nouveaux takes</div>
+      </div></div></figure>
+    </div>
+  </section>
+
+  <section class="reco">
+    <span class="tag">8</span><span class="tag soft">Explorer · Actu</span><span class="tag soft">Jev 1,40</span>
+    <h2>Actu est numérotée comme un classement</h2>
+    <p class="why">Les takes d'Actu sont rangés par date, mais on les numérote 1, 2, 3, comme les Tendances. Un numéro fait croire à un classement.</p>
+    <p class="prop"><b>Proposé :</b> pas de numéros dans Actu. Dans la maquette, je les ai seulement effacés ; dans l'app, la question prendrait leur place.</p>
+    <div class="compare">
+      <figure><figcaption>Aujourd'hui</figcaption><div class="frame"><div class="phone" style="background-image:url(img/explorer-actu.jpg)"></div></div></figure>
+      <figure><figcaption>Proposé</figcaption><div class="frame"><div class="phone" style="background-image:url(img/explorer-actu.jpg)">
+        <div class="ov" style="left:14px;top:178px;width:11px;height:16px;background:#fff"></div>
+        <div class="ov" style="left:23px;top:403px;width:13px;height:16px;background:#fff"></div>
+        <div class="ov" style="left:23px;top:487px;width:13px;height:16px;background:#fff"></div>
+        <div class="ov" style="left:23px;top:572px;width:13px;height:16px;background:#fff"></div>
+        <div class="ov" style="left:23px;top:646px;width:13px;height:16px;background:#fff"></div>
+        <div class="ov" style="left:23px;top:721px;width:13px;height:16px;background:#fff"></div>
+      </div></div></figure>
+    </div>
+  </section>
+
+  <section class="reco">
+    <span class="tag">9</span><span class="tag soft">Take ouvert</span><span class="tag soft">Jev 1,38</span>
+    <h2>La marque « ✦ IA » du contexte se lit à peine</h2>
+    <p class="why">C'est elle qui dit que le contexte a été écrit par une IA. Elle est pourtant en gris pâle à 11 pt : 2,4:1 à 2,7:1 selon le fond, alors qu'un texte doit atteindre 4,5:1 (WCAG).</p>
+    <p class="prop"><b>Proposé :</b> le gris secondaire de l'app, en 12 pt (4,6:1 au pire). Même place, même taille de bulle.</p>
+    <div class="compare">
+      <figure><figcaption>Aujourd'hui</figcaption><div class="frame"><div class="phone" style="background-image:url(img/take-ouvert-ia.jpg)"></div></div></figure>
+      <figure><figcaption>Proposé</figcaption><div class="frame"><div class="phone" style="background-image:url(img/take-ouvert-ia.jpg)">
+        <div class="ov" style="left:338px;top:329px;width:38px;height:21px;background:#FBFBFB"></div>
+        <div class="ov" style="right:32.5px;top:332px;height:15px;display:flex;align-items:center;gap:3px;font:400 12px/15px InterTake;color:#6B6E73;white-space:nowrap"><svg width="14" height="14" viewBox="0 0 256 256" fill="#6B6E73" aria-hidden="true"><path d="M208,144a15.78,15.78,0,0,1-10.42,14.94L146,178l-19,51.62a15.92,15.92,0,0,1-29.88,0L78,178l-51.62-19a15.92,15.92,0,0,1,0-29.88L78,110l19-51.62a15.92,15.92,0,0,1,29.88,0L146,110l51.62,19A15.78,15.78,0,0,1,208,144ZM152,48h16V64a8,8,0,0,0,16,0V48h16a8,8,0,0,0,0-16H184V16a8,8,0,0,0-16,0V32H152a8,8,0,0,0,0,16Zm88,32h-8V72a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0V96h8a8,8,0,0,0,0-16Z"/></svg>IA</div>
+      </div></div></figure>
+    </div>
+  </section>
+
+  <section class="reco">
+    <span class="tag soft">Autres choix pour toi (maquettes à la demande)</span>
+    <ul class="plain">
+      <li><b>« En hausse » en rouge</b> (Jev 1,56) : c'est le rouge du « Non », de Supprimer et des erreurs. Proposé : un gris neutre avec une flèche.</li>
+      <li><b>Le n°1 d'Explorer sans sa photo</b> (1,52) : les rangées suivantes ont une vignette, mais le n°1 n'a rien. Proposé : afficher sa photo ou sa vidéo.</li>
+      <li><b>« Se connecter » et « S'inscrire »</b> (1,38) : c'est ton choix du 26/09, et les deux mènent au même écran. Mais la feuille de connexion et le mur disent « Continuer avec un e-mail ». À toi de voir si tu gardes deux libellés différents.</li>
+      <li><b>Le vert du « Oui »</b> (1,34) : 4,4:1, un poil sous le minimum. Proposé : un vert un peu plus foncé.</li>
+      <li><b>Les commentaires ne sont jamais traduits</b> (1,26), alors que les takes le sont, et que X et Instagram traduisent les commentaires. La route serveur existe déjà.</li>
+      <li><b>Les nombres</b> (1,26) : à 999 999 amis, ton profil affiche « 1000K ». Sur le profil d'un autre, les takes et le score s'écrivent bruts (« 1284 »). Proposé : le même format compact partout.</li>
+      <li><b>« Reposté par X »</b> (1,25) : gris pâle à 2,7:1. Proposé : le gris secondaire.</li>
+      <li><b>L'icône ⓘ du take ouvert</b> (1,20) : c'est le symbole « information », mais elle sert à voir la photo. Proposé : une icône de photo.</li>
+      <li><b>Le point « non lu » des messages</b> (1,18) : c'est le rouge des erreurs d'envoi, alors qu'Instagram met un point bleu.</li>
+      <li><b>La feuille « Ajouter quelqu'un » du Top 8</b> (1,04) : elle est passée au verre le 05/10 (#3830, agent de Jordan), alors qu'elle était blanche. Ta règle dit de ne jamais vitrer le blanc.</li>
+      <li><b>« Cherche des takes, des gens, des lieux »</b> (0,96) : la recherche ne renvoie jamais de lieux. Proposé : « Cherche des takes, des gens ».</li>
+      <li><b>Modifier le profil</b> (0,90) : la tête montre des initiales grises, alors que partout ailleurs c'est le visage 3D.</li>
+      <li><b>Les filtres d'Activité</b> (0,74) : ce sont des pastilles grises, alors que le profil, Explorer et X utilisent des onglets soulignés.</li>
+      <li><b>« Score »</b> (0,61) : dans l'en-tête, c'est la somme des parties ; dans le classement du jeu, le meilleur score. Proposé : « Score total » et « Meilleur score ».</li>
+      <li><b>Le thème clair / sombre</b> (0,41) : l'app suit le téléphone, comme Instagram. X propose ses thèmes dans l'app.</li>
+    </ul>
+  </section>
+
+  <h3>2. Ce que je corrige déjà (défauts, pas de DA)</h3>
+  <div class="fix"><b>TAK-474, urgent : une fuite d'anonymat dans le fil.</b> Sur une question ouverte, le fantôme dit « Tu es en anonyme », mais la réponse part sous ton vrai nom. Même chose si tu touches le fantôme après avoir voté : le toast l'annonce, mais le vote reste public. Au passage, la barre du bas devient noire au-dessus d'un take voté en anonyme. Correctif en cours.</div>
+  <div class="fix"><b>TAK-476, urgent : « Supprimer mon compte » part en un seul toucher</b>, sans confirmation (et ça échouerait probablement après 24 h de session). Ajout aussi du <b>bouton Anonyme quand tu te poses une question à toi-même</b>, comme sur le profil des autres (ta demande de cette nuit). Correctif en cours.</div>
+  <div class="compare" style="margin:0 0 18px">
+    <figure><figcaption>Aujourd'hui : se poser une question</figcaption><div class="frame"><div class="phone" style="background-image:url(img/questions-recues-me-poser.jpg)"></div></div></figure>
+    <figure><figcaption>Le même bouton que chez les autres</figcaption><div class="frame"><div class="phone" style="background-image:url(img/profil-noah-questions-anonyme.jpg)"></div></div></figure>
+  </div>
+  <div class="fix"><b>TAK-475 : le take ouvert.</b>
+    <ul class="plain">
+      <li>Ouvert depuis Amis par l'aperçu (appui long), un take montre le graphique, contre ta règle « Amis = zéro graphique ».</li>
+      <li>Changer le tri des commentaires vide la liste.</li>
+      <li>« Bloquer » ne fait rien sur un commentaire anonyme.</li>
+      <li>L'auteur d'un take ne peut ni signaler ni bloquer un commentateur.</li>
+      <li>La bande du haut écrit « Anonyme » pour un take de l'IA.</li>
+    </ul>
+    Correctif en cours.</div>
+  <div class="fix"><b>TAK-473 : un take sans contexte sort de Takes</b>, comme tu l'as demandé. C'est une règle serveur et rien n'est effacé en base. En cours.</div>
+  <div class="fix"><b>Ensuite, dans l'ordre :</b>
+    <ul class="plain">
+      <li>les boutons sous 44 pt (Oui/Non font 37 pt) : on agrandit seulement la zone touchable, le dessin ne change pas ;</li>
+      <li>les derniers fonds gris pendant les chargements : onglet Questions et Top 8 du profil, classement du jeu, onboarding ;</li>
+      <li>sans compte, les onglets Questions et Reposts d'un profil sont en erreur, et Actu est vide ;</li>
+      <li>la page blanche au premier chargement de Takes : Amis a son loader et garde sa 1re page sur le téléphone, Takes non ;</li>
+      <li>deux régressions probables, lues dans le code mais pas encore vues à l'écran : dans Amis, toucher la pastille « nouveaux takes » ne les montre pas, et la barre du haut reste cachée quand on remonte en touchant l'heure ;</li>
+      <li>la recherche et les préchargements qui chargent beaucoup trop d'un coup ;</li>
+      <li>« Renvoyer le code », qui échoue probablement quand le captcha est actif (lu dans le code, pas encore essayé) ;</li>
+      <li>hors ligne au démarrage, « Publier » reste grisé sans explication.</li>
+    </ul>
+  </div>
+
+  <h3>3. Pour Jordan (son code, je n'y touche pas)</h3>
+  <p class="muted">Lu dans le code des messages, pas encore vu sur l'appareil.</p>
+  <ul class="plain">
+    <li>Depuis #3973 (TAK-466), si tu as fait défiler la boîte au-delà de 30 conversations, chaque message reçu lui fait perdre ses lignes suivantes, et elle saute.</li>
+    <li>Chaque message déclenche environ 3 relectures lourdes de la boîte par appareil, plus une relecture des demandes.</li>
+    <li>Dans un fil archivé ou au-delà des 30 premières conversations, les photos d'un ami sont voilées, il n'y a pas de « Vu », et « Bloquer » ne fait rien.</li>
+    <li>« Envoyé » s'affiche dans la boîte pour un message encore en attente.</li>
+    <li>Le micro n'a ni rôle ni libellé pour VoiceOver, et il fait 30 × 36 pt.</li>
+  </ul>
+
+  <footer>Classement : Jev (TypeSafe), une question <code>&lt;id&gt;_imp</code> par point, score de 0 à 2. Captures : banc iOS, main e413fb69ca, compte de test. Rapports complets des six zones : un par zone, avec chaque constat, sa ligne de code et ses sources.</footer>
+</main>
+</body>
+</html>
