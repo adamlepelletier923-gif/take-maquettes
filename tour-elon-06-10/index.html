@@ -232,35 +232,20 @@
     </ul>
   </section>
 
-  <h3>2. Ce que je corrige déjà (défauts, pas de DA)</h3>
-  <div class="fix"><b>TAK-474, urgent : une fuite d'anonymat dans le fil.</b> Sur une question ouverte, le fantôme dit « Tu es en anonyme », mais la réponse part sous ton vrai nom. Même chose si tu touches le fantôme après avoir voté : le toast l'annonce, mais le vote reste public. Au passage, la barre du bas devient noire au-dessus d'un take voté en anonyme. Correctif en cours.</div>
-  <div class="fix"><b>TAK-476, urgent : « Supprimer mon compte » échoue pour presque tous les vrais comptes.</b> Dès que la session a plus de 24 h, le serveur refuse la suppression, et l'écran dit seulement « Réessaie ». La suppression en un toucher depuis l'écran dédié reste comme tu l'as décidé (point 144). Le correctif est prêt (#4004), mais il ajoute une étape : un code reçu par e-mail pour confirmer que c'est bien toi, comme la connexion. Je te la montre avant de la fusionner. Au passage, j'ajoute le <b>bouton Anonyme quand tu te poses une question à toi-même</b>, comme sur le profil des autres (ta demande de cette nuit).</div>
-  <div class="compare" style="margin:0 0 18px">
-    <figure><figcaption>Aujourd'hui : se poser une question</figcaption><div class="frame"><div class="phone" style="background-image:url(img/questions-recues-me-poser.jpg)"></div></div></figure>
-    <figure><figcaption>Le même bouton que chez les autres</figcaption><div class="frame"><div class="phone" style="background-image:url(img/profil-noah-questions-anonyme.jpg)"></div></div></figure>
-  </div>
-  <div class="fix"><b>TAK-475 : le take ouvert.</b>
+  <h3>2. Ce que je corrige (défauts, pas de DA) : état à 17:45</h3>
+  <div class="fix"><b>Dans main :</b>
     <ul class="plain">
-      <li>Ouvert depuis Amis par l'aperçu (appui long), un take montre le graphique, contre ta règle « Amis = zéro graphique ».</li>
-      <li>Changer le tri des commentaires vide la liste.</li>
-      <li>« Bloquer » ne fait rien sur un commentaire anonyme.</li>
-      <li>L'auteur d'un take ne peut ni signaler ni bloquer un commentateur.</li>
-      <li>La bande du haut écrit « Anonyme » pour un take de l'IA.</li>
-    </ul>
-    Correctif en cours.</div>
-  <div class="fix"><b>TAK-473 : un take sans contexte sort de Takes</b>, comme tu l'as demandé. C'est une règle serveur et rien n'est effacé en base. En cours.</div>
-  <div class="fix"><b>Ensuite, dans l'ordre :</b>
-    <ul class="plain">
-      <li>les boutons sous 44 pt (Oui/Non font 37 pt) : on agrandit seulement la zone touchable, le dessin ne change pas ;</li>
-      <li>les derniers fonds gris pendant les chargements : onglet Questions et Top 8 du profil, classement du jeu, onboarding ;</li>
-      <li>sans compte, les onglets Questions et Reposts d'un profil sont en erreur, et Actu est vide ;</li>
-      <li>la page blanche au premier chargement de Takes : Amis a son loader et garde sa 1re page sur le téléphone, Takes non ;</li>
-      <li>deux régressions probables, lues dans le code mais pas encore vues à l'écran : dans Amis, toucher la pastille « nouveaux takes » ne les montre pas, et la barre du haut reste cachée quand on remonte en touchant l'heure ;</li>
-      <li>la recherche et les préchargements qui chargent beaucoup trop d'un coup ;</li>
-      <li>« Renvoyer le code », qui échoue probablement quand le captcha est actif (lu dans le code, pas encore essayé) ;</li>
-      <li>hors ligne au démarrage, « Publier » reste grisé sans explication.</li>
+      <li><b>TAK-474, fuite d'anonymat (#4002).</b> Vérifié au simulateur : une réponse envoyée fantôme allumé est enregistrée anonyme et s'affiche « Anonyme ». Toucher le fantôme d'un take déjà voté passe ce vote en anonyme, sans le compter deux fois. La barre du bas ne noircit plus.</li>
+      <li><b>TAK-475, take ouvert (#4003).</b> L'aperçu depuis Amis n'a plus de graphique, changer le tri garde la liste (vu au simulateur), le menu des commentaires est complet, et la bande du haut n'écrit plus « Anonyme » pour un take de l'IA.</li>
+      <li><b>TAK-473, Takes sans contexte (#3994).</b> Un take sans contexte sort de Takes, rien n'est effacé. Conséquence : un take anonyme n'entre plus dans Takes, parce que son contexte est caché.</li>
+      <li><b>Bouton Anonyme quand tu te poses une question (#4007).</b> Vu au simulateur, éteint par défaut, comme chez les autres.</li>
+      <li><b>TAK-478 (#4010).</b> La pastille d'Amis arrive sur les nouveaux takes, la barre du haut revient au toucher de l'heure, et un loader remplace la page blanche de Takes.</li>
+      <li><b>TAK-480 (#4012).</b> Zones de toucher agrandies sans changer le dessin, et plus aucun fond gris pendant les chargements. Oui/Non restent à 37 pt : pour 44, il faudrait plus d'espace sous le vote, et c'est ton choix.</li>
     </ul>
   </div>
+  <div class="fix"><b>Attend ton oui : TAK-476, la suppression du compte (#4004).</b> Elle échoue toujours après 24 h de session. Le correctif ajoute une étape avec un code reçu par e-mail : <a href="../suppression-compte-06-10/">maquette avant/après</a>. La suppression en un toucher reste comme tu l'as décidé (point 144).</div>
+  <div class="fix"><b>Prête, attend la PR de Jordan : TAK-479, l'app sans compte (#4011).</b> Elle rend les onglets Questions et Reposts d'un profil public, et Actu, lisibles sans compte, sans rien de privé. Elle touche quatre fichiers que la PR de Jordan (#3948) modifie aussi : sa PR passe d'abord.</div>
+  <div class="fix"><b>Ensuite :</b> la recherche et les préchargements qui chargent trop, « Renvoyer le code » avec le captcha, et « Publier » grisé hors ligne.</div>
 
   <h3>3. Pour Jordan (son code, je n'y touche pas)</h3>
   <p class="muted">Lu dans le code des messages, pas encore vu sur l'appareil.</p>
