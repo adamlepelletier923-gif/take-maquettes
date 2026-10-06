@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Supprimer son compte</title>
+<style>
+  @font-face { font-family: "InterTake"; src: url(../tour-elon-06-10/fonts/Inter_400Regular.ttf); font-weight: 400; }
+  @font-face { font-family: "InterTake"; src: url(../tour-elon-06-10/fonts/Inter_600SemiBold.ttf); font-weight: 600; }
+  :root { --bg: #f6f6f8; --card: #ffffff; --ink: #121212; --muted: #6b6b75; --line: #e4e4ea; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #101014; --card: #18181d; --ink: #f2f2f5; --muted: #a2a2ad; --line: #2a2a31; }
+  }
+  :root[data-theme="dark"] { --bg: #101014; --card: #18181d; --ink: #f2f2f5; --muted: #a2a2ad; --line: #2a2a31; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 -apple-system, BlinkMacSystemFont, "InterTake", system-ui, sans-serif; }
+  main { max-width: 1220px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 26px; line-height: 1.2; margin: 0 0 10px; }
+  p { margin: 0 0 10px; }
+  .muted { color: var(--muted); }
+  .compare { display: grid; grid-auto-flow: column; grid-auto-columns: 282px; gap: 14px; overflow-x: auto; padding: 8px 2px 4px; margin: 16px 0 20px; }
+  figure { margin: 0; }
+  figcaption { font-size: 13px; font-weight: 600; color: var(--muted); margin: 0 0 6px; min-height: 42px; }
+  .frame { width: 282px; height: 613px; overflow: hidden; border-radius: 26px; border: 1px solid var(--line); position: relative; background: #fff; }
+  .phone { width: 402px; height: 874px; position: absolute; left: 0; top: 0; transform: scale(0.7015); transform-origin: top left;
+    background: url(img/supprimer-compte.jpg) no-repeat 0 0 / 402px 874px; font-family: "InterTake", system-ui, sans-serif; }
+  .blank { position: absolute; left: 0; top: 128px; width: 402px; height: 746px; background: #fff; }
+  .col { position: absolute; left: 16px; top: 140px; width: 370px; display: flex; flex-direction: column; gap: 12px; }
+  .txt { font: 400 15px/21px InterTake; color: #828488; margin: 0; }
+  .err { font: 400 15px/21px InterTake; color: #D81E31; margin: 0; }
+  .btn { height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font: 600 15px InterTake; }
+  .danger { background: #D81E31; color: #fff; }
+  .primary { background: #141414; color: #fff; }
+  .plain { background: transparent; color: #141414; }
+  .code { height: 48px; border-radius: 22px; border: 1px solid #E3E6EA; padding: 0 16px; display: flex; align-items: center; font: 400 16px InterTake; color: #141414; letter-spacing: 2px; }
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  li { margin: 0 0 6px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Supprimer son compte après 24 h de session</h1>
+  <p>Aujourd'hui, quand la session a plus de 24 h, le serveur refuse la suppression. L'écran dit seulement « Réessaie », et réessayer ne change rien. Presque tous les vrais comptes sont dans ce cas. Pourtant, Apple exige que la suppression aboutisse (règle 5.1.1(v)).</p>
+  <p>La correction (#4004) propose un code par e-mail pour confirmer que c'est bien toi, comme à la connexion, puis supprime. <b>Sous 24 h de session, rien ne change :</b> un toucher supprime, comme tu l'as décidé (point 144).</p>
+  <p class="muted">Écrans faits sur la vraie capture du banc, textes exacts de la PR. L'adresse e-mail est un exemple.</p>
+
+  <div class="compare">
+    <figure><figcaption>Aujourd'hui, avant de toucher</figcaption><div class="frame"><div class="phone"></div></div></figure>
+    <figure><figcaption>Aujourd'hui, session de plus de 24 h : après le toucher</figcaption><div class="frame"><div class="phone">
+      <div class="blank"></div>
+      <div class="col">
+        <p class="txt">Ton compte sera supprimé et tu seras déconnecté. Cette action ne peut pas être annulée.</p>
+        <p class="err">Impossible de supprimer le compte pour le moment. Réessaie.</p>
+        <div class="btn danger">Supprimer définitivement</div>
+      </div>
+    </div></div></figure>
+    <figure><figcaption>Proposé, étape 1 (seulement après 24 h)</figcaption><div class="frame"><div class="phone">
+      <div class="blank"></div>
+      <div class="col">
+        <p class="txt">Pour confirmer que c’est bien toi, on va t’envoyer un code à ava.martin@exemple.com.</p>
+        <div class="btn primary">Recevoir le code</div>
+      </div>
+    </div></div></figure>
+    <figure><figcaption>Proposé, étape 2 : le code tapé</figcaption><div class="frame"><div class="phone">
+      <div class="blank"></div>
+      <div class="col">
+        <p class="txt">Entre le code envoyé à ava.martin@exemple.com.</p>
+        <div class="code">482913</div>
+        <div class="btn danger">Supprimer définitivement</div>
+        <div class="btn plain">Renvoyer le code</div>
+      </div>
+    </div></div></figure>
+  </div>
+
+  <p><b>Ce que je te demande :</b> un oui ou un non sur cette étape.</p>
+  <ul>
+    <li>Oui : je fusionne #4004, sa CI est déjà verte.</li>
+    <li>Non : il faut une autre voie. Par exemple, un lien de confirmation envoyé par e-mail à chaque suppression, même sous 24 h. Ou bien retirer la protection des 24 h côté serveur, mais elle protège aussi d'autres actions sensibles.</li>
+  </ul>
+  <p class="muted">X demande le mot de passe avant de désactiver un compte (help.x.com), et Instagram une raison puis le mot de passe avant de le supprimer (help.instagram.com). Take n'a pas de mot de passe, d'où le code.</p>
+</main>
+</body>
+</html>
