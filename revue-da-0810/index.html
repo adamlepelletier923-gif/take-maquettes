@@ -29,6 +29,11 @@ p{line-height:1.5;max-width:860px}
 .box li{margin:6px 0;line-height:1.45;font-size:14px}
 .tg{display:inline-block;font:700 11px/16px var(--f);color:#fff;border-radius:6px;padding:1px 6px;margin-right:6px;vertical-align:1px;white-space:nowrap}
 .tg.E{background:var(--E)}.tg.H{background:var(--H)}.tg.M{background:var(--M)}.tg.I{background:var(--I)}
+.tg.C{background:var(--ink);color:var(--pg)}
+.au,.vs,.nw{display:inline-block;font:600 11px/16px var(--f);border-radius:6px;padding:0 6px;margin-right:6px;vertical-align:1px;white-space:nowrap}
+.au{border:1px solid var(--line);color:var(--muted);margin:0 0 0 4px;white-space:normal}
+.vs{border:1px solid #C0362C;color:#C0362C}
+.nw{border:1px solid var(--line);color:var(--muted)}
 .toc{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;padding:0;list-style:none}
 .toc a{display:inline-block;padding:5px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13px}
 section.scr{margin:44px 0 0;padding-top:12px;border-top:1px solid var(--line)}
@@ -152,9 +157,9 @@ a{color:inherit}
   <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z" fill="currentColor" stroke="none"/></symbol>
 </svg>
 <main>
-<h1>Revue DA réunie : l’app avec les quatre revues appliquées ensemble</h1>
-<p class="lead">Quatre revues ont fait le tour de Take le 08/10, chacune avec son thème : <span class="tg E">Espaces</span><span class="tg H">Hiérarchie</span><span class="tg M">Mouvement</span><span class="tg I">Idées</span>. Cette page en réunit les <b>46 propositions</b> sur <b>19 écrans</b>. À gauche, la vraie capture prise pendant le tour. À droite, le même écran avec toutes ses propositions appliquées en même temps, à la même échelle (402 × 874 pt). Les deux sont dessinés en clair, sauf le menu « ··· » et l’Activité, montrés en sombre pour les règles propres au thème sombre.</p>
-<p class="lead">Ce ne sont que des propositions : rien n’est appliqué dans l’app, et chaque point se tranche à part. Les numéros renvoient aux rapports (E7 = constat 7 d’Espaces). Les captures viennent de staging, avec des comptes et des textes de test. Le take de l’onboarding et les prénoms des suggestions sont des exemples.</p>
+<h1>Revue DA réunie : les revues Claude et Codex sur une seule page</h1>
+<p class="lead">Quatre revues ont fait le tour de Take le 08/10, chacune avec son thème : <span class="tg E">Espaces</span><span class="tg H">Hiérarchie</span><span class="tg M">Mouvement</span><span class="tg I">Idées</span>. Leurs quatre jumelles, faites ensuite par Codex sur les mêmes thèmes, y sont ajoutées avec l’étiquette <span class="tg C">Codex</span>. La page réunit <b>69 propositions</b> sur <b>21 écrans</b>, dont <b>28 de Codex</b> : 17 nouvelles, 6 contraires à une proposition déjà là (gardées toutes les deux, à choisir), et 5 qui rejoignent une proposition déjà là, marquées « aussi proposé par Codex ». À gauche, la vraie capture prise pendant le tour. À droite, le même écran avec toutes ses propositions appliquées en même temps, à la même échelle (402 × 874 pt). Les écrans « Codex · après » sont ceux des maquettes Codex, rendus à la même échelle : chacun montre sa proposition seule, pas tout ensemble. Les « avant » et « après » Claude sont dessinés en clair, sauf le menu « ··· » et l’Activité, montrés en sombre pour les règles propres au thème sombre.</p>
+<p class="lead">Ce ne sont que des propositions : rien n’est appliqué dans l’app, et chaque point se tranche à part. Les numéros renvoient aux rapports (E7 = constat 7 d’Espaces ; « Codex Espaces 3 » = constat 3 de la revue Codex Espaces). Les captures viennent de staging, avec des comptes et des textes de test. Le take de l’onboarding et les prénoms des suggestions sont des exemples.</p>
 
 <ul class="toc">
 <li><a href="#regles">Partout</a></li><li><a href="#mouvement">Mouvement</a></li>
@@ -162,7 +167,7 @@ a{color:inherit}
 <li><a href="#s5">5 Take ouvert</a></li><li><a href="#s6">6 Menu « ··· »</a></li><li><a href="#s7">7 Partage</a></li><li><a href="#s8">8 Composeur</a></li>
 <li><a href="#s9">9 Explorer</a></li><li><a href="#s10">10 Messages</a></li><li><a href="#s11">11 Messages vide</a></li><li><a href="#s12">12 Mon profil</a></li>
 <li><a href="#s13">13 Profil public</a></li><li><a href="#s14">14 Activité</a></li><li><a href="#s15">15 Paramètres</a></li><li><a href="#s16">16 KnowMe</a></li>
-<li><a href="#s17">17 Take Rush</a></li><li><a href="#s18">18 Premier take</a></li><li><a href="#s19">19 Invitation</a></li><li><a href="#arbitrages">Fusions et contradictions</a></li>
+<li><a href="#s17">17 Take Rush</a></li><li><a href="#s18">18 Premier take</a></li><li><a href="#s19">19 Invitation</a></li><li><a href="#s20">20 Conversation</a></li><li><a href="#s21">21 KnowMe, nouveau quiz</a></li><li><a href="#arbitrages">Fusions et contradictions</a></li>
 </ul>
 
 <div class="box" id="regles">
@@ -293,11 +298,19 @@ a{color:inherit}
   <div class="pl pg" style="left:106px;top:614px;width:190px;height:36px">Continuer dans Takes</div>
   <div class="c" style="left:336px;top:741px;width:54px;height:54px;background-position:-336px -741px"></div>
 </div></div></figure>
+<figure><figcaption>Codex · Espaces 1 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ec1.jpg)"></div></div></figure>
+<figure><figcaption>Codex · Espaces 6 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ec6.jpg)"></div></div></figure>
+<figure><figcaption>Codex · Hiérarchie 1 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-hc1.jpg)"></div></div></figure>
+<figure><figcaption>Codex · Mouvement 5 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-mc5.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
 <li><span class="tg I">I11</span>Le fil ne s’arrête plus sur du blanc. Sous le dernier take, « Tu as tout vu », puis « Continuer dans Takes », qui fait glisser l’onglet d’une page sans fondu. Le repère n’apparaît qu’une fois la dernière page chargée (textes nouveaux).</li>
-<li><span class="tg M">M2</span>Les mêmes boutons-jauges que dans Takes. Le fil Amis reste sans graphique.</li>
+<li><span class="tg M">M2</span>Les mêmes boutons-jauges que dans Takes. Le fil Amis reste sans graphique. <span class="vs">contesté par Codex</span>Hiérarchie 1 et Mouvement 5 voient la jauge et ses pourcentages comme un graphique dans Amis (ci-dessous).</li>
 <li><span class="tg E">E7</span><span class="tg E">E1</span>Même tête de rangée de 24 pt, avec le filet sur l’avatar.</li>
+<li><span class="tg C">Codex</span><span class="tg E">Espaces 1</span><span class="nw">nouvelle</span>Une bande d’actions de 44 pt sous chaque take (réponses, reposts, partage, commentaires) : les cibles passent de 38–39 pt à 44 pt, et la rangée grandit de 27 pt. Vaut pour Takes, À proximité et les profils.</li>
+<li><span class="tg C">Codex</span><span class="tg E">Espaces 6</span><span class="nw">nouvelle</span>La ligne d’auteur passe à 44 pt et le menu « ··· » reçoit une cible de 44 × 44 pt ; la question descend de 20 pt. Avec Espaces 1, chaque take grandit de 47 pt : la densité est à arbitrer face à E7, qui garde le titre à 46 pt du haut.</li>
+<li><span class="tg C">Codex</span><span class="tg H">Hiérarchie 1</span><span class="vs">contraire à M2 dans Amis</span>Après le vote, ni pourcentages ni jauge : une seule ligne « ✓ Ton vote : Non · Modifier », puis les actions. Takes garde ses résultats et son contexte.</li>
+<li><span class="tg C">Codex</span><span class="tg M">Mouvement 5</span><span class="vs">contraire à M2 dans Amis</span>Après le vote, la pastille choisie se remplit (« ✓ Non ») et le compteur de votes change, sans pourcentage, à hauteur stable. Proche de Hiérarchie 1, qui écrit le vote en toutes lettres.</li>
 </ul>
 </section>
 
@@ -326,10 +339,12 @@ a{color:inherit}
   <div class="pl pk" style="left:302px;top:436px;width:84px;height:32px;font-size:14px">Ajouter</div>
   <div class="pl pg" style="left:16px;top:500px;width:370px;height:44px"><svg class="ic"><use href="#i-userplus"/></svg>Inviter des amis</div>
 </div></div></figure>
+<figure><figcaption>Codex · Idées 1 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ic1.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
 <li><span class="tg I">I4</span>L’état vide montre des personnes au lieu d’un bouton qui envoie ailleurs. Trois suggestions s’ajoutent sur place, chacune avec sa raison : un contact sur Take, un ami d’ami ou le même vote sur un take public. Un vote anonyme ne sert jamais de raison. « Inviter des amis » suit.</li>
 <li><span class="tg H">H9</span>Le titre se distingue enfin de la phrase : c’est le composant d’état vide commun. Les textes nouveaux sont à écrire dans les six langues.</li>
+<li><span class="tg C">Codex</span><span class="tg I">Idées 1</span><span class="vs">contraire à I4</span>L’état vide propose d’abord une question à publier (« Préparer ce take »), puis l’invitation après la publication ; « Trouver des amis » passe en second. I4 met les personnes suggérées en premier.</li>
 </ul>
 </section>
 
@@ -346,7 +361,7 @@ a{color:inherit}
 </div>
 <ul class="chg">
 <li><span class="tg H">H9</span>« Où es-tu ? » devient un vrai titre en 17/22 semi-gras, et la phrase reste en gris secondaire, au contraste AA. Les deux actions ne changent pas.</li>
-<li>Aucun des quatre tours n’a vu la carte : la position n’a jamais été accordée.</li>
+<li>Aucun des quatre tours Claude n’a vu la carte : la position n’a jamais été accordée. La revue Codex Espaces l’a photographiée, sans proposition dessus.</li>
 </ul>
 </section>
 
@@ -362,11 +377,13 @@ a{color:inherit}
   <div class="vb n r" style="left:16px;top:422px"><i style="width:50%"></i><span>Non</span><span>50 %</span></div>
   <div class="vb y r on" style="left:206px;top:422px"><i style="width:50%"></i><span>✓ Oui</span><span>50 %</span></div>
 </div></div></figure>
+<figure><figcaption>Codex · Espaces 5 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ec5.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
 <li><span class="tg E">E5</span>« Plus d’options » prend le même disque de 36 pt que « Retour ». Les deux boutons d’en-tête se lisent comme un seul contrôle.</li>
 <li><span class="tg M">M2</span>Les boutons-jauges, sans saut. La page garde son graphique (« Graphique › ») et son contexte.</li>
 <li>Le « j’aime » reste réservé aux commentaires et aux questions ; rien ne s’ajoute sur le take.</li>
+<li><span class="tg C">Codex</span><span class="tg E">Espaces 5</span><span class="nw">nouvelle</span>Le tri « Pertinents » devient un contrôle de 112 × 44 pt au lieu de 87,7 × 25, dans la barre « 1 vote », sans décaler le premier commentaire.</li>
 </ul>
 </section>
 
@@ -392,12 +409,14 @@ a{color:inherit}
     <div class="t" style="left:52px;top:252px;font:400 16px/20px var(--f);color:#E7E9EA">Signaler</div>
   </div>
 </div></div></figure>
+<figure><figcaption>Codex · Hiérarchie 4 · après (clair)</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-hc4.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
-<li><span class="tg E">E3</span><span class="tg H">H3</span>Une seule feuille pour tous les menus : opaque (#1E2126 en sombre, blanche en clair), rangées de 52 pt, icône de 20 pt en tête à x = 16, libellé à x = 52. La même matière vaut pour « Signaler », « Apparence » et le partage : passer de « ··· » à « Signaler » ne change plus d’objet.</li>
+<li><span class="tg E">E3</span><span class="tg H">H3</span>Une seule feuille pour tous les menus : opaque (#1E2126 en sombre, blanche en clair), rangées de 52 pt, icône de 20 pt en tête à x = 16, libellé à x = 52. La même matière vaut pour « Signaler », « Apparence » et le partage : passer de « ··· » à « Signaler » ne change plus d’objet. <span class="au">aussi proposé par Codex : Mouvement 4, une seule feuille et un voile qui reste, le contenu du menu remplacé par le signalement</span></li>
 <li><span class="tg H">H4</span>En sombre, « Signaler » a un libellé neutre (#E7E9EA, 14,1:1) au lieu d’un rouge à 3,1:1, et seule l’icône reste rouge. L’action est rangée à part, sous une bande de 8 pt. En clair, rien ne change.</li>
 <li><span class="tg I">I10</span>Deux actions pour corriger son fil, en tête du menu : « Pas intéressé·e par ce take » et « Moins de takes « Culture » » (textes nouveaux).</li>
 <li><span class="tg H">H11</span>« Partager » garde l’avion en papier. <span class="tg H">H5</span>Dans la feuille « Signaler », « Annuler » devient un bouton secondaire pleine largeur de 44 pt, en gris secondaire.</li>
+<li><span class="tg C">Codex</span><span class="tg H">Hiérarchie 4</span><span class="nw">nouvelle</span>La feuille « Signaler » dit d’abord « Choisir un motif envoie le signalement immédiatement ». Chaque motif a son drapeau et sa flèche, la fermeture est en tête et « Fermer sans signaler » en bas, en gris lisible (5,1:1). L’envoi reste immédiat, sans confirmation de plus (texte nouveau).</li>
 </ul>
 </section>
 
@@ -432,12 +451,14 @@ a{color:inherit}
   <div class="t ctr" style="left:220px;top:770px;width:66px;font:400 11px/14px var(--f);white-space:normal">Partager vers…</div>
   <div class="t ctr" style="left:289px;top:770px;width:66px;font:400 11px/14px var(--f);white-space:normal">Telegram</div>
 </div></div></figure>
+<figure><figcaption>Codex · Idées 4 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ic4.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
-<li><span class="tg H">H1</span>Chaque ami de la grille porte un nom, ou son @ quand le nom est vide, ainsi qu’un libellé d’accessibilité. Avant, ce n’étaient que des visages muets.</li>
+<li><span class="tg H">H1</span>Chaque ami de la grille porte un nom, ou son @ quand le nom est vide, ainsi qu’un libellé d’accessibilité. Avant, ce n’étaient que des visages muets. <span class="au">aussi proposé par Codex : Hiérarchie 2, qui range en plus les amis en lignes nommées, au-dessus des autres canaux</span></li>
 <li><span class="tg H">H3</span>La feuille est blanche et opaque : on ne lit plus les commentaires à travers.</li>
 <li><span class="tg H">H11</span>La boîte-flèche reste seulement sur « Partager vers… », la feuille système. Partout ailleurs, partager depuis Take, c’est l’avion.</li>
 <li><span class="tg M">M9</span>« Copier le lien » referme la feuille. « Lien copié » s’affiche en bas, au-dessus de la barre, avec une vibration de succès.</li>
+<li><span class="tg C">Codex</span><span class="tg I">Idées 4</span><span class="nw">nouvelle</span>Deux intentions en tête de la feuille : « Montrer » et « Demander un avis ». Demander un avis montre le take et une note modifiable (« Et toi, tu en penses quoi ? ») avant le destinataire, puis « Envoyer la demande ». Le destinataire ouvre le take, prêt à voter (textes nouveaux).</li>
 </ul>
 </section>
 
@@ -462,12 +483,18 @@ a{color:inherit}
   <div class="pl pk" style="left:252px;top:378px;width:112px;height:40px"><svg class="ic" style="width:16px;height:16px"><use href="#i-check"/></svg>Takes</div>
   <div class="t f13 s wrap" style="left:36px;top:426px;width:330px">0 ami pour l’instant : dans Takes, tout le monde peut voter.</div>
 </div></div></figure>
+<figure><figcaption>Codex · Espaces 4 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ec4.jpg)"></div></div></figure>
+<figure><figcaption>Codex · Hiérarchie 7 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-hc7.jpg)"></div></div></figure>
+<figure><figcaption>Codex · Mouvement 2 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-mc2.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
 <li><span class="tg E">E8</span>La carte descend jusqu’à 12 pt de la barre d’outils : le champ gagne environ 100 pt, et un texte long reste visible sans défiler.</li>
 <li><span class="tg E">E5</span><span class="tg E">E8</span>« Fermer » passe à gauche, en disque, comme sur X et Instagram. « Publier » reste sur la barre, au-dessus du clavier.</li>
 <li><span class="tg I">I3</span>Tant que le compte n’a aucun ami, l’audience par défaut est « Takes », et la ligne d’aide dit pourquoi. Dès le premier ami, le dernier choix de la personne reprend la main (texte nouveau).</li>
 <li><span class="tg M">M5</span>Publier ramène sur l’onglet de cette audience, avec le take en tête.</li>
+<li><span class="tg C">Codex</span><span class="tg E">Espaces 4</span><span class="vs">contraire à E8</span>La carte intérieure disparaît : le texte s’écrit sur la gouttière de 16 pt, sur 370 pt de large au lieu de 328, et les options passent à 44 pt. E8 garde la carte et l’agrandit vers le bas.</li>
+<li><span class="tg C">Codex</span><span class="tg H">Hiérarchie 7</span><span class="nw">nouvelle</span>Sous la question, deux lignes nommées de 44 pt : « Publier auprès de · Amis ⌄ » et « Format · Oui / Non ⌄ », puis « Plus d’options ». Le public et le format se lisent sans ouvrir de panneau. Le dessin diffère des pastilles « Où publier » d’I3 : à choisir.</li>
+<li><span class="tg C">Codex</span><span class="tg M">Mouvement 2</span><span class="nw">nouvelle</span>Toucher Format ou Expire ouvre les choix à la place du clavier : la carte et la barre « Publier » ne bougent pas, tous les choix se voient, puis le clavier revient avec le curseur. Avant, « Note » finissait sous la barre.</li>
 </ul>
 </section>
 
@@ -499,11 +526,13 @@ a{color:inherit}
     </div>
   </div>
 </div></div></figure>
+<figure><figcaption>Codex · Idées 7 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ic7.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
-<li><span class="tg H">H2</span>Des rangs 2 à n, on lit d’abord la question : « rang · thème », la question entière en 15/20 gras, puis le type de take. La colonne de boutons rouges et verts disparaît : toucher la ligne ouvre le take, où l’on vote. Le n° 1 garde ses boutons. Les libellés de type sont nouveaux et à écrire dans les six langues.</li>
+<li><span class="tg H">H2</span>Des rangs 2 à n, on lit d’abord la question : « rang · thème », la question entière en 15/20 gras, puis le type de take. La colonne de boutons rouges et verts disparaît : toucher la ligne ouvre le take, où l’on vote. Le n° 1 garde ses boutons. Les libellés de type sont nouveaux et à écrire dans les six langues. <span class="au">aussi proposé par Codex : Espaces 2 et Hiérarchie 3, mêmes rangs 2 à n, vote dans le take ouvert, vedette inchangée</span></li>
 <li><span class="tg E">E2</span>La place de la vignette reste réservée, même vide (rang 5), si bien que la colonne de texte ne bouge jamais. Le reste d’E2, une colonne d’action fixe de 88 pt, est écarté (voir les contradictions).</li>
 <li><span class="tg H">H5</span>Les rangs et le nombre de votes passent en gris secondaire. La recherche n’a pas de proposition propre : aucun des quatre tours n’a pu juger la frappe en direct.</li>
+<li><span class="tg C">Codex</span><span class="tg I">Idées 7</span><span class="nw">nouvelle</span>Des dossiers : « À explorer ensemble » réunit trois takes sur une même question de fond, avec « Retrouver ce dossier » en favori explicite, sans notification par défaut. C’est un nouveau mécanisme, derrière un drapeau serveur éteint par défaut.</li>
 </ul>
 </section>
 
@@ -546,10 +575,12 @@ a{color:inherit}
   <div class="t f15 s wrap" style="left:16px;top:342px;width:370px;line-height:21px">Envoie un take à un ami : il arrive avec son résultat, et vous en parlez ici.</div>
   <div class="pl pk" style="left:16px;top:400px;width:200px;height:44px"><svg class="ic" style="width:18px;height:18px"><use href="#i-pencil"/></svg>Nouveau message</div>
 </div></div></figure>
+<figure><figcaption>Codex · Idées 6 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ic6.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
 <li><span class="tg I">I13</span>La boîte vide propose quelqu’un à qui écrire : les avatars des amis sur une ligne, une phrase qui dit qu’un take envoyé arrive avec son résultat, et « Nouveau message ». Sans ami, cette ligne devient les suggestions de l’écran 3 (textes nouveaux).</li>
 <li><span class="tg H">H9</span>Le composant d’état vide commun remplace la phrase grise seule.</li>
+<li><span class="tg C">Codex</span><span class="tg I">Idées 6</span><span class="vs">contraire à I13</span>« Commence par une question » fait d’abord choisir un take (« Choisir un take »), montre l’aperçu du premier message, puis « Choisir une personne ». I13 part des amis.</li>
 </ul>
 </section>
 
@@ -579,13 +610,15 @@ a{color:inherit}
   <div class="pl pk" style="left:32px;top:666px;width:168px;height:40px">Partager en story</div>
   <div class="pl po" style="left:208px;top:666px;width:162px;height:40px">Copier le lien</div>
 </div></div></figure>
+<figure><figcaption>Codex · Hiérarchie 6 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-hc6.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
-<li><span class="tg E">E6</span><span class="tg H">H7</span>Mon profil et le profil public ont le même en-tête. Avatar de 72 pt à x = 16 ; à x = 100, l’identité en 20/25 gras (le nom, ou le @ promu quand il manque), puis le @. Dans la ligne de chiffres, les nombres sont en semi-gras noir et les libellés en gris secondaire.</li>
+<li><span class="tg E">E6</span><span class="tg H">H7</span>Mon profil et le profil public ont le même en-tête. Avatar de 72 pt à x = 16 ; à x = 100, l’identité en 20/25 gras (le nom, ou le @ promu quand il manque), puis le @. Dans la ligne de chiffres, les nombres sont en semi-gras noir et les libellés en gris secondaire. <span class="au">aussi proposé par Codex : Hiérarchie 6, le pseudo promu en identité quand le nom est vide</span></li>
 <li><span class="tg I">I5</span>La série de votes se voit enfin : « 🔥 4 j » dans la ligne de chiffres. Le jour où elle est en jeu, d’après le serveur, une carte « Série de votes : 4 jours » s’affiche avec « Voter » (textes nouveaux).</li>
 <li><span class="tg I">I7</span>L’onglet Questions vide devient une invitation : « Pose-moi une question », « Partager en story » et « Copier le lien ». Le lien ouvre l’onglet Questions du profil public, avec le champ anonyme déjà là.</li>
 <li><span class="tg E">E5</span>Le menu prend le disque. <span class="tg E">E1</span>L’avatar a son filet.</li>
-<li><span class="tg M">M7</span>Le profil se dessine d’un bloc, quand l’en-tête, les chiffres et le Top 8 sont prêts. La page précédente reste affichée en attendant, sans squelette. <span class="tg M">M6</span>Toucher un onglet du profil fait glisser la page (voir Mouvement).</li>
+<li><span class="tg M">M7</span>Le profil se dessine d’un bloc, quand l’en-tête, les chiffres et le Top 8 sont prêts. La page précédente reste affichée en attendant, sans squelette. <span class="au">aussi proposé par Codex : Mouvement 3, pour le profil public ouvert à froid : identité et première page prêtes ensemble</span> <span class="tg M">M6</span>Toucher un onglet du profil fait glisser la page (voir Mouvement).</li>
+<li><span class="tg C">Codex</span><span class="tg H">Hiérarchie 6</span><span class="nw">nouvelle</span>Le Top 8 vide se replie en une ligne « Configurer mon Top 8 › » de 52 pt ; rempli, il reste tel quel. Les onglets et leur contenu remontent d’environ 90 pt.</li>
 </ul>
 </section>
 
@@ -617,12 +650,14 @@ a{color:inherit}
   <div class="c" style="left:14px;top:602px;width:374px;height:22px;background-position:-14px -537px"></div>
   <div class="hr" style="top:634px"></div>
 </div></div></figure>
+<figure><figcaption>Codex · Idées 3 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ic3.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
 <li><span class="tg E">E6</span><span class="tg H">H7</span><span class="tg H">H1</span>C’est le même en-tête que mon profil. Le nom est vide ici, donc le @ est promu en titre, au lieu d’une ligne grise de 13 pt.</li>
 <li><span class="tg I">I8</span>Le profil raconte la relation : « D’accord sur 7 takes sur 10 » et « Vos désaccords › », qui ouvre les takes où vous divergez. Seuls les votes non anonymes des deux personnes comptent, et la ligne n’apparaît qu’à partir de 5 takes en commun, pour qu’on ne puisse pas en déduire un vote. Elle vit sur le profil, jamais dans le fil Amis.</li>
 <li><span class="tg I">I9</span>Le quiz KnowMe d’un ami se joue depuis son profil. Le résultat revient dans la conversation, comme aujourd’hui (textes nouveaux).</li>
 <li><span class="tg E">E7</span><span class="tg M">M2</span>La rangée de take reprend la tête et les boutons-jauges du fil. <span class="tg E">E5</span>Les deux boutons d’en-tête avaient déjà le disque.</li>
+<li><span class="tg C">Codex</span><span class="tg I">Idées 3</span><span class="nw">nouvelle</span>Un bloc « Commence ici » choisi par l’auteur : un take public épinglé ou une réponse publique, avec « Entrer dans la discussion », et « Me demander un KnowMe » en privé. Sans réglage, aucun bloc vide ; un contenu anonyme n’y entre jamais (textes nouveaux).</li>
 </ul>
 </section>
 
@@ -648,12 +683,14 @@ a{color:inherit}
   <div class="t f15 wrap" style="left:68px;top:482px;width:216px"><b class="b">Take Rush</b> · 12 duels nuls avec <b class="b">@qacolibriami436</b> <span class="s">3j</span></div>
   <div class="pl" style="left:296px;top:488px;width:90px;height:32px;font-size:14px;border:1px solid #3A3F45;color:#E7E9EA">Revanche</div>
 </div></div></figure>
+<figure><figcaption>Codex · Idées 5 · après (clair)</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ic5.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
 <li><span class="tg E">E4</span>Toutes les sections ont le même en-tête, en 16/20 semi-gras. Le premier commence 16 pt sous les onglets, et 24 pt séparent les sections.</li>
 <li><span class="tg I">I6</span><span class="tg E">E4</span>Vingt lignes identiques deviennent une seule ligne par type, adversaire et jour : « Take Rush · 20 duels nuls avec @… ». Elle ouvre le duel, avec « Revanche » sur place, et le regroupement se fait côté serveur.</li>
 <li><span class="tg H">H1</span>Le @ remplace le nom vide : « @… t’a ajouté en ami » au lieu de « t’a ajouté en ami ». <span class="tg I">I5</span>La notification de série donne le nombre de jours.</li>
 <li><span class="tg H">H8</span>En sombre, les avatars par défaut ne forment plus une colonne de disques blancs (à arbitrer, voir les contradictions). <span class="tg H">H5</span>Les heures sont en gris secondaire.</li>
+<li><span class="tg C">Codex</span><span class="tg I">Idées 5</span><span class="nw">nouvelle</span>Un filtre « À répondre » à côté de « Tout » : question reçue, réponse à ton commentaire, défi KnowMe, chacun avec son action (« Répondre à cette question », « Reprendre la discussion », « Ouvrir le défi »). Seuls les objets que le serveur confirme encore ouverts y figurent (textes nouveaux).</li>
 </ul>
 </section>
 
@@ -682,11 +719,13 @@ a{color:inherit}
   <div class="c" style="left:0;top:660px;width:402px;height:40px;background-position:0 -588px"></div>
   <div class="c" style="left:0;top:736px;width:402px;height:40px;background-position:0 -640px"></div>
 </div></div></figure>
+<figure><figcaption>Codex · Hiérarchie 9 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-hc9.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
 <li><span class="tg E">E9</span>Trois groupes titrés : « Ton compte », « Préférences » et « Assistance ». La description de la position s’affiche en entier, avec la phrase qui rassure. « Se déconnecter » est rangé seul, 24 pt plus bas (titres nouveaux).</li>
 <li><span class="tg I">I2</span>Une entrée « Inviter des amis » apparaît, avec le lien personnel de l’écran 19.</li>
 <li><span class="tg H">H4</span>En sombre, « Se déconnecter » passe en neutre et garde son icône rouge ; en clair, rien ne change.</li>
+<li><span class="tg C">Codex</span><span class="tg H">Hiérarchie 9</span><span class="vs">contraire à E9</span>« Position précise » devient une ligne qui ouvre un détail : on y lit le texte entier et la garantie « Ta position exacte reste privée » avant l’interrupteur. Ouvrir le détail ne change aucun réglage. E9 affiche le texte entier dans la liste, à côté de l’interrupteur.</li>
 </ul>
 </section>
 
@@ -705,11 +744,13 @@ a{color:inherit}
   <div class="a" style="left:98px;top:644px;width:112px;height:24px;background:#EEF2F5"></div><div class="t f13 s" style="left:99px;top:648px">· Prêt à envoyer</div>
   <div class="a" style="left:272px;top:672px;width:104px;height:42px;background:#EEF2F5"></div><div class="pl po" style="left:278px;top:677px;width:91px;height:32px">Envoyer</div>
 </div></div></figure>
+<figure><figcaption>Codex · Hiérarchie 8 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-hc8.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
 <li><span class="tg H">H6</span>Neuf blocs noirs deviennent un seul bouton plein, « Créer un quiz ». « Envoyer » passe en secondaire à contour, et « Prêt à envoyer » redevient du texte dans la ligne de méta.</li>
 <li><span class="tg M">M10</span>Dans « Nouveau quiz », rien n’est ajouté avant un « Terminé » valide, et « Terminé » reste inactif tant que la question est vide. L’erreur ne s’affiche qu’après une tentative, avec la vibration d’avertissement, et jamais dès l’ouverture de la feuille.</li>
 <li><span class="tg I">I9</span>KnowMe se trouve aussi depuis le profil d’un ami (écran 13), plus seulement par le bouton « Jeux » d’une conversation.</li>
+<li><span class="tg C">Codex</span><span class="tg H">Hiérarchie 8</span><span class="nw">nouvelle</span>Les quiz prêts sont regroupés sous un titre « Prêts à envoyer » : le badge répété disparaît, et chaque ligne garde son titre, sa méta et « Envoyer » en secondaire de 44 pt. Va dans le sens d’H6, qui range l’état dans la ligne de méta.</li>
 </ul>
 </section>
 
@@ -770,12 +811,14 @@ a{color:inherit}
   <div class="pl" style="left:16px;top:736px;width:370px;height:48px;background:#E7E9EA;color:#000;font-size:16px">Take suivant</div>
   <div class="t f15 s ctr" style="left:0;top:800px;width:402px">Passer l’échauffement</div>
 </div></div></figure>
+<figure><figcaption>Codex · Idées 8 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ic8.jpg)"></div></div></figure>
 </div>
 <ul class="chg">
 <li><span class="tg I">I1</span>Le premier take n’est plus un sujet tiré au hasard. L’échauffement compte trois takes choisis par le serveur dans la langue et le pays de la personne, récents et déjà votés (le take montré ici est un exemple). Chaque vote révèle « Tu votes comme 67 % des votants ». La sortie devient « Take suivant », avec « Passer l’échauffement » en lien discret, et le troisième vote ouvre l’invitation (textes nouveaux).</li>
 <li><span class="tg M">M2</span>Les boutons-jauges, sans saut. <span class="tg E">E7</span>La même tête de rangée que le fil.</li>
 <li><span class="tg M">M4</span>Les étapes avancent d’une page dans un défilement horizontal, et non plus par un fondu.</li>
 <li><span class="tg M">M11</span><span class="tg I">I14</span>Aucune annonce ne s’affiche pendant l’onboarding. Elles attendent la première ouverture du fil, puis arrivent une à la fois.</li>
+<li><span class="tg C">Codex</span><span class="tg I">Idées 8</span><span class="nw">nouvelle</span>Le premier take se comprend sans rien connaître du sujet (« Un bon film, c’est mieux au cinéma ? »), plutôt qu’un entraîneur de football américain. En arrivée par invitation, le take partagé garde la priorité ; après le vote, on propose un proche avec qui en parler. Complète I1 et I2.</li>
 </ul>
 </section>
 
@@ -804,6 +847,38 @@ a{color:inherit}
 </ul>
 </section>
 
+<!-- 20 CONVERSATION -->
+<section class="scr" id="s20">
+<h2>20 · Conversation (revues Codex)</h2>
+<p class="lead">Écran ajouté avec les revues Codex : les avant sont leurs captures, les après leurs maquettes, à la même échelle.</p>
+<div class="pair">
+<figure><figcaption>Avant · capture Codex</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ec3a.jpg)"></div></div></figure>
+<figure><figcaption>Codex · Espaces 3 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ec3.jpg)"></div></div></figure>
+<figure><figcaption>Avant · capture Codex, appui long</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-hc5a.jpg)"></div></div></figure>
+<figure><figcaption>Codex · Hiérarchie 5 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-hc5.jpg)"></div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg C">Codex</span><span class="tg E">Espaces 3</span><span class="nw">nouvelle</span>Le dock garde Photo et micro en direct ; Jeux et GIF passent dans un menu « ··· ». Trois cellules de 44 × 44 pt remplacent quatre commandes de 30 × 36 pt qui se chevauchaient ; le dock passe de 52 à 58 pt sans déplacer les bulles déjà lues.</li>
+<li><span class="tg C">Codex</span><span class="tg H">Hiérarchie 5</span><span class="nw">nouvelle</span>Dans le menu d’appui long d’un message, « Supprimer pour moi » et « Signaler » forment un groupe à part : libellé en encre principale, icône rouge, et une seconde ligne (« Retirer de mon écran seulement », « Informer la modération »). Prolonge H4 aux messages, où le rouge sur sombre tombe à 3,2:1 (textes nouveaux).</li>
+</ul>
+</section>
+
+<!-- 21 KNOWME NOUVEAU QUIZ -->
+<section class="scr" id="s21">
+<h2>21 · KnowMe : nouveau quiz (revues Codex)</h2>
+<p class="lead">Écran ajouté avec les revues Codex : les avant sont leurs captures, les après leurs maquettes, à la même échelle.</p>
+<div class="pair">
+<figure><figcaption>Avant · capture Codex</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ic2a.jpg)"></div></div></figure>
+<figure><figcaption>Codex · Idées 2 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-ic2.jpg)"></div></div></figure>
+<figure><figcaption>Avant · capture Codex, clavier ouvert</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-mc1a.jpg)"></div></div></figure>
+<figure><figcaption>Codex · Mouvement 1 · après</figcaption><div class="fit"><div class="ph" style="--b:url(img/cx-mc1.jpg)"></div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg C">Codex</span><span class="tg I">Idées 2</span><span class="nw">nouvelle</span>« Tu me connais en trois questions ? » : le quiz part de trois questions modèles modifiables. L’auteur choisit ses réponses (« Choisir mes réponses ») ou écrit son propre quiz. Aucune bonne réponse n’est précochée (textes nouveaux).</li>
+<li><span class="tg C">Codex</span><span class="tg M">Mouvement 1</span><span class="nw">nouvelle</span>Quand le clavier sort, la feuille d’une question monte avec lui : le champ garde son curseur, les réponses défilent, et « Terminé » reste fixé au-dessus du clavier. Avant, le clavier cachait les réponses et « Terminé ». Complète M10.</li>
+</ul>
+</section>
+
 <section class="scr" id="arbitrages">
 <h2>Fusions et contradictions</h2>
 <div class="box">
@@ -828,6 +903,26 @@ a{color:inherit}
 </ul>
 </div>
 <div class="box">
+<h3>Codex : contradictions à trancher (les deux restent proposées)</h3>
+<ul>
+<li><b>Vote dans Amis.</b> <span class="tg M">M2</span> : la jauge remplie avec les pourcentages. <span class="tg C">Codex</span><span class="tg H">Hiérarchie 1</span> : « ✓ Ton vote : Non · Modifier », sans résultat. <span class="tg C">Codex</span><span class="tg M">Mouvement 5</span> : la pastille choisie et le compteur, sans pourcentage (écran 2).</li>
+<li><b>Amis vide.</b> <span class="tg I">I4</span> : des personnes à ajouter d’abord. <span class="tg C">Codex</span><span class="tg I">Idées 1</span> : une question à publier d’abord (écran 3).</li>
+<li><b>Composeur.</b> <span class="tg E">E8</span> : la carte gardée et agrandie. <span class="tg C">Codex</span><span class="tg E">Espaces 4</span> : plus de carte, le texte sur la gouttière de 16 pt (écran 8).</li>
+<li><b>Messages vide.</b> <span class="tg I">I13</span> : partir d’un ami. <span class="tg C">Codex</span><span class="tg I">Idées 6</span> : partir d’un take (écran 11).</li>
+<li><b>Position précise.</b> <span class="tg E">E9</span> : le texte entier dans la liste. <span class="tg C">Codex</span><span class="tg H">Hiérarchie 9</span> : un détail à ouvrir avant l’interrupteur (écran 15).</li>
+</ul>
+</div>
+<div class="box">
+<h3>Codex rejoint une proposition déjà là</h3>
+<ul>
+<li><span class="tg C">Codex</span><span class="tg E">Espaces 2</span><span class="tg C">Codex</span><span class="tg H">Hiérarchie 3</span>avec <span class="tg H">H2</span> : Explorer en lignes de lecture (écran 9).</li>
+<li><span class="tg C">Codex</span><span class="tg H">Hiérarchie 2</span>avec <span class="tg H">H1</span> : des amis nommés dans le partage (écran 7).</li>
+<li><span class="tg C">Codex</span><span class="tg M">Mouvement 3</span>avec <span class="tg M">M7</span> : un profil qui arrive d’un bloc (écran 12).</li>
+<li><span class="tg C">Codex</span><span class="tg M">Mouvement 4</span>avec <span class="tg E">E3</span><span class="tg H">H3</span> : une seule feuille de « ··· » à « Signaler » (écran 6).</li>
+</ul>
+<p class="lead" style="margin:8px 0 0">À noter aussi : <span class="tg C">Codex</span><span class="tg E">Espaces 1</span>et <span class="tg C">Codex</span><span class="tg E">Espaces 6</span>ensemble ajoutent 47 pt à chaque take ; <span class="tg C">Codex</span><span class="tg H">Hiérarchie 7</span>redessine l’audience du composeur autrement que les pastilles d’I3.</p>
+</div>
+<div class="box">
 <h3>Relevés hors thème, non maquettés (à vérifier dans des tickets à part)</h3>
 <ul>
 <li>L’aperçu à l’appui long affiche « 0 commentaire » au-dessus d’un commentaire visible, et place Oui à gauche, alors que le fil met Non à gauche.</li>
@@ -838,7 +933,7 @@ a{color:inherit}
 <li>Dans une conversation, les messages restent collés en haut, loin du champ. À l’ouverture de Take Rush, la feuille reste blanche environ une seconde.</li>
 </ul>
 </div>
-<p class="lead">Pas vus par les quatre tours : la carte d’À proximité avec la position, une partie KnowMe et son résultat, le Top 8 rempli, les cinq autres langues, Android et les grandes tailles de texte.</p>
+<p class="lead">Pas vus par les quatre tours Claude : la carte d’À proximité avec la position, une partie KnowMe et son résultat, le Top 8 rempli, les cinq autres langues, Android et les grandes tailles de texte.</p>
 </section>
 </main>
 <script>
