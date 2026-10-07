@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Revue DA réunie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pg:#ECEEF1;--ink:#141414;--muted:#55585E;--card:#FFFFFF;--line:#D9DCE1;
+  --E:#2F6FEB;--H:#8A3FFC;--M:#E0700B;--I:#14945A;
+  --f:Inter,-apple-system,'SF Pro Text',system-ui,sans-serif;--k:1
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pg:#101113;--ink:#E7E9EA;--muted:#A0A4AA;--card:#1A1C1F;--line:#2C2F33}}
+:root[data-theme="dark"]{--pg:#101113;--ink:#E7E9EA;--muted:#A0A4AA;--card:#1A1C1F;--line:#2C2F33}
+*{box-sizing:border-box}
+body{margin:0;background:var(--pg);color:var(--ink);font-family:var(--f);-webkit-font-smoothing:antialiased}
+main{max-width:1180px;margin:0 auto;padding:28px 16px 80px}
+h1{font-size:28px;line-height:34px;margin:0 0 8px}
+h2{font-size:21px;line-height:27px;margin:0 0 6px}
+h3{font-size:16px;margin:0 0 6px}
+p{line-height:1.5;max-width:860px}
+.lead{color:var(--muted);font-size:15px;margin:0 0 14px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:18px 0}
+.box ul{margin:6px 0 0;padding-left:18px}
+.box li{margin:6px 0;line-height:1.45;font-size:14px}
+.tg{display:inline-block;font:700 11px/16px var(--f);color:#fff;border-radius:6px;padding:1px 6px;margin-right:6px;vertical-align:1px;white-space:nowrap}
+.tg.E{background:var(--E)}.tg.H{background:var(--H)}.tg.M{background:var(--M)}.tg.I{background:var(--I)}
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;padding:0;list-style:none}
+.toc a{display:inline-block;padding:5px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13px}
+section.scr{margin:44px 0 0;padding-top:12px;border-top:1px solid var(--line)}
+.pair{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;margin-top:14px}
+figure{margin:0}
+figcaption{font:700 12px/16px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.fit{width:calc(402px * var(--k));height:calc(874px * var(--k));margin:8px}
+.fit>.ph{transform:scale(var(--k));transform-origin:0 0}
+ul.chg{max-width:860px;padding-left:0;list-style:none;margin:18px 0 0}
+ul.chg li{margin:8px 0;line-height:1.5;font-size:14px}
+a{color:inherit}
+
+/* phone */
+.ph{position:relative;width:402px;height:874px;overflow:hidden;border-radius:46px;background:#fff var(--b) 0 0/402px 874px no-repeat;box-shadow:0 0 0 8px #0E0E0F,0 18px 40px rgba(0,0,0,.25);font-family:var(--f);color:#141414;-webkit-font-smoothing:antialiased;line-height:normal}
+.ph.dark{background-color:#000;color:#E7E9EA}
+.ph *{box-sizing:border-box}
+.a{position:absolute}
+.c{position:absolute;background-image:var(--b);background-size:402px 874px;background-repeat:no-repeat}
+.w{position:absolute;background:#fff}
+.k{position:absolute;background:#000}
+.t{position:absolute;white-space:nowrap}
+.f17{font:600 17px/22px var(--f)}
+.f20{font:700 20px/25px var(--f)}
+.f15{font:400 15px/20px var(--f)}
+.f14{font:400 14px/18px var(--f)}
+.f13{font:400 13px/17px var(--f)}
+.f12{font:400 12px/15px var(--f)}
+.b{font-weight:600}
+.s{color:#6B6E73}
+.ph.dark .s{color:#83898F}
+.wrap{white-space:normal}
+.ctr{text-align:center}
+.hr{position:absolute;left:0;width:402px;height:1px;background:#EFF1F3}
+.ph.dark .hr{background:#202327}
+.av{position:absolute;border-radius:50%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='15.5' r='7' fill='%239A9DA4'/%3E%3Cellipse cx='20' cy='36.5' rx='13' ry='10.5' fill='%239A9DA4'/%3E%3C/svg%3E") center/100% no-repeat;box-shadow:inset 0 0 0 1px rgba(20,20,20,.1)}
+.ph.dark .av{background:#2F3336 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='15.5' r='7' fill='%236B6F75'/%3E%3Cellipse cx='20' cy='36.5' rx='13' ry='10.5' fill='%236B6F75'/%3E%3C/svg%3E") center/100% no-repeat;box-shadow:none}
+.disc{position:absolute;width:36px;height:36px;border-radius:50%;background:#EEF2F5;display:flex;align-items:center;justify-content:center;color:#141414}
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.pl{position:absolute;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:999px;font:600 15px/20px var(--f);white-space:nowrap}
+.pk{background:#141414;color:#fff}
+.pg{background:#EEF2F5;color:#141414}
+.po{background:#fff;border:1px solid #D3D7DC;color:#141414}
+.vb{position:absolute;width:180px;height:36px;border-radius:18px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;overflow:hidden;font:600 14px/18px var(--f)}
+.vb i{position:absolute;left:0;top:0;bottom:0;background:currentColor;opacity:.1}
+.vb.on i{opacity:.22}
+.vb span{position:relative}
+.vb.r{justify-content:space-between;padding:0 14px}
+.vb.n{color:#D6222E}.vb.y{color:#1A8A46}
+.ph.dark .vb.n{color:#EE484A}.ph.dark .vb.y{color:#2BB55F}
+.theme{position:absolute;width:24px;height:24px;border-radius:50%;background:#EEF2F5;display:flex;align-items:center;justify-content:center;color:#6B6E73}
+.ph.dark .theme{background:#2F3336;color:#A0A4AA}
+.toast{position:absolute;height:44px;border-radius:22px;background:#141414;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font:400 15px/20px var(--f);box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.toast b{font-weight:600}
+
+/* motion demos */
+.demos{display:flex;flex-wrap:wrap;gap:24px;margin-top:12px}
+.demo{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;max-width:370px}
+.demo .duo{display:flex;gap:14px}
+.demo .lab{font:700 11px/14px var(--f);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.demo p{font-size:13px;margin:10px 0 0;color:var(--muted)}
+.mini{position:relative;width:150px;height:290px;border:6px solid #0E0E0F;border-radius:26px;overflow:hidden;background:#fff;font-family:var(--f);color:#141414}
+.mini .pgx{position:absolute;inset:0;padding:16px 10px 0;font:700 12px/16px var(--f);background:#fff}
+.mini .blk{height:54px;border-radius:8px;margin:8px 0}
+.mini .ln{height:7px;border-radius:4px;background:#E3E6EA;margin:7px 0}
+.mini .bar{position:absolute;left:8px;right:8px;bottom:8px;height:30px;border-radius:15px;background:rgba(255,255,255,.92);box-shadow:0 2px 10px rgba(0,0,0,.14);display:flex;justify-content:space-around;align-items:center;z-index:5}
+.mini .bar b{width:14px;height:14px;border-radius:50%;background:#C9CDD3}
+.mini .tap{position:absolute;z-index:6;width:20px;height:20px;border-radius:50%;background:rgba(255,45,135,.55);opacity:0}
+.strip{position:absolute;top:0;left:0;height:100%;display:flex}
+.strip>.pgx{position:relative;inset:auto;height:100%;flex:none;width:138px}
+.c1{background:#DCE8FF}.c2{background:#FFE7D1}.c3{background:#E3F6E8}.c4{background:#F0E3FF}
+@keyframes tabsBefore{0%,40%{transform:translateX(-414px)}48.3%,90%{transform:translateX(0)}98.3%,100%{transform:translateX(-414px)}}
+@keyframes showNow{0%,40%{opacity:0}40.1%,90%{opacity:1}90.1%,100%{opacity:0}}
+@keyframes tapA{0%,37%{opacity:0;transform:scale(.5)}40%{opacity:1;transform:scale(1)}46%,100%{opacity:0}}
+@keyframes topSlide{0%,40%{transform:translateX(0)}48.3%,90%{transform:translateX(-138px)}98.3%,100%{transform:translateX(0)}}
+@keyframes topJump{0%,40%{transform:translateX(0)}40.1%,90%{transform:translateX(-138px)}90.1%,100%{transform:translateX(0)}}
+@keyframes ulSlide{0%,40%{transform:translateX(0)}48.3%,90%{transform:translateX(62px)}98.3%,100%{transform:translateX(0)}}
+@keyframes ulJump{0%,40%{transform:translateX(0)}40.1%,90%{transform:translateX(62px)}90.1%,100%{transform:translateX(0)}}
+@keyframes push{0%,35%{transform:translateX(0)}46%,88%{transform:translateX(-138px)}99%,100%{transform:translateX(0)}}
+@keyframes rev{0%,40%{height:0}47%,90%{height:22px}97%,100%{height:0}}
+@keyframes fillN{0%,40%{width:0}47%,90%{width:40%}97%,100%{width:0}}
+@keyframes fillY{0%,40%{width:0}47%,90%{width:60%}97%,100%{width:0}}
+@keyframes pct{0%,42%{opacity:0}47%,90%{opacity:1}95%,100%{opacity:0}}
+.tabsB .strip{width:552px;animation:tabsBefore 3.2s ease-out infinite}
+.tabsA .now{animation:showNow 3.2s infinite}
+.tabsA .tap,.tabsB .tap{left:16px;bottom:13px;animation:tapA 3.2s infinite}
+.tops{position:absolute;top:0;left:0;right:0;height:34px;display:flex;gap:26px;padding:10px 0 0 14px;font:600 11px/14px var(--f);background:#fff;z-index:4}
+.tops u{position:absolute;left:12px;bottom:2px;width:40px;height:2px;background:#141414;text-decoration:none}
+.topA .strip,.topB .strip{top:34px;height:calc(100% - 34px);width:276px}
+.topA .strip{animation:topSlide 3.2s ease-out infinite}.topA .tops u{animation:ulSlide 3.2s ease-out infinite}
+.topB .strip{animation:topJump 3.2s infinite}.topB .tops u{animation:ulJump 3.2s infinite}
+.pushB .strip,.pushA .strip{width:276px;animation:push 3.2s ease-out infinite}
+.pushB .strip .bar{position:absolute}
+.vcard{margin:10px 8px;border:1px solid #EFF1F3;border-radius:10px;padding:8px;background:#fff;display:flex;flex-direction:column}
+.vrow{display:flex;gap:6px}
+.vbtn{position:relative;flex:1;height:22px;border-radius:11px;border:1.2px solid currentColor;font:600 10px/20px var(--f);text-align:center;overflow:hidden}
+.vbtn i{position:absolute;left:0;top:0;bottom:0;background:currentColor;opacity:.15;width:0}
+.vbtn.n{color:#D6222E}.vbtn.y{color:#1A8A46}
+.vrev{height:0;overflow:hidden;animation:rev 3.2s ease-out infinite}
+.vrev div{height:6px;border-radius:3px;margin:8px 0;background:linear-gradient(90deg,#D6222E 40%,#1A8A46 40%)}
+.voteA .vbtn.n i{animation:fillN 3.2s ease-out infinite}.voteA .vbtn.y i{animation:fillY 3.2s ease-out infinite}
+.voteA .vbtn em{font-style:normal;animation:pct 3.2s infinite}
+@media (prefers-reduced-motion:reduce){.mini *{animation:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 3 3 10.4l7.2 3.2L13.4 21 21 3Z M10.2 13.6 21 3"/></symbol>
+  <symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M3 3l18 18 M10.6 6.1A9.6 9.6 0 0 1 12 6c5 0 8.5 4.5 9.5 6-.5.8-1.6 2.3-3.2 3.6 M6.4 7.4C4.6 8.7 3.2 10.6 2.5 12c1 1.5 4.5 6 9.5 6 1.6 0 3-.4 4.2-1.1 M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></symbol>
+  <symbol id="i-frown" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9.5h.01 M15 9.5h.01 M8.5 16.2c1-1.2 2.2-1.8 3.5-1.8s2.5.6 3.5 1.8"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4 M5 4h12l-2.5 4.5L17 13H5"/></symbol>
+  <symbol id="i-userplus" viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"/><path d="M3 20c0-3.9 3.1-6 7-6s7 2.1 7 6 M19 8v6 M16 11h6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-speaker" viewBox="0 0 24 24"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5H4z M15.5 9.5a3.5 3.5 0 0 1 0 5 M18 7a7 7 0 0 1 0 10"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><path d="M6 12h.01M12 12h.01M18 12h.01" stroke-width="2.6"/></symbol>
+  <symbol id="i-question" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.5 M12 17h.01"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4z M13.5 6.5l4 4"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z" fill="currentColor" stroke="none"/></symbol>
+</svg>
+<main>
+<h1>Revue DA réunie : l’app avec les quatre revues appliquées ensemble</h1>
+<p class="lead">Quatre revues ont fait le tour de Take le 08/10, chacune avec son thème : <span class="tg E">Espaces</span><span class="tg H">Hiérarchie</span><span class="tg M">Mouvement</span><span class="tg I">Idées</span>. Cette page en réunit les <b>46 propositions</b> sur <b>19 écrans</b>. À gauche, la vraie capture prise pendant le tour. À droite, le même écran avec toutes ses propositions appliquées en même temps, à la même échelle (402 × 874 pt). Les deux sont dessinés en clair, sauf le menu « ··· » et l’Activité, montrés en sombre pour les règles propres au thème sombre.</p>
+<p class="lead">Ce ne sont que des propositions : rien n’est appliqué dans l’app, et chaque point se tranche à part. Les numéros renvoient aux rapports (E7 = constat 7 d’Espaces). Les captures viennent de staging, avec des comptes et des textes de test. Le take de l’onboarding et les prénoms des suggestions sont des exemples.</p>
+
+<ul class="toc">
+<li><a href="#regles">Partout</a></li><li><a href="#mouvement">Mouvement</a></li>
+<li><a href="#s1">1 Takes</a></li><li><a href="#s2">2 Amis</a></li><li><a href="#s3">3 Amis, compte neuf</a></li><li><a href="#s4">4 À proximité</a></li>
+<li><a href="#s5">5 Take ouvert</a></li><li><a href="#s6">6 Menu « ··· »</a></li><li><a href="#s7">7 Partage</a></li><li><a href="#s8">8 Composeur</a></li>
+<li><a href="#s9">9 Explorer</a></li><li><a href="#s10">10 Messages</a></li><li><a href="#s11">11 Messages vide</a></li><li><a href="#s12">12 Mon profil</a></li>
+<li><a href="#s13">13 Profil public</a></li><li><a href="#s14">14 Activité</a></li><li><a href="#s15">15 Paramètres</a></li><li><a href="#s16">16 KnowMe</a></li>
+<li><a href="#s17">17 Take Rush</a></li><li><a href="#s18">18 Premier take</a></li><li><a href="#s19">19 Invitation</a></li><li><a href="#arbitrages">Fusions et contradictions</a></li>
+</ul>
+
+<div class="box" id="regles">
+<h3>Ce qui vaut sur tous les écrans</h3>
+<ul>
+<li><span class="tg E">E1</span><span class="tg H">H8</span>Tous les avatars ont un filet intérieur (#1414141A en clair, #FFFFFF1A en sombre). Ils passent à trois tailles : 24 dans une ligne, 40 dans une rangée, 80 en en-tête. En clair, le disque reste blanc avec la silhouette grise. En sombre, il passe en #2F3336 avec une silhouette #6B6F75, au lieu du disque blanc qui éclaire tout l’écran (à arbitrer).</li>
+<li><span class="tg H">H1</span>Une seule règle d’identité : tout endroit qui nomme quelqu’un affiche son nom, ou son @ quand le nom est vide. Cela vaut pour les grilles, les notifications, les cartes partagées et le classement du Jeu.</li>
+<li><span class="tg H">H5</span>Le gris muet (#9A9DA4) ne colore plus du texte à lire. Il reste aux textes d’exemple des champs, aux états désactivés et aux icônes. Les heures, les rangs et « Annuler » passent en gris secondaire (#6B6E73, 5,1:1 en clair).</li>
+<li><span class="tg E">E3</span><span class="tg H">H3</span><span class="tg H">H4</span>Une seule feuille d’actions, opaque : blanche en clair, #1E2126 en sombre. Le verre reste aux barres. Les rangées font 52 pt, avec l’icône en tête. L’action destructive forme un groupe à part ; en sombre, son libellé est neutre et seule l’icône reste rouge.</li>
+<li><span class="tg E">E5</span>Les boutons d’en-tête prennent le même disque de 36 pt, dans une cible de 44 pt, à gauche comme à droite.</li>
+<li><span class="tg H">H11</span>Partager, c’est l’avion en papier partout. La boîte-flèche reste seulement à la feuille système, et le réseau à trois points disparaît.</li>
+<li><span class="tg H">H9</span>Un seul composant d’état vide : un titre en 17/22 semi-gras, une phrase en 15/21 grise, une action.</li>
+<li><span class="tg M">M1</span><span class="tg M">M3</span><span class="tg M">M4</span><span class="tg M">M6</span>Un onglet du bas change d’un coup. Les onglets du haut glissent d’une page, ceux du profil compris. La barre d’onglets reste fixe pendant qu’une page est poussée. Aucune transition ne passe par un fondu.</li>
+<li><span class="tg M">M2</span><span class="tg M">M7</span>Ce qui arrive ne déplace pas ce qu’on lit : un vote remplit les boutons au lieu d’ouvrir une ligne au-dessus, et un profil s’affiche d’un bloc.</li>
+<li>Règles produit tenues sur chaque écran : aucun squelette, pas de graphique dans le fil Amis, le fil Takes garde son graphique et son contexte, et aucun « j’aime » sur un take. Chaque texte nouveau est à écrire en fr, en, es, de, it et pt.</li>
+</ul>
+</div>
+
+<section class="scr" id="mouvement">
+<h2>Mouvement : les gestes en boucle</h2>
+<p class="lead">Les maquettes figées ne montrent pas le temps. Chaque boucle joue l’avant et l’après du même geste ; le point rose marque le toucher. Les boucles s’arrêtent si le réglage « Réduire les animations » est activé.</p>
+<div class="demos">
+  <div class="demo">
+    <div class="duo">
+      <div><div class="lab">Avant</div><div class="mini tabsB"><div class="strip"><div class="pgx c1">Accueil<div class="ln"></div><div class="blk" style="background:#fff"></div></div><div class="pgx c2">Explorer<div class="ln"></div></div><div class="pgx c3">Messages<div class="ln"></div></div><div class="pgx c4">Profil<div class="ln"></div></div></div><div class="bar"><b></b><b></b><b></b><b></b></div><div class="tap"></div></div></div>
+      <div><div class="lab">Après</div><div class="mini tabsA"><div class="pgx c4">Profil<div class="ln"></div></div><div class="pgx c1 now">Accueil<div class="ln"></div><div class="blk" style="background:#fff"></div></div><div class="bar"><b></b><b></b><b></b><b></b></div><div class="tap"></div></div></div>
+    </div>
+    <p><span class="tg M">M1</span>Onglet du bas touché depuis le Profil. Avant, la page traverse Messages et Explorer en environ 250 ms. Après, elle change dans l’image suivante, préparée dès que le doigt se pose.</p>
+  </div>
+  <div class="demo">
+    <div class="duo">
+      <div><div class="lab">Avant</div><div class="mini topB"><div class="tops"><span>Takes</span><span>Questions</span><u></u></div><div class="strip"><div class="pgx c1">Takes<div class="ln"></div><div class="ln"></div></div><div class="pgx c3">Questions<div class="ln"></div></div></div></div></div>
+      <div><div class="lab">Après</div><div class="mini topA"><div class="tops"><span>Takes</span><span>Questions</span><u></u></div><div class="strip"><div class="pgx c1">Takes<div class="ln"></div><div class="ln"></div></div><div class="pgx c3">Questions<div class="ln"></div></div></div></div></div>
+    </div>
+    <p><span class="tg M">M6</span>Onglets du profil touchés. Avant, la page est posée d’un coup. Après, elle glisse d’une page comme sur l’Accueil, avec le soulignement lié à la position réelle de la page.</p>
+  </div>
+  <div class="demo">
+    <div class="duo">
+      <div><div class="lab">Avant</div><div class="mini pushB"><div class="strip"><div class="pgx c1">Fil<div class="ln"></div><div class="blk" style="background:#fff"></div><div class="bar"><b></b><b></b><b></b><b></b></div></div><div class="pgx" style="background:#fff">Take ouvert<div class="ln"></div><div class="ln"></div></div></div></div></div>
+      <div><div class="lab">Après</div><div class="mini pushA"><div class="strip"><div class="pgx c1">Fil<div class="ln"></div><div class="blk" style="background:#fff"></div></div><div class="pgx" style="background:#fff">Take ouvert<div class="ln"></div><div class="ln"></div></div></div><div class="bar"><b></b><b></b><b></b><b></b></div></div></div>
+    </div>
+    <p><span class="tg M">M3</span>Ouvrir un take. Avant, la barre part avec le fil. Après, une seule barre reste fixe au-dessus de la pile, et le take glisse dessous. Seuls le composeur, une conversation et les plein-écrans la font descendre.</p>
+  </div>
+  <div class="demo">
+    <div class="duo">
+      <div><div class="lab">Avant</div><div class="mini"><div class="vcard"><div class="ln"></div><div class="vrev"><div></div></div><div class="vrow"><div class="vbtn n">Non</div><div class="vbtn y">Oui</div></div></div><div class="vcard"><div class="ln"></div><div class="vrow"><div class="vbtn n">Non</div><div class="vbtn y">Oui</div></div></div></div></div>
+      <div><div class="lab">Après</div><div class="mini voteA"><div class="vcard"><div class="ln"></div><div class="vrow"><div class="vbtn n"><i></i>Non <em>40 %</em></div><div class="vbtn y"><i></i>Oui <em>60 %</em></div></div></div><div class="vcard"><div class="ln"></div><div class="vrow"><div class="vbtn n">Non</div><div class="vbtn y">Oui</div></div></div></div></div>
+    </div>
+    <p><span class="tg M">M2</span>Voter. Avant, une ligne de 48 pt s’ouvre au-dessus des boutons : le bouton touché descend sous le doigt et la carte suivante glisse. Après, le résultat remplit les boutons en 200 ms et rien ne bouge.</p>
+  </div>
+</div>
+<ul class="chg">
+<li><span class="tg M">M4</span>La connexion et l’onboarding n’ont plus de fondu. La pile de connexion glisse depuis la droite en 260 ms, comme Messages. L’onboarding avance d’une page dans un défilement horizontal. Le pré-écran des notifications arrive en feuille, après une action de la personne, et jamais en plein écran au milieu d’une lecture.</li>
+<li><span class="tg M">M9</span>« Copier le lien » referme la feuille de partage avec une vibration de succès. « Lien copié » apparaît en bas, au-dessus de la barre, et ne cache plus Stories ni WhatsApp.</li>
+<li><span class="tg M">M5</span>Publier ramène sur l’onglet de l’audience choisie, avec le take en tête. « Ton take est publié · Voir » s’affiche en bas pendant quelques secondes (écran 1).</li>
+</ul>
+</section>
+
+<!-- 1 TAKES -->
+<section class="scr" id="s1">
+<h2>1 · Accueil, Takes</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/e9d269450dd8.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/e9d269450dd8.jpg)">
+  <div class="w" style="left:0;top:98px;width:402px;height:776px"></div>
+  <div class="theme" style="left:16px;top:108px"><svg class="ic" style="width:14px;height:14px"><use href="#i-sparkle"/></svg></div>
+  <div class="t f14" style="left:48px;top:111px"><b class="b">Société</b><span class="s"> · IA · 3j</span></div>
+  <div class="c" style="left:360px;top:110px;width:30px;height:18px;background-position:-360px -109px"></div>
+  <div class="t f17 wrap" style="left:16px;top:142px;width:370px">Lincoln Riley doit-il rester l’entraîneur-chef de l’USC ?</div>
+  <div class="c" style="left:16px;top:196px;width:370px;height:161px;border-radius:12px;background-position:-16px -194px"></div>
+  <div class="vb n r" style="left:16px;top:369px"><i style="width:50%"></i><span>Non</span><span>50 %</span></div>
+  <div class="vb y r on" style="left:206px;top:369px"><i style="width:50%"></i><span>✓ Oui</span><span>50 %</span></div>
+  <div class="c" style="left:14px;top:413px;width:374px;height:22px;background-position:-14px -410px"></div>
+  <div class="hr" style="top:444px"></div>
+  <div class="av" style="left:16px;top:457px;width:24px;height:24px"></div>
+  <div class="t f14" style="left:48px;top:460px"><b class="b">qa-s57-r57a-a5</b><span class="s"> · 1j</span></div>
+  <div class="c" style="left:360px;top:461px;width:30px;height:18px;background-position:-360px -455px"></div>
+  <div class="t f17" style="left:16px;top:491px">qa-s57-r57a</div>
+  <div class="vb n" style="left:16px;top:523px"><span>Non</span></div>
+  <div class="vb y" style="left:206px;top:523px"><span>Oui</span></div>
+  <div class="c" style="left:14px;top:567px;width:374px;height:22px;background-position:-14px -565px"></div>
+  <div class="hr" style="top:598px"></div>
+  <div class="av" style="left:16px;top:611px;width:24px;height:24px"></div>
+  <div class="t f14" style="left:48px;top:614px"><b class="b">qa-s57-r57a-a47</b><span class="s"> · 1j</span></div>
+  <div class="t f17" style="left:16px;top:645px">qa-s57-r57a</div>
+  <div class="vb n" style="left:16px;top:677px"><span>Non</span></div>
+  <div class="vb y" style="left:206px;top:677px"><span>Oui</span></div>
+  <div class="c" style="left:0;top:790px;width:402px;height:84px;background-position:0 -790px"></div>
+  <div class="c" style="left:336px;top:741px;width:54px;height:54px;background-position:-336px -741px"></div>
+  <div class="toast" style="left:16px;top:738px;width:308px">Ton take est publié<b>Voir</b></div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg E">E7</span>Tous les takes ont la même tête, quelle que soit leur source. Ceux de la rédaction prennent une pastille de thème et « Société · IA · 3j », comme sur le take ouvert. Le titre tombe toujours à 46 pt du haut de la rangée.</li>
+<li><span class="tg M">M2</span>Voter ne fait plus sauter la carte. Les boutons deviennent la jauge : la part du camp en fond, le pourcentage à droite, une coche sur son choix. Ils gardent leur hauteur de 36 pt, et la ligne des pourcentages avec son rail disparaît. Le fil Takes garde son graphique et son contexte ; ce take, à 4 votes, n’en montre pas.</li>
+<li><span class="tg E">E1</span>L’avatar a un filet, et le texte de la tête part toujours de x = 48. <span class="tg H">H5</span>L’âge est en gris secondaire.</li>
+<li><span class="tg M">M5</span>Juste après une publication, on revient sur l’onglet de l’audience choisie, avec le take en tête. La confirmation s’affiche en bas, au-dessus de la barre (texte nouveau).</li>
+<li><span class="tg M">M1</span><span class="tg M">M3</span>La barre d’onglets reste fixe, et toucher un onglet change de page d’un coup (voir Mouvement).</li>
+</ul>
+</section>
+
+<!-- 2 AMIS -->
+<section class="scr" id="s2">
+<h2>2 · Accueil, Amis</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/77bd6a5f3566.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/77bd6a5f3566.jpg)">
+  <div class="w" style="left:0;top:98px;width:402px;height:692px"></div>
+  <div class="av" style="left:16px;top:106px;width:24px;height:24px"></div>
+  <div class="t f14" style="left:48px;top:109px"><b class="b">@qasweepc548</b><span class="s"> · 3j</span></div>
+  <div class="c" style="left:360px;top:110px;width:30px;height:18px;background-position:-360px -109px"></div>
+  <div class="t f17 wrap" style="left:16px;top:142px;width:370px">Mesure QA : balayage des routes, Take de B, à ignorer ?</div>
+  <div class="vb n" style="left:16px;top:196px"><span>Non</span></div>
+  <div class="vb y" style="left:206px;top:196px"><span>Oui</span></div>
+  <div class="c" style="left:14px;top:240px;width:374px;height:22px;background-position:-14px -239px"></div>
+  <div class="hr" style="top:272px"></div>
+  <div class="av" style="left:16px;top:281px;width:24px;height:24px"></div>
+  <div class="t f14" style="left:48px;top:284px"><b class="b">@qasweepb596</b><span class="s"> · 3j</span></div>
+  <div class="c" style="left:360px;top:285px;width:30px;height:18px;background-position:-360px -285px"></div>
+  <div class="t f17 wrap" style="left:16px;top:317px;width:370px">Mesure QA : balayage des routes, Take de B, à ignorer ?</div>
+  <div class="vb n r on" style="left:16px;top:371px"><i style="width:100%"></i><span>✓ Non</span><span>100 %</span></div>
+  <div class="vb y r" style="left:206px;top:371px"><i style="width:0"></i><span>Oui</span><span>0 %</span></div>
+  <div class="c" style="left:14px;top:415px;width:374px;height:22px;background-position:-14px -463px"></div>
+  <div class="hr" style="top:447px"></div>
+  <div class="a" style="left:179px;top:478px;width:44px;height:44px;border-radius:50%;border:1.5px solid #141414;display:flex;align-items:center;justify-content:center"><svg class="ic"><use href="#i-check"/></svg></div>
+  <div class="t f17 ctr" style="left:0;top:534px;width:402px">Tu as tout vu</div>
+  <div class="t f15 s ctr wrap" style="left:51px;top:560px;width:300px">Les takes de tes amis des deux derniers jours sont là.</div>
+  <div class="pl pg" style="left:106px;top:614px;width:190px;height:36px">Continuer dans Takes</div>
+  <div class="c" style="left:336px;top:741px;width:54px;height:54px;background-position:-336px -741px"></div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg I">I11</span>Le fil ne s’arrête plus sur du blanc. Sous le dernier take, « Tu as tout vu », puis « Continuer dans Takes », qui fait glisser l’onglet d’une page sans fondu. Le repère n’apparaît qu’une fois la dernière page chargée (textes nouveaux).</li>
+<li><span class="tg M">M2</span>Les mêmes boutons-jauges que dans Takes. Le fil Amis reste sans graphique.</li>
+<li><span class="tg E">E7</span><span class="tg E">E1</span>Même tête de rangée de 24 pt, avec le filet sur l’avatar.</li>
+</ul>
+</section>
+
+<!-- 3 AMIS VIDE -->
+<section class="scr" id="s3">
+<h2>3 · Accueil, Amis : compte neuf</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/45f7c48c4614.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/45f7c48c4614.jpg)">
+  <div class="w" style="left:0;top:98px;width:402px;height:642px"></div>
+  <div class="c" style="left:169px;top:118px;width:64px;height:64px;background-position:-169px -339px"></div>
+  <div class="t f17 ctr" style="left:0;top:196px;width:402px">Pas encore de takes de tes amis</div>
+  <div class="t f15 s ctr" style="left:0;top:222px;width:402px">Ajoute des amis : leurs takes arrivent ici.</div>
+  <div class="t f17" style="left:16px;top:276px">Suggestions</div>
+  <div class="av" style="left:16px;top:310px;width:44px;height:44px"></div>
+  <div class="t f15" style="left:72px;top:312px"><b class="b">Inès</b> <span class="s">@ines.l</span></div>
+  <div class="t f13 s" style="left:72px;top:334px">Dans tes contacts</div>
+  <div class="pl pk" style="left:302px;top:316px;width:84px;height:32px;font-size:14px">Ajouter</div>
+  <div class="av" style="left:16px;top:370px;width:44px;height:44px"></div>
+  <div class="t f15" style="left:72px;top:372px"><b class="b">Hugo</b> <span class="s">@hugo.m</span></div>
+  <div class="t f13 s" style="left:72px;top:394px">Ami de @qasweepb596</div>
+  <div class="pl pk" style="left:302px;top:376px;width:84px;height:32px;font-size:14px">Ajouter</div>
+  <div class="av" style="left:16px;top:430px;width:44px;height:44px"></div>
+  <div class="t f15" style="left:72px;top:432px"><b class="b">Maya</b> <span class="s">@maya.r</span></div>
+  <div class="t f13 s" style="left:72px;top:454px">Même vote que toi sur un take public</div>
+  <div class="pl pk" style="left:302px;top:436px;width:84px;height:32px;font-size:14px">Ajouter</div>
+  <div class="pl pg" style="left:16px;top:500px;width:370px;height:44px"><svg class="ic"><use href="#i-userplus"/></svg>Inviter des amis</div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg I">I4</span>L’état vide montre des personnes au lieu d’un bouton qui envoie ailleurs. Trois suggestions s’ajoutent sur place, chacune avec sa raison : un contact sur Take, un ami d’ami ou le même vote sur un take public. Un vote anonyme ne sert jamais de raison. « Inviter des amis » suit.</li>
+<li><span class="tg H">H9</span>Le titre se distingue enfin de la phrase : c’est le composant d’état vide commun. Les textes nouveaux sont à écrire dans les six langues.</li>
+</ul>
+</section>
+
+<!-- 4 PROXIMITE -->
+<section class="scr" id="s4">
+<h2>4 · Accueil, À proximité</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/4981abcf589e.png)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/4981abcf589e.png)">
+  <div class="w" style="left:0;top:444px;width:402px;height:104px"></div>
+  <div class="t f17 ctr" style="left:0;top:450px;width:402px">Où es-tu ?</div>
+  <div class="t f15 s ctr wrap" style="left:31px;top:478px;width:340px;line-height:21px">Take utilise ta position pour montrer les débats autour de toi. Ta position exacte n’est jamais partagée.</div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg H">H9</span>« Où es-tu ? » devient un vrai titre en 17/22 semi-gras, et la phrase reste en gris secondaire, au contraste AA. Les deux actions ne changent pas.</li>
+<li>Aucun des quatre tours n’a vu la carte : la position n’a jamais été accordée.</li>
+</ul>
+</section>
+
+<!-- 5 TAKE OUVERT -->
+<section class="scr" id="s5">
+<h2>5 · Take ouvert et commentaires</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/c83e86914f9f.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/c83e86914f9f.jpg)">
+  <div class="w" style="left:356px;top:74px;width:46px;height:34px"></div>
+  <div class="disc" style="left:350px;top:72px"><svg class="ic"><use href="#i-dots"/></svg></div>
+  <div class="w" style="left:12px;top:418px;width:380px;height:44px"></div>
+  <div class="vb n r" style="left:16px;top:422px"><i style="width:50%"></i><span>Non</span><span>50 %</span></div>
+  <div class="vb y r on" style="left:206px;top:422px"><i style="width:50%"></i><span>✓ Oui</span><span>50 %</span></div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg E">E5</span>« Plus d’options » prend le même disque de 36 pt que « Retour ». Les deux boutons d’en-tête se lisent comme un seul contrôle.</li>
+<li><span class="tg M">M2</span>Les boutons-jauges, sans saut. La page garde son graphique (« Graphique › ») et son contexte.</li>
+<li>Le « j’aime » reste réservé aux commentaires et aux questions ; rien ne s’ajoute sur le take.</li>
+</ul>
+</section>
+
+<!-- 6 MENU -->
+<section class="scr" id="s6">
+<h2>6 · Menu « ··· » d’un take (sombre)</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph dark" style="--b:url(img/a1fb4851b805.png)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph dark" style="--b:url(img/a1fb4851b805.png)">
+  <div class="a" style="left:0;top:540px;width:402px;height:334px;background:#1E2126;border-radius:20px 20px 0 0">
+    <div class="a" style="left:183px;top:8px;width:36px;height:5px;border-radius:3px;background:#4A4F55"></div>
+    <div class="a" style="left:16px;top:36px;color:#E7E9EA"><svg class="ic"><use href="#i-frown"/></svg></div>
+    <div class="t" style="left:52px;top:26px;font:400 16px/20px var(--f);color:#E7E9EA">Pas intéressé·e par ce take</div>
+    <div class="t f13 s" style="left:52px;top:46px">Tu en verras moins comme lui</div>
+    <div class="a" style="left:16px;top:88px;color:#E7E9EA"><svg class="ic"><use href="#i-minus"/></svg></div>
+    <div class="t" style="left:52px;top:88px;font:400 16px/20px var(--f);color:#E7E9EA">Moins de takes « Culture »</div>
+    <div class="a" style="left:16px;top:140px;color:#E7E9EA"><svg class="ic"><use href="#i-plane"/></svg></div>
+    <div class="t" style="left:52px;top:140px;font:400 16px/20px var(--f);color:#E7E9EA">Partager</div>
+    <div class="a" style="left:16px;top:192px;color:#E7E9EA"><svg class="ic"><use href="#i-eyeoff"/></svg></div>
+    <div class="t" style="left:52px;top:192px;font:400 16px/20px var(--f);color:#E7E9EA">Masquer ce take</div>
+    <div class="a" style="left:0;top:226px;width:402px;height:8px;background:#000"></div>
+    <div class="a" style="left:16px;top:252px;color:#F04A4F"><svg class="ic"><use href="#i-flag"/></svg></div>
+    <div class="t" style="left:52px;top:252px;font:400 16px/20px var(--f);color:#E7E9EA">Signaler</div>
+  </div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg E">E3</span><span class="tg H">H3</span>Une seule feuille pour tous les menus : opaque (#1E2126 en sombre, blanche en clair), rangées de 52 pt, icône de 20 pt en tête à x = 16, libellé à x = 52. La même matière vaut pour « Signaler », « Apparence » et le partage : passer de « ··· » à « Signaler » ne change plus d’objet.</li>
+<li><span class="tg H">H4</span>En sombre, « Signaler » a un libellé neutre (#E7E9EA, 14,1:1) au lieu d’un rouge à 3,1:1, et seule l’icône reste rouge. L’action est rangée à part, sous une bande de 8 pt. En clair, rien ne change.</li>
+<li><span class="tg I">I10</span>Deux actions pour corriger son fil, en tête du menu : « Pas intéressé·e par ce take » et « Moins de takes « Culture » » (textes nouveaux).</li>
+<li><span class="tg H">H11</span>« Partager » garde l’avion en papier. <span class="tg H">H5</span>Dans la feuille « Signaler », « Annuler » devient un bouton secondaire pleine largeur de 44 pt, en gris secondaire.</li>
+</ul>
+</section>
+
+<!-- 7 PARTAGE -->
+<section class="scr" id="s7">
+<h2>7 · Feuille de partage</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/5f4fb34ac130.png)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/5f4fb34ac130.png)">
+  <div class="a" style="left:0;top:588px;width:402px;height:286px;background:#fff;border-radius:20px 20px 0 0;box-shadow:0 -4px 20px rgba(0,0,0,.08)">
+    <div class="a" style="left:183px;top:8px;width:36px;height:5px;border-radius:3px;background:#D3D7DC"></div>
+    <div class="av" style="left:22px;top:26px;width:52px;height:52px"></div>
+    <div class="t f12 ctr" style="left:8px;top:84px;width:80px;overflow:hidden;text-overflow:ellipsis">@qasweepa266</div>
+    <div class="av" style="left:102px;top:26px;width:52px;height:52px"></div>
+    <div class="t f12 ctr" style="left:88px;top:84px;width:80px;overflow:hidden;text-overflow:ellipsis">@qasweepc548</div>
+    <div class="av" style="left:182px;top:26px;width:52px;height:52px"></div>
+    <div class="t f12 ctr" style="left:168px;top:84px;width:80px">Inès</div>
+    <div class="av" style="left:262px;top:26px;width:52px;height:52px"></div>
+    <div class="t f12 ctr" style="left:248px;top:84px;width:80px">Hugo</div>
+    <div class="av" style="left:342px;top:26px;width:52px;height:52px"></div>
+    <div class="t f12 ctr" style="left:328px;top:84px;width:80px">Maya</div>
+    <div class="a" style="left:16px;top:112px;width:370px;height:1px;background:#EFF1F3"></div>
+  </div>
+  <div class="c" style="left:22px;top:716px;width:48px;height:48px;border-radius:50%;background-position:-22px -726px"></div>
+  <div class="c" style="left:91px;top:716px;width:48px;height:48px;border-radius:50%;background-position:-91px -726px"></div>
+  <div class="c" style="left:160px;top:716px;width:48px;height:48px;border-radius:50%;background-position:-160px -726px"></div>
+  <div class="c" style="left:229px;top:716px;width:48px;height:48px;border-radius:50%;background-position:-229px -726px"></div>
+  <div class="c" style="left:298px;top:716px;width:48px;height:48px;border-radius:50%;background-position:-298px -726px"></div>
+  <div class="t f12 ctr" style="left:6px;top:770px;width:80px">Copier le lien</div>
+  <div class="t f12 ctr" style="left:75px;top:770px;width:80px">Stories</div>
+  <div class="t f12 ctr" style="left:144px;top:770px;width:80px">WhatsApp</div>
+  <div class="t f12 ctr" style="left:213px;top:770px;width:80px">Partager vers…</div>
+  <div class="t f12 ctr" style="left:282px;top:770px;width:80px">Telegram</div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg H">H1</span>Chaque ami de la grille porte un nom, ou son @ quand le nom est vide, ainsi qu’un libellé d’accessibilité. Avant, ce n’étaient que des visages muets.</li>
+<li><span class="tg H">H3</span>La feuille est blanche et opaque : on ne lit plus les commentaires à travers.</li>
+<li><span class="tg H">H11</span>La boîte-flèche reste seulement sur « Partager vers… », la feuille système. Partout ailleurs, partager depuis Take, c’est l’avion.</li>
+<li><span class="tg M">M9</span>« Copier le lien » referme la feuille. « Lien copié » s’affiche en bas, au-dessus de la barre, avec une vibration de succès.</li>
+</ul>
+</section>
+
+<!-- 8 COMPOSEUR -->
+<section class="scr" id="s8">
+<h2>8 · Composeur</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/5cd18eb27133.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/5cd18eb27133.jpg)">
+  <div class="w" style="left:0;top:56px;width:402px;height:424px"></div>
+  <div class="disc" style="left:16px;top:66px"><svg class="ic"><use href="#i-x"/></svg></div>
+  <div class="a" style="left:16px;top:112px;width:370px;height:359px;border-radius:24px;background:#fff;border:1px solid #EEF0F2;box-shadow:0 6px 24px rgba(0,0,0,.07)"></div>
+  <div class="a" style="left:36px;top:132px;width:2px;height:28px;background:#3B6FE0"></div>
+  <div class="t" style="left:40px;top:132px;font:600 22px/28px var(--f);color:#A3A6AC">Ta question…</div>
+  <div class="t f12 s" style="left:332px;top:262px">0/280</div>
+  <div class="a" style="left:36px;top:284px;width:330px;height:1px;background:#EFF1F3"></div>
+  <div class="c" style="left:36px;top:294px;width:330px;height:40px;background-position:-36px -306px"></div>
+  <div class="a" style="left:36px;top:342px;width:330px;height:1px;background:#EFF1F3"></div>
+  <div class="t f13 b s" style="left:36px;top:354px">Où publier</div>
+  <div class="pl pg" style="left:36px;top:378px;width:100px;height:40px">Amis</div>
+  <div class="pl pg" style="left:144px;top:378px;width:100px;height:40px">Zone</div>
+  <div class="pl pk" style="left:252px;top:378px;width:112px;height:40px"><svg class="ic" style="width:16px;height:16px"><use href="#i-check"/></svg>Takes</div>
+  <div class="t f13 s wrap" style="left:36px;top:426px;width:330px">0 ami pour l’instant : dans Takes, tout le monde peut voter.</div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg E">E8</span>La carte descend jusqu’à 12 pt de la barre d’outils : le champ gagne environ 100 pt, et un texte long reste visible sans défiler.</li>
+<li><span class="tg E">E5</span><span class="tg E">E8</span>« Fermer » passe à gauche, en disque, comme sur X et Instagram. « Publier » reste sur la barre, au-dessus du clavier.</li>
+<li><span class="tg I">I3</span>Tant que le compte n’a aucun ami, l’audience par défaut est « Takes », et la ligne d’aide dit pourquoi. Dès le premier ami, le dernier choix de la personne reprend la main (texte nouveau).</li>
+<li><span class="tg M">M5</span>Publier ramène sur l’onglet de cette audience, avec le take en tête.</li>
+</ul>
+</section>
+
+<!-- 9 EXPLORER -->
+<section class="scr" id="s9">
+<h2>9 · Explorer et recherche</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/cd2584dfa8f5.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/cd2584dfa8f5.jpg)">
+  <div class="w" style="left:30px;top:178px;width:80px;height:18px"></div>
+  <div class="t f13 s" style="left:31px;top:179px">8 votes</div>
+  <div class="w" style="left:0;top:344px;width:402px;height:446px"></div>
+  <div class="a" style="left:0;top:345px;width:402px">
+    <div style="display:flex;gap:12px;padding:10px 16px;border-bottom:1px solid #EFF1F3">
+      <div style="flex:1;min-width:0"><div class="f13 s">2 · Sport</div><div style="font:700 15px/20px var(--f)">Notez votre assiduité à l’entraînement durant l’hiver.</div><div class="f13 s" style="margin-top:2px">Note de 1 à 5</div></div>
+      <div class="c" style="position:relative;flex:none;width:56px;height:56px;border-radius:10px;margin-top:4px;background-size:511.6px 1112.4px;background-position:-71.3px -460.7px"></div>
+    </div>
+    <div style="display:flex;gap:12px;padding:10px 16px;border-bottom:1px solid #EFF1F3">
+      <div style="flex:1;min-width:0"><div class="f13 s">3 · Sport</div><div style="font:700 15px/20px var(--f)">Est-ce qu’un score serré est ce qui rend un match intéressant ?</div><div class="f13 s" style="margin-top:2px">Oui ou non</div></div>
+      <div class="c" style="position:relative;flex:none;width:56px;height:56px;border-radius:10px;margin-top:4px;background-size:511.6px 1112.4px;background-position:-71.3px -558.7px"></div>
+    </div>
+    <div style="display:flex;gap:12px;padding:10px 16px;border-bottom:1px solid #EFF1F3">
+      <div style="flex:1;min-width:0"><div class="f13 s">4 · Sport</div><div style="font:700 15px/20px var(--f)">Quelle est la meilleure façon de continuer à s’entraîner pendant l’hiver ?</div><div class="f13 s" style="margin-top:2px">Choix multiple</div></div>
+      <div class="c" style="position:relative;flex:none;width:56px;height:56px;border-radius:10px;margin-top:4px;background-size:511.6px 1112.4px;background-position:-71.3px -664.4px"></div>
+    </div>
+    <div style="display:flex;gap:12px;padding:10px 16px;border-bottom:1px solid #EFF1F3">
+      <div style="flex:1;min-width:0"><div class="f13 s">5 · Sport</div><div style="font:700 15px/20px var(--f)">Est-ce que vous vous entraîneriez à 6 h du matin avant le travail ?</div><div class="f13 s" style="margin-top:2px">Oui ou non</div></div>
+      <div style="flex:none;width:56px;height:56px"></div>
+    </div>
+  </div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg H">H2</span>Des rangs 2 à n, on lit d’abord la question : « rang · thème », la question entière en 15/20 gras, puis le type de take. La colonne de boutons rouges et verts disparaît : toucher la ligne ouvre le take, où l’on vote. Le n° 1 garde ses boutons. Les libellés de type sont nouveaux et à écrire dans les six langues.</li>
+<li><span class="tg E">E2</span>La place de la vignette reste réservée, même vide (rang 5), si bien que la colonne de texte ne bouge jamais. Le reste d’E2, une colonne d’action fixe de 88 pt, est écarté (voir les contradictions).</li>
+<li><span class="tg H">H5</span>Les rangs et le nombre de votes passent en gris secondaire. La recherche n’a pas de proposition propre : aucun des quatre tours n’a pu juger la frappe en direct.</li>
+</ul>
+</section>
+
+<!-- 10 MESSAGES -->
+<section class="scr" id="s10">
+<h2>10 · Messages et conversation</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/4c6613d72447.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/4c6613d72447.jpg)">
+  <div class="w" style="left:0;top:190px;width:402px;height:150px"></div>
+  <div class="av" style="left:16px;top:208px;width:48px;height:48px"></div>
+  <div class="t f15" style="left:76px;top:212px"><b class="b">@qasweepb596</b><span class="s"> · 15h</span></div>
+  <div class="t f14 s" style="left:76px;top:235px;width:310px;overflow:hidden;text-overflow:ellipsis">Mesure QA : balayage des routes, message éphémère</div>
+  <div class="a" style="left:76px;top:268px;width:326px;height:1px;background:#EFF1F3"></div>
+  <div class="av" style="left:16px;top:281px;width:48px;height:48px"></div>
+  <div class="t f15" style="left:76px;top:285px"><b class="b">@qasweepc548</b><span class="s"> · 2j</span></div>
+  <div class="t f14 s" style="left:76px;top:308px">Défi KnowMe</div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg E">E10</span>L’heure suit le nom sur la ligne 1, toujours au même endroit. L’aperçu prend toute la ligne 2, de x = 76 à 386.</li>
+<li><span class="tg E">E1</span>L’avatar a son filet ; sa taille de 48 pt est gardée ici (voir les contradictions).</li>
+<li><span class="tg M">M8</span>Dans « Demandes de messages », « Accepter » ouvre la conversation par un glissement de page, le champ prêt pour répondre ; les autres demandes restent derrière. Avant, on restait sur une liste vide.</li>
+<li><span class="tg H">H1</span>Dans une conversation, la carte d’un take partagé dit « Take de @… » quand le nom est vide. <span class="tg E">E5</span>Les boutons d’en-tête prennent le même disque.</li>
+</ul>
+</section>
+
+<!-- 11 MESSAGES VIDE -->
+<section class="scr" id="s11">
+<h2>11 · Messages : boîte vide</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/14550533b234.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/14550533b234.jpg)">
+  <div class="w" style="left:0;top:192px;width:402px;height:580px"></div>
+  <div class="t f17" style="left:16px;top:204px">Écris à tes amis</div>
+  <div class="av" style="left:16px;top:240px;width:60px;height:60px"></div><div class="t f12 ctr" style="left:6px;top:306px;width:80px">Inès</div>
+  <div class="av" style="left:104px;top:240px;width:60px;height:60px"></div><div class="t f12 ctr" style="left:94px;top:306px;width:80px">Hugo</div>
+  <div class="av" style="left:192px;top:240px;width:60px;height:60px"></div><div class="t f12 ctr" style="left:182px;top:306px;width:80px">Maya</div>
+  <div class="av" style="left:280px;top:240px;width:60px;height:60px"></div><div class="t f12 ctr" style="left:270px;top:306px;width:80px;overflow:hidden;text-overflow:ellipsis">@qasweepb596</div>
+  <div class="t f15 s wrap" style="left:16px;top:342px;width:370px;line-height:21px">Envoie un take à un ami : il arrive avec son résultat, et vous en parlez ici.</div>
+  <div class="pl pk" style="left:16px;top:400px;width:200px;height:44px"><svg class="ic" style="width:18px;height:18px"><use href="#i-pencil"/></svg>Nouveau message</div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg I">I13</span>La boîte vide propose quelqu’un à qui écrire : les avatars des amis sur une ligne, une phrase qui dit qu’un take envoyé arrive avec son résultat, et « Nouveau message ». Sans ami, cette ligne devient les suggestions de l’écran 3 (textes nouveaux).</li>
+<li><span class="tg H">H9</span>Le composant d’état vide commun remplace la phrase grise seule.</li>
+</ul>
+</section>
+
+<!-- 12 MON PROFIL -->
+<section class="scr" id="s12">
+<h2>12 · Mon profil</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/1c6dfdd5524a.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/1c6dfdd5524a.jpg)">
+  <div class="w" style="left:0;top:56px;width:402px;height:736px"></div>
+  <div class="av" style="left:16px;top:70px;width:72px;height:72px"></div>
+  <div class="t f20" style="left:100px;top:74px">Camille</div>
+  <div class="t f14 s" style="left:100px;top:100px">@qaidees1007831</div>
+  <div class="t f14" style="left:100px;top:122px"><span class="s">Amis</span> <b class="b">0</b> · <span class="s">Takes</span> <b class="b">0</b> · <span class="s">Score</span> <b class="b">0</b> · 🔥 <b class="b">4</b> <span class="s">j</span></div>
+  <div class="disc" style="left:350px;top:70px"><svg class="ic"><use href="#i-menu"/></svg></div>
+  <div class="c" style="left:16px;top:158px;width:370px;height:44px;background-position:-16px -179px"></div>
+  <div class="a" style="left:16px;top:212px;width:370px;height:60px;border-radius:16px;background:#F5F6F8"></div>
+  <div class="t f15 b" style="left:30px;top:222px">🔥 Série de votes : 4 jours</div>
+  <div class="t f13 s" style="left:30px;top:244px">Vote avant minuit pour la garder.</div>
+  <div class="pl pk" style="left:300px;top:226px;width:72px;height:32px;font-size:14px">Voter</div>
+  <div class="c" style="left:16px;top:284px;width:370px;height:144px;border-radius:24px;background-position:-16px -236px"></div>
+  <div class="c" style="left:16px;top:436px;width:370px;height:44px;background-position:-16px -386px"></div>
+  <div class="c" style="left:16px;top:490px;width:370px;height:58px;background-position:-16px -450px"></div>
+  <div class="a" style="left:16px;top:560px;width:370px;height:166px;border-radius:20px;background:#F5F6F8"></div>
+  <div class="t f17" style="left:32px;top:578px">Pose-moi une question</div>
+  <div class="t f15 s wrap" style="left:32px;top:604px;width:338px;line-height:21px">Anonyme si tu veux. Partage ton lien : les questions arrivent ici.</div>
+  <div class="pl pk" style="left:32px;top:666px;width:168px;height:40px">Partager en story</div>
+  <div class="pl po" style="left:208px;top:666px;width:162px;height:40px">Copier le lien</div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg E">E6</span><span class="tg H">H7</span>Mon profil et le profil public ont le même en-tête. Avatar de 72 pt à x = 16 ; à x = 100, l’identité en 20/25 gras (le nom, ou le @ promu quand il manque), puis le @. Dans la ligne de chiffres, les nombres sont en semi-gras noir et les libellés en gris secondaire.</li>
+<li><span class="tg I">I5</span>La série de votes se voit enfin : « 🔥 4 j » dans la ligne de chiffres. Le jour où elle est en jeu, d’après le serveur, une carte « Série de votes : 4 jours » s’affiche avec « Voter » (textes nouveaux).</li>
+<li><span class="tg I">I7</span>L’onglet Questions vide devient une invitation : « Pose-moi une question », « Partager en story » et « Copier le lien ». Le lien ouvre l’onglet Questions du profil public, avec le champ anonyme déjà là.</li>
+<li><span class="tg E">E5</span>Le menu prend le disque. <span class="tg E">E1</span>L’avatar a son filet.</li>
+<li><span class="tg M">M7</span>Le profil se dessine d’un bloc, quand l’en-tête, les chiffres et le Top 8 sont prêts. La page précédente reste affichée en attendant, sans squelette. <span class="tg M">M6</span>Toucher un onglet du profil fait glisser la page (voir Mouvement).</li>
+</ul>
+</section>
+
+<!-- 13 PROFIL PUBLIC -->
+<section class="scr" id="s13">
+<h2>13 · Profil public</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/0637acceb80b.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/0637acceb80b.jpg)">
+  <div class="w" style="left:0;top:112px;width:402px;height:680px"></div>
+  <div class="av" style="left:16px;top:120px;width:72px;height:72px"></div>
+  <div class="t f20" style="left:100px;top:131px">@qasweepb596</div>
+  <div class="t f14" style="left:100px;top:160px"><span class="s">Amis</span> <b class="b">1</b> · <span class="s">Takes</span> <b class="b">1</b> · <span class="s">Score</span> <b class="b">0</b></div>
+  <div class="c" style="left:16px;top:206px;width:370px;height:44px;background-position:-16px -231px"></div>
+  <div class="a" style="left:16px;top:262px;width:370px;height:62px;border-radius:16px;border:1px solid #E3E6EA"></div>
+  <div class="t f15 b" style="left:30px;top:272px">D’accord sur 7 takes sur 10</div>
+  <div class="a" style="left:30px;top:302px;width:190px;height:6px;border-radius:3px;background:#E3E6EA"><div style="width:70%;height:6px;border-radius:3px;background:#141414"></div></div>
+  <div class="t f14 b" style="left:254px;top:284px">Vos désaccords ›</div>
+  <div class="a" style="left:16px;top:334px;width:370px;height:64px;border-radius:16px;background:#F5F6F8"></div>
+  <div class="t f15 b" style="left:30px;top:344px">Tu connais @qasweepb596 ?</div>
+  <div class="t f13 s" style="left:30px;top:366px">Son quiz · 5 questions · 2 amis l’ont fait</div>
+  <div class="pl pk" style="left:300px;top:350px;width:72px;height:32px;font-size:14px">Jouer</div>
+  <div class="c" style="left:16px;top:408px;width:370px;height:44px;background-position:-16px -284px"></div>
+  <div class="av" style="left:16px;top:470px;width:24px;height:24px"></div>
+  <div class="t f14" style="left:48px;top:473px"><b class="b">@qasweepb596</b><span class="s"> · 3j</span></div>
+  <div class="t f17 wrap" style="left:16px;top:504px;width:370px">Mesure QA : balayage des routes, Take de B, à ignorer ?</div>
+  <div class="vb n r on" style="left:16px;top:558px"><i style="width:100%"></i><span>✓ Non</span><span>100 %</span></div>
+  <div class="vb y r" style="left:206px;top:558px"><i style="width:0"></i><span>Oui</span><span>0 %</span></div>
+  <div class="c" style="left:14px;top:602px;width:374px;height:22px;background-position:-14px -537px"></div>
+  <div class="hr" style="top:634px"></div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg E">E6</span><span class="tg H">H7</span><span class="tg H">H1</span>C’est le même en-tête que mon profil. Le nom est vide ici, donc le @ est promu en titre, au lieu d’une ligne grise de 13 pt.</li>
+<li><span class="tg I">I8</span>Le profil raconte la relation : « D’accord sur 7 takes sur 10 » et « Vos désaccords › », qui ouvre les takes où vous divergez. Seuls les votes non anonymes des deux personnes comptent, et la ligne n’apparaît qu’à partir de 5 takes en commun, pour qu’on ne puisse pas en déduire un vote. Elle vit sur le profil, jamais dans le fil Amis.</li>
+<li><span class="tg I">I9</span>Le quiz KnowMe d’un ami se joue depuis son profil. Le résultat revient dans la conversation, comme aujourd’hui (textes nouveaux).</li>
+<li><span class="tg E">E7</span><span class="tg M">M2</span>La rangée de take reprend la tête et les boutons-jauges du fil. <span class="tg E">E5</span>Les deux boutons d’en-tête avaient déjà le disque.</li>
+</ul>
+</section>
+
+<!-- 14 ACTIVITE -->
+<section class="scr" id="s14">
+<h2>14 · Activité (sombre)</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph dark" style="--b:url(img/c85c099c6013.png)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph dark" style="--b:url(img/c85c099c6013.png)">
+  <div class="k" style="left:0;top:162px;width:402px;height:712px"></div>
+  <div class="t" style="left:16px;top:178px;font:600 16px/20px var(--f)">Aujourd’hui</div>
+  <div class="c" style="left:16px;top:210px;width:40px;height:40px;background-position:-16px -196px"></div>
+  <div class="t f15 wrap" style="left:68px;top:210px;width:290px">Ta série de 4 jours est en jeu : vote avant minuit. <span class="s">8h</span></div>
+  <div class="a" style="left:378px;top:226px;width:8px;height:8px;border-radius:50%;background:#E7E9EA"></div>
+  <div class="t" style="left:16px;top:278px;font:600 16px/20px var(--f)">Hier</div>
+  <div class="av" style="left:16px;top:310px;width:40px;height:40px"></div>
+  <div class="t f15 wrap" style="left:68px;top:308px;width:216px"><b class="b">Take Rush</b> · 20 duels nuls avec <b class="b">@qasweepb596</b> <span class="s">1j</span></div>
+  <div class="pl" style="left:296px;top:314px;width:90px;height:32px;font-size:14px;border:1px solid #3A3F45;color:#E7E9EA">Revanche</div>
+  <div class="av" style="left:16px;top:386px;width:40px;height:40px"></div>
+  <div class="t f15 wrap" style="left:68px;top:386px;width:300px"><b class="b">@qasweepc548</b> t’a ajouté en ami <span class="s">1j</span></div>
+  <div class="t" style="left:16px;top:452px;font:600 16px/20px var(--f)">Cette semaine</div>
+  <div class="av" style="left:16px;top:484px;width:40px;height:40px"></div>
+  <div class="t f15 wrap" style="left:68px;top:482px;width:216px"><b class="b">Take Rush</b> · 12 duels nuls avec <b class="b">@qacolibriami436</b> <span class="s">3j</span></div>
+  <div class="pl" style="left:296px;top:488px;width:90px;height:32px;font-size:14px;border:1px solid #3A3F45;color:#E7E9EA">Revanche</div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg E">E4</span>Toutes les sections ont le même en-tête, en 16/20 semi-gras. Le premier commence 16 pt sous les onglets, et 24 pt séparent les sections.</li>
+<li><span class="tg I">I6</span><span class="tg E">E4</span>Vingt lignes identiques deviennent une seule ligne par type, adversaire et jour : « Take Rush · 20 duels nuls avec @… ». Elle ouvre le duel, avec « Revanche » sur place, et le regroupement se fait côté serveur.</li>
+<li><span class="tg H">H1</span>Le @ remplace le nom vide : « @… t’a ajouté en ami » au lieu de « t’a ajouté en ami ». <span class="tg I">I5</span>La notification de série donne le nombre de jours.</li>
+<li><span class="tg H">H8</span>En sombre, les avatars par défaut ne forment plus une colonne de disques blancs (à arbitrer, voir les contradictions). <span class="tg H">H5</span>Les heures sont en gris secondaire.</li>
+</ul>
+</section>
+
+<!-- 15 PARAMETRES -->
+<section class="scr" id="s15">
+<h2>15 · Paramètres</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/2e5f7488fdc2.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/2e5f7488fdc2.jpg)">
+  <div class="w" style="left:0;top:112px;width:402px;height:762px"></div>
+  <div class="t f13 b s" style="left:16px;top:120px">Ton compte</div>
+  <div class="c" style="left:0;top:140px;width:402px;height:40px;background-position:0 -130px"></div>
+  <div class="c" style="left:0;top:192px;width:402px;height:40px;background-position:0 -181px"></div>
+  <div class="c" style="left:0;top:244px;width:402px;height:40px;background-position:0 -233px"></div>
+  <div class="c" style="left:0;top:296px;width:402px;height:40px;background-position:0 -285px"></div>
+  <div class="t f13 b s" style="left:16px;top:350px">Préférences</div>
+  <div class="c" style="left:0;top:370px;width:340px;height:46px;background-position:0 -340px"></div>
+  <div class="c" style="left:344px;top:396px;width:46px;height:36px;background-position:-344px -366px"></div>
+  <div class="t f13 s wrap" style="left:48px;top:418px;width:290px">Améliore facultativement les recommandations à proximité. Ta position exacte n’est pas montrée aux autres.</div>
+  <div class="c" style="left:0;top:476px;width:402px;height:40px;background-position:0 -441px"></div>
+  <div class="t f13 b s" style="left:16px;top:536px">Assistance</div>
+  <div class="a" style="left:18px;top:564px;color:#141414"><svg class="ic" style="width:22px;height:22px"><use href="#i-userplus"/></svg></div>
+  <div class="t" style="left:48px;top:565px;font:500 16px/20px var(--f)">Inviter des amis</div>
+  <div class="a" style="left:368px;top:566px;color:#8A8D93"><svg class="ic" style="width:18px;height:18px"><use href="#i-chev"/></svg></div>
+  <div class="c" style="left:0;top:608px;width:402px;height:40px;background-position:0 -536px"></div>
+  <div class="c" style="left:0;top:660px;width:402px;height:40px;background-position:0 -588px"></div>
+  <div class="c" style="left:0;top:736px;width:402px;height:40px;background-position:0 -640px"></div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg E">E9</span>Trois groupes titrés : « Ton compte », « Préférences » et « Assistance ». La description de la position s’affiche en entier, avec la phrase qui rassure. « Se déconnecter » est rangé seul, 24 pt plus bas (titres nouveaux).</li>
+<li><span class="tg I">I2</span>Une entrée « Inviter des amis » apparaît, avec le lien personnel de l’écran 19.</li>
+<li><span class="tg H">H4</span>En sombre, « Se déconnecter » passe en neutre et garde son icône rouge ; en clair, rien ne change.</li>
+</ul>
+</section>
+
+<!-- 16 KNOWME -->
+<section class="scr" id="s16">
+<h2>16 · KnowMe, Mes quiz</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/6f2c0b66d33e.png)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/6f2c0b66d33e.png)">
+  <div class="a" style="left:98px;top:186px;width:112px;height:24px;background:#EEF2F5"></div><div class="t f13 s" style="left:99px;top:190px">· Prêt à envoyer</div>
+  <div class="a" style="left:272px;top:214px;width:104px;height:42px;background:#EEF2F5"></div><div class="pl po" style="left:278px;top:219px;width:91px;height:32px">Envoyer</div>
+  <div class="a" style="left:98px;top:339px;width:112px;height:24px;background:#EEF2F5"></div><div class="t f13 s" style="left:99px;top:343px">· Prêt à envoyer</div>
+  <div class="a" style="left:272px;top:367px;width:104px;height:42px;background:#EEF2F5"></div><div class="pl po" style="left:278px;top:372px;width:91px;height:32px">Envoyer</div>
+  <div class="a" style="left:98px;top:491px;width:112px;height:24px;background:#EEF2F5"></div><div class="t f13 s" style="left:99px;top:495px">· Prêt à envoyer</div>
+  <div class="a" style="left:272px;top:519px;width:104px;height:42px;background:#EEF2F5"></div><div class="pl po" style="left:278px;top:524px;width:91px;height:32px">Envoyer</div>
+  <div class="a" style="left:98px;top:644px;width:112px;height:24px;background:#EEF2F5"></div><div class="t f13 s" style="left:99px;top:648px">· Prêt à envoyer</div>
+  <div class="a" style="left:272px;top:672px;width:104px;height:42px;background:#EEF2F5"></div><div class="pl po" style="left:278px;top:677px;width:91px;height:32px">Envoyer</div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg H">H6</span>Neuf blocs noirs deviennent un seul bouton plein, « Créer un quiz ». « Envoyer » passe en secondaire à contour, et « Prêt à envoyer » redevient du texte dans la ligne de méta.</li>
+<li><span class="tg M">M10</span>Dans « Nouveau quiz », rien n’est ajouté avant un « Terminé » valide, et « Terminé » reste inactif tant que la question est vide. L’erreur ne s’affiche qu’après une tentative, avec la vibration d’avertissement, et jamais dès l’ouverture de la feuille.</li>
+<li><span class="tg I">I9</span>KnowMe se trouve aussi depuis le profil d’un ami (écran 13), plus seulement par le bouton « Jeux » d’une conversation.</li>
+</ul>
+</section>
+
+<!-- 17 TAKE RUSH -->
+<section class="scr" id="s17">
+<h2>17 · Jeu : Take Rush, fin de partie</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/e10fbb737b5b.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/e10fbb737b5b.jpg)">
+  <div class="a" style="left:0;top:0;width:402px;height:874px;background:rgba(246,247,250,.78)"></div>
+  <div class="c" style="left:0;top:0;width:402px;height:56px;background-position:0 0"></div>
+  <div class="disc" style="left:16px;top:72px"><svg class="ic"><use href="#i-x"/></svg></div>
+  <div class="disc" style="left:306px;top:72px"><svg class="ic"><use href="#i-speaker"/></svg></div>
+  <div class="disc" style="left:350px;top:72px"><svg class="ic"><use href="#i-dots"/></svg></div>
+  <div class="a" style="left:24px;top:232px;width:354px;height:396px;border-radius:28px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12)">
+    <div class="t f17 ctr" style="left:0;top:24px;width:354px">Partie terminée</div>
+    <div class="t ctr" style="left:0;top:50px;width:354px;font:800 64px/72px var(--f)">0</div>
+    <div class="pl pg" style="left:132px;top:128px;width:90px;height:28px;font:400 14px/18px var(--f)">Record <b class="b">0</b></div>
+    <div class="a" style="left:20px;top:174px;width:314px;height:1px;background:#EFF1F3"></div>
+    <div class="t f15 b" style="left:20px;top:190px">Défie un ami de battre ton record</div>
+    <div class="av" style="left:20px;top:222px;width:52px;height:52px"></div><div class="t f12 ctr" style="left:6px;top:280px;width:80px">Inès</div>
+    <div class="av" style="left:102px;top:222px;width:52px;height:52px"></div><div class="t f12 ctr" style="left:88px;top:280px;width:80px">Hugo</div>
+    <div class="av" style="left:184px;top:222px;width:52px;height:52px"></div><div class="t f12 ctr" style="left:170px;top:280px;width:80px">Maya</div>
+    <div class="av" style="left:266px;top:222px;width:52px;height:52px"></div><div class="t f12 ctr" style="left:252px;top:280px;width:80px;overflow:hidden;text-overflow:ellipsis">@qasweepb596</div>
+    <div class="pl pk" style="left:20px;top:322px;width:314px;height:48px;font-size:16px">Rejouer</div>
+  </div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg H">H10</span>À la fin, la scène recule sous un voile et le résultat tient dans une carte au premier plan : « Partie terminée », le score, puis le record. Le tuyau ne traverse plus le score. Les boutons perdent leurs capitales espacées, et le jeu garde une seule police (« Partie terminée » est un texte nouveau).</li>
+<li><span class="tg I">I12</span>« Défie un ami de battre ton record » propose les amis récents en un tap, et le défi arrive dans la conversation. « Partager » passe dans le menu « ··· ».</li>
+<li><span class="tg E">E5</span>« Fermer », le son et le menu prennent le même disque. <span class="tg H">H1</span>Chaque avatar porte un nom ou son @.</li>
+</ul>
+</section>
+
+<!-- 18 PREMIER TAKE -->
+<section class="scr" id="s18">
+<h2>18 · Onboarding : le premier take</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph dark" style="--b:url(img/8be4322e9a38.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph dark" style="--b:url(img/8be4322e9a38.jpg)">
+  <div class="k" style="left:0;top:112px;width:402px;height:762px"></div>
+  <div class="t" style="left:32px;top:122px;font:700 22px/28px var(--f)">Ton premier take</div>
+  <div class="t f15 s" style="left:32px;top:156px">Vote, c’est tout ce qu’il y a à savoir.</div>
+  <div class="t f13 b s" style="left:16px;top:198px">Échauffement · 1 sur 3</div>
+  <div class="a" style="left:220px;top:205px;width:52px;height:3px;border-radius:2px;background:#E7E9EA"></div>
+  <div class="a" style="left:277px;top:205px;width:52px;height:3px;border-radius:2px;background:#2F3336"></div>
+  <div class="a" style="left:334px;top:205px;width:52px;height:3px;border-radius:2px;background:#2F3336"></div>
+  <div class="hr" style="top:226px"></div>
+  <div class="theme" style="left:16px;top:242px"><svg class="ic" style="width:14px;height:14px"><use href="#i-sparkle"/></svg></div>
+  <div class="t f14" style="left:48px;top:245px"><b class="b">Société</b><span class="s"> · 2j</span></div>
+  <div class="t f17 wrap" style="left:16px;top:276px;width:370px">Faut-il interdire le téléphone portable au lycée ?</div>
+  <div class="vb n r" style="left:16px;top:332px"><i style="width:33%"></i><span>Non</span><span>33 %</span></div>
+  <div class="vb y r on" style="left:206px;top:332px"><i style="width:67%"></i><span>✓ Oui</span><span>67 %</span></div>
+  <div class="a" style="left:16px;top:384px;color:#2BB55F"><svg class="ic"><use href="#i-check"/></svg></div>
+  <div class="t f15 b" style="left:44px;top:384px">Tu votes comme 67 % des votants</div>
+  <div class="pl" style="left:16px;top:736px;width:370px;height:48px;background:#E7E9EA;color:#000;font-size:16px">Take suivant</div>
+  <div class="t f15 s ctr" style="left:0;top:800px;width:402px">Passer l’échauffement</div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg I">I1</span>Le premier take n’est plus un sujet tiré au hasard. L’échauffement compte trois takes choisis par le serveur dans la langue et le pays de la personne, récents et déjà votés (le take montré ici est un exemple). Chaque vote révèle « Tu votes comme 67 % des votants ». La sortie devient « Take suivant », avec « Passer l’échauffement » en lien discret, et le troisième vote ouvre l’invitation (textes nouveaux).</li>
+<li><span class="tg M">M2</span>Les boutons-jauges, sans saut. <span class="tg E">E7</span>La même tête de rangée que le fil.</li>
+<li><span class="tg M">M4</span>Les étapes avancent d’une page dans un défilement horizontal, et non plus par un fondu.</li>
+<li><span class="tg M">M11</span><span class="tg I">I14</span>Aucune annonce ne s’affiche pendant l’onboarding. Elles attendent la première ouverture du fil, puis arrivent une à la fois.</li>
+</ul>
+</section>
+
+<!-- 19 INVITATION -->
+<section class="scr" id="s19">
+<h2>19 · Onboarding : inviter ses proches</h2>
+<div class="pair">
+<figure><figcaption>Avant · capture</figcaption><div class="fit"><div class="ph" style="--b:url(img/97fc803f7862.jpg)"></div></div></figure>
+<figure><figcaption>Après · tout ensemble</figcaption><div class="fit"><div class="ph" style="--b:url(img/97fc803f7862.jpg)">
+  <div class="w" style="left:0;top:170px;width:402px;height:540px"></div>
+  <div class="c" style="left:0;top:178px;width:402px;height:190px;background-position:0 -345px"></div>
+  <div class="t f13 b s" style="left:16px;top:396px">Ton lien d’invitation</div>
+  <div class="a" style="left:16px;top:420px;width:370px;height:156px;border-radius:16px;border:1px solid #E3E6EA;background:#fff"></div>
+  <div class="av" style="left:30px;top:434px;width:40px;height:40px"></div>
+  <div class="t f15 b" style="left:80px;top:435px">Camille t’invite sur Take</div>
+  <div class="t f13 s" style="left:80px;top:456px">take.cc/i/camille</div>
+  <div class="a" style="left:16px;top:488px;width:370px;height:1px;background:#EFF1F3"></div>
+  <div class="t f12 s" style="left:30px;top:500px">Son dernier take</div>
+  <div class="t f15 b wrap" style="left:30px;top:518px;width:342px">Faut-il interdire le téléphone portable au lycée ?</div>
+  <div class="t f13 s wrap" style="left:16px;top:588px;width:370px">Si quelqu’un s’inscrit par ce lien, vous devenez amis et tu es prévenu·e.</div>
+</div></div></figure>
+</div>
+<ul class="chg">
+<li><span class="tg I">I2</span>Le lien porte l’invitant : take.cc/i/&lt;pseudo&gt;, avec un aperçu qui montre sa photo, son prénom et son dernier take. Une inscription par ce lien crée l’amitié, fait du take de l’invitant le premier take, et envoie « … a rejoint Take grâce à toi ». L’attribution existe déjà pour les takes partagés : il s’agit de l’étendre aux invitations (textes nouveaux).</li>
+<li><span class="tg M">M4</span>On arrive sur cet écran par un glissement de page.</li>
+</ul>
+</section>
+
+<section class="scr" id="arbitrages">
+<h2>Fusions et contradictions</h2>
+<div class="box">
+<h3>Propositions fusionnées (même idée, vue par deux revues)</h3>
+<ul>
+<li><span class="tg E">E3</span>+<span class="tg H">H3</span>Une seule feuille d’actions, opaque, avec une seule anatomie (écran 6).</li>
+<li><span class="tg E">E6</span>+<span class="tg H">H7</span>Un seul en-tête de profil (écrans 12 et 13).</li>
+<li><span class="tg E">E1</span>+<span class="tg H">H8</span>Un seul traitement de l’avatar par défaut (règle générale en tête de page).</li>
+<li><span class="tg E">E4</span>+<span class="tg I">I6</span>L’Activité, avec des sections régulières et des événements regroupés (écran 14).</li>
+<li><span class="tg M">M11</span>+<span class="tg I">I14</span>Pas d’annonce pendant l’onboarding (écran 18).</li>
+</ul>
+</div>
+<div class="box">
+<h3>Contradictions tranchées vers les règles produit (l’autre option en une ligne)</h3>
+<ul>
+<li><b>Explorer.</b> Retenu : <span class="tg H">H2</span>, des lignes de lecture où l’on vote dans le take, comme les Tendances de X. Écarté : <span class="tg E">E2</span>, une colonne d’action fixe de 88 pt avec des boutons de 44 pt sur chaque ligne ; seule sa vignette réservée est gardée.</li>
+<li><b>Avatar par défaut en clair.</b> Retenu : <span class="tg E">E1</span>, qui garde le disque blanc et la silhouette grise déjà décidés, et ajoute un filet. Écarté : <span class="tg H">H8</span> en clair, un disque #E3E6EA. En sombre, H8 (disque #2F3336) reste proposé, à arbitrer.</li>
+<li><b>Nom sur le profil.</b> Retenu : <span class="tg H">H7</span>, en 20/25 gras, où le nom fait titre comme sur X. Écarté : <span class="tg E">E6</span>, en 17 pt gras ; le reste d’E6 (l’en-tête unique) est gardé.</li>
+<li><b>Fin de Take Rush.</b> Retenu : <span class="tg I">I12</span>, un défi nommé à un ami, avec « Partager » dans le menu. Écarté : <span class="tg H">H10</span>, « Partager » en bouton secondaire de la carte ; le reste de H10 est gardé.</li>
+<li><b>Taille de l’avatar dans Messages.</b> Retenu : <span class="tg E">E10</span>, qui garde 48 pt, la taille la plus proche des messages de X. Écarté : la réduction à 40 pt d’<span class="tg E">E1</span>, qui reste la règle des autres rangées.</li>
+<li><b>Feuilles vitrées.</b> E3 signalait un commentaire du code qui demande de « petites feuilles vitrées ». La règle produit les veut blanches : <span class="tg H">H3</span> s’applique, et le verre reste aux barres.</li>
+</ul>
+</div>
+<div class="box">
+<h3>Relevés hors thème, non maquettés (à vérifier dans des tickets à part)</h3>
+<ul>
+<li>L’aperçu à l’appui long affiche « 0 commentaire » au-dessus d’un commentaire visible, et place Oui à gauche, alors que le fil met Non à gauche.</li>
+<li><code>SkeletonBlock</code> est encore utilisé dans quatre composants du profil et du Jeu. Aucun squelette ne s’est affiché pendant les tours, mais la règle les interdit partout.</li>
+<li>La barre du bas reste visible dans « Détails de la conversation » et disparaît dans la conversation elle-même.</li>
+<li>Une fois, après un vote dans un take ouvert, la ligne du fil affichait encore « 0 vote » au retour. La cause n’est pas établie.</li>
+<li>En clair, dans une conversation, l’heure et les icônes de la barre d’état disparaissent : du texte clair sur un fond blanc.</li>
+<li>Dans une conversation, les messages restent collés en haut, loin du champ. À l’ouverture de Take Rush, la feuille reste blanche environ une seconde.</li>
+</ul>
+</div>
+<p class="lead">Pas vus par les quatre tours : la carte d’À proximité avec la position, une partie KnowMe et son résultat, le Top 8 rempli, les cinq autres langues, Android et les grandes tailles de texte.</p>
+</section>
+</main>
+<script>
+(function(){
+  function fit(){
+    var w=document.documentElement.clientWidth;
+    var k=Math.min(1,(w-48)/402);
+    document.documentElement.style.setProperty('--k',k.toFixed(4));
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>
