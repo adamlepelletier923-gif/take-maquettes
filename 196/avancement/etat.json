@@ -293,31 +293,31 @@
    "prs": [
     {
      "pr": 4481,
-     "titre": "fix(mobile) : tick à l’arrivée UI et fuzz CI borné (TAK-747, TAK-783)",
+     "titre": "Bottom bar: tick on UI arrival and a bounded CI fuzz (TAK-747, TAK-783)",
      "fusion": "Oct 10, 05:44",
      "build196": true
     },
     {
      "pr": 4639,
-     "titre": "TAK-910 : à la réouverture d'un Take, le vote affiché est celui du serveur après un vote refusé",
+     "titre": "Reopening a Take shows the server's vote after a refused vote (TAK-910)",
      "fusion": "Oct 10, 04:54",
      "build196": true
     },
     {
      "pr": 4502,
-     "titre": "Corrige le déplacement continu de la carte après une recherche (TAK-771)",
+     "titre": "Map: one continuous camera move after a search (TAK-771)",
      "fusion": "Oct 10, 04:51",
      "build196": true
     },
     {
      "pr": 4498,
-     "titre": "TAK-776 : haptique des rangées au passage et à l’arrivée (TAK-759, TAK-760)",
+     "titre": "Row haptics on crossing and on arrival (TAK-776, TAK-759, TAK-760)",
      "fusion": "Oct 10, 04:37",
      "build196": true
     },
     {
      "pr": 4512,
-     "titre": "fix(mobile) : ouvrir le Profil immédiatement sans déplacer son en-tête (TAK-421) (TAK-737, TAK-726)",
+     "titre": "Profile opens instantly without moving its header (TAK-421, TAK-737, TAK-726)",
      "fusion": "Oct 10, 04:08",
      "build196": true
     },
@@ -911,7 +911,7 @@
    "prs": [
     {
      "pr": 4590,
-     "titre": "link the web manifest with credentials and classify WebKit departures",
+     "titre": "Website: link the web manifest with credentials and classify WebKit departures",
      "fusion": "Oct 10, 03:51",
      "build196": false
     },
@@ -1289,7 +1289,7 @@
    "prs": [
     {
      "pr": 4629,
-     "titre": "Add a dormant primary guard for guest Take snapshots",
+     "titre": "Server: a dormant guard for guest Take snapshots",
      "fusion": "Oct 10, 04:19",
      "build196": false
     },
