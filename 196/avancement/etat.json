@@ -1,0 +1,1916 @@
+{
+ "majLe": "2026-10-10T01:09+09:00",
+ "heure": "01 h 10",
+ "dernierTableau": "2026-10-09T22:28+09:00",
+ "resume": {
+  "fusionneesDepuis8Octobre": 277,
+  "depuisDernierTableau": 15,
+  "enCours": 11,
+  "app": 91,
+  "siteEtAdmin": 61,
+  "serveur": 49,
+  "outilsEtDocs": 76
+ },
+ "alerte": {
+  "titre": "Depuis hier soir",
+  "texte": "Expo Doctor ne bloque plus : la CI de main est verte. Ton bug d'onglets rapides est trouvé, il venait du profil, et sa correction est mesurée propre. La mise à jour d'Expo de Jordan est remplacée par une version qui corrige aussi un redessin en trop de Proximité, mesurée propre elle aussi."
+ },
+ "depuis": [
+  {
+   "heure": "00:50",
+   "pr": 4516,
+   "texte": "Notifications : les lignes ne bougent plus sous le doigt, et la liste est prête avant qu'on arrive.",
+   "build196": true
+  },
+  {
+   "heure": "00:50",
+   "pr": 4623,
+   "texte": "Outils : ESLint de l'app remplacé par oxlint (Jordan).",
+   "build196": false
+  },
+  {
+   "heure": "00:49",
+   "pr": 4619,
+   "texte": "Outils : Prettier remplacé par oxfmt (Jordan).",
+   "build196": false
+  },
+  {
+   "heure": "00:49",
+   "pr": 4622,
+   "texte": "Serveur : les comptes SQL récursifs restent frais à travers le cache (Jordan).",
+   "build196": false
+  },
+  {
+   "heure": "00:38",
+   "pr": 4630,
+   "texte": "Serveur : le recensement des routes ouvre l'annonce de la graine (Jordan).",
+   "build196": false
+  },
+  {
+   "heure": "00:24",
+   "pr": 4626,
+   "texte": "Explorer garde ses échecs de lecture et les retente. Elle remplace l'ancienne PR #4507.",
+   "build196": true
+  },
+  {
+   "heure": "00:12",
+   "pr": 4610,
+   "texte": "App : les paramètres obligatoires des routes sont gardés (Jordan).",
+   "build196": false
+  },
+  {
+   "heure": "23:56",
+   "pr": 4620,
+   "texte": "Titres des roues sans « (HH:mm) », dans les six langues.",
+   "build196": true
+  },
+  {
+   "heure": "23:52",
+   "pr": 4594,
+   "texte": "Confidentialité : les vraies valeurs, grisées pendant le chargement.",
+   "build196": true
+  },
+  {
+   "heure": "23:51",
+   "pr": 4628,
+   "texte": "Un script du site réparé : la CI ne le voyait pas.",
+   "build196": true
+  },
+  {
+   "heure": "23:45",
+   "pr": 4578,
+   "texte": "Aperçu vidéo : la pause tient quand on change la vitesse.",
+   "build196": true
+  },
+  {
+   "heure": "23:29",
+   "pr": 4625,
+   "texte": "La CI de main repasse au vert : Expo Doctor ne bloque plus.",
+   "build196": true
+  },
+  {
+   "heure": "23:08",
+   "pr": 4624,
+   "texte": "Preuves intermédiaires d'un balayage enregistrées (Jordan).",
+   "build196": false
+  },
+  {
+   "heure": "22:39",
+   "pr": 4621,
+   "texte": "Mesure de l'ouverture d'une annonce, seulement avec une donnée de test dispo (Jordan).",
+   "build196": false
+  },
+  {
+   "heure": "22:32",
+   "pr": 4597,
+   "texte": "La série de votes est retirée partout, comme tu l'as décidé.",
+   "build196": true
+  }
+ ],
+ "statuts": {
+  "relecture": {
+   "libelle": "Relecture et CI",
+   "ton": "wait"
+  },
+  "mesure": {
+   "libelle": "Mesure en cours",
+   "ton": "bench"
+  },
+  "claude": {
+   "libelle": "Un Claude corrige ici",
+   "ton": "bad"
+  }
+ },
+ "enCours": [
+  {
+   "statut": "relecture",
+   "sujet": "Profil : l'onglet suit la page après des gestes rapides (ton bug)",
+   "pr": 4494,
+   "ouEnEst": "Mesure propre : sur ton profil comme sur un profil public, la page suit l'onglet allumé, et rien n'est plus lent. Le contrôle d'avant fusion a trouvé un test qui croisait mal avec le main de cette nuit : corrigé et poussé.",
+   "reste": "Deux relectures du correctif et la CI, puis fusion."
+  },
+  {
+   "statut": "claude",
+   "sujet": "Mise à jour d'Expo, avec la correction de Proximité",
+   "pr": 4627,
+   "ouEnEst": "Remplace la PR de Jordan. Mesure propre : Proximité se redessine moins (9 → 6 fois sur la visite des onglets, 5 → 3 dans Messages), et la reconnexion vue une fois ne revient pas sur trois passages de plus.",
+   "reste": "Un Claude ici reprend main, qui a changé la liste des paquets entre-temps. Puis fusion, et je ferme la PR de Jordan."
+  },
+  {
+   "statut": "mesure",
+   "sujet": "Messages : saisie sur plusieurs lignes et suggestions @",
+   "pr": 4472,
+   "ouEnEst": "DA validée. Reprise de main faite, deux relectures à zéro, CI verte.",
+   "reste": "Mesure du lot en cours, avec Onglets et Compositeur. Puis fusion."
+  },
+  {
+   "statut": "relecture",
+   "sujet": "Onglets : arrivée immédiate et retour stable dans Messages",
+   "pr": 4482,
+   "ouEnEst": "Relue, CI verte. Un Claude ici a repris main avec les Notifications de cette nuit.",
+   "reste": "Relecture de cette reprise, mesure du lot, puis fusion. Elle passe avant Profil."
+  },
+  {
+   "statut": "mesure",
+   "sujet": "Compositeur : la mise à jour attend qu'il soit fermé",
+   "pr": 4565,
+   "ouEnEst": "Relue, CI verte.",
+   "reste": "Mesure du lot, puis fusion."
+  },
+  {
+   "statut": "mesure",
+   "sujet": "Vote : courbe et résultats synchronisés dès le vote",
+   "pr": 4527,
+   "ouEnEst": "Vérifié ici sur simulateur : au moment du vote, 3 rendus de moins que main et moins de saccades.",
+   "reste": "Mesure sur cinq passages pour l'ouverture, puis fusion."
+  },
+  {
+   "statut": "claude",
+   "sujet": "Profil : s'ouvre tout de suite, sans que l'en-tête saute",
+   "pr": 4512,
+   "ouEnEst": "La mesure a trouvé plus lent qu'avant à chaud, et une requête en plus à froid.",
+   "reste": "Un Claude le corrige ici. Puis nouvelle mesure, et reprise de main après Onglets."
+  },
+  {
+   "statut": "claude",
+   "sujet": "Carte : elle ne glisse plus toute seule après une recherche",
+   "pr": 4502,
+   "ouEnEst": "Deux relectures à zéro, CI verte. La mesure ne peut pas trancher : après une recherche de ville, main ouvre une page de Takes, alors que la PR reste sur la carte.",
+   "reste": "Un Claude ici cherche lequel des deux est voulu. Puis correction, ou mesure adaptée."
+  },
+  {
+   "statut": "claude",
+   "sujet": "Onglets natifs : libellés et sélection synchronisés",
+   "pr": 4514,
+   "ouEnEst": "Change le natif. La mesure a trouvé un défaut : dans Activity, en passant en mode sombre, c'est le mauvais onglet qui s'éclaire.",
+   "reste": "Un Claude le corrige ici. Puis nouvelle mesure de son app."
+  },
+  {
+   "statut": "mesure",
+   "sujet": "Retour haptique quand on passe sur une rangée",
+   "pr": 4498,
+   "ouEnEst": "Change le natif. Reprise de main faite, deux relectures à zéro, CI verte.",
+   "reste": "Mesure de son app en cours, puis fusion."
+  },
+  {
+   "statut": "mesure",
+   "sujet": "Petit retour haptique à l'arrivée sur un écran",
+   "pr": 4481,
+   "ouEnEst": "Change le natif. Deux relectures à zéro, CI verte.",
+   "reste": "Mesure de son app en cours, puis fusion."
+  }
+ ],
+ "equipe": [
+  "Ici sur le Mac : sept Claude. La boucle de tests sur main, la préparation du build, les conflits de navigation, et les corrections du Profil, des Onglets natifs, de la Carte et d'Expo.",
+  "Sur Replicas : les mesureurs, chacun avec son iPhone virtuel du pool inclus, et les relecteurs."
+ ],
+ "etapes": [
+  "Fusionner chaque PR dès que sa mesure revient propre, dans le bon ordre : Onglets avant Profil.",
+  "Corriger ici ce que les mesures ont trouvé : Profil, Onglets natifs, Carte.",
+  "Fusionner Expo une fois main repris, et fermer la PR de Jordan.",
+  "Boucle complète de tests sur le main final. Une boucle tourne déjà sur le main actuel, pour trouver les soucis plus tôt.",
+  "Redéployer l'API de staging sur ce même commit : les notifications du 196 en ont besoin.",
+  "Tour du banc, puis la liste de ce qui ne sera pas dans le build, avec les raisons, montrée à toi.",
+  "Lancer le build 196, puis te donner l'émulateur sur Ava, sur main."
+ ],
+ "fait": [
+  {
+   "zone": "mobile",
+   "nom": "App iPhone et Android",
+   "prs": [
+    {
+     "pr": 4516,
+     "titre": "Stabiliser les notifications et les préparer au repos (TAK-787, TAK-788)",
+     "fusion": "10/10 00:50",
+     "build196": true
+    },
+    {
+     "pr": 4623,
+     "titre": "chore: replace mobile ESLint with oxlint",
+     "fusion": "10/10 00:50",
+     "build196": false
+    },
+    {
+     "pr": 4626,
+     "titre": "TAK-793 / TAK-728: preserve Explorer read failures and retries",
+     "fusion": "10/10 00:24",
+     "build196": true
+    },
+    {
+     "pr": 4610,
+     "titre": "fix(mobile): retain required generated route parameters",
+     "fusion": "10/10 00:12",
+     "build196": false
+    },
+    {
+     "pr": 4620,
+     "titre": "TAK-899: retirer les formats entre parenthèses des roues des heures calmes",
+     "fusion": "09/10 23:56",
+     "build196": true
+    },
+    {
+     "pr": 4594,
+     "titre": "fix(mobile) : afficher les valeurs réelles de confidentialité (TAK-866)",
+     "fusion": "09/10 23:52",
+     "build196": true
+    },
+    {
+     "pr": 4578,
+     "titre": "Conserver la pause lors du changement de vitesse de l’aperçu vidéo (TAK-843)",
+     "fusion": "09/10 23:45",
+     "build196": true
+    },
+    {
+     "pr": 4597,
+     "titre": "TAK-867: supprimer la série de votes partout",
+     "fusion": "09/10 22:32",
+     "build196": true
+    },
+    {
+     "pr": 4523,
+     "titre": "Corriger les heures calmes des notifications (TAK-727, TAK-790)",
+     "fusion": "09/10 22:08",
+     "build196": true
+    },
+    {
+     "pr": 4510,
+     "titre": "Préparer les conversations après le repos de Messages (TAK-734, TAK-736)",
+     "fusion": "09/10 21:12",
+     "build196": true
+    },
+    {
+     "pr": 4592,
+     "titre": "Retirer des fils un Take indisponible relu par son ID public (TAK-865)",
+     "fusion": "09/10 20:38",
+     "build196": true
+    },
+    {
+     "pr": 4542,
+     "titre": "Préparer les préférences de notifications sans chargement visible (TAK-804)",
+     "fusion": "09/10 20:10",
+     "build196": true
+    },
+    {
+     "pr": 4566,
+     "titre": "TAK-829: différer les lectures de Take après le défilement des Fils",
+     "fusion": "09/10 19:48",
+     "build196": true
+    },
+    {
+     "pr": 4540,
+     "titre": "fix(mobile) : alléger l’ouverture du profil public et réserver ses statistiques (TAK-810, TAK-811)",
+     "fusion": "09/10 19:42",
+     "build196": true
+    },
+    {
+     "pr": 4586,
+     "titre": "Stabiliser le test de cadence des votes (TAK-806)",
+     "fusion": "09/10 13:20",
+     "build196": false
+    },
+    {
+     "pr": 4515,
+     "titre": "Masquer les Takes retirés et conserver la question des cartes partagées (TAK-786)",
+     "fusion": "09/10 10:26",
+     "build196": false
+    },
+    {
+     "pr": 4541,
+     "titre": "Corriger le dessin du Top 8 après un ajout confirmé (TAK-812)",
+     "fusion": "09/10 09:58",
+     "build196": false
+    },
+    {
+     "pr": 4505,
+     "titre": "Revalider les personnes en commun et synchroniser leur total (TAK-785)",
+     "fusion": "09/10 07:11",
+     "build196": false
+    },
+    {
+     "pr": 4530,
+     "titre": "TAK-753: web and mobile guests open a profile with one composed read",
+     "fusion": "09/10 06:50",
+     "build196": false
+    },
+    {
+     "pr": 4545,
+     "titre": "Regrouper les lignes de réglages pour TalkBack sur Android (TAK-813)",
+     "fusion": "09/10 04:34",
+     "build196": false
+    },
+    {
+     "pr": 4506,
+     "titre": "Faire lire les valeurs des réglages par VoiceOver (TAK-789)",
+     "fusion": "09/10 01:38",
+     "build196": false
+    },
+    {
+     "pr": 4504,
+     "titre": "Retirer l’annonce des fonctions de notifications indisponibles (TAK-791)",
+     "fusion": "09/10 01:03",
+     "build196": false
+    },
+    {
+     "pr": 4487,
+     "titre": "fix(mobile) : conserver la page Android quand le clavier change (TAK-718)",
+     "fusion": "09/10 01:02",
+     "build196": false
+    },
+    {
+     "pr": 4509,
+     "titre": "test(mobile) : lire la sélection réelle des réponses KnowMe (TAK-782)",
+     "fusion": "09/10 00:48",
+     "build196": false
+    },
+    {
+     "pr": 4500,
+     "titre": "TAK-514: allow explicit Around cursor demand without speculative reads",
+     "fusion": "09/10 00:21",
+     "build196": false
+    },
+    {
+     "pr": 4496,
+     "titre": "TAK-514: bound native guest cursors and prepare public video segments",
+     "fusion": "09/10 00:05",
+     "build196": false
+    },
+    {
+     "pr": 4461,
+     "titre": "fix(mobile) : une conversation du haut de la boîte s'ouvre de nouveau sur ses messages (TAK-716)",
+     "fusion": "08/10 23:14",
+     "build196": false
+    },
+    {
+     "pr": 4466,
+     "titre": "fix(mobile) : un onglet du bas montre sa page tout de suite, l'écran apprend son focus juste après (TAK-722)",
+     "fusion": "08/10 22:38",
+     "build196": false
+    },
+    {
+     "pr": 4485,
+     "titre": "TAK-514: bound native Around cursor pages to twelve",
+     "fusion": "08/10 22:23",
+     "build196": false
+    },
+    {
+     "pr": 4479,
+     "titre": "fix(mobile) : sur le profil, l'haptique d'onglet part quand le trait arrive (TAK-748)",
+     "fusion": "08/10 22:22",
+     "build196": false
+    },
+    {
+     "pr": 4469,
+     "titre": "fix(mobile) : une push de message ouverte après un blocage ne montre plus le composeur avant le bandeau (TAK-725)",
+     "fusion": "08/10 22:12",
+     "build196": false
+    },
+    {
+     "pr": 4477,
+     "titre": "TAK-514: prepare native Around neighbors and hold canonical first reveal",
+     "fusion": "08/10 21:42",
+     "build196": false
+    },
+    {
+     "pr": 4473,
+     "titre": "TAK-514: prepare immediate Home neighbors once without hidden observers",
+     "fusion": "08/10 21:14",
+     "build196": false
+    },
+    {
+     "pr": 4463,
+     "titre": "fix(mobile) : la ligne « Amis · Takes · Score » d'une conversation garde chaque nombre lu quand une lecture échoue (TAK-724)",
+     "fusion": "08/10 21:13",
+     "build196": false
+    },
+    {
+     "pr": 4468,
+     "titre": "TAK-514: reuse scoped mobile BlurHash feed placeholders",
+     "fusion": "08/10 20:21",
+     "build196": false
+    },
+    {
+     "pr": 4465,
+     "titre": "fix(mobile) : à la première visite après un démarrage à froid, le Profil s’ouvre déjà chargé, sans squelette (TAK-726)",
+     "fusion": "08/10 20:19",
+     "build196": false
+    },
+    {
+     "pr": 4458,
+     "titre": "fix(mobile) : un take ouvert ne relance plus sa lecture composée toutes les 12 s (TAK-717)",
+     "fusion": "08/10 19:55",
+     "build196": false
+    },
+    {
+     "pr": 4456,
+     "titre": "TAK-514: preserve immediate profile and Explore neighbor reads",
+     "fusion": "08/10 19:46",
+     "build196": false
+    },
+    {
+     "pr": 4454,
+     "titre": "TAK-514: keep canonical cache denials across late feed heads",
+     "fusion": "08/10 19:31",
+     "build196": false
+    },
+    {
+     "pr": 4443,
+     "titre": "TAK-514: cache cold feeds and budget pages, network and video segments",
+     "fusion": "08/10 18:29",
+     "build196": false
+    },
+    {
+     "pr": 4437,
+     "titre": "fix(mobile) : après un glissé rapide, l'onglet d'Activité suit la page où les pages se posent, même sans idle (TAK-693)",
+     "fusion": "08/10 18:15",
+     "build196": false
+    },
+    {
+     "pr": 4425,
+     "titre": "fix(mobile) : fermer les recherches et ouvrir le clavier des réponses sur Android (TAK-671)",
+     "fusion": "08/10 17:29",
+     "build196": false
+    },
+    {
+     "pr": 4389,
+     "titre": "feat(mobile) : la barre du bas rétrécit au défilement sur Explorer, Messages et Profil, et revient sans trembler (TAK-659)",
+     "fusion": "08/10 16:36",
+     "build196": false
+    },
+    {
+     "pr": 4407,
+     "titre": "feat(mobile) : Activité regroupe les duels Take Rush par adversaire et par jour avec Revanche, compte la série en jours, aligne ses en-têtes, assombrit les avatars par défaut et grise les heures (TAK-649)",
+     "fusion": "08/10 15:09",
+     "build196": false
+    },
+    {
+     "pr": 4416,
+     "titre": "feat(mobile) : le n°1 d'une rubrique d'Explorer montre sa photo, et seul lui se vote depuis le classement (TAK-678)",
+     "fusion": "08/10 15:08",
+     "build196": false
+    },
+    {
+     "pr": 4365,
+     "titre": "fix(mobile, api) : le réglage « Position précise » disparaît, aucune position exacte n'est plus envoyée ni gardée (TAK-644)",
+     "fusion": "08/10 14:55",
+     "build196": false
+    },
+    {
+     "pr": 4401,
+     "titre": "fix(mobile) : sur Amis, la carte « Retrouve tes amis » a sa place avant les lignes et ne les pousse plus (TAK-464)",
+     "fusion": "08/10 14:37",
+     "build196": false
+    },
+    {
+     "pr": 4423,
+     "titre": "TAK-684: type-check the workspaces with tsrs, keeping tsc 7 as fallback",
+     "fusion": "08/10 14:01",
+     "build196": false
+    },
+    {
+     "pr": 4404,
+     "titre": "fix(mobile) : une page d'Explorer dont le contenu rétrécit au repos revient à sa fin (TAK-344)",
+     "fusion": "08/10 13:59",
+     "build196": false
+    },
+    {
+     "pr": 4405,
+     "titre": "feat(mobile) : une nouvelle question n'entre dans le quiz qu'au « Terminé » valide, « Terminé » inactif tant qu'elle est vide (TAK-676)",
+     "fusion": "08/10 13:24",
+     "build196": false
+    },
+    {
+     "pr": 4384,
+     "titre": "feat(mobile) : le fil Amis vide d'un compte neuf propose ses contacts sur Take à ajouter sur place, sans texte sous le nom (TAK-647)",
+     "fusion": "08/10 13:19",
+     "build196": false
+    },
+    {
+     "pr": 4398,
+     "titre": "feat(mobile) : un onglet du profil touché glisse toujours d'une page, le trait sur la position réelle des pages (TAK-654)",
+     "fusion": "08/10 13:18",
+     "build196": false
+    },
+    {
+     "pr": 4403,
+     "titre": "fix(mobile) : un onglet du profil dont le contenu rétrécit au repos revient à sa fin (TAK-324)",
+     "fusion": "08/10 13:03",
+     "build196": false
+    },
+    {
+     "pr": 4373,
+     "titre": "feat(mobile) : la barre d'onglets reste fixe quand on ouvre un take, la page glisse dessous (TAK-651)",
+     "fusion": "08/10 13:01",
+     "build196": false
+    },
+    {
+     "pr": 4406,
+     "titre": "fix(prefetch): keep profile rendering stable across flag states (TAK-514)",
+     "fusion": "08/10 12:58",
+     "build196": false
+    },
+    {
+     "pr": 4392,
+     "titre": "TAK-514: defer hidden prefetch until explicit server OFF",
+     "fusion": "08/10 12:43",
+     "build196": false
+    },
+    {
+     "pr": 4395,
+     "titre": "TAK-664: the Nearby map credits drop their opaque box and keep 4.5:1 with primary ink and a halo",
+     "fusion": "08/10 12:28",
+     "build196": false
+    },
+    {
+     "pr": 4394,
+     "titre": "TAK-665: la carte du graphique d'un take ouvert a le même fond en verre que la bulle Contexte, sans bordure",
+     "fusion": "08/10 12:28",
+     "build196": false
+    },
+    {
+     "pr": 4385,
+     "titre": "fix(mobile) : les onglets d'Explorer et d'Activité suivent la page où les pages s'arrêtent, pas les annonces d'iOS (TAK-656)",
+     "fusion": "08/10 12:23",
+     "build196": false
+    },
+    {
+     "pr": 4386,
+     "titre": "feat(observability) : la mesure du lag est prête pour staging (100 % des builds de release sur appareil) et un rapport par build compare p75 et p95 à la version précédente (TAK-658)",
+     "fusion": "08/10 11:51",
+     "build196": false
+    },
+    {
+     "pr": 4370,
+     "titre": "feat(mobile) : Mes quiz sans ligne de méta, « Envoyer » en contour sous un seul « Créer un quiz » plein (TAK-652)",
+     "fusion": "08/10 11:29",
+     "build196": false
+    },
+    {
+     "pr": 4364,
+     "titre": "fix(api) : les takes d'un compte privé ne sont lisibles que par son auteur et ses abonnés acceptés, listes et lien compris (TAK-645)",
+     "fusion": "08/10 11:15",
+     "build196": false
+    },
+    {
+     "pr": 4383,
+     "titre": "fix(mobile) : les onglets du haut de l'accueil ne se désynchronisent plus après des taps et glissements rapides (TAK-655)",
+     "fusion": "08/10 11:07",
+     "build196": false
+    },
+    {
+     "pr": 4369,
+     "titre": "feat(mobile) : la feuille de partage d'un take est opaque, et « Copier le lien » la referme avec « Lien copié » en bas (TAK-653)",
+     "fusion": "08/10 10:39",
+     "build196": false
+    },
+    {
+     "pr": 4366,
+     "titre": "feat(mobile) : la ligne « Suivi par @a, @b et N autres » ouvre les personnes en commun (TAK-650)",
+     "fusion": "08/10 10:33",
+     "build196": false
+    },
+    {
+     "pr": 4360,
+     "titre": "fix(profil) : le Site web n’accepte plus qu’une adresse http(s), refusée avec un message (TAK-636)",
+     "fusion": "08/10 10:05",
+     "build196": false
+    },
+    {
+     "pr": 4372,
+     "titre": "feat(mobile) : dans Messages, l'heure suit le nom, « Accepter » ouvre la conversation prête à répondre, et la carte d'un take nomme son @auteur (TAK-648)",
+     "fusion": "08/10 09:30",
+     "build196": false
+    },
+    {
+     "pr": 4371,
+     "titre": "fix(mobile) : de Takes vers Amis ou À proximité, la page et le trait noir partent dans la même image (TAK-642)",
+     "fusion": "08/10 09:30",
+     "build196": false
+    },
+    {
+     "pr": 4367,
+     "titre": "feat(mobile) : sur À proximité, « Où es-tu ? » devient un vrai titre au-dessus de la phrase grise (TAK-646)",
+     "fusion": "08/10 08:11",
+     "build196": false
+    },
+    {
+     "pr": 4363,
+     "titre": "fix(mobile) : Activité, la rangée des filtres est entière ou cachée au repos (TAK-643)",
+     "fusion": "08/10 07:17",
+     "build196": false
+    },
+    {
+     "pr": 4357,
+     "titre": "fix(mobile) : dans le Top 8, un ami sans nom est nommé par son @pseudo, sur sa case et dans Retirer (TAK-635)",
+     "fusion": "08/10 07:07",
+     "build196": false
+    },
+    {
+     "pr": 4354,
+     "titre": "fix(mobile) : en texte agrandi, « Modifier le profil » et « Partager le profil » s'empilent et restent lisibles (TAK-638)",
+     "fusion": "08/10 06:54",
+     "build196": false
+    },
+    {
+     "pr": 4359,
+     "titre": "fix(mobile) : « Enregistrer » s'affiche en entier dans l'édition du nom d'utilisateur (TAK-637)",
+     "fusion": "08/10 06:50",
+     "build196": false
+    },
+    {
+     "pr": 4355,
+     "titre": "fix(mobile) : le sélecteur GIF et stickers suit le passage d'iOS au sombre ou au clair pendant qu'il est ouvert (TAK-639)",
+     "fusion": "08/10 06:23",
+     "build196": false
+    },
+    {
+     "pr": 4345,
+     "titre": "fix(mobile) : un auteur sans nom est nommé par son @pseudo dans l'activité, le partage et KnowMe (TAK-628, TAK-621, TAK-622)",
+     "fusion": "08/10 06:09",
+     "build196": false
+    },
+    {
+     "pr": 4336,
+     "titre": "fix(mobile) : une recherche Explorer sans résultat dit « Aucun résultat », plus « Pas de tendance » (TAK-619)",
+     "fusion": "08/10 05:59",
+     "build196": false
+    },
+    {
+     "pr": 4337,
+     "titre": "fix(mobile) : quand les pages décident après deux envois perdus, un faux départ de glissé ne bloque plus l'onglet (TAK-600)",
+     "fusion": "08/10 05:46",
+     "build196": false
+    },
+    {
+     "pr": 4334,
+     "titre": "fix(mobile) : le clavier de la recherche ne revient plus sur Messages, et le composeur défile sous une longue question (TAK-629, TAK-634)",
+     "fusion": "08/10 05:46",
+     "build196": false
+    },
+    {
+     "pr": 4339,
+     "titre": "fix(mobile) : sans réseau, une conversation dit qu'elle n'a pas pu charger son historique au lieu de s'ouvrir vide (TAK-625)",
+     "fusion": "08/10 05:37",
+     "build196": false
+    },
+    {
+     "pr": 4332,
+     "titre": "fix(mobile) : l'annonce du serveur attend la fin de l'onboarding au lieu de couvrir sa question (TAK-630)",
+     "fusion": "08/10 05:19",
+     "build196": false
+    },
+    {
+     "pr": 4338,
+     "titre": "fix(social) : un ami est un suivi mutuel, compté une seule fois, sans badge « Ami » pour un suivi à sens unique (TAK-626, TAK-627)",
+     "fusion": "08/10 04:56",
+     "build196": false
+    },
+    {
+     "pr": 4335,
+     "titre": "fix(mobile) : en texte iOS très grand, les lignes des réglages gardent leur libellé et les champs et compteurs ne sont plus coupés (TAK-631, TAK-633)",
+     "fusion": "08/10 04:56",
+     "build196": false
+    },
+    {
+     "pr": 4328,
+     "titre": "fix(mobile) : un toucher d'onglet dont la page renvoyée se perd aussi laisse les pages décider (TAK-600)",
+     "fusion": "08/10 04:27",
+     "build196": false
+    },
+    {
+     "pr": 4326,
+     "titre": "perf(ci) : les tests web se séparent en feuille ordinaire et feuille de contrats transverses (TAK-616)",
+     "fusion": "08/10 04:18",
+     "build196": false
+    },
+    {
+     "pr": 4307,
+     "titre": "fix(mobile) : un onglet du bas s'affiche d'un coup, sans glissé ni fondu, même tapé vite (TAK-603)",
+     "fusion": "08/10 03:12",
+     "build196": false
+    },
+    {
+     "pr": 4304,
+     "titre": "fix(mobile) : l'onglet affiché suit la page posée quand iOS perd le toucher d'un onglet, sur le profil public et dans Activité (TAK-600)",
+     "fusion": "08/10 02:34",
+     "build196": false
+    },
+    {
+     "pr": 4303,
+     "titre": "fix(mobile) : le profil redit « Score » et le classement du jeu dit « Record » (TAK-601)",
+     "fusion": "08/10 02:20",
+     "build196": false
+    },
+    {
+     "pr": 4285,
+     "titre": "fix(mobile) : une langue de lecture changée relit les listes dans cette langue, sans chargeur (TAK-595, point 7)",
+     "fusion": "08/10 01:45",
+     "build196": false
+    },
+    {
+     "pr": 4295,
+     "titre": "TAK-364: resolve Comment mentions for every reader and preview",
+     "fusion": "08/10 01:41",
+     "build196": false
+    },
+    {
+     "pr": 4281,
+     "titre": "fix(mobile) : une acceptation refusée sous un autre écran se retrouve au retour, et le nom du fil reste (TAK-595, points 2 et 5)",
+     "fusion": "08/10 00:58",
+     "build196": false
+    },
+    {
+     "pr": 4283,
+     "titre": "fix(mobile) : un take ouvert part de sa copie complète, pas de la copie légère d'une liste, et garde son Contexte (TAK-595)",
+     "fusion": "08/10 00:21",
+     "build196": false
+    }
+   ]
+  },
+  {
+   "zone": "web",
+   "nom": "Site et admin",
+   "prs": [
+    {
+     "pr": 4619,
+     "titre": "chore: replace root Prettier with oxfmt",
+     "fusion": "10/10 00:49",
+     "build196": false
+    },
+    {
+     "pr": 4628,
+     "titre": "fix(web) : la fixture synthétique de la preuve S55 fournit announcementId (TAK-902)",
+     "fusion": "09/10 23:51",
+     "build196": true
+    },
+    {
+     "pr": 4464,
+     "titre": "fix(web) : rétrécir la barre sur Explorer, Messages et Profil (TAK-703)",
+     "fusion": "09/10 22:08",
+     "build196": true
+    },
+    {
+     "pr": 4484,
+     "titre": "TAK-721: confirmer les questions KnowMe et réconcilier les écritures inconnues",
+     "fusion": "09/10 20:07",
+     "build196": true
+    },
+    {
+     "pr": 4608,
+     "titre": "Classify S55 smoke page errors without their text",
+     "fusion": "09/10 18:23",
+     "build196": false
+    },
+    {
+     "pr": 4593,
+     "titre": "TAK-465: scope the smoke's manifest challenge exemption to WebKit",
+     "fusion": "09/10 14:21",
+     "build196": false
+    },
+    {
+     "pr": 4591,
+     "titre": "TAK-465: classify WebKit's manifest challenge and departure cancellations in the smoke",
+     "fusion": "09/10 13:59",
+     "build196": false
+    },
+    {
+     "pr": 4584,
+     "titre": "TAK-465: identify WebKit resource failures with finite diagnostics",
+     "fusion": "09/10 12:26",
+     "build196": false
+    },
+    {
+     "pr": 4581,
+     "titre": "TAK-465: bound departing feed reads and identify web Basic refusals",
+     "fusion": "09/10 11:04",
+     "build196": false
+    },
+    {
+     "pr": 4574,
+     "titre": "TAK-465: warm the WebKit staging auth cache after build200",
+     "fusion": "09/10 10:19",
+     "build196": false
+    },
+    {
+     "pr": 4571,
+     "titre": "TAK-465: retain classified SMALL smoke network failures",
+     "fusion": "09/10 09:40",
+     "build196": false
+    },
+    {
+     "pr": 4567,
+     "titre": "TAK-465: wait for conversation composer readiness in the S55 smoke",
+     "fusion": "09/10 08:46",
+     "build196": false
+    },
+    {
+     "pr": 4561,
+     "titre": "TAK-465: supply required public Take context in S55 smoke",
+     "fusion": "09/10 07:48",
+     "build196": false
+    },
+    {
+     "pr": 4559,
+     "titre": "TAK-514: final S67b OFF/ON comparison and per-addition recommendation",
+     "fusion": "09/10 07:29",
+     "build196": false
+    },
+    {
+     "pr": 4558,
+     "titre": "TAK-465: validate full identity responses in S55 smoke",
+     "fusion": "09/10 07:14",
+     "build196": false
+    },
+    {
+     "pr": 4555,
+     "titre": "TAK-465: expose safe fixture failure diagnostics in small smoke",
+     "fusion": "09/10 06:38",
+     "build196": false
+    },
+    {
+     "pr": 4537,
+     "titre": "TAK-514: reuse responsive feed image transport for bounded warmup",
+     "fusion": "09/10 06:32",
+     "build196": false
+    },
+    {
+     "pr": 4554,
+     "titre": "TAK-465: measure standalone AFTER using the documented BEFORE",
+     "fusion": "09/10 06:29",
+     "build196": false
+    },
+    {
+     "pr": 4549,
+     "titre": "TAK-824: reduce cold-open coordinator pages within the existing bound",
+     "fusion": "09/10 04:55",
+     "build196": false
+    },
+    {
+     "pr": 4548,
+     "titre": "TAK-821: retain safe response proof keys for pending cold-open reads",
+     "fusion": "09/10 04:27",
+     "build196": false
+    },
+    {
+     "pr": 4547,
+     "titre": "TAK-465: retain safe wave smoke receipts when artifact storage is full",
+     "fusion": "09/10 04:25",
+     "build196": false
+    },
+    {
+     "pr": 4544,
+     "titre": "TAK-818: measure per-page cold-open coordinator transport time",
+     "fusion": "09/10 03:48",
+     "build196": false
+    },
+    {
+     "pr": 4543,
+     "titre": "TAK-692: retain safe cold-open admission refusal diagnostics",
+     "fusion": "09/10 03:41",
+     "build196": false
+    },
+    {
+     "pr": 4539,
+     "titre": "TAK-465: replace the failed BEFORE gate with a small staged-wave smoke",
+     "fusion": "09/10 03:35",
+     "build196": false
+    },
+    {
+     "pr": 4519,
+     "titre": "Retirer l’annonce des notifications indisponibles sur le web (TAK-805)",
+     "fusion": "09/10 01:26",
+     "build196": false
+    },
+    {
+     "pr": 4493,
+     "titre": "TAK-514: bound member Around and preserve immediate prepared openings",
+     "fusion": "08/10 23:32",
+     "build196": false
+    },
+    {
+     "pr": 4490,
+     "titre": "TAK-514: bound public Around pages and preserve every prepared reveal",
+     "fusion": "08/10 22:35",
+     "build196": false
+    },
+    {
+     "pr": 4474,
+     "titre": "TAK-465: aggregate public profile Answers and Reposts",
+     "fusion": "08/10 22:07",
+     "build196": false
+    },
+    {
+     "pr": 4471,
+     "titre": "TAK-514: reuse scoped web BlurHash placeholders during idle time",
+     "fusion": "08/10 20:40",
+     "build196": false
+    },
+    {
+     "pr": 4446,
+     "titre": "TAK-706: kill switch, canary and pull fallback for the hybrid Friends feed",
+     "fusion": "08/10 19:25",
+     "build196": false
+    },
+    {
+     "pr": 4449,
+     "titre": "TAK-465: keep list reads alive during WebKit provisional navigation",
+     "fusion": "08/10 18:55",
+     "build196": false
+    },
+    {
+     "pr": 4447,
+     "titre": "TAK-711: measure cold-open coordinator read failures safely",
+     "fusion": "08/10 18:41",
+     "build196": false
+    },
+    {
+     "pr": 4431,
+     "titre": "fix(web) : aligner le fil et le take ouvert sur iOS main (TAK-666)",
+     "fusion": "08/10 18:00",
+     "build196": false
+    },
+    {
+     "pr": 4441,
+     "titre": "TAK-465: retain per-fetch abort and CSP evidence for WebKit diagnosis",
+     "fusion": "08/10 17:18",
+     "build196": false
+    },
+    {
+     "pr": 4439,
+     "titre": "TAK-465: preserve signed self-question default in direct writes",
+     "fusion": "08/10 16:54",
+     "build196": false
+    },
+    {
+     "pr": 4436,
+     "titre": "TAK-514: defer unopened profile tabs and mutual destinations",
+     "fusion": "08/10 16:24",
+     "build196": false
+    },
+    {
+     "pr": 4435,
+     "titre": "TAK-697: retain safe cold-open preparation admission reasons",
+     "fusion": "08/10 16:16",
+     "build196": false
+    },
+    {
+     "pr": 4432,
+     "titre": "TAK-514: load Explorer hero media within its viewport window",
+     "fusion": "08/10 15:55",
+     "build196": false
+    },
+    {
+     "pr": 4408,
+     "titre": "feat(web) : parité des profils, KnowMe et amis en commun (TAK-667)",
+     "fusion": "08/10 15:54",
+     "build196": false
+    },
+    {
+     "pr": 4430,
+     "titre": "TAK-514: gate unopened message request destination prefetch",
+     "fusion": "08/10 15:27",
+     "build196": false
+    },
+    {
+     "pr": 4428,
+     "titre": "TAK-692: retain safe cold-open admission refusal reasons",
+     "fusion": "08/10 15:19",
+     "build196": false
+    },
+    {
+     "pr": 4409,
+     "titre": "fix(web) : aligne les messages et conversations sur iOS (TAK-668)",
+     "fusion": "08/10 15:04",
+     "build196": false
+    },
+    {
+     "pr": 4427,
+     "titre": "TAK-514: Stop hidden feed reads after search and reconnect",
+     "fusion": "08/10 14:35",
+     "build196": false
+    },
+    {
+     "pr": 4426,
+     "titre": "TAK-465: preserve translations and AI disclosure in direct search",
+     "fusion": "08/10 14:34",
+     "build196": false
+    },
+    {
+     "pr": 4397,
+     "titre": "fix(web) : parité Explorer, recherche, Activité et À proximité (TAK-669)",
+     "fusion": "08/10 14:09",
+     "build196": false
+    },
+    {
+     "pr": 4422,
+     "titre": "TAK-465: guard BFF fallback fetches after document departure",
+     "fusion": "08/10 13:56",
+     "build196": false
+    },
+    {
+     "pr": 4419,
+     "titre": "TAK-682: preserve cold-open outer capture phases",
+     "fusion": "08/10 13:46",
+     "build196": false
+    },
+    {
+     "pr": 4415,
+     "titre": "TAK-681: send valid JSON for owned cold-open cleanup",
+     "fusion": "08/10 13:31",
+     "build196": false
+    },
+    {
+     "pr": 4411,
+     "titre": "TAK-680: verify cold-open server SQL evidence offline",
+     "fusion": "08/10 13:19",
+     "build196": false
+    },
+    {
+     "pr": 4410,
+     "titre": "TAK-465: retain owned peer cleanup when diagnostics cannot install",
+     "fusion": "08/10 13:07",
+     "build196": false
+    },
+    {
+     "pr": 4399,
+     "titre": "TAK-677: repair cold-open hydration probes and fixture deletion",
+     "fusion": "08/10 12:37",
+     "build196": false
+    },
+    {
+     "pr": 4396,
+     "titre": "TAK-465: retain document lifecycle evidence for WebKit transport failures",
+     "fusion": "08/10 12:19",
+     "build196": false
+    },
+    {
+     "pr": 4388,
+     "titre": "TAK-661: Preserve cold-open capture and cleanup failure diagnostics",
+     "fusion": "08/10 10:31",
+     "build196": false
+    },
+    {
+     "pr": 4375,
+     "titre": "TAK-465: stop API fetches from departed browser documents",
+     "fusion": "08/10 08:54",
+     "build196": false
+    },
+    {
+     "pr": 4380,
+     "titre": "TAK-657: patch Next.js image optimization SSRF advisory",
+     "fusion": "08/10 08:45",
+     "build196": false
+    },
+    {
+     "pr": 4356,
+     "titre": "TAK-641: retain safe cold-open preparation diagnostics",
+     "fusion": "08/10 06:28",
+     "build196": false
+    },
+    {
+     "pr": 4352,
+     "titre": "TAK-465: retain resource classes from split WebKit fetch errors",
+     "fusion": "08/10 06:06",
+     "build196": false
+    },
+    {
+     "pr": 4343,
+     "titre": "TAK-465: retain native browser resource and S63 diagnostic context",
+     "fusion": "08/10 05:06",
+     "build196": false
+    },
+    {
+     "pr": 4299,
+     "titre": "TAK-465: preserve gateway and browser CORS diagnostic evidence",
+     "fusion": "08/10 03:14",
+     "build196": false
+    },
+    {
+     "pr": 4290,
+     "titre": "chore(ci) : mesurer checkout, tâches et shards api par job verify (TAK-596)",
+     "fusion": "08/10 01:12",
+     "build196": false
+    },
+    {
+     "pr": 4289,
+     "titre": "TAK-598: require observed status for completed cold-open reads",
+     "fusion": "08/10 00:25",
+     "build196": false
+    }
+   ]
+  },
+  {
+   "zone": "api",
+   "nom": "Serveur",
+   "prs": [
+    {
+     "pr": 4622,
+     "titre": "Preserve fresh recursive SQL counts through cache responses",
+     "fusion": "10/10 00:49",
+     "build196": false
+    },
+    {
+     "pr": 4630,
+     "titre": "fix(api): open the seeded announcement in the route census",
+     "fusion": "10/10 00:38",
+     "build196": false
+    },
+    {
+     "pr": 4625,
+     "titre": "fix : main repasse au vert, fixture du recensement et exception Expo Doctor jusqu'au 12/10 (TAK-902)",
+     "fusion": "09/10 23:29",
+     "build196": true
+    },
+    {
+     "pr": 4614,
+     "titre": "Restore immediate screen freshness after committed mutations",
+     "fusion": "09/10 20:50",
+     "build196": false
+    },
+    {
+     "pr": 4611,
+     "titre": "TAK-872: centraliser les listes en paramètres de requête API",
+     "fusion": "09/10 20:10",
+     "build196": true
+    },
+    {
+     "pr": 4613,
+     "titre": "Route search backfill diagnostics through the shared logger",
+     "fusion": "09/10 19:27",
+     "build196": false
+    },
+    {
+     "pr": 4609,
+     "titre": "Stop spending the purge quota on writes that cannot need it",
+     "fusion": "09/10 18:29",
+     "build196": false
+    },
+    {
+     "pr": 4607,
+     "titre": "Log the gateway's phases for sampled requests",
+     "fusion": "09/10 18:18",
+     "build196": false
+    },
+    {
+     "pr": 4606,
+     "titre": "Show where public Polls without search state came from in the backfill dry-run",
+     "fusion": "09/10 18:13",
+     "build196": false
+    },
+    {
+     "pr": 4605,
+     "titre": "Count the composed profile read's SQL statements in the route sweep",
+     "fusion": "09/10 18:03",
+     "build196": false
+    },
+    {
+     "pr": 4600,
+     "titre": "require a ledger justification for census budget increases",
+     "fusion": "09/10 17:27",
+     "build196": false
+    },
+    {
+     "pr": 4588,
+     "titre": "TAK-869: check the census baseline against the route registry on every PR",
+     "fusion": "09/10 13:32",
+     "build196": false
+    },
+    {
+     "pr": 4583,
+     "titre": "TAK-863 : accepter les listes de thèmes dans Explore",
+     "fusion": "09/10 11:48",
+     "build196": false
+    },
+    {
+     "pr": 4575,
+     "titre": "TAK-853: Stripe through a small fetch client, the SDK out of every Worker",
+     "fusion": "09/10 10:26",
+     "build196": false
+    },
+    {
+     "pr": 4573,
+     "titre": "TAK-853: record the Stripe SDK's wire requests as the adapter's contract",
+     "fusion": "09/10 10:08",
+     "build196": false
+    },
+    {
+     "pr": 4568,
+     "titre": "TAK-838: S78 records (D1061–D1070) and the local Worker startup harness",
+     "fusion": "09/10 09:05",
+     "build196": false
+    },
+    {
+     "pr": 4563,
+     "titre": "TAK-838: read zod through its namespace so every Worker ships only the zod it uses",
+     "fusion": "09/10 08:14",
+     "build196": false
+    },
+    {
+     "pr": 4562,
+     "titre": "TAK-838: cut dead code from the API Worker's bundle and ratchet every Worker's size",
+     "fusion": "09/10 07:57",
+     "build196": false
+    },
+    {
+     "pr": 4557,
+     "titre": "TAK-746: hybrid Friends feed re-measured at 2M users in four modes",
+     "fusion": "09/10 07:22",
+     "build196": false
+    },
+    {
+     "pr": 4552,
+     "titre": "TAK-814: a signed-in profile overlay reads in one statement",
+     "fusion": "09/10 05:58",
+     "build196": false
+    },
+    {
+     "pr": 4531,
+     "titre": "TAK-744: slim Friends projection rows, read the projection index-only",
+     "fusion": "09/10 02:51",
+     "build196": false
+    },
+    {
+     "pr": 4525,
+     "titre": "TAK-745: per-reader first Friends page cache (IDs only, re-authorized, flag off)",
+     "fusion": "09/10 02:40",
+     "build196": false
+    },
+    {
+     "pr": 4535,
+     "titre": "fix(infra) : tolérer l’arrondi Float32 dans la sonde ClickHouse (TAK-763)",
+     "fusion": "09/10 02:25",
+     "build196": false
+    },
+    {
+     "pr": 4534,
+     "titre": "fix(infra) : inclure game-engine dans l’image Docker API (TAK-762)",
+     "fusion": "09/10 02:25",
+     "build196": false
+    },
+    {
+     "pr": 4489,
+     "titre": "TAK-743: UNLOGGED day-partitioned Friends projection with crash and failover recovery",
+     "fusion": "09/10 01:58",
+     "build196": false
+    },
+    {
+     "pr": 4508,
+     "titre": "TAK-795: count approximate rate limits on the Workers Rate Limiting binding",
+     "fusion": "09/10 01:36",
+     "build196": false
+    },
+    {
+     "pr": 4518,
+     "titre": "fix(infra) : lancer Take sur Limrun avec une API locale (TAK-781)",
+     "fusion": "09/10 01:24",
+     "build196": false
+    },
+    {
+     "pr": 4501,
+     "titre": "TAK-780: restore area resolution in the route census",
+     "fusion": "09/10 00:24",
+     "build196": false
+    },
+    {
+     "pr": 4495,
+     "titre": "TAK-742: qualify fresh profile base SQL with the current gateway span",
+     "fusion": "08/10 23:38",
+     "build196": false
+    },
+    {
+     "pr": 4492,
+     "titre": "TAK-742: preserve SQL accounting in composed profile responses",
+     "fusion": "08/10 23:09",
+     "build196": false
+    },
+    {
+     "pr": 4483,
+     "titre": "TAK-709: hybrid Friends feed metrics and e-mail alerts",
+     "fusion": "08/10 22:17",
+     "build196": false
+    },
+    {
+     "pr": 4480,
+     "titre": "TAK-754: count a signed-in profile read's rate limit beside the read at the gateway",
+     "fusion": "08/10 22:05",
+     "build196": false
+    },
+    {
+     "pr": 4478,
+     "titre": "TAK-735: reader-driven hybrid Friends feed (fan-out and reads only for heavy readers)",
+     "fusion": "08/10 21:51",
+     "build196": false
+    },
+    {
+     "pr": 4476,
+     "titre": "TAK-742: serve a profile's public part from the gateway, with each reader's overlay",
+     "fusion": "08/10 21:42",
+     "build196": false
+    },
+    {
+     "pr": 4470,
+     "titre": "TAK-707: enrol heavy readers into the Friends projection and backfill them",
+     "fusion": "08/10 21:25",
+     "build196": false
+    },
+    {
+     "pr": 4475,
+     "titre": "TAK-749: prevent census regeneration from raising statement ceilings",
+     "fusion": "08/10 21:22",
+     "build196": false
+    },
+    {
+     "pr": 4467,
+     "titre": "TAK-698: correct the S74 report after review",
+     "fusion": "08/10 20:48",
+     "build196": false
+    },
+    {
+     "pr": 4459,
+     "titre": "TAK-708: size the Friends projection purge and tune its autovacuum",
+     "fusion": "08/10 20:22",
+     "build196": false
+    },
+    {
+     "pr": 4462,
+     "titre": "TAK-698: measure the hybrid Friends feed at 2M users on a local database",
+     "fusion": "08/10 19:51",
+     "build196": false
+    },
+    {
+     "pr": 4451,
+     "titre": "fix(api) : les Reposts d'un compte privé ne sont servis qu'à lui et à ses abonnés acceptés, et un blocage les cache (TAK-713)",
+     "fusion": "08/10 19:27",
+     "build196": false
+    },
+    {
+     "pr": 4450,
+     "titre": "TAK-712: drive the Friends projection cleanup by publication age",
+     "fusion": "08/10 18:59",
+     "build196": false
+    },
+    {
+     "pr": 4445,
+     "titre": "TAK-704: drop the Friends projection indexes no reader uses",
+     "fusion": "08/10 17:57",
+     "build196": false
+    },
+    {
+     "pr": 4434,
+     "titre": "TAK-490: preserve feed proof closures and diagnose staging guards",
+     "fusion": "08/10 15:56",
+     "build196": false
+    },
+    {
+     "pr": 4348,
+     "titre": "fix(api) : un take publié pour Amis seul n'est listé qu'aux amis de son auteur, avec ou sans compte (TAK-624)",
+     "fusion": "08/10 08:56",
+     "build196": false
+    },
+    {
+     "pr": 4320,
+     "titre": "perf(api) : le pool de workers de test admet d'abord le shard en attente le plus coûteux (TAK-615)",
+     "fusion": "08/10 03:37",
+     "build196": false
+    },
+    {
+     "pr": 4308,
+     "titre": "perf(api) : les tests d'équivalence sortent du gate verify des PR, lancés chaque nuit et à la demande (TAK-604)",
+     "fusion": "08/10 03:07",
+     "build196": false
+    },
+    {
+     "pr": 4306,
+     "titre": "perf(api) : le census des routes sort du gate verify des PR, lancé chaque nuit et à la demande (TAK-602)",
+     "fusion": "08/10 02:45",
+     "build196": false
+    },
+    {
+     "pr": 4298,
+     "titre": "perf(api) : le census des routes se découpe en 8 parties par groupe de routes, plus de shard de 233 s (TAK-597)",
+     "fusion": "08/10 01:42",
+     "build196": false
+    },
+    {
+     "pr": 4291,
+     "titre": "TAK-514: isolate the staging feed flag proof to the API",
+     "fusion": "08/10 00:50",
+     "build196": false
+    }
+   ]
+  },
+  {
+   "zone": "outillage",
+   "nom": "CI, scripts et infra",
+   "prs": [
+    {
+     "pr": 4621,
+     "titre": "Measure announcement opens only with an available fixture",
+     "fusion": "09/10 22:39",
+     "build196": false
+    },
+    {
+     "pr": 4616,
+     "titre": "Continue route measurements when Comment publication is unavailable",
+     "fusion": "09/10 21:00",
+     "build196": false
+    },
+    {
+     "pr": 4604,
+     "titre": "Use only published, reader-visible Comments as sweep fixtures",
+     "fusion": "09/10 17:59",
+     "build196": false
+    },
+    {
+     "pr": 4601,
+     "titre": "Send valid JSON for parameterless sweep writes",
+     "fusion": "09/10 17:24",
+     "build196": false
+    },
+    {
+     "pr": 4598,
+     "titre": "TAK-876: make bodyless sweep writes satisfy browser CSRF",
+     "fusion": "09/10 16:53",
+     "build196": false
+    },
+    {
+     "pr": 4589,
+     "titre": "TAK-869: e-mail the alert address when the nightly route sweep fails",
+     "fusion": "09/10 13:43",
+     "build196": false
+    },
+    {
+     "pr": 4579,
+     "titre": "TAK-851 : fiabiliser le retour en haut du profil (TAK-851)",
+     "fusion": "09/10 13:43",
+     "build196": false
+    },
+    {
+     "pr": 4585,
+     "titre": "TAK-869: give the nightly sweep the file its report imports",
+     "fusion": "09/10 13:27",
+     "build196": false
+    },
+    {
+     "pr": 4556,
+     "titre": "docs(agents) : accord produit obligatoire pour tout changement visible (TAK-835)",
+     "fusion": "09/10 07:06",
+     "build196": false
+    },
+    {
+     "pr": 4532,
+     "titre": "TAK-799: S76/S76b ledger rows (D1021–D1030, D1041–D1050), staging before/after and profile trace tools",
+     "fusion": "09/10 06:53",
+     "build196": false
+    },
+    {
+     "pr": 4553,
+     "titre": "docs(agents) : X puis Instagram comme références obligatoires (TAK-834)",
+     "fusion": "09/10 06:10",
+     "build196": false
+    },
+    {
+     "pr": 4551,
+     "titre": "test(mobile) : capturer les à-coups des fils iOS (TAK-777)",
+     "fusion": "09/10 06:10",
+     "build196": false
+    },
+    {
+     "pr": 4538,
+     "titre": "docs(agents) : accepter les preuves de fluidité sur simulateur Limrun (TAK-778)",
+     "fusion": "09/10 03:25",
+     "build196": false
+    },
+    {
+     "pr": 4528,
+     "titre": "test(mobile) : sonder les transitions Profil et les éditions Top 8 (TAK-777)",
+     "fusion": "09/10 02:46",
+     "build196": false
+    },
+    {
+     "pr": 4511,
+     "titre": "TAK-465: exclude archives from the API publication checkout",
+     "fusion": "09/10 00:56",
+     "build196": false
+    },
+    {
+     "pr": 4499,
+     "titre": "docs(agents) : la fluidité conditionne chaque changement sensible (TAK-778)",
+     "fusion": "09/10 00:31",
+     "build196": false
+    },
+    {
+     "pr": 4491,
+     "titre": "TAK-514: validate sealed replay imports before authentication",
+     "fusion": "08/10 23:01",
+     "build196": false
+    },
+    {
+     "pr": 4486,
+     "titre": "TAK-757: quote the staging browser stage's off so api-worker deploys pass the gate",
+     "fusion": "08/10 22:21",
+     "build196": false
+    },
+    {
+     "pr": 4452,
+     "titre": "TAK-715: ci(mobile) : un build staging peut épingler un commit de main, lancé depuis main",
+     "fusion": "08/10 20:19",
+     "build196": false
+    },
+    {
+     "pr": 4457,
+     "titre": "TAK-465: select staging direct-API migration waves",
+     "fusion": "08/10 20:03",
+     "build196": false
+    },
+    {
+     "pr": 4433,
+     "titre": "test(maestro) : les flows 14 et 16 suivent Mes quiz (DA9) et le classement compact d'Explorer (TAK-678)",
+     "fusion": "08/10 16:01",
+     "build196": false
+    },
+    {
+     "pr": 4421,
+     "titre": "fix(mobile) : le singe signale un LogBox à l'écran comme une erreur de l'app, jamais comme un outil figé (TAK-318)",
+     "fusion": "08/10 14:35",
+     "build196": false
+    },
+    {
+     "pr": 4424,
+     "titre": "revert(ci) : le store Bun quitte le Sticky Disk Blacksmith, qui ralentissait bun ci (TAK-683)",
+     "fusion": "08/10 14:04",
+     "build196": false
+    },
+    {
+     "pr": 4418,
+     "titre": "TAK-684: add tsrs at an exact pin with a daily tsc 7 parity check",
+     "fusion": "08/10 13:43",
+     "build196": false
+    },
+    {
+     "pr": 4417,
+     "titre": "perf(ci) : le store de paquets Bun vit sur un Sticky Disk Blacksmith (TAK-683)",
+     "fusion": "08/10 13:32",
+     "build196": false
+    },
+    {
+     "pr": 4414,
+     "titre": "fix(ci) : le rapport verify retrouve l'étape de checkout quelle que soit l'action (TAK-679)",
+     "fusion": "08/10 13:24",
+     "build196": false
+    },
+    {
+     "pr": 4400,
+     "titre": "perf(ci) : verify fait son checkout via le miroir Git en cache de Blacksmith (TAK-679)",
+     "fusion": "08/10 12:47",
+     "build196": false
+    },
+    {
+     "pr": 4391,
+     "titre": "TAK-503: wait for the complete S66 voter proof matrix",
+     "fusion": "08/10 11:16",
+     "build196": false
+    },
+    {
+     "pr": 4387,
+     "titre": "TAK-490: preserve existing Container images during staging feed proofs",
+     "fusion": "08/10 09:57",
+     "build196": false
+    },
+    {
+     "pr": 4381,
+     "titre": "test(singe) : le saut d'en-tête ne lit que le profil au premier plan",
+     "fusion": "08/10 09:16",
+     "build196": false
+    },
+    {
+     "pr": 4376,
+     "titre": "TAK-70: preserve authentication for staging sparse checkout",
+     "fusion": "08/10 09:03",
+     "build196": false
+    },
+    {
+     "pr": 4379,
+     "titre": "TAK-514: classify incomplete feed proof requests",
+     "fusion": "08/10 08:55",
+     "build196": false
+    },
+    {
+     "pr": 4374,
+     "titre": "TAK-70: reuse S71 checkout in staging QA",
+     "fusion": "08/10 08:16",
+     "build196": false
+    },
+    {
+     "pr": 4368,
+     "titre": "TAK-502: record S66 staging read-cost evidence",
+     "fusion": "08/10 07:44",
+     "build196": false
+    },
+    {
+     "pr": 4361,
+     "titre": "TAK-514: prepare S67 browser before staging admission",
+     "fusion": "08/10 07:07",
+     "build196": false
+    },
+    {
+     "pr": 4362,
+     "titre": "TAK-465: keep transport capture checkout within its budget",
+     "fusion": "08/10 07:06",
+     "build196": false
+    },
+    {
+     "pr": 4353,
+     "titre": "fix(ci): bound S67 headless browser preparation (TAK-514)",
+     "fusion": "08/10 06:16",
+     "build196": false
+    },
+    {
+     "pr": 4350,
+     "titre": "TAK-70: verify the pristine published request proof graph",
+     "fusion": "08/10 05:37",
+     "build196": false
+    },
+    {
+     "pr": 4321,
+     "titre": "perf(ci) : le job verify ne restaure plus l'archive Bun et ne fait que chercher l'archive Turbo avec le cache distant (TAK-617)",
+     "fusion": "08/10 04:52",
+     "build196": false
+    },
+    {
+     "pr": 4327,
+     "titre": "TAK-70: bind request proof to the published API source",
+     "fusion": "08/10 04:29",
+     "build196": false
+    },
+    {
+     "pr": 4331,
+     "titre": "TAK-514: retain fixed feed proof coordinator diagnostics",
+     "fusion": "08/10 04:27",
+     "build196": false
+    },
+    {
+     "pr": 4310,
+     "titre": "fix(ci) : un run verify hors PR ne partage plus son groupe de concurrence (TAK-611)",
+     "fusion": "08/10 03:27",
+     "build196": false
+    },
+    {
+     "pr": 4319,
+     "titre": "perf(ci) : Linear issue ne retourne sur une édition que si le titre change ; le landing ne valide l'infra que sur ses chemins infra (TAK-613)",
+     "fusion": "08/10 03:25",
+     "build196": false
+    },
+    {
+     "pr": 4318,
+     "titre": "TAK-618: bound the cold-open proof checkout",
+     "fusion": "08/10 03:25",
+     "build196": false
+    },
+    {
+     "pr": 4317,
+     "titre": "perf(ci) : le job affected n'installe FFmpeg que si une tâche sélectionnée en a besoin (TAK-612)",
+     "fusion": "08/10 03:24",
+     "build196": false
+    },
+    {
+     "pr": 4316,
+     "titre": "chore(ci) : p50/p95 par job verify sur une fenêtre de runs (TAK-614)",
+     "fusion": "08/10 03:17",
+     "build196": false
+    },
+    {
+     "pr": 4309,
+     "titre": "TAK-70: trim unused files from published proof checkout",
+     "fusion": "08/10 03:03",
+     "build196": false
+    },
+    {
+     "pr": 4300,
+     "titre": "TAK-514: bound the feed proof checkout to replay dependencies",
+     "fusion": "08/10 02:30",
+     "build196": false
+    },
+    {
+     "pr": 4301,
+     "titre": "docs(ledger) : round S71 et rééquilibrage api-a/api-b (TAK-596, TAK-597)",
+     "fusion": "08/10 02:22",
+     "build196": false
+    },
+    {
+     "pr": 4302,
+     "titre": "TAK-504: pin staging read-cost proof to a verified source",
+     "fusion": "08/10 02:12",
+     "build196": false
+    },
+    {
+     "pr": 4292,
+     "titre": "perf(ci) : chaque partition verify ne récupère que les dossiers que ses tâches lisent (TAK-596)",
+     "fusion": "08/10 01:33",
+     "build196": false
+    },
+    {
+     "pr": 4296,
+     "titre": "TAK-70: freeze admission setup for published request proof",
+     "fusion": "08/10 01:26",
+     "build196": false
+    },
+    {
+     "pr": 4294,
+     "titre": "test(mobile) : le flow KnowMe attend une seconde fixe puis touche « Jeux » une seule fois (TAK-595)",
+     "fusion": "08/10 01:12",
+     "build196": false
+    }
+   ]
+  },
+  {
+   "zone": "docs",
+   "nom": "Docs",
+   "prs": [
+    {
+     "pr": 4624,
+     "titre": "Record intermediate sweep evidence and remaining verification dependency",
+     "fusion": "09/10 23:08",
+     "build196": false
+    },
+    {
+     "pr": 4617,
+     "titre": "Record the current pinned route latency baseline",
+     "fusion": "09/10 21:12",
+     "build196": false
+    },
+    {
+     "pr": 4612,
+     "titre": "Record the paired staging windows of the bounded invalidation",
+     "fusion": "09/10 19:21",
+     "build196": false
+    },
+    {
+     "pr": 4599,
+     "titre": "TAK-879: record S82 route diagnosis and diagnostic staging measurements",
+     "fusion": "09/10 17:02",
+     "build196": false
+    },
+    {
+     "pr": 4595,
+     "titre": "TAK-869: record round S80 in the edge ledger (D1076–D1080)",
+     "fusion": "09/10 14:45",
+     "build196": false
+    },
+    {
+     "pr": 4577,
+     "titre": "TAK-853: S79 records (D1071–D1075), the Stripe SDK out of the API Worker",
+     "fusion": "09/10 10:37",
+     "build196": false
+    },
+    {
+     "pr": 4488,
+     "titre": "TAK-710: hybrid Friends feed runbook, ADR 0032 amendment and S75 ledger",
+     "fusion": "08/10 22:37",
+     "build196": false
+    },
+    {
+     "pr": 4455,
+     "titre": "docs(agents) : tout problème relevé reçoit son ticket TAK dès qu'il est relevé (TAK-719)",
+     "fusion": "08/10 21:13",
+     "build196": false
+    },
+    {
+     "pr": 4453,
+     "titre": "TAK-465: audit all180 BFF routes and qualify transport evidence",
+     "fusion": "08/10 19:29",
+     "build196": false
+    },
+    {
+     "pr": 4444,
+     "titre": "TAK-490: record current-source feed proof checkpoints",
+     "fusion": "08/10 17:55",
+     "build196": false
+    },
+    {
+     "pr": 4438,
+     "titre": "TAK-465: refresh BFF audit and failed OFF publication evidence",
+     "fusion": "08/10 16:44",
+     "build196": false
+    },
+    {
+     "pr": 4413,
+     "titre": "docs(perf): record merged S67 gates and live prerequisites (TAK-514)",
+     "fusion": "08/10 13:19",
+     "build196": false
+    },
+    {
+     "pr": 4402,
+     "titre": "TAK-503: close S66 staging evidence after voter readiness fix",
+     "fusion": "08/10 12:50",
+     "build196": false
+    },
+    {
+     "pr": 4378,
+     "titre": "TAK-490: refresh the S57 feed checkpoint for source I",
+     "fusion": "08/10 08:55",
+     "build196": false
+    },
+    {
+     "pr": 4351,
+     "titre": "S57: record current-source OFF feed screen measurements (TAK-490)",
+     "fusion": "08/10 05:52",
+     "build196": false
+    },
+    {
+     "pr": 4349,
+     "titre": "TAK-364: archive fresh 47-rule staging acceptance",
+     "fusion": "08/10 05:29",
+     "build196": false
+    },
+    {
+     "pr": 4341,
+     "titre": "TAK-490: retain failed feed authentication and current source discovery",
+     "fusion": "08/10 04:51",
+     "build196": false
+    },
+    {
+     "pr": 4323,
+     "titre": "docs(S57): retain H closure evidence and explicit storage model",
+     "fusion": "08/10 04:01",
+     "build196": false
+    },
+    {
+     "pr": 4293,
+     "titre": "TAK-490: record verified H cleanup separately from pending feed proof",
+     "fusion": "08/10 01:11",
+     "build196": false
+    }
+   ]
+  },
+  {
+   "zone": "autre",
+   "nom": "Autre",
+   "prs": [
+    {
+     "pr": 4440,
+     "titre": "test(maestro) : la 3e page d'Explorer se lit par la question de son premier take (TAK-624)",
+     "fusion": "08/10 17:25",
+     "build196": false
+    },
+    {
+     "pr": 4393,
+     "titre": "test(maestro) : le flow 16 accepte une rubrique d'Explorer classée sur un seul take (TAK-624)",
+     "fusion": "08/10 12:05",
+     "build196": false
+    },
+    {
+     "pr": 4382,
+     "titre": "test(maestro) : le flow 21 attend que la liste s'arrête avant de toucher un take",
+     "fusion": "08/10 08:49",
+     "build196": false
+    },
+    {
+     "pr": 4325,
+     "titre": "test(mobile) : le flow 17 part de la marge droite, hors du carrousel de photos d'un take (TAK-620)",
+     "fusion": "08/10 04:08",
+     "build196": false
+    }
+   ]
+  }
+ ]
+}
