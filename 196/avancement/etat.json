@@ -25,7 +25,7 @@
   {
    "heure": "05:50",
    "pr": 4640,
-   "texte": "Overlap exact admission counter storage windows",
+   "texte": "Server: exact admission counter storage windows overlap",
    "build196": false
   },
   {
@@ -990,7 +990,7 @@
    "prs": [
     {
      "pr": 4641,
-     "titre": "TAK-915: make the web KnowMe reconciliation test deterministic",
+     "titre": "Website test: the KnowMe reconciliation test is deterministic (TAK-915)",
      "fusion": "Oct 10, 05:53",
      "build196": true
     },
@@ -1374,7 +1374,7 @@
    "prs": [
     {
      "pr": 4640,
-     "titre": "Overlap exact admission counter storage windows",
+     "titre": "Server: exact admission counter storage windows overlap",
      "fusion": "Oct 10, 05:50",
      "build196": false
     },
