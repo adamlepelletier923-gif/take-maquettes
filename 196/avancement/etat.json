@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-10T02:05+09:00",
- "heure": "02:05",
+ "majLe": "2026-10-10T02:36+09:00",
+ "heure": "02:36",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 283,
@@ -13,7 +13,7 @@
  },
  "alerte": {
   "titre": "Since last night",
-  "texte": "Expo Doctor no longer blocks: main's CI is green. Your fast-tab bug is fixed and merged: on the profile, the page follows the chosen tab again, even with chained taps and swipes. The Expo update is merged too, with Nearby redrawing less, and Jordan's older Expo PR is closed."
+  "texte": "Your fast-tab bug is fixed and merged, and so is the Expo update, with Nearby redrawing less. Tonight the Claudes here found and fixed real causes in six PRs: vote, composer, native tabs, haptic tick, profile and row haptics. The full test loop runs on the Mac on main with the new Expo."
  },
  "depuis": [
   {
@@ -159,76 +159,76 @@
  },
  "enCours": [
   {
-   "statut": "measuring",
+   "statut": "claude",
    "sujet": "Messages: multi-line input and @ suggestions",
    "pr": 4472,
-   "ouEnEst": "Design approved by you. Main merged in, two reviews at zero, CI green.",
-   "reste": "Batch measurement running, together with Tabs and Composer. Then merge."
+   "ouEnEst": "Design approved by you. Reviewed, CI green. The batch measurement shows the Messages screen redrawing more often during the tab tour (21 times instead of 15). Mentions work, with less jank than main.",
+   "reste": "A Claude here is finding which PR causes the extra redraws, then fixes it there. Then merge."
   },
   {
-   "statut": "measuring",
+   "statut": "claude",
    "sujet": "Tabs: instant arrival and a stable return to Messages",
    "pr": 4482,
-   "ouEnEst": "Reviewed, CI green. A Claude here merged main in, with tonight's Notifications.",
-   "reste": "Batch measurement, then merge. It goes in before Profile."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Composer: the refresh waits until it is closed",
-   "pr": 4565,
-   "ouEnEst": "Reviewed, CI green.",
-   "reste": "Batch measurement, then merge."
+   "ouEnEst": "Reviewed, CI green. Faster than main on the tab tour, but it may be the cause of the extra Messages redraws.",
+   "reste": "Same investigation as Messages. Then merge, before or after Profile."
   },
   {
    "statut": "review",
+   "sujet": "Composer: the refresh waits until it is closed",
+   "pr": 4565,
+   "ouEnEst": "The batch measurement showed the work had only moved to the Profile visit. Fixed: everything is re-read once, during a quiet moment. Then a duplicate request on slow servers, also fixed.",
+   "reste": "Review of the last fix, and a measurement running. Then merge."
+  },
+  {
+   "statut": "claude",
    "sujet": "Vote: chart and results in sync as soon as you vote",
    "pr": 4527,
-   "ouEnEst": "The extra frame is fixed: 2 renders instead of 4 when you vote. Both reviewers then found a gap: after a refused vote, the counts stopped refreshing. Fixed with a test, and main merged in.",
-   "reste": "Review of the fix, CI, and the five-pass measurement already running. Then merge."
+   "ouEnEst": "Reviewed, CI green, five-pass measurement good when voting. You decided the refused-vote case: it stays shown like an Instagram like, with the counter up and no message.",
+   "reste": "The Claude applies your rule, then a quick review. Then merge."
   },
   {
    "statut": "claude",
    "sujet": "Profile: opens instantly, without the header jumping",
    "pr": 4512,
-   "ouEnEst": "With the tap at the same moment on both sides, it opens sooner with fewer dropped frames, but 2 to 3 more long JS frames on every pass.",
-   "reste": "A Claude here checks whether the background preparation causes them, and splits it up. Then a new measurement, and main merged in after Tabs."
+   "ouEnEst": "The extra long frames came from preparing every tab at once. Fixed: the other tabs open after the first one has drawn. New measurement within main's spread.",
+   "reste": "A Claude here merges main and renumbers its database migration. Then review, CI and merge."
   },
   {
-   "statut": "measuring",
+   "statut": "claude",
    "sujet": "Map: no longer drifts by itself after a search",
    "pr": 4502,
-   "ouEnEst": "A Claude here showed this is intended: after a search, the city stays on the map so the flight can finish, as approved on Oct 9. Tapping an area still opens its Takes.",
-   "reste": "New measurement on paths that end the same way on both sides, then merge."
+   "ouEnEst": "Reviewed, CI green. Measured on fair paths, it goes 1 to 2 dropped frames past main's spread during the flight.",
+   "reste": "A Claude here finds where that comes from and renumbers its database migrations. Then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Native tabs: labels and selection in sync",
    "pr": 4514,
-   "ouEnEst": "Changes native code. The dark mode bug and the Increase Contrast gap are both fixed, and both reviewers are at zero.",
-   "reste": "CI, and a measurement that replays both cases on the real app. Then merge."
+   "ouEnEst": "Changes native code. Dark mode and Increase Contrast fixed and checked on the real app: the right tab lights up. Reviewed at zero, CI green.",
+   "reste": "A cleaner measurement is running for a small gap when entering Activity. Then merge."
   },
   {
    "statut": "review",
    "sujet": "Haptics on tab rows, when passing and on arrival",
    "pr": 4498,
-   "ouEnEst": "Second measurement with gestures at identical times: within main's spread, judged noise. The merge was blocked by a conflict in a profile test once the profile tabs went in.",
-   "reste": "The Claude merges main in and adds its per-gesture tests. Then a quick review, CI and merge."
+   "ouEnEst": "Measurement within main's spread. Main merged in, with five conflicts resolved, and per-gesture tests added.",
+   "reste": "Review of the merge, then CI and merge."
   },
   {
    "statut": "claude",
    "sujet": "Small haptic tick on arrival",
    "pr": 4481,
-   "ouEnEst": "Changes native code. Proper measurement: the first cold Take is 123 ms faster, but launch shows 3 more long JS frames on every pass.",
-   "reste": "A Claude here finds what the PR adds at launch and fixes it, then merges main in (it shares a file with the row haptics)."
+   "ouEnEst": "Changes native code. The launch slowdown is fixed: the haptics now prepare after launch. The tick now arrives on time from the very first tap.",
+   "reste": "Last case: the very first swipe right after launch. A Claude here is closing it. Then review, CI and measurement."
   }
  ],
  "equipe": [
-  "Here on the Mac: Claudes fixing Vote, Profile, the haptic tick, row haptics and a flaky test, plus the full test loop running on tonight's main.",
+  "Here on the Mac: Claudes fixing Vote, Profile, Map, the haptic tick, the Messages redraws and a flaky test, plus the full test loop on main with the new Expo.",
   "On Replicas: the measurers, each with its own virtual iPhone from the included pool, and the reviewers."
  ],
  "etapes": [
   "Merge each PR as soon as its measurement comes back clean, in the right order: Tabs before Profile.",
-  "Fix here what the measurements found: Profile, haptic tick on arrival, and the flaky Explore test.",
+  "Fix here what the measurements found: the extra Messages redraws, the map flight, the haptic tick's first swipe, and the flaky Explore test.",
   "Full test loop on the final main. A loop on tonight's main already passed green: 21 flows, no regression.",
   "Redeploy the staging API on that same commit: build 196's notifications need it.",
   "Bench tour, then the list of what won't be in the build, with reasons, shown to you.",
