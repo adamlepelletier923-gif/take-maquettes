@@ -1,21 +1,45 @@
 {
- "majLe": "2026-10-10T03:47+09:00",
- "heure": "03:47",
+ "majLe": "2026-10-10T04:46+09:00",
+ "heure": "04:46",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 291,
-  "depuisDernierTableau": 29,
-  "enCours": 8,
-  "app": 97,
-  "siteEtAdmin": 61,
-  "serveur": 57,
+  "fusionneesDepuis8Octobre": 295,
+  "depuisDernierTableau": 33,
+  "enCours": 6,
+  "app": 99,
+  "siteEtAdmin": 62,
+  "serveur": 58,
   "outilsEtDocs": 76
  },
  "alerte": {
   "titre": "Since last night",
-  "texte": "Merged tonight: your fast-tab fix, the Expo update, the vote with your refused-vote rule, the native tabs fixed for dark mode and contrast, and a flaky test that made CI fail at random. The measurements keep finding real problems before they reach you: tonight one would have hidden your newly published Take."
+  "texte": "Merged tonight: your fast-tab fix, Expo, the vote with your refused-vote rule, native tabs, the profile that opens instantly, and haptics that land right on time. Six PRs remain; the measurements keep catching real problems before they reach you."
  },
  "depuis": [
+  {
+   "heure": "04:37",
+   "pr": 4498,
+   "texte": "Row haptics: the tick lands exactly when the bar arrives, on tap and on swipe, on every tab row.",
+   "build196": true
+  },
+  {
+   "heure": "04:19",
+   "pr": 4629,
+   "texte": "Server: a dormant guard for guest Take snapshots.",
+   "build196": false
+  },
+  {
+   "heure": "04:08",
+   "pr": 4512,
+   "texte": "Profile: opens instantly, no header jump and no skeleton, and stops re-reading in the background when you are not looking at it.",
+   "build196": true
+  },
+  {
+   "heure": "03:51",
+   "pr": 4590,
+   "texte": "Website: the web manifest is linked with credentials.",
+   "build196": false
+  },
   {
    "heure": "03:28",
    "pr": 4514,
@@ -207,69 +231,55 @@
  },
  "enCours": [
   {
-   "statut": "claude",
+   "statut": "measuring",
    "sujet": "Messages: multi-line input and @ suggestions",
    "pr": 4472,
-   "ouEnEst": "Design approved by you. Reviewed, CI green. The batch measurement shows the Messages screen redrawing more often during the tab tour (21 times instead of 15). Mentions work, with less jank than main.",
-   "reste": "A Claude here is finding which PR causes the extra redraws, then fixes it there. Then merge."
+   "ouEnEst": "Design approved by you. Reviewed at zero, CI green. Code tests found no extra redraws of the Messages screen; the gap seen on device looks like timing.",
+   "reste": "A timestamped measurement on the real app is running to settle it. Then merge."
   },
   {
    "statut": "claude",
    "sujet": "Tabs: instant arrival and a stable return to Messages",
    "pr": 4482,
-   "ouEnEst": "Reviewed, CI green. Faster than main on the tab tour, but it may be the cause of the extra Messages redraws.",
-   "reste": "Same investigation as Messages. Then merge."
+   "ouEnEst": "Reviewed, CI green. Faster than main on the tab tour. Three PRs merged tonight touch the same files.",
+   "reste": "A Claude here merges main in after the row haptics, then reviews and the same timestamped measurement."
   },
   {
    "statut": "review",
    "sujet": "Composer: the refresh waits until it is closed",
    "pr": 4565,
-   "ouEnEst": "The measurement found a real bug: after publishing, your new Take could vanish from the Profile. Fixed, and each list page is now dated by the read that really produced it, so a deleted Take still goes away.",
-   "reste": "Reviews and CI running, then a new measurement. Then merge."
+   "ouEnEst": "Three real bugs found and fixed tonight: your new Take could vanish from the Profile, a deleted Take could stay, and every open feed redrew on each publication. Reviewed at zero.",
+   "reste": "CI and a new measurement of the publication running. Then merge."
   },
   {
    "statut": "review",
-   "sujet": "Profile: opens instantly, without the header jumping",
-   "pr": 4512,
-   "ouEnEst": "Measurement within main's spread. Main merged in, its database migration renumbered after main's. The other tabs now wait until the shown tab, whichever it is, has drawn.",
-   "reste": "One more test for opening straight on Game, then CI and merge."
-  },
-  {
-   "statut": "claude",
    "sujet": "Map: no longer drifts by itself after a search",
    "pr": 4502,
-   "ouEnEst": "Reviewed, CI green. Measured on fair paths, it goes 1 to 2 dropped frames past main's spread during the flight.",
-   "reste": "A Claude here finds where that comes from and renumbers its database migrations. Then merge."
-  },
-  {
-   "statut": "claude",
-   "sujet": "Haptics on tab rows, when passing and on arrival",
-   "pr": 4498,
-   "ouEnEst": "Measurement within main's spread, reviewed at zero, CI green. The native tabs merge touched the same files.",
-   "reste": "A Claude here merges main in once more, then a quick review and merge."
+   "ouEnEst": "Reviewed at zero. Its small gap is the cost of the continuous flight, offset by 2 to 3 times fewer map tiles. Database migrations renumbered after the profile's.",
+   "reste": "CI rerun after an unrelated flaky website test, then merge."
   },
   {
    "statut": "claude",
    "sujet": "Small haptic tick on arrival",
    "pr": 4481,
-   "ouEnEst": "Changes native code. Launch is now lighter than main: 9 to 7 long frames, and the first Take is not delayed. Reviewed at zero.",
-   "reste": "It waits for the row haptics to merge, then merges main in. Then CI and merge."
+   "ouEnEst": "Changes native code. Launch is now lighter than main, and the tick arrives on time from the very first tap. Reviewed at zero.",
+   "reste": "A Claude here merges main in now that the row haptics are in. Then CI and merge."
   },
   {
    "statut": "review",
    "sujet": "Vote: after a refused vote, reopening shows the real vote",
    "pr": 4639,
-   "ouEnEst": "Your rule: a refused vote stays shown while the Take is open. On reopening, the choice and the count now both come from the server, with no message.",
-   "reste": "Review, CI, then merge."
+   "ouEnEst": "Your rule: a refused vote stays shown while the Take is open; on reopening, the choice and the count both come from the server. An anonymous-vote detail found by a reviewer is fixed.",
+   "reste": "Review, then merge."
   }
  ],
  "equipe": [
-  "Here on the Mac: Claudes fixing the composer, the map, the Messages redraws and the row haptics, one checking every search screen's black bar, plus the full test loop on main with the new Expo.",
+  "Here on the Mac: Claudes on the composer, the tabs, the haptic tick and the vote, one checking every search screen's black bar, plus the full test loop on main with the new Expo.",
   "On Replicas: the measurers, each with its own virtual iPhone from the included pool, and the reviewers."
  ],
  "etapes": [
   "Merge each PR as soon as its measurement comes back clean, in the right order: Tabs before Profile.",
-  "Fix here what the measurements found: the extra Messages redraws, the map flight, the haptic tick's first swipe, and the flaky Explore test.",
+  "Settle the Messages and tabs measurement with timestamps, and finish the composer and the haptic tick.",
   "Full test loop on the final main. A loop on tonight's main already passed green: 21 flows, no regression.",
   "Redeploy the staging API on that same commit: build 196's notifications need it.",
   "Bench tour, then the list of what won't be in the build, with reasons, shown to you.",
@@ -280,6 +290,18 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4498,
+     "titre": "TAK-776 : haptique des rangées au passage et à l’arrivée (TAK-759, TAK-760)",
+     "fusion": "Oct 10, 04:37",
+     "build196": true
+    },
+    {
+     "pr": 4512,
+     "titre": "fix(mobile) : ouvrir le Profil immédiatement sans déplacer son en-tête (TAK-421) (TAK-737, TAK-726)",
+     "fusion": "Oct 10, 04:08",
+     "build196": true
+    },
     {
      "pr": 4514,
      "titre": "Sync native tab labels and selection — TAK-779 (TAK-755)",
@@ -869,6 +891,12 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 4590,
+     "titre": "link the web manifest with credentials and classify WebKit departures",
+     "fusion": "Oct 10, 03:51",
+     "build196": false
+    },
+    {
      "pr": 4619,
      "titre": "chore: replace root Prettier with oxfmt",
      "fusion": "Oct 10, 00:49",
@@ -1240,6 +1268,12 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4629,
+     "titre": "Add a dormant primary guard for guest Take snapshots",
+     "fusion": "Oct 10, 04:19",
+     "build196": false
+    },
     {
      "pr": 4638,
      "titre": "perf(api): fold Conversation video completion after source locks",
