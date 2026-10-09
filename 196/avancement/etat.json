@@ -1,21 +1,39 @@
 {
- "majLe": "2026-10-10T01:34+09:00",
- "heure": "01:34",
+ "majLe": "2026-10-10T02:05+09:00",
+ "heure": "02:05",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 280,
-  "depuisDernierTableau": 18,
-  "enCours": 10,
-  "app": 92,
+  "fusionneesDepuis8Octobre": 283,
+  "depuisDernierTableau": 21,
+  "enCours": 9,
+  "app": 93,
   "siteEtAdmin": 61,
-  "serveur": 51,
+  "serveur": 53,
   "outilsEtDocs": 76
  },
  "alerte": {
   "titre": "Since last night",
-  "texte": "Expo Doctor no longer blocks: main's CI is green. Your fast-tab bug is fixed and merged: on the profile, the page follows the chosen tab again, even with chained taps and swipes. Jordan's Expo update is replaced by a version that also fixes an extra Nearby redraw, measured clean too."
+  "texte": "Expo Doctor no longer blocks: main's CI is green. Your fast-tab bug is fixed and merged: on the profile, the page follows the chosen tab again, even with chained taps and swipes. The Expo update is merged too, with Nearby redrawing less, and Jordan's older Expo PR is closed."
  },
  "depuis": [
+  {
+   "heure": "02:03",
+   "pr": 4627,
+   "texte": "Expo update, with Nearby redrawing less. Replaces Jordan's PR, which is now closed.",
+   "build196": true
+  },
+  {
+   "heure": "01:49",
+   "pr": 4633,
+   "texte": "Server: an expert note's lock folds into its upsert (Jordan).",
+   "build196": false
+  },
+  {
+   "heure": "01:49",
+   "pr": 4632,
+   "texte": "Server: a tip's admission decision and insert happen in one go (Jordan).",
+   "build196": false
+  },
   {
    "heure": "01:26",
    "pr": 4494,
@@ -141,13 +159,6 @@
  },
  "enCours": [
   {
-   "statut": "claude",
-   "sujet": "Expo update, with the Nearby fix",
-   "pr": 4627,
-   "ouEnEst": "Replaces Jordan's PR. Clean measurement: Nearby redraws less (9 → 6 times on the tab tour, 5 → 3 in Messages), and the reconnection seen once did not come back over three more passes.",
-   "reste": "A Claude here is merging main, which changed the package list in the meantime. Then merge, and I close Jordan's PR."
-  },
-  {
    "statut": "measuring",
    "sujet": "Messages: multi-line input and @ suggestions",
    "pr": 4472,
@@ -169,18 +180,18 @@
    "reste": "Batch measurement, then merge."
   },
   {
-   "statut": "claude",
+   "statut": "review",
    "sujet": "Vote: chart and results in sync as soon as you vote",
    "pr": 4527,
-   "ouEnEst": "Five-pass measurement: one more long JS frame at the moment of voting. The PR also fixes a real bug: after a refused vote, main wrongly kept your choice on screen.",
-   "reste": "A Claude here is removing the extra frame, then a new measurement."
+   "ouEnEst": "The extra frame is fixed: 2 renders instead of 4 when you vote. Both reviewers then found a gap: after a refused vote, the counts stopped refreshing. Fixed with a test, and main merged in.",
+   "reste": "Review of the fix, CI, and the five-pass measurement already running. Then merge."
   },
   {
-   "statut": "measuring",
+   "statut": "claude",
    "sujet": "Profile: opens instantly, without the header jumping",
    "pr": 4512,
-   "ouEnEst": "A Claude here found the gap came from when the measurement tapped, not from the code. Warm, the second measurement shows no regression.",
-   "reste": "New cold measurement, with the tap at the same moment on both sides. Then main merged in after Tabs."
+   "ouEnEst": "With the tap at the same moment on both sides, it opens sooner with fewer dropped frames, but 2 to 3 more long JS frames on every pass.",
+   "reste": "A Claude here checks whether the background preparation causes them, and splits it up. Then a new measurement, and main merged in after Tabs."
   },
   {
    "statut": "measuring",
@@ -190,35 +201,34 @@
    "reste": "New measurement on paths that end the same way on both sides, then merge."
   },
   {
-   "statut": "claude",
+   "statut": "measuring",
    "sujet": "Native tabs: labels and selection in sync",
    "pr": 4514,
-   "ouEnEst": "Changes native code. The measurement found a bug: in Activity, switching to dark mode lights up the wrong tab. The fix holds for dark mode, but both reviewers found the same gap with Increase Contrast.",
-   "reste": "The Claude is fixing the contrast case. Then review, and a measurement that replays both cases."
+   "ouEnEst": "Changes native code. The dark mode bug and the Increase Contrast gap are both fixed, and both reviewers are at zero.",
+   "reste": "CI, and a measurement that replays both cases on the real app. Then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Haptics on tab rows, when passing and on arrival",
+   "pr": 4498,
+   "ouEnEst": "Second measurement with gestures at identical times: within main's spread, judged noise. The merge was blocked by a conflict in a profile test once the profile tabs went in.",
+   "reste": "The Claude merges main in and adds its per-gesture tests. Then a quick review, CI and merge."
   },
   {
    "statut": "claude",
-   "sujet": "Haptics on tab rows, when passing and on arrival",
-   "pr": 4498,
-   "ouEnEst": "Changes native code. Two reviews at zero, CI green. The measurement finds more jank than main: one more long JS frame, about 90 ms more jank and about ten more dropped frames.",
-   "reste": "A Claude here is finding the cause and fixing it. Then a new measurement."
-  },
-  {
-   "statut": "measuring",
    "sujet": "Small haptic tick on arrival",
    "pr": 4481,
-   "ouEnEst": "Changes native code. Two reviews at zero, CI green. The first measurement does not count (wrong protocol), but it hints at a slower first cold Take.",
-   "reste": "Measurement being redone with the right protocol. Then merge, or a fix."
+   "ouEnEst": "Changes native code. Proper measurement: the first cold Take is 123 ms faster, but launch shows 3 more long JS frames on every pass.",
+   "reste": "A Claude here finds what the PR adds at launch and fixes it, then merges main in (it shares a file with the row haptics)."
   }
  ],
  "equipe": [
-  "Here on the Mac: Claudes fixing Expo, Vote, row haptics, native tabs and a flaky test. Others are waiting for a measurement (Profile, Map) or for Tabs to merge (navigation). The full loop on main passed green at 00:46: 21 flows, no regression.",
+  "Here on the Mac: Claudes fixing Vote, Profile, the haptic tick, row haptics and a flaky test, plus the full test loop running on tonight's main.",
   "On Replicas: the measurers, each with its own virtual iPhone from the included pool, and the reviewers."
  ],
  "etapes": [
   "Merge each PR as soon as its measurement comes back clean, in the right order: Tabs before Profile.",
-  "Fix here what the measurements found: Vote, row haptics, native tabs, and the flaky Explore test.",
-  "Merge Expo once main is merged in, and close Jordan's PR.",
+  "Fix here what the measurements found: Profile, haptic tick on arrival, and the flaky Explore test.",
   "Full test loop on the final main. A loop on tonight's main already passed green: 21 flows, no regression.",
   "Redeploy the staging API on that same commit: build 196's notifications need it.",
   "Bench tour, then the list of what won't be in the build, with reasons, shown to you.",
@@ -229,6 +239,12 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4627,
+     "titre": "TAK-903: update Expo and isolate Nearby's pathname subscription",
+     "fusion": "Oct 10, 02:03",
+     "build196": true
+    },
     {
      "pr": 4494,
      "titre": "fix(mobile): on the profile, the tab follows the page again after chained taps and swipes (TAK-702)",
@@ -1159,6 +1175,18 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4633,
+     "titre": "perf(api): fold Expert Note locking into its upsert",
+     "fusion": "Oct 10, 01:49",
+     "build196": false
+    },
+    {
+     "pr": 4632,
+     "titre": "perf(api): fold Tip admission decision and insert",
+     "fusion": "Oct 10, 01:49",
+     "build196": false
+    },
     {
      "pr": 4615,
      "titre": "Prototype exact publication counting before API parsing",
