@@ -282,7 +282,7 @@
    "prs": [
     {
      "pr": 4514,
-     "titre": "Synchroniser les libellés et la sélection des onglets natifs — TAK-779 (TAK-755)",
+     "titre": "Sync native tab labels and selection — TAK-779 (TAK-755)",
      "fusion": "Oct 10, 03:28",
      "build196": true
     },
@@ -294,13 +294,13 @@
     },
     {
      "pr": 4527,
-     "titre": "Synchroniser la courbe et les résultats dès le vote sur iOS (TAK-775)",
+     "titre": "Sync the chart and results the moment you vote on iOS (TAK-775)",
      "fusion": "Oct 10, 02:49",
      "build196": true
     },
     {
      "pr": 4637,
-     "titre": "TAK-906: les pages d'Explorer ne se redessinent plus pour une lecture en cours (test de reconnexion instable)",
+     "titre": "TAK-906: Explore pages no longer redraw for a read in flight (flaky reconnection test)",
      "fusion": "Oct 10, 02:43",
      "build196": true
     },
