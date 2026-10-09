@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-10T01:32+09:00",
- "heure": "01:36",
+ "majLe": "2026-10-10T01:34+09:00",
+ "heure": "01:34",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 280,
@@ -231,13 +231,13 @@
    "prs": [
     {
      "pr": 4494,
-     "titre": "fix(mobile) : sur le profil, l'onglet suit de nouveau la page après des taps et glissés enchaînés (TAK-702)",
+     "titre": "fix(mobile): on the profile, the tab follows the page again after chained taps and swipes (TAK-702)",
      "fusion": "Oct 10, 01:26",
      "build196": true
     },
     {
      "pr": 4516,
-     "titre": "Stabiliser les notifications et les préparer au repos (TAK-787, TAK-788)",
+     "titre": "Stabilize notifications and prepare them while idle (TAK-787, TAK-788)",
      "fusion": "Oct 10, 00:50",
      "build196": true
     },
@@ -261,85 +261,85 @@
     },
     {
      "pr": 4620,
-     "titre": "TAK-899: retirer les formats entre parenthèses des roues des heures calmes",
+     "titre": "TAK-899: remove the parenthesized formats from the quiet hours wheels",
      "fusion": "Oct 09, 23:56",
      "build196": true
     },
     {
      "pr": 4594,
-     "titre": "fix(mobile) : afficher les valeurs réelles de confidentialité (TAK-866)",
+     "titre": "fix(mobile): show the actual privacy values (TAK-866)",
      "fusion": "Oct 09, 23:52",
      "build196": true
     },
     {
      "pr": 4578,
-     "titre": "Conserver la pause lors du changement de vitesse de l’aperçu vidéo (TAK-843)",
+     "titre": "Keep the pause when changing the video preview speed (TAK-843)",
      "fusion": "Oct 09, 23:45",
      "build196": true
     },
     {
      "pr": 4597,
-     "titre": "TAK-867: supprimer la série de votes partout",
+     "titre": "TAK-867: remove the voting streak everywhere",
      "fusion": "Oct 09, 22:32",
      "build196": true
     },
     {
      "pr": 4523,
-     "titre": "Corriger les heures calmes des notifications (TAK-727, TAK-790)",
+     "titre": "Fix notification quiet hours (TAK-727, TAK-790)",
      "fusion": "Oct 09, 22:08",
      "build196": true
     },
     {
      "pr": 4510,
-     "titre": "Préparer les conversations après le repos de Messages (TAK-734, TAK-736)",
+     "titre": "Prepare conversations once Messages is idle (TAK-734, TAK-736)",
      "fusion": "Oct 09, 21:12",
      "build196": true
     },
     {
      "pr": 4592,
-     "titre": "Retirer des fils un Take indisponible relu par son ID public (TAK-865)",
+     "titre": "Remove from feeds an unavailable Take reread by its public ID (TAK-865)",
      "fusion": "Oct 09, 20:38",
      "build196": true
     },
     {
      "pr": 4542,
-     "titre": "Préparer les préférences de notifications sans chargement visible (TAK-804)",
+     "titre": "Prepare notification preferences with no visible loading (TAK-804)",
      "fusion": "Oct 09, 20:10",
      "build196": true
     },
     {
      "pr": 4566,
-     "titre": "TAK-829: différer les lectures de Take après le défilement des Fils",
+     "titre": "TAK-829: defer Take reads until feed scrolling ends",
      "fusion": "Oct 09, 19:48",
      "build196": true
     },
     {
      "pr": 4540,
-     "titre": "fix(mobile) : alléger l’ouverture du profil public et réserver ses statistiques (TAK-810, TAK-811)",
+     "titre": "fix(mobile): lighten opening a public profile and reserve its stats (TAK-810, TAK-811)",
      "fusion": "Oct 09, 19:42",
      "build196": true
     },
     {
      "pr": 4586,
-     "titre": "Stabiliser le test de cadence des votes (TAK-806)",
+     "titre": "Stabilize the vote cadence test (TAK-806)",
      "fusion": "Oct 09, 13:20",
      "build196": false
     },
     {
      "pr": 4515,
-     "titre": "Masquer les Takes retirés et conserver la question des cartes partagées (TAK-786)",
+     "titre": "Hide removed Takes and keep the question on shared cards (TAK-786)",
      "fusion": "Oct 09, 10:26",
      "build196": false
     },
     {
      "pr": 4541,
-     "titre": "Corriger le dessin du Top 8 après un ajout confirmé (TAK-812)",
+     "titre": "Fix the Top 8 drawing after a confirmed addition (TAK-812)",
      "fusion": "Oct 09, 09:58",
      "build196": false
     },
     {
      "pr": 4505,
-     "titre": "Revalider les personnes en commun et synchroniser leur total (TAK-785)",
+     "titre": "Revalidate mutual people and sync their total (TAK-785)",
      "fusion": "Oct 09, 07:11",
      "build196": false
     },
@@ -351,31 +351,31 @@
     },
     {
      "pr": 4545,
-     "titre": "Regrouper les lignes de réglages pour TalkBack sur Android (TAK-813)",
+     "titre": "Group settings rows for TalkBack on Android (TAK-813)",
      "fusion": "Oct 09, 04:34",
      "build196": false
     },
     {
      "pr": 4506,
-     "titre": "Faire lire les valeurs des réglages par VoiceOver (TAK-789)",
+     "titre": "Have VoiceOver read settings values (TAK-789)",
      "fusion": "Oct 09, 01:38",
      "build196": false
     },
     {
      "pr": 4504,
-     "titre": "Retirer l’annonce des fonctions de notifications indisponibles (TAK-791)",
+     "titre": "Remove the announcement of unavailable notification features (TAK-791)",
      "fusion": "Oct 09, 01:03",
      "build196": false
     },
     {
      "pr": 4487,
-     "titre": "fix(mobile) : conserver la page Android quand le clavier change (TAK-718)",
+     "titre": "fix(mobile): keep the Android page when the keyboard changes (TAK-718)",
      "fusion": "Oct 09, 01:02",
      "build196": false
     },
     {
      "pr": 4509,
-     "titre": "test(mobile) : lire la sélection réelle des réponses KnowMe (TAK-782)",
+     "titre": "test(mobile): read the actual selection of KnowMe answers (TAK-782)",
      "fusion": "Oct 09, 00:48",
      "build196": false
     },
@@ -393,13 +393,13 @@
     },
     {
      "pr": 4461,
-     "titre": "fix(mobile) : une conversation du haut de la boîte s'ouvre de nouveau sur ses messages (TAK-716)",
+     "titre": "fix(mobile): a conversation at the top of the inbox opens on its messages again (TAK-716)",
      "fusion": "Oct 08, 23:14",
      "build196": false
     },
     {
      "pr": 4466,
-     "titre": "fix(mobile) : un onglet du bas montre sa page tout de suite, l'écran apprend son focus juste après (TAK-722)",
+     "titre": "fix(mobile): a bottom tab shows its page right away, the screen learns its focus just after (TAK-722)",
      "fusion": "Oct 08, 22:38",
      "build196": false
     },
@@ -411,13 +411,13 @@
     },
     {
      "pr": 4479,
-     "titre": "fix(mobile) : sur le profil, l'haptique d'onglet part quand le trait arrive (TAK-748)",
+     "titre": "fix(mobile): on the profile, the tab haptic fires when the indicator arrives (TAK-748)",
      "fusion": "Oct 08, 22:22",
      "build196": false
     },
     {
      "pr": 4469,
-     "titre": "fix(mobile) : une push de message ouverte après un blocage ne montre plus le composeur avant le bandeau (TAK-725)",
+     "titre": "fix(mobile): a message push opened after a block no longer shows the composer before the banner (TAK-725)",
      "fusion": "Oct 08, 22:12",
      "build196": false
     },
@@ -435,7 +435,7 @@
     },
     {
      "pr": 4463,
-     "titre": "fix(mobile) : la ligne « Amis · Takes · Score » d'une conversation garde chaque nombre lu quand une lecture échoue (TAK-724)",
+     "titre": "fix(mobile): a conversation's “Friends · Takes · Score” row keeps each number read when a read fails (TAK-724)",
      "fusion": "Oct 08, 21:13",
      "build196": false
     },
@@ -447,13 +447,13 @@
     },
     {
      "pr": 4465,
-     "titre": "fix(mobile) : à la première visite après un démarrage à froid, le Profil s’ouvre déjà chargé, sans squelette (TAK-726)",
+     "titre": "fix(mobile): on the first visit after a cold start, Profile opens already loaded, with no skeleton (TAK-726)",
      "fusion": "Oct 08, 20:19",
      "build196": false
     },
     {
      "pr": 4458,
-     "titre": "fix(mobile) : un take ouvert ne relance plus sa lecture composée toutes les 12 s (TAK-717)",
+     "titre": "fix(mobile): an open take no longer restarts its composed read every 12 s (TAK-717)",
      "fusion": "Oct 08, 19:55",
      "build196": false
     },
@@ -477,43 +477,43 @@
     },
     {
      "pr": 4437,
-     "titre": "fix(mobile) : après un glissé rapide, l'onglet d'Activité suit la page où les pages se posent, même sans idle (TAK-693)",
+     "titre": "fix(mobile): after a fast swipe, the Activity tab follows the page where pages settle, even without idle (TAK-693)",
      "fusion": "Oct 08, 18:15",
      "build196": false
     },
     {
      "pr": 4425,
-     "titre": "fix(mobile) : fermer les recherches et ouvrir le clavier des réponses sur Android (TAK-671)",
+     "titre": "fix(mobile): close searches and open the reply keyboard on Android (TAK-671)",
      "fusion": "Oct 08, 17:29",
      "build196": false
     },
     {
      "pr": 4389,
-     "titre": "feat(mobile) : la barre du bas rétrécit au défilement sur Explorer, Messages et Profil, et revient sans trembler (TAK-659)",
+     "titre": "feat(mobile): the bottom bar shrinks on scroll on Explore, Messages and Profile, and comes back without jitter (TAK-659)",
      "fusion": "Oct 08, 16:36",
      "build196": false
     },
     {
      "pr": 4407,
-     "titre": "feat(mobile) : Activité regroupe les duels Take Rush par adversaire et par jour avec Revanche, compte la série en jours, aligne ses en-têtes, assombrit les avatars par défaut et grise les heures (TAK-649)",
+     "titre": "feat(mobile): Activity groups Take Rush duels by opponent and by day with Rematch, counts the streak in days, aligns its headers, darkens default avatars and greys out times (TAK-649)",
      "fusion": "Oct 08, 15:09",
      "build196": false
     },
     {
      "pr": 4416,
-     "titre": "feat(mobile) : le n°1 d'une rubrique d'Explorer montre sa photo, et seul lui se vote depuis le classement (TAK-678)",
+     "titre": "feat(mobile): the #1 of an Explore section shows its photo, and only it can be voted from the ranking (TAK-678)",
      "fusion": "Oct 08, 15:08",
      "build196": false
     },
     {
      "pr": 4365,
-     "titre": "fix(mobile, api) : le réglage « Position précise » disparaît, aucune position exacte n'est plus envoyée ni gardée (TAK-644)",
+     "titre": "fix(mobile, api): the “Precise location” setting goes away, no exact location is sent or kept anymore (TAK-644)",
      "fusion": "Oct 08, 14:55",
      "build196": false
     },
     {
      "pr": 4401,
-     "titre": "fix(mobile) : sur Amis, la carte « Retrouve tes amis » a sa place avant les lignes et ne les pousse plus (TAK-464)",
+     "titre": "fix(mobile): on Friends, the “Find your friends” card has its place before the rows and no longer pushes them (TAK-464)",
      "fusion": "Oct 08, 14:37",
      "build196": false
     },
@@ -525,37 +525,37 @@
     },
     {
      "pr": 4404,
-     "titre": "fix(mobile) : une page d'Explorer dont le contenu rétrécit au repos revient à sa fin (TAK-344)",
+     "titre": "fix(mobile): an Explore page whose content shrinks at rest returns to its end (TAK-344)",
      "fusion": "Oct 08, 13:59",
      "build196": false
     },
     {
      "pr": 4405,
-     "titre": "feat(mobile) : une nouvelle question n'entre dans le quiz qu'au « Terminé » valide, « Terminé » inactif tant qu'elle est vide (TAK-676)",
+     "titre": "feat(mobile): a new question joins the quiz only on a valid “Done”, “Done” inactive while it is empty (TAK-676)",
      "fusion": "Oct 08, 13:24",
      "build196": false
     },
     {
      "pr": 4384,
-     "titre": "feat(mobile) : le fil Amis vide d'un compte neuf propose ses contacts sur Take à ajouter sur place, sans texte sous le nom (TAK-647)",
+     "titre": "feat(mobile): a new account's empty Friends feed suggests its contacts on Take to add in place, with no text under the name (TAK-647)",
      "fusion": "Oct 08, 13:19",
      "build196": false
     },
     {
      "pr": 4398,
-     "titre": "feat(mobile) : un onglet du profil touché glisse toujours d'une page, le trait sur la position réelle des pages (TAK-654)",
+     "titre": "feat(mobile): a tapped profile tab always slides one page, the indicator on the pages' real position (TAK-654)",
      "fusion": "Oct 08, 13:18",
      "build196": false
     },
     {
      "pr": 4403,
-     "titre": "fix(mobile) : un onglet du profil dont le contenu rétrécit au repos revient à sa fin (TAK-324)",
+     "titre": "fix(mobile): a profile tab whose content shrinks at rest returns to its end (TAK-324)",
      "fusion": "Oct 08, 13:03",
      "build196": false
     },
     {
      "pr": 4373,
-     "titre": "feat(mobile) : la barre d'onglets reste fixe quand on ouvre un take, la page glisse dessous (TAK-651)",
+     "titre": "feat(mobile): the tab bar stays fixed when a take opens, the page slides under it (TAK-651)",
      "fusion": "Oct 08, 13:01",
      "build196": false
     },
@@ -579,187 +579,187 @@
     },
     {
      "pr": 4394,
-     "titre": "TAK-665: la carte du graphique d'un take ouvert a le même fond en verre que la bulle Contexte, sans bordure",
+     "titre": "TAK-665: the chart card of an open take has the same glass background as the Context bubble, with no border",
      "fusion": "Oct 08, 12:28",
      "build196": false
     },
     {
      "pr": 4385,
-     "titre": "fix(mobile) : les onglets d'Explorer et d'Activité suivent la page où les pages s'arrêtent, pas les annonces d'iOS (TAK-656)",
+     "titre": "fix(mobile): the Explore and Activity tabs follow the page where pages stop, not iOS announcements (TAK-656)",
      "fusion": "Oct 08, 12:23",
      "build196": false
     },
     {
      "pr": 4386,
-     "titre": "feat(observability) : la mesure du lag est prête pour staging (100 % des builds de release sur appareil) et un rapport par build compare p75 et p95 à la version précédente (TAK-658)",
+     "titre": "feat(observability): lag measurement is ready for staging (100% of release builds on device) and a per-build report compares p75 and p95 with the previous version (TAK-658)",
      "fusion": "Oct 08, 11:51",
      "build196": false
     },
     {
      "pr": 4370,
-     "titre": "feat(mobile) : Mes quiz sans ligne de méta, « Envoyer » en contour sous un seul « Créer un quiz » plein (TAK-652)",
+     "titre": "feat(mobile): My quizzes with no meta row, “Send” outlined under a single filled “Create a quiz” (TAK-652)",
      "fusion": "Oct 08, 11:29",
      "build196": false
     },
     {
      "pr": 4364,
-     "titre": "fix(api) : les takes d'un compte privé ne sont lisibles que par son auteur et ses abonnés acceptés, listes et lien compris (TAK-645)",
+     "titre": "fix(api): a private account's takes are readable only by its author and accepted followers, lists and link included (TAK-645)",
      "fusion": "Oct 08, 11:15",
      "build196": false
     },
     {
      "pr": 4383,
-     "titre": "fix(mobile) : les onglets du haut de l'accueil ne se désynchronisent plus après des taps et glissements rapides (TAK-655)",
+     "titre": "fix(mobile): the home top tabs no longer get out of sync after fast taps and swipes (TAK-655)",
      "fusion": "Oct 08, 11:07",
      "build196": false
     },
     {
      "pr": 4369,
-     "titre": "feat(mobile) : la feuille de partage d'un take est opaque, et « Copier le lien » la referme avec « Lien copié » en bas (TAK-653)",
+     "titre": "feat(mobile): a take's share sheet is opaque, and “Copy link” closes it with “Link copied” at the bottom (TAK-653)",
      "fusion": "Oct 08, 10:39",
      "build196": false
     },
     {
      "pr": 4366,
-     "titre": "feat(mobile) : la ligne « Suivi par @a, @b et N autres » ouvre les personnes en commun (TAK-650)",
+     "titre": "feat(mobile): the “Followed by @a, @b and N others” row opens the mutual people (TAK-650)",
      "fusion": "Oct 08, 10:33",
      "build196": false
     },
     {
      "pr": 4360,
-     "titre": "fix(profil) : le Site web n’accepte plus qu’une adresse http(s), refusée avec un message (TAK-636)",
+     "titre": "fix(profile): Website only accepts an http(s) address, refused with a message (TAK-636)",
      "fusion": "Oct 08, 10:05",
      "build196": false
     },
     {
      "pr": 4372,
-     "titre": "feat(mobile) : dans Messages, l'heure suit le nom, « Accepter » ouvre la conversation prête à répondre, et la carte d'un take nomme son @auteur (TAK-648)",
+     "titre": "feat(mobile): in Messages, the time follows the name, “Accept” opens the conversation ready to reply, and a take's card names its @author (TAK-648)",
      "fusion": "Oct 08, 09:30",
      "build196": false
     },
     {
      "pr": 4371,
-     "titre": "fix(mobile) : de Takes vers Amis ou À proximité, la page et le trait noir partent dans la même image (TAK-642)",
+     "titre": "fix(mobile): from Takes to Friends or Nearby, the page and the black indicator leave in the same frame (TAK-642)",
      "fusion": "Oct 08, 09:30",
      "build196": false
     },
     {
      "pr": 4367,
-     "titre": "feat(mobile) : sur À proximité, « Où es-tu ? » devient un vrai titre au-dessus de la phrase grise (TAK-646)",
+     "titre": "feat(mobile): on Nearby, “Where are you?” becomes a real title above the grey sentence (TAK-646)",
      "fusion": "Oct 08, 08:11",
      "build196": false
     },
     {
      "pr": 4363,
-     "titre": "fix(mobile) : Activité, la rangée des filtres est entière ou cachée au repos (TAK-643)",
+     "titre": "fix(mobile): Activity, the filter row is fully shown or hidden at rest (TAK-643)",
      "fusion": "Oct 08, 07:17",
      "build196": false
     },
     {
      "pr": 4357,
-     "titre": "fix(mobile) : dans le Top 8, un ami sans nom est nommé par son @pseudo, sur sa case et dans Retirer (TAK-635)",
+     "titre": "fix(mobile): in the Top 8, a friend with no name is named by their @handle, on their tile and in Remove (TAK-635)",
      "fusion": "Oct 08, 07:07",
      "build196": false
     },
     {
      "pr": 4354,
-     "titre": "fix(mobile) : en texte agrandi, « Modifier le profil » et « Partager le profil » s'empilent et restent lisibles (TAK-638)",
+     "titre": "fix(mobile): with enlarged text, “Edit profile” and “Share profile” stack and stay readable (TAK-638)",
      "fusion": "Oct 08, 06:54",
      "build196": false
     },
     {
      "pr": 4359,
-     "titre": "fix(mobile) : « Enregistrer » s'affiche en entier dans l'édition du nom d'utilisateur (TAK-637)",
+     "titre": "fix(mobile): “Save” shows in full when editing the username (TAK-637)",
      "fusion": "Oct 08, 06:50",
      "build196": false
     },
     {
      "pr": 4355,
-     "titre": "fix(mobile) : le sélecteur GIF et stickers suit le passage d'iOS au sombre ou au clair pendant qu'il est ouvert (TAK-639)",
+     "titre": "fix(mobile): the GIF and sticker picker follows iOS switching to dark or light while it is open (TAK-639)",
      "fusion": "Oct 08, 06:23",
      "build196": false
     },
     {
      "pr": 4345,
-     "titre": "fix(mobile) : un auteur sans nom est nommé par son @pseudo dans l'activité, le partage et KnowMe (TAK-628, TAK-621, TAK-622)",
+     "titre": "fix(mobile): an author with no name is named by their @handle in activity, sharing and KnowMe (TAK-628, TAK-621, TAK-622)",
      "fusion": "Oct 08, 06:09",
      "build196": false
     },
     {
      "pr": 4336,
-     "titre": "fix(mobile) : une recherche Explorer sans résultat dit « Aucun résultat », plus « Pas de tendance » (TAK-619)",
+     "titre": "fix(mobile): an Explore search with no result says “No results”, no longer “No trend” (TAK-619)",
      "fusion": "Oct 08, 05:59",
      "build196": false
     },
     {
      "pr": 4337,
-     "titre": "fix(mobile) : quand les pages décident après deux envois perdus, un faux départ de glissé ne bloque plus l'onglet (TAK-600)",
+     "titre": "fix(mobile): when pages decide after two lost sends, a false swipe start no longer blocks the tab (TAK-600)",
      "fusion": "Oct 08, 05:46",
      "build196": false
     },
     {
      "pr": 4334,
-     "titre": "fix(mobile) : le clavier de la recherche ne revient plus sur Messages, et le composeur défile sous une longue question (TAK-629, TAK-634)",
+     "titre": "fix(mobile): the search keyboard no longer comes back on Messages, and the composer scrolls under a long question (TAK-629, TAK-634)",
      "fusion": "Oct 08, 05:46",
      "build196": false
     },
     {
      "pr": 4339,
-     "titre": "fix(mobile) : sans réseau, une conversation dit qu'elle n'a pas pu charger son historique au lieu de s'ouvrir vide (TAK-625)",
+     "titre": "fix(mobile): offline, a conversation says it could not load its history instead of opening empty (TAK-625)",
      "fusion": "Oct 08, 05:37",
      "build196": false
     },
     {
      "pr": 4332,
-     "titre": "fix(mobile) : l'annonce du serveur attend la fin de l'onboarding au lieu de couvrir sa question (TAK-630)",
+     "titre": "fix(mobile): the server announcement waits for the end of onboarding instead of covering its question (TAK-630)",
      "fusion": "Oct 08, 05:19",
      "build196": false
     },
     {
      "pr": 4338,
-     "titre": "fix(social) : un ami est un suivi mutuel, compté une seule fois, sans badge « Ami » pour un suivi à sens unique (TAK-626, TAK-627)",
+     "titre": "fix(social): a friend is a mutual follow, counted once, with no “Friend” badge for a one-way follow (TAK-626, TAK-627)",
      "fusion": "Oct 08, 04:56",
      "build196": false
     },
     {
      "pr": 4335,
-     "titre": "fix(mobile) : en texte iOS très grand, les lignes des réglages gardent leur libellé et les champs et compteurs ne sont plus coupés (TAK-631, TAK-633)",
+     "titre": "fix(mobile): with very large iOS text, settings rows keep their label and fields and counters are no longer cut off (TAK-631, TAK-633)",
      "fusion": "Oct 08, 04:56",
      "build196": false
     },
     {
      "pr": 4328,
-     "titre": "fix(mobile) : un toucher d'onglet dont la page renvoyée se perd aussi laisse les pages décider (TAK-600)",
+     "titre": "fix(mobile): a tab tap whose returned page is also lost lets the pages decide (TAK-600)",
      "fusion": "Oct 08, 04:27",
      "build196": false
     },
     {
      "pr": 4326,
-     "titre": "perf(ci) : les tests web se séparent en feuille ordinaire et feuille de contrats transverses (TAK-616)",
+     "titre": "perf(ci): web tests split into an ordinary sheet and a cross-cutting contracts sheet (TAK-616)",
      "fusion": "Oct 08, 04:18",
      "build196": false
     },
     {
      "pr": 4307,
-     "titre": "fix(mobile) : un onglet du bas s'affiche d'un coup, sans glissé ni fondu, même tapé vite (TAK-603)",
+     "titre": "fix(mobile): a bottom tab shows at once, with no slide or fade, even when tapped fast (TAK-603)",
      "fusion": "Oct 08, 03:12",
      "build196": false
     },
     {
      "pr": 4304,
-     "titre": "fix(mobile) : l'onglet affiché suit la page posée quand iOS perd le toucher d'un onglet, sur le profil public et dans Activité (TAK-600)",
+     "titre": "fix(mobile): the shown tab follows the settled page when iOS loses a tab touch, on the public profile and in Activity (TAK-600)",
      "fusion": "Oct 08, 02:34",
      "build196": false
     },
     {
      "pr": 4303,
-     "titre": "fix(mobile) : le profil redit « Score » et le classement du jeu dit « Record » (TAK-601)",
+     "titre": "fix(mobile): the profile says “Score” again and the game ranking says “Record” (TAK-601)",
      "fusion": "Oct 08, 02:20",
      "build196": false
     },
     {
      "pr": 4285,
-     "titre": "fix(mobile) : une langue de lecture changée relit les listes dans cette langue, sans chargeur (TAK-595, point 7)",
+     "titre": "fix(mobile): a changed reading language rereads lists in that language, with no loader (TAK-595, point 7)",
      "fusion": "Oct 08, 01:45",
      "build196": false
     },
@@ -771,13 +771,13 @@
     },
     {
      "pr": 4281,
-     "titre": "fix(mobile) : une acceptation refusée sous un autre écran se retrouve au retour, et le nom du fil reste (TAK-595, points 2 et 5)",
+     "titre": "fix(mobile): an acceptance refused under another screen is found again on return, and the thread name stays (TAK-595, points 2 and 5)",
      "fusion": "Oct 08, 00:58",
      "build196": false
     },
     {
      "pr": 4283,
-     "titre": "fix(mobile) : un take ouvert part de sa copie complète, pas de la copie légère d'une liste, et garde son Contexte (TAK-595)",
+     "titre": "fix(mobile): an open take starts from its full copy, not a list's light copy, and keeps its Context (TAK-595)",
      "fusion": "Oct 08, 00:21",
      "build196": false
     }
@@ -795,19 +795,19 @@
     },
     {
      "pr": 4628,
-     "titre": "fix(web) : la fixture synthétique de la preuve S55 fournit announcementId (TAK-902)",
+     "titre": "fix(web): the synthetic fixture of the S55 proof provides announcementId (TAK-902)",
      "fusion": "Oct 09, 23:51",
      "build196": true
     },
     {
      "pr": 4464,
-     "titre": "fix(web) : rétrécir la barre sur Explorer, Messages et Profil (TAK-703)",
+     "titre": "fix(web): shrink the bar on Explore, Messages and Profile (TAK-703)",
      "fusion": "Oct 09, 22:08",
      "build196": true
     },
     {
      "pr": 4484,
-     "titre": "TAK-721: confirmer les questions KnowMe et réconcilier les écritures inconnues",
+     "titre": "TAK-721: confirm KnowMe questions and reconcile unknown writes",
      "fusion": "Oct 09, 20:07",
      "build196": true
     },
@@ -933,7 +933,7 @@
     },
     {
      "pr": 4519,
-     "titre": "Retirer l’annonce des notifications indisponibles sur le web (TAK-805)",
+     "titre": "Remove the announcement of unavailable notifications on the web (TAK-805)",
      "fusion": "Oct 09, 01:26",
      "build196": false
     },
@@ -981,7 +981,7 @@
     },
     {
      "pr": 4431,
-     "titre": "fix(web) : aligner le fil et le take ouvert sur iOS main (TAK-666)",
+     "titre": "fix(web): align the feed and the open take with iOS main (TAK-666)",
      "fusion": "Oct 08, 18:00",
      "build196": false
     },
@@ -1017,7 +1017,7 @@
     },
     {
      "pr": 4408,
-     "titre": "feat(web) : parité des profils, KnowMe et amis en commun (TAK-667)",
+     "titre": "feat(web): parity for profiles, KnowMe and mutual friends (TAK-667)",
      "fusion": "Oct 08, 15:54",
      "build196": false
     },
@@ -1035,7 +1035,7 @@
     },
     {
      "pr": 4409,
-     "titre": "fix(web) : aligne les messages et conversations sur iOS (TAK-668)",
+     "titre": "fix(web): align messages and conversations with iOS (TAK-668)",
      "fusion": "Oct 08, 15:04",
      "build196": false
     },
@@ -1053,7 +1053,7 @@
     },
     {
      "pr": 4397,
-     "titre": "fix(web) : parité Explorer, recherche, Activité et À proximité (TAK-669)",
+     "titre": "fix(web): parity for Explore, search, Activity and Nearby (TAK-669)",
      "fusion": "Oct 08, 14:09",
      "build196": false
     },
@@ -1143,7 +1143,7 @@
     },
     {
      "pr": 4290,
-     "titre": "chore(ci) : mesurer checkout, tâches et shards api par job verify (TAK-596)",
+     "titre": "chore(ci): measure checkout, tasks and api shards per verify job (TAK-596)",
      "fusion": "Oct 08, 01:12",
      "build196": false
     },
@@ -1185,7 +1185,7 @@
     },
     {
      "pr": 4625,
-     "titre": "fix : main repasse au vert, fixture du recensement et exception Expo Doctor jusqu'au 12/10 (TAK-902)",
+     "titre": "fix: main goes green again, census fixture and Expo Doctor exception until 10/12 (TAK-902)",
      "fusion": "Oct 09, 23:29",
      "build196": true
     },
@@ -1197,7 +1197,7 @@
     },
     {
      "pr": 4611,
-     "titre": "TAK-872: centraliser les listes en paramètres de requête API",
+     "titre": "TAK-872: centralize lists in API query parameters",
      "fusion": "Oct 09, 20:10",
      "build196": true
     },
@@ -1245,7 +1245,7 @@
     },
     {
      "pr": 4583,
-     "titre": "TAK-863 : accepter les listes de thèmes dans Explore",
+     "titre": "TAK-863: accept theme lists in Explore",
      "fusion": "Oct 09, 11:48",
      "build196": false
     },
@@ -1305,13 +1305,13 @@
     },
     {
      "pr": 4535,
-     "titre": "fix(infra) : tolérer l’arrondi Float32 dans la sonde ClickHouse (TAK-763)",
+     "titre": "fix(infra): tolerate Float32 rounding in the ClickHouse probe (TAK-763)",
      "fusion": "Oct 09, 02:25",
      "build196": false
     },
     {
      "pr": 4534,
-     "titre": "fix(infra) : inclure game-engine dans l’image Docker API (TAK-762)",
+     "titre": "fix(infra): include game-engine in the API Docker image (TAK-762)",
      "fusion": "Oct 09, 02:25",
      "build196": false
     },
@@ -1329,7 +1329,7 @@
     },
     {
      "pr": 4518,
-     "titre": "fix(infra) : lancer Take sur Limrun avec une API locale (TAK-781)",
+     "titre": "fix(infra): run Take on Limrun with a local API (TAK-781)",
      "fusion": "Oct 09, 01:24",
      "build196": false
     },
@@ -1407,7 +1407,7 @@
     },
     {
      "pr": 4451,
-     "titre": "fix(api) : les Reposts d'un compte privé ne sont servis qu'à lui et à ses abonnés acceptés, et un blocage les cache (TAK-713)",
+     "titre": "fix(api): a private account's Reposts are served only to it and its accepted followers, and a block hides them (TAK-713)",
      "fusion": "Oct 08, 19:27",
      "build196": false
     },
@@ -1431,31 +1431,31 @@
     },
     {
      "pr": 4348,
-     "titre": "fix(api) : un take publié pour Amis seul n'est listé qu'aux amis de son auteur, avec ou sans compte (TAK-624)",
+     "titre": "fix(api): a take published for Friends only is listed only to its author's friends, signed in or not (TAK-624)",
      "fusion": "Oct 08, 08:56",
      "build196": false
     },
     {
      "pr": 4320,
-     "titre": "perf(api) : le pool de workers de test admet d'abord le shard en attente le plus coûteux (TAK-615)",
+     "titre": "perf(api): the test worker pool admits the most expensive waiting shard first (TAK-615)",
      "fusion": "Oct 08, 03:37",
      "build196": false
     },
     {
      "pr": 4308,
-     "titre": "perf(api) : les tests d'équivalence sortent du gate verify des PR, lancés chaque nuit et à la demande (TAK-604)",
+     "titre": "perf(api): equivalence tests leave the PR verify gate, run nightly and on demand (TAK-604)",
      "fusion": "Oct 08, 03:07",
      "build196": false
     },
     {
      "pr": 4306,
-     "titre": "perf(api) : le census des routes sort du gate verify des PR, lancé chaque nuit et à la demande (TAK-602)",
+     "titre": "perf(api): the route census leaves the PR verify gate, run nightly and on demand (TAK-602)",
      "fusion": "Oct 08, 02:45",
      "build196": false
     },
     {
      "pr": 4298,
-     "titre": "perf(api) : le census des routes se découpe en 8 parties par groupe de routes, plus de shard de 233 s (TAK-597)",
+     "titre": "perf(api): the route census splits into 8 parts by route group, no more 233 s shard (TAK-597)",
      "fusion": "Oct 08, 01:42",
      "build196": false
     },
@@ -1509,7 +1509,7 @@
     },
     {
      "pr": 4579,
-     "titre": "TAK-851 : fiabiliser le retour en haut du profil (TAK-851)",
+     "titre": "TAK-851: make the profile's scroll to top reliable (TAK-851)",
      "fusion": "Oct 09, 13:43",
      "build196": false
     },
@@ -1521,7 +1521,7 @@
     },
     {
      "pr": 4556,
-     "titre": "docs(agents) : accord produit obligatoire pour tout changement visible (TAK-835)",
+     "titre": "docs(agents): product approval required for every visible change (TAK-835)",
      "fusion": "Oct 09, 07:06",
      "build196": false
     },
@@ -1533,25 +1533,25 @@
     },
     {
      "pr": 4553,
-     "titre": "docs(agents) : X puis Instagram comme références obligatoires (TAK-834)",
+     "titre": "docs(agents): X then Instagram as mandatory references (TAK-834)",
      "fusion": "Oct 09, 06:10",
      "build196": false
     },
     {
      "pr": 4551,
-     "titre": "test(mobile) : capturer les à-coups des fils iOS (TAK-777)",
+     "titre": "test(mobile): capture iOS feed stutters (TAK-777)",
      "fusion": "Oct 09, 06:10",
      "build196": false
     },
     {
      "pr": 4538,
-     "titre": "docs(agents) : accepter les preuves de fluidité sur simulateur Limrun (TAK-778)",
+     "titre": "docs(agents): accept smoothness proofs on a Limrun simulator (TAK-778)",
      "fusion": "Oct 09, 03:25",
      "build196": false
     },
     {
      "pr": 4528,
-     "titre": "test(mobile) : sonder les transitions Profil et les éditions Top 8 (TAK-777)",
+     "titre": "test(mobile): probe Profile transitions and Top 8 edits (TAK-777)",
      "fusion": "Oct 09, 02:46",
      "build196": false
     },
@@ -1563,7 +1563,7 @@
     },
     {
      "pr": 4499,
-     "titre": "docs(agents) : la fluidité conditionne chaque changement sensible (TAK-778)",
+     "titre": "docs(agents): smoothness gates every sensitive change (TAK-778)",
      "fusion": "Oct 09, 00:31",
      "build196": false
     },
@@ -1581,7 +1581,7 @@
     },
     {
      "pr": 4452,
-     "titre": "TAK-715: ci(mobile) : un build staging peut épingler un commit de main, lancé depuis main",
+     "titre": "TAK-715: ci(mobile): a staging build can pin a main commit, launched from main",
      "fusion": "Oct 08, 20:19",
      "build196": false
     },
@@ -1593,19 +1593,19 @@
     },
     {
      "pr": 4433,
-     "titre": "test(maestro) : les flows 14 et 16 suivent Mes quiz (DA9) et le classement compact d'Explorer (TAK-678)",
+     "titre": "test(maestro): flows 14 and 16 follow My quizzes (DA9) and Explore's compact ranking (TAK-678)",
      "fusion": "Oct 08, 16:01",
      "build196": false
     },
     {
      "pr": 4421,
-     "titre": "fix(mobile) : le singe signale un LogBox à l'écran comme une erreur de l'app, jamais comme un outil figé (TAK-318)",
+     "titre": "fix(mobile): the monkey reports an on-screen LogBox as an app error, never as a frozen tool (TAK-318)",
      "fusion": "Oct 08, 14:35",
      "build196": false
     },
     {
      "pr": 4424,
-     "titre": "revert(ci) : le store Bun quitte le Sticky Disk Blacksmith, qui ralentissait bun ci (TAK-683)",
+     "titre": "revert(ci): the Bun store leaves the Blacksmith Sticky Disk, which slowed bun ci (TAK-683)",
      "fusion": "Oct 08, 14:04",
      "build196": false
     },
@@ -1617,19 +1617,19 @@
     },
     {
      "pr": 4417,
-     "titre": "perf(ci) : le store de paquets Bun vit sur un Sticky Disk Blacksmith (TAK-683)",
+     "titre": "perf(ci): the Bun package store lives on a Blacksmith Sticky Disk (TAK-683)",
      "fusion": "Oct 08, 13:32",
      "build196": false
     },
     {
      "pr": 4414,
-     "titre": "fix(ci) : le rapport verify retrouve l'étape de checkout quelle que soit l'action (TAK-679)",
+     "titre": "fix(ci): the verify report finds the checkout step whatever the action (TAK-679)",
      "fusion": "Oct 08, 13:24",
      "build196": false
     },
     {
      "pr": 4400,
-     "titre": "perf(ci) : verify fait son checkout via le miroir Git en cache de Blacksmith (TAK-679)",
+     "titre": "perf(ci): verify checks out through Blacksmith's cached Git mirror (TAK-679)",
      "fusion": "Oct 08, 12:47",
      "build196": false
     },
@@ -1647,7 +1647,7 @@
     },
     {
      "pr": 4381,
-     "titre": "test(singe) : le saut d'en-tête ne lit que le profil au premier plan",
+     "titre": "test(monkey): the header jump reads only the foreground profile",
      "fusion": "Oct 08, 09:16",
      "build196": false
     },
@@ -1701,7 +1701,7 @@
     },
     {
      "pr": 4321,
-     "titre": "perf(ci) : le job verify ne restaure plus l'archive Bun et ne fait que chercher l'archive Turbo avec le cache distant (TAK-617)",
+     "titre": "perf(ci): the verify job no longer restores the Bun archive and only looks up the Turbo archive with the remote cache (TAK-617)",
      "fusion": "Oct 08, 04:52",
      "build196": false
     },
@@ -1719,13 +1719,13 @@
     },
     {
      "pr": 4310,
-     "titre": "fix(ci) : un run verify hors PR ne partage plus son groupe de concurrence (TAK-611)",
+     "titre": "fix(ci): a verify run outside a PR no longer shares its concurrency group (TAK-611)",
      "fusion": "Oct 08, 03:27",
      "build196": false
     },
     {
      "pr": 4319,
-     "titre": "perf(ci) : Linear issue ne retourne sur une édition que si le titre change ; le landing ne valide l'infra que sur ses chemins infra (TAK-613)",
+     "titre": "perf(ci): Linear issue only reruns on an edit if the title changes; landing only validates infra on its infra paths (TAK-613)",
      "fusion": "Oct 08, 03:25",
      "build196": false
     },
@@ -1737,13 +1737,13 @@
     },
     {
      "pr": 4317,
-     "titre": "perf(ci) : le job affected n'installe FFmpeg que si une tâche sélectionnée en a besoin (TAK-612)",
+     "titre": "perf(ci): the affected job installs FFmpeg only if a selected task needs it (TAK-612)",
      "fusion": "Oct 08, 03:24",
      "build196": false
     },
     {
      "pr": 4316,
-     "titre": "chore(ci) : p50/p95 par job verify sur une fenêtre de runs (TAK-614)",
+     "titre": "chore(ci): p50/p95 per verify job over a window of runs (TAK-614)",
      "fusion": "Oct 08, 03:17",
      "build196": false
     },
@@ -1761,7 +1761,7 @@
     },
     {
      "pr": 4301,
-     "titre": "docs(ledger) : round S71 et rééquilibrage api-a/api-b (TAK-596, TAK-597)",
+     "titre": "docs(ledger): round S71 and api-a/api-b rebalancing (TAK-596, TAK-597)",
      "fusion": "Oct 08, 02:22",
      "build196": false
     },
@@ -1773,7 +1773,7 @@
     },
     {
      "pr": 4292,
-     "titre": "perf(ci) : chaque partition verify ne récupère que les dossiers que ses tâches lisent (TAK-596)",
+     "titre": "perf(ci): each verify partition fetches only the folders its tasks read (TAK-596)",
      "fusion": "Oct 08, 01:33",
      "build196": false
     },
@@ -1785,7 +1785,7 @@
     },
     {
      "pr": 4294,
-     "titre": "test(mobile) : le flow KnowMe attend une seconde fixe puis touche « Jeux » une seule fois (TAK-595)",
+     "titre": "test(mobile): the KnowMe flow waits a fixed second then taps “Games” only once (TAK-595)",
      "fusion": "Oct 08, 01:12",
      "build196": false
     }
@@ -1839,7 +1839,7 @@
     },
     {
      "pr": 4455,
-     "titre": "docs(agents) : tout problème relevé reçoit son ticket TAK dès qu'il est relevé (TAK-719)",
+     "titre": "docs(agents): every problem found gets its TAK ticket as soon as it is found (TAK-719)",
      "fusion": "Oct 08, 21:13",
      "build196": false
     },
@@ -1917,25 +1917,25 @@
    "prs": [
     {
      "pr": 4440,
-     "titre": "test(maestro) : la 3e page d'Explorer se lit par la question de son premier take (TAK-624)",
+     "titre": "test(maestro): Explore's 3rd page is read by its first take's question (TAK-624)",
      "fusion": "Oct 08, 17:25",
      "build196": false
     },
     {
      "pr": 4393,
-     "titre": "test(maestro) : le flow 16 accepte une rubrique d'Explorer classée sur un seul take (TAK-624)",
+     "titre": "test(maestro): flow 16 accepts an Explore section ranked on a single take (TAK-624)",
      "fusion": "Oct 08, 12:05",
      "build196": false
     },
     {
      "pr": 4382,
-     "titre": "test(maestro) : le flow 21 attend que la liste s'arrête avant de toucher un take",
+     "titre": "test(maestro): flow 21 waits for the list to stop before tapping a take",
      "fusion": "Oct 08, 08:49",
      "build196": false
     },
     {
      "pr": 4325,
-     "titre": "test(mobile) : le flow 17 part de la marge droite, hors du carrousel de photos d'un take (TAK-620)",
+     "titre": "test(mobile): flow 17 starts from the right margin, outside a take's photo carousel (TAK-620)",
      "fusion": "Oct 08, 04:08",
      "build196": false
     }
