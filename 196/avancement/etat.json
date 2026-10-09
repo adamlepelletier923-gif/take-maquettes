@@ -1,12 +1,12 @@
 {
- "majLe": "2026-10-10T04:46+09:00",
- "heure": "04:46",
+ "majLe": "2026-10-10T05:46+09:00",
+ "heure": "05:46",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 295,
-  "depuisDernierTableau": 33,
+  "fusionneesDepuis8Octobre": 298,
+  "depuisDernierTableau": 36,
   "enCours": 6,
-  "app": 99,
+  "app": 102,
   "siteEtAdmin": 62,
   "serveur": 58,
   "outilsEtDocs": 76
@@ -16,6 +16,24 @@
   "texte": "Merged tonight: your fast-tab fix, Expo, the vote with your refused-vote rule, native tabs, the profile that opens instantly, and haptics that land right on time. Six PRs remain; the measurements keep catching real problems before they reach you."
  },
  "depuis": [
+  {
+   "heure": "05:44",
+   "pr": 4481,
+   "texte": "fix(mobile) : tick à l’arrivée UI et fuzz CI borné (TAK-747, TAK-783)",
+   "build196": false
+  },
+  {
+   "heure": "04:54",
+   "pr": 4639,
+   "texte": "TAK-910 : à la réouverture d'un Take, le vote affiché est celui du serveur après un vote refusé",
+   "build196": false
+  },
+  {
+   "heure": "04:51",
+   "pr": 4502,
+   "texte": "Corrige le déplacement continu de la carte après une recherche (TAK-771)",
+   "build196": false
+  },
   {
    "heure": "04:37",
    "pr": 4498,
@@ -290,6 +308,24 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4481,
+     "titre": "fix(mobile) : tick à l’arrivée UI et fuzz CI borné (TAK-747, TAK-783)",
+     "fusion": "Oct 10, 05:44",
+     "build196": false
+    },
+    {
+     "pr": 4639,
+     "titre": "TAK-910 : à la réouverture d'un Take, le vote affiché est celui du serveur après un vote refusé",
+     "fusion": "Oct 10, 04:54",
+     "build196": false
+    },
+    {
+     "pr": 4502,
+     "titre": "Corrige le déplacement continu de la carte après une recherche (TAK-771)",
+     "fusion": "Oct 10, 04:51",
+     "build196": false
+    },
     {
      "pr": 4498,
      "titre": "TAK-776 : haptique des rangées au passage et à l’arrivée (TAK-759, TAK-760)",
