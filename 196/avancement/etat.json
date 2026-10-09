@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-10T01:09+09:00",
- "heure": "01 h 10",
+ "majLe": "2026-10-10T01:20+09:00",
+ "heure": "01 h 25",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 277,
@@ -126,8 +126,8 @@
    "statut": "relecture",
    "sujet": "Profil : l'onglet suit la page après des gestes rapides (ton bug)",
    "pr": 4494,
-   "ouEnEst": "Mesure propre : sur ton profil comme sur un profil public, la page suit l'onglet allumé, et rien n'est plus lent. Le contrôle d'avant fusion a trouvé un test qui croisait mal avec le main de cette nuit : corrigé et poussé.",
-   "reste": "Deux relectures du correctif et la CI, puis fusion."
+   "ouEnEst": "Mesure propre : sur ton profil comme sur un profil public, la page suit l'onglet allumé, et rien n'est plus lent. Le contrôle d'avant fusion a trouvé un test qui croisait mal avec le main de cette nuit : corrigé, poussé, relu à zéro. Sa CI est tombée sur un test d'Explorer instable, qui tombe aussi sur main.",
+   "reste": "CI relancée, puis fusion. Un Claude répare le test instable (TAK-906)."
   },
   {
    "statut": "claude",
@@ -158,25 +158,25 @@
    "reste": "Mesure du lot, puis fusion."
   },
   {
-   "statut": "mesure",
+   "statut": "claude",
    "sujet": "Vote : courbe et résultats synchronisés dès le vote",
    "pr": 4527,
-   "ouEnEst": "Vérifié ici sur simulateur : au moment du vote, 3 rendus de moins que main et moins de saccades.",
-   "reste": "Mesure sur cinq passages pour l'ouverture, puis fusion."
+   "ouEnEst": "Mesure sur cinq passages : une image JS longue de plus au moment du vote. La PR corrige aussi un vrai bug : après un vote refusé, main gardait à tort ton choix affiché.",
+   "reste": "Un Claude ici corrige l'image en trop, puis nouvelle mesure."
   },
   {
-   "statut": "claude",
+   "statut": "mesure",
    "sujet": "Profil : s'ouvre tout de suite, sans que l'en-tête saute",
    "pr": 4512,
-   "ouEnEst": "La mesure a trouvé plus lent qu'avant à chaud, et une requête en plus à froid.",
-   "reste": "Un Claude le corrige ici. Puis nouvelle mesure, et reprise de main après Onglets."
+   "ouEnEst": "Un Claude ici a trouvé que l'écart venait du moment du tap pendant la mesure, pas du code. À chaud, la seconde mesure ne montre aucune régression.",
+   "reste": "Nouvelle mesure à froid, avec un tap au même moment des deux côtés. Puis reprise de main après Onglets."
   },
   {
-   "statut": "claude",
+   "statut": "mesure",
    "sujet": "Carte : elle ne glisse plus toute seule après une recherche",
    "pr": 4502,
-   "ouEnEst": "Deux relectures à zéro, CI verte. La mesure ne peut pas trancher : après une recherche de ville, main ouvre une page de Takes, alors que la PR reste sur la carte.",
-   "reste": "Un Claude ici cherche lequel des deux est voulu. Puis correction, ou mesure adaptée."
+   "ouEnEst": "Un Claude ici a montré que c'est voulu : après une recherche, la ville reste sur la carte pour que le vol aille au bout, comme validé le 09/10. Toucher une zone ouvre toujours ses Takes.",
+   "reste": "Nouvelle mesure sur des parcours qui finissent pareil des deux côtés, puis fusion."
   },
   {
    "statut": "claude",
@@ -201,12 +201,12 @@
   }
  ],
  "equipe": [
-  "Ici sur le Mac : sept Claude. La boucle de tests sur main, la préparation du build, les conflits de navigation, et les corrections du Profil, des Onglets natifs, de la Carte et d'Expo.",
+  "Ici sur le Mac : des Claude qui corrigent Expo, les Onglets natifs, le Vote et un test instable. D'autres attendent une mesure (Profil, Carte) ou la fusion des Onglets (navigation). La boucle complète sur main est passée verte à 0 h 46 : 21 flows, aucune régression.",
   "Sur Replicas : les mesureurs, chacun avec son iPhone virtuel du pool inclus, et les relecteurs."
  ],
  "etapes": [
   "Fusionner chaque PR dès que sa mesure revient propre, dans le bon ordre : Onglets avant Profil.",
-  "Corriger ici ce que les mesures ont trouvé : Profil, Onglets natifs, Carte.",
+  "Corriger ici ce que les mesures ont trouvé : Onglets natifs, Vote, et le test instable d'Explorer.",
   "Fusionner Expo une fois main repris, et fermer la PR de Jordan.",
   "Boucle complète de tests sur le main final. Une boucle tourne déjà sur le main actuel, pour trouver les soucis plus tôt.",
   "Redéployer l'API de staging sur ce même commit : les notifications du 196 en ont besoin.",
