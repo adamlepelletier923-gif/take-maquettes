@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-10T05:46+09:00",
- "heure": "05:46",
+ "majLe": "2026-10-10T05:48+09:00",
+ "heure": "05:48",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 298,
@@ -263,8 +263,8 @@
    "statut": "claude",
    "sujet": "Tabs: instant arrival and a stable return to Messages",
    "pr": 4482,
-   "ouEnEst": "The tab tour is as smooth as main. Reviewers found that the first opening of Messages could show a loader, so the conversation appeared about 80 ms later.",
-   "reste": "A Claude here removes the loader in every case (early swipe, early tap, link), then reviews and a measurement."
+   "ouEnEst": "The tab tour is as smooth as main. The loader on the first opening of Messages is now gone in every case (early swipe, early tap, link): the screen is prepared ahead, like X and Instagram do.",
+   "reste": "A Claude here takes in main again (a test file conflicts with the haptic tick), then reviews and a measurement."
   },
   {
    "statut": "later",
@@ -275,7 +275,7 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: a Claude on the tabs, one on the composer for the next build, the full test loop on main, and a Codex fixing a flaky website test.",
+  "Here on the Mac: a Claude on the tabs, one on the composer for the next build, and the full test loop on main. A Codex fixed a flaky website test (under review).",
   "On Replicas: the measurers, each with its own virtual iPhone from the included pool, and the reviewers."
  ],
  "etapes": [
