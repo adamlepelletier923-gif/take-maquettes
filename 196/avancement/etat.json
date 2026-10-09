@@ -1,21 +1,33 @@
 {
- "majLe": "2026-10-10T05:48+09:00",
- "heure": "05:48",
+ "majLe": "2026-10-10T06:50+09:00",
+ "heure": "06:50",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 298,
-  "depuisDernierTableau": 36,
-  "enCours": 3,
+  "fusionneesDepuis8Octobre": 300,
+  "depuisDernierTableau": 38,
+  "enCours": 12,
   "app": 102,
-  "siteEtAdmin": 62,
-  "serveur": 58,
+  "siteEtAdmin": 63,
+  "serveur": 59,
   "outilsEtDocs": 76
  },
  "alerte": {
   "titre": "Since last night",
-  "texte": "Merged tonight: your fast-tab fix, Expo, the vote with your refused-vote rule, native tabs, the instant profile, the haptics, the map and the haptic tick. Two PRs remain, Messages and the tabs; the composer moves to the next build."
+  "texte": "Ten of your build 194 and 195 reports had been left without an owner since yesterday afternoon. They are all back in progress, and the build waits for them. Messages and a flaky website test are merged. Several Codex agents on Replicas hit their usage limit until 14 October; the Claude agents of the same machines took over."
  },
  "depuis": [
+  {
+   "heure": "05:53",
+   "pr": 4641,
+   "texte": "Website tests: a test that failed about half the time under load is now deterministic.",
+   "build196": true
+  },
+  {
+   "heure": "05:50",
+   "pr": 4640,
+   "texte": "Overlap exact admission counter storage windows",
+   "build196": false
+  },
   {
    "heure": "05:44",
    "pr": 4481,
@@ -249,22 +261,89 @@
   "later": {
    "libelle": "Moved to the next build",
    "ton": "wait"
+  },
+  "fixing": {
+   "libelle": "Being fixed",
+   "ton": "bad"
   }
  },
  "enCours": [
   {
    "statut": "measuring",
-   "sujet": "Messages: multi-line input and @ suggestions",
-   "pr": 4472,
-   "ouEnEst": "Took in tonight's main; reviewed at zero again, CI green. The last measurement found no extra redraws of the Messages screen.",
-   "reste": "A new measurement on the merged version, this time with typing, @ suggestions and sending. Then merge."
-  },
-  {
-   "statut": "claude",
    "sujet": "Tabs: instant arrival and a stable return to Messages",
    "pr": 4482,
-   "ouEnEst": "The tab tour is as smooth as main. The loader on the first opening of Messages is now gone in every case (early swipe, early tap, link): the screen is prepared ahead, like X and Instagram do.",
-   "reste": "A Claude here takes in main again (a test file conflicts with the haptic tick), then reviews and a measurement."
+   "ouEnEst": "Reviewed at zero, CI green. The loader on the first opening of Messages is gone in every case: the screen is prepared ahead, like X and Instagram do.",
+   "reste": "A measurement checks that this preparation does not weigh on launch. Then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Share counter moves as soon as you share",
+   "pr": 4524,
+   "ouEnEst": "One of your build 195 reports. It had been stuck since yesterday afternoon; a Claude here took in main and fixed the review findings.",
+   "reste": "Two reviews running, then a measurement if needed. Then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Counters hidden at 0, shown from 1, everywhere",
+   "pr": 4526,
+   "ouEnEst": "One of your build 195 reports, unblocked tonight by a Claude here.",
+   "reste": "Two reviews running, then a scrolling measurement. Then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Trending never shows a Take's results",
+   "pr": 4520,
+   "ouEnEst": "One of your build 195 reports, unblocked tonight by a Claude here.",
+   "reste": "Two reviews running. Then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Map: the planet searches the visible area without zooming",
+   "pr": 4513,
+   "ouEnEst": "One of your build 195 reports, unblocked tonight by a Claude here.",
+   "reste": "Two reviews running. Then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Explore: never a blank page",
+   "pr": 4533,
+   "ouEnEst": "One of your build 195 reports. Explore is prepared after Home settles, not during its launch, which an earlier measurement had refused.",
+   "reste": "Two reviews running, then a launch measurement. Then merge."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Map ready before you arrive, like Snap",
+   "pr": 4529,
+   "ouEnEst": "One of your build 195 reports. Reviewers found that a swipe during the wait does not restart the 1.5 s quiet period.",
+   "reste": "Being fixed, then reviews and a memory and tiles measurement."
+  },
+  {
+   "statut": "review",
+   "sujet": "Explore: the bottom bar follows scrolling",
+   "pr": 4521,
+   "ouEnEst": "Took in main and fixed its review findings. One review at zero.",
+   "reste": "Second review and a measurement running. Then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Images: blur placeholders written in batches",
+   "pr": 4536,
+   "ouEnEst": "Found by the build 195 fluidity tour. Took in main.",
+   "reste": "Two reviews running. Then merge."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Drafts: deleting one removes its private media",
+   "pr": 4522,
+   "ouEnEst": "Found by the build 195 tour. Reviewers saw private media left on the phone after a draft is deleted.",
+   "reste": "Being fixed on Replicas, then reviews."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Neighbouring pages load ahead again",
+   "pr": 0,
+   "ouEnEst": "One of your build 194 reports, which never got a PR.",
+   "reste": "An agent compares every read-ahead with build 193 and restores the missing ones, with a bounded request budget."
   },
   {
    "statut": "later",
@@ -275,13 +354,13 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: a Claude on the tabs, one on the composer for the next build, and the full test loop on main. A Codex fixed a flaky website test (under review).",
-  "On Replicas: the measurers, each with its own virtual iPhone from the included pool, and the reviewers."
+  "Here on the Mac: four Claudes on your build 195 reports, one on the tabs, two writing cold-start and break-the-app tests.",
+  "On Replicas: measurers and reviewers, now mostly through their Claude agents, plus agents unblocking the other reports."
  ],
  "etapes": [
-  "Merge Messages once its measurement with typing and @ suggestions comes back clean.",
-  "Finish the tabs: no loader on the first opening of Messages, then reviews and a measurement.",
-  "Full test loop on the final main, on the Mac's simulator (it is already building tonight's main).",
+  "Merge the tabs once their measurement comes back clean.",
+  "Finish your ten build 194 and 195 reports: fixes, two reviews each, a measurement where a hot path changes.",
+  "Full test loop on the final main, on the Mac's simulator, plus the fast-switch, cold-start and break-the-app tours.",
   "Redeploy the staging API on that same commit: the map and profile changes need it.",
   "Bench tour, then the list of what won't be in the build, with reasons, shown to you.",
   "Launch build 196, then hand you the emulator on main."
@@ -910,6 +989,12 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 4641,
+     "titre": "TAK-915: make the web KnowMe reconciliation test deterministic",
+     "fusion": "Oct 10, 05:53",
+     "build196": true
+    },
+    {
      "pr": 4590,
      "titre": "Website: link the web manifest with credentials and classify WebKit departures",
      "fusion": "Oct 10, 03:51",
@@ -1287,6 +1372,12 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4640,
+     "titre": "Overlap exact admission counter storage windows",
+     "fusion": "Oct 10, 05:50",
+     "build196": false
+    },
     {
      "pr": 4629,
      "titre": "Server: a dormant guard for guest Take snapshots",
