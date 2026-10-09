@@ -1,14 +1,14 @@
 {
- "majLe": "2026-10-10T01:20+09:00",
- "heure": "01 h 25",
+ "majLe": "2026-10-10T01:27+09:00",
+ "heure": "01 h 32",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 277,
-  "depuisDernierTableau": 15,
-  "enCours": 11,
-  "app": 91,
+  "fusionneesDepuis8Octobre": 280,
+  "depuisDernierTableau": 18,
+  "enCours": 10,
+  "app": 92,
   "siteEtAdmin": 61,
-  "serveur": 49,
+  "serveur": 51,
   "outilsEtDocs": 76
  },
  "alerte": {
@@ -16,6 +16,24 @@
   "texte": "Expo Doctor ne bloque plus : la CI de main est verte. Ton bug d'onglets rapides est trouvé, il venait du profil, et sa correction est mesurée propre. La mise à jour d'Expo de Jordan est remplacée par une version qui corrige aussi un redessin en trop de Proximité, mesurée propre elle aussi."
  },
  "depuis": [
+  {
+   "heure": "01:26",
+   "pr": 4494,
+   "texte": "Ton bug d'onglets rapides : sur le profil, la page suit de nouveau l'onglet choisi, même avec des taps et des glissés enchaînés.",
+   "build196": false
+  },
+  {
+   "heure": "01:17",
+   "pr": 4615,
+   "texte": "Serveur : prototype de comptage exact des publications (Jordan).",
+   "build196": false
+  },
+  {
+   "heure": "00:56",
+   "pr": 4631,
+   "texte": "Serveur : un signalement lit son issue et le verrou du signaleur d'un coup (Jordan).",
+   "build196": false
+  },
   {
    "heure": "00:50",
    "pr": 4516,
@@ -123,13 +141,6 @@
  },
  "enCours": [
   {
-   "statut": "relecture",
-   "sujet": "Profil : l'onglet suit la page après des gestes rapides (ton bug)",
-   "pr": 4494,
-   "ouEnEst": "Mesure propre : sur ton profil comme sur un profil public, la page suit l'onglet allumé, et rien n'est plus lent. Le contrôle d'avant fusion a trouvé un test qui croisait mal avec le main de cette nuit : corrigé, poussé, relu à zéro. Sa CI est tombée sur un test d'Explorer instable, qui tombe aussi sur main.",
-   "reste": "CI relancée, puis fusion. Un Claude répare le test instable (TAK-906)."
-  },
-  {
    "statut": "claude",
    "sujet": "Mise à jour d'Expo, avec la correction de Proximité",
    "pr": 4627,
@@ -179,18 +190,18 @@
    "reste": "Nouvelle mesure sur des parcours qui finissent pareil des deux côtés, puis fusion."
   },
   {
-   "statut": "claude",
+   "statut": "relecture",
    "sujet": "Onglets natifs : libellés et sélection synchronisés",
    "pr": 4514,
-   "ouEnEst": "Change le natif. La mesure a trouvé un défaut : dans Activity, en passant en mode sombre, c'est le mauvais onglet qui s'éclaire.",
-   "reste": "Un Claude le corrige ici. Puis nouvelle mesure de son app."
+   "ouEnEst": "Change le natif. La mesure a trouvé un défaut : dans Activity, en passant en mode sombre, c'est le mauvais onglet qui s'éclaire. Un Claude ici l'a corrigé, avec un test.",
+   "reste": "Relecture du correctif, CI, et mesure qui rejoue le passage en sombre. Puis fusion."
   },
   {
-   "statut": "mesure",
-   "sujet": "Retour haptique quand on passe sur une rangée",
+   "statut": "claude",
+   "sujet": "Haptique des rangées d'onglets, au passage et à l'arrivée",
    "pr": 4498,
-   "ouEnEst": "Change le natif. Reprise de main faite, deux relectures à zéro, CI verte.",
-   "reste": "Mesure de son app en cours, puis fusion."
+   "ouEnEst": "Change le natif. Deux relectures à zéro, CI verte. La mesure trouve plus de saccades que main : une image JS longue de plus, environ 90 ms de saccade et une dizaine d'images manquées de plus.",
+   "reste": "Un Claude ici cherche d'où ça vient et corrige. Puis nouvelle mesure."
   },
   {
    "statut": "mesure",
@@ -201,12 +212,12 @@
   }
  ],
  "equipe": [
-  "Ici sur le Mac : des Claude qui corrigent Expo, les Onglets natifs, le Vote et un test instable. D'autres attendent une mesure (Profil, Carte) ou la fusion des Onglets (navigation). La boucle complète sur main est passée verte à 0 h 46 : 21 flows, aucune régression.",
+  "Ici sur le Mac : des Claude qui corrigent Expo, le Vote, l'haptique de l'Accueil et un test instable. D'autres attendent une mesure (Profil, Carte) ou la fusion des Onglets (navigation). La boucle complète sur main est passée verte à 0 h 46 : 21 flows, aucune régression.",
   "Sur Replicas : les mesureurs, chacun avec son iPhone virtuel du pool inclus, et les relecteurs."
  ],
  "etapes": [
   "Fusionner chaque PR dès que sa mesure revient propre, dans le bon ordre : Onglets avant Profil.",
-  "Corriger ici ce que les mesures ont trouvé : Onglets natifs, Vote, et le test instable d'Explorer.",
+  "Corriger ici ce que les mesures ont trouvé : Vote, haptique de l'Accueil, et le test instable d'Explorer.",
   "Fusionner Expo une fois main repris, et fermer la PR de Jordan.",
   "Boucle complète de tests sur le main final. Une boucle tourne déjà sur le main actuel, pour trouver les soucis plus tôt.",
   "Redéployer l'API de staging sur ce même commit : les notifications du 196 en ont besoin.",
@@ -218,6 +229,12 @@
    "zone": "mobile",
    "nom": "App iPhone et Android",
    "prs": [
+    {
+     "pr": 4494,
+     "titre": "fix(mobile) : sur le profil, l'onglet suit de nouveau la page après des taps et glissés enchaînés (TAK-702)",
+     "fusion": "10/10 01:26",
+     "build196": false
+    },
     {
      "pr": 4516,
      "titre": "Stabiliser les notifications et les préparer au repos (TAK-787, TAK-788)",
@@ -1142,6 +1159,18 @@
    "zone": "api",
    "nom": "Serveur",
    "prs": [
+    {
+     "pr": 4615,
+     "titre": "Prototype exact publication counting before API parsing",
+     "fusion": "10/10 01:17",
+     "build196": false
+    },
+    {
+     "pr": 4631,
+     "titre": "perf(api): fold report outcome reading and reporter locking",
+     "fusion": "10/10 00:56",
+     "build196": false
+    },
     {
      "pr": 4622,
      "titre": "Preserve fresh recursive SQL counts through cache responses",
