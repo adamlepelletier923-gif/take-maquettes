@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-10T02:36+09:00",
- "heure": "02:36",
+ "majLe": "2026-10-10T02:38+09:00",
+ "heure": "02:38",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 283,
@@ -19,19 +19,19 @@
   {
    "heure": "02:03",
    "pr": 4627,
-   "texte": "Expo update, with Nearby redrawing less. Replaces Jordan's PR, which is now closed.",
+   "texte": "Expo update, with Nearby redrawing less. Replaces the earlier Expo PR, which is now closed.",
    "build196": true
   },
   {
    "heure": "01:49",
    "pr": 4633,
-   "texte": "Server: an expert note's lock folds into its upsert (Jordan).",
+   "texte": "Server: an expert note's lock folds into its upsert.",
    "build196": false
   },
   {
    "heure": "01:49",
    "pr": 4632,
-   "texte": "Server: a tip's admission decision and insert happen in one go (Jordan).",
+   "texte": "Server: a tip's admission decision and insert happen in one go.",
    "build196": false
   },
   {
@@ -43,13 +43,13 @@
   {
    "heure": "01:17",
    "pr": 4615,
-   "texte": "Server: prototype of exact publication counting (Jordan).",
+   "texte": "Server: prototype of exact publication counting.",
    "build196": false
   },
   {
    "heure": "00:56",
    "pr": 4631,
-   "texte": "Server: a report reads its outcome and the reporter's lock in one go (Jordan).",
+   "texte": "Server: a report reads its outcome and the reporter's lock in one go.",
    "build196": false
   },
   {
@@ -61,25 +61,25 @@
   {
    "heure": "00:50",
    "pr": 4623,
-   "texte": "Tools: the app's ESLint replaced by oxlint (Jordan).",
+   "texte": "Tools: the app's ESLint replaced by oxlint.",
    "build196": false
   },
   {
    "heure": "00:49",
    "pr": 4619,
-   "texte": "Tools: Prettier replaced by oxfmt (Jordan).",
+   "texte": "Tools: Prettier replaced by oxfmt.",
    "build196": false
   },
   {
    "heure": "00:49",
    "pr": 4622,
-   "texte": "Server: recursive SQL counts stay fresh through the cache (Jordan).",
+   "texte": "Server: recursive SQL counts stay fresh through the cache.",
    "build196": false
   },
   {
    "heure": "00:38",
    "pr": 4630,
-   "texte": "Server: the route census opens the seeded announcement (Jordan).",
+   "texte": "Server: the route census opens the seeded announcement.",
    "build196": false
   },
   {
@@ -91,7 +91,7 @@
   {
    "heure": "00:12",
    "pr": 4610,
-   "texte": "App: required route parameters are kept (Jordan).",
+   "texte": "App: required route parameters are kept.",
    "build196": false
   },
   {
@@ -127,13 +127,13 @@
   {
    "heure": "23:08",
    "pr": 4624,
-   "texte": "Intermediate sweep evidence recorded (Jordan).",
+   "texte": "Intermediate sweep evidence recorded.",
    "build196": false
   },
   {
    "heure": "22:39",
    "pr": 4621,
-   "texte": "Announcement opening measured only with available test data (Jordan).",
+   "texte": "Announcement opening measured only with available test data.",
    "build196": false
   },
   {
@@ -232,7 +232,7 @@
   "Full test loop on the final main. A loop on tonight's main already passed green: 21 flows, no regression.",
   "Redeploy the staging API on that same commit: build 196's notifications need it.",
   "Bench tour, then the list of what won't be in the build, with reasons, shown to you.",
-  "Launch build 196, then hand you the emulator on Ava, on main."
+  "Launch build 196, then hand you the emulator on main."
  ],
  "fait": [
   {
