@@ -1,21 +1,69 @@
 {
- "majLe": "2026-10-10T02:38+09:00",
- "heure": "02:38",
+ "majLe": "2026-10-10T03:47+09:00",
+ "heure": "03:47",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 283,
-  "depuisDernierTableau": 21,
-  "enCours": 9,
-  "app": 93,
+  "fusionneesDepuis8Octobre": 291,
+  "depuisDernierTableau": 29,
+  "enCours": 8,
+  "app": 97,
   "siteEtAdmin": 61,
-  "serveur": 53,
+  "serveur": 57,
   "outilsEtDocs": 76
  },
  "alerte": {
   "titre": "Since last night",
-  "texte": "Your fast-tab bug is fixed and merged, and so is the Expo update, with Nearby redrawing less. Tonight the Claudes here found and fixed real causes in six PRs: vote, composer, native tabs, haptic tick, profile and row haptics. The full test loop runs on the Mac on main with the new Expo."
+  "texte": "Merged tonight: your fast-tab fix, the Expo update, the vote with your refused-vote rule, the native tabs fixed for dark mode and contrast, and a flaky test that made CI fail at random. The measurements keep finding real problems before they reach you: tonight one would have hidden your newly published Take."
  },
  "depuis": [
+  {
+   "heure": "03:28",
+   "pr": 4514,
+   "texte": "Native tabs: the right tab lights up in dark mode and with Increase Contrast, and the old word turns off at once.",
+   "build196": true
+  },
+  {
+   "heure": "03:19",
+   "pr": 4638,
+   "texte": "Server: a video's completion is recorded after its source locks.",
+   "build196": false
+  },
+  {
+   "heure": "02:50",
+   "pr": 4635,
+   "texte": "Server: a tip's payment authorization is recorded in one go.",
+   "build196": false
+  },
+  {
+   "heure": "02:49",
+   "pr": 4603,
+   "texte": "App: the Home pager recovers swipes interrupted by a tap.",
+   "build196": false
+  },
+  {
+   "heure": "02:49",
+   "pr": 4527,
+   "texte": "Vote: the chart and results move the moment you vote; a refused vote stays shown, like an Instagram like.",
+   "build196": true
+  },
+  {
+   "heure": "02:43",
+   "pr": 4637,
+   "texte": "Explore pages no longer redraw for a read in flight, and a flaky test is fixed.",
+   "build196": true
+  },
+  {
+   "heure": "02:20",
+   "pr": 4636,
+   "texte": "perf(api): reduce Category pin round trips while retaining fresh snapshots",
+   "build196": false
+  },
+  {
+   "heure": "02:20",
+   "pr": 4634,
+   "texte": "perf(api): reduce OAuth PATCH round trips with guarded retries",
+   "build196": false
+  },
   {
    "heure": "02:03",
    "pr": 4627,
@@ -170,28 +218,21 @@
    "sujet": "Tabs: instant arrival and a stable return to Messages",
    "pr": 4482,
    "ouEnEst": "Reviewed, CI green. Faster than main on the tab tour, but it may be the cause of the extra Messages redraws.",
-   "reste": "Same investigation as Messages. Then merge, before or after Profile."
+   "reste": "Same investigation as Messages. Then merge."
   },
   {
    "statut": "review",
    "sujet": "Composer: the refresh waits until it is closed",
    "pr": 4565,
-   "ouEnEst": "The batch measurement showed the work had only moved to the Profile visit. Fixed: everything is re-read once, during a quiet moment. Then a duplicate request on slow servers, also fixed.",
-   "reste": "Review of the last fix, and a measurement running. Then merge."
+   "ouEnEst": "The measurement found a real bug: after publishing, your new Take could vanish from the Profile. Fixed, and each list page is now dated by the read that really produced it, so a deleted Take still goes away.",
+   "reste": "Reviews and CI running, then a new measurement. Then merge."
   },
   {
-   "statut": "claude",
-   "sujet": "Vote: chart and results in sync as soon as you vote",
-   "pr": 4527,
-   "ouEnEst": "Reviewed, CI green, five-pass measurement good when voting. You decided the refused-vote case: it stays shown like an Instagram like, with the counter up and no message.",
-   "reste": "The Claude applies your rule, then a quick review. Then merge."
-  },
-  {
-   "statut": "claude",
+   "statut": "review",
    "sujet": "Profile: opens instantly, without the header jumping",
    "pr": 4512,
-   "ouEnEst": "The extra long frames came from preparing every tab at once. Fixed: the other tabs open after the first one has drawn. New measurement within main's spread.",
-   "reste": "A Claude here merges main and renumbers its database migration. Then review, CI and merge."
+   "ouEnEst": "Measurement within main's spread. Main merged in, its database migration renumbered after main's. The other tabs now wait until the shown tab, whichever it is, has drawn.",
+   "reste": "One more test for opening straight on Game, then CI and merge."
   },
   {
    "statut": "claude",
@@ -201,29 +242,29 @@
    "reste": "A Claude here finds where that comes from and renumbers its database migrations. Then merge."
   },
   {
-   "statut": "measuring",
-   "sujet": "Native tabs: labels and selection in sync",
-   "pr": 4514,
-   "ouEnEst": "Changes native code. Dark mode and Increase Contrast fixed and checked on the real app: the right tab lights up. Reviewed at zero, CI green.",
-   "reste": "A cleaner measurement is running for a small gap when entering Activity. Then merge."
-  },
-  {
-   "statut": "review",
+   "statut": "claude",
    "sujet": "Haptics on tab rows, when passing and on arrival",
    "pr": 4498,
-   "ouEnEst": "Measurement within main's spread. Main merged in, with five conflicts resolved, and per-gesture tests added.",
-   "reste": "Review of the merge, then CI and merge."
+   "ouEnEst": "Measurement within main's spread, reviewed at zero, CI green. The native tabs merge touched the same files.",
+   "reste": "A Claude here merges main in once more, then a quick review and merge."
   },
   {
    "statut": "claude",
    "sujet": "Small haptic tick on arrival",
    "pr": 4481,
-   "ouEnEst": "Changes native code. The launch slowdown is fixed: the haptics now prepare after launch. The tick now arrives on time from the very first tap.",
-   "reste": "Last case: the very first swipe right after launch. A Claude here is closing it. Then review, CI and measurement."
+   "ouEnEst": "Changes native code. Launch is now lighter than main: 9 to 7 long frames, and the first Take is not delayed. Reviewed at zero.",
+   "reste": "It waits for the row haptics to merge, then merges main in. Then CI and merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Vote: after a refused vote, reopening shows the real vote",
+   "pr": 4639,
+   "ouEnEst": "Your rule: a refused vote stays shown while the Take is open. On reopening, the choice and the count now both come from the server, with no message.",
+   "reste": "Review, CI, then merge."
   }
  ],
  "equipe": [
-  "Here on the Mac: Claudes fixing Vote, Profile, Map, the haptic tick, the Messages redraws and a flaky test, plus the full test loop on main with the new Expo.",
+  "Here on the Mac: Claudes fixing the composer, the map, the Messages redraws and the row haptics, one checking every search screen's black bar, plus the full test loop on main with the new Expo.",
   "On Replicas: the measurers, each with its own virtual iPhone from the included pool, and the reviewers."
  ],
  "etapes": [
@@ -239,6 +280,30 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4514,
+     "titre": "Synchroniser les libellés et la sélection des onglets natifs — TAK-779 (TAK-755)",
+     "fusion": "Oct 10, 03:28",
+     "build196": true
+    },
+    {
+     "pr": 4603,
+     "titre": "fix(mobile): recover superseded Home pager drags",
+     "fusion": "Oct 10, 02:49",
+     "build196": false
+    },
+    {
+     "pr": 4527,
+     "titre": "Synchroniser la courbe et les résultats dès le vote sur iOS (TAK-775)",
+     "fusion": "Oct 10, 02:49",
+     "build196": true
+    },
+    {
+     "pr": 4637,
+     "titre": "TAK-906: les pages d'Explorer ne se redessinent plus pour une lecture en cours (test de reconnexion instable)",
+     "fusion": "Oct 10, 02:43",
+     "build196": true
+    },
     {
      "pr": 4627,
      "titre": "TAK-903: update Expo and isolate Nearby's pathname subscription",
@@ -1175,6 +1240,30 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4638,
+     "titre": "perf(api): fold Conversation video completion after source locks",
+     "fusion": "Oct 10, 03:19",
+     "build196": false
+    },
+    {
+     "pr": 4635,
+     "titre": "perf(api): fold Stripe Tip authorization recording",
+     "fusion": "Oct 10, 02:50",
+     "build196": false
+    },
+    {
+     "pr": 4636,
+     "titre": "perf(api): reduce Category pin round trips while retaining fresh snapshots",
+     "fusion": "Oct 10, 02:20",
+     "build196": false
+    },
+    {
+     "pr": 4634,
+     "titre": "perf(api): reduce OAuth PATCH round trips with guarded retries",
+     "fusion": "Oct 10, 02:20",
+     "build196": false
+    },
     {
      "pr": 4633,
      "titre": "perf(api): fold Expert Note locking into its upsert",
