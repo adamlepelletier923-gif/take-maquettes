@@ -1,21 +1,33 @@
 {
- "majLe": "2026-10-11T04:52+09:00",
- "heure": "04:55",
+ "majLe": "2026-10-11T05:43+09:00",
+ "heure": "05:45",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 348,
-  "depuisDernierTableau": 153,
-  "enCours": 11,
-  "app": 150,
+  "fusionneesDepuis8Octobre": 350,
+  "depuisDernierTableau": 155,
+  "enCours": 12,
+  "app": 151,
   "siteEtAdmin": 63,
   "serveur": 66,
-  "outilsEtDocs": 69
+  "outilsEtDocs": 70
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The launch from a notification on a profile or a conversation is merged, measured smoother. The re-read of everything merged tonight caught three bugs in the composer change; they are fixed and being checked, and no test flow of the app is broken by tonight's changes. As you asked, every agent now runs on Claude; Codex only steps in when Claude is out of usage."
+  "texte": "Main's build checks are green again, and the Explore pager fix is merged, measured as smooth as main. Merges now go through with admin rights, as you said, and I tell you each one. Your smoothness table is online in a simple version; the list of what stays out of build 196 is online as a draft. The Explore study inspired by X is dropped."
  },
  "depuis": [
+  {
+   "heure": "05:16",
+   "pr": 4750,
+   "texte": "Explore: no more empty piece of screen when result tabs change during a search; native, measured as smooth as main.",
+   "build196": true
+  },
+  {
+   "heure": "05:16",
+   "pr": 4758,
+   "texte": "Build checks on main are green again: one test's fingerprint had to follow two merged fixes.",
+   "build196": true
+  },
   {
    "heure": "04:49",
    "pr": 4754,
@@ -963,53 +975,53 @@
  },
  "enCours": [
   {
-   "statut": "fixing",
+   "statut": "measuring",
    "sujet": "Composer: three bugs found after it went in",
    "pr": 4756,
-   "ouEnEst": "The re-read of everything merged tonight found them: a Take resumed after the app was killed no longer went to the top of Friends, a published photo could go blank, a video kept a fake frame. All three are fixed with tests; one build check failed and is being fixed; reviews and a device measurement are running.",
-   "reste": "Merge when clean; if it drags on, the composer change comes back out of build 196."
+   "ouEnEst": "Fixed with tests and reviewed at zero twice; build checks green. Its device measurement is running.",
+   "reste": "Merge when the measurement is clean."
   },
   {
-   "statut": "fixing",
+   "statut": "review",
    "sujet": "A vote could go public after you chose anonymous",
    "pr": 4743,
-   "ouEnEst": "Two reviewers found the other side of it: a newer choice made elsewhere must win over an older one made in the app. A Claude agent is finishing the fix, with tests for every case.",
-   "reste": "Two clean reviews and a device measurement of the vote, then merge."
+   "ouEnEst": "A third fix closes the last hole (scrolling right after the choice). Build checks green; two reviews and a device measurement of the vote are running.",
+   "reste": "Merge when both reviews are clean and voting is as smooth as main."
   },
   {
    "statut": "review",
    "sujet": "Notifications: the unread badge",
    "pr": 4740,
-   "ouEnEst": "A third round of fixes is in: nothing is marked read unless it was on screen, and the bell goes out once everything unread was seen. Two reviews are running.",
+   "ouEnEst": "Sixth version: a row removed and then back newer is no longer marked read. A deep review and another review are running.",
    "reste": "Merge when both reviews are clean."
   },
   {
    "statut": "fixing",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "Measured on a device: nothing reaches the leaving screen any more and it is as smooth as main, but a very fast tap right after Back can still be lost (1 in 3 at the edge). Being fixed.",
+   "ouEnEst": "Measured: nothing reaches the leaving screen and it is as smooth as main, but a very fast tap right after Back can be lost. Being fixed.",
    "reste": "A last device check, then merge; it is native."
   },
   {
-   "statut": "measuring",
-   "sujet": "Explore: an empty piece of screen when result tabs change during a search",
-   "pr": 4750,
-   "ouEnEst": "Native fix reviewed at zero twice, CI green; its device measurement is running.",
-   "reste": "Merge if nothing gets worse; it ships in the new binary."
-  },
-  {
-   "statut": "fixing",
+   "statut": "review",
    "sujet": "Website: our Takes still signed “Take”",
    "pr": 4736,
-   "ouEnEst": "Every spot is fixed; two build checks failed on the last version and are being fixed.",
-   "reste": "Green checks and two clean reviews, then merge before the staging API redeploy."
+   "ouEnEst": "Every spot is fixed; its build checks are running again after main was repaired.",
+   "reste": "Two clean reviews, then merge before the staging API redeploy."
   },
   {
-   "statut": "fixing",
+   "statut": "review",
    "sujet": "Server traces used by our diagnostic tools",
    "pr": 4755,
-   "ouEnEst": "Fixed; one build check failed on a test and is being fixed. No effect for users.",
-   "reste": "Merge before the build, like every problem found."
+   "ouEnEst": "Fixed, build checks green; two reviews are running. No effect for users.",
+   "reste": "Merge when both reviews are clean."
+  },
+  {
+   "statut": "review",
+   "sujet": "A composer test that failed at random",
+   "pr": 4760,
+   "ouEnEst": "Made deterministic: it passed 58 times out of 58 under load. Two reviews are running.",
+   "reste": "Merge when both reviews are clean."
   },
   {
    "statut": "owner",
@@ -1020,41 +1032,54 @@
   },
   {
    "statut": "later",
-   "sujet": "Explore redesign inspired by X: six proposals",
+   "sujet": "Neighbouring pages load ahead: their own switch",
+   "pr": 4643,
+   "ouEnEst": "Measured with the preloading switch on: Profile 125 ms of jank instead of 359, Messages better. A switch of their own is being built, so they can be turned on without the rest.",
+   "reste": "Measure with the new switch, then turn it on, as you asked: the smoothest possible."
+  },
+  {
+   "statut": "later",
+   "sujet": "Videos ahead in the feed with preloading on",
    "pr": 0,
-   "ouEnEst": "A study with mockups and no code; its review notes are fixed. Nothing to ship in build 196.",
-   "reste": "Your pick among the six proposals, then we build it."
+   "ouEnEst": "Each scroll step cancelled the next video's first piece. A Replicas machine is fixing it, so the whole preloading can be turned on.",
+   "reste": "Fix, measure, then turn the preloading on."
   },
   {
    "statut": "later",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "A Replicas machine is measuring four variants to find where the scroll cost comes from; nothing heavy was found on the map side locally.",
+   "ouEnEst": "A Replicas machine is measuring four variants to find where the scroll cost comes from.",
    "reste": "Joins build 196 only if it is as smooth as main."
   },
   {
    "statut": "later",
-   "sujet": "Neighbouring pages load ahead again",
-   "pr": 4643,
-   "ouEnEst": "Fixed why Messages got slower with the setting on; a device measurement is running.",
-   "reste": "Joins build 196 only if it is as smooth as main; turning the setting on stays your decision."
+   "sujet": "Icons of a Take: mockups",
+   "pr": 0,
+   "ouEnEst": "Two Replicas machines are drawing several ways to arrange comments, votes, likes, repost and share on real screenshots.",
+   "reste": "Your pick among the proposals."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator on staging, and four Claude agents (the anonymous vote, the website checks, your smoothness table, the composer bugs).",
-  "On Replicas, on Claude: reviewers on every fix, and device measurements for the composer, the anonymous vote, the Explore pager fix, the profile swipe, the map and the neighbouring pages."
+  "Here on the Mac: me, your emulator on staging, and four Claude agents (the unread badge, a deep review of it, the neighbouring pages switch, a review of the server traces).",
+  "On Replicas, on Claude: reviewers on every fix; device measurements for the composer, the anonymous vote and the map; the video fix; the icon mockups."
  ],
  "etapes": [
-  "Merge the remaining fixes as their reviews, CI and measurements land: the composer bugs, the anonymous vote, the unread badge, the profile swipe, the Explore pager fix, the website and the server traces.",
+  "Merge the remaining fixes as their reviews, CI and measurements land: composer bugs, anonymous vote, unread badge, profile swipe, website, server traces, the random test.",
   "A last re-read of what changed since the second one, on the final main.",
-  "Full test loop on the final main with a staging test account, then a tour of the app along a 90-point checklist built from every change since build 195, then redeploy the staging API. Build 195 stops working on staging at that moment, as we decided.",
-  "Show you what is not in build 196 and why, then launch it as a new binary with the native fixes, and hand you the emulator on main."
+  "Full test loop on the final main with a staging test account (its plan is written), then the 90-point tour of the app, then redeploy the staging API. Build 195 stops working on staging at that moment, as we decided.",
+  "Show you the final list of what is not in build 196, get your go, launch it as a new binary, and hand you the emulator on main."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4758,
+     "titre": "TAK-1075 : main de nouveau vert, l'empreinte @test-reads de thread-composer-slot suit #4744 et #4662",
+     "fusion": "Oct 11, 05:16",
+     "build196": true
+    },
     {
      "pr": 4744,
      "titre": "TAK-1063 : un profil ou une conversation ouvert au lancement compte comme le premier dessin",
@@ -3059,6 +3084,12 @@
    "zone": "docs",
    "nom": "Docs",
    "prs": [
+    {
+     "pr": 4750,
+     "titre": "TAK-1065 : une page retirée du pager natif n'est plus remise dans un ancien conteneur",
+     "fusion": "Oct 11, 05:16",
+     "build196": true
+    },
     {
      "pr": 4646,
      "titre": "Curator: refuse unplayable YouTube videos and photo-only X posts",
