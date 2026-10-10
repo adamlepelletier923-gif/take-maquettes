@@ -1,21 +1,39 @@
 {
- "majLe": "2026-10-10T16:51+09:00",
- "heure": "16:51",
+ "majLe": "2026-10-10T17:49+09:00",
+ "heure": "17:49",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 285,
-  "depuisDernierTableau": 90,
-  "enCours": 16,
-  "app": 110,
-  "siteEtAdmin": 58,
+  "fusionneesDepuis8Octobre": 288,
+  "depuisDernierTableau": 93,
+  "enCours": 14,
+  "app": 111,
+  "siteEtAdmin": 59,
   "serveur": 60,
-  "outilsEtDocs": 57
+  "outilsEtDocs": 58
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The vote cost fix is confirmed by its re-measurement, so it stays in main. The Notifications agent found why switching to Votes cost more (the JS thread waited for the UI thread at each tap) and fixed it. I also found four ready PRs that were on none of my lists since yesterday: a search page rejected when a Take has no place name, the composer's Retry and Dismiss buttons, re-reads during a cold start, and the skeleton guard. They are now in review or being measured, and the site warns me of any ready PR it does not show."
+  "texte": "Two more merged: the search page that a Take without a place name made the app reject, and the skeleton guard. That makes 45 build 196 fixes merged today. At about 17:43, every Codex agent on Replicas hit its usage limit, blocked until October 17. I moved each running task to the Claude agent of the same machine, so the measurements and reviews continue; adding Codex credits or another shared Codex account in Replicas would bring the Codex agents back."
  },
  "depuis": [
+  {
+   "heure": "17:25",
+   "pr": 4680,
+   "texte": "Test only: the no-skeleton guard also catches skeletons painted by a style sheet or a class.",
+   "build196": true
+  },
+  {
+   "heure": "17:08",
+   "pr": 4580,
+   "texte": "Search: a page of results was rejected by the app when one Take had no place name. The server now always sends it; ships with the staging API redeploy.",
+   "build196": true
+  },
+  {
+   "heure": "16:49",
+   "pr": 4694,
+   "texte": "S86 judge the gateway's telemetry over the admin smoke window",
+   "build196": false
+  },
   {
    "heure": "16:36",
    "pr": 4686,
@@ -582,10 +600,52 @@
  "enCours": [
   {
    "statut": "measuring",
+   "sujet": "Text at the largest size, and size changes while the app runs",
+   "pr": 4665,
+   "ouEnEst": "Covers Messages, the Top 8, profiles, the avatar editor, KnowMe and Take Rush. The live size change resizes the boxes without a restart, and no longer resets what is inside a text. Reviewed at zero twice, CI green.",
+   "reste": "A device measurement is running, including a live change through the Settings app."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Notifications and Activity tab rows",
+   "pr": 4672,
+   "ouEnEst": "Far better than main (Comments reached 9 or 10 times out of 10, against 0). The extra cost when switching to Votes is fixed (38 waits on the UI thread in the test, 0 now). Reviewed at zero twice.",
+   "reste": "A short device measurement is running, then merge."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Profile: a swipe from Questions closed the profile",
+   "pr": 4659,
+   "ouEnEst": "Two fixes: an invisible layer in its own window blocks touches during every close, and the tab row installs its gesture once instead of six times. Reviewed at zero.",
+   "reste": "One new test still fails only when CI runs it with the others; the cause is found and being fixed. A device measurement runs meanwhile."
+  },
+  {
+   "statut": "review",
+   "sujet": "Messages: blank screen after a cancelled swipe back",
+   "pr": 4662,
+   "ouEnEst": "The extra cost found by the CPU profile is fixed: new views no longer go through the style interop, and context reads are stable.",
+   "reste": "Taking main, then two reviews and a device measurement."
+  },
+  {
+   "statut": "review",
    "sujet": "Share counter moves as soon as you share",
    "pr": 4524,
-   "ouEnEst": "One of your build 195 reports. Brought onto the new main after the counters, and reviewed at zero twice.",
-   "reste": "A device measurement of the final version is running, then merge."
+   "ouEnEst": "One of your build 195 reports. The counter was right, but closing the share sheet in an open Take redrew the whole screen twice; now only the counter redraws.",
+   "reste": "Two reviews and a device measurement running."
+  },
+  {
+   "statut": "review",
+   "sujet": "Cold start: three screens re-read during the first feed",
+   "pr": 4642,
+   "ouEnEst": "Took main, so it now accepts the current server data (its measurement had found it rejected the startup data). One review at zero.",
+   "reste": "A second review and a device measurement running."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Composer: Retry and Dismiss buttons, and why Import is greyed",
+   "pr": 4569,
+   "ouEnEst": "After a failed upload, Retry and Dismiss become two real buttons for VoiceOver, and Import explains that a sound is already attached (a text you approved).",
+   "reste": "A device check of the accessibility tree and fluidity is running, then a review and merge."
   },
   {
    "statut": "measuring",
@@ -595,67 +655,11 @@
    "reste": "Waiting for your design OK, because my guard asks you for any new component."
   },
   {
-   "statut": "measuring",
-   "sujet": "Profile: a swipe from Questions closed the profile",
-   "pr": 4659,
-   "ouEnEst": "The three points found by the measurement are fixed and reviewed at zero twice.",
-   "reste": "New measurement running, then merge."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Messages: blank screen after a cancelled swipe back",
-   "pr": 4662,
-   "ouEnEst": "Blank pages are gone and no tap is lost, reviewed at zero. Back still shows a few extra long frames.",
-   "reste": "A CPU profile of Back names the exact cause, then a fix."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Text at the largest size, and size changes while the app runs",
-   "pr": 4665,
-   "ouEnEst": "Covers Messages, the Top 8, profiles, the avatar editor, KnowMe and Take Rush. The live size change now resizes the boxes too, but a review found it resets what is inside a text: a #topic in a notification can turn into a link after a size change.",
-   "reste": "Being fixed and brought onto the new main; the device measurement of the other points runs meanwhile."
-  },
-  {
-   "statut": "review",
-   "sujet": "Notifications and Activity tab rows",
-   "pr": 4672,
-   "ouEnEst": "Far better than main (Comments reached 9 or 10 times out of 10, against 0). The extra cost when switching to Votes is found and fixed: the JS thread waited for the UI thread at each tap (38 waits in the test, 0 now).",
-   "reste": "Two reviews and a short measurement running, then merge."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Search results page rejected when a Take has no place name",
-   "pr": 4580,
-   "ouEnEst": "The server left the place name out of Take summaries in search and Explore, and the app then rejects the whole page. The fix has been ready since yesterday but was on none of my lists.",
-   "reste": "Being brought onto main, then two reviews and merge. It ships with the staging API redeploy."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Composer: Retry and Dismiss buttons, and why Import is greyed",
-   "pr": 4569,
-   "ouEnEst": "After a failed upload, Retry and Dismiss become two real buttons for VoiceOver, and Import explains that a sound is already attached (a text you approved). Ready since yesterday, forgotten too.",
-   "reste": "A device check of the accessibility tree and fluidity is running, then a review and merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Cold start: three screens re-read during the first feed",
-   "pr": 4642,
-   "ouEnEst": "With a slow session, Notifications, Messages and Profile were re-read while the first feed was drawing. The fix waits for the session's answer. Ready since this morning, forgotten too.",
-   "reste": "Two reviews and a device measurement running."
-  },
-  {
-   "statut": "review",
-   "sujet": "The no-skeleton guard also catches skeletons painted by a style sheet",
-   "pr": 4680,
-   "ouEnEst": "Test only, nothing changes in the app.",
-   "reste": "Two reviews, then merge."
-  },
-  {
-   "statut": "measuring",
+   "statut": "later",
    "sujet": "Fast-switch tour of the whole app on the current main",
    "pr": 0,
-   "ouEnEst": "37 fixes merged since this morning's tour. Four devices go through Home, the bottom bar, Explore, the map, the game, an open Take, Settings, Messages, profiles and Notifications.",
-   "reste": "Any problem gets a ticket and a fix before the build."
+   "ouEnEst": "Four devices started it; they stopped when the Codex usage limit hit.",
+   "reste": "Restarted on the Claude agents as soon as the measurements above are done."
   },
   {
    "statut": "later",
@@ -694,15 +698,14 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: the Claude fixing the Notifications rows, plus the bench simulator when memory allows. Finished agents are closed to keep memory free.",
-  "On Replicas: about fifteen reviewers and eighteen measurers on devices (four of them on the whole-app tour), on Codex in fast mode, plus agents fixing Messages and the text size."
+  "Here on the Mac: the Claude fixing the Notifications rows. Finished agents are closed to keep memory free.",
+  "On Replicas: the Codex agents are blocked by their usage limit, so the Claude agents of the same machines carry on: seven measurers on devices, eight reviewers and the fixers."
  ],
  "etapes": [
-  "Merge each PR as soon as its measurement and reviews come back clean: share counter, profile swipe, Notifications rows, text size, the four forgotten PRs, and the avatar with your OK.",
-  "Fix what is left: Messages' Back cost and the text size reset found by the review.",
-  "Finish the fast-switch tour of the whole app on the current main; any problem gets a ticket and a fix before the build.",
+  "Merge each PR as soon as its measurement and reviews come back clean: text size, Notifications rows, profile swipe, Messages Back, share counter, cold start, composer buttons, and the avatar with your OK.",
+  "Restart the fast-switch tour of the whole app; any problem gets a ticket and a fix before the build.",
   "Show you what stays out, with reasons: the map preparation, the prefetch, the big VoiceOver change, the composer refresh and Explore's root black-page defect.",
-  "Full test loop on the final main, a last tour, then redeploy the staging API on that commit (it carries the privacy migration and the place name fix).",
+  "Full test loop on the final main, a last tour, then redeploy the staging API on that commit (privacy migration and place name fix). Build 195 stops working on staging at that moment, as we decided: no compatibility with old builds.",
   "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
  ],
  "fait": [
@@ -710,6 +713,12 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4680,
+     "titre": "TAK-1004 : la garde « aucun squelette visible » suit les feuilles de style, les classes et les exports par défaut",
+     "fusion": "Oct 10, 17:25",
+     "build196": true
+    },
     {
      "pr": 4686,
      "titre": "TAK-830 : un vote se dessine dans le Take touché, sans redessiner le fil",
@@ -1376,6 +1385,12 @@
    "zone": "web",
    "nom": "Website and admin",
    "prs": [
+    {
+     "pr": 4580,
+     "titre": "TAK-858 : préserver spotLabel dans les réponses de Takes",
+     "fusion": "Oct 10, 17:08",
+     "build196": true
+    },
     {
      "pr": 4656,
      "titre": "Admin console: calls the gateway directly; its in-between server is removed.",
@@ -2096,6 +2111,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4694,
+     "titre": "S86 judge the gateway's telemetry over the admin smoke window",
+     "fusion": "Oct 10, 16:49",
+     "build196": false
+    },
     {
      "pr": 4693,
      "titre": "TAK-998 : retirer la règle du pager natif de #4676, qui aggrave les pages noires d'Explorer",
