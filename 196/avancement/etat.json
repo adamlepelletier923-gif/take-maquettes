@@ -1,21 +1,51 @@
 {
- "majLe": "2026-10-11T04:20+09:00",
- "heure": "04:20",
+ "majLe": "2026-10-11T04:52+09:00",
+ "heure": "04:55",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 343,
-  "depuisDernierTableau": 148,
-  "enCours": 9,
-  "app": 148,
+  "fusionneesDepuis8Octobre": 348,
+  "depuisDernierTableau": 153,
+  "enCours": 11,
+  "app": 150,
   "siteEtAdmin": 63,
-  "serveur": 65,
-  "outilsEtDocs": 67
+  "serveur": 66,
+  "outilsEtDocs": 69
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Two more fixes are merged. The composer change you had left out now goes in, because it measured smoother than main (audio clearly better), and so does the Messages Back fix. I also found a bug in my script that sends work to the Replicas machines: three measurements had never started, and the Opus setting was never applied. Both are fixed and the measurements are running."
+  "texte": "The launch from a notification on a profile or a conversation is merged, measured smoother. The re-read of everything merged tonight caught three bugs in the composer change; they are fixed and being checked, and no test flow of the app is broken by tonight's changes. As you asked, every agent now runs on Claude; Codex only steps in when Claude is out of usage."
  },
  "depuis": [
+  {
+   "heure": "04:49",
+   "pr": 4754,
+   "texte": "chore(staging): profile song flag input for leased proofs",
+   "build196": false
+  },
+  {
+   "heure": "04:49",
+   "pr": 4753,
+   "texte": "Either product owner may confirm visible changes; visual-evidence check requires PR screenshots",
+   "build196": false
+  },
+  {
+   "heure": "04:35",
+   "pr": 4744,
+   "texte": "Opening the app from a notification on a profile or a conversation: the launch logo leaves as soon as the page is drawn, almost half a second sooner on a conversation, measured on a device.",
+   "build196": true
+  },
+  {
+   "heure": "04:19",
+   "pr": 4727,
+   "texte": "feat(api): a song on the profile from Apple Music previews, behind a flag",
+   "build196": false
+  },
+  {
+   "heure": "04:18",
+   "pr": 4662,
+   "texte": "Messages: a Back during a transition follows the decided behaviour; no blank screen after a cancelled swipe back, measured on a device with no extra cost.",
+   "build196": true
+  },
   {
    "heure": "04:13",
    "pr": 4565,
@@ -933,39 +963,53 @@
  },
  "enCours": [
   {
-   "statut": "review",
-   "sujet": "The last regressions from the full re-read since build 195",
-   "pr": 0,
-   "ouEnEst": "The unread badge got a second fix (a bell left lit for people the bug already hit); its reviews are running. The launch logo on a profile or conversation is reviewed at zero; its device measurement is running.",
-   "reste": "Two reviews at zero and the measurements, then merge."
+   "statut": "fixing",
+   "sujet": "Composer: three bugs found after it went in",
+   "pr": 4756,
+   "ouEnEst": "The re-read of everything merged tonight found them: a Take resumed after the app was killed no longer went to the top of Friends, a published photo could go blank, a video kept a fake frame. All three are fixed with tests; one build check failed and is being fixed; reviews and a device measurement are running.",
+   "reste": "Merge when clean; if it drags on, the composer change comes back out of build 196."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "A vote could go public after you chose anonymous",
+   "pr": 4743,
+   "ouEnEst": "Two reviewers found the other side of it: a newer choice made elsewhere must win over an older one made in the app. A Claude agent is finishing the fix, with tests for every case.",
+   "reste": "Two clean reviews and a device measurement of the vote, then merge."
   },
   {
    "statut": "review",
-   "sujet": "A vote could go public after you chose anonymous",
-   "pr": 4743,
-   "ouEnEst": "Fixed: the choice you made by hand now always decides, online and offline, with tests in both directions. Two new reviews and a device measurement of the vote are running.",
-   "reste": "Merge when both reviews are clean and voting is as smooth as main."
+   "sujet": "Notifications: the unread badge",
+   "pr": 4740,
+   "ouEnEst": "A third round of fixes is in: nothing is marked read unless it was on screen, and the bell goes out once everything unread was seen. Two reviews are running.",
+   "reste": "Merge when both reviews are clean."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Profile: a swipe from Questions closed the profile",
+   "pr": 4659,
+   "ouEnEst": "Measured on a device: nothing reaches the leaving screen any more and it is as smooth as main, but a very fast tap right after Back can still be lost (1 in 3 at the edge). Being fixed.",
+   "reste": "A last device check, then merge; it is native."
   },
   {
    "statut": "measuring",
    "sujet": "Explore: an empty piece of screen when result tabs change during a search",
    "pr": 4750,
-   "ouEnEst": "Native fix reviewed at zero twice, CI green. Its device measurement had not really started because of a bug in my sending script; it is running now.",
+   "ouEnEst": "Native fix reviewed at zero twice, CI green; its device measurement is running.",
    "reste": "Merge if nothing gets worse; it ships in the new binary."
   },
   {
    "statut": "fixing",
-   "sujet": "Server traces used by our diagnostic tools",
-   "pr": 0,
-   "ouEnEst": "Two small mistakes, no effect for users; a Codex is fixing them with tests.",
-   "reste": "Fixed before the build, like every problem found."
-  },
-  {
-   "statut": "review",
    "sujet": "Website: our Takes still signed “Take”",
    "pr": 4736,
-   "ouEnEst": "The last spot is fixed too: the embed card shown on other sites. CI green; two reviews are running.",
-   "reste": "Merge before the staging API redeploy."
+   "ouEnEst": "Every spot is fixed; two build checks failed on the last version and are being fixed.",
+   "reste": "Green checks and two clean reviews, then merge before the staging API redeploy."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Server traces used by our diagnostic tools",
+   "pr": 4755,
+   "ouEnEst": "Fixed; one build check failed on a test and is being fixed. No effect for users.",
+   "reste": "Merge before the build, like every problem found."
   },
   {
    "statut": "owner",
@@ -975,43 +1019,54 @@
    "reste": "Its owner restarts it; the app needs no change."
   },
   {
-   "statut": "measuring",
-   "sujet": "Profile: a swipe from Questions closed the profile",
-   "pr": 4659,
-   "ouEnEst": "Reviewed at zero, CI green; native. Its device measurement is still running.",
-   "reste": "Merge when the measurement is clean."
+   "statut": "later",
+   "sujet": "Explore redesign inspired by X: six proposals",
+   "pr": 0,
+   "ouEnEst": "A study with mockups and no code; its review notes are fixed. Nothing to ship in build 196.",
+   "reste": "Your pick among the six proposals, then we build it."
   },
   {
    "statut": "later",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "A Claude agent on the Mac found nothing heavy on the map side locally; a Replicas machine is measuring four variants to find where the cost comes from.",
+   "ouEnEst": "A Replicas machine is measuring four variants to find where the scroll cost comes from; nothing heavy was found on the map side locally.",
    "reste": "Joins build 196 only if it is as smooth as main."
   },
   {
    "statut": "later",
    "sujet": "Neighbouring pages load ahead again",
    "pr": 4643,
-   "ouEnEst": "A Claude agent on the Mac fixed why Messages got slower with the setting on; a device measurement is running.",
+   "ouEnEst": "Fixed why Messages got slower with the setting on; a device measurement is running.",
    "reste": "Joins build 196 only if it is as smooth as main; turning the setting on stays your decision."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator on staging, three Claude agents (a re-read of everything merged since the last one, a check that none of your requests was forgotten, the unread badge) and two Codex (the server traces, the website).",
-  "On Replicas: reviewers on every fix, and device measurements for the launch logo, the anonymous vote, the Explore pager fix, the profile swipe, the map and the neighbouring pages, on Opus."
+  "Here on the Mac: me, your emulator on staging, and four Claude agents (the anonymous vote, the website checks, your smoothness table, the composer bugs).",
+  "On Replicas, on Claude: reviewers on every fix, and device measurements for the composer, the anonymous vote, the Explore pager fix, the profile swipe, the map and the neighbouring pages."
  ],
  "etapes": [
-  "Merge the remaining fixes as their reviews, CI and measurements land: the unread badge, the anonymous vote, the launch logo, the Explore pager fix, the profile swipe.",
-  "Fix the server trace mistakes, then merge the website fix before the staging API redeploy.",
-  "A last re-read of what changed since the second one, on the final main; one is already running on what merged so far.",
-  "Full test loop on the final main with a staging test account, a last tour, then redeploy the staging API. Build 195 stops working on staging at that moment, as we decided.",
-  "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
+  "Merge the remaining fixes as their reviews, CI and measurements land: the composer bugs, the anonymous vote, the unread badge, the profile swipe, the Explore pager fix, the website and the server traces.",
+  "A last re-read of what changed since the second one, on the final main.",
+  "Full test loop on the final main with a staging test account, then a tour of the app along a 90-point checklist built from every change since build 195, then redeploy the staging API. Build 195 stops working on staging at that moment, as we decided.",
+  "Show you what is not in build 196 and why, then launch it as a new binary with the native fixes, and hand you the emulator on main."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4744,
+     "titre": "TAK-1063 : un profil ou une conversation ouvert au lancement compte comme le premier dessin",
+     "fusion": "Oct 11, 04:35",
+     "build196": true
+    },
+    {
+     "pr": 4662,
+     "titre": "TAK-959: Messages — le Retour pendant une transition suit le comportement décidé état par état",
+     "fusion": "Oct 11, 04:18",
+     "build196": true
+    },
     {
      "pr": 4565,
      "titre": "Décaler la réconciliation après la fermeture du compositeur (TAK-844)",
@@ -2291,6 +2346,12 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4727,
+     "titre": "feat(api): a song on the profile from Apple Music previews, behind a flag",
+     "fusion": "Oct 11, 04:19",
+     "build196": false
+    },
+    {
      "pr": 4748,
      "titre": "TAK-1062 : rendre déterministe la contention des applicateurs de likes",
      "fusion": "Oct 11, 03:45",
@@ -2686,6 +2747,18 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4754,
+     "titre": "chore(staging): profile song flag input for leased proofs",
+     "fusion": "Oct 11, 04:49",
+     "build196": false
+    },
+    {
+     "pr": 4753,
+     "titre": "Either product owner may confirm visible changes; visual-evidence check requires PR screenshots",
+     "fusion": "Oct 11, 04:49",
+     "build196": false
+    },
     {
      "pr": 4724,
      "titre": "The anti-regression method, written into the repository",
