@@ -1,21 +1,69 @@
 {
- "majLe": "2026-10-10T20:49+09:00",
- "heure": "20:47",
+ "majLe": "2026-10-10T22:10+09:00",
+ "heure": "22:12",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 293,
-  "depuisDernierTableau": 98,
-  "enCours": 13,
-  "app": 115,
-  "siteEtAdmin": 60,
-  "serveur": 60,
-  "outilsEtDocs": 58
+  "fusionneesDepuis8Octobre": 301,
+  "depuisDernierTableau": 106,
+  "enCours": 19,
+  "app": 120,
+  "siteEtAdmin": 61,
+  "serveur": 61,
+  "outilsEtDocs": 59
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Two more merged: the share counter, after its measurement, and the avatar editor with your OK. Replicas was not at full speed, so the idle machines now hunt bugs from new angles: a slow server, a brand-new account, a side-by-side with build 195, and reviews of everything merged since build 195. On the Mac, my preliminary test loop ran on the wrong app and in English, so all its failures were mine, not the app's; it is stopped, the development app is being rebuilt, and the loop restarts right after."
+  "texte": "Reading everything changed since build 195 found eighteen regressions the per-PR reviews had missed, including two privacy leaks: an anonymous vote sent under your name, and a blocked person still visible. Five are already fixed and merged, and the rest are being fixed here on the Mac and on Replicas. Replicas stopped for half an hour when its Claude account hit its limit, and runs again on the new account. The disk was nearly full and is cleaned (30 GB free)."
  },
  "depuis": [
+  {
+   "heure": "22:03",
+   "pr": 4707,
+   "texte": "Sharing a Take during a pull-to-refresh no longer cancels the refresh, even after the network comes back.",
+   "build196": true
+  },
+  {
+   "heure": "21:57",
+   "pr": 4708,
+   "texte": "Privacy: blocking someone also reloads the map, so their pins disappear.",
+   "build196": true
+  },
+  {
+   "heure": "21:45",
+   "pr": 4705,
+   "texte": "Sheets: while a sheet slides down, a second tap no longer votes, opens or likes in the feed below; only Appearance keeps its bottom bar live.",
+   "build196": true
+  },
+  {
+   "heure": "21:43",
+   "pr": 4702,
+   "texte": "Privacy: a vote you made anonymous in an opened Take is now cast anonymous from the feed row too; it went out under your name before.",
+   "build196": true
+  },
+  {
+   "heure": "21:19",
+   "pr": 4701,
+   "texte": "Observability acceptance fails when Cloudflare reports sampling",
+   "build196": false
+  },
+  {
+   "heure": "21:19",
+   "pr": 4698,
+   "texte": "Gateway: wake the poll-create counter during the moderation pre-check",
+   "build196": false
+  },
+  {
+   "heure": "21:19",
+   "pr": 4700,
+   "texte": "Admin staging smoke: suspension dialog and WebKit gate fixed",
+   "build196": false
+  },
+  {
+   "heure": "20:58",
+   "pr": 4569,
+   "texte": "Composer: after a failed upload, Retry and Dismiss are two real buttons for VoiceOver, and the greyed Import explains that a sound is already attached.",
+   "build196": true
+  },
   {
    "heure": "20:29",
    "pr": 4524,
@@ -629,60 +677,102 @@
  },
  "enCours": [
   {
+   "statut": "fixing",
+   "sujet": "Eighteen regressions found by reading everything changed since build 195",
+   "pr": 0,
+   "ouEnEst": "Two full reviews of the 74 app commits since build 195 found what the per-PR reviews missed. Five are fixed and merged; the others all have a ticket and someone on them.",
+   "reste": "Every one gets its fix, two reviews and a check before the build."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Notifications: a blocked person and a refused Take stayed visible",
+   "pr": 4703,
+   "ouEnEst": "The list no longer keeps a person you just blocked, or a Take refused at opening. One review found one more defect.",
+   "reste": "Being fixed, then reviews."
+  },
+  {
+   "statut": "review",
+   "sujet": "Tapping an author offline did nothing, then opened later",
+   "pr": 4704,
+   "ouEnEst": "The profile now opens at once, even offline or on a slow server.",
+   "reste": "Two reviews running."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Open Take: pull-to-refresh did not update the counts after a vote",
+   "pr": 4706,
+   "ouEnEst": "Refreshing now shows the server's counts and vote. One review found one more defect.",
+   "reste": "Being fixed, then reviews."
+  },
+  {
+   "statut": "review",
+   "sujet": "Five narrow races at launch and in the feeds",
+   "pr": 4710,
+   "ouEnEst": "Messages and Profile are prepared even when the launch lands on Takes; visible Takes are prepared when the page gets focus; a late config no longer swaps the guest feed for a loader; a cold empty Friends feed no longer stays waiting.",
+   "reste": "Reviews running; the last points are being checked."
+  },
+  {
+   "statut": "review",
+   "sujet": "Visible Takes prepared as soon as the page gets focus",
+   "pr": 4711,
+   "ouEnEst": "Takes already on screen when Takes gets focus are prepared at once, not at the first scroll.",
+   "reste": "Reviews running."
+  },
+  {
+   "statut": "review",
+   "sujet": "Guest feed: a late config no longer swaps the rows for a loader",
+   "pr": 4712,
+   "ouEnEst": "With the bounded prefetch setting on, a late config kept the rows; it is off by default.",
+   "reste": "Reviews running."
+  },
+  {
+   "statut": "review",
+   "sujet": "Cold Friends feed no longer stays waiting",
+   "pr": 4713,
+   "ouEnEst": "An empty answer after a late revalidation no longer leaves Friends waiting at launch.",
+   "reste": "CI and reviews."
+  },
+  {
    "statut": "measuring",
-   "sujet": "Text at the largest size, and size changes while the app runs",
+   "sujet": "Text at the largest size",
    "pr": 4665,
-   "ouEnEst": "The Top 8, « Enregistrer » and the welcome screen are now readable at the largest size, and it took main. At the default size nothing may change from main.",
-   "reste": "Two reviews and a short measurement running, then merge."
+   "ouEnEst": "Everything passed the measurement except the profile header, where your name broke in the middle of words.",
+   "reste": "Being fixed, then a short measurement."
   },
   {
    "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "An invisible layer blocks touches during every close, and the tab row installs its gesture once instead of six times. Reviewed at zero twice, CI green.",
-   "reste": "Its device measurement is running, then merge."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Messages: blank screen after a cancelled swipe back",
-   "pr": 4662,
-   "ouEnEst": "The Back is fixed and measured with no regression. Opening a conversation shows 4 more long JS frames than main, in every pair.",
-   "reste": "A machine is finding where they come from; then a remeasure and merge."
+   "ouEnEst": "Touches no longer go through to the feed while the profile closes by a swipe; native fix, main merged. Reviewed at zero twice, CI green.",
+   "reste": "Measured on a new native build, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Notifications and Activity tab rows",
    "pr": 4672,
-   "ouEnEst": "The last review found that a tap meant to stop a scrolling list also switched tab; fixed. Reviewed at zero twice on the new head, CI green.",
+   "ouEnEst": "Reviewed at zero twice, CI green.",
    "reste": "A device measurement with a CPU profile of the Votes tab is running."
   },
   {
    "statut": "measuring",
-   "sujet": "Composer: Retry and Dismiss buttons, and why Import is greyed",
-   "pr": 4569,
-   "ouEnEst": "After a failed upload, Retry and Dismiss become two real buttons for VoiceOver, and Import explains that a sound is already attached. Reviewed at zero twice, CI green.",
-   "reste": "Its device measurement is running, then merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Cold start tests, second batch, and the defects they found",
+   "sujet": "Cold start tests and Explore topics keeping their order",
    "pr": 4697,
-   "ouEnEst": "The tests you asked for, for the six tabs, found three defects on main, all fixed here. The reviews then caught Explore swapping its top Take under your eyes when you leave a topic, first by a tap, then by a swipe; both fixed at the root.",
-   "reste": "Two reviews and a device measurement running on the new head."
+   "ouEnEst": "Reviewed at zero twice after the topic order was fixed for both a tap and a swipe. CI green.",
+   "reste": "A device measurement is running, then merge."
   },
   {
    "statut": "fixing",
-   "sujet": "CI: the React Doctor gate judged nothing",
-   "pr": 4699,
-   "ouEnEst": "Since main moved, the gate could not find its base and passed without looking. Fixed for pull requests; the reviews found it still judges nothing on a push to main.",
-   "reste": "Being fixed. Not blocking for build 196."
+   "sujet": "Messages: blank screen after a cancelled swipe back",
+   "pr": 4662,
+   "ouEnEst": "The Back is fixed and measured. Opening a conversation still costs a little more than main.",
+   "reste": "Being fixed, then a remeasure."
   },
   {
-   "statut": "measuring",
-   "sujet": "Bug hunts on the current main",
-   "pr": 0,
-   "ouEnEst": "Home and the bottom bar: nothing to fix after 81 bursts, warm, cold and after a fresh install. Three more zones are being toured, and five new hunts started: a slow server, a brand-new account, a side-by-side with build 195, and two reviews of the 74 app commits since build 195.",
-   "reste": "Any problem gets a ticket and a fix before the build."
+   "statut": "later",
+   "sujet": "CI: the React Doctor gate judged nothing",
+   "pr": 4699,
+   "ouEnEst": "Fixed for pull requests and for pushes to main; CI green again.",
+   "reste": "Reviews, after the build fixes. Not blocking."
   },
   {
    "statut": "later",
@@ -721,13 +811,13 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: the Claude on the Notifications rows, and the bench: the development app is compiling for the test loop, with the local API and a fresh seeded database.",
-  "On Replicas: Codex agents blocked until October 17; the Claude agents work again since the account was reconnected: six measurements, the reviews, three fixes, four fast tours and five new bug hunts."
+  "Here on the Mac: me, fixing regressions myself (four merged tonight), a Claude on Notifications, a Claude fixing the launch and profile regressions, and a Claude reviewer; the bench app for the test loop is installed.",
+  "On Replicas: running again on the new Claude account: measurements, two reviewers per fix, and five machines fixing the remaining regressions."
  ],
  "etapes": [
-  "Merge each PR as soon as its measurement and reviews come back clean: profile swipe, composer buttons, Notifications rows, cold start tests, text size, then Messages Back after its opening fix.",
-  "Finish the tours and the five new bug hunts; any problem gets a ticket and a fix before the build.",
-  "Show you what stays out, with reasons: the map preparation, the prefetch, the big VoiceOver change, the composer refresh and Explore's root black-page defect.",
+  "Fix, review and check every regression found since build 195, then merge: Notifications, tapping an author offline, the open Take counts, the launch races, the profile and Messages points, the map flight, the repost and the settings.",
+  "Merge the earlier fixes as their measurements land: profile swipe (native), Notifications rows, cold start tests, text size, then Messages Back.",
+  "A new full review of what changed since build 195, on the final main, before the build: the step that caught these regressions becomes a rule.",
   "Full test loop on the final main on the Mac bench, a last tour, then redeploy the staging API on that commit. Build 195 stops working on staging at that moment, as we decided.",
   "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
  ],
@@ -736,6 +826,36 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4707,
+     "titre": "A share during a refresh keeps it instead of cancelling it",
+     "fusion": "Oct 10, 22:03",
+     "build196": true
+    },
+    {
+     "pr": 4708,
+     "titre": "Blocking someone also reloads the map, which drops their pins",
+     "fusion": "Oct 10, 21:57",
+     "build196": true
+    },
+    {
+     "pr": 4705,
+     "titre": "A sliding-down sheet keeps its touches, except Appearance and its bottom bar",
+     "fusion": "Oct 10, 21:45",
+     "build196": true
+    },
+    {
+     "pr": 4702,
+     "titre": "A ghost switched on in the open Take is cast anonymous from the feed row too",
+     "fusion": "Oct 10, 21:43",
+     "build196": true
+    },
+    {
+     "pr": 4569,
+     "titre": "Composer: accessible failure buttons and why audio import is greyed",
+     "fusion": "Oct 10, 20:58",
+     "build196": true
+    },
     {
      "pr": 4524,
      "titre": "Share counter goes up as soon as you share",
@@ -1433,6 +1553,12 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 4700,
+     "titre": "Admin staging smoke: suspension dialog and WebKit gate fixed",
+     "fusion": "Oct 10, 21:19",
+     "build196": false
+    },
+    {
      "pr": 4695,
      "titre": "Admin: the console opens for an admin without a display name",
      "fusion": "Oct 10, 17:49",
@@ -1799,6 +1925,12 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4698,
+     "titre": "Gateway: wake the poll-create counter during the moderation pre-check",
+     "fusion": "Oct 10, 21:19",
+     "build196": false
+    },
+    {
      "pr": 4690,
      "titre": "Map: the spot budget counted beside free searches",
      "fusion": "Oct 10, 16:19",
@@ -2164,6 +2296,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4701,
+     "titre": "Observability acceptance fails when Cloudflare reports sampling",
+     "fusion": "Oct 10, 21:19",
+     "build196": false
+    },
     {
      "pr": 4694,
      "titre": "Admin: the gateway telemetry is judged over the smoke test window",
