@@ -1,21 +1,51 @@
 {
- "majLe": "2026-10-11T01:56+09:00",
- "heure": "01:56",
+ "majLe": "2026-10-11T02:49+09:00",
+ "heure": "02:49",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 324,
-  "depuisDernierTableau": 129,
-  "enCours": 15,
-  "app": 137,
-  "siteEtAdmin": 61,
-  "serveur": 61,
+  "fusionneesDepuis8Octobre": 329,
+  "depuisDernierTableau": 134,
+  "enCours": 11,
+  "app": 140,
+  "siteEtAdmin": 62,
+  "serveur": 62,
   "outilsEtDocs": 65
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "VoiceOver is merged: reopening Your activity announces only the tab shown, proven 22 times out of 22 on a device. A full re-read of everything changed since build 195 found seven more regressions; all seven are being fixed before the build. The Mac now runs three Claude agents and two Codex, and a new guard stops them from sitting idle."
+  "texte": "Four more fixes are merged: a Take removed by moderation leaves the screen at once, a profile refresh updates its counts, a Top 8 tap opens the profile even on a slow server, and the signed-in feed shows the Take account's Takes again. The Replicas machines hit their usage limit for twenty minutes; they were restarted on Opus, with Sonnet for really simple tasks only."
  },
  "depuis": [
+  {
+   "heure": "02:48",
+   "pr": 4734,
+   "texte": "Server: following the Take account no longer hides its Takes from your Takes feed after 7 days; it ships with the staging API redeploy.",
+   "build196": true
+  },
+  {
+   "heure": "02:36",
+   "pr": 4747,
+   "texte": "On a slow server, tapping a person in a Top 8 opens their profile within 300 ms, instead of doing nothing.",
+   "build196": true
+  },
+  {
+   "heure": "02:26",
+   "pr": 4737,
+   "texte": "Pulling to refresh someone's profile updates its Friends, Takes and Score line again.",
+   "build196": true
+  },
+  {
+   "heure": "02:26",
+   "pr": 4735,
+   "texte": "A Take removed by moderation right after you vote now leaves the open screen at once.",
+   "build196": true
+  },
+  {
+   "heure": "02:19",
+   "pr": 4729,
+   "texte": "ci(api-worker): staging searches places through Take's maps API by default (S96)",
+   "build196": false
+  },
   {
    "heure": "01:47",
    "pr": 4733,
@@ -819,80 +849,52 @@
  },
  "enCours": [
   {
-   "statut": "fixing",
-   "sujet": "Seven more regressions found by a full re-read since build 195",
-   "pr": 0,
-   "ouEnEst": "Profile counters after a refresh, Top 8 taps on a slow server, profile links offline, the Messages Requests entry, opening a conversation offline, a removed Take after a vote, and launching from a notification.",
-   "reste": "All seven are being fixed now, on the Mac and on Replicas, each with a test that fails before the fix."
-  },
-  {
    "statut": "review",
-   "sujet": "A Take removed by moderation after a vote stayed on screen",
-   "pr": 4735,
-   "ouEnEst": "One of the seven regressions, fixed with a test: a blocked Take now leaves the screen at once.",
-   "reste": "Two reviews and CI, then merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Product rules tested by a model of user actions",
-   "pr": 4722,
-   "ouEnEst": "Blocking, anonymity, offline, refresh, share and repost are replayed in random orders, and the product rules are checked after each step. Its review defects are fixed.",
-   "reste": "Reviews, then merge."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Six doubtful cases from the same re-read",
+   "sujet": "The last regressions from the full re-read since build 195",
    "pr": 0,
-   "ouEnEst": "The unread badge over 50, live shares, a vote sent anonymous from a stale copy, the block rate limit, vote traces: each is checked against the change that caused it.",
-   "reste": "Fixed if it is a regression; otherwise the reason it is intended is written down."
+   "ouEnEst": "Three are merged (moderation, profile refresh, Top 8 on a slow server). The others are fixed and in review: profile links offline, launching from a notification or a link, the Messages Requests entry, opening a conversation offline, the unread badge over 50, a vote sent anonymous from a stale copy.",
+   "reste": "Two reviews and CI on each, then merge."
   },
   {
    "statut": "owner",
    "sujet": "The curator stopped publishing on staging on October 4",
    "pr": 0,
-   "ouEnEst": "Its newest Take on staging is 7 days old, and its deploys since then did not restart it. Its owner has the ticket; nothing touched on our side.",
+   "ouEnEst": "Its newest Take on staging is 7 days old. Its owner has the ticket; nothing touched on our side.",
    "reste": "Its owner restarts it; the app needs no change."
   },
   {
-   "statut": "review",
-   "sujet": "Signed in, the Takes feed shows no curator Takes",
-   "pr": 4734,
-   "ouEnEst": "Cause found: following the Take account made the feed treat its Takes like a friend's, kept only 7 days. A server fix is open, with its test.",
-   "reste": "Two reviews, then it ships with the staging API redeploy."
-  },
-  {
-   "statut": "later",
-   "sujet": "Website: our Takes still signed “Take”",
-   "pr": 0,
-   "ouEnEst": "The app is fixed. A Codex on the Mac is fixing the website feeds, the Take page and the share image.",
-   "reste": "Website and server fix, separate from the app build."
-  },
-  {
    "statut": "fixing",
+   "sujet": "Website: our Takes still signed “Take”",
+   "pr": 4736,
+   "ouEnEst": "Fixed on the website feeds, the Take page and the share image, with tests; its CI found one failing check, being fixed.",
+   "reste": "Green CI, two reviews, then merge before the staging API redeploy."
+  },
+  {
+   "statut": "measuring",
    "sujet": "Messages: blank screen after a cancelled swipe back",
    "pr": 4662,
-   "ouEnEst": "The Back costs no more than main, and opening Messages cold from a notification keeps its Back. Main moved, so it must be merged back in.",
-   "reste": "Merge main, then a device remeasure."
+   "ouEnEst": "Two reviews at zero and CI green on its final version.",
+   "reste": "A device remeasure of the Back, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "Both review defects are fixed: a missing test, and a second finger during the swipe. Main moved, so it must be merged back in.",
-   "reste": "Merge main, a second review and the device measurement."
+   "ouEnEst": "Its review defects are fixed and main is merged back in; reviewed at zero.",
+   "reste": "The device measurement, then merge."
   },
   {
    "statut": "fixing",
    "sujet": "Notifications and Activity tab rows",
    "pr": 4672,
-   "ouEnEst": "Activity is fixed and measured: no slow frame on Votes, and the underline lands with the page 10 times out of 10. In Notifications the underline still lands after the page 5 times out of 10.",
+   "ouEnEst": "Activity is fixed and measured. In Notifications the underline still lands after the page 5 times out of 10.",
    "reste": "Fix Notifications, merge main, remeasure."
   },
   {
    "statut": "review",
    "sujet": "The anti-regression method, for every agent",
    "pr": 4724,
-   "ouEnEst": "The review defects are fixed here and in the product invariant tests.",
+   "ouEnEst": "One last review defect is being fixed, here and in the product rule tests (4722).",
    "reste": "Reviews; the CI guard merges after the build."
   },
   {
@@ -906,7 +908,7 @@
    "statut": "later",
    "sujet": "Composer: the refresh waits until it is closed",
    "pr": 4565,
-   "ouEnEst": "Measured: publishing a photo is 20 percent jerkier and a sound 41 percent; it redraws every visible row twice.",
+   "ouEnEst": "Remeasured: sound is now as smooth as main, but publishing a photo is still jerkier (211 ms against 172).",
    "reste": "Left out of build 196, as you decided when it is worse."
   },
   {
@@ -925,14 +927,14 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator on staging, three Claude agents fixing regressions and settling doubtful cases, and two Codex on the website and the server.",
-  "On Replicas: reviewers on every fix, device measurements for the tab rows, the profile swipe and Explore, and the fixes for the profile and vote regressions."
+  "Here on the Mac: me, your emulator on staging, three Claude agents reviewing and fixing the last regressions, and two Codex on the website and a flaky server test.",
+  "On Replicas: reviewers on every fix and device measurements for the Messages Back, the profile swipe, the tab rows and Explore, on Opus."
  ],
  "etapes": [
-  "Fix the seven regressions from the full re-read and settle the six doubtful cases, each with a test and two reviews.",
-  "Merge the last fixes as their reviews and measurements land: the profile swipe (native), the tab rows, the Messages Back, and Explore if it is better.",
-  "A second re-read, only of what changed after this one, on the final main.",
-  "Full test loop on the final main with a staging test account, a last tour, then redeploy the staging API with the signed-in feed fix. Build 195 stops working on staging at that moment, as we decided.",
+  "Merge the last regression fixes as their reviews and CI land, and the website fix before the staging API redeploy.",
+  "Merge the measured fixes: the Messages Back, the profile swipe (native), the tab rows, and Explore if it is better.",
+  "A second re-read, only of what changed after the first one, on the final main.",
+  "Full test loop on the final main with a staging test account, a last tour, then redeploy the staging API. Build 195 stops working on staging at that moment, as we decided.",
   "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
  ],
  "fait": [
@@ -940,6 +942,24 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4747,
+     "titre": "TAK-1051 : sur un serveur lent, toucher une personne du Top 8 ouvre son profil au plus tard en 300 ms",
+     "fusion": "Oct 11, 02:36",
+     "build196": true
+    },
+    {
+     "pr": 4737,
+     "titre": "TAK-1049 : tirer pour rafraîchir un profil public met à jour « Amis · Takes · Score »",
+     "fusion": "Oct 11, 02:26",
+     "build196": true
+    },
+    {
+     "pr": 4735,
+     "titre": "TAK-1056 : un Take retiré par la modération après un vote quitte l'écran ouvert",
+     "fusion": "Oct 11, 02:26",
+     "build196": true
+    },
     {
      "pr": 4723,
      "titre": "Cancel brings back the Requests entry; the Messages badge follows the cache",
@@ -1769,6 +1789,12 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 4729,
+     "titre": "ci(api-worker): staging searches places through Take's maps API by default (S96)",
+     "fusion": "Oct 11, 02:19",
+     "build196": false
+    },
+    {
      "pr": 4700,
      "titre": "Admin staging smoke: suspension dialog and WebKit gate fixed",
      "fusion": "Oct 10, 21:19",
@@ -2140,6 +2166,12 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4734,
+     "titre": "TAK-1045 : le compte officiel n'est jamais un ami dans le fil Takes",
+     "fusion": "Oct 11, 02:48",
+     "build196": true
+    },
     {
      "pr": 4698,
      "titre": "Gateway: wake the poll-create counter during the moderation pre-check",
