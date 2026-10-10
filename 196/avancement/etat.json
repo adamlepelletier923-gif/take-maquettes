@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-11T06:44+09:00",
- "heure": "06:48",
+ "majLe": "2026-10-11T07:01+09:00",
+ "heure": "07:02",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 356,
-  "depuisDernierTableau": 161,
-  "enCours": 12,
+  "fusionneesDepuis8Octobre": 357,
+  "depuisDernierTableau": 162,
+  "enCours": 13,
   "app": 152,
   "siteEtAdmin": 65,
   "serveur": 69,
-  "outilsEtDocs": 70
+  "outilsEtDocs": 71
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The website no longer signs our Takes, and videos ahead in the feed got a switch of their own, off. The icon row from your screenshot is done and is being finished before the build. A deep review found that two quick taps on the ghost could make an anonymous vote public; it was already in main and is fixed, being pushed. The four agents on the Mac are idle for now: a tooling problem on my side stops me from handing them work, so Replicas machines take it."
+  "texte": "The icon row now keeps each zero's room, so nothing moves when a count appears. Reviews found three real defects, all being fixed: the ghost's touch area, a server error on a bad mark, and an error flash on Profile with preloading on. Two Replicas machines hit a usage limit until 07:10 and restart then. A rehearsal of the test loop and of the 90-point tour runs on today's main, so the final runs before the build go faster."
  },
  "depuis": [
+  {
+   "heure": "06:53",
+   "pr": 4768,
+   "texte": "CI security quick wins: gitleaks, zizmor, squawk",
+   "build196": false
+  },
   {
    "heure": "06:08",
    "pr": 4761,
@@ -1014,21 +1020,21 @@
    "statut": "fixing",
    "sujet": "Take icons: votes on the left, the rest on the right, as on your screenshot",
    "pr": 4762,
-   "ouEnEst": "Done with build 195's spacing. Each zero now keeps its room, unseen, so the icons sit where your screenshot shows them and nothing moves when a first count appears. Then captures in light and dark, two reviews and a device measurement.",
+   "ouEnEst": "Laid out with build 195's spacing, and each zero keeps its room unseen, so no icon moves when a first count appears. A review found the ghost's touch area narrower than on build 195 (36 pt instead of 44), so a tap just left of it opened the Take: being fixed, without changing the drawing. Captures in light and dark and a device measurement are running.",
    "reste": "Must be in build 196, as you said."
   },
   {
-   "statut": "fixing",
+   "statut": "review",
    "sujet": "Two quick taps on the ghost made an anonymous vote public",
-   "pr": 0,
-   "ouEnEst": "Found by a deep review; it was already in main. Fixed so that the tap reads your current choice, not the last drawing, with tests that fail without the fix. Being pushed.",
-   "reste": "Two reviews and a measurement, then merge before the build."
+   "pr": 4771,
+   "ouEnEst": "Fixed so that the tap reads your current choice, not the last drawing; the tests fail without the fix. Two reviews and the build checks are running. No device measurement needed: only the tap changes.",
+   "reste": "Merge right after the anonymous vote fix below."
   },
   {
    "statut": "measuring",
    "sujet": "A vote could go public after you chose anonymous",
    "pr": 4743,
-   "ouEnEst": "Three reviews: none found a defect in the fix itself (the one found was already in main, see above). The device measurement of the vote is running.",
+   "ouEnEst": "Three reviews: none found a defect in the fix itself. Its device measurement stopped at a usage limit and restarts at 07:10.",
    "reste": "Merge when the measurement is clean."
   },
   {
@@ -1039,25 +1045,32 @@
    "reste": "Merge when the measurement is clean."
   },
   {
-   "statut": "review",
+   "statut": "fixing",
    "sujet": "Notifications: read only what was really shown",
    "pr": 4767,
-   "ouEnEst": "The server now reads up to what the shown list saw, never by date: a late alert can no longer be marked read unseen. Two deep reviews are running.",
-   "reste": "Merge with the badge fix, before the staging API redeploy."
+   "ouEnEst": "Both reviews found the same defect: a malformed mark sent by a client got a server error instead of a clean refusal, and the app would have retried it. Being fixed.",
+   "reste": "Merge after the badge fix, before the staging API redeploy."
   },
   {
    "statut": "measuring",
    "sujet": "Composer: three bugs found after it went in",
    "pr": 4756,
-   "ouEnEst": "Reviewed at zero twice, build checks green. The device measurement is finishing its last two pairs.",
+   "ouEnEst": "Reviewed at zero twice, build checks green. Its measurement stopped at a usage limit with two pairs left; it restarts at 07:10.",
    "reste": "Merge when the measurement is clean."
   },
   {
    "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "Reviewed at zero twice on its latest version; build checks green. The device measurement runs again on the latest version (the last one had measured an older one).",
+   "ouEnEst": "Reviewed at zero twice on its latest version, build checks green. The device measurement runs again on the latest version.",
    "reste": "Merge when the measurement is clean; it is native."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "After a failed Friends feed load, the next vote may leave about 3 s late",
+   "pr": 0,
+   "ouEnEst": "Spotted from a test that takes 5 s instead of 2. A Replicas machine is checking whether you would see the delay.",
+   "reste": "Fixed before the build if you would see it."
   },
   {
    "statut": "owner",
@@ -1067,11 +1080,11 @@
    "reste": "Its owner restarts it; the app needs no change."
   },
   {
-   "statut": "measuring",
+   "statut": "fixing",
    "sujet": "Preloading on, videos apart",
    "pr": 4643,
-   "ouEnEst": "Videos now have their own switch, off. A device measures everything else on against main.",
-   "reste": "Turn it on for build 196 if it is smoother, as you asked."
+   "ouEnEst": "A review found that, switch on, a failed read-ahead showed “Failed to load” on Profile for a moment before the list: being fixed. A second review and the device measurement against main are running.",
+   "reste": "Turn it on for build 196 only if fixed and smoother, as you asked: the smoothest possible."
   },
   {
    "statut": "later",
@@ -1084,7 +1097,7 @@
    "statut": "later",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "A Replicas machine is on its fifth round of variants to find where the scroll cost comes from.",
+   "ouEnEst": "A new agent on the Mac and a Replicas machine are on it; the Nearby list now waits behind the map until the screen is at rest.",
    "reste": "Joins build 196 only if it is as smooth as main."
   },
   {
@@ -1096,13 +1109,13 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator on staging, and four Claude agents, idle for now because of a tooling problem on my side.",
-  "On Replicas, on Claude: reviewers on every fix; device measurements for the composer, the anonymous vote, the badge, the profile swipe, the preloading and the map; the icon row; the ghost fix; the video pieces."
+  "Here on the Mac: me, your emulator on staging, and one Claude agent on the map. The four other agents were closed: a tooling problem on my side stopped me from handing them work.",
+  "On Replicas, on Claude: reviewers on every fix; device measurements (composer, anonymous vote, badge, profile swipe, preloading, map, icon row); fixes for the icon row, the server read, the preloading and the 3 s vote; the loop and tour rehearsals."
  ],
  "etapes": [
-  "Merge the remaining fixes as their reviews, CI and measurements land: icon row, ghost double tap, anonymous vote, unread badge and its server side, composer bugs, profile swipe.",
+  "Merge the remaining fixes as their reviews, CI and measurements land: icon row, ghost double tap, anonymous vote, unread badge and its server side, composer bugs, profile swipe, the 3 s vote check.",
   "Decide the preloading switch from its measurement, then a last re-read of what changed on the final main.",
-  "Full test loop on the final main with a staging test account, then the 90-point tour of the app, then redeploy the staging API. Build 195 stops working on staging at that moment, as we decided.",
+  "Full test loop and the 90-point tour on the final main (both rehearsed now on today's main), then redeploy the staging API. Build 195 stops working on staging at that moment, as we decided.",
   "Update the list of what is not in build 196, launch it as a new binary, and hand you the emulator on main."
  ],
  "fait": [
@@ -2844,6 +2857,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4768,
+     "titre": "CI security quick wins: gitleaks, zizmor, squawk",
+     "fusion": "Oct 11, 06:53",
+     "build196": false
+    },
     {
      "pr": 4754,
      "titre": "chore(staging): profile song flag input for leased proofs",
