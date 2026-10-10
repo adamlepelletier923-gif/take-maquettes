@@ -1,21 +1,39 @@
 {
- "majLe": "2026-10-10T14:47+09:00",
- "heure": "14:47",
+ "majLe": "2026-10-10T16:10+09:00",
+ "heure": "16:12",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 273,
-  "depuisDernierTableau": 78,
-  "enCours": 17,
-  "app": 104,
+  "fusionneesDepuis8Octobre": 276,
+  "depuisDernierTableau": 81,
+  "enCours": 15,
+  "app": 106,
   "siteEtAdmin": 58,
-  "serveur": 58,
+  "serveur": 59,
   "outilsEtDocs": 53
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Four more fixes merged: Explore's bottom bar (your build 195 report), the dark mode white flash (your TestFlight report), three quick taps on a vote, and like and repost under quick taps. That makes 38 build 196 fixes merged today. Reviews and measurements keep catching real problems before they ship: an anonymous vote that could become public, the map preparation slowing the feed, and two offline privacy cases. Each went straight back to its author."
+  "texte": "Two more fixes merged: the counters with equal spacing (your design decision of this morning) and the theme, where a tap on Home right after choosing Light now works. That makes 40 build 196 fixes merged today. Two important findings: changing the iOS text size while Take runs makes screens unreadable until a restart (reproduced on the Mac, being fixed), and the follow-up for Explore's black pages made them permanent, so it was refused."
  },
  "depuis": [
+  {
+   "heure": "16:08",
+   "pr": 4668,
+   "texte": "Theme: a tap on Home right after choosing Light opens Home and Light stays; touches no longer leak to the rows under a closing sheet. Native, in the new binary.",
+   "build196": true
+  },
+  {
+   "heure": "15:49",
+   "pr": 4689,
+   "texte": "Take the vote off the remote screen purge without losing the voter's view",
+   "build196": false
+  },
+  {
+   "heure": "15:16",
+   "pr": 4526,
+   "texte": "Counters hidden at 0 with equal spacing like X, your decision of this morning: no icon moves when a number appears, nothing is cut even at 9.9M at the largest text.",
+   "build196": true
+  },
   {
    "heure": "14:41",
    "pr": 4666,
@@ -509,135 +527,121 @@
  },
  "enCours": [
   {
-   "statut": "measuring",
-   "sujet": "Counters hidden at 0, with equal spacing like X",
-   "pr": 4526,
-   "ouEnEst": "One of your build 195 reports. On screen it is right: no icon moves in 50 toggles. The measurement saw two extra server reads during reposts; the author found they also happen on main with an older base, so a same-base check is running, with screenshots on the narrowest iPhone at the largest text.",
-   "reste": "Same-base check, then merge, with the share counter right behind."
-  },
-  {
    "statut": "review",
    "sujet": "Share counter moves as soon as you share",
    "pr": 4524,
-   "ouEnEst": "One of your build 195 reports. Reviewed at zero twice. It changes the same row as the counters.",
-   "reste": "Merges right after the counters."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Map ready before you arrive, like Snap",
-   "pr": 4529,
-   "ouEnEst": "One of your build 195 reports. The map now opens in 0.6 s instead of 1.1 s, but preparing it made the feed scroll jerkier.",
-   "reste": "Being fixed: it will prepare only when you are truly idle, and pause as soon as a finger moves."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Neighbouring pages load ahead again",
-   "pr": 4643,
-   "ouEnEst": "One of your build 194 reports. The extra read is gone; the extra Profile renders came from an old base, and main is merged in. Reviewed at zero twice.",
-   "reste": "New measurement running, then merge."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Profile: a swipe from Questions closed the profile",
-   "pr": 4659,
-   "ouEnEst": "Found by the profiles tour, a blocker. Reviewed at zero twice.",
-   "reste": "Device measurement running, then merge."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Messages: blank screen after a cancelled swipe back",
-   "pr": 4662,
-   "ouEnEst": "Blank pages are gone and Back costs like main again. A Back tapped while a conversation arrives is kept and runs when the page lands; reviewers found a few cases where another action should cancel it.",
-   "reste": "Being fixed with one general rule: any touch, or anything that opens, cancels it. Then reviews and a measurement."
+   "ouEnEst": "One of your build 195 reports. Brought onto the new main after the counters.",
+   "reste": "A quick review of the merge, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Avatar: a tap lands on Reset, thumbnails stay blank",
    "pr": 4663,
-   "ouEnEst": "Reset answered in 1.3 s after a category change; fixed within minutes and reviewed at zero twice.",
+   "ouEnEst": "Measured and reviewed at zero; Jev sees no real regression. It adds an invisible guard that ignores touches for half a second after the panel moves; nothing changes on screen.",
+   "reste": "Waiting for your design OK, because my guard asks you for any new component."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Profile: a swipe from Questions closed the profile",
+   "pr": 4659,
+   "ouEnEst": "The three points found by the measurement are fixed and reviewed at zero twice.",
    "reste": "New measurement running, then merge."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Messages: blank screen after a cancelled swipe back",
+   "pr": 4662,
+   "ouEnEst": "Blank pages are gone and no tap is lost, reviewed at zero. Back still shows a few extra long frames.",
+   "reste": "A CPU profile of Back names the exact cause, then a fix."
   },
   {
    "statut": "review",
    "sujet": "Text at the largest size",
    "pr": 4665,
-   "ouEnEst": "Now covers Messages, the Top 8, your profile, the avatar editor, KnowMe and Take Rush (its text is capped at x1.5, like a toolbar).",
-   "reste": "Reviews and a measurement with screenshots at the largest text size."
+   "ouEnEst": "Covers Messages, the Top 8, profiles, the avatar editor, KnowMe and Take Rush; long names stay within two lines in a conversation header.",
+   "reste": "Reviews and a measurement running, plus the live text size fix below."
   },
   {
    "statut": "fixing",
-   "sujet": "Theme: a lost tap after switching",
-   "pr": 4668,
-   "ouEnEst": "Light now stays chosen. The first fix let touches through to the rows under the sheet; only the bottom bar should stay live.",
-   "reste": "Fix pushed, then reviews and a new measurement."
+   "sujet": "Text size changed while the app runs makes screens unreadable",
+   "pr": 0,
+   "ouEnEst": "Reproduced on the Mac's simulator: letters grow but their boxes keep the old size, so text is cut everywhere until a restart. A cold start is fine.",
+   "reste": "Being fixed in the text size PR, then I check it on the Mac."
   },
   {
    "statut": "fixing",
    "sujet": "Privacy settings changed offline",
    "pr": 4670,
-   "ouEnEst": "The most private choice wins in a conflict, and showing your Top 8 again offline now reaches the server. Reviewers found two last cases: a phone clock set back, and two choices made together.",
-   "reste": "Being fixed, then reviews and a measurement."
+   "ouEnEst": "All five offline cases now pass on a device, and the most private choice wins a conflict. Fluidity within noise.",
+   "reste": "Taking main, then merge."
   },
   {
-   "statut": "measuring",
+   "statut": "fixing",
    "sujet": "Notifications and Activity tab rows",
    "pr": 4672,
-   "ouEnEst": "Back to main's step without the fade, the last gesture always wins. Reviewed at zero twice.",
-   "reste": "Measurement with screenshots running, then merge."
+   "ouEnEst": "Far better than main (Comments reached 9 or 10 times out of 10, against 0). Fixed a lost tap; one extra cost remains when switching to Votes.",
+   "reste": "Being fixed, then a short measurement."
   },
   {
    "statut": "fixing",
    "sujet": "Every prefetch redraws all the relative dates",
    "pr": 4685,
-   "ouEnEst": "Found while diagnosing the Explore bar; it is also on main and costs 170 to 200 ms of renders. Reviewed at zero twice.",
-   "reste": "A CI check about a chart font, then a measurement."
-  },
-  {
-   "statut": "review",
-   "sujet": "Changing your vote costs 242 ms",
-   "pr": 4686,
-   "ouEnEst": "Only the Take you touch redraws now. Reviewers caught an anonymous vote that could become public again; fixed, with a test.",
-   "reste": "Reviews and a measurement running."
+   "ouEnEst": "Measured: date renders during a prefetch go from 7 to 0, and jank from 195 ms to 0. Reviewed at zero.",
+   "reste": "Taking main, and a short check of the final version, then merge."
   },
   {
    "statut": "measuring",
-   "sujet": "Explore: blank pages during fast tab switches",
-   "pr": 4687,
-   "ouEnEst": "Follow-up of the native fix, with the version validated on a device. Reviewed at zero twice.",
-   "reste": "Two measurers count blank frames over 24 bursts each, then merge."
+   "sujet": "Changing your vote costs 242 ms",
+   "pr": 4686,
+   "ouEnEst": "Only the Take you touch redraws now. An anonymous vote can never become public again. Reviewed at zero twice.",
+   "reste": "Measurement running, then merge."
   },
   {
-   "statut": "review",
-   "sujet": "VoiceOver: the selected tab after reopening Your activity",
-   "pr": 4546,
-   "ouEnEst": "A big native change: it compiles React Native from source, which makes iOS builds longer. Both reviewers found it not ready for production yet.",
-   "reste": "A device check is running. If it stays too risky, it goes on the list of what is left out, and you decide."
+   "statut": "fixing",
+   "sujet": "Map ready before you arrive, like Snap",
+   "pr": 4529,
+   "ouEnEst": "The map opens much faster, but preparing it still makes the feed scroll a little jerkier, even only at rest.",
+   "reste": "One more fix, or it stays out of this build."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Explore: black pages during fast tab switches",
+   "pr": 0,
+   "ouEnEst": "The follow-up made the search page stay black for good, so it was refused. A comparison checks whether the first fix, already merged, made things worse.",
+   "reste": "If it did, I remove it from main before the build."
   },
   {
    "statut": "later",
-   "sujet": "Text size applied without a restart",
-   "pr": 0,
-   "ouEnEst": "Could not be checked: the test devices on Replicas never receive the size change, even with a minimal app. The code does listen for it.",
-   "reste": "I check it on the Mac's simulator as soon as its memory allows."
+   "sujet": "Neighbouring pages load ahead again",
+   "pr": 4643,
+   "ouEnEst": "One of your build 194 reports. It only works with the bounded prefetch setting, which stays off in this build, so it would change nothing for now.",
+   "reste": "Proposed out of build 196; you decide with the list."
+  },
+  {
+   "statut": "later",
+   "sujet": "VoiceOver: the selected tab after reopening Your activity",
+   "pr": 4546,
+   "ouEnEst": "A big native change that compiles React Native from source. The device check could not prove the fix.",
+   "reste": "Proposed out of build 196; you decide with the list."
   },
   {
    "statut": "later",
    "sujet": "Composer: the refresh waits until it is closed",
    "pr": 4565,
    "ouEnEst": "Its last measurement made publishing a photo jerkier than main.",
-   "reste": "Left out of build 196, with no loss: build 195 already behaves like main. It continues for the next build."
+   "reste": "Left out of build 196, with no loss: build 195 already behaves like main."
   }
  ],
  "equipe": [
-  "Here on the Mac: three Claudes (the counters, the notification rows and one on standby), with a check every 3 minutes on memory. One finished agent was closed to free memory.",
-  "On Replicas: about fifteen reviewers and eighteen measurers on devices, on Codex in fast mode, plus agents fixing Messages, theme, offline privacy, the map preparation, the vote cost, text size and relative dates."
+  "Here on the Mac: two Claudes (the share counter and the notification rows), plus the Mac's simulator for the text size check. Finished agents are closed to keep memory free.",
+  "On Replicas: about fifteen reviewers and eighteen measurers on devices, on Codex in fast mode, plus agents fixing Messages, text size, offline privacy, the map preparation, the vote cost and relative dates."
  ],
  "etapes": [
-  "Merge each PR as soon as its measurement comes back clean: profile swipe, avatar, notification rows, prefetch, text size and Explore's pager.",
-  "Fix what reviews and measurements found: Messages, theme, offline privacy, the map preparation, the counters, relative dates and the vote cost.",
-  "Show you what stays out, with reasons: the big VoiceOver native change and the composer.",
-  "Full test loop on the final main, plus a last fast-switch tour.",
-  "Redeploy the staging API on that same commit.",
+  "Merge each PR as soon as its measurement comes back clean: share counter, profile swipe, offline privacy, relative dates, vote cost, text size.",
+  "Fix what is left: Messages' Back cost, the Votes switch, the live text size, and the map preparation.",
+  "Decide about Explore's first pager fix with a before/after comparison.",
+  "Show you what stays out, with reasons: the prefetch, the big VoiceOver change and the composer.",
+  "Full test loop on the final main, a last fast-switch tour, then redeploy the staging API on that commit.",
   "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
  ],
  "fait": [
@@ -645,6 +649,18 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4668,
+     "titre": "TAK-984: keep tabs live without leaking appearance-sheet touches",
+     "fusion": "Oct 10, 16:08",
+     "build196": true
+    },
+    {
+     "pr": 4526,
+     "titre": "fix(mobile): hide zero counters without shifting the icons (TAK-774)",
+     "fusion": "Oct 10, 15:16",
+     "build196": true
+    },
     {
      "pr": 4666,
      "titre": "TAK-988 TAK-989: like and repost follow the last tap under quick taps and late answers (TAK-920)",
@@ -1629,6 +1645,12 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4689,
+     "titre": "Take the vote off the remote screen purge without losing the voter's view",
+     "fusion": "Oct 10, 15:49",
+     "build196": false
+    },
     {
      "pr": 4658,
      "titre": "Lease the remaining staging workflows and honor legacy deadlines",
