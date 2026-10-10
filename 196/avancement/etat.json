@@ -1,21 +1,45 @@
 {
- "majLe": "2026-10-10T23:50+09:00",
- "heure": "23:50",
+ "majLe": "2026-10-11T00:59+09:00",
+ "heure": "00:59",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 316,
-  "depuisDernierTableau": 121,
-  "enCours": 17,
-  "app": 131,
+  "fusionneesDepuis8Octobre": 320,
+  "depuisDernierTableau": 125,
+  "enCours": 13,
+  "app": 134,
   "siteEtAdmin": 61,
   "serveur": 61,
-  "outilsEtDocs": 63
+  "outilsEtDocs": 64
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Two more regression fixes are merged: refreshing an open Take you voted on shows the server's counts again, and coming back to a feed no longer re-reads Takes for nothing. Our Takes stay without an author while the curator keeps publishing, as you asked."
+  "texte": "Four more fixes are merged: tapping an author opens the profile without an empty page, the repost says the same thing everywhere, Notifications drop a blocked person at once, and the CI checks React code again. The Mac's simulator had turned itself off; it runs the test loop again on the latest main."
  },
  "depuis": [
+  {
+   "heure": "00:54",
+   "pr": 4703,
+   "texte": "Notifications drop a blocked person and a refused Take at once",
+   "build196": true
+  },
+  {
+   "heure": "00:33",
+   "pr": 4699,
+   "texte": "The React Doctor CI gate judges the right diff again",
+   "build196": true
+  },
+  {
+   "heure": "00:31",
+   "pr": 4717,
+   "texte": "An open Take shows the repost the server kept after a refresh",
+   "build196": true
+  },
+  {
+   "heure": "00:30",
+   "pr": 4704,
+   "texte": "Tapping an author opens their profile at once, even offline",
+   "build196": true
+  },
   {
    "heure": "23:49",
    "pr": 4711,
@@ -770,128 +794,100 @@
    "statut": "fixing",
    "sujet": "Eighteen regressions found by reading everything changed since build 195",
    "pr": 0,
-   "ouEnEst": "Most are now fixed and merged: the anonymous vote, the sheets, sharing during a refresh, the map pins, the official profile, the notification settings, the map flight, your profile photo, the open Take counts and five launch races.",
-   "reste": "The last ones have a fix in review or being corrected, with two reviews and a check before the build."
+   "ouEnEst": "Almost all are fixed and merged now, including tonight's: tapping an author, the repost, Notifications after a block, and the open Take counts.",
+   "reste": "The last ones are in review, with two reviews and a check before the build."
   },
   {
    "statut": "review",
    "sujet": "Our Takes signed “Take” with the logo",
    "pr": 4728,
-   "ouEnEst": "Your rule is back: Takes from the app and the curator sign nothing, in the feeds, Explore results, the open Take, the long-press preview and shares. The curator keeps publishing.",
-   "reste": "Second round of reviews running, then merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Notifications: a blocked person and a refused Take stayed visible",
-   "pr": 4703,
-   "ouEnEst": "All edge cases fixed; reviewed at zero twice.",
-   "reste": "Waiting for its CI, which is slow tonight, then merge."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Tapping an author offline did nothing, then opened later",
-   "pr": 4704,
-   "ouEnEst": "The profile opens as soon as the server answers, 300 ms at most; offline it opens at once with Retry. One review found one more case.",
-   "reste": "Being fixed, then reviews."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Repost after a refusal or a removal elsewhere",
-   "pr": 4717,
-   "ouEnEst": "The open Take shows the repost the server kept. The fixer wrote the full state-by-state behaviour, then a test per line.",
-   "reste": "Two reviews running on it."
+   "ouEnEst": "Your rule is back everywhere: feeds, Explore, the open Take, the long-press preview and shares. The curator keeps publishing.",
+   "reste": "Last round of reviews, then merge."
   },
   {
    "statut": "review",
    "sujet": "Messages: Cancel brings back the Requests entry",
    "pr": 4723,
-   "ouEnEst": "The Messages badge also follows the cache before launch. One review at zero.",
-   "reste": "Second review and CI running."
+   "ouEnEst": "Reviewed at zero twice; main was merged into it to solve a test conflict.",
+   "reste": "One more review on the merge, then merge."
   },
   {
    "statut": "review",
    "sujet": "Text at the largest size",
    "pr": 4665,
-   "ouEnEst": "The profile header no longer breaks your name in the middle of words. The last reviews found two more small cases.",
-   "reste": "Being fixed, then reviews."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Profile: a swipe from Questions closed the profile",
-   "pr": 4659,
-   "ouEnEst": "Touches no longer go through to the feed, but the device measurement shows the app ignoring taps for up to half a second after the profile closes.",
-   "reste": "Being fixed natively, then measured again."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Notifications and Activity tab rows",
-   "pr": 4672,
-   "ouEnEst": "A useless call per tap was removed. The last tap of a fast burst is still sometimes lost in Notifications.",
-   "reste": "A device measurement with a trace of the lost taps is running."
+   "ouEnEst": "Reviewed at zero twice, CI green. One new file holds the avatar editor's category row; it looks the same at normal size.",
+   "reste": "Waiting for your design OK, then merge."
   },
   {
    "statut": "fixing",
    "sujet": "Messages: blank screen after a cancelled swipe back",
    "pr": 4662,
-   "ouEnEst": "The Back is fixed and measured, its CI is green again, and opening a conversation no longer does extra work.",
-   "reste": "Two reviews and a device remeasure running."
+   "ouEnEst": "Opening a conversation no longer costs more than main. The Back still cost about 5 percent more; a fix is pushed.",
+   "reste": "Reviews and a device remeasure."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Profile: a swipe from Questions closed the profile",
+   "pr": 4659,
+   "ouEnEst": "The native fix makes taps work again right after the profile closes. Reviewed at zero twice.",
+   "reste": "Device measurement running."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Notifications and Activity tab rows",
+   "pr": 4672,
+   "ouEnEst": "The lost last taps were the test bench dropping touches, not the app. Opening Votes still costs a few slow frames.",
+   "reste": "Two variants are being measured to find which one removes it."
   },
   {
    "statut": "review",
    "sujet": "The anti-regression method, for every agent",
    "pr": 4724,
-   "ouEnEst": "Written into the repository: before a change, the tests that guard the code; the degraded cases; the other screens. A CI guard follows.",
+   "ouEnEst": "Written into the repository with a rule for every fluidity change. The tests of product invariants and a CI guard follow.",
    "reste": "Reviews; the CI guard merges after the build."
   },
   {
    "statut": "later",
-   "sujet": "CI: the React Doctor gate judged nothing",
-   "pr": 4699,
-   "ouEnEst": "Fixed for pull requests and for pushes to main; CI green again.",
-   "reste": "Reviews, after the build fixes. Not blocking."
-  },
-  {
-   "statut": "later",
-   "sujet": "Map ready before you arrive, like Snap",
-   "pr": 4529,
-   "ouEnEst": "The map opens faster, but preparing it makes the feed scroll jerkier (jank 96 ms on main against 197 ms) and adds requests whose cause is not found.",
-   "reste": "Proposed out of build 196; you decide with the list."
-  },
-  {
-   "statut": "later",
    "sujet": "Explore: black pages during fast tab switches",
-   "pr": 0,
-   "ouEnEst": "This morning's native fix made them worse (0 black frames before it, 174 after), so it was removed from main, which is back to the state measured without black pages.",
-   "reste": "The root defect is reopened, for after this build."
-  },
-  {
-   "statut": "later",
-   "sujet": "Neighbouring pages load ahead again",
-   "pr": 4643,
-   "ouEnEst": "One of your build 194 reports. It only works with the bounded prefetch setting, which stays off in this build, so it would change nothing for now.",
-   "reste": "Proposed out of build 196; you decide with the list."
+   "pr": 4732,
+   "ouEnEst": "A new native fix, reviewed at zero twice, found the real cause.",
+   "reste": "Device measurement; it goes in only if nothing gets worse."
   },
   {
    "statut": "later",
    "sujet": "VoiceOver: the selected tab after reopening Your activity",
-   "pr": 4546,
-   "ouEnEst": "A big native change that compiles React Native from source. The device check could not prove the fix.",
-   "reste": "Proposed out of build 196; you decide with the list."
+   "pr": 4733,
+   "ouEnEst": "The cause was already fixed in main by another change; a test and a flow now prove it.",
+   "reste": "Device check with VoiceOver, then the old fix is closed."
   },
   {
    "statut": "later",
    "sujet": "Composer: the refresh waits until it is closed",
    "pr": 4565,
-   "ouEnEst": "Its last measurement made publishing a photo jerkier than main.",
-   "reste": "Left out of build 196, with no loss: build 195 already behaves like main."
+   "ouEnEst": "A new version is being measured; it only goes in if publishing a photo is as smooth as main.",
+   "reste": "Device measurement, in parallel."
+  },
+  {
+   "statut": "later",
+   "sujet": "Map ready before you arrive, like Snap",
+   "pr": 4529,
+   "ouEnEst": "Left out of build 196 as you decided: it made the feed scroll jerkier.",
+   "reste": "Worked on in parallel."
+  },
+  {
+   "statut": "later",
+   "sujet": "Neighbouring pages load ahead again",
+   "pr": 4643,
+   "ouEnEst": "Left out of build 196 as you decided: it changes nothing while its setting stays off.",
+   "reste": "Later."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, a Claude fixing the profile and open Take regressions, a Claude on Notifications and the tab rows, and a Claude reviewer. Your emulator is on staging for you until the final loop.",
-  "On Replicas: about fifteen Claude machines: two reviewers per fix, fixers for the repost, profile, launch and Messages regressions, device measurements, and the anti-regression method."
+  "Here on the Mac: me, the test loop on the simulator, and three Claude agents on the parallel points (Explore, VoiceOver, composer and map) and the last regressions.",
+  "On Replicas: reviewers on every fix, device measurements for the tab rows, the profile swipe, Explore, the composer and VoiceOver."
  ],
  "etapes": [
-  "Fix, review and check every remaining regression, then merge: Notifications, tapping an author, the repost, Messages, text size, and our Takes with no author.",
+  "Merge the last fixes as their reviews and measurements land: our Takes with no author, Messages, text size, the profile swipe, the tab rows and the Messages Back.",
   "Merge the earlier fixes as their measurements land: profile swipe (native), Notifications rows, cold start tests, text size, then Messages Back.",
   "A new full review of what changed since build 195, on the final main, before the build: the step that caught these regressions is now a rule.",
   "Full test loop on the final main on the Mac bench, a last tour, then redeploy the staging API on that commit. Build 195 stops working on staging at that moment, as we decided.",
@@ -902,6 +898,24 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4703,
+     "titre": "Notifications drop a blocked person and a refused Take at once",
+     "fusion": "Oct 11, 00:54",
+     "build196": true
+    },
+    {
+     "pr": 4717,
+     "titre": "An open Take shows the repost the server kept after a refresh",
+     "fusion": "Oct 11, 00:31",
+     "build196": true
+    },
+    {
+     "pr": 4704,
+     "titre": "Tapping an author opens their profile at once, even offline",
+     "fusion": "Oct 11, 00:30",
+     "build196": true
+    },
     {
      "pr": 4711,
      "titre": "fix(mobile) : les Takes déjà à l'écran sont préparés dès que la page prend le focus (TAK-1028, point 2)",
@@ -2438,6 +2452,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4699,
+     "titre": "The React Doctor CI gate judges the right diff again",
+     "fusion": "Oct 11, 00:33",
+     "build196": true
+    },
     {
      "pr": 4725,
      "titre": "Rank what each busy staging Worker stores per invocation",
