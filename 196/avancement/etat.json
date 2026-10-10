@@ -1,21 +1,57 @@
 {
- "majLe": "2026-10-10T12:46+09:00",
- "heure": "12:46",
+ "majLe": "2026-10-10T13:43+09:00",
+ "heure": "13:45",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 328,
-  "depuisDernierTableau": 66,
+  "fusionneesDepuis8Octobre": 267,
+  "depuisDernierTableau": 72,
   "enCours": 24,
-  "app": 118,
-  "siteEtAdmin": 66,
-  "serveur": 64,
-  "outilsEtDocs": 80
+  "app": 98,
+  "siteEtAdmin": 58,
+  "serveur": 58,
+  "outilsEtDocs": 53
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Four more fixes merged: message requests, Friends with the bounded setting, Explore's phantom keyboard and orphan sheet, and a never-seen profile stuck in error. That makes 28 build 196 fixes merged today. Replicas is running again on another account, new tasks use Codex in fast mode, and four more measurers joined. Three checks closed: Back right after Accept, the map camera after a search, and the lost tap between Takes and Friends, which came from the test tool, not the app."
+  "texte": "Four more fixes merged: very fast taps on the bottom bar, taps right after launch, the planet on the map (one of your build 195 reports) and Explore's native pager. That makes 32 build 196 fixes merged today. Measurements turned back five PRs this hour, and each went straight back to its author: the avatar, the theme, text size, the prefetch and the notification rows. The avatar was fixed within minutes. Four agents on the Mac picked up new work too."
  },
  "depuis": [
+  {
+   "heure": "13:19",
+   "pr": 4684,
+   "texte": "fix(ci): keep the staging API within Cloudflare's 128 text bindings",
+   "build196": false
+  },
+  {
+   "heure": "13:17",
+   "pr": 4676,
+   "texte": "Explore: native fix for blank pages during fast tab switches, in the new binary. A second measurement did not confirm the gain, so a follow-up applies the version already validated on a device.",
+   "build196": true
+  },
+  {
+   "heure": "13:10",
+   "pr": 4513,
+   "texte": "Map: the planet searches the visible area without zooming. One of your build 195 reports.",
+   "build196": true
+  },
+  {
+   "heure": "13:08",
+   "pr": 4667,
+   "texte": "Cold start: a tap on Profile right after launch no longer lands on Home.",
+   "build196": true
+  },
+  {
+   "heure": "13:03",
+   "pr": 4655,
+   "texte": "Bottom bar: very fast taps all land, and the page, the tab and its pill always end on the same tab (56 out of 56).",
+   "build196": true
+  },
+  {
+   "heure": "12:49",
+   "pr": 4682,
+   "texte": "ci(api-worker): staging input for the maps API spot search flag",
+   "build196": false
+  },
   {
    "heure": "12:36",
    "pr": 4678,
@@ -440,8 +476,8 @@
    "statut": "measuring",
    "sujet": "Counters hidden at 0, with equal spacing like X",
    "pr": 4526,
-   "ouEnEst": "One of your build 195 reports. Each action has a column of the same width, so a number that appears or disappears moves nothing, and no count is ever cut up to 999K. Fresh screenshots of the latest version are on the PR.",
-   "reste": "A last quick review and a device measurement, then merge, with the share counter right behind."
+   "ouEnEst": "One of your build 195 reports. Each action has a column of the same width, so a number that appears or disappears moves nothing. Reviewed at zero; the visitor row is now capped at the largest text too.",
+   "reste": "A last device measurement with screenshots, then merge, with the share counter right behind."
   },
   {
    "statut": "review",
@@ -454,98 +490,84 @@
    "statut": "fixing",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "One of your build 195 reports. Reviewers found it was missing this morning's map fixes and left an empty page if the globe was tapped too early.",
-   "reste": "Being fixed, then reviews and a new measurement."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Map: the planet searches the visible area without zooming",
-   "pr": 4513,
-   "ouEnEst": "One of your build 195 reports. Reviewed at zero three times.",
-   "reste": "Device measurement by a new measurer, then merge."
+   "ouEnEst": "One of your build 195 reports. Reviewers found it still carried the old planet button instead of the merged one.",
+   "reste": "Taking main again, then reviews; its measurement is already running."
   },
   {
    "statut": "fixing",
    "sujet": "Explore: the bottom bar follows scrolling",
    "pr": 4521,
-   "ouEnEst": "A control run on a device checks whether a Take read during a swipe comes from this PR or only from a different starting position.",
-   "reste": "Control run, then fix or merge."
+   "ouEnEst": "The control run proved the cost it measured also happens on main: every prefetch redraws all the relative dates. That cause has its own fix below.",
+   "reste": "Taking main, then merge."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Every prefetch redraws all the relative dates",
+   "pr": 4685,
+   "ouEnEst": "Found while diagnosing the Explore bar; it is also on main and costs 170 to 200 ms of renders.",
+   "reste": "Being fixed, with a test that counts renders."
   },
   {
    "statut": "review",
    "sujet": "Neighbouring pages load ahead again",
    "pr": 4643,
-   "ouEnEst": "One of your build 194 reports, only active with the bounded-prefetch setting (off on staging). Reviewers found reads starting during transitions; fixed.",
-   "reste": "Reviews, then a measurement."
+   "ouEnEst": "One of your build 194 reports. The measurement found one extra replies read on every Take opening with the setting off; fixed so that off means exactly like main.",
+   "reste": "Reviews and a new measurement running."
   },
   {
    "statut": "measuring",
    "sujet": "Vote: three quick taps",
    "pr": 4644,
    "ouEnEst": "Found by the break-the-app tour. Reviewed at zero twice.",
-   "reste": "Measurement running. Then merge."
+   "reste": "Measurement in its last passes, then merge."
   },
   {
    "statut": "measuring",
-   "sujet": "Bottom bar under very fast taps",
-   "pr": 4655,
-   "ouEnEst": "Consistent 56 times out of 56 against 52 on main; reviewed at zero again after taking today's main.",
-   "reste": "A short measurement of the combination, then merge."
-  },
-  {
-   "statut": "review",
    "sujet": "Bottom bar: a tap right after a link",
    "pr": 4677,
-   "ouEnEst": "Found by a fuzz. Reviewed at zero twice; built on top of the bottom bar fix.",
-   "reste": "Merges right after the bottom bar."
+   "ouEnEst": "Found by a fuzz. Reviewed at zero twice after taking main.",
+   "reste": "Measurement running, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "Found by the profiles tour, a blocker. The guard on the feed now has its own test.",
-   "reste": "Device measurement running."
+   "ouEnEst": "Found by the profiles tour, a blocker. The measurement showed the stack's back swipe still won (0 out of 6); fixed and reviewed at zero twice.",
+   "reste": "New measurement running."
   },
   {
-   "statut": "measuring",
+   "statut": "fixing",
    "sujet": "Messages: blank screen after a cancelled swipe back",
    "pr": 4662,
-   "ouEnEst": "Proven on a device (0 blank pages in 12 tries against 1 on main), but opening a conversation cost a little more; that cost is removed and reviewed at zero.",
-   "reste": "A short new measurement, then merge."
+   "ouEnEst": "Blank pages are gone (0 out of 6 against 5 on main) and the extra Back cost is removed. A check found that a Back tapped while a conversation arrives was ignored: it will now be kept and run as soon as the page lands, so no tap is lost.",
+   "reste": "Being fixed, then reviews and measurement."
   },
   {
    "statut": "measuring",
    "sujet": "Avatar: a tap lands on Reset, thumbnails stay blank",
    "pr": 4663,
-   "ouEnEst": "Reviewed at zero; every changed line has a test.",
-   "reste": "Measurement running. Then merge."
+   "ouEnEst": "The measurement found Reset answering in 1.3 s after a category change, against 0.4 s on main. Fixed within minutes and reviewed at zero twice.",
+   "reste": "New measurement running, then merge."
   },
   {
-   "statut": "review",
+   "statut": "fixing",
    "sujet": "Text at the largest size",
    "pr": 4665,
-   "ouEnEst": "All the screens of the report are now done, including the row that moved while someone typed.",
-   "reste": "Reviews and screenshots at the largest text size."
+   "ouEnEst": "Reviewers still found the conversation moving while someone types and long KnowMe answers cut at the largest size.",
+   "reste": "Being fixed, then screenshots at the largest text size."
   },
   {
    "statut": "measuring",
    "sujet": "Like and repost under quick taps",
    "pr": 4666,
-   "ouEnEst": "Extra renders removed, a burst ends in one write like X, and a late answer can no longer undo an offline like. Reviewed at zero twice.",
-   "reste": "Measurement running. Then merge."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Cold start: taps landing on Home instead of the Profile",
-   "pr": 4667,
-   "ouEnEst": "Reviewed at zero twice.",
-   "reste": "Measurement running. Then merge."
+   "ouEnEst": "The extra cost when the server answers slowly is removed. Reviewed at zero twice.",
+   "reste": "New measurement running, then merge."
   },
   {
    "statut": "fixing",
-   "sujet": "Theme: a lost tap after switching, and the bar's glass",
+   "sujet": "Theme: a lost tap after switching",
    "pr": 4668,
-   "ouEnEst": "The device measurement found that a tap right after choosing Light still lands on the sheet that is leaving, and that the switch costs a little more.",
+   "ouEnEst": "Light now stays chosen, but a tap on Home right after choosing is still lost, also on main. The bottom bar must stay live while the sheet leaves.",
    "reste": "Being fixed, then a new measurement."
   },
   {
@@ -553,35 +575,49 @@
    "sujet": "VoiceOver: tabs keep their tab role",
    "pr": 4669,
    "ouEnEst": "Reviewed at zero twice. It is native, so it must merge before the build.",
-   "reste": "Device check by a new measurer, then merge."
+   "reste": "Device check running, then merge."
   },
   {
-   "statut": "fixing",
+   "statut": "measuring",
    "sujet": "Privacy settings changed offline",
    "pr": 4670,
-   "ouEnEst": "A reviewer found that a choice being retried could reveal something hidden more recently from another device. The most private choice must always win.",
-   "reste": "Being fixed, then merge."
+   "ouEnEst": "The most private choice now always wins. Reviewed at zero twice. It also changes the API.",
+   "reste": "Measurement running, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Notifications and Activity tab rows",
    "pr": 4672,
-   "ouEnEst": "Every case the reviewers found has its test.",
-   "reste": "Measurement running, then merge."
+   "ouEnEst": "The measurement still lost fast gestures; it is back to main's step without the fade, and the CI check is fixed.",
+   "reste": "Reviews and a measurement with screenshots running."
   },
   {
    "statut": "measuring",
-   "sujet": "Explore: blank pages during fast tab switches",
-   "pr": 4676,
-   "ouEnEst": "Native fix of the pager, reviewed at zero twice. It goes into the new binary.",
-   "reste": "Device check by a new measurer, then merge."
+   "sujet": "Dark mode: a white flash between two pages",
+   "pr": 4681,
+   "ouEnEst": "A TestFlight report on build 195. The regression test was added; reviewed at zero twice.",
+   "reste": "Measurement running, then merge."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Explore: blank pages, follow-up",
+   "pr": 0,
+   "ouEnEst": "Applies the version of the native fix that was validated on a device (1 blank frame in 16 bursts, against 15 in 8 on main).",
+   "reste": "Being fixed, then a longer device measurement."
   },
   {
    "statut": "review",
-   "sujet": "Dark mode: a white flash between two pages",
-   "pr": 4681,
-   "ouEnEst": "A TestFlight report on build 195. Cause found on a device: the screen stacks had no dark background behind them. A reviewer asked for a regression test.",
-   "reste": "Test being added, then merge."
+   "sujet": "VoiceOver: the selected tab after reopening Your activity",
+   "pr": 4546,
+   "ouEnEst": "A big native change: it compiles React Native from source, which makes iOS builds longer. Reviews and a device check are running.",
+   "reste": "You decide with the list of what is left out if it turns out too risky for this build."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "A blocked person could come back in the Top 8 after a relaunch",
+   "pr": 0,
+   "ouEnEst": "Found during a review: the Top 8 kept on disk was not cleaned after a block.",
+   "reste": "Being checked and fixed here on the Mac."
   },
   {
    "statut": "fixing",
@@ -606,13 +642,13 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: four Claudes fixing (the equal spacing, the native pager, like and repost, the planet map), with a check every 3 minutes on memory and disk.",
-  "On Replicas: about fifteen reviewers and seventeen measurers on devices, now on Codex in fast mode, plus agents fixing the map preparation, theme, offline privacy, the prefetch, text size, the vote cost and the dark mode flash."
+  "Here on the Mac: five Claudes at work (the notification rows, the tab accessibility PR, the Top 8 after a block, the test flows' labels, like and repost), with a check every 3 minutes on memory and disk.",
+  "On Replicas: about fifteen reviewers and eighteen measurers on devices, on Codex in fast mode, plus agents fixing Messages, the avatar, theme, text size, the prefetch, the map preparation, the relative dates and Explore's blank pages."
  ],
  "etapes": [
-  "Merge each PR as soon as its measurement comes back clean: vote taps, like and repost, cold-start taps, Messages, Explore, the bottom bar and message requests.",
-  "Fix what reviews and measurements found: the counters with equal spacing, the Profile, the map preparation, the notification rows, Friends, theme, VoiceOver, offline settings, text size and the profile swipe.",
-  "Finish the reports that had no work yet, each with a test that was red on main: the dark mode flash, the vote cost, a tap after a link, text size, a profile left in error.",
+  "Merge each PR as soon as its measurement comes back clean: vote taps, like and repost, the tap after a link, the dark mode flash, the avatar, the profile swipe and offline privacy.",
+  "Fix what measurements found: the counters (last check), Messages, the notification rows, theme, text size, the prefetch, the map preparation and the Explore bar.",
+  "Finish the last reports, each with a test that was red on main: the vote cost, text size applied live, Explore's blank pages, the relative dates, and the Top 8 after a block.",
   "Full test loop on the final main, plus a last fast-switch tour.",
   "Redeploy the staging API on that same commit, then show you the list of what won't be in the build.",
   "Launch build 196, a new binary with the native fixes for Explore and VoiceOver, then hand you the emulator on main."
@@ -622,6 +658,24 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4513,
+     "titre": "Map: the planet searches the visible area without moving the camera (TAK-770)",
+     "fusion": "Oct 10, 13:10",
+     "build196": true
+    },
+    {
+     "pr": 4667,
+     "titre": "fix(mobile): a tap never reaches the page a tab has just left (TAK-983)",
+     "fusion": "Oct 10, 13:08",
+     "build196": true
+    },
+    {
+     "pr": 4655,
+     "titre": "TAK-936 TAK-938: bottom bar lens and last tap under taps faster than a render",
+     "fusion": "Oct 10, 13:03",
+     "build196": true
+    },
     {
      "pr": 4678,
      "titre": "TAK-942: a never-seen profile left on 'Couldn't load' reloads when you come back to its screen",
@@ -1191,144 +1245,6 @@
      "titre": "fix(mobile): from Takes to Friends or Nearby, the page and the black indicator leave in the same frame (TAK-642)",
      "fusion": "Oct 08, 09:30",
      "build196": false
-    },
-    {
-     "pr": 4367,
-     "titre": "feat(mobile): on Nearby, “Where are you?” becomes a real title above the grey sentence (TAK-646)",
-     "fusion": "Oct 08, 08:11",
-     "build196": false
-    },
-    {
-     "pr": 4363,
-     "titre": "fix(mobile): Activity, the filter row is fully shown or hidden at rest (TAK-643)",
-     "fusion": "Oct 08, 07:17",
-     "build196": false
-    },
-    {
-     "pr": 4357,
-     "titre": "fix(mobile): in the Top 8, a friend with no name is named by their @handle, on their tile and in Remove (TAK-635)",
-     "fusion": "Oct 08, 07:07",
-     "build196": false
-    },
-    {
-     "pr": 4354,
-     "titre": "fix(mobile): with enlarged text, “Edit profile” and “Share profile” stack and stay readable (TAK-638)",
-     "fusion": "Oct 08, 06:54",
-     "build196": false
-    },
-    {
-     "pr": 4359,
-     "titre": "fix(mobile): “Save” shows in full when editing the username (TAK-637)",
-     "fusion": "Oct 08, 06:50",
-     "build196": false
-    },
-    {
-     "pr": 4355,
-     "titre": "fix(mobile): the GIF and sticker picker follows iOS switching to dark or light while it is open (TAK-639)",
-     "fusion": "Oct 08, 06:23",
-     "build196": false
-    },
-    {
-     "pr": 4345,
-     "titre": "fix(mobile): an author with no name is named by their @handle in activity, sharing and KnowMe (TAK-628, TAK-621, TAK-622)",
-     "fusion": "Oct 08, 06:09",
-     "build196": false
-    },
-    {
-     "pr": 4336,
-     "titre": "fix(mobile): an Explore search with no result says “No results”, no longer “No trend” (TAK-619)",
-     "fusion": "Oct 08, 05:59",
-     "build196": false
-    },
-    {
-     "pr": 4337,
-     "titre": "fix(mobile): when pages decide after two lost sends, a false swipe start no longer blocks the tab (TAK-600)",
-     "fusion": "Oct 08, 05:46",
-     "build196": false
-    },
-    {
-     "pr": 4334,
-     "titre": "fix(mobile): the search keyboard no longer comes back on Messages, and the composer scrolls under a long question (TAK-629, TAK-634)",
-     "fusion": "Oct 08, 05:46",
-     "build196": false
-    },
-    {
-     "pr": 4339,
-     "titre": "fix(mobile): offline, a conversation says it could not load its history instead of opening empty (TAK-625)",
-     "fusion": "Oct 08, 05:37",
-     "build196": false
-    },
-    {
-     "pr": 4332,
-     "titre": "fix(mobile): the server announcement waits for the end of onboarding instead of covering its question (TAK-630)",
-     "fusion": "Oct 08, 05:19",
-     "build196": false
-    },
-    {
-     "pr": 4338,
-     "titre": "fix(social): a friend is a mutual follow, counted once, with no “Friend” badge for a one-way follow (TAK-626, TAK-627)",
-     "fusion": "Oct 08, 04:56",
-     "build196": false
-    },
-    {
-     "pr": 4335,
-     "titre": "fix(mobile): with very large iOS text, settings rows keep their label and fields and counters are no longer cut off (TAK-631, TAK-633)",
-     "fusion": "Oct 08, 04:56",
-     "build196": false
-    },
-    {
-     "pr": 4328,
-     "titre": "fix(mobile): a tab tap whose returned page is also lost lets the pages decide (TAK-600)",
-     "fusion": "Oct 08, 04:27",
-     "build196": false
-    },
-    {
-     "pr": 4326,
-     "titre": "perf(ci): web tests split into an ordinary sheet and a cross-cutting contracts sheet (TAK-616)",
-     "fusion": "Oct 08, 04:18",
-     "build196": false
-    },
-    {
-     "pr": 4307,
-     "titre": "fix(mobile): a bottom tab shows at once, with no slide or fade, even when tapped fast (TAK-603)",
-     "fusion": "Oct 08, 03:12",
-     "build196": false
-    },
-    {
-     "pr": 4304,
-     "titre": "fix(mobile): the shown tab follows the settled page when iOS loses a tab touch, on the public profile and in Activity (TAK-600)",
-     "fusion": "Oct 08, 02:34",
-     "build196": false
-    },
-    {
-     "pr": 4303,
-     "titre": "fix(mobile): the profile says “Score” again and the game ranking says “Record” (TAK-601)",
-     "fusion": "Oct 08, 02:20",
-     "build196": false
-    },
-    {
-     "pr": 4285,
-     "titre": "fix(mobile): a changed reading language rereads lists in that language, with no loader (TAK-595, point 7)",
-     "fusion": "Oct 08, 01:45",
-     "build196": false
-    },
-    {
-     "pr": 4295,
-     "titre": "TAK-364: resolve Comment mentions for every reader and preview",
-     "fusion": "Oct 08, 01:41",
-     "build196": false
-    },
-    {
-     "pr": 4281,
-     "titre": "fix(mobile): an acceptance refused under another screen is found again on return, and the thread name stays (TAK-595, points 2 and 5)",
-     "fusion": "Oct 08, 00:58",
-     "build196": false
-    },
-    {
-     "pr": 4283,
-     "titre": "fix(mobile): an open take starts from its full copy, not a list's light copy, and keeps its Context (TAK-595)",
-     "fusion": "Oct 08, 00:21",
-     "build196": false
     }
    ]
   },
@@ -1682,54 +1598,6 @@
      "pr": 4388,
      "titre": "TAK-661: Preserve cold-open capture and cleanup failure diagnostics",
      "fusion": "Oct 08, 10:31",
-     "build196": false
-    },
-    {
-     "pr": 4375,
-     "titre": "TAK-465: stop API fetches from departed browser documents",
-     "fusion": "Oct 08, 08:54",
-     "build196": false
-    },
-    {
-     "pr": 4380,
-     "titre": "TAK-657: patch Next.js image optimization SSRF advisory",
-     "fusion": "Oct 08, 08:45",
-     "build196": false
-    },
-    {
-     "pr": 4356,
-     "titre": "TAK-641: retain safe cold-open preparation diagnostics",
-     "fusion": "Oct 08, 06:28",
-     "build196": false
-    },
-    {
-     "pr": 4352,
-     "titre": "TAK-465: retain resource classes from split WebKit fetch errors",
-     "fusion": "Oct 08, 06:06",
-     "build196": false
-    },
-    {
-     "pr": 4343,
-     "titre": "TAK-465: retain native browser resource and S63 diagnostic context",
-     "fusion": "Oct 08, 05:06",
-     "build196": false
-    },
-    {
-     "pr": 4299,
-     "titre": "TAK-465: preserve gateway and browser CORS diagnostic evidence",
-     "fusion": "Oct 08, 03:14",
-     "build196": false
-    },
-    {
-     "pr": 4290,
-     "titre": "chore(ci): measure checkout, tasks and api shards per verify job (TAK-596)",
-     "fusion": "Oct 08, 01:12",
-     "build196": false
-    },
-    {
-     "pr": 4289,
-     "titre": "TAK-598: require observed status for completed cold-open reads",
-     "fusion": "Oct 08, 00:25",
      "build196": false
     }
    ]
@@ -2085,42 +1953,6 @@
      "titre": "TAK-490: preserve feed proof closures and diagnose staging guards",
      "fusion": "Oct 08, 15:56",
      "build196": false
-    },
-    {
-     "pr": 4348,
-     "titre": "fix(api): a take published for Friends only is listed only to its author's friends, signed in or not (TAK-624)",
-     "fusion": "Oct 08, 08:56",
-     "build196": false
-    },
-    {
-     "pr": 4320,
-     "titre": "perf(api): the test worker pool admits the most expensive waiting shard first (TAK-615)",
-     "fusion": "Oct 08, 03:37",
-     "build196": false
-    },
-    {
-     "pr": 4308,
-     "titre": "perf(api): equivalence tests leave the PR verify gate, run nightly and on demand (TAK-604)",
-     "fusion": "Oct 08, 03:07",
-     "build196": false
-    },
-    {
-     "pr": 4306,
-     "titre": "perf(api): the route census leaves the PR verify gate, run nightly and on demand (TAK-602)",
-     "fusion": "Oct 08, 02:45",
-     "build196": false
-    },
-    {
-     "pr": 4298,
-     "titre": "perf(api): the route census splits into 8 parts by route group, no more 233 s shard (TAK-597)",
-     "fusion": "Oct 08, 01:42",
-     "build196": false
-    },
-    {
-     "pr": 4291,
-     "titre": "TAK-514: isolate the staging feed flag proof to the API",
-     "fusion": "Oct 08, 00:50",
-     "build196": false
     }
    ]
   },
@@ -2128,6 +1960,24 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4684,
+     "titre": "fix(ci): keep the staging API within Cloudflare's 128 text bindings",
+     "fusion": "Oct 10, 13:19",
+     "build196": false
+    },
+    {
+     "pr": 4676,
+     "titre": "TAK-998: the native pager keeps the page in the cell on screen during bursts",
+     "fusion": "Oct 10, 13:17",
+     "build196": true
+    },
+    {
+     "pr": 4682,
+     "titre": "ci(api-worker): staging input for the maps API spot search flag",
+     "fusion": "Oct 10, 12:49",
+     "build196": false
+    },
     {
      "pr": 4679,
      "titre": "fix(ci): pass the staging database URL to the lease workflow",
@@ -2325,138 +2175,6 @@
      "titre": "TAK-70: preserve authentication for staging sparse checkout",
      "fusion": "Oct 08, 09:03",
      "build196": false
-    },
-    {
-     "pr": 4379,
-     "titre": "TAK-514: classify incomplete feed proof requests",
-     "fusion": "Oct 08, 08:55",
-     "build196": false
-    },
-    {
-     "pr": 4374,
-     "titre": "TAK-70: reuse S71 checkout in staging QA",
-     "fusion": "Oct 08, 08:16",
-     "build196": false
-    },
-    {
-     "pr": 4368,
-     "titre": "TAK-502: record S66 staging read-cost evidence",
-     "fusion": "Oct 08, 07:44",
-     "build196": false
-    },
-    {
-     "pr": 4361,
-     "titre": "TAK-514: prepare S67 browser before staging admission",
-     "fusion": "Oct 08, 07:07",
-     "build196": false
-    },
-    {
-     "pr": 4362,
-     "titre": "TAK-465: keep transport capture checkout within its budget",
-     "fusion": "Oct 08, 07:06",
-     "build196": false
-    },
-    {
-     "pr": 4353,
-     "titre": "fix(ci): bound S67 headless browser preparation (TAK-514)",
-     "fusion": "Oct 08, 06:16",
-     "build196": false
-    },
-    {
-     "pr": 4350,
-     "titre": "TAK-70: verify the pristine published request proof graph",
-     "fusion": "Oct 08, 05:37",
-     "build196": false
-    },
-    {
-     "pr": 4321,
-     "titre": "perf(ci): the verify job no longer restores the Bun archive and only looks up the Turbo archive with the remote cache (TAK-617)",
-     "fusion": "Oct 08, 04:52",
-     "build196": false
-    },
-    {
-     "pr": 4327,
-     "titre": "TAK-70: bind request proof to the published API source",
-     "fusion": "Oct 08, 04:29",
-     "build196": false
-    },
-    {
-     "pr": 4331,
-     "titre": "TAK-514: retain fixed feed proof coordinator diagnostics",
-     "fusion": "Oct 08, 04:27",
-     "build196": false
-    },
-    {
-     "pr": 4310,
-     "titre": "fix(ci): a verify run outside a PR no longer shares its concurrency group (TAK-611)",
-     "fusion": "Oct 08, 03:27",
-     "build196": false
-    },
-    {
-     "pr": 4319,
-     "titre": "perf(ci): Linear issue only reruns on an edit if the title changes; landing only validates infra on its infra paths (TAK-613)",
-     "fusion": "Oct 08, 03:25",
-     "build196": false
-    },
-    {
-     "pr": 4318,
-     "titre": "TAK-618: bound the cold-open proof checkout",
-     "fusion": "Oct 08, 03:25",
-     "build196": false
-    },
-    {
-     "pr": 4317,
-     "titre": "perf(ci): the affected job installs FFmpeg only if a selected task needs it (TAK-612)",
-     "fusion": "Oct 08, 03:24",
-     "build196": false
-    },
-    {
-     "pr": 4316,
-     "titre": "chore(ci): p50/p95 per verify job over a window of runs (TAK-614)",
-     "fusion": "Oct 08, 03:17",
-     "build196": false
-    },
-    {
-     "pr": 4309,
-     "titre": "TAK-70: trim unused files from published proof checkout",
-     "fusion": "Oct 08, 03:03",
-     "build196": false
-    },
-    {
-     "pr": 4300,
-     "titre": "TAK-514: bound the feed proof checkout to replay dependencies",
-     "fusion": "Oct 08, 02:30",
-     "build196": false
-    },
-    {
-     "pr": 4301,
-     "titre": "docs(ledger): round S71 and api-a/api-b rebalancing (TAK-596, TAK-597)",
-     "fusion": "Oct 08, 02:22",
-     "build196": false
-    },
-    {
-     "pr": 4302,
-     "titre": "TAK-504: pin staging read-cost proof to a verified source",
-     "fusion": "Oct 08, 02:12",
-     "build196": false
-    },
-    {
-     "pr": 4292,
-     "titre": "perf(ci): each verify partition fetches only the folders its tasks read (TAK-596)",
-     "fusion": "Oct 08, 01:33",
-     "build196": false
-    },
-    {
-     "pr": 4296,
-     "titre": "TAK-70: freeze admission setup for published request proof",
-     "fusion": "Oct 08, 01:26",
-     "build196": false
-    },
-    {
-     "pr": 4294,
-     "titre": "test(mobile): the KnowMe flow waits a fixed second then taps “Games” only once (TAK-595)",
-     "fusion": "Oct 08, 01:12",
-     "build196": false
     }
    ]
   },
@@ -2547,42 +2265,6 @@
      "titre": "TAK-503: close S66 staging evidence after voter readiness fix",
      "fusion": "Oct 08, 12:50",
      "build196": false
-    },
-    {
-     "pr": 4378,
-     "titre": "TAK-490: refresh the S57 feed checkpoint for source I",
-     "fusion": "Oct 08, 08:55",
-     "build196": false
-    },
-    {
-     "pr": 4351,
-     "titre": "S57: record current-source OFF feed screen measurements (TAK-490)",
-     "fusion": "Oct 08, 05:52",
-     "build196": false
-    },
-    {
-     "pr": 4349,
-     "titre": "TAK-364: archive fresh 47-rule staging acceptance",
-     "fusion": "Oct 08, 05:29",
-     "build196": false
-    },
-    {
-     "pr": 4341,
-     "titre": "TAK-490: retain failed feed authentication and current source discovery",
-     "fusion": "Oct 08, 04:51",
-     "build196": false
-    },
-    {
-     "pr": 4323,
-     "titre": "docs(S57): retain H closure evidence and explicit storage model",
-     "fusion": "Oct 08, 04:01",
-     "build196": false
-    },
-    {
-     "pr": 4293,
-     "titre": "TAK-490: record verified H cleanup separately from pending feed proof",
-     "fusion": "Oct 08, 01:11",
-     "build196": false
     }
    ]
   },
@@ -2606,18 +2288,6 @@
      "pr": 4393,
      "titre": "test(maestro): flow 16 accepts an Explore section ranked on a single take (TAK-624)",
      "fusion": "Oct 08, 12:05",
-     "build196": false
-    },
-    {
-     "pr": 4382,
-     "titre": "test(maestro): flow 21 waits for the list to stop before tapping a take",
-     "fusion": "Oct 08, 08:49",
-     "build196": false
-    },
-    {
-     "pr": 4325,
-     "titre": "test(mobile): flow 17 starts from the right margin, outside a take's photo carousel (TAK-620)",
-     "fusion": "Oct 08, 04:08",
      "build196": false
     }
    ]
