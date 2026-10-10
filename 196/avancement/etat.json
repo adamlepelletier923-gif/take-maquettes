@@ -1,25 +1,43 @@
 {
- "majLe": "2026-10-11T00:59+09:00",
- "heure": "00:59",
+ "majLe": "2026-10-11T01:20+09:00",
+ "heure": "01:20",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 320,
-  "depuisDernierTableau": 125,
+  "fusionneesDepuis8Octobre": 323,
+  "depuisDernierTableau": 128,
   "enCours": 13,
-  "app": 134,
+  "app": 137,
   "siteEtAdmin": 61,
   "serveur": 61,
   "outilsEtDocs": 64
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Four more fixes are merged: tapping an author opens the profile without an empty page, the repost says the same thing everywhere, Notifications drop a blocked person at once, and the CI checks React code again. The Mac's simulator had turned itself off; it runs the test loop again on the latest main."
+  "texte": "Three more fixes are merged: our own Takes sign nothing anywhere in the app, Messages Cancel brings back the Requests entry, and text stays readable at the largest size. Your emulator is back on staging with the latest main. Two server problems found tonight: the curator has not published on staging since October 4, and signed in, the feed shows none of its Takes."
  },
  "depuis": [
   {
+   "heure": "01:19",
+   "pr": 4723,
+   "texte": "Messages: tapping Cancel on a request you just answered brings the Requests entry back, and the Messages badge is right from launch.",
+   "build196": true
+  },
+  {
+   "heure": "01:17",
+   "pr": 4665,
+   "texte": "Text at the largest size: Messages, profiles, Top 8, KnowMe, the game and the avatar editor stay readable, with no word cut in half. Nothing changes at the normal size (0 pixels of difference). Native, in the new binary.",
+   "build196": true
+  },
+  {
+   "heure": "01:14",
+   "pr": 4728,
+   "texte": "Our own Takes, official or written by the curator, sign nothing anywhere in the app: no “Take” name, no logo, no account to open, in the feeds, Explore, the open Take, the long-press preview and shares. The curator keeps publishing.",
+   "build196": true
+  },
+  {
    "heure": "00:54",
    "pr": 4703,
-   "texte": "Notifications drop a blocked person and a refused Take at once",
+   "texte": "Notifications: blocking someone or a refused Take removes their rows at once, and “read all” only marks what is on screen.",
    "build196": true
   },
   {
@@ -784,6 +802,10 @@
    "libelle": "Moved to the next build",
    "ton": "wait"
   },
+  "owner": {
+   "libelle": "With the curator's owner",
+   "ton": "wait"
+  },
   "fixing": {
    "libelle": "Being fixed",
    "ton": "bad"
@@ -794,29 +816,29 @@
    "statut": "fixing",
    "sujet": "Eighteen regressions found by reading everything changed since build 195",
    "pr": 0,
-   "ouEnEst": "Almost all are fixed and merged now, including tonight's: tapping an author, the repost, Notifications after a block, and the open Take counts.",
-   "reste": "The last ones are in review, with two reviews and a check before the build."
+   "ouEnEst": "Almost all are fixed and merged now, including tonight's: our Takes with no author, Messages Cancel, the largest text size, Notifications after a block.",
+   "reste": "The last ones are being measured, with two reviews and a check before the build."
   },
   {
-   "statut": "review",
-   "sujet": "Our Takes signed “Take” with the logo",
-   "pr": 4728,
-   "ouEnEst": "Your rule is back everywhere: feeds, Explore, the open Take, the long-press preview and shares. The curator keeps publishing.",
-   "reste": "Last round of reviews, then merge."
+   "statut": "owner",
+   "sujet": "The curator stopped publishing on staging on October 4",
+   "pr": 0,
+   "ouEnEst": "Found tonight: its newest Take on staging is 7 days old, and its deploys since then did not restart it. Its owner has the ticket; nothing touched on our side.",
+   "reste": "Its owner restarts it; the app needs no change."
   },
   {
-   "statut": "review",
-   "sujet": "Messages: Cancel brings back the Requests entry",
-   "pr": 4723,
-   "ouEnEst": "Reviewed at zero twice; main was merged into it to solve a test conflict.",
-   "reste": "One more review on the merge, then merge."
+   "statut": "claude",
+   "sujet": "Signed in, the Takes feed shows no curator Takes",
+   "pr": 0,
+   "ouEnEst": "Without an account the curator's old Takes show; signed in, none. A Claude on the Mac is reading the feed's server code to find why.",
+   "reste": "Cause with proof, then a fix if the app or server needs one."
   },
   {
-   "statut": "review",
-   "sujet": "Text at the largest size",
-   "pr": 4665,
-   "ouEnEst": "Reviewed at zero twice, CI green. One new file holds the avatar editor's category row; it looks the same at normal size.",
-   "reste": "Waiting for your design OK, then merge."
+   "statut": "later",
+   "sujet": "Website: our Takes still signed “Take”",
+   "pr": 0,
+   "ouEnEst": "The app is fixed. The website feeds and Take page still show the name; website work goes to a Codex.",
+   "reste": "Website fix, separate from the app build."
   },
   {
    "statut": "fixing",
@@ -829,15 +851,15 @@
    "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "The native fix makes taps work again right after the profile closes. Reviewed at zero twice.",
-   "reste": "Device measurement running."
+   "ouEnEst": "The native fix makes taps work again right after the profile closes. A new version was just pushed.",
+   "reste": "Reviews and device measurement."
   },
   {
-   "statut": "measuring",
+   "statut": "fixing",
    "sujet": "Notifications and Activity tab rows",
    "pr": 4672,
-   "ouEnEst": "The lost last taps were the test bench dropping touches, not the app. Opening Votes still costs a few slow frames.",
-   "reste": "Two variants are being measured to find which one removes it."
+   "ouEnEst": "Measured: the few slow frames on Votes come from the underline jumping in one frame. Making it slide late removes them, but your rule is that it moves with the page.",
+   "reste": "A fix that keeps the underline with the page, then a remeasure."
   },
   {
    "statut": "review",
@@ -883,14 +905,13 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, the test loop on the simulator, and three Claude agents on the parallel points (Explore, VoiceOver, composer and map) and the last regressions.",
+  "Here on the Mac: me, your emulator on staging, and three Claude agents: the signed-in feed, the tab rows, and the composer.",
   "On Replicas: reviewers on every fix, device measurements for the tab rows, the profile swipe, Explore, the composer and VoiceOver."
  ],
  "etapes": [
-  "Merge the last fixes as their reviews and measurements land: our Takes with no author, Messages, text size, the profile swipe, the tab rows and the Messages Back.",
-  "Merge the earlier fixes as their measurements land: profile swipe (native), Notifications rows, cold start tests, text size, then Messages Back.",
+  "Merge the last fixes as their reviews and measurements land: the profile swipe (native), the tab rows, the Messages Back.",
   "A new full review of what changed since build 195, on the final main, before the build: the step that caught these regressions is now a rule.",
-  "Full test loop on the final main on the Mac bench, a last tour, then redeploy the staging API on that commit. Build 195 stops working on staging at that moment, as we decided.",
+  "Full test loop on the final main with a staging test account, a last tour, then redeploy the staging API on that commit. Build 195 stops working on staging at that moment, as we decided.",
   "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
  ],
  "fait": [
@@ -898,6 +919,24 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4723,
+     "titre": "Cancel brings back the Requests entry; the Messages badge follows the cache",
+     "fusion": "Oct 11, 01:19",
+     "build196": true
+    },
+    {
+     "pr": 4665,
+     "titre": "TAK-961 : image blanche et texte maximal, chaque écran lisible jusqu'à la plus grande taille",
+     "fusion": "Oct 11, 01:17",
+     "build196": true
+    },
+    {
+     "pr": 4728,
+     "titre": "Our Takes show no author anywhere, as a guest or in a share",
+     "fusion": "Oct 11, 01:14",
+     "build196": true
+    },
     {
      "pr": 4703,
      "titre": "Notifications drop a blocked person and a refused Take at once",
