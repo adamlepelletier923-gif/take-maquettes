@@ -1,0 +1,237 @@
+{
+ "titre": "33 améliorations mesurées sur 3 jours",
+ "periode": "du 8 au 11 octobre 2026",
+ "lignes": [
+  {
+   "pr": 4693,
+   "endroit": "Explorer, changements rapides",
+   "avant": "174 images noires",
+   "apres": "0",
+   "gain": 1.0
+  },
+  {
+   "pr": 4732,
+   "endroit": "Explorer, rafales d'onglets",
+   "avant": "17 images noires",
+   "apres": "0",
+   "gain": 1.0
+  },
+  {
+   "pr": 4685,
+   "endroit": "Appui sur un Take",
+   "avant": "185,00 ms de saccade",
+   "apres": "0,00 ms",
+   "gain": 1.0
+  },
+  {
+   "pr": 4536,
+   "endroit": "Amis, défilement",
+   "avant": "2 614 images réveillées",
+   "apres": "0",
+   "gain": 1.0
+  },
+  {
+   "pr": 4389,
+   "endroit": "Barre du bas, remontée",
+   "avant": "22 à-coups",
+   "apres": "0",
+   "gain": 1.0
+  },
+  {
+   "pr": 4371,
+   "endroit": "Takes vers Amis, trait",
+   "avant": "0,5 s de retard",
+   "apres": "0",
+   "gain": 1.0
+  },
+  {
+   "pr": 4461,
+   "endroit": "Messages, ouverture",
+   "avant": "messages 70 ms en retard",
+   "apres": "0",
+   "gain": 1.0
+  },
+  {
+   "pr": 4672,
+   "endroit": "Activité, onglets",
+   "avant": "trait en retard 10 fois sur 10",
+   "apres": "0 sur 10",
+   "gain": 1.0
+  },
+  {
+   "pr": 4661,
+   "endroit": "Carte, vol puis onglet",
+   "avant": "vol perdu 10 fois sur 10",
+   "apres": "0 sur 10",
+   "gain": 1.0
+  },
+  {
+   "pr": 4653,
+   "endroit": "Profil, relancement",
+   "avant": "compteurs faux 5 fois sur 5",
+   "apres": "0 sur 5",
+   "gain": 1.0
+  },
+  {
+   "pr": 4664,
+   "endroit": "Explorer, clavier fantôme",
+   "avant": "5 fois sur 6",
+   "apres": "0 sur 6",
+   "gain": 1.0
+  },
+  {
+   "pr": 4662,
+   "endroit": "Messages, Retour",
+   "avant": "page blanche 5 fois sur 6",
+   "apres": "0 sur 6",
+   "gain": 1.0
+  },
+  {
+   "pr": 4697,
+   "endroit": "Explorer, après installation",
+   "avant": "« Réessayer » 3 fois sur 3",
+   "apres": "0 sur 3",
+   "gain": 1.0
+  },
+  {
+   "pr": 4660,
+   "endroit": "Messages, demandes",
+   "avant": "3 demandes supprimées par série",
+   "apres": "0 à 1",
+   "gain": 1.0
+  },
+  {
+   "pr": 4667,
+   "endroit": "Profil, touchers au lancement",
+   "avant": "perdus 10 fois sur 14",
+   "apres": "0 sur 27",
+   "gain": 1.0
+  },
+  {
+   "pr": 4655,
+   "endroit": "Barre du bas, rafales",
+   "avant": "pastille juste 12 fois sur 15",
+   "apres": "15 sur 15",
+   "gain": 1.0
+  },
+  {
+   "pr": 4603,
+   "endroit": "Accueil, glissé perdu",
+   "avant": "3349,4 ms",
+   "apres": "149,5 ms",
+   "gain": 0.9554
+  },
+  {
+   "pr": 4472,
+   "endroit": "Messages, suggestions @",
+   "avant": "183,5 ms de saccade",
+   "apres": "9,9 ms",
+   "gain": 0.946
+  },
+  {
+   "pr": 4479,
+   "endroit": "Profil, vibration d'onglet",
+   "avant": "214 ms trop tôt",
+   "apres": "16 ms",
+   "gain": 0.9252
+  },
+  {
+   "pr": 4541,
+   "endroit": "Top 8, ajout puis retrait",
+   "avant": "295,6 ms de saccade",
+   "apres": "181,5 ms",
+   "gain": 0.386
+  },
+  {
+   "pr": 4516,
+   "endroit": "Notifications, arrivée",
+   "avant": "83,3 ms de saccade",
+   "apres": "52,5 ms",
+   "gain": 0.3697
+  },
+  {
+   "pr": 4744,
+   "endroit": "Lancement sur une conversation",
+   "avant": "1442 ms",
+   "apres": "957 ms",
+   "gain": 0.3363
+  },
+  {
+   "pr": 4677,
+   "endroit": "Onglets après un lien",
+   "avant": "541 ms de saccade",
+   "apres": "416 ms",
+   "gain": 0.2311
+  },
+  {
+   "pr": 4686,
+   "endroit": "Amis, changer son vote",
+   "avant": "95,7 ms",
+   "apres": "76,1 ms",
+   "gain": 0.2048
+  },
+  {
+   "pr": 4533,
+   "endroit": "Explorer, juste après le lancement",
+   "avant": "402 ms de saccade",
+   "apres": "361 ms",
+   "gain": 0.102
+  },
+  {
+   "pr": 4510,
+   "endroit": "Messages, aller-retour",
+   "avant": "2556,8 ms de saccade",
+   "apres": "2297,3 ms",
+   "gain": 0.1015
+  },
+  {
+   "pr": 4540,
+   "endroit": "Profil public, ouverture",
+   "avant": "2529,3 ms de saccade",
+   "apres": "2330,3 ms",
+   "gain": 0.0787
+  },
+  {
+   "pr": 4494,
+   "endroit": "Profil, onglets enchaînés",
+   "avant": "1083,92 ms de saccade",
+   "apres": "1010,45 ms",
+   "gain": 0.0678
+  },
+  {
+   "pr": 4644,
+   "endroit": "Take ouvert, vote",
+   "avant": "141,0 ms",
+   "apres": "131,8 ms",
+   "gain": 0.0652
+  },
+  {
+   "pr": 4565,
+   "endroit": "Publier une photo",
+   "avant": "227,0 ms de saccade",
+   "apres": "212,7 ms",
+   "gain": 0.063
+  },
+  {
+   "pr": 4666,
+   "endroit": "Take, repost rapide",
+   "avant": "204,2 ms de saccade",
+   "apres": "192,2 ms",
+   "gain": 0.0588
+  },
+  {
+   "pr": 4566,
+   "endroit": "Amis et Takes, défilement",
+   "avant": "4602,6 ms de saccade",
+   "apres": "4453,6 ms",
+   "gain": 0.0324
+  },
+  {
+   "pr": 4482,
+   "endroit": "Messages, premier contenu",
+   "avant": "1617 ms",
+   "apres": "1598 ms",
+   "gain": 0.0118
+  }
+ ]
+}

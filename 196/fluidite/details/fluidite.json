@@ -1,0 +1,2181 @@
+{
+ "generated_at": "2026-10-11T05:00:25+09:00",
+ "period_start": "2026-10-08T00:00:00+09:00",
+ "period_end": "2026-10-10T19:35:00+00:00",
+ "inventory_count": 415,
+ "scope": "iPhone app only: 415 pull requests merged into main since 8 October (KST), 170 of them change app code, and 97 change how the app feels (motion, touches, scrolling, launch, tabs, loading). Web, server, CI, wording-only and settings-only changes are left out. Before is main and after is the change, each from its own recorded proof, copied as written; most proofs ran on an iOS simulator, not a phone. A merged change is not yet in a build.",
+ "improvements": [
+  {
+   "merged_at": "2026-10-07T19:27:14+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "A tab tap whose page change is dropped twice now ends with the tab, underline and page on the same page (Activity, own profile).",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "b634869dbc17046464468def6652789362358685",
+   "caveat": "Proven only by unit tests (one new test per pager, red on main). The random tap replay on the merged build was still to do.",
+   "pr": 4328,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-07T20:37:36+00:00",
+   "screen": "Messages",
+   "what": "Offline after a cold start, a conversation no longer stays blank forever: it shows cached history or an error with Retry.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "f06d609771dd5418a14b32f8853c40017596a7b8",
+   "caveat": "Unit tests only; no device, simulator or staging run.",
+   "pr": 4339,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T02:07:30+00:00",
+   "screen": "Home feed",
+   "what": "The Home top tabs (Friends, Nearby, Takes) no longer get out of sync after fast taps and swipes.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "9bc3d2c8be3ddc09bfa7dd66e0c4ba0446e28d69",
+   "caveat": "Fuzz test only: the first commit failed 152 of 1000 fixed sequences on main; the sequences pass on the head. No device measurement.",
+   "pr": 4383,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T03:23:09+00:00",
+   "screen": "Explore & search",
+   "what": "Explore and Activity tabs follow the page where the pages stop, so fast swipes then taps no longer leave the tab on the wrong page.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "0c4deff3f5a15782ca594e7ccc6f5a4a7f829145",
+   "caveat": "Fuzz test only: 4.3% of seeds fail on main. No device measurement.",
+   "pr": 4385,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T03:58:26+00:00",
+   "screen": "Profile",
+   "what": "Changing a profile media permission no longer redraws the profile rows or the whole list.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "c238531ed072353db227e1d6cdc5932a77742e5d",
+   "caveat": "Render-count tests only; behind a default-off flag. Earlier recordings were web components with synthetic data, not a device.",
+   "pr": 4406,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T05:37:49+00:00",
+   "screen": "Home feed",
+   "what": "On Friends, the \"Find your friends\" card has its place before the rows and no longer pushes them down.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "3f075400d8f2adb4c87b08abea17f4ddd507c2aa",
+   "caveat": "Tests only; no light or dark capture, no device run.",
+   "pr": 4401,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T07:36:48+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "The bottom bar shrinks while scrolling Explore, Messages and Profile, and comes back without trembling when the finger shakes.",
+   "metric": "Bottom bar scale during a shaky upward drag (backward steps)",
+   "before": "0.88 → 0.90 → 0.89 → 0.913 → 0.903 → 0.927 → 0.917 … then 1 ↔ 0.99 in a loop: 22 backward steps",
+   "after": "0.90 → 0.923 → 0.947 → 0.97 → 0.993 → 1: no backward step",
+   "device": "iOS simulator (Limrun), development build, JS from Metro, staging API",
+   "evidence_head": "97cf7286153cc5728243b3ebf4a8a9eee4516420",
+   "caveat": "Before was main 1b3720cbe; the after head is not named in the description. Single replayed drag, scale read from the bar log; no jank numbers.",
+   "pr": 4389,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run."
+  },
+  {
+   "merged_at": "2026-10-08T11:21:21+00:00",
+   "screen": "Home feed",
+   "what": "Feed images reuse a real cached blur placeholder on later mounts instead of asking for a thumbnail again.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "d70e1e516ef886ba3aef7e1c053f74c96234ee89",
+   "caveat": "Unit tests only; behind a default-off flag. The description says native generation and cold-start instantness remain unproven.",
+   "pr": 4468,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T13:12:03+00:00",
+   "screen": "Messages",
+   "what": "A message push opened after a block shows the \"can't receive your messages\" banner directly, without flashing the composer first.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "iOS simulator (Limrun), Release build, staging API",
+   "evidence_head": "d8d60e7d28b2a28266ffdcdbcbaa789a193a50a2",
+   "caveat": "A video on earlier head fedb3b62e showed no frame with the composer, but the defect was never reproduced on a main build, so there is no before/after. Proof on main is a failing unit test.",
+   "pr": 4469,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T14:14:51+00:00",
+   "screen": "Messages",
+   "what": "A conversation at the top of the inbox opens with its messages already there, and the Archived line no longer pushes the list.",
+   "metric": "Conversation opening (video, frame by frame)",
+   "before": "the thread slides in empty, then messages arrive 70 ms later (dark); the Archived line appears one frame after the list and pushes the conversation",
+   "after": "the thread slides in with its messages; Archived is there from the first frame and nothing moves",
+   "device": "iOS simulator (Limrun), Release builds, staging API",
+   "evidence_head": "c51dc74ad",
+   "caveat": "Filmed on earlier head c51dc74ad (also 0ca19da73); later commits not refilmed. The empty gap reproduced only once in two tries (dark) because the API was very close.",
+   "pr": 4461,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run."
+  },
+  {
+   "merged_at": "2026-10-09T00:58:51+00:00",
+   "screen": "Profile",
+   "what": "Adding or removing a Top 8 person keeps the grid as the person left it, and fast add-then-remove costs less JS work.",
+   "metric": "JS jank, add then remove before confirmation (2 s per save), ms, median [min–max]",
+   "before": "295.6 [269.2–327.2]",
+   "after": "181.5 [134.1–236.1]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "7e13226bece3fc2a1d7082cb76ab75d1b127be43",
+   "caveat": "Runtime measured was 7e13226; the merged head 90fd9b81 only adds evidence docs. 10 runs per side; some medians rose slightly (UI dropped/s on add 0.6 → 0.9). GPU not measured.",
+   "pr": 4541,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "JS jank, add a person in slot 7, ms",
+     "before": "135.8 [94.1–183.2]",
+     "after": "117.4 [114.2–131.8]"
+    },
+    {
+     "metric": "Refused save with no cached grid: first correct content, ms",
+     "before": "≥10000 (10/10 censored)",
+     "after": "2042.5 [1969–2193]"
+    },
+    {
+     "metric": "JS jank, remove a person, ms",
+     "before": "99.3 [89.0–120.2]",
+     "after": "78.7 [48.8–83.5]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-09T16:26:07+00:00",
+   "screen": "Profile",
+   "what": "On a profile, the tab follows the page again after chained taps and swipes.",
+   "metric": "Own profile: cumulative JS jank over the tap and swipe route, ms, median [min–max]",
+   "before": "1083.92 [989.07–1091.31]",
+   "after": "1010.45 [991.32–1090.45]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "a01db6c63a5df8c3033aa68343907f01f8d7576e",
+   "caveat": "Measured on earlier head a01db6c, not the merged head. 3 runs per side; the desync itself was not reproduced on main on device (red unit test only).",
+   "pr": 4494,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Own profile: UI frames dropped, estimated",
+     "before": "7 [5–7]",
+     "after": "6 [5–7]"
+    },
+    {
+     "metric": "Public profile: cumulative JS jank, ms",
+     "before": "960.82 [945.81–971.52]",
+     "after": "959.86 [923.81–980.74]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-09T17:49:56+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "A Home pager drag whose finger-up event is lost now lands on the right page in about 150 ms instead of hanging for seconds.",
+   "metric": "Recovery time after a lost finger-up, ms, p50 / p95",
+   "before": "3349.4 / 3349.5",
+   "after": "149.5 / 149.5",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), development build, JS from Metro, staging API",
+   "evidence_head": "4e4d45458763a142b40811f58932248f4d5663e7",
+   "caveat": "Lost finger-up is emulated; development build, not Release. Normal swipes unchanged (swipe JS jank p50/p95 169.1 / 279.2 vs 166.7 / 273.9).",
+   "pr": 4603,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Swipe JS jank, ms, p50 / p95",
+     "before": "169.1 / 279.2",
+     "after": "166.7 / 273.9"
+    },
+    {
+     "metric": "Recovery JS jank, ms, p50 / p95",
+     "before": "27.4 / 108.5",
+     "after": "25.7 / 97.3"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T01:03:50+00:00",
+   "screen": "Explore & search",
+   "what": "Explore under the launch logo reads like main and never opens on a blank page.",
+   "metric": "Explore opened about 3 s after cold launch: JS jank in the next 3 s, ms, median [min–max]",
+   "before": "402 [327–413]",
+   "after": "361 [347–413]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "d518cb8274a39a5c5546a8f8c10d19c21becf925",
+   "caveat": "Earlier heads were refused (extra Explore root render, then an extra categories request during Home scroll). Accepted on the merged head; this bench did not reproduce main's blank page. 3 runs per side.",
+   "pr": 4533,
+   "status": "refused_then_fixed",
+   "verdict": "Refused first, then measured again and passed.",
+   "measurements": [
+    {
+     "metric": "Home scroll right after first Take: UI frames dropped",
+     "before": "11 [10–16]",
+     "after": "9 [8–10]"
+    },
+    {
+     "metric": "Launch: logo lift = first Take visible, ms",
+     "before": "1089 [1030–1096]",
+     "after": "1084 [995–1103]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T02:21:59+00:00",
+   "screen": "Profile",
+   "what": "Relaunching with cache, the Profile shows its counters and Top 8 correctly from the first frame.",
+   "metric": "Counters correct from the first Profile frame after relaunch",
+   "before": "0/5: \"Friends … · Takes …\" for 100 to 367 ms (median 300)",
+   "after": "5/5",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "4a5db4a37f9124580a60cac6452ac45d086e8d0b",
+   "caveat": "Measured on earlier head 4a5db4a3; the merged head e708faf (aimed at two remaining block/unblock flashes) was not measured. Opening the Profile costs more JS (50 → about 111 ms).",
+   "pr": 4653,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Top 8 correct from the first frame",
+     "before": "0/5: four empty \"+\" for 33 to 300 ms",
+     "after": "5/5"
+    },
+    {
+     "metric": "Profile open after launch (3 s): JS jank, ms",
+     "before": "50 [50–58]",
+     "after": "111 [101–112]"
+    },
+    {
+     "metric": "Cold launch 15 s: cumulative JS jank, ms",
+     "before": "1352 [1235–1500]",
+     "after": "1225 [1195–1243]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T03:25:03+00:00",
+   "screen": "Explore & search",
+   "what": "No ghost keyboard after a tap during an Explore swipe, no leftover sheet after a deep link, and the place list no longer empties between two letters.",
+   "metric": "Ghost keyboard after a tap during a swipe",
+   "before": "5/6",
+   "after": "0/6",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "0a75cdc9052d9ace632423ca3f138a474ba928b1",
+   "caveat": "Measured against main 49d8449b; main moved before merge. 6, 3 and 3 tries per case.",
+   "pr": 4664,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Place list emptied between two letters",
+     "before": "3/3 (126–143 ms)",
+     "after": "0/3"
+    },
+    {
+     "metric": "Fast tab changes from Home: tap to commit, ms",
+     "before": "188.5 [85–252]",
+     "after": "175 [71–245]"
+    },
+    {
+     "metric": "Profile sheet left open after a deep link",
+     "before": "3/3",
+     "after": "0/3"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T07:24:30+00:00",
+   "screen": "Explore & search",
+   "what": "Removes a pager rule that brought back black pages in Explore during fast tab changes.",
+   "metric": "Black frames on an already seen page during fast search and theme bursts",
+   "before": "174 black frames in 23 episodes, one lasting 6.2 s (first pass)",
+   "after": "0 black frames, all three passes",
+   "device": "iOS simulator, same probes and protocol (comparison posted on the earlier pull request)",
+   "evidence_head": "93f36c9bd",
+   "caveat": "Numbers come from the earlier comparison: 2af8533a7 (with the rule) vs 93f36c9bd (without it), not from this revert's own head.",
+   "pr": 4693,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run."
+  },
+  {
+   "merged_at": "2026-10-10T12:45:05+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "A sheet sliding down no longer lets a second tap fall through to the feed below, except Appearance and its bottom bar.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "3a2e731d9aa4ddffed25764d547af04f43403b5d",
+   "caveat": "The description says it is not verified on device.",
+   "pr": 4705,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T13:24:46+00:00",
+   "screen": "Profile",
+   "what": "On the official account profile, the stats row now draws for visitors and when the score read fails.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "1d4e63afcd8ce3cbb45cc305211972f8c1d3f159",
+   "caveat": "Tests only; no device run.",
+   "pr": 4716,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T14:07:16+00:00",
+   "screen": "Messages",
+   "what": "A tap on a conversation while the pager is settling now opens it once the pager stops.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "ae3117f107a08a1921af491beda344b6b7cfb61a",
+   "caveat": "Unit test only (red on main, green on head); no device.",
+   "pr": 4715,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T15:54:56+00:00",
+   "screen": "Notifications & Activity",
+   "what": "A block or a refused Take removes its rows from Notifications at once, and pull to refresh puts new rows at the top.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "9ca9bc02a5abc136b700e6a5cbcde3299c7c4392",
+   "caveat": "Tests only; no device run.",
+   "pr": 4703,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T17:55:07+00:00",
+   "screen": "Messages",
+   "what": "Tapping a conversation opens it without waiting for the network, even offline.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "c6fd2f8ce7dd8ef197ef3461a152543ea42a4a30",
+   "caveat": "No device or simulator; tests only. Opens on its loading state if history takes more than 300 ms.",
+   "pr": 4739,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T18:44:49+00:00",
+   "screen": "Notifications & Activity",
+   "what": "In Notifications and Activity, the underline arrives with the page and the last tap is followed, with no fade.",
+   "metric": "Activity tap to Votes: underline arrives with the page (video, 33 ms steps)",
+   "before": "underline late 10/10 (133 to 167 ms)",
+   "after": "same frame 10/10",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "e1cb1241406c215dcda272a21866fc351af8bbd0",
+   "caveat": "Many earlier heads were refused (lost last taps in bursts, extra jank). The final proof covers slow taps only, not bursts. GPU not measured.",
+   "pr": 4672,
+   "status": "refused_then_fixed",
+   "verdict": "Refused first, then measured again and passed.",
+   "measurements": [
+    {
+     "metric": "Activity Comments to Votes: median JS jank per run, ms",
+     "before": "72,6",
+     "after": "74,7"
+    },
+    {
+     "metric": "Notifications Votes to Comments: JS frames over 50 ms",
+     "before": "0",
+     "after": "0"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T19:18:11+00:00",
+   "screen": "Messages",
+   "what": "Back during a conversation transition behaves as decided in each state: no blank page, no lost or doubled Back.",
+   "metric": "Partial swipe released, then Back: page stays blank",
+   "before": "5/6",
+   "after": "0/6",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "6f869d92051388368a33986a7998a780e967825e",
+   "caveat": "Earlier heads were refused for higher Back JS cost. Measured on 6f869d92; merged head b41d4766 is a main merge with two Messages changes not covered. JS long frames on Back still higher (5 → 9).",
+   "pr": 4662,
+   "status": "refused_then_fixed",
+   "verdict": "Refused first, then measured again and passed.",
+   "measurements": [
+    {
+     "metric": "10 Backs: cumulative JS jank, ms",
+     "before": "411.7 [361.2–420.4]",
+     "after": "392.4 [357.3–451.3]"
+    },
+    {
+     "metric": "10 Backs: JS frames over 50 ms",
+     "before": "5 [4–9]",
+     "after": "9 [5–10]"
+    },
+    {
+     "metric": "10 opens: UI frames dropped, estimated",
+     "before": "1 [0–5]",
+     "after": "0 [0–0]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-07T17:34:27+00:00",
+   "screen": "Profile",
+   "what": "On a public profile and in Activity, the shown tab follows the page after iOS loses a tab tap during fast gestures.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "6aae3f422664b8f221d0563370417feb8f8234b4",
+   "caveat": "Proved by component tests only (red on main, green on the head); no simulator or device run.",
+   "pr": 4304,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-07T20:46:28+00:00",
+   "screen": "Explore & search",
+   "what": "The Explore search keyboard no longer pops up again over Messages, and the composer scrolls under a long question.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "d25c171edd3680f572e0f62790faa1258907855a",
+   "caveat": "Proved by component tests only; scrolling was not seen on a device.",
+   "pr": 4334,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-07T22:17:40+00:00",
+   "screen": "Notifications & Activity",
+   "what": "In Activity, the filter row settles fully shown or fully hidden in 200 ms after a short scroll, never half-collapsed.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "b32d2c7f8b8f6ce4affdb5ba7f65f904d739f66d",
+   "caveat": "Proved by 5 screen tests only; the feel of the animation was not observed on a device.",
+   "pr": 4363,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T04:01:32+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "Opening a Take keeps the bottom tab bar fixed while the page slides under it.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "484acc728df59b210dd1e3aeed1fb266f7c9bba2",
+   "caveat": "Only before/after screenshots on a simulator (development build); no timing or frame measurement.",
+   "pr": 4373,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T10:46:56+00:00",
+   "screen": "Profile",
+   "what": "Neighbouring profile data and adjacent Explore categories are prepared once per opening, so they can show at once.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "65285602c2db4e57876a635fa1db070e7cc8d055",
+   "caveat": "Tests only, behind a server flag family that stays off by default; no device proof of instant display.",
+   "pr": 4456,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T13:22:10+00:00",
+   "screen": "Profile",
+   "what": "On the profile tabs, the haptic tick now fires when the underline arrives, not at the tap or after the pages rest.",
+   "metric": "Haptic time versus underline arrival, tap Questions -> Game",
+   "before": "−214 ms",
+   "after": "−16 ms",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build (staging API)",
+   "evidence_head": "earlier branch build (first version of the commit, SHA not stated)",
+   "caveat": "Measured on the first version of the commit, not on the merged head; the head only adds a rare-case fix not filmed. Timings from a per-frame JS log (~16 ms).",
+   "pr": 4479,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Haptic vs arrival, tap Game -> Takes",
+     "before": "−214 ms",
+     "after": "−16 ms"
+    },
+    {
+     "metric": "Haptic vs arrival, swipe Takes -> Questions",
+     "before": "+102 ms",
+     "after": "~100 ms before the pages rest (tick at 0,977)"
+    },
+    {
+     "metric": "Haptic vs arrival, swipe Questions -> Game",
+     "before": "+102 ms",
+     "after": "~85 ms before the pages rest (tick at 1,978)"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-08T15:05:31+00:00",
+   "screen": "Home feed",
+   "what": "Guest Takes load in smaller pages and warm the first video segment of public Takes so video is ready on arrival.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "56acd0d649ced3d8dfaa4a60dd1634fbe4e97ff0",
+   "caveat": "Tests only; no native build or device run.",
+   "pr": 4496,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-09T15:24:30+00:00",
+   "screen": "Explore & search",
+   "what": "A failed Explore read stays failed with its content kept and retries stay bounded, instead of restarting on every render.",
+   "metric": "none",
+   "before": "scenario not exercised on device",
+   "after": "scenario not exercised on device",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "7fe35d77a0dbe052c9e6c0771e21fdb20d47c681",
+   "caveat": "A device run happened but Explore stayed empty and no failed read was injected, so the fix was not exercised; numbers only show no change on that path. 3 runs per side.",
+   "pr": 4626,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only.",
+   "measurements": [
+    {
+     "metric": "JS jank, last return to Explore (ms, median)",
+     "before": "64.2",
+     "after": "66.7"
+    },
+    {
+     "metric": "JS jank, full launch-to-end path (ms, median)",
+     "before": "1594.3",
+     "after": "1562.8"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T01:34:46+00:00",
+   "screen": "Map",
+   "what": "After a tab change during a map flight, the camera resumes its flight and lands on the city.",
+   "metric": "Camera on the city after a tab change mid-flight",
+   "before": "0/10",
+   "after": "10/10",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "708fb7f849684cfebd7c07268a04765a123ffebd",
+   "caveat": "Head side was the head merged locally into main 9b27f464. 3 runs per side for smoothness; one extra Home render at launch not explained.",
+   "pr": 4661,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Cold launch, then tab change during first flight",
+     "before": "0/3",
+     "after": "3/3"
+    },
+    {
+     "metric": "GET /map/takes for 10 returns to Home",
+     "before": "10 [10–10]",
+     "after": "1 [1–1]"
+    },
+    {
+     "metric": "JS jank, 10 returns to Home (ms)",
+     "before": "1533 [1487–1837]",
+     "after": "1240 [1153–1502]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T02:49:15+00:00",
+   "screen": "Explore & search",
+   "what": "While an Explore topic first loads, no grey skeleton bars show; an empty space of the same size holds the place.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "c879477674dc6bd4cb108157535a7fcf3b544fb4",
+   "caveat": "Tests only; no simulator and no before/after captures in the record.",
+   "pr": 4675,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T03:36:58+00:00",
+   "screen": "Profile",
+   "what": "A never-seen profile stuck on \"Couldn't load\" reloads once when you come back to its screen.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "87009e98c713c7fe993130ab690ea68dd883dded",
+   "caveat": "Tests only; no device measurement.",
+   "pr": 4678,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T13:38:46+00:00",
+   "screen": "Home feed",
+   "what": "On a cold launch, Friends no longer stays stuck waiting after a late revalidation; launch falls back to Takes.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "9e4f6dd3ab2bed6d239823d14e1dd3192bd9e4e1",
+   "caveat": "Race reproduced in a function-level test only; no device run.",
+   "pr": 4713,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T14:17:31+00:00",
+   "screen": "Launch",
+   "what": "Right after a cold launch, Explore keeps its waiting state instead of showing Retry, a drawn ranking no longer reshuffles, and Home no longer renders its empty state before its rows.",
+   "metric": "Explore shows Retry on fresh install with a slow first ranking",
+   "before": "3/3",
+   "after": "0/3",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "c636648452fb427d6b521d5b6efafe54d1c4410f",
+   "caveat": "Prover verdict: smoothness gate passed. Main's empty-state renders happened under the launch logo, so not visible on video. 3 to 5 runs per side, slow server simulated by a proxy.",
+   "pr": 4697,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Hero replaced on screen when ranking arrives (Politics)",
+     "before": "9 of 9 runs",
+     "after": "0 (order kept in 8 valid runs out of 8)"
+    },
+    {
+     "metric": "Friends empty-state renders before rows at cold launch",
+     "before": "4, 4, 4, 4, 4",
+     "after": "0, 0, 0, 0, 0"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T14:49:41+00:00",
+   "screen": "Home feed",
+   "what": "Takes already on screen are prepared as soon as the Takes page gets focus, so the first tap opens from cache.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "b6efa94c3b2ad28472f47936d4b311619d4f6792",
+   "caveat": "Behavior test only; whether FlashList reports visibility for a hidden pager page on a device was not checked.",
+   "pr": 4711,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T17:58:14+00:00",
+   "screen": "Launch",
+   "what": "A cold launch from a notification or link that opens a Take lifts the launch logo when the Take is drawn, not at its 1.1 s cap.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "1c746213598b7c533491a87045c9138fc5f4ab44",
+   "caveat": "Delay inferred from code only; no device measurement.",
+   "pr": 4742,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T19:35:05+00:00",
+   "screen": "Launch",
+   "what": "A cold launch from a link to a conversation lifts the logo when the conversation is drawn, about half a second sooner.",
+   "metric": "Launch logo leaves, link -> conversation (ms, median)",
+   "before": "1442 [1438–1459]",
+   "after": "957 [925–1001]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "d127e60d170380ccd7cbe1c31cbea664c5887a26",
+   "caveat": "Main side was the PR's exact parent d7850dc3d, not current main. Links, not real push notifications. 5 pairs for conversation; profile link and normal launch unchanged (10 pairs).",
+   "pr": 4744,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Launch logo leaves, link -> public profile (ms, median)",
+     "before": "1191 [1022–1274]",
+     "after": "1140 [1030–1216]"
+    },
+    {
+     "metric": "JS jank, link -> conversation (ms, median)",
+     "before": "499,4 [480,6–548,3]",
+     "after": "479,3 [429,7–489,1]"
+    },
+    {
+     "metric": "Black background between logo and page, conversation (ms)",
+     "before": "183 [183–217]",
+     "after": "150 [150–183]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-07T18:12:04+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "Tapping a bottom tab shows its page at once, with no slide or fade, even when tapping fast.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "407da2a0f228baa8777d55c6eb1f3dfa645349eb",
+   "caveat": "Proved only by unit and behavior tests; the simulator check was left unticked in the PR.",
+   "pr": 4307,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-07T20:46:38+00:00",
+   "screen": "Notifications & Activity",
+   "what": "After iOS drops a tab command twice, a false start of a swipe no longer leaves the tab stuck; the tab follows the page the pages rest on.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "8975557f4ad4006acb5e681d0c66f3f4a36ecd47",
+   "caveat": "Behavior tests only, no device measurement.",
+   "pr": 4337,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T04:03:29+00:00",
+   "screen": "Profile",
+   "what": "A profile tab whose content shrinks while at rest comes back to its end instead of staying blank under the pinned tabs.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "9a19d703f95878e2011d8148115d78bb74478bd7",
+   "caveat": "Tests red on main and green on the head; no device measurement.",
+   "pr": 4403,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T04:59:08+00:00",
+   "screen": "Explore & search",
+   "what": "An Explore theme page whose content shrinks at rest comes back to its end instead of staying blank.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "86c41c7e815cf8585c4f2109256b6b3d1c027cb2",
+   "caveat": "Tests red on main and green on the head; no device measurement.",
+   "pr": 4404,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T09:15:32+00:00",
+   "screen": "Notifications & Activity",
+   "what": "After a fast swipe in Your activity, the selected tab follows the page the pages land on, even when iOS sends no idle event (within 1 s instead of never).",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "524926e0d57857f33c5b908ff2e605593dd47dab",
+   "caveat": "Behavior and fuzz tests only; no device measurement.",
+   "pr": 4437,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-09T12:12:17+00:00",
+   "screen": "Messages",
+   "what": "Conversations are prepared after Messages comes to rest, so opening and returning from a conversation is lighter.",
+   "metric": "JS jank, cumulative over the Messages open/return flow (ms, median [min-max])",
+   "before": "2556.8 [2479.0–2877.7]",
+   "after": "2297.3 [2232.2–2345.1]",
+   "device": "iOS 26.5 simulator on the Mac, Release native binary of main, Hermes bytecode per commit",
+   "evidence_head": "eb11c33622ec7ca0380e74202d38c3082500bd7e",
+   "caveat": "The previous head was refused for one extra Home root render on return; on the merged head that extra render is no longer systematic (27 -> 27/28/29 renders) and the cost was accepted. 3 runs per side, simulator not phone.",
+   "pr": 4510,
+   "status": "refused_then_fixed",
+   "verdict": "Refused first, then measured again and passed.",
+   "measurements": [
+    {
+     "metric": "Long JS frames > 50 ms",
+     "before": "15 [14–15]",
+     "after": "14 [13–14]"
+    },
+    {
+     "metric": "Missed UI frames (Reanimated estimate)",
+     "before": "45 [40–59]",
+     "after": "41 [38–46]"
+    },
+    {
+     "metric": "Friends-nearby root renders",
+     "before": "27 [27–27]",
+     "after": "28 [27–29]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-09T10:42:34+00:00",
+   "screen": "Profile",
+   "what": "Opening someone's public profile does much less work: far fewer renders and requests, with no regression on the flow.",
+   "metric": "JS jank, cumulative over the profile flow (ms, median [min-max])",
+   "before": "2529.3 [2490.4–2650.9]",
+   "after": "2330.3 [2280.3–2380.5]",
+   "device": "iOS 26.5 simulator on the Mac, Release native binary of main, Hermes bytecode per commit",
+   "evidence_head": "77e6aa8046de68c4b019474b9291bdd899909e14",
+   "caveat": "The last proof on the merged head is favourable. An earlier head showed the cold public profile's first content 114 ms later (1993 -> 2107 ms); that cost was accepted as a trade-off, not fixed, and was not re-measured. 5 runs per side, simulator, not a phone.",
+   "pr": 4540,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Public profile root renders",
+     "before": "18 [18–18]",
+     "after": "5 [5–5]"
+    },
+    {
+     "metric": "Long JS frames > 50 ms",
+     "before": "9 [8–10]",
+     "after": "10 [9–11]"
+    },
+    {
+     "metric": "Missed UI frames (Reanimated)",
+     "before": "304 [288–316]",
+     "after": "309 [305–315]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T00:35:08+00:00",
+   "screen": "Home feed",
+   "what": "Blurred image placeholders no longer rewrite the disk cache and wake every image during scrolling and launch; no image flicker.",
+   "metric": "Image wake-ups during 20 s of Friends scrolling, default setting (median)",
+   "before": "2 614",
+   "after": "0",
+   "device": "iPhone simulator, iOS 26.4 (Limrun), one Release native binary, JS bundle swapped",
+   "evidence_head": "1aa8fefff90fed65d171558081d4dc51c7f94c63",
+   "caveat": "An earlier head was refused (gate closed for Profile at rest, an Explore render during transition and opening with a pending batch). On the merged head there is no measurable JS jank gain (Friends 607 -> 715 ms, within run spread). Takes feed was empty on the local API. 3 runs per side.",
+   "pr": 4536,
+   "status": "refused_then_fixed",
+   "verdict": "Refused first, then measured again and passed.",
+   "measurements": [
+    {
+     "metric": "BlurHash disk writes, Friends 20 s",
+     "before": "22 [22, 22, 22]",
+     "after": "0 [0, 0, 0]"
+    },
+    {
+     "metric": "Image wake-ups at launch, 15 s",
+     "before": "3 321",
+     "after": "12"
+    },
+    {
+     "metric": "JS jank, Friends 20 s (ms)",
+     "before": "607 [607, 564, 646]",
+     "after": "715 [715, 411, 717]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T04:03:37+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "Under taps faster than a render, or a link after taps, the gray lens, the selected icon and the page always end on the same tab, the last one.",
+   "metric": "Bursts of 15 taps then a link to Home: lens, tab and page agree",
+   "before": "12/15",
+   "after": "15/15",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "c282cad59f71fbb83530c127394f1b07581b70ca",
+   "caveat": "Fluidity is within run spread (no gain claimed). 3 runs per side; haptics not measurable on a simulator.",
+   "pr": 4655,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Fast tab change: tap -> page landed (ms, median [min-max])",
+     "before": "62 [41–137]",
+     "after": "61.5 [45–111]"
+    },
+    {
+     "metric": "Slow tab change: tap -> page landed (ms)",
+     "before": "65.5 [55–93]",
+     "after": "66 [53–93]"
+    },
+    {
+     "metric": "Launch JS jank, 15 s (ms)",
+     "before": "1023 [974–1061]",
+     "after": "1005 [1002–1044]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T05:26:49+00:00",
+   "screen": "Open Take",
+   "what": "A vote tapped while a Take is opening no longer cancels its read, so the Take keeps its curve and right counts; fast taps follow the last-tap rule.",
+   "metric": "Vote tap -> first frame after the change, open Take (ms, median)",
+   "before": "141,0 ms (129,4–146,5)",
+   "after": "131,8 ms (119,2–172,2)",
+   "device": "iPhone 16 Pro simulator (Limrun), Release build",
+   "evidence_head": "953cedd4d9eaff42542e306be277e872f176770a",
+   "caveat": "The bug's race never happened on the bench (no tap arrived before the previous draw), so the fix itself is proved only by tests and fuzz. Friends scroll jank slightly higher (90 -> 105 ms merged with main), within spread.",
+   "pr": 4644,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Vote tap -> frame, feed card (ms)",
+     "before": "54,6 ms (40,6–57,3)",
+     "after": "54,6 ms (50,2–59,9)"
+    },
+    {
+     "metric": "Vote tap -> frame, Explore #1 (ms)",
+     "before": "68,2 ms (64,1–81,6)",
+     "after": "64,9 ms (64,0–77,6)"
+    },
+    {
+     "metric": "Friends 20 s scroll JS jank, head merged with main (ms)",
+     "before": "90",
+     "after": "105"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T07:36:46+00:00",
+   "screen": "Home feed",
+   "what": "Changing a vote in the feed redraws only the tapped Take's choices, not the whole Home screen, so the choice appears sooner.",
+   "metric": "Finger lift -> second frame after the vote commit, Friends (ms, median, two series)",
+   "before": "95,7 / 96,1 ms (88–114)",
+   "after": "76,1 / 76,1 ms (71–92)",
+   "device": "iPhone simulator (Limrun), Release build, Hermes",
+   "evidence_head": "161488db7a9fe0d31d820493769b39891f4edcf3",
+   "caveat": "Measured on 161488db7; the merged head only adds a merge of main with a conflict in FeedTakeRow. Simulator touch injection, not the physical finger; pixels not captured.",
+   "pr": 4686,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Lift -> second frame, Nearby (ms)",
+     "before": "108,8 / 100,7 ms (87–118)",
+     "after": "76,1 ms (68–100)"
+    },
+    {
+     "metric": "JS time over budget, Friends (ms)",
+     "before": "83,0 / 94,3 ms",
+     "after": "28,7 / 28,4 ms"
+    },
+    {
+     "metric": "Long JS frames > 50 ms, Friends",
+     "before": "1 / 1",
+     "after": "0 / 0"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T01:39:15+00:00",
+   "screen": "Profile",
+   "what": "After a network cut, the Profile rereads its failed sections by itself when the network returns or the tab is revisited, instead of staying on 'Loading failed'.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "c97c1c39bf9267cc71dc9d97559554989d961a77",
+   "caveat": "Tests only; pushes show no device measurement.",
+   "pr": 4657,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T03:06:09+00:00",
+   "screen": "Messages",
+   "what": "A tap meant for the inbox no longer deletes a message request during the screen transition, and the badge and Requests entry update at once without a 62 pt jump.",
+   "metric": "Message requests deleted by tap bursts inbox <-> Requests (per series)",
+   "before": "3, 3, 3",
+   "after": "0, 0, 0 (+1 in two series on the first tap after a pause)",
+   "device": "iPhone 16 Pro simulator, iOS 26 (Limrun), Release build",
+   "evidence_head": "5c953602ece3b6e3627323d4bd791e5dbca11db5",
+   "caveat": "Measured on an earlier head (5c953602); two later pushes not measured. The +1 deletions are real taps on a button shown for over 700 ms, which the rule accepts.",
+   "pr": 4660,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "JS jank opening inbox, total over 10 (ms)",
+     "before": "707,9",
+     "after": "648,4"
+    },
+    {
+     "metric": "JS jank opening Requests, total over 10 (ms)",
+     "before": "1 255,2",
+     "after": "1 153,3"
+    },
+    {
+     "metric": "Missed UI frames",
+     "before": "0",
+     "after": "0"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T15:30:01+00:00",
+   "screen": "Profile",
+   "what": "Tapping an author opens their profile right away (at most 300 ms wait), even offline, instead of doing nothing.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "602d8925e9aa619fc58ce9b7aa32715e3252a880",
+   "caveat": "Router tests only (nothing at 299 ms, open at 300 ms); no device measurement.",
+   "pr": 4704,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T13:03:23+00:00",
+   "screen": "Home feed",
+   "what": "Sharing a Take during pull-to-refresh no longer cancels the refresh; the fresh page arrives.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "adb2cd757a07a3202163c3a5a0859d741681f3c1",
+   "caveat": "Tests only; no device measurement.",
+   "pr": 4707,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T14:26:49+00:00",
+   "screen": "Home feed",
+   "what": "For a guest, a late config no longer replaces the feed rows already on screen with the loader.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "b3b3a4b4ff596a0ae35ccef1137fc7188823fc3e",
+   "caveat": "Behavior test red on main, green on head; flag off by default; no device measurement.",
+   "pr": 4712,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T13:39:24+00:00",
+   "screen": "Map",
+   "what": "A map flight to a nearby place is a short hop again (900 ms instead of 2400 ms), and feed photo/audio gestures are no longer rebuilt on every render.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "94646bab829925b3f19ad3eed6e4094eef8cb2b7",
+   "caveat": "Durations come from tests (2400 x3 on main, 900 x3 on head), not a device measurement.",
+   "pr": 4720,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T18:01:01+00:00",
+   "screen": "Explore & search",
+   "what": "During bursts of taps and swipes between Explore tabs, a page no longer flashes fully black or white.",
+   "metric": "Black or empty frames during tap/swipe bursts (frames / episodes, 6 runs)",
+   "before": "17 / 6",
+   "after": "0 / 0",
+   "device": "Simulator (Limrun), two fresh Release native builds, same JS bundle",
+   "evidence_head": "74229178894255d7a5a73482cc0e158ab7751c7d",
+   "caveat": "Needs a new native binary (no OTA). Frames counted on captured video, not every native 60 Hz frame. Requires the native pager flag.",
+   "pr": 4732,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Long JS frames > 50 ms during bursts (median)",
+     "before": "31,5 [2–34]",
+     "after": "29,5 [19–36]"
+    },
+    {
+     "metric": "JS jank during bursts (ms, median)",
+     "before": "3 982 [2 949–4 051]",
+     "after": "3 792 [3 561–3 990]"
+    },
+    {
+     "metric": "Normal scroll JS jank (ms, median)",
+     "before": "230,4",
+     "after": "202,4"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T17:36:42+00:00",
+   "screen": "Profile",
+   "what": "On a slow server, tapping a Top 8 face opens the profile within 300 ms instead of doing nothing until all reads finish.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "18223be184961a7da2378366e609230457af8264",
+   "caveat": "Tests only; no device measurement.",
+   "pr": 4747,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T19:03:44+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "The bottom tab bar slides away on an open Take and on Activity, so both use the whole screen.",
+   "metric": "none",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "ca4040f1187abdd766976a56cafbcb21e8db74be",
+   "caveat": "Unit behavior tests only; no device or visual check.",
+   "pr": 4751,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T00:30:11+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "From Takes to Friends or Nearby, the page and the black underline now leave in the same frame and the underline no longer overshoots.",
+   "metric": "Share of the move done per frame, Takes to Friends (page / underline)",
+   "before": "page already switched on the tap frame; underline overshoots (525 px for 500 at rest) and settles 0.5 s later",
+   "after": "frame 1: 14,7 % / 14,8 %; frame 2: 33 % / 33 %; frame 3: 50,5 % / 50,7 %; frame 4: 64,8 % / 65 %",
+   "device": "iPhone simulator, iOS 26 (Limrun), Release build, staging API",
+   "evidence_head": "10ce0fd6c",
+   "caveat": "Measured frame by frame from 30 fps recordings on an earlier head (10ce0fd6c); later commits only touch tests or merge main. Simulator, not a phone; 120 Hz screen not checked.",
+   "pr": 4371,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run."
+  },
+  {
+   "merged_at": "2026-10-08T04:18:44+00:00",
+   "screen": "Profile",
+   "what": "A Profile tab tap that iOS lost is resent as a glide, with the underline on the real page position, instead of the page jumping into place.",
+   "metric": "no device measurement",
+   "before": "page set without animation on a lost tap (tests only)",
+   "after": "page glides on resend (tests only)",
+   "device": "none",
+   "evidence_head": "fc33df6d45357243886dd60dd30e799fdcd9eef6",
+   "caveat": "The changed path (a lost tap) cannot be triggered on demand on the simulator; proven by behaviour tests only. Captures show an ordinary tap, which already glided on main.",
+   "pr": 4398,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T11:19:12+00:00",
+   "screen": "Profile",
+   "what": "On the first visit after a cold start, Profile opens already loaded, with no skeleton and no counters changing.",
+   "metric": "no device measurement",
+   "before": "skeleton, 'Score 0' then real score, friends count and Top 8 filling in (reported on build 195)",
+   "after": "full profile on first draw, no skeleton frame in 10 fps recordings",
+   "device": "iPhone simulator iOS (Limrun), Release build, staging API",
+   "evidence_head": "71777e623",
+   "caveat": "No 'before' device capture; the main side is proven by a red test. After-side recordings were on head 71777e623, not the merged head. Only applies while bounded prefetch is off (the default).",
+   "pr": 4465,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T13:38:34+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "A bottom tab shows its page right away; the screen learns its focus just after, so Profile no longer freezes on Messages first.",
+   "metric": "Time the screen stays on Messages after tapping Profile",
+   "before": "about 270 to 400 ms (at 7,5 images/s)",
+   "after": "profile shows before the tab-bar pill has finished arriving (no number)",
+   "device": "before: build 194 app on the Mac; after: Mac bench simulator 73ED2407, production bundle",
+   "evidence_head": "f14767c8fc5df2b3d290a3c7ff016a718d1f4621",
+   "caveat": "Before is a filmed estimate at 7,5 fps; after is a qualitative bench observation without a number, on an earlier head (a second head followed review).",
+   "pr": 4466,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run."
+  },
+  {
+   "merged_at": "2026-10-09T19:37:43+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "Tab rows tick (haptic) when the indicator arrives on tap and when the nearest tab changes under the finger on swipe; the release spring stays silent.",
+   "metric": "no device measurement",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "ff8ed1d09e3a761c54d2f47a16b8eb283cc2ec4a",
+   "caveat": "Needs a new binary for the Expo haptics patch. The description lists the iOS measurements still to produce; older tables explicitly do not qualify this head.",
+   "pr": 4498,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-09T10:48:16+00:00",
+   "screen": "Home feed",
+   "what": "Scrolling the Friends and Takes feeds no longer triggers Take reads mid-scroll; they wait for an intentional press or for the scroll to rest.",
+   "metric": "JS jank per run (ms, median [min–max])",
+   "before": "4602.6 [4489.6–4617.3]",
+   "after": "4453.6 [4350.2–4455.0]",
+   "device": "Mac iOS 26.5 simulator, Release binary of main with each side's Hermes JS",
+   "evidence_head": "407a8bbbe6e449e93f658246ebea3f769b997806",
+   "caveat": "3 runs per side on a simulator; UI frames estimated by Reanimated, no native GPU frames.",
+   "pr": 4566,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "JS frames > 50 ms per run",
+     "before": "43 [39–43]",
+     "after": "39 [37–40]"
+    },
+    {
+     "metric": "UI missed frames (Reanimated)",
+     "before": "86 [79–92]",
+     "after": "85 [85–88]"
+    },
+    {
+     "metric": "GET /takes/:id per run",
+     "before": "12 [12–12]",
+     "after": "10 [10–10]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-09T15:50:58+00:00",
+   "screen": "Notifications & Activity",
+   "what": "Notifications keep the rows already drawn when new ones arrive, and the list is prepared at rest after the first Home content.",
+   "metric": "JS jank during a new arrival while Notifications is open (ms, median [min–max], first arrival)",
+   "before": "83.3 [75–89.3]",
+   "after": "52.5 [49.9–52.9]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded Hermes JS",
+   "evidence_head": "171a3a7cd324951773fc6e9e80d169c201f5b2ec",
+   "caveat": "Measured on earlier head 171a3a7c (merged head adds a main merge and fixture changes). 3 runs per side. Mixed result: Home first content at launch 4482 -> 4663 ms (+181 ms, overlapping ranges); the measurer wrote that global non-regression is not certified.",
+   "pr": 4516,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "JS jank, second arrival (ms)",
+     "before": "64.1 [54.9–66.7]",
+     "after": "50 [50–52.1]"
+    },
+    {
+     "metric": "Home first content at launch (ms)",
+     "before": "4482 [4460–4737]",
+     "after": "4663 [4514–4754]"
+    },
+    {
+     "metric": "JS jank at launch (ms)",
+     "before": "1227.6 [1190.8–1228.6]",
+     "after": "1171.6 [1157.5–1212.7]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-09T21:48:12+00:00",
+   "screen": "Messages",
+   "what": "Message fields grow to several lines again, and @-mention suggestions stay readable and answer the first tap while typing.",
+   "metric": "JS jank while typing '@no' and suggestions appear (ms, median [min–max])",
+   "before": "183.5 [176.9–190.9]",
+   "after": "9.9 [0.0–31.5]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded Hermes JS",
+   "evidence_head": "bb719c4fe5740f7008072fac6da8f75f2e6cca9e",
+   "caveat": "First proof on the merged head said the smoothness gate was not lifted (estimated UI missed frames for suggestions 6 -> 10). A second series on the same head found the Messages route not slower, but did not re-check the suggestions UI scheduling. 3 and 5 runs per side.",
+   "pr": 4472,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "UI missed frames estimated, suggestions appear",
+     "before": "6.0 [5.0–8.0]",
+     "after": "10.0 [9.0–13.0]"
+    },
+    {
+     "metric": "JS jank, Messages route (ms, follow-up series)",
+     "before": "475,0 [453,4–533,6]",
+     "after": "447,3 [413,9–479,4]"
+    },
+    {
+     "metric": "First tap on suggestion inserts the mention",
+     "before": "leaves '@no' 3/3",
+     "after": "inserts '@noah_williams' 3/3"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T01:01:43+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "Cold tabs commit to their destination at once; Messages loads with its frame and a discreet loader, and keeps its drawn error during a slow retry.",
+   "metric": "Blank page between leaving Explore and Messages painting, early swipe (ms, per pair at 60 fps)",
+   "before": "600 / 533 / 600",
+   "after": "300 / 567 / 433",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded Hermes JS",
+   "evidence_head": "cfa833313dd036790f3a504e5486afbe2723c897",
+   "caveat": "An earlier head was refused (launch jank +780,5 ms). Last favourable proofs are on head cfa83331; later commits remove dead code and merge main. Blank page shortened but not gone; 3 pairs.",
+   "pr": 4482,
+   "status": "refused_then_fixed",
+   "verdict": "Refused first, then measured again and passed.",
+   "measurements": [
+    {
+     "metric": "Conversation first accessible content (ms)",
+     "before": "1617 [1597–1646]",
+     "after": "1598 [1545–1742]"
+    },
+    {
+     "metric": "JS jank, first 15 s after launch (ms)",
+     "before": "1462",
+     "after": "1470"
+    },
+    {
+     "metric": "UI missed frames, back to inbox (per run)",
+     "before": "2 / 2 / 3",
+     "after": "2 / 0 / 2"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T02:14:21+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "The native pager no longer loses the tap that follows a resend the watcher overruled.",
+   "metric": "no device measurement",
+   "before": "tap lost in fuzz seed 2000043801 (tests only)",
+   "after": "tap kept (tests only)",
+   "device": "none",
+   "evidence_head": "9e5c6780435b8a6a48ef1d072a988e21365b02c7",
+   "caveat": "Proven by fuzz tests red on main and green on the head; no device measurement.",
+   "pr": 4674,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T03:06:36+00:00",
+   "screen": "Home feed",
+   "what": "With bounded prefetch on, a kept Friends feed no longer opens empty behind the new-takes pill, and kept rows no longer vanish on an offline cold start.",
+   "metric": "no device measurement",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "b99d58364ade6ac36f15260eea0a94023cb040ef",
+   "caveat": "Only acts with the bounded-prefetch capability on; with it off, behaviour equals main. Proven by tests only.",
+   "pr": 4673,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T04:08:35+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "Right after a cold start, a tap that lands before Profile appears no longer hits the Home page underneath (no surprise Activity or photo).",
+   "metric": "Taps arriving before Profile shows that reach Home",
+   "before": "10 of 14 (4 open Activity, 6 open the photo)",
+   "after": "none of 27",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded Hermes JS",
+   "evidence_head": "c57bae226a2757c0704c4a51e9eafabd1a6f2e7b",
+   "caveat": "Needs a short gap (34 to 140 ms) between taps to reproduce; at 250 ms the defect does not reproduce on this bench. Such an early tap is now absorbed, so the user taps again. No measurable smoothness regression.",
+   "pr": 4667,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Gear tap, short gap, before Profile",
+     "before": "Activité x4, Réglages x2",
+     "after": "absorbé (Profil reste) x8"
+    },
+    {
+     "metric": "Photo tap, short gap, before Profile",
+     "before": "photo ouverte sur le Profil x6, rien x2",
+     "after": "rien x8"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T04:47:51+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "A tab tap just after a deep link is no longer compared with the old page.",
+   "metric": "Tab tap after a deep link lands on Home",
+   "before": "10/10 ; 9.5–81.5 ms",
+   "after": "10/10 ; 23.7–85.4 ms",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded Hermes JS",
+   "evidence_head": "1477713b0ae2c9b5786a7b7266738493d1808afe",
+   "caveat": "Fix not demonstrated on device: main already passed 10/10, the stale-render window was not reached. No obvious smoothness regression.",
+   "pr": 4677,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Fast tabs x10, JS jank (ms)",
+     "before": "541",
+     "after": "416"
+    },
+    {
+     "metric": "Slow tabs, first content after tap (median)",
+     "before": "85.5 ms",
+     "after": "80.5 ms"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T05:41:09+00:00",
+   "screen": "Open Take",
+   "what": "Like and repost follow the last tap under quick taps and late server answers, with one write per burst.",
+   "metric": "JS jank, 5 quick reposts with answers held 2 s (ms, median [min–max])",
+   "before": "204.2 [191.7–206.1]",
+   "after": "192.2 [173.3–193.6]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded Hermes JS",
+   "evidence_head": "d022feaff52dac33f44f97d85834ec0008da6b56",
+   "caveat": "Head 3b1ca0af was refused (JS regression on quick reposts). Last proof on d022feaf (merged head only adds a main merge): that regression is gone, but long JS frames in the normal case rise 55 -> 57 and the measurer does not validate global non-regression.",
+   "pr": 4666,
+   "status": "refused_then_fixed",
+   "verdict": "Refused first, then measured again and passed.",
+   "measurements": [
+    {
+     "metric": "PUT attempts per repost burst",
+     "before": "3",
+     "after": "1"
+    },
+    {
+     "metric": "JS jank, normal x10 (ms)",
+     "before": "6478.8 [5819.8–7130.8]",
+     "after": "5634.4 [5522.5–5661.7]"
+    },
+    {
+     "metric": "JS frames > 50 ms, normal x10",
+     "before": "55 [50–60]",
+     "after": "57 [56–57]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T07:23:38+00:00",
+   "screen": "Explore & search",
+   "what": "Read-ahead no longer redraws relative dates, so the mounted Messages rows stop re-rendering while you press and scroll in Explore.",
+   "metric": "JS jank per read-ahead gesture (ms, median [min–max])",
+   "before": "185.00 [159.80–218.00]",
+   "after": "0.00 [0.00–33.30]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded Hermes JS",
+   "evidence_head": "415b357ead6ad95c9aacb88e6f1018a4061cec9e",
+   "caveat": "Measured on earlier head 415b357e, not on the merged head 29b10eb3. 30 gestures per side; frames UI estimated.",
+   "pr": 4685,
+   "status": "measured",
+   "verdict": "Measured: better or equal to main on the recorded run.",
+   "measurements": [
+    {
+     "metric": "Messages row renders per gesture",
+     "before": "35.00 [30.00–35.00]",
+     "after": "0.00 [0.00–0.00]"
+    },
+    {
+     "metric": "React cost per gesture (ms)",
+     "before": "132.40 [115.22–148.73]",
+     "after": "2.62 [1.97–3.06]"
+    },
+    {
+     "metric": "JS frames > 50 ms",
+     "before": "2.00 [1.00–4.00]",
+     "after": "0.00 [0.00–0.00]"
+    }
+   ]
+  },
+  {
+   "merged_at": "2026-10-10T13:55:40+00:00",
+   "screen": "Launch",
+   "what": "A launch that lands directly on Takes also prepares Messages and Profile, so they are ready when tapped.",
+   "metric": "no device measurement",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "f7f95769c2445297e991573f647dd5913e1ce4b8",
+   "caveat": "Proven by a test red on main and green on the head; no device run.",
+   "pr": 4710,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T14:31:49+00:00",
+   "screen": "Profile",
+   "what": "A new Profile photo shows in the header right away, and Profile tabs that failed re-read when reopened.",
+   "metric": "no device measurement",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "8ad6cb76e5183b3df769ecb73dd622475843252e",
+   "caveat": "Tests only, red on main; no device run.",
+   "pr": 4719,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T13:23:39+00:00",
+   "screen": "Profile",
+   "what": "Settings > Notifications on a cold visit draws all rows from the first frame and fills them in place; nothing goes missing or jumps.",
+   "metric": "no device measurement",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "d7c02318342902c7d3a3f0d9f7776b5786754f55",
+   "caveat": "Settings screen; no device measurement found.",
+   "pr": 4714,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T18:42:48+00:00",
+   "screen": "Profile",
+   "what": "A profile link no longer stays dead offline and then opens by surprise; it opens after at most 300 ms.",
+   "metric": "no device measurement",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "887d3974a74740fdee77f65e00567cc7cd648571",
+   "caveat": "Tests only; no device measurement.",
+   "pr": 4741,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-08T01:39:03+00:00",
+   "screen": "Open Take",
+   "what": "The share sheet is opaque, and 'Copy link' closes it with a haptic and a 'Link copied' toast at the bottom.",
+   "metric": "no device measurement",
+   "before": "glass sheet, stays open after copy (screenshots)",
+   "after": "opaque sheet, closes after copy (screenshots)",
+   "device": "iPhone simulator iOS (Limrun), Release build, staging API",
+   "evidence_head": "950483836",
+   "caveat": "Visual before/after screenshots only, on head 950483836; no timing measurement. Mostly a design change.",
+   "pr": 4369,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-07T20:19:42+00:00",
+   "screen": "Launch",
+   "what": "The server announcement banner waits until onboarding ends instead of covering its first question.",
+   "metric": "no device measurement",
+   "before": "no device measurement",
+   "after": "no device measurement",
+   "device": "none",
+   "evidence_head": "e33ae85d15ffb5b642b1492be168946357fdfa1e",
+   "caveat": "Tests only; overlay placement rather than motion.",
+   "pr": 4332,
+   "status": "not_measured",
+   "verdict": "Not measured on a device: tests and code only."
+  },
+  {
+   "merged_at": "2026-10-10T19:13:01+00:00",
+   "screen": "Composer",
+   "what": "Posting a Take: the row is prepared during the press and confirmed after the composer closes, with no late insert or moving rows.",
+   "metric": "JS jank, photo post + 10 s (ms, median [min–max])",
+   "before": "227,0 [221,2–266,8]",
+   "after": "212,7 [203,4–242,1]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded Hermes JS",
+   "evidence_head": "03d1f9f7a5e2c6f3f0dfc0e7df24d2a6c53deb17",
+   "caveat": "Several earlier heads were refused (Take missing on Profile, then +14,7 % JS jank on publish). Last favourable proof on 03d1f9f7; merged head only adds tests. 3 pairs; long JS frames 2 -> 3 for photo.",
+   "pr": 4565,
+   "status": "refused_then_fixed",
+   "verdict": "Refused first, then measured again and passed.",
+   "measurements": [
+    {
+     "metric": "Longest JS frame, photo post (ms)",
+     "before": "128,1",
+     "after": "78,9"
+    },
+    {
+     "metric": "JS jank, audio post (ms)",
+     "before": "231,6 [230,8–241,8]",
+     "after": "171,9 [163,6–207,2]"
+    },
+    {
+     "metric": "Release to composer close start, audio (ms)",
+     "before": "219",
+     "after": "145"
+    }
+   ]
+  }
+ ],
+ "left_out": [
+  {
+   "merged_at": "2026-10-09T11:10:37+00:00",
+   "screen": "Profile",
+   "what": "Notification settings open at once, even without cache or offline, with no loader; categories keep their place.",
+   "metric": "UI frames dropped (estimated), arriving in Settings, median [min–max]",
+   "before": "9.0 [7.0–10.0]",
+   "after": "13.5 [13.0–14.0]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "4d1b620a21b55afb786ae53d3025fd54ea56f298",
+   "caveat": "Last proof (head 4d1b620) refused the cached paths; the merged head 8bebf95 was not measured. An earlier head 357e6a25 had a favourable cold-open result.",
+   "pr": 4542,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "Notifications warm: JS jank, ms",
+     "before": "0.0 [0.0–99.9]",
+     "after": "99.9 [84.4–100.0]"
+    },
+    {
+     "metric": "Cold slow Notifications: first content, ms (earlier head 357e6a25)",
+     "before": "15143.0 [14858.0–15462.0]",
+     "after": "4706.0 [4584.0–4847.0]"
+    }
+   ],
+   "reason": "Last proof (head 4d1b620) refused the cached paths; the merged head 8bebf95 was not measured. An earlier head 357e6a25 had a favourable cold-open result."
+  },
+  {
+   "merged_at": "2026-10-09T19:51:20+00:00",
+   "screen": "Map",
+   "what": "After a place search, the map camera stops instead of drifting.",
+   "metric": "UI frames dropped (estimated), France then United States search route, median [min–max]",
+   "before": "32 [30–36]",
+   "after": "36 [31–37]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "19ed8c017447dac4713e98fa70550a2ba641c0f9",
+   "caveat": "Last proof (head 19ed8c0) refused: head above main's range on UI frames (countries) and JS jank (cities). The drift was not reproduced on main either; merged head a6f4909 not measured.",
+   "pr": 4502,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "France, 12 s after choosing: JS jank, ms",
+     "before": "64 [64–98]",
+     "after": "109 [104–119]"
+    },
+    {
+     "metric": "Monaco, 10 s without touch: camera stopped",
+     "before": "3/3 runs",
+     "after": "3/3 runs"
+    }
+   ],
+   "reason": "Last proof (head 19ed8c0) refused: head above main's range on UI frames (countries) and JS jank (cities). The drift was not reproduced on main either; merged head a6f4909 not measured."
+  },
+  {
+   "merged_at": "2026-10-10T04:10:53+00:00",
+   "screen": "Map",
+   "what": "Searching the shown area from the planet button no longer moves the camera.",
+   "metric": "Tap on the planet button: JS jank per run, ms (runs 1 / 2 / 3)",
+   "before": "43.1 / 30.0 / 67.1",
+   "after": "92.1 / 0 / 181.9",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "15c28a437af0a5b6c0a9dd88d278ad2bed06fa68",
+   "caveat": "Proof on the merged head refused the smoothness gate on the tap (one run had an extra catch-up request). Functionally the camera stays still 5/5 on the head.",
+   "pr": 4513,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "Camera still after move then tap",
+     "before": "0/5",
+     "after": "5/5"
+    },
+    {
+     "metric": "Map open: UI frames dropped, estimated (runs 1 / 2 / 3)",
+     "before": "16 / 4 / 14",
+     "after": "3 / 3 / 3"
+    }
+   ],
+   "reason": "Proof on the merged head refused the smoothness gate on the tap (one run had an extra catch-up request). Functionally the camera stays still 5/5 on the head."
+  },
+  {
+   "merged_at": "2026-10-10T04:59:37+00:00",
+   "screen": "Explore & search",
+   "what": "In Explore, the bottom bar comes back full when a search list opens after scrolling.",
+   "metric": "Explore search route: cumulative JS jank, ms, median [min–max]",
+   "before": "1223.3 [1206.3–1313.2]",
+   "after": "1454.6 [1450.7–1817.2]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "5535374195e85cf5a4191fe828b7799e6aad091c",
+   "caveat": "Refused on earlier head 5535374; a later check on the same head found main also reads a Take while scrolling, but no new acceptance was given. Merged head dcd3733 not measured.",
+   "pr": 4521,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "Explore search route: JS frames over 50 ms",
+     "before": "9 [7–9]",
+     "after": "10 [10–11]"
+    },
+    {
+     "metric": "Explore search route: product HTTP requests",
+     "before": "16 [15–17]",
+     "after": "21 [18–23]"
+    }
+   ],
+   "reason": "Refused on earlier head 5535374; a later check on the same head found main also reads a Take while scrolling, but no new acceptance was given. Merged head dcd3733 not measured."
+  },
+  {
+   "merged_at": "2026-10-10T06:16:21+00:00",
+   "screen": "Open Take",
+   "what": "Zero counters are hidden without shifting the action icons.",
+   "metric": "Open and return a Take x10: cumulative JS jank, ms, median [min–max]",
+   "before": "3100.8 [3016.1–3492.4]",
+   "after": "2988.0 [2858.5–3076.2]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "1abec1ddd8315c80ef4ea7ac76ffcad64350810d",
+   "caveat": "Frames and jank showed no unfavourable gap, but the gate was refused on head 1abec1dd for two extra background reads during reposts (4 of 5 runs). Merged head 9c721bf not measured.",
+   "pr": 4526,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "Icon displacement on 50 like/repost toggles",
+     "before": "0 of 50",
+     "after": "0 of 50"
+    },
+    {
+     "metric": "Home scroll 20 s: JS jank, ms",
+     "before": "27.6 [0–49.3]",
+     "after": "0 [0–27.2]"
+    }
+   ],
+   "reason": "Frames and jank showed no unfavourable gap, but the gate was refused on head 1abec1dd for two extra background reads during reposts (4 of 5 runs). Merged head 9c721bf not measured."
+  },
+  {
+   "merged_at": "2026-10-10T11:01:24+00:00",
+   "screen": "Avatar & game",
+   "what": "In the avatar editor, a tap on something that just moved no longer hits Reset, and thumbnails show at once.",
+   "metric": "Category change: JS jank, ms, median [min–max]",
+   "before": "133,4 ms [120,0–144,6]",
+   "after": "152,3 ms [145,4–161,9]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded JS",
+   "evidence_head": "a82cbe51a7572eeca4a9fa89879c3ae037ab9ce8",
+   "caveat": "Last proof (head a82cbe51) refused: jank higher in all five pairs. Merged head 13ab4f0 not measured. Moved-tap protection held 5/5.",
+   "pr": 4663,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "UI frames dropped, estimated",
+     "before": "1 [0–2]",
+     "after": "2 [2–5]"
+    }
+   ],
+   "reason": "Last proof (head a82cbe51) refused: jank higher in all five pairs. Merged head 13ab4f0 not measured. Moved-tap protection held 5/5."
+  },
+  {
+   "merged_at": "2026-10-09T17:03:27+00:00",
+   "screen": "Messages",
+   "what": "Opening and closing a conversation no longer re-runs the hidden map screen twice.",
+   "metric": "JS jank, Messages open/close path (ms, median)",
+   "before": "542.3",
+   "after": "448.7",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "10b973f5b9177ef1d946eb08f7b777f40eb30ce8",
+   "caveat": "Not formally refused, but the prover left the merge gate closed: the tab-visit path got worse (jank 454.5 -> 495.7 ms, overlapping ranges). Measured on 10b973f5 (only a web test differs); the merged head adds a main merge. 3 runs per side.",
+   "pr": 4627,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "Hidden map root invocations, Messages path",
+     "before": "5, 5, 5",
+     "after": "3, 3, 3"
+    },
+    {
+     "metric": "Hidden map root invocations, tab visit",
+     "before": "9, 9, 9",
+     "after": "6, 6, 6"
+    },
+    {
+     "metric": "JS jank, tab visit (ms, median)",
+     "before": "454.5",
+     "after": "495.7"
+    }
+   ],
+   "reason": "Not formally refused, but the prover left the merge gate closed: the tab-visit path got worse (jank 454.5 -> 495.7 ms, overlapping ranges). Measured on 10b973f5 (only a web test differs); the merged head adds a main merge. 3 runs per side."
+  },
+  {
+   "merged_at": "2026-10-09T18:28:08+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "The lit tab word and underline stay in sync with the page in the profile and Activity tab rows, including after theme changes.",
+   "metric": "JS jank entering Activity (ms, median, 8 s window)",
+   "before": "153.8",
+   "after": "168.7",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "87e4ff9acc7485303633e15b974f398cfdff73dd",
+   "caveat": "The tab-sync defect is fixed in all played runs, but jank and missed UI frames went above main's range; every proof left the smoothness gate unqualified. The merged head adds a main and Expo merge and was not measured.",
+   "pr": 4514,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "Estimated missed UI frames entering Activity (runs)",
+     "before": "5.0 / 6.0 / 5.0",
+     "after": "5.0 / 7.0 / 5.0"
+    },
+    {
+     "metric": "Long JS frames >50 ms entering Activity (runs)",
+     "before": "2.0 / 2.0 / 2.0",
+     "after": "2.0 / 2.0 / 2.0"
+    }
+   ],
+   "reason": "The tab-sync defect is fixed in all played runs, but jank and missed UI frames went above main's range; every proof left the smoothness gate unqualified. The merged head adds a main and Expo merge and was not measured."
+  },
+  {
+   "merged_at": "2026-10-10T04:17:03+00:00",
+   "screen": "Explore & search",
+   "what": "During fast taps and swipes between Explore tabs, an already seen page should no longer go white.",
+   "metric": "White frames on already-seen pages, 8 light bursts",
+   "before": "1",
+   "after": "2",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "6bd6d1702b8b717ccba004b6561d400625251bd2",
+   "caveat": "Prover verdict: gain not shown, do not merge on this proof. On the earlier head 4a5b2285 the head showed 16 white frames versus 8 on main; the defect rarely reproduced on main in the final run.",
+   "pr": 4676,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "White frames on already-seen pages, earlier head 4a5b2285",
+     "before": "8",
+     "after": "16"
+    },
+    {
+     "metric": "JS jank, Explore results tabs (ms, median)",
+     "before": "106 [93–127]",
+     "after": "129 [54–134]"
+    }
+   ],
+   "reason": "Prover verdict: gain not shown, do not merge on this proof. On the earlier head 4a5b2285 the head showed 16 white frames versus 8 on main; the defect rarely reproduced on main in the final run."
+  },
+  {
+   "merged_at": "2026-10-10T05:02:14+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "In dark theme, no light background flashes between screens when opening and going back from a Take or a public profile.",
+   "metric": "Visible light-background frames, dark theme, Take open + back (10 cycles)",
+   "before": "182",
+   "after": "0",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "e2502dd63c5c4ccc3450acdd56c473f0c53228ec",
+   "caveat": "The flash is gone (370 -> 0 frames overall), but the gate was refused: recorder limited to ~30 fps and missed UI frames rose on profile swipes (73 -> 80). Measured on e2502dd6; the merged head only adds tests.",
+   "pr": 4681,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "Visible light-background frames, public profile open + back",
+     "before": "188",
+     "after": "0"
+    },
+    {
+     "metric": "Estimated missed UI frames, profile tab swipes (dark)",
+     "before": "73",
+     "after": "80"
+    }
+   ],
+   "reason": "The flash is gone (370 -> 0 frames overall), but the gate was refused: recorder limited to ~30 fps and missed UI frames rose on profile swipes (73 -> 80). Measured on e2502dd6; the merged head only adds tests."
+  },
+  {
+   "merged_at": "2026-10-10T07:08:38+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "After choosing Light in the appearance sheet, the first tap on Home opens Home and stray touches no longer leak through.",
+   "metric": "Home opens at the first tap after choosing Light",
+   "before": "0/5",
+   "after": "5/5",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "dc9ce11003017aa00ba6d4b69ff43433e0c5017c",
+   "caveat": "Functional fix proved 5/5, but the smoothness gate was refused on the Light -> Home sequence (JS jank +80,1 ms, +19,6 %); the prover notes main does not navigate at all there. 3 runs per side.",
+   "pr": 4668,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "JS jank, Light -> Home (ms, median)",
+     "before": "408,4",
+     "after": "488,5"
+    },
+    {
+     "metric": "Estimated missed UI frames, Light -> Home (median)",
+     "before": "2,0",
+     "after": "4,0"
+    },
+    {
+     "metric": "Light kept",
+     "before": "0/5",
+     "after": "5/5"
+    }
+   ],
+   "reason": "Functional fix proved 5/5, but the smoothness gate was refused on the Light -> Home sequence (JS jank +80,1 ms, +19,6 %); the prover notes main does not navigate at all there. 3 runs per side."
+  },
+  {
+   "merged_at": "2026-10-10T11:29:17+00:00",
+   "screen": "Home feed",
+   "what": "Sharing a Take raises its share counter at once in the feed and profiles.",
+   "metric": "Long JS frames >50 ms after tapping Copy link in the feed (median)",
+   "before": "0",
+   "after": "2",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "8e3690fe7997c32063fb54863ccff5f957d08141",
+   "caveat": "Refused at the smoothness gate, narrowly. An earlier proof on d6aa41c4 was refused because the Friends root redrew; that is fixed here (0 invocations, like main). 3 pairs.",
+   "pr": 4524,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "JS jank after Copy link (ms, median)",
+     "before": "147,2",
+     "after": "104,9"
+    },
+    {
+     "metric": "Estimated missed UI frames (runs)",
+     "before": "6, 0, 5",
+     "after": "0, 0, 0"
+    },
+    {
+     "metric": "Friends root invocations",
+     "before": "0, 0, 0",
+     "after": "0, 0, 0"
+    }
+   ],
+   "reason": "Refused at the smoothness gate, narrowly. An earlier proof on d6aa41c4 was refused because the Friends root redrew; that is fixed here (0 invocations, like main). 3 pairs."
+  },
+  {
+   "merged_at": "2026-10-09T19:08:11+00:00",
+   "screen": "Profile",
+   "what": "The own Profile opens at once with its header in place, no loader or skeleton on first reads, neighbor tabs read only after the shown tab is drawn.",
+   "metric": "First content after the Profile tap, cold launch, tap at 4 s (ms, median [min-max])",
+   "before": "1823.0 [1797.6–1832.5]",
+   "after": "1823.6 [1757.6–1934.8]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "1636e5de0fd3fcb04a6a9b934a903b76b67cf283",
+   "caveat": "Last proof verdict: absence of regression not validated (long JS frames per pair 3->2, 2->8, 2->3). It was taken on an earlier head; product code changed after it and the merged head was never measured. 3 pairs only.",
+   "pr": 4512,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "JS jank, cumulative (ms)",
+     "before": "603.6 [506.4–607.6]",
+     "after": "540.6 [511.5–1180.7]"
+    },
+    {
+     "metric": "Long JS frames > 50 ms",
+     "before": "2 [2–3]",
+     "after": "3 [2–8]"
+    },
+    {
+     "metric": "Product HTTP requests",
+     "before": "8 [6–8]",
+     "after": "4 [2–6]"
+    }
+   ],
+   "reason": "Last proof verdict: absence of regression not validated (long JS frames per pair 3->2, 2->8, 2->3). It was taken on an earlier head; product code changed after it and the merged head was never measured. 3 pairs only."
+  },
+  {
+   "merged_at": "2026-10-09T20:44:53+00:00",
+   "screen": "Tab bar & navigation",
+   "what": "The tab haptic tick fires on the UI thread when the page arrives, and haptics are ready before the first tap after the splash.",
+   "metric": "Long JS frames > 50 ms in the first 15 s after launch (median)",
+   "before": "9",
+   "after": "8",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build",
+   "evidence_head": "7bc16aeb3bdad27f184bc0dafbd0428a91887f14",
+   "caveat": "Last proof did not validate the gate because of one extra request (GET /message-requests 1/0/0 vs 0/0/0); an earlier proof was refused for an extra Home render in bursts. Measured on an earlier head; the merged head then took main's bar and pager code. Haptic timing itself is not measurable on a simulator.",
+   "pr": 4481,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "JS jank at launch, fixed 15 s window (ms, median)",
+     "before": "1242,39",
+     "after": "1230,32"
+    },
+    {
+     "metric": "JS jank over the full kit (ms, median)",
+     "before": "2229,13",
+     "after": "2157,31"
+    },
+    {
+     "metric": "NearbyScreen renders per burst",
+     "before": "12",
+     "after": "8"
+    }
+   ],
+   "reason": "Last proof did not validate the gate because of one extra request (GET /message-requests 1/0/0 vs 0/0/0); an earlier proof was refused for an extra Home render in bursts. Measured on an earlier head; the merged head then took main's bar and pager code. Haptic timing itself is not measurable on a simulator."
+  },
+  {
+   "merged_at": "2026-10-09T17:49:36+00:00",
+   "screen": "Open Take",
+   "what": "The chart and results follow the vote right away without an extra re-render or extra history read.",
+   "metric": "JS jank, refused vote then close and reopen (ms, median [min–max])",
+   "before": "886.0 [848.2–895.2]",
+   "after": "792.5 [762.2–866.8]",
+   "device": "iPhone 16 Pro simulator, iOS 26.4 (Limrun), Release build with embedded Hermes JS, same old native binary for both sides",
+   "evidence_head": "21c76ba9b39f231d54f4e84dc9d52dcd35256e84",
+   "caveat": "Last proof on the merged head says NOT VALIDATED: on reopen after a refused vote the old choice stays selected (5/5), and estimated UI missed frames rise. 5 runs (refusal) and 2 runs (No -> Yes).",
+   "pr": 4527,
+   "status": "refused",
+   "verdict": "Last device measurement refused.",
+   "measurements": [
+    {
+     "metric": "UI missed frames estimated, refused vote",
+     "before": "3 [3–5]",
+     "after": "5 [4–9]"
+    },
+    {
+     "metric": "JS jank, No -> Yes accepted vote (ms)",
+     "before": "420,6 [410,4–430,7]",
+     "after": "183,8 [182,1–185,5]"
+    },
+    {
+     "metric": "Take root renders, No -> Yes",
+     "before": "7",
+     "after": "3"
+    }
+   ],
+   "reason": "Last proof on the merged head says NOT VALIDATED: on reopen after a refused vote the old choice stays selected (5/5), and estimated UI missed frames rise. 5 runs (refusal) and 2 runs (No -> Yes)."
+  }
+ ],
+ "doubts": [
+  {
+   "pr": 4339,
+   "reason": "Jev keep/drop at 0.5 exactly; kept because a permanently blank thread is a blank-frame case."
+  },
+  {
+   "pr": 4703,
+   "reason": "Mostly a privacy fix; kept on Jev 0.6 because rows now update on screen at once."
+  },
+  {
+   "pr": 4716,
+   "reason": "Kept on Jev 0.55; it is a never-drawn stats row, close to data correctness."
+  },
+  {
+   "pr": 4541,
+   "reason": "Kept on Jev 0.52; mainly a Top 8 data race, though measured with jank numbers."
+  },
+  {
+   "pr": 4521,
+   "reason": "Refusal on 5535374 partly retracted by a later check on the same head; Jev 0.41 said still refused."
+  },
+  {
+   "pr": 4693,
+   "reason": "Numbers come from the earlier pull request comparison, not this revert head."
+  },
+  {
+   "pr": 4542,
+   "reason": "Earlier head had a big cold-open gain (15143 -> 4706 ms) but the last proof is refused."
+  },
+  {
+   "pr": 4334,
+   "reason": "Stray keyboard is more a bug than motion; kept on Jev 0.8."
+  },
+  {
+   "pr": 4456,
+   "reason": "Prefetch behind a default-off flag family; user effect unproved."
+  },
+  {
+   "pr": 4626,
+   "reason": "Kept on Jev 0.6, but it is mostly error handling; device run did not exercise the fix."
+  },
+  {
+   "pr": 4678,
+   "reason": "Kept on Jev 0.52, borderline (error recovery, not motion)."
+  },
+  {
+   "pr": 4697,
+   "reason": "Titled as tests but fixes app behavior; kept on Jev 0.6."
+  },
+  {
+   "pr": 4627,
+   "reason": "Status set to refused on Jev 0.4 (mixed numbers, gate left closed) though no explicit refusal."
+  },
+  {
+   "pr": 4479,
+   "reason": "Measurement on an earlier build whose SHA is not stated."
+  },
+  {
+   "pr": 4742,
+   "reason": "Launch improvement claimed from code; not measured (4744 measured the sibling case)."
+  },
+  {
+   "pr": 4512,
+   "reason": "Last proof says absence of regression not validated, taken on an earlier head; merged head never measured. Marked refused."
+  },
+  {
+   "pr": 4481,
+   "reason": "Last proof blocked only by one extra HTTP read while frames improved; Jev split 0.64 refused vs 0.35 refused_then_fixed."
+  },
+  {
+   "pr": 4540,
+   "reason": "Refused cost (+114 ms public first content) was accepted, not fixed; Jev split 0.50/0.49 between refused_then_fixed and measured."
+  },
+  {
+   "pr": 4536,
+   "reason": "Main felt metric (image wake-ups) is a counter; JS jank on Friends rose 607 -> 715 ms within spread."
+  },
+  {
+   "pr": 4637,
+   "reason": "Dropped per Jev (0.2) although it removes background redraws; author says nothing changes on screen."
+  },
+  {
+   "pr": 4458,
+   "reason": "Dropped per Jev (0.25): fewer background reads, no felt change claimed."
+  },
+  {
+   "pr": 4516,
+   "reason": "proof on earlier head is mixed (launch first content +181 ms, non-regression not certified); Jev p=0.33 favourable, kept as measured with caveat"
+  },
+  {
+   "pr": 4472,
+   "reason": "same head has one 'gate not lifted' proof and one favourable follow-up; Jev p=0.50"
+  },
+  {
+   "pr": 4673,
+   "reason": "only acts behind bounded-prefetch capability; Jev keep p=0.63"
+  },
+  {
+   "pr": 4332,
+   "reason": "banner placement more than motion; Jev keep p=0.66"
+  },
+  {
+   "pr": 4642,
+   "reason": "dropped on Jev p=0.44; proof shows no gain and no regression"
+  },
+  {
+   "pr": 4677,
+   "reason": "fix not shown on device (main already passes); Jev improvement p=0.04"
+  },
+  {
+   "pr": 4466,
+   "reason": "after value is qualitative only"
+  },
+  {
+   "pr": 4540,
+   "reason": "Kept as measured: the last proof is favourable, but an earlier +114 ms delay before the cold public profile appears was accepted as a trade-off, not fixed."
+  },
+  {
+   "pr": 4693,
+   "reason": "The 174 to 0 black frames compare main with the earlier pager rule against this change; the numbers were posted on the earlier pull request."
+  }
+ ]
+}
