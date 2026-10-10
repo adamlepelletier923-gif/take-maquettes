@@ -1,21 +1,93 @@
 {
- "majLe": "2026-10-11T02:49+09:00",
- "heure": "02:49",
+ "majLe": "2026-10-11T03:53+09:00",
+ "heure": "03:56",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 329,
-  "depuisDernierTableau": 134,
+  "fusionneesDepuis8Octobre": 341,
+  "depuisDernierTableau": 146,
   "enCours": 11,
-  "app": 140,
-  "siteEtAdmin": 62,
-  "serveur": 62,
-  "outilsEtDocs": 65
+  "app": 146,
+  "siteEtAdmin": 63,
+  "serveur": 65,
+  "outilsEtDocs": 67
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Four more fixes are merged: a Take removed by moderation leaves the screen at once, a profile refresh updates its counts, a Top 8 tap opens the profile even on a slow server, and the signed-in feed shows the Take account's Takes again. The Replicas machines hit their usage limit for twenty minutes; they were restarted on Opus, with Sonnet for really simple tasks only."
+  "texte": "Five more fixes are merged: profile links offline, the Notifications and Activity tab rows (measured on a device, as good as main), and three test and method changes. The second re-read found three new problems; all are being fixed before the build. A reviewer also caught a privacy bug inside one fix before it was merged: a vote could go public after you chose anonymous. It stays out until it is fixed and reviewed again."
  },
  "depuis": [
+  {
+   "heure": "03:49",
+   "pr": 4749,
+   "texte": "test(web): keep the notification-preferences receipt and first browser error in staging failure evidence",
+   "build196": false
+  },
+  {
+   "heure": "03:46",
+   "pr": 4724,
+   "texte": "Method: each code change is mapped to the tests that guard it, and the anti-regression method is written down for every agent.",
+   "build196": true
+  },
+  {
+   "heure": "03:45",
+   "pr": 4722,
+   "texte": "Test only: product rules (anonymity, hidden Takes, the same Take everywhere, refreshes, navigation) are now checked by model-based tests on every pull request.",
+   "build196": true
+  },
+  {
+   "heure": "03:45",
+   "pr": 4748,
+   "texte": "Test only: a flaky server test on like counts is now deterministic.",
+   "build196": true
+  },
+  {
+   "heure": "03:44",
+   "pr": 4672,
+   "texte": "Notifications and Activity: the underline now lands under the tab in the same frame as the page, 10 times out of 10 on a device, like main, with no fade.",
+   "build196": true
+  },
+  {
+   "heure": "03:42",
+   "pr": 4741,
+   "texte": "A link to a profile no longer stays dead offline and then opens the profile by surprise: past 300 ms it navigates, and the profile fills in when the network answers.",
+   "build196": true
+  },
+  {
+   "heure": "03:08",
+   "pr": 4745,
+   "texte": "Fold the API Worker's plain-text settings into one binding, and cap every Worker at 110 text bindings",
+   "build196": false
+  },
+  {
+   "heure": "03:08",
+   "pr": 4746,
+   "texte": "Span app hops only when slow or failed, aggregate the rest on the request line",
+   "build196": false
+  },
+  {
+   "heure": "03:01",
+   "pr": 4732,
+   "texte": "Explore: one rule decides which pager cell holds each page",
+   "build196": false
+  },
+  {
+   "heure": "02:58",
+   "pr": 4742,
+   "texte": "TAK-1057 : un Take ouvert au lancement (notification, lien) compte comme le premier dessin",
+   "build196": false
+  },
+  {
+   "heure": "02:55",
+   "pr": 4739,
+   "texte": "TAK-1053 : toucher une conversation l'ouvre sans attendre le réseau, même hors ligne",
+   "build196": false
+  },
+  {
+   "heure": "02:54",
+   "pr": 4738,
+   "texte": "TAK-1052 : un tirer-pour-rafraîchir de Messages finit sur le compte de demandes du serveur",
+   "build196": false
+  },
   {
    "heure": "02:48",
    "pr": 4734,
@@ -852,8 +924,36 @@
    "statut": "review",
    "sujet": "The last regressions from the full re-read since build 195",
    "pr": 0,
-   "ouEnEst": "Three are merged (moderation, profile refresh, Top 8 on a slow server). The others are fixed and in review: profile links offline, launching from a notification or a link, the Messages Requests entry, opening a conversation offline, the unread badge over 50, a vote sent anonymous from a stale copy.",
-   "reste": "Two reviews and CI on each, then merge."
+   "ouEnEst": "Merged this hour: profile links offline. Still in review: the unread badge (a reviewer asked for two missing tests, being added), the launch logo on a profile or conversation (reviewed at zero, a device measurement is running), and a vote sent anonymous from a stale copy.",
+   "reste": "Two reviews at zero, CI, and a measurement where needed, then merge."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "A vote could go public after you chose anonymous",
+   "pr": 4743,
+   "ouEnEst": "A reviewer caught it in the fix itself before merging: an old copy of the feed coming back late could flip the vote. The Codex is fixing it with tests in both directions, online and offline.",
+   "reste": "Two new reviews and a device measurement of the vote, then merge."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Explore: an empty piece of screen when result tabs change during a search",
+   "pr": 4750,
+   "ouEnEst": "Found by the second re-read in the native fix for black pages. Fixed with a test that was red before; two reviews and a device measurement are running.",
+   "reste": "Merge if nothing gets worse; it is native, so it ships in the new binary."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Server traces used by our diagnostic tools",
+   "pr": 0,
+   "ouEnEst": "Two small mistakes found by the second re-read: a slow step overwrites the connection info, and staging traces read about 0 ms. No effect for users.",
+   "reste": "Fixed before the build, like every problem found."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Website: our Takes still signed “Take”",
+   "pr": 4736,
+   "ouEnEst": "One review defect left: ranked search results still sign a Take of the official account. The Codex is fixing it with a server test.",
+   "reste": "Two reviews, then merge before the staging API redeploy."
   },
   {
    "statut": "owner",
@@ -863,77 +963,49 @@
    "reste": "Its owner restarts it; the app needs no change."
   },
   {
-   "statut": "fixing",
-   "sujet": "Website: our Takes still signed “Take”",
-   "pr": 4736,
-   "ouEnEst": "Fixed on the website feeds, the Take page and the share image, with tests; its CI found one failing check, being fixed.",
-   "reste": "Green CI, two reviews, then merge before the staging API redeploy."
-  },
-  {
-   "statut": "measuring",
+   "statut": "review",
    "sujet": "Messages: blank screen after a cancelled swipe back",
    "pr": 4662,
-   "ouEnEst": "Two reviews at zero and CI green on its final version.",
-   "reste": "A device remeasure of the Back, then merge."
+   "ouEnEst": "Main was merged back in (one conflict with the profile link fix, resolved); two short reviews are running, and the device remeasure.",
+   "reste": "Merge when both are clean."
   },
   {
    "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "Its review defects are fixed and main is merged back in; reviewed at zero.",
+   "ouEnEst": "Reviewed at zero, CI green; native.",
    "reste": "The device measurement, then merge."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Notifications and Activity tab rows",
-   "pr": 4672,
-   "ouEnEst": "Activity is fixed and measured. In Notifications the underline still lands after the page 5 times out of 10.",
-   "reste": "Fix Notifications, merge main, remeasure."
-  },
-  {
-   "statut": "review",
-   "sujet": "The anti-regression method, for every agent",
-   "pr": 4724,
-   "ouEnEst": "One last review defect is being fixed, here and in the product rule tests (4722).",
-   "reste": "Reviews; the CI guard merges after the build."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Explore: black pages during fast tab switches",
-   "pr": 4732,
-   "ouEnEst": "A native fix, reviewed at zero twice, CI green.",
-   "reste": "Device measurement against main; it goes in only if nothing gets worse."
   },
   {
    "statut": "later",
    "sujet": "Composer: the refresh waits until it is closed",
    "pr": 4565,
-   "ouEnEst": "Remeasured: sound is now as smooth as main, but publishing a photo is still jerkier (211 ms against 172).",
-   "reste": "Left out of build 196, as you decided when it is worse."
+   "ouEnEst": "Worked on in parallel: the missing tests are added, with no app change; two reviews and the photo measurement are running.",
+   "reste": "Joins build 196 only if it is as smooth as main."
   },
   {
    "statut": "later",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "Left out of build 196 as you decided: it made the feed scroll jerkier.",
-   "reste": "Worked on in parallel."
+   "ouEnEst": "Worked on in parallel: a Claude agent on the Mac took it over, and a Replicas machine is measuring four diagnostic variants.",
+   "reste": "Joins build 196 only if it is as smooth as main."
   },
   {
    "statut": "later",
    "sujet": "Neighbouring pages load ahead again",
    "pr": 4643,
-   "ouEnEst": "Left out of build 196 as you decided: it changes nothing while its setting stays off.",
+   "ouEnEst": "Worked on in parallel on Replicas: it changes nothing while its setting stays off.",
    "reste": "Later."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator on staging, three Claude agents reviewing and fixing the last regressions, and two Codex on the website and a flaky server test.",
-  "On Replicas: reviewers on every fix and device measurements for the Messages Back, the profile swipe, the tab rows and Explore, on Opus."
+  "Here on the Mac: me, your emulator on staging, three Claude agents (tests for the unread badge, the Messages Back merge, the map) and two Codex (the website search signature, the anonymous vote).",
+  "On Replicas: reviewers on every fix, and device measurements for the launch logo, the Explore pager fix, the composer, the map, the Messages Back and the profile swipe, on Opus."
  ],
  "etapes": [
-  "Merge the last regression fixes as their reviews and CI land, and the website fix before the staging API redeploy.",
-  "Merge the measured fixes: the Messages Back, the profile swipe (native), the tab rows, and Explore if it is better.",
-  "A second re-read, only of what changed after the first one, on the final main.",
+  "Merge the remaining fixes as their reviews, CI and measurements land: the unread badge, the anonymous vote, the launch logo, the Explore pager fix, the Messages Back, the profile swipe.",
+  "Fix the server trace mistakes and the website search signature, then merge the website fix before the staging API redeploy.",
+  "A last re-read of what changed after the second one, on the final main.",
   "Full test loop on the final main with a staging test account, a last tour, then redeploy the staging API. Build 195 stops working on staging at that moment, as we decided.",
   "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
  ],
@@ -942,6 +1014,42 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4722,
+     "titre": "TAK-1037 : invariants produit testés par modèle (fil, Take ouvert, Notifications, carte, profil)",
+     "fusion": "Oct 11, 03:45",
+     "build196": true
+    },
+    {
+     "pr": 4672,
+     "titre": "TAK-948 : rangées des Notifications et de l'Activité, dernier geste suivi, sans fondu",
+     "fusion": "Oct 11, 03:44",
+     "build196": true
+    },
+    {
+     "pr": 4741,
+     "titre": "TAK-1050 : un lien vers un profil ne reste plus mort hors ligne, puis ouvert par surprise",
+     "fusion": "Oct 11, 03:42",
+     "build196": true
+    },
+    {
+     "pr": 4742,
+     "titre": "TAK-1057 : un Take ouvert au lancement (notification, lien) compte comme le premier dessin",
+     "fusion": "Oct 11, 02:58",
+     "build196": false
+    },
+    {
+     "pr": 4739,
+     "titre": "TAK-1053 : toucher une conversation l'ouvre sans attendre le réseau, même hors ligne",
+     "fusion": "Oct 11, 02:55",
+     "build196": false
+    },
+    {
+     "pr": 4738,
+     "titre": "TAK-1052 : un tirer-pour-rafraîchir de Messages finit sur le compte de demandes du serveur",
+     "fusion": "Oct 11, 02:54",
+     "build196": false
+    },
     {
      "pr": 4747,
      "titre": "TAK-1051 : sur un serveur lent, toucher une personne du Top 8 ouvre son profil au plus tard en 300 ms",
@@ -1789,6 +1897,12 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 4749,
+     "titre": "test(web): keep the notification-preferences receipt and first browser error in staging failure evidence",
+     "fusion": "Oct 11, 03:49",
+     "build196": false
+    },
+    {
      "pr": 4729,
      "titre": "ci(api-worker): staging searches places through Take's maps API by default (S96)",
      "fusion": "Oct 11, 02:19",
@@ -2167,6 +2281,24 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4748,
+     "titre": "TAK-1062 : rendre déterministe la contention des applicateurs de likes",
+     "fusion": "Oct 11, 03:45",
+     "build196": true
+    },
+    {
+     "pr": 4745,
+     "titre": "Fold the API Worker's plain-text settings into one binding, and cap every Worker at 110 text bindings",
+     "fusion": "Oct 11, 03:08",
+     "build196": false
+    },
+    {
+     "pr": 4746,
+     "titre": "Span app hops only when slow or failed, aggregate the rest on the request line",
+     "fusion": "Oct 11, 03:08",
+     "build196": false
+    },
+    {
      "pr": 4734,
      "titre": "TAK-1045 : le compte officiel n'est jamais un ami dans le fil Takes",
      "fusion": "Oct 11, 02:48",
@@ -2544,6 +2676,18 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4724,
+     "titre": "The anti-regression method, written into the repository",
+     "fusion": "Oct 11, 03:46",
+     "build196": true
+    },
+    {
+     "pr": 4732,
+     "titre": "Explore: one rule decides which pager cell holds each page",
+     "fusion": "Oct 11, 03:01",
+     "build196": false
+    },
     {
      "pr": 4733,
      "titre": "VoiceOver announces only the shown tab when Your activity reopens",
