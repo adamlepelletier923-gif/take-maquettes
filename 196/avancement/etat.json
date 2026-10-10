@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-11T01:20+09:00",
- "heure": "01:20",
+ "majLe": "2026-10-11T01:56+09:00",
+ "heure": "01:56",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 323,
-  "depuisDernierTableau": 128,
-  "enCours": 13,
+  "fusionneesDepuis8Octobre": 324,
+  "depuisDernierTableau": 129,
+  "enCours": 15,
   "app": 137,
   "siteEtAdmin": 61,
   "serveur": 61,
-  "outilsEtDocs": 64
+  "outilsEtDocs": 65
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Three more fixes are merged: our own Takes sign nothing anywhere in the app, Messages Cancel brings back the Requests entry, and text stays readable at the largest size. Your emulator is back on staging with the latest main. Two server problems found tonight: the curator has not published on staging since October 4, and signed in, the feed shows none of its Takes."
+  "texte": "VoiceOver is merged: reopening Your activity announces only the tab shown, proven 22 times out of 22 on a device. A full re-read of everything changed since build 195 found seven more regressions; all seven are being fixed before the build. The Mac now runs three Claude agents and two Codex, and a new guard stops them from sitting idle."
  },
  "depuis": [
+  {
+   "heure": "01:47",
+   "pr": 4733,
+   "texte": "VoiceOver: reopening Your activity announces only the tab shown, proven 22 times out of 22 on a device. The cause was already fixed in main, so the big native change it replaces is no longer needed.",
+   "build196": true
+  },
   {
    "heure": "01:19",
    "pr": 4723,
@@ -814,80 +820,94 @@
  "enCours": [
   {
    "statut": "fixing",
-   "sujet": "Eighteen regressions found by reading everything changed since build 195",
+   "sujet": "Seven more regressions found by a full re-read since build 195",
    "pr": 0,
-   "ouEnEst": "Almost all are fixed and merged now, including tonight's: our Takes with no author, Messages Cancel, the largest text size, Notifications after a block.",
-   "reste": "The last ones are being measured, with two reviews and a check before the build."
+   "ouEnEst": "Profile counters after a refresh, Top 8 taps on a slow server, profile links offline, the Messages Requests entry, opening a conversation offline, a removed Take after a vote, and launching from a notification.",
+   "reste": "All seven are being fixed now, on the Mac and on Replicas, each with a test that fails before the fix."
+  },
+  {
+   "statut": "review",
+   "sujet": "A Take removed by moderation after a vote stayed on screen",
+   "pr": 4735,
+   "ouEnEst": "One of the seven regressions, fixed with a test: a blocked Take now leaves the screen at once.",
+   "reste": "Two reviews and CI, then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Product rules tested by a model of user actions",
+   "pr": 4722,
+   "ouEnEst": "Blocking, anonymity, offline, refresh, share and repost are replayed in random orders, and the product rules are checked after each step. Its review defects are fixed.",
+   "reste": "Reviews, then merge."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Six doubtful cases from the same re-read",
+   "pr": 0,
+   "ouEnEst": "The unread badge over 50, live shares, a vote sent anonymous from a stale copy, the block rate limit, vote traces: each is checked against the change that caused it.",
+   "reste": "Fixed if it is a regression; otherwise the reason it is intended is written down."
   },
   {
    "statut": "owner",
    "sujet": "The curator stopped publishing on staging on October 4",
    "pr": 0,
-   "ouEnEst": "Found tonight: its newest Take on staging is 7 days old, and its deploys since then did not restart it. Its owner has the ticket; nothing touched on our side.",
+   "ouEnEst": "Its newest Take on staging is 7 days old, and its deploys since then did not restart it. Its owner has the ticket; nothing touched on our side.",
    "reste": "Its owner restarts it; the app needs no change."
   },
   {
-   "statut": "claude",
+   "statut": "review",
    "sujet": "Signed in, the Takes feed shows no curator Takes",
-   "pr": 0,
-   "ouEnEst": "Without an account the curator's old Takes show; signed in, none. A Claude on the Mac is reading the feed's server code to find why.",
-   "reste": "Cause with proof, then a fix if the app or server needs one."
+   "pr": 4734,
+   "ouEnEst": "Cause found: following the Take account made the feed treat its Takes like a friend's, kept only 7 days. A server fix is open, with its test.",
+   "reste": "Two reviews, then it ships with the staging API redeploy."
   },
   {
    "statut": "later",
    "sujet": "Website: our Takes still signed “Take”",
    "pr": 0,
-   "ouEnEst": "The app is fixed. The website feeds and Take page still show the name; website work goes to a Codex.",
-   "reste": "Website fix, separate from the app build."
+   "ouEnEst": "The app is fixed. A Codex on the Mac is fixing the website feeds, the Take page and the share image.",
+   "reste": "Website and server fix, separate from the app build."
   },
   {
    "statut": "fixing",
    "sujet": "Messages: blank screen after a cancelled swipe back",
    "pr": 4662,
-   "ouEnEst": "Opening a conversation no longer costs more than main. The Back still cost about 5 percent more; a fix is pushed.",
-   "reste": "Reviews and a device remeasure."
+   "ouEnEst": "The Back costs no more than main, and opening Messages cold from a notification keeps its Back. Main moved, so it must be merged back in.",
+   "reste": "Merge main, then a device remeasure."
   },
   {
    "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "The native fix makes taps work again right after the profile closes. A new version was just pushed.",
-   "reste": "Reviews and device measurement."
+   "ouEnEst": "Both review defects are fixed: a missing test, and a second finger during the swipe. Main moved, so it must be merged back in.",
+   "reste": "Merge main, a second review and the device measurement."
   },
   {
    "statut": "fixing",
    "sujet": "Notifications and Activity tab rows",
    "pr": 4672,
-   "ouEnEst": "Measured: the few slow frames on Votes come from the underline jumping in one frame. Making it slide late removes them, but your rule is that it moves with the page.",
-   "reste": "A fix that keeps the underline with the page, then a remeasure."
+   "ouEnEst": "Activity is fixed and measured: no slow frame on Votes, and the underline lands with the page 10 times out of 10. In Notifications the underline still lands after the page 5 times out of 10.",
+   "reste": "Fix Notifications, merge main, remeasure."
   },
   {
    "statut": "review",
    "sujet": "The anti-regression method, for every agent",
    "pr": 4724,
-   "ouEnEst": "Written into the repository with a rule for every fluidity change. The tests of product invariants and a CI guard follow.",
+   "ouEnEst": "The review defects are fixed here and in the product invariant tests.",
    "reste": "Reviews; the CI guard merges after the build."
   },
   {
-   "statut": "later",
+   "statut": "measuring",
    "sujet": "Explore: black pages during fast tab switches",
    "pr": 4732,
-   "ouEnEst": "A new native fix, reviewed at zero twice, found the real cause.",
-   "reste": "Device measurement; it goes in only if nothing gets worse."
-  },
-  {
-   "statut": "later",
-   "sujet": "VoiceOver: the selected tab after reopening Your activity",
-   "pr": 4733,
-   "ouEnEst": "The cause was already fixed in main by another change; a test and a flow now prove it.",
-   "reste": "Device check with VoiceOver, then the old fix is closed."
+   "ouEnEst": "A native fix, reviewed at zero twice, CI green.",
+   "reste": "Device measurement against main; it goes in only if nothing gets worse."
   },
   {
    "statut": "later",
    "sujet": "Composer: the refresh waits until it is closed",
    "pr": 4565,
-   "ouEnEst": "A new version is being measured; it only goes in if publishing a photo is as smooth as main.",
-   "reste": "Device measurement, in parallel."
+   "ouEnEst": "Measured: publishing a photo is 20 percent jerkier and a sound 41 percent; it redraws every visible row twice.",
+   "reste": "Left out of build 196, as you decided when it is worse."
   },
   {
    "statut": "later",
@@ -905,13 +925,14 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator on staging, and three Claude agents: the signed-in feed, the tab rows, and the composer.",
-  "On Replicas: reviewers on every fix, device measurements for the tab rows, the profile swipe, Explore, the composer and VoiceOver."
+  "Here on the Mac: me, your emulator on staging, three Claude agents fixing regressions and settling doubtful cases, and two Codex on the website and the server.",
+  "On Replicas: reviewers on every fix, device measurements for the tab rows, the profile swipe and Explore, and the fixes for the profile and vote regressions."
  ],
  "etapes": [
-  "Merge the last fixes as their reviews and measurements land: the profile swipe (native), the tab rows, the Messages Back.",
-  "A new full review of what changed since build 195, on the final main, before the build: the step that caught these regressions is now a rule.",
-  "Full test loop on the final main with a staging test account, a last tour, then redeploy the staging API on that commit. Build 195 stops working on staging at that moment, as we decided.",
+  "Fix the seven regressions from the full re-read and settle the six doubtful cases, each with a test and two reviews.",
+  "Merge the last fixes as their reviews and measurements land: the profile swipe (native), the tab rows, the Messages Back, and Explore if it is better.",
+  "A second re-read, only of what changed after this one, on the final main.",
+  "Full test loop on the final main with a staging test account, a last tour, then redeploy the staging API with the signed-in feed fix. Build 195 stops working on staging at that moment, as we decided.",
   "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
  ],
  "fait": [
@@ -2491,6 +2512,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4733,
+     "titre": "VoiceOver announces only the shown tab when Your activity reopens",
+     "fusion": "Oct 11, 01:47",
+     "build196": true
+    },
     {
      "pr": 4699,
      "titre": "The React Doctor CI gate judges the right diff again",
