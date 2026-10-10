@@ -1,21 +1,45 @@
 {
- "majLe": "2026-10-10T23:11+09:00",
- "heure": "23:11",
+ "majLe": "2026-10-10T23:33+09:00",
+ "heure": "23:33",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 310,
-  "depuisDernierTableau": 115,
-  "enCours": 21,
-  "app": 126,
+  "fusionneesDepuis8Octobre": 314,
+  "depuisDernierTableau": 119,
+  "enCours": 19,
+  "app": 129,
   "siteEtAdmin": 61,
   "serveur": 61,
-  "outilsEtDocs": 62
+  "outilsEtDocs": 63
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Your emulator showed no Takes because it was plugged into the Mac's local test server for the test loop: it is back on staging, with the curator's Takes. Four more regression fixes are merged (three launch races and the map flight), and the anti-regression method is becoming a rule for every agent in the repository, with a CI guard."
+  "texte": "Your rule that our Takes sign nothing is back in a fix: the guest feed showed the curator's Takes signed “Take” with the logo. Three more fixes are merged (your profile photo, the guest feed during a late config, and the cold start tests), and the Take account is kept until you decide, because the curator publishes through it."
  },
  "depuis": [
+  {
+   "heure": "23:31",
+   "pr": 4719,
+   "texte": "Your profile photo changes at once, and tabs in error reload",
+   "build196": true
+  },
+  {
+   "heure": "23:26",
+   "pr": 4712,
+   "texte": "A late config no longer swaps the guest feed's rows for a loader",
+   "build196": true
+  },
+  {
+   "heure": "23:19",
+   "pr": 4725,
+   "texte": "Rank what each busy staging Worker stores per invocation",
+   "build196": false
+  },
+  {
+   "heure": "23:17",
+   "pr": 4697,
+   "texte": "Cold start tests for the six tab roots, and Explore topics keeping their order",
+   "build196": true
+  },
   {
    "heure": "23:07",
    "pr": 4715,
@@ -734,71 +758,64 @@
    "statut": "fixing",
    "sujet": "Eighteen regressions found by reading everything changed since build 195",
    "pr": 0,
-   "ouEnEst": "More than half are now fixed and merged: the anonymous vote, the sheets, sharing during a refresh, the map pins, the official profile, the notification settings, the map flight and three launch races.",
-   "reste": "Every remaining one has a fix in review or being corrected, with two reviews and a check before the build."
+   "ouEnEst": "Most are now fixed and merged: the anonymous vote, the sheets, sharing during a refresh, the map pins, the official profile, the notification settings, the map flight, your profile photo and four launch races.",
+   "reste": "The last ones have a fix in review or being corrected, with two reviews and a check before the build."
   },
   {
    "statut": "fixing",
+   "sujet": "Our Takes signed “Take” with the logo",
+   "pr": 4728,
+   "ouEnEst": "Your rule is back: Takes from the app and the curator sign nothing, in the guest feed, Explore results, the open Take and shares. Tests fail on main and pass on the fix.",
+   "reste": "Two reviews running, then merge."
+  },
+  {
+   "statut": "review",
    "sujet": "Notifications: a blocked person and a refused Take stayed visible",
    "pr": 4703,
-   "ouEnEst": "A blocked person named second in a grouped row and “read all” are fixed. The latest reviews found three more edge cases.",
-   "reste": "Being fixed, then reviews."
-  },
-  {
-   "statut": "review",
-   "sujet": "Tapping an author offline did nothing, then opened later",
-   "pr": 4704,
-   "ouEnEst": "The profile now opens as soon as the server answers, 300 ms at most, so a slow network never shows an empty page. Offline it opens at once with Retry.",
-   "reste": "Two reviews running."
+   "ouEnEst": "All edge cases fixed; reviewed at zero twice.",
+   "reste": "Waiting for its CI, then merge."
   },
   {
    "statut": "fixing",
-   "sujet": "Open Take: pull-to-refresh did not update the counts after a vote",
-   "pr": 4706,
-   "ouEnEst": "Results and curve now agree after a refresh. One review found a last slow-server case.",
+   "sujet": "Tapping an author offline did nothing, then opened later",
+   "pr": 4704,
+   "ouEnEst": "The profile opens as soon as the server answers, 300 ms at most; offline it opens at once with Retry. One review found one more case.",
    "reste": "Being fixed, then reviews."
   },
   {
    "statut": "review",
-   "sujet": "Visible Takes prepared as soon as the page gets focus",
-   "pr": 4711,
-   "ouEnEst": "No more extra reads when you come back from an open Take. One review at zero.",
+   "sujet": "Open Take: pull-to-refresh did not update the counts after a vote",
+   "pr": 4706,
+   "ouEnEst": "Results and curve now agree after a refresh, even right after opening. One review at zero.",
    "reste": "Second review running."
   },
   {
    "statut": "fixing",
-   "sujet": "Guest feed: a late config no longer swaps the rows for a loader",
-   "pr": 4712,
-   "ouEnEst": "The loader no longer comes back when you open a Take. One review found one more case.",
-   "reste": "Being fixed, then reviews."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Profile: your new photo and tabs in error",
-   "pr": 4719,
-   "ouEnEst": "Your new photo shows at once and tabs in error reload. The reviews found more cases around moderation of your name.",
+   "sujet": "Visible Takes prepared as soon as the page gets focus",
+   "pr": 4711,
+   "ouEnEst": "No extra reads when you come back from an open Take. One review found one more case.",
    "reste": "Being fixed, then reviews."
   },
   {
    "statut": "fixing",
    "sujet": "Repost after a refusal or a removal elsewhere",
    "pr": 4717,
-   "ouEnEst": "The open Take now shows the repost the server kept. The latest reviews found a refresh during sending that turns it off.",
+   "ouEnEst": "The open Take shows the repost the server kept. Reviews keep finding cases, so the fixer now writes the full state-by-state behaviour before coding.",
    "reste": "Being fixed, then reviews."
   },
   {
    "statut": "review",
    "sujet": "Messages: Cancel brings back the Requests entry",
    "pr": 4723,
-   "ouEnEst": "The Messages badge also follows the cache before launch.",
-   "reste": "Two reviews running."
+   "ouEnEst": "The Messages badge also follows the cache before launch. One review at zero.",
+   "reste": "Second review and CI running."
   },
   {
    "statut": "review",
    "sujet": "Text at the largest size",
    "pr": 4665,
-   "ouEnEst": "The profile header no longer breaks your name in the middle of words.",
-   "reste": "Reviews, then merge."
+   "ouEnEst": "The profile header no longer breaks your name in the middle of words; the last review points are fixed.",
+   "reste": "Reviews running, then merge."
   },
   {
    "statut": "fixing",
@@ -815,13 +832,6 @@
    "reste": "A device measurement with a trace of the lost taps is running."
   },
   {
-   "statut": "review",
-   "sujet": "Cold start tests and Explore topics keeping their order",
-   "pr": 4697,
-   "ouEnEst": "Measured on device with no regression, reviewed at zero twice, CI green.",
-   "reste": "A test timed out in the final pre-merge check; being checked, then merge."
-  },
-  {
    "statut": "fixing",
    "sujet": "Messages: blank screen after a cancelled swipe back",
    "pr": 4662,
@@ -832,7 +842,7 @@
    "statut": "review",
    "sujet": "The anti-regression method, for every agent",
    "pr": 4724,
-   "ouEnEst": "Written into the repository: before a change, the tests that guard the code; the degraded cases; the other screens. A CI guard comes next.",
+   "ouEnEst": "Written into the repository: before a change, the tests that guard the code; the degraded cases; the other screens. A CI guard follows.",
    "reste": "Reviews; the CI guard merges after the build."
   },
   {
@@ -883,7 +893,7 @@
   "On Replicas: about fifteen Claude machines: two reviewers per fix, fixers for the repost, profile, launch and Messages regressions, device measurements, and the anti-regression method."
  ],
  "etapes": [
-  "Fix, review and check every remaining regression, then merge: Notifications, tapping an author, the open Take counts, two launch races, your profile photo, the repost and Messages.",
+  "Fix, review and check every remaining regression, then merge: Notifications, tapping an author, the open Take counts, a launch race, the repost, Messages, and our Takes with no author.",
   "Merge the earlier fixes as their measurements land: profile swipe (native), Notifications rows, cold start tests, text size, then Messages Back.",
   "A new full review of what changed since build 195, on the final main, before the build: the step that caught these regressions is now a rule.",
   "Full test loop on the final main on the Mac bench, a last tour, then redeploy the staging API on that commit. Build 195 stops working on staging at that moment, as we decided.",
@@ -894,6 +904,24 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4719,
+     "titre": "Your profile photo changes at once, and tabs in error reload",
+     "fusion": "Oct 10, 23:31",
+     "build196": true
+    },
+    {
+     "pr": 4712,
+     "titre": "A late config no longer swaps the guest feed's rows for a loader",
+     "fusion": "Oct 10, 23:26",
+     "build196": true
+    },
+    {
+     "pr": 4697,
+     "titre": "Cold start tests for the six tab roots, and Explore topics keeping their order",
+     "fusion": "Oct 10, 23:17",
+     "build196": true
+    },
     {
      "pr": 4715,
      "titre": "A tap on a conversation while the pager settles opens it afterwards",
@@ -2400,6 +2428,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4725,
+     "titre": "Rank what each busy staging Worker stores per invocation",
+     "fusion": "Oct 10, 23:19",
+     "build196": false
+    },
     {
      "pr": 4721,
      "titre": "chore(staging): wake the poll-create counter by default on staging deploys (TAK-1019)",
