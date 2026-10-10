@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-10T09:11+09:00",
- "heure": "09:11",
+ "majLe": "2026-10-10T09:49+09:00",
+ "heure": "09:49",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 314,
-  "depuisDernierTableau": 52,
-  "enCours": 24,
-  "app": 106,
+  "fusionneesDepuis8Octobre": 315,
+  "depuisDernierTableau": 53,
+  "enCours": 26,
+  "app": 107,
   "siteEtAdmin": 66,
   "serveur": 63,
   "outilsEtDocs": 79
  },
  "alerte": {
-  "titre": "Since this morning",
-  "texte": "The tours of every page found more real bugs on main, four of them blockers: Messages can stay blank after a cancelled swipe back, a quick back-and-forth can delete a message request, a swipe could close someone's profile, and the map camera stops mid-flight when you change tab. Each has its ticket and someone fixing it. The Mac now runs six Claudes on fixes, with a check every 3 minutes for free room. It got too full once, so the bench build is paused and its measurement moved to Replicas."
+  "titre": "This hour",
+  "texte": "The blur placeholders are merged, and the instant tabs only wait for a small conflict with today's main. Five more fixes are reviewed at zero and in measurement. The settings tour found four more bugs, one urgent: right after a cold start, a tap meant for the Profile could vote on the feed. It is already fixed and in review. Measuring is the slowest step, so three more measurers are joining."
  },
  "depuis": [
+  {
+   "heure": "09:35",
+   "pr": 4536,
+   "texte": "Blur placeholders are written in batches, and images are no longer woken up on every row: measured, with no flicker and no extra work.",
+   "build196": true
+  },
   {
    "heure": "08:50",
    "pr": 4648,
@@ -356,28 +362,28 @@
    "statut": "review",
    "sujet": "Tabs: instant arrival and a stable return to Messages",
    "pr": 4482,
-   "ouEnEst": "Measured: the loader and the extra renders are gone, and Messages appears sooner. Two small gaps remain, on arriving at Explore and opening a conversation. The app's JavaScript does the same work as main there, so the gap would be on the native side.",
-   "reste": "A device trace of those two moments runs on Replicas. The unused test-only code is removed and in review."
+   "ouEnEst": "Reviewed at zero twice. The device trace finds no gap with main, within noise. It was about to merge when today's main changed under it: the images fix touched the same file.",
+   "reste": "Its agent merges main into it, then it merges."
   },
   {
-   "statut": "fixing",
+   "statut": "measuring",
    "sujet": "Explore: never a blank page",
    "pr": 4533,
-   "ouEnEst": "One of your build 195 reports. Explore reads its data at the same moment as main again; only how the page is drawn changes. The last measurement still saw an extra categories request while Home scrolls, and reviewers found a red CI and a Retry button on the first visit.",
-   "reste": "The three points are being fixed, then reviews and a new measurement."
+   "ouEnEst": "One of your build 195 reports. Explore reads at the same moment as main again. Reviewed at zero twice: the extra categories request, the red CI and the Retry button are fixed.",
+   "reste": "Measurement running. Then merge."
   },
   {
    "statut": "fixing",
    "sujet": "Explore: the bottom bar follows scrolling",
    "pr": 4521,
-   "ouEnEst": "Reviewed at zero twice, CI green, but the measurement refused it: more jank, extra reads when clearing the search, and an extra suggestions request.",
+   "ouEnEst": "The measurement saw a Take read and a short freeze when clearing the search. Its agent's machine was archived by mistake this morning; it is back on it.",
    "reste": "Being fixed, then a new measurement."
   },
   {
    "statut": "claude",
    "sujet": "Counters hidden at 0, shown from 1, everywhere",
    "pr": 4526,
-   "ouEnEst": "One of your build 195 reports. Measured: no icon moves any more when a counter goes from 0 to 1. But opening a Take and coming back costs 25 more feed-row renders, on all three pairs.",
+   "ouEnEst": "One of your build 195 reports. Measured: no icon moves any more when a counter goes from 0 to 1. But opening a Take and coming back costs 25 more feed-row renders.",
    "reste": "A Claude here removes those extra renders, then a new measurement."
   },
   {
@@ -385,14 +391,14 @@
    "sujet": "Share counter moves as soon as you share",
    "pr": 4524,
    "ouEnEst": "One of your build 195 reports. Reviewed at zero twice, CI green. It touches the same feed row as the counters, so they merge one after the other.",
-   "reste": "Measurement running on Replicas, since the Mac's bench was too full. Then merge."
+   "reste": "Measurement running on Replicas. Then merge."
   },
   {
-   "statut": "fixing",
+   "statut": "review",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "One of your build 195 reports. One reviewer is at zero; the other found two safety checks with no test yet.",
-   "reste": "The tests are being written, then reviews and a memory and tiles measurement."
+   "ouEnEst": "One of your build 195 reports. Six tests were added so that every safety check is proven; the code itself is unchanged.",
+   "reste": "Reviews of the tests, then a memory and tiles measurement."
   },
   {
    "statut": "review",
@@ -402,81 +408,109 @@
    "reste": "Merges right after the map preparation, taking main's version of it."
   },
   {
-   "statut": "measuring",
-   "sujet": "Images: blur placeholders written in batches",
-   "pr": 4536,
-   "ouEnEst": "Found by the build 195 fluidity tour. Reviewed at zero twice: the duplicated motion state and the pager lock are fixed.",
-   "reste": "Scrolling measurement running. Then merge."
-  },
-  {
-   "statut": "measuring",
+   "statut": "fixing",
    "sujet": "Neighbouring pages load ahead again",
    "pr": 4643,
-   "ouEnEst": "One of your build 194 reports. Reviewed at zero twice: every safety check now has its test.",
-   "reste": "Launch measurement running. Then merge."
+   "ouEnEst": "One of your build 194 reports. Measured: the reads ahead work, and opening Messages or the Profile needs no request any more. But the preparation starts right as Home appears and costs a few frames at launch.",
+   "reste": "It is being moved to when Home is at rest, like X, then a new measurement."
   },
   {
-   "statut": "fixing",
+   "statut": "measuring",
    "sujet": "Bottom bar under very fast taps",
    "pr": 4655,
-   "ouEnEst": "Found by the fast-switch tour on main: under very fast taps, the bar could show another tab than the page and lose the last tap. One reviewer is at zero; the other found that the link-during-a-burst case is not really tested.",
-   "reste": "That test is being written, then the second review and a measurement."
+   "ouEnEst": "Found by the fast-switch tour. Reviewed at zero twice, with the link-during-a-burst case now really tested.",
+   "reste": "Measurement running. Then merge."
   },
   {
    "statut": "claude",
    "sujet": "Profile right after a cold start",
    "pr": 4653,
-   "ouEnEst": "Found by the cold-start tour: after a relaunch, the Profile showed empty counters and an empty Top 8. Fixed, but reviewers found that a blocked person could come back in the saved Top 8.",
-   "reste": "A Claude here fixes it, starting with a red test."
+   "ouEnEst": "Found by the cold-start tour. Reviewers found one last case: a Top 8 read that started before a block and arrived after it brought the blocked person back.",
+   "reste": "A Claude here fixes that case."
   },
   {
    "statut": "fixing",
    "sujet": "Vote: three quick taps",
    "pr": 4644,
-   "ouEnEst": "Found by the break-the-app tour: three quick taps gave a random result. Fixed with a per-Take tap memory, but it is only proven on the feed card.",
-   "reste": "Tests for the open Take and Explore's number one are being written."
+   "ouEnEst": "Found by the break-the-app tour. Tests now cover the open Take and Explore's number one; one repost check still has no test.",
+   "reste": "That test is being written."
   },
   {
    "statut": "review",
    "sujet": "Profile: Questions stuck in error after a network cut",
    "pr": 4657,
-   "ouEnEst": "Found by the profiles tour, a blocker. The fix re-reads what failed when the network or the tab comes back. Reviewers found an endless re-read loop, now fixed.",
-   "reste": "Reviews of the fix running."
+   "ouEnEst": "Found by the profiles tour, a blocker. Each review round found a smaller edge case; the last one is fixed.",
+   "reste": "Reviews running."
   },
   {
    "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "Found by the profiles tour, a blocker: a right swipe from Questions closed someone's profile, and the next taps hit the screen below. Reviewed at zero twice, CI green.",
+   "ouEnEst": "Found by the profiles tour, a blocker: a right swipe from Questions closed someone's profile. Reviewed at zero twice, CI green.",
    "reste": "Measurement running. Then merge."
   },
   {
-   "statut": "fixing",
+   "statut": "measuring",
    "sujet": "Messages: a quick back-and-forth deleted a request",
    "pr": 4660,
-   "ouEnEst": "Found by the Messages tour, a blocker: a swallowed Back let the next tap land on Delete. Reviewers found that the badge and the requests entry drop twice, then come back.",
+   "ouEnEst": "Found by the Messages tour, a blocker. Reviewed at zero twice.",
+   "reste": "Measurement running. Then merge."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Map: the camera stops mid-flight when you change tab",
+   "pr": 4661,
+   "ouEnEst": "Found by the Explore and map tour, a blocker. Reviewed at zero twice.",
+   "reste": "Measurement running. Then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Messages: stuck on a blank screen after a cancelled swipe back",
+   "pr": 4662,
+   "ouEnEst": "Found by the Messages tour, a blocker. The fix now follows a state-by-state rule for Back during transitions, checked with Jev, so a screen never flashes in and out.",
+   "reste": "Reviews running. The empty page under the swipe is being diagnosed on a device."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Avatar: a tap lands on Reset, and outfit thumbnails stay blank for 6 s",
+   "pr": 4663,
+   "ouEnEst": "Found by the game, quiz and avatar tour. Reviewers caught a design change that would need your approval, so it is being redone without changing the look.",
    "reste": "Being fixed, then reviews."
   },
   {
    "statut": "fixing",
-   "sujet": "Messages: stuck on a blank screen after a cancelled swipe back",
-   "pr": 0,
-   "ouEnEst": "Found by the Messages tour, a blocker: cancel a swipe back, tap Back, and the tab stays blank until the app is killed. Also the tab bar sliding over a conversation, and an empty page under the swipe.",
-   "reste": "An agent on Replicas writes the red tests, then the fix."
+   "sujet": "Explore: phantom keyboard, sheet left open, places list",
+   "pr": 4664,
+   "ouEnEst": "Found by the Explore tour. Two small search cases remain. The blank pages during fast switches seem to come from the native side and are being diagnosed on a device.",
+   "reste": "Being fixed, then reviews."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Text at the largest size",
+   "pr": 4665,
+   "ouEnEst": "Found by the tours. Reviewers found a row that moves when someone is typing, and five screens not done yet.",
+   "reste": "All the screens are being done in the same PR."
+  },
+  {
+   "statut": "review",
+   "sujet": "Like and repost under quick taps",
+   "pr": 4666,
+   "ouEnEst": "Found by the break-the-app tests: like and repost could miss the last tap when the server answered late.",
+   "reste": "Reviews running."
+  },
+  {
+   "statut": "review",
+   "sujet": "Cold start: taps landing on Home instead of the Profile",
+   "pr": 4667,
+   "ouEnEst": "Found by the settings tour: right after a cold start, taps meant for the Profile could open other screens or vote on the feed.",
+   "reste": "Reviews running."
   },
   {
    "statut": "claude",
    "sujet": "Back ignored right after an action",
    "pr": 0,
-   "ouEnEst": "Found by several tours: Back right after a vote, less than 150 ms after opening a Take, after sending a message or sharing a quiz score. One shared cause is likely.",
-   "reste": "A Claude here fixes it once, at the root, for the whole app."
-  },
-  {
-   "statut": "claude",
-   "sujet": "Map: the camera stops mid-flight when you change tab",
-   "pr": 0,
-   "ouEnEst": "Found by the Explore and map tour, a blocker: 19 times out of 20, and the map can stay on the globe after a cold start.",
-   "reste": "A Claude here writes a red test, then the fix."
+   "ouEnEst": "Found by several tours: after a vote, after sending a message, after sharing a quiz score. A device run with an instrumented build shows where the tap gets lost.",
+   "reste": "A Claude here fixes it once for the whole app."
   },
   {
    "statut": "claude",
@@ -486,32 +520,18 @@
    "reste": "The Claude that fixed it the first time looks for what brought it back."
   },
   {
-   "statut": "claude",
-   "sujet": "Explore: blank pages on tabs already seen",
-   "pr": 0,
-   "ouEnEst": "Found by the Explore tour: blank pages during fast switches, a hidden keyboard that swallows a tap, a sheet left open after a link, and tabs VoiceOver does not announce as selected.",
-   "reste": "A Claude here fixes each one with a red test."
-  },
-  {
    "statut": "fixing",
-   "sujet": "Text at the largest size, and a blank frame before Messages",
+   "sujet": "Theme, VoiceOver and offline settings",
    "pr": 0,
-   "ouEnEst": "Found by the tours: Messages, Notifications, the game, the avatar editor, the quiz and Explore become unreadable at the largest text size, and the size only applies after a relaunch.",
-   "reste": "An agent on Replicas fixes every screen, with a test for each."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Avatar: a tap lands on Reset, and outfit thumbnails stay blank for 6 s",
-   "pr": 0,
-   "ouEnEst": "Found by the game, quiz and avatar tour.",
-   "reste": "An agent on Replicas writes the red tests, then the fix."
+   "ouEnEst": "Found by the settings tour: a tap lost after switching to Light, VoiceOver no longer announcing the selected tab after a login, and a privacy setting lost when changed offline.",
+   "reste": "Three agents on Replicas, one per bug."
   },
   {
    "statut": "fixing",
    "sujet": "Notifications and Activity tab rows",
    "pr": 0,
    "ouEnEst": "Found by the profiles tour: taps lost after a swipe, the bold word and the line out of step with the page, a fade and a blank frame.",
-   "reste": "An agent on Replicas fixes it. No branch yet; it has been asked where it stands."
+   "reste": "An agent on Replicas is on it."
   },
   {
    "statut": "later",
@@ -522,13 +542,13 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: six Claudes fixing bugs (Back right after an action, Home tabs, the map camera, Explore's blank pages, the counters' extra renders, the saved Top 8), and one keeping the test bench. A check every 3 minutes looks for free room.",
-  "On Replicas: measurers on the images, the neighbouring pages, the profile swipe, the share counter and the tabs trace; reviewers through their Claude agents while Codex is out of quota; agents fixing Messages, Explore, the map preparation, the avatar, text size and the notification rows."
+  "Here on the Mac: six Claudes fixing bugs (the tabs merge, Home tabs, like and repost, the counters' renders, Explore, the Profile), and one keeping the test bench. A check every 3 minutes looks for free room.",
+  "On Replicas: about fifteen reviewers through their Claude agents, ten measurers with three more joining, and agents fixing Messages, the map preparation, the avatar, text size, theme, VoiceOver, offline settings and the notification rows."
  ],
  "etapes": [
-  "Merge each PR as soon as its measurement comes back clean: the images, the neighbouring pages, the profile swipe and the share counter.",
-  "Fix what reviews and measurements found on Explore, the Explore bar, the map preparation, the counters, the vote, the bottom bar, message requests and the Profile.",
-  "Fix the bugs the tours found this morning, each with a test that was red on main.",
+  "Merge each PR as soon as its measurement comes back clean: the tabs, Explore, the bottom bar, message requests, the map camera, the profile swipe and the share counter.",
+  "Fix what reviews and measurements found on the counters, the neighbouring pages, the Profile, the vote, the avatar, Explore and text size.",
+  "Fix the remaining bugs the tours found, each with a test that was red on main.",
   "Full test loop on the final main, on the Mac's simulator, plus a last fast-switch tour.",
   "Redeploy the staging API on that same commit, then the list of what won't be in the build, shown to you.",
   "Launch build 196, then hand you the emulator on main."
@@ -538,6 +558,12 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4536,
+     "titre": "Regrouper les écritures BlurHash sans réveiller les images (TAK-740)",
+     "fusion": "Oct 10, 09:35",
+     "build196": true
+    },
     {
      "pr": 4648,
      "titre": "Curated YouTube videos fall back to the platform link when the player reports an error.",
