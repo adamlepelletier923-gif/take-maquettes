@@ -1,21 +1,69 @@
 {
- "majLe": "2026-10-11T07:58+09:00",
- "heure": "08:00",
+ "majLe": "2026-10-11T08:58+09:00",
+ "heure": "08:58",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 363,
-  "depuisDernierTableau": 168,
-  "enCours": 9,
-  "app": 156,
-  "siteEtAdmin": 66,
-  "serveur": 70,
+  "fusionneesDepuis8Octobre": 371,
+  "depuisDernierTableau": 176,
+  "enCours": 7,
+  "app": 162,
+  "siteEtAdmin": 67,
+  "serveur": 71,
   "outilsEtDocs": 71
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The anonymous vote fix, the ghost double tap, the composer fixes, the unread badge and a vote test are merged. Most Replicas machines hit their Claude limit until 11:40, but they keep working through OpenCode with Muse, and the agents on the Mac carry the code. The icon row got its last touch fixes and is in final review. The preloading switch stays off for build 196, as the measurement asked."
+  "texte": "The unread badge, reading in the real order, the profile swipe (with your OK) and the touch zones under a Take's row are merged. The final re-read of main found zero new defects."
  },
  "depuis": [
+  {
+   "heure": "08:50",
+   "pr": 4773,
+   "texte": "Reassure fluidity gate on every pull request touching the app",
+   "build196": false
+  },
+  {
+   "heure": "08:48",
+   "pr": 4777,
+   "texte": "fix(web): bind the owned staging QA account through its session, not the sign-in body",
+   "build196": false
+  },
+  {
+   "heure": "08:45",
+   "pr": 4778,
+   "texte": "On iPhone, a tap just under a Take's icons or near the edges of its row now reaches the action instead of opening the Take; this was already wrong in build 195.",
+   "build196": true
+  },
+  {
+   "heure": "08:35",
+   "pr": 4767,
+   "texte": "Notifications: reading marks exactly what was shown, in the real order of arrival, never by date; an old app keeps working as before.",
+   "build196": true
+  },
+  {
+   "heure": "08:34",
+   "pr": 4659,
+   "texte": "Profile: from Questions, a swipe right goes back to Takes instead of closing the profile, and no tap goes through a closing screen; measured on a device, no tap lost and as smooth as main.",
+   "build196": true
+  },
+  {
+   "heure": "08:22",
+   "pr": 4762,
+   "texte": "Take icons: votes on the left, the rest on the right, with build 195's spacing; a zero stays hidden but keeps its place, so nothing moves when a count arrives. You switched back to build 195 an hour later (see the icon row in progress).",
+   "build196": true
+  },
+  {
+   "heure": "08:18",
+   "pr": 4776,
+   "texte": "Telemetry ingest Worker with staging infra and SDK compat tests",
+   "build196": false
+  },
+  {
+   "heure": "07:57",
+   "pr": 4740,
+   "texte": "Notifications: past 50 unread, a visit turns the badge off again, up to the newest one shown; a notification arriving during the visit stays unread. Measured on a device, as smooth as main.",
+   "build196": true
+  },
   {
    "heure": "07:43",
    "pr": 4771,
@@ -1026,6 +1074,10 @@
   }
  ],
  "statuts": {
+  "staging": {
+   "libelle": "Waiting for the staging lock",
+   "ton": "wait"
+  },
   "review": {
    "libelle": "Review and CI",
    "ton": "wait"
@@ -1054,31 +1106,17 @@
  "enCours": [
   {
    "statut": "review",
-   "sujet": "Take icons: votes on the left, the rest on the right, as on your screenshot",
-   "pr": 4762,
-   "ouEnEst": "Reviews found three touch problems, all fixed without changing the drawing: the ghost's target is 44 pt again, the touch zones around the icons work on iPhone again, and the ghost never takes a tap meant for the vote count. Two new reviews, light and dark captures and a scroll measurement are running.",
+   "sujet": "Take icons back to build 195: actions on the left, votes on the right",
+   "pr": 4779,
+   "ouEnEst": "Your new choice. The change is ready and keeps the night's fixes: a hidden zero keeps its place, and the touch zones work on iPhone. Build checks are running; two reviews and light and dark captures on a device have started.",
    "reste": "Must be in build 196, as you said."
   },
   {
-   "statut": "review",
-   "sujet": "Notifications: read only what was really shown",
-   "pr": 4767,
-   "ouEnEst": "The bad-mark error is fixed (a clean refusal instead of a server error). Two reviews are running, and the way to combine it with the badge fix is ready.",
-   "reste": "Merge right after the badge fix, before the staging API redeploy."
-  },
-  {
-   "statut": "owner",
-   "sujet": "Profile: a swipe from Questions closed the profile",
-   "pr": 4659,
-   "ouEnEst": "Ready: reviewed at zero twice and measured green on a device. My design check stops it because it adds a component, but that component only handles the swipe gesture; nothing visible changes.",
-   "reste": "Your OK to merge it."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Touch zones under the row of a Take, already in build 195",
+   "statut": "staging",
+   "sujet": "Staging API redeploy for build 196",
    "pr": 0,
-   "ouEnEst": "Found while reviewing the icons: on iPhone, a tap just under an icon or just right of the comments opens the Take. It was already like this in build 195. A separate fix is being written.",
-   "reste": "Fix and check on a device before the build if it is safe; otherwise listed as not in build 196."
+   "ouEnEst": "Everything the server needs is merged, and the final re-read of main found zero new defects. Staging is locked by a machine that is not ours (a geocoder deploy) until 10:26 at the latest; we take the lock as soon as it is free.",
+   "reste": "Redeploy with preloading off, then run the final loop on your emulator."
   },
   {
    "statut": "owner",
@@ -1089,10 +1127,17 @@
   },
   {
    "statut": "later",
-   "sujet": "Preloading on, videos apart",
+   "sujet": "Map ready before you arrive, like Snap",
+   "pr": 4529,
+   "ouEnEst": "Measured on a device: the map arrives twice as fast (642 ms instead of 1231), but scrolling Friends is still heavier than main (154 ms of jank instead of 61). An agent on the Mac is fixing that.",
+   "reste": "Joins a build only once it is as smooth as main."
+  },
+  {
+   "statut": "later",
+   "sujet": "Messages, Profile and replies read ahead",
    "pr": 4643,
-   "ouEnEst": "Stays off for build 196: measured on a device, launch is much lighter, but Messages and a video's start got slower. Two error states it added are fixed; a review is running.",
-   "reste": "Fix Messages and the video start, then measure again."
+   "ouEnEst": "Messages is fixed: a page read ahead is now mounted while the screen is at rest, as X and Instagram do. Build checks green; a device measurement is running.",
+   "reste": "After build 196, if the measurement is clean."
   },
   {
    "statut": "later",
@@ -1103,13 +1148,6 @@
   },
   {
    "statut": "later",
-   "sujet": "Map ready before you arrive, like Snap",
-   "pr": 4529,
-   "ouEnEst": "The scroll cost came from the Nearby list mounting while scrolling, not from the map; it now waits until the screen is at rest. Its device measurement is running.",
-   "reste": "Joins build 196 only if it is as smooth as main."
-  },
-  {
-   "statut": "later",
    "sujet": "Icons of a Take: mockups",
    "pr": 0,
    "ouEnEst": "One page with ten numbered proposals, from both studies, with a recommendation based on X.",
@@ -1117,13 +1155,13 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator on staging, and four Claude agents (a review of the icon row, the touch zones under the row, the notifications fix, and the last checks).",
-  "On Replicas: reviewers and device measurements (badge, icon row, map, the loop and tour rehearsals), on Claude when it is available and otherwise on OpenCode with Muse."
+  "Here on the Mac: me, your emulator on staging, and two Claude agents (the icon row back to build 195, and the map).",
+  "On Replicas: two reviewers, device captures of the icon row and the preloading measurement, on Claude when it is available and otherwise on OpenCode with Muse."
  ],
  "etapes": [
-  "Merge what is left as reviews, CI and measurements land: icon row, the notifications server side, the profile swipe after your OK, and the touch zones under the row if they are safe.",
-  "A last re-read of what changed on the final main.",
-  "Full test loop and 90-point tour on the final main (both rehearsed now on today's main), then redeploy the staging API. Build 195 stops working on staging at that moment, as we decided.",
+  "Merge the icon row back to build 195 once its two reviews, build checks and device captures are clean.",
+  "Redeploy the staging API as soon as the lock is free, with preloading off.",
+  "Re-read what changed since the final review, then the full test loop on your emulator and the 90-point tour.",
   "Update the list of what is not in build 196, launch it as a new binary, and hand you the emulator on main."
  ],
  "fait": [
@@ -1131,6 +1169,42 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4773,
+     "titre": "Reassure fluidity gate on every pull request touching the app",
+     "fusion": "Oct 11, 08:50",
+     "build196": false
+    },
+    {
+     "pr": 4778,
+     "titre": "TAK-1097 : sous les icônes d'un Take et vers les bords de la rangée, un toucher va à l'action, plus au Take (iOS)",
+     "fusion": "Oct 11, 08:45",
+     "build196": true
+    },
+    {
+     "pr": 4767,
+     "titre": "TAK-1082 : lire les notifications dans l'ordre réel de ce qui a été montré, jamais par date",
+     "fusion": "Oct 11, 08:35",
+     "build196": true
+    },
+    {
+     "pr": 4659,
+     "titre": "TAK-946 : depuis Questions, un glissé à droite revient sur Takes au lieu de fermer le profil",
+     "fusion": "Oct 11, 08:34",
+     "build196": true
+    },
+    {
+     "pr": 4762,
+     "titre": "TAK-1083 : la barre d'actions d'un Take, votes à gauche et actions à droite, avec les espaces du build 195",
+     "fusion": "Oct 11, 08:22",
+     "build196": true
+    },
+    {
+     "pr": 4740,
+     "titre": "TAK-1054 : au-delà de 50 non lues, une visite des notifications éteint de nouveau la pastille",
+     "fusion": "Oct 11, 07:57",
+     "build196": true
+    },
     {
      "pr": 4771,
      "titre": "TAK-1085 : deux touchers rapides du fantôme ne rendent plus public un vote anonyme",
@@ -2074,6 +2148,12 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 4777,
+     "titre": "fix(web): bind the owned staging QA account through its session, not the sign-in body",
+     "fusion": "Oct 11, 08:48",
+     "build196": false
+    },
+    {
      "pr": 4765,
      "titre": "test(web): trace where the owned QA sign-in stalls in staging failure evidence",
      "fusion": "Oct 11, 07:04",
@@ -2475,6 +2555,12 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4776,
+     "titre": "Telemetry ingest Worker with staging infra and SDK compat tests",
+     "fusion": "Oct 11, 08:18",
+     "build196": false
+    },
     {
      "pr": 4770,
      "titre": "Telemetry query contract and fixture generator with ingestion architecture decision",
