@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-11T05:43+09:00",
- "heure": "05:45",
+ "majLe": "2026-10-11T05:47+09:00",
+ "heure": "05:48",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 350,
@@ -996,11 +996,11 @@
    "reste": "Merge when both reviews are clean."
   },
   {
-   "statut": "fixing",
+   "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "Measured: nothing reaches the leaving screen and it is as smooth as main, but a very fast tap right after Back can be lost. Being fixed.",
-   "reste": "A last device check, then merge; it is native."
+   "ouEnEst": "The last fix is in: a tap right after Back is no longer lost once the leaving screen shows nothing under the finger. Two reviews and a device measurement are running.",
+   "reste": "Merge when both are clean; it is native."
   },
   {
    "statut": "review",
@@ -1020,7 +1020,7 @@
    "statut": "review",
    "sujet": "A composer test that failed at random",
    "pr": 4760,
-   "ouEnEst": "Made deterministic: it passed 58 times out of 58 under load. Two reviews are running.",
+   "ouEnEst": "Made deterministic: it passed 58 times out of 58 under load; build checks green. Two reviews are running.",
    "reste": "Merge when both reviews are clean."
   },
   {
@@ -1032,17 +1032,17 @@
   },
   {
    "statut": "later",
-   "sujet": "Neighbouring pages load ahead: their own switch",
+   "sujet": "Preloading on, videos apart",
    "pr": 4643,
-   "ouEnEst": "Measured with the preloading switch on: Profile 125 ms of jank instead of 359, Messages better. A switch of their own is being built, so they can be turned on without the rest.",
-   "reste": "Measure with the new switch, then turn it on, as you asked: the smoothest possible."
+   "ouEnEst": "With preloading on, launch is lighter and Profile and Messages are fast (Profile 125 ms of jank instead of 359). Videos get a switch of their own, off, so the rest can go on without them.",
+   "reste": "Measure everything on against main, then turn it on, as you asked: the smoothest possible."
   },
   {
    "statut": "later",
    "sujet": "Videos ahead in the feed with preloading on",
    "pr": 0,
-   "ouEnEst": "Each scroll step cancelled the next video's first piece. A Replicas machine is fixing it, so the whole preloading can be turned on.",
-   "reste": "Fix, measure, then turn the preloading on."
+   "ouEnEst": "Each scroll step cancelled the next video's first piece. A Replicas machine is fixing it.",
+   "reste": "Fix, measure, then turn the video switch on too."
   },
   {
    "statut": "later",
