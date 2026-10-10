@@ -1,21 +1,75 @@
 {
- "majLe": "2026-10-10T16:10+09:00",
- "heure": "16:12",
+ "majLe": "2026-10-10T16:43+09:00",
+ "heure": "16:43",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 276,
-  "depuisDernierTableau": 81,
-  "enCours": 15,
-  "app": 106,
+  "fusionneesDepuis8Octobre": 285,
+  "depuisDernierTableau": 90,
+  "enCours": 12,
+  "app": 110,
   "siteEtAdmin": 58,
-  "serveur": 59,
-  "outilsEtDocs": 53
+  "serveur": 60,
+  "outilsEtDocs": 57
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Two more fixes merged: the counters with equal spacing (your design decision of this morning) and the theme, where a tap on Home right after choosing Light now works. That makes 40 build 196 fixes merged today. Two important findings: changing the iOS text size while Take runs makes screens unreadable until a restart (reproduced on the Mac, being fixed), and the follow-up for Explore's black pages made them permanent, so it was refused."
+  "texte": "Four more merged: relative dates, offline privacy, the vote cost (a vote change now costs 374 ms of jank instead of 1,443), and the removal of this morning's Explore pager rule, which made black pages worse. That makes 43 build 196 fixes merged today. One slip on my side: I merged the vote cost fix before the re-measurement of its last version came back. That measurement is still running, and I remove the fix if it shows anything worse. The map preparation stays out of this build."
  },
  "depuis": [
+  {
+   "heure": "16:36",
+   "pr": 4686,
+   "texte": "Changing your vote no longer redraws the whole feed: the jank of a vote change goes from 1,443 ms to 374 ms.",
+   "build196": true
+  },
+  {
+   "heure": "16:27",
+   "pr": 4670,
+   "texte": "Privacy settings chosen offline survive an app kill and reach the server when the network is back. In a conflict, the most private choice wins.",
+   "build196": true
+  },
+  {
+   "heure": "16:24",
+   "pr": 4693,
+   "texte": "Explore: removes this morning's native pager rule, which made black pages far worse (0 black frames before it, 174 after). The root defect is reopened for after this build.",
+   "build196": true
+  },
+  {
+   "heure": "16:23",
+   "pr": 4685,
+   "texte": "Dates: a prefetch no longer redraws every relative date. Date renders during a prefetch go from 7 to 0, and jank from 195 ms to 0.",
+   "build196": true
+  },
+  {
+   "heure": "16:20",
+   "pr": 4683,
+   "texte": "feat(map): a short © OpenStreetMap line whose ⓘ opens every map credit",
+   "build196": false
+  },
+  {
+   "heure": "16:20",
+   "pr": 4688,
+   "texte": "S86 admin staging smoke on Chromium and WebKit",
+   "build196": false
+  },
+  {
+   "heure": "16:19",
+   "pr": 4690,
+   "texte": "Count the map spot budget beside a search no third party bills",
+   "build196": false
+  },
+  {
+   "heure": "16:19",
+   "pr": 4691,
+   "texte": "Ask maps-api's shortened forms at once and share identical answers",
+   "build196": false
+  },
+  {
+   "heure": "16:19",
+   "pr": 4692,
+   "texte": "Run the maps-api search eval in CI against main's ranking",
+   "build196": false
+  },
   {
    "heure": "16:08",
    "pr": 4668,
@@ -79,7 +133,7 @@
   {
    "heure": "13:17",
    "pr": 4676,
-   "texte": "Explore: native fix for blank pages during fast tab switches, in the new binary. A second measurement did not confirm the gain, so a follow-up applies the version already validated on a device.",
+   "texte": "Explore: a native pager rule meant to stop blank pages during fast tab switches. A before/after comparison proved it made black pages worse, so it was removed (4693).",
    "build196": true
   },
   {
@@ -527,17 +581,17 @@
  },
  "enCours": [
   {
-   "statut": "review",
+   "statut": "measuring",
    "sujet": "Share counter moves as soon as you share",
    "pr": 4524,
-   "ouEnEst": "One of your build 195 reports. Brought onto the new main after the counters.",
-   "reste": "A quick review of the merge, then merge."
+   "ouEnEst": "One of your build 195 reports. Brought onto the new main after the counters, and reviewed at zero twice.",
+   "reste": "A device measurement of the final version is running, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Avatar: a tap lands on Reset, thumbnails stay blank",
    "pr": 4663,
-   "ouEnEst": "Measured and reviewed at zero; Jev sees no real regression. It adds an invisible guard that ignores touches for half a second after the panel moves; nothing changes on screen.",
+   "ouEnEst": "Measured and reviewed at zero; Jev sees no real regression (0.15). It adds an invisible guard that ignores touches for half a second after the panel moves; nothing changes on screen.",
    "reste": "Waiting for your design OK, because my guard asks you for any new component."
   },
   {
@@ -555,60 +609,39 @@
    "reste": "A CPU profile of Back names the exact cause, then a fix."
   },
   {
-   "statut": "review",
-   "sujet": "Text at the largest size",
+   "statut": "measuring",
+   "sujet": "Text at the largest size, and size changes while the app runs",
    "pr": 4665,
-   "ouEnEst": "Covers Messages, the Top 8, profiles, the avatar editor, KnowMe and Take Rush; long names stay within two lines in a conversation header.",
-   "reste": "Reviews and a measurement running, plus the live text size fix below."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Text size changed while the app runs makes screens unreadable",
-   "pr": 0,
-   "ouEnEst": "Reproduced on the Mac's simulator: letters grow but their boxes keep the old size, so text is cut everywhere until a restart. A cold start is fine.",
-   "reste": "Being fixed in the text size PR, then I check it on the Mac."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Privacy settings changed offline",
-   "pr": 4670,
-   "ouEnEst": "All five offline cases now pass on a device, and the most private choice wins a conflict. Fluidity within noise.",
-   "reste": "Taking main, then merge."
+   "ouEnEst": "Covers Messages, the Top 8, profiles, the avatar editor, KnowMe and Take Rush. Long names stay within two lines in a conversation header. Changing the iOS text size while Take runs now resizes the boxes too, without a restart.",
+   "reste": "Reviews and a device measurement of the latest version are running, including a live change through the Settings app."
   },
   {
    "statut": "fixing",
    "sujet": "Notifications and Activity tab rows",
    "pr": 4672,
-   "ouEnEst": "Far better than main (Comments reached 9 or 10 times out of 10, against 0). Fixed a lost tap; one extra cost remains when switching to Votes.",
+   "ouEnEst": "Far better than main (Comments reached 9 or 10 times out of 10, against 0). One extra cost remains when switching to Votes: 9 long frames against 0 on main.",
    "reste": "Being fixed, then a short measurement."
   },
   {
-   "statut": "fixing",
-   "sujet": "Every prefetch redraws all the relative dates",
-   "pr": 4685,
-   "ouEnEst": "Measured: date renders during a prefetch go from 7 to 0, and jank from 195 ms to 0. Reviewed at zero.",
-   "reste": "Taking main, and a short check of the final version, then merge."
-  },
-  {
    "statut": "measuring",
-   "sujet": "Changing your vote costs 242 ms",
-   "pr": 4686,
-   "ouEnEst": "Only the Take you touch redraws now. An anonymous vote can never become public again. Reviewed at zero twice.",
-   "reste": "Measurement running, then merge."
+   "sujet": "Fast-switch tour of the whole app on the current main",
+   "pr": 0,
+   "ouEnEst": "37 fixes merged since this morning's tour. Four devices go through Home, the bottom bar, Explore, the map, the game, an open Take, Settings, Messages, profiles and Notifications.",
+   "reste": "Any problem gets a ticket and a fix before the build."
   },
   {
-   "statut": "fixing",
+   "statut": "later",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "The map opens much faster, but preparing it still makes the feed scroll a little jerkier, even only at rest.",
-   "reste": "One more fix, or it stays out of this build."
+   "ouEnEst": "The map opens faster, but preparing it makes the feed scroll jerkier (jank 96 ms on main against 197 ms) and adds requests whose cause is not found.",
+   "reste": "Proposed out of build 196; you decide with the list."
   },
   {
-   "statut": "measuring",
+   "statut": "later",
    "sujet": "Explore: black pages during fast tab switches",
    "pr": 0,
-   "ouEnEst": "The follow-up made the search page stay black for good, so it was refused. A comparison checks whether the first fix, already merged, made things worse.",
-   "reste": "If it did, I remove it from main before the build."
+   "ouEnEst": "This morning's native fix made them worse (0 black frames before it, 174 after), so it was removed from main, which is back to the state measured without black pages.",
+   "reste": "The root defect is reopened, for after this build."
   },
   {
    "statut": "later",
@@ -633,15 +666,15 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: two Claudes (the share counter and the notification rows), plus the Mac's simulator for the text size check. Finished agents are closed to keep memory free.",
-  "On Replicas: about fifteen reviewers and eighteen measurers on devices, on Codex in fast mode, plus agents fixing Messages, text size, offline privacy, the map preparation, the vote cost and relative dates."
+  "Here on the Mac: the Claude fixing the Notifications rows, plus the bench simulator when memory allows. Finished agents are closed to keep memory free.",
+  "On Replicas: about fifteen reviewers and eighteen measurers on devices (four of them on the whole-app tour), on Codex in fast mode, plus agents fixing Messages and the text size."
  ],
  "etapes": [
-  "Merge each PR as soon as its measurement comes back clean: share counter, profile swipe, offline privacy, relative dates, vote cost, text size.",
-  "Fix what is left: Messages' Back cost, the Votes switch, the live text size, and the map preparation.",
-  "Decide about Explore's first pager fix with a before/after comparison.",
-  "Show you what stays out, with reasons: the prefetch, the big VoiceOver change and the composer.",
-  "Full test loop on the final main, a last fast-switch tour, then redeploy the staging API on that commit.",
+  "Merge each PR as soon as its measurement comes back clean: share counter, profile swipe, text size, and the avatar with your OK.",
+  "Fix what is left: Messages' Back cost and the Votes switch in Notifications.",
+  "Finish the fast-switch tour of the whole app on the current main; any problem gets a ticket and a fix before the build.",
+  "Show you what stays out, with reasons: the map preparation, the prefetch, the big VoiceOver change, the composer and Explore's root black-page defect.",
+  "Full test loop on the final main, a last tour, then redeploy the staging API on that commit (it carries the privacy migration).",
   "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
  ],
  "fait": [
@@ -649,6 +682,30 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4686,
+     "titre": "TAK-830 : un vote se dessine dans le Take touché, sans redessiner le fil",
+     "fusion": "Oct 10, 16:36",
+     "build196": true
+    },
+    {
+     "pr": 4670,
+     "titre": "TAK-986: les réglages de confidentialité choisis hors ligne survivent à l'app tuée et ne montrent plus de valeur périmée",
+     "fusion": "Oct 10, 16:27",
+     "build196": true
+    },
+    {
+     "pr": 4685,
+     "titre": "TAK-1005 : empêcher les lectures anticipées de redessiner les dates relatives",
+     "fusion": "Oct 10, 16:23",
+     "build196": true
+    },
+    {
+     "pr": 4683,
+     "titre": "feat(map): a short © OpenStreetMap line whose ⓘ opens every map credit",
+     "fusion": "Oct 10, 16:20",
+     "build196": false
+    },
     {
      "pr": 4668,
      "titre": "TAK-984: keep tabs live without leaking appearance-sheet touches",
@@ -1646,6 +1703,12 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4690,
+     "titre": "Count the map spot budget beside a search no third party bills",
+     "fusion": "Oct 10, 16:19",
+     "build196": false
+    },
+    {
      "pr": 4689,
      "titre": "Take the vote off the remote screen purge without losing the voter's view",
      "fusion": "Oct 10, 15:49",
@@ -2006,6 +2069,24 @@
    "nom": "CI, scripts and infra",
    "prs": [
     {
+     "pr": 4693,
+     "titre": "TAK-998 : retirer la règle du pager natif de #4676, qui aggrave les pages noires d'Explorer",
+     "fusion": "Oct 10, 16:24",
+     "build196": true
+    },
+    {
+     "pr": 4688,
+     "titre": "S86 admin staging smoke on Chromium and WebKit",
+     "fusion": "Oct 10, 16:20",
+     "build196": false
+    },
+    {
+     "pr": 4692,
+     "titre": "Run the maps-api search eval in CI against main's ranking",
+     "fusion": "Oct 10, 16:19",
+     "build196": false
+    },
+    {
      "pr": 4684,
      "titre": "fix(ci): keep the staging API within Cloudflare's 128 text bindings",
      "fusion": "Oct 10, 13:19",
@@ -2317,6 +2398,12 @@
    "zone": "autre",
    "nom": "Other",
    "prs": [
+    {
+     "pr": 4691,
+     "titre": "Ask maps-api's shortened forms at once and share identical answers",
+     "fusion": "Oct 10, 16:19",
+     "build196": false
+    },
     {
      "pr": 4647,
      "titre": "Auto-curator: relay container error lines to Workers logs",
