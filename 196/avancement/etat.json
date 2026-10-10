@@ -1,13 +1,13 @@
 {
- "majLe": "2026-10-10T17:49+09:00",
- "heure": "17:49",
+ "majLe": "2026-10-10T18:46+09:00",
+ "heure": "18:46",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 288,
-  "depuisDernierTableau": 93,
+  "fusionneesDepuis8Octobre": 290,
+  "depuisDernierTableau": 95,
   "enCours": 14,
-  "app": 111,
-  "siteEtAdmin": 59,
+  "app": 112,
+  "siteEtAdmin": 60,
   "serveur": 60,
   "outilsEtDocs": 58
  },
@@ -16,6 +16,18 @@
   "texte": "Two more merged: the search page that a Take without a place name made the app reject, and the skeleton guard. That makes 45 build 196 fixes merged today. At about 17:43, every Codex agent on Replicas hit its usage limit, blocked until October 17. I moved each running task to the Claude agent of the same machine, so the measurements and reviews continue; adding Codex credits or another shared Codex account in Replicas would bring the Codex agents back."
  },
  "depuis": [
+  {
+   "heure": "18:27",
+   "pr": 4642,
+   "texte": "fix(mobile) : la relecture du cache à froid attend le lecteur, plus le montage (TAK-921, TAK-919)",
+   "build196": false
+  },
+  {
+   "heure": "17:49",
+   "pr": 4695,
+   "texte": "S86 open the admin console for an admin without a display name",
+   "build196": false
+  },
   {
    "heure": "17:25",
    "pr": 4680,
@@ -714,6 +726,12 @@
    "nom": "iPhone and Android app",
    "prs": [
     {
+     "pr": 4642,
+     "titre": "fix(mobile) : la relecture du cache à froid attend le lecteur, plus le montage (TAK-921, TAK-919)",
+     "fusion": "Oct 10, 18:27",
+     "build196": false
+    },
+    {
      "pr": 4680,
      "titre": "TAK-1004 : la garde « aucun squelette visible » suit les feuilles de style, les classes et les exports par défaut",
      "fusion": "Oct 10, 17:25",
@@ -1385,6 +1403,12 @@
    "zone": "web",
    "nom": "Website and admin",
    "prs": [
+    {
+     "pr": 4695,
+     "titre": "S86 open the admin console for an admin without a display name",
+     "fusion": "Oct 10, 17:49",
+     "build196": false
+    },
     {
      "pr": 4580,
      "titre": "TAK-858 : préserver spotLabel dans les réponses de Takes",
