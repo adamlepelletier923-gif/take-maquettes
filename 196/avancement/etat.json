@@ -1,21 +1,57 @@
 {
- "majLe": "2026-10-11T05:47+09:00",
- "heure": "05:48",
+ "majLe": "2026-10-11T06:44+09:00",
+ "heure": "06:48",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 350,
-  "depuisDernierTableau": 155,
+  "fusionneesDepuis8Octobre": 356,
+  "depuisDernierTableau": 161,
   "enCours": 12,
-  "app": 151,
-  "siteEtAdmin": 63,
-  "serveur": 66,
+  "app": 152,
+  "siteEtAdmin": 65,
+  "serveur": 69,
   "outilsEtDocs": 70
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Main's build checks are green again, and the Explore pager fix is merged, measured as smooth as main. Merges now go through with admin rights, as you said, and I tell you each one. Your smoothness table is online in a simple version; the list of what stays out of build 196 is online as a draft. The Explore study inspired by X is dropped."
+  "texte": "The website no longer signs our Takes, and videos ahead in the feed got a switch of their own, off. The icon row from your screenshot is done and is being finished before the build. A deep review found that two quick taps on the ghost could make an anonymous vote public; it was already in main and is fixed, being pushed. The four agents on the Mac are idle for now: a tooling problem on my side stops me from handing them work, so Replicas machines take it."
  },
  "depuis": [
+  {
+   "heure": "06:08",
+   "pr": 4761,
+   "texte": "Videos ahead in the feed get their own server switch, off, so the rest of the preloading can be turned on without them.",
+   "build196": true
+  },
+  {
+   "heure": "06:03",
+   "pr": 4736,
+   "texte": "Website: our Takes no longer show any author, in feeds, on their page, when shared, in search and in link previews.",
+   "build196": true
+  },
+  {
+   "heure": "05:51",
+   "pr": 4755,
+   "texte": "Server traces used by our diagnostic tools keep the outcome of a slow step instead of overwriting it. No effect for users.",
+   "build196": true
+  },
+  {
+   "heure": "05:50",
+   "pr": 4760,
+   "texte": "Test only: a composer test that failed at random is now deterministic.",
+   "build196": true
+  },
+  {
+   "heure": "05:49",
+   "pr": 4757,
+   "texte": "Serve only writable theme values on GET /me, justify the archived statement budget, report sweep error codes",
+   "build196": false
+  },
+  {
+   "heure": "05:48",
+   "pr": 4759,
+   "texte": "fix(web): stop prefetching the code screen's email back-link",
+   "build196": false
+  },
   {
    "heure": "05:16",
    "pr": 4750,
@@ -975,53 +1011,53 @@
  },
  "enCours": [
   {
+   "statut": "fixing",
+   "sujet": "Take icons: votes on the left, the rest on the right, as on your screenshot",
+   "pr": 4762,
+   "ouEnEst": "Done with build 195's spacing. Each zero now keeps its room, unseen, so the icons sit where your screenshot shows them and nothing moves when a first count appears. Then captures in light and dark, two reviews and a device measurement.",
+   "reste": "Must be in build 196, as you said."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Two quick taps on the ghost made an anonymous vote public",
+   "pr": 0,
+   "ouEnEst": "Found by a deep review; it was already in main. Fixed so that the tap reads your current choice, not the last drawing, with tests that fail without the fix. Being pushed.",
+   "reste": "Two reviews and a measurement, then merge before the build."
+  },
+  {
    "statut": "measuring",
-   "sujet": "Composer: three bugs found after it went in",
-   "pr": 4756,
-   "ouEnEst": "Fixed with tests and reviewed at zero twice; build checks green. Its device measurement is running.",
+   "sujet": "A vote could go public after you chose anonymous",
+   "pr": 4743,
+   "ouEnEst": "Three reviews: none found a defect in the fix itself (the one found was already in main, see above). The device measurement of the vote is running.",
+   "reste": "Merge when the measurement is clean."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Notifications: the unread badge",
+   "pr": 4740,
+   "ouEnEst": "Two reviews at zero, build checks green. A device measurement of the notifications screen is running.",
    "reste": "Merge when the measurement is clean."
   },
   {
    "statut": "review",
-   "sujet": "A vote could go public after you chose anonymous",
-   "pr": 4743,
-   "ouEnEst": "A third fix closes the last hole (scrolling right after the choice). Build checks green; two reviews and a device measurement of the vote are running.",
-   "reste": "Merge when both reviews are clean and voting is as smooth as main."
+   "sujet": "Notifications: read only what was really shown",
+   "pr": 4767,
+   "ouEnEst": "The server now reads up to what the shown list saw, never by date: a late alert can no longer be marked read unseen. Two deep reviews are running.",
+   "reste": "Merge with the badge fix, before the staging API redeploy."
   },
   {
-   "statut": "review",
-   "sujet": "Notifications: the unread badge",
-   "pr": 4740,
-   "ouEnEst": "Sixth version: a row removed and then back newer is no longer marked read. A deep review and another review are running.",
-   "reste": "Merge when both reviews are clean."
+   "statut": "measuring",
+   "sujet": "Composer: three bugs found after it went in",
+   "pr": 4756,
+   "ouEnEst": "Reviewed at zero twice, build checks green. The device measurement is finishing its last two pairs.",
+   "reste": "Merge when the measurement is clean."
   },
   {
    "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "The last fix is in: a tap right after Back is no longer lost once the leaving screen shows nothing under the finger. Two reviews and a device measurement are running.",
-   "reste": "Merge when both are clean; it is native."
-  },
-  {
-   "statut": "review",
-   "sujet": "Website: our Takes still signed “Take”",
-   "pr": 4736,
-   "ouEnEst": "Every spot is fixed; its build checks are running again after main was repaired.",
-   "reste": "Two clean reviews, then merge before the staging API redeploy."
-  },
-  {
-   "statut": "review",
-   "sujet": "Server traces used by our diagnostic tools",
-   "pr": 4755,
-   "ouEnEst": "Fixed, build checks green; two reviews are running. No effect for users.",
-   "reste": "Merge when both reviews are clean."
-  },
-  {
-   "statut": "review",
-   "sujet": "A composer test that failed at random",
-   "pr": 4760,
-   "ouEnEst": "Made deterministic: it passed 58 times out of 58 under load; build checks green. Two reviews are running.",
-   "reste": "Merge when both reviews are clean."
+   "ouEnEst": "Reviewed at zero twice on its latest version; build checks green. The device measurement runs again on the latest version (the last one had measured an older one).",
+   "reste": "Merge when the measurement is clean; it is native."
   },
   {
    "statut": "owner",
@@ -1031,49 +1067,55 @@
    "reste": "Its owner restarts it; the app needs no change."
   },
   {
-   "statut": "later",
+   "statut": "measuring",
    "sujet": "Preloading on, videos apart",
    "pr": 4643,
-   "ouEnEst": "With preloading on, launch is lighter and Profile and Messages are fast (Profile 125 ms of jank instead of 359). Videos get a switch of their own, off, so the rest can go on without them.",
-   "reste": "Measure everything on against main, then turn it on, as you asked: the smoothest possible."
+   "ouEnEst": "Videos now have their own switch, off. A device measures everything else on against main.",
+   "reste": "Turn it on for build 196 if it is smoother, as you asked."
   },
   {
    "statut": "later",
    "sujet": "Videos ahead in the feed with preloading on",
-   "pr": 0,
-   "ouEnEst": "Each scroll step cancelled the next video's first piece. A Replicas machine is fixing it.",
-   "reste": "Fix, measure, then turn the video switch on too."
+   "pr": 4766,
+   "ouEnEst": "One video piece per video, no more cancelling while the video stays near. Draft, for after build 196.",
+   "reste": "Measure, then turn the video switch on."
   },
   {
    "statut": "later",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "A Replicas machine is measuring four variants to find where the scroll cost comes from.",
+   "ouEnEst": "A Replicas machine is on its fifth round of variants to find where the scroll cost comes from.",
    "reste": "Joins build 196 only if it is as smooth as main."
   },
   {
    "statut": "later",
    "sujet": "Icons of a Take: mockups",
-   "pr": 0,
-   "ouEnEst": "Two Replicas machines are drawing several ways to arrange comments, votes, likes, repost and share on real screenshots.",
+   "pr": 4763,
+   "ouEnEst": "Two sets of mockups are ready to look at (pull requests 4763 and 4764, never to be merged).",
    "reste": "Your pick among the proposals."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator on staging, and four Claude agents (the unread badge, a deep review of it, the neighbouring pages switch, a review of the server traces).",
-  "On Replicas, on Claude: reviewers on every fix; device measurements for the composer, the anonymous vote and the map; the video fix; the icon mockups."
+  "Here on the Mac: me, your emulator on staging, and four Claude agents, idle for now because of a tooling problem on my side.",
+  "On Replicas, on Claude: reviewers on every fix; device measurements for the composer, the anonymous vote, the badge, the profile swipe, the preloading and the map; the icon row; the ghost fix; the video pieces."
  ],
  "etapes": [
-  "Merge the remaining fixes as their reviews, CI and measurements land: composer bugs, anonymous vote, unread badge, profile swipe, website, server traces, the random test.",
-  "A last re-read of what changed since the second one, on the final main.",
-  "Full test loop on the final main with a staging test account (its plan is written), then the 90-point tour of the app, then redeploy the staging API. Build 195 stops working on staging at that moment, as we decided.",
-  "Show you the final list of what is not in build 196, get your go, launch it as a new binary, and hand you the emulator on main."
+  "Merge the remaining fixes as their reviews, CI and measurements land: icon row, ghost double tap, anonymous vote, unread badge and its server side, composer bugs, profile swipe.",
+  "Decide the preloading switch from its measurement, then a last re-read of what changed on the final main.",
+  "Full test loop on the final main with a staging test account, then the 90-point tour of the app, then redeploy the staging API. Build 195 stops working on staging at that moment, as we decided.",
+  "Update the list of what is not in build 196, launch it as a new binary, and hand you the emulator on main."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4760,
+     "titre": "TAK-1080 : le test du compositeur ouvre la validation lente sur son propre signal, plus sur 5 ms",
+     "fusion": "Oct 11, 05:50",
+     "build196": true
+    },
     {
      "pr": 4758,
      "titre": "TAK-1075 : main de nouveau vert, l'empreinte @test-reads de thread-composer-slot suit #4744 et #4662",
@@ -1987,6 +2029,18 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 4736,
+     "titre": "TAK-1046 : le web ne signe plus nos Takes",
+     "fusion": "Oct 11, 06:03",
+     "build196": true
+    },
+    {
+     "pr": 4759,
+     "titre": "fix(web): stop prefetching the code screen's email back-link",
+     "fusion": "Oct 11, 05:48",
+     "build196": false
+    },
+    {
      "pr": 4749,
      "titre": "test(web): keep the notification-preferences receipt and first browser error in staging failure evidence",
      "fusion": "Oct 11, 03:49",
@@ -2370,6 +2424,24 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4761,
+     "titre": "TAK-1081 : les segments vidéo du fil attendent leur propre réglage serveur, éteint, pour allumer le mode borné sans eux",
+     "fusion": "Oct 11, 06:08",
+     "build196": true
+    },
+    {
+     "pr": 4755,
+     "titre": "TAK-1066 : préserver les issues et la chronologie des sauts lents",
+     "fusion": "Oct 11, 05:51",
+     "build196": true
+    },
+    {
+     "pr": 4757,
+     "titre": "Serve only writable theme values on GET /me, justify the archived statement budget, report sweep error codes",
+     "fusion": "Oct 11, 05:49",
+     "build196": false
+    },
     {
      "pr": 4727,
      "titre": "feat(api): a song on the profile from Apple Music previews, behind a flag",
