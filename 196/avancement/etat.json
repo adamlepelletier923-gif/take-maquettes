@@ -1,11 +1,11 @@
 {
- "majLe": "2026-10-10T16:43+09:00",
- "heure": "16:43",
+ "majLe": "2026-10-10T16:51+09:00",
+ "heure": "16:51",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 285,
   "depuisDernierTableau": 90,
-  "enCours": 12,
+  "enCours": 16,
   "app": 110,
   "siteEtAdmin": 58,
   "serveur": 60,
@@ -13,7 +13,7 @@
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Four more merged: relative dates, offline privacy, the vote cost (a vote change now costs 374 ms of jank instead of 1,443), and the removal of this morning's Explore pager rule, which made black pages worse. That makes 43 build 196 fixes merged today. One slip on my side: I merged the vote cost fix before the re-measurement of its last version came back. That measurement is still running, and I remove the fix if it shows anything worse. The map preparation stays out of this build."
+  "texte": "The vote cost fix is confirmed by its re-measurement, so it stays in main. The Notifications agent found why switching to Votes cost more (the JS thread waited for the UI thread at each tap) and fixed it. I also found four ready PRs that were on none of my lists since yesterday: a search page rejected when a Take has no place name, the composer's Retry and Dismiss buttons, re-reads during a cold start, and the skeleton guard. They are now in review or being measured, and the site warns me of any ready PR it does not show."
  },
  "depuis": [
   {
@@ -609,18 +609,46 @@
    "reste": "A CPU profile of Back names the exact cause, then a fix."
   },
   {
-   "statut": "measuring",
+   "statut": "fixing",
    "sujet": "Text at the largest size, and size changes while the app runs",
    "pr": 4665,
-   "ouEnEst": "Covers Messages, the Top 8, profiles, the avatar editor, KnowMe and Take Rush. Long names stay within two lines in a conversation header. Changing the iOS text size while Take runs now resizes the boxes too, without a restart.",
-   "reste": "Reviews and a device measurement of the latest version are running, including a live change through the Settings app."
+   "ouEnEst": "Covers Messages, the Top 8, profiles, the avatar editor, KnowMe and Take Rush. The live size change now resizes the boxes too, but a review found it resets what is inside a text: a #topic in a notification can turn into a link after a size change.",
+   "reste": "Being fixed and brought onto the new main; the device measurement of the other points runs meanwhile."
+  },
+  {
+   "statut": "review",
+   "sujet": "Notifications and Activity tab rows",
+   "pr": 4672,
+   "ouEnEst": "Far better than main (Comments reached 9 or 10 times out of 10, against 0). The extra cost when switching to Votes is found and fixed: the JS thread waited for the UI thread at each tap (38 waits in the test, 0 now).",
+   "reste": "Two reviews and a short measurement running, then merge."
   },
   {
    "statut": "fixing",
-   "sujet": "Notifications and Activity tab rows",
-   "pr": 4672,
-   "ouEnEst": "Far better than main (Comments reached 9 or 10 times out of 10, against 0). One extra cost remains when switching to Votes: 9 long frames against 0 on main.",
-   "reste": "Being fixed, then a short measurement."
+   "sujet": "Search results page rejected when a Take has no place name",
+   "pr": 4580,
+   "ouEnEst": "The server left the place name out of Take summaries in search and Explore, and the app then rejects the whole page. The fix has been ready since yesterday but was on none of my lists.",
+   "reste": "Being brought onto main, then two reviews and merge. It ships with the staging API redeploy."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Composer: Retry and Dismiss buttons, and why Import is greyed",
+   "pr": 4569,
+   "ouEnEst": "After a failed upload, Retry and Dismiss become two real buttons for VoiceOver, and Import explains that a sound is already attached (a text you approved). Ready since yesterday, forgotten too.",
+   "reste": "A device check of the accessibility tree and fluidity is running, then a review and merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Cold start: three screens re-read during the first feed",
+   "pr": 4642,
+   "ouEnEst": "With a slow session, Notifications, Messages and Profile were re-read while the first feed was drawing. The fix waits for the session's answer. Ready since this morning, forgotten too.",
+   "reste": "Two reviews and a device measurement running."
+  },
+  {
+   "statut": "review",
+   "sujet": "The no-skeleton guard also catches skeletons painted by a style sheet",
+   "pr": 4680,
+   "ouEnEst": "Test only, nothing changes in the app.",
+   "reste": "Two reviews, then merge."
   },
   {
    "statut": "measuring",
@@ -670,11 +698,11 @@
   "On Replicas: about fifteen reviewers and eighteen measurers on devices (four of them on the whole-app tour), on Codex in fast mode, plus agents fixing Messages and the text size."
  ],
  "etapes": [
-  "Merge each PR as soon as its measurement comes back clean: share counter, profile swipe, text size, and the avatar with your OK.",
-  "Fix what is left: Messages' Back cost and the Votes switch in Notifications.",
+  "Merge each PR as soon as its measurement and reviews come back clean: share counter, profile swipe, Notifications rows, text size, the four forgotten PRs, and the avatar with your OK.",
+  "Fix what is left: Messages' Back cost and the text size reset found by the review.",
   "Finish the fast-switch tour of the whole app on the current main; any problem gets a ticket and a fix before the build.",
-  "Show you what stays out, with reasons: the map preparation, the prefetch, the big VoiceOver change, the composer and Explore's root black-page defect.",
-  "Full test loop on the final main, a last tour, then redeploy the staging API on that commit (it carries the privacy migration).",
+  "Show you what stays out, with reasons: the map preparation, the prefetch, the big VoiceOver change, the composer refresh and Explore's root black-page defect.",
+  "Full test loop on the final main, a last tour, then redeploy the staging API on that commit (it carries the privacy migration and the place name fix).",
   "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
  ],
  "fait": [
