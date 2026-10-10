@@ -1,21 +1,33 @@
 {
- "majLe": "2026-10-10T19:47+09:00",
- "heure": "19:47",
+ "majLe": "2026-10-10T20:49+09:00",
+ "heure": "20:47",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 291,
-  "depuisDernierTableau": 96,
-  "enCours": 14,
-  "app": 113,
+  "fusionneesDepuis8Octobre": 293,
+  "depuisDernierTableau": 98,
+  "enCours": 13,
+  "app": 115,
   "siteEtAdmin": 60,
   "serveur": 60,
   "outilsEtDocs": 58
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "One more merged: the flaky Explore test, which makes 47 build 196 fixes today. The cold start tests you asked for found three defects on main, all fixed and in review, and I checked on the Mac that changing the text size while the app runs now works. Replicas: some machines' Claude agents keep losing their connection at each new session, others work; I move the work to the ones that work. Reconnecting Claude Code in the Replicas settings would fix the rest. The Mac bench is ready for the final test loop."
+  "texte": "Two more merged: the share counter, after its measurement, and the avatar editor with your OK. Replicas was not at full speed, so the idle machines now hunt bugs from new angles: a slow server, a brand-new account, a side-by-side with build 195, and reviews of everything merged since build 195. On the Mac, my preliminary test loop ran on the wrong app and in English, so all its failures were mine, not the app's; it is stopped, the development app is being rebuilt, and the loop restarts right after."
  },
  "depuis": [
+  {
+   "heure": "20:29",
+   "pr": 4524,
+   "texte": "Share counter: it goes up as soon as you share, in the feed and from an open Take, with one write to the server. Measured: smoother than main overall, one extra long JS frame at the tap, which Jev judged not felt (0.21).",
+   "build196": true
+  },
+  {
+   "heure": "20:01",
+   "pr": 4663,
+   "texte": "Avatar editor: a tap on what just moved no longer lands on Reset, and the outfit thumbnails no longer stay blank. Merged with your OK.",
+   "build196": true
+  },
   {
    "heure": "19:10",
    "pr": 4696,
@@ -31,7 +43,7 @@
   {
    "heure": "17:49",
    "pr": 4695,
-   "texte": "S86 open the admin console for an admin without a display name",
+   "texte": "Admin: the console opens for an admin without a display name",
    "build196": false
   },
   {
@@ -49,7 +61,7 @@
   {
    "heure": "16:49",
    "pr": 4694,
-   "texte": "S86 judge the gateway's telemetry over the admin smoke window",
+   "texte": "Admin: the gateway telemetry is judged over the smoke test window",
    "build196": false
   },
   {
@@ -79,31 +91,31 @@
   {
    "heure": "16:20",
    "pr": 4683,
-   "texte": "feat(map): a short © OpenStreetMap line whose ⓘ opens every map credit",
+   "texte": "Map: a short © OpenStreetMap line whose ⓘ opens every credit",
    "build196": false
   },
   {
    "heure": "16:20",
    "pr": 4688,
-   "texte": "S86 admin staging smoke on Chromium and WebKit",
+   "texte": "Admin staging smoke test on Chromium and WebKit",
    "build196": false
   },
   {
    "heure": "16:19",
    "pr": 4690,
-   "texte": "Count the map spot budget beside a search no third party bills",
+   "texte": "Map: the spot budget counted beside free searches",
    "build196": false
   },
   {
    "heure": "16:19",
    "pr": 4691,
-   "texte": "Ask maps-api's shortened forms at once and share identical answers",
+   "texte": "Map search: short forms asked at once, identical answers shared",
    "build196": false
   },
   {
    "heure": "16:19",
    "pr": 4692,
-   "texte": "Run the maps-api search eval in CI against main's ranking",
+   "texte": "Map search quality checked in CI against main's ranking",
    "build196": false
   },
   {
@@ -617,66 +629,59 @@
  },
  "enCours": [
   {
-   "statut": "fixing",
+   "statut": "measuring",
    "sujet": "Text at the largest size, and size changes while the app runs",
    "pr": 4665,
-   "ouEnEst": "Checked on the Mac's simulator: changing the iOS text size while Take runs now gives exactly the same screen as a cold start. The measurement found the Top 8 boxes too tall and « Enregistrer » cut mid-word (both fixed), and I found the welcome screen going under the clock at the largest size.",
-   "reste": "Being fixed with a main merge, then reviews and a short measurement."
+   "ouEnEst": "The Top 8, « Enregistrer » and the welcome screen are now readable at the largest size, and it took main. At the default size nothing may change from main.",
+   "reste": "Two reviews and a short measurement running, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
-   "ouEnEst": "An invisible layer in its own window blocks touches during every close, and the tab row installs its gesture once instead of six times. Reviewed at zero twice, CI green.",
-   "reste": "Its measurement restarted on a machine that still works, then merge."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Messages: blank screen after a cancelled swipe back",
-   "pr": 4662,
-   "ouEnEst": "The extra cost found by the CPU profile is fixed, and it took main. Reviewed at zero twice, CI green.",
-   "reste": "A device measurement is running, then merge."
+   "ouEnEst": "An invisible layer blocks touches during every close, and the tab row installs its gesture once instead of six times. Reviewed at zero twice, CI green.",
+   "reste": "Its device measurement is running, then merge."
   },
   {
    "statut": "fixing",
-   "sujet": "Share counter moves as soon as you share",
-   "pr": 4524,
-   "ouEnEst": "One of your build 195 reports. The counter works everywhere and the open Take no longer redraws; tapping Copy link in the feed still redraws the Friends screen once.",
-   "reste": "Being fixed the same way as the vote, then a short measurement."
+   "sujet": "Messages: blank screen after a cancelled swipe back",
+   "pr": 4662,
+   "ouEnEst": "The Back is fixed and measured with no regression. Opening a conversation shows 4 more long JS frames than main, in every pair.",
+   "reste": "A machine is finding where they come from; then a remeasure and merge."
   },
   {
    "statut": "measuring",
    "sujet": "Notifications and Activity tab rows",
    "pr": 4672,
-   "ouEnEst": "Took main, and fixed the underline that went back to a tab already passed during a fast burst. One review at zero, CI green.",
-   "reste": "A second review and a device measurement running."
+   "ouEnEst": "The last review found that a tap meant to stop a scrolling list also switched tab; fixed. Reviewed at zero twice on the new head, CI green.",
+   "reste": "A device measurement with a CPU profile of the Votes tab is running."
   },
   {
    "statut": "measuring",
    "sujet": "Composer: Retry and Dismiss buttons, and why Import is greyed",
    "pr": 4569,
-   "ouEnEst": "After a failed upload, Retry and Dismiss become two real buttons for VoiceOver, and Import explains that a sound is already attached. Took main, reviewed at zero twice, CI green.",
-   "reste": "A device measurement is running, then merge."
+   "ouEnEst": "After a failed upload, Retry and Dismiss become two real buttons for VoiceOver, and Import explains that a sound is already attached. Reviewed at zero twice, CI green.",
+   "reste": "Its device measurement is running, then merge."
   },
   {
    "statut": "review",
-   "sujet": "Cold start tests, second batch, and the three defects they found",
+   "sujet": "Cold start tests, second batch, and the defects they found",
    "pr": 4697,
-   "ouEnEst": "The tests you asked for this morning, for the six tabs. They found three defects on main: cold Home showed « empty Friends » for one frame, a fresh Explore offered « Retry » instead of the waiting room, and one on both pagers. All fixed in the same PR, CI green.",
-   "reste": "Two reviews and a device measurement running."
+   "ouEnEst": "The tests you asked for, for the six tabs, found three defects on main, all fixed here. The reviews then caught Explore swapping its top Take under your eyes when you leave a topic, first by a tap, then by a swipe; both fixed at the root.",
+   "reste": "Two reviews and a device measurement running on the new head."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "CI: the React Doctor gate judged nothing",
+   "pr": 4699,
+   "ouEnEst": "Since main moved, the gate could not find its base and passed without looking. Fixed for pull requests; the reviews found it still judges nothing on a push to main.",
+   "reste": "Being fixed. Not blocking for build 196."
   },
   {
    "statut": "measuring",
-   "sujet": "Avatar: a tap lands on Reset, thumbnails stay blank",
-   "pr": 4663,
-   "ouEnEst": "Measured and reviewed at zero; Jev sees no real regression (0.15). It adds an invisible guard that ignores touches for half a second after the panel moves; nothing changes on screen.",
-   "reste": "Waiting for your design OK, because my guard asks you for any new component."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Fast-switch tour of the whole app on the current main",
+   "sujet": "Bug hunts on the current main",
    "pr": 0,
-   "ouEnEst": "One device is on Home and the bottom bar; the other zones wait for machines whose connection works.",
+   "ouEnEst": "Home and the bottom bar: nothing to fix after 81 bursts, warm, cold and after a fresh install. Three more zones are being toured, and five new hunts started: a slow server, a brand-new account, a side-by-side with build 195, and two reviews of the 74 app commits since build 195.",
    "reste": "Any problem gets a ticket and a fix before the build."
   },
   {
@@ -716,14 +721,14 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: the Claude on the Notifications rows, and the bench for the final loop (future main's native app, local API, fresh seeded database).",
-  "On Replicas: Codex agents blocked until October 17; Claude agents work on some machines and lose their connection on others, so the work goes to the ones that work: seven measurements, the reviews and the fixes."
+  "Here on the Mac: the Claude on the Notifications rows, and the bench: the development app is compiling for the test loop, with the local API and a fresh seeded database.",
+  "On Replicas: Codex agents blocked until October 17; the Claude agents work again since the account was reconnected: six measurements, the reviews, three fixes, four fast tours and five new bug hunts."
  ],
  "etapes": [
-  "Merge each PR as soon as its measurement and reviews come back clean: profile swipe, Messages Back, composer buttons, Notifications rows, cold start tests, then text size and share counter after their last fixes, and the avatar with your OK.",
-  "Finish the fast-switch tour; any problem gets a ticket and a fix before the build.",
+  "Merge each PR as soon as its measurement and reviews come back clean: profile swipe, composer buttons, Notifications rows, cold start tests, text size, then Messages Back after its opening fix.",
+  "Finish the tours and the five new bug hunts; any problem gets a ticket and a fix before the build.",
   "Show you what stays out, with reasons: the map preparation, the prefetch, the big VoiceOver change, the composer refresh and Explore's root black-page defect.",
-  "Full test loop on the final main on the Mac bench (native app, local API and fresh database ready), a last tour, then redeploy the staging API on that commit. Build 195 stops working on staging at that moment, as we decided.",
+  "Full test loop on the final main on the Mac bench, a last tour, then redeploy the staging API on that commit. Build 195 stops working on staging at that moment, as we decided.",
   "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
  ],
  "fait": [
@@ -732,44 +737,56 @@
    "nom": "iPhone and Android app",
    "prs": [
     {
+     "pr": 4524,
+     "titre": "Share counter goes up as soon as you share",
+     "fusion": "Oct 10, 20:29",
+     "build196": true
+    },
+    {
+     "pr": 4663,
+     "titre": "Avatar editor: a tap on what just moved no longer hits Reset; thumbnails no longer stay blank",
+     "fusion": "Oct 10, 20:01",
+     "build196": true
+    },
+    {
      "pr": 4696,
-     "titre": "test(mobile) : le test Explorer de l'échec de langue ne dépasse plus son délai, l'attente n'affiche plus le DOM (TAK-1014)",
+     "titre": "Test: the Explore language-failure test no longer times out or prints the whole document",
      "fusion": "Oct 10, 19:10",
      "build196": true
     },
     {
      "pr": 4642,
-     "titre": "fix(mobile) : la relecture du cache à froid attend le lecteur, plus le montage (TAK-921, TAK-919)",
+     "titre": "Cold start: the cache is read again when the reader needs it, not at mount",
      "fusion": "Oct 10, 18:27",
      "build196": true
     },
     {
      "pr": 4680,
-     "titre": "TAK-1004 : la garde « aucun squelette visible » suit les feuilles de style, les classes et les exports par défaut",
+     "titre": "The « no visible skeleton » guard now follows stylesheets, classes and default exports",
      "fusion": "Oct 10, 17:25",
      "build196": true
     },
     {
      "pr": 4686,
-     "titre": "TAK-830 : un vote se dessine dans le Take touché, sans redessiner le fil",
+     "titre": "A vote redraws only the Take you touched, not the whole feed",
      "fusion": "Oct 10, 16:36",
      "build196": true
     },
     {
      "pr": 4670,
-     "titre": "TAK-986: les réglages de confidentialité choisis hors ligne survivent à l'app tuée et ne montrent plus de valeur périmée",
+     "titre": "Privacy settings chosen offline survive a killed app and never show a stale value",
      "fusion": "Oct 10, 16:27",
      "build196": true
     },
     {
      "pr": 4685,
-     "titre": "TAK-1005 : empêcher les lectures anticipées de redessiner les dates relatives",
+     "titre": "Read-ahead no longer redraws relative dates",
      "fusion": "Oct 10, 16:23",
      "build196": true
     },
     {
      "pr": 4683,
-     "titre": "feat(map): a short © OpenStreetMap line whose ⓘ opens every map credit",
+     "titre": "Map: a short © OpenStreetMap line whose ⓘ opens every credit",
      "fusion": "Oct 10, 16:20",
      "build196": false
     },
@@ -1417,13 +1434,13 @@
    "prs": [
     {
      "pr": 4695,
-     "titre": "S86 open the admin console for an admin without a display name",
+     "titre": "Admin: the console opens for an admin without a display name",
      "fusion": "Oct 10, 17:49",
      "build196": false
     },
     {
      "pr": 4580,
-     "titre": "TAK-858 : préserver spotLabel dans les réponses de Takes",
+     "titre": "Takes keep their place name in API responses",
      "fusion": "Oct 10, 17:08",
      "build196": true
     },
@@ -1783,7 +1800,7 @@
    "prs": [
     {
      "pr": 4690,
-     "titre": "Count the map spot budget beside a search no third party bills",
+     "titre": "Map: the spot budget counted beside free searches",
      "fusion": "Oct 10, 16:19",
      "build196": false
     },
@@ -2149,25 +2166,25 @@
    "prs": [
     {
      "pr": 4694,
-     "titre": "S86 judge the gateway's telemetry over the admin smoke window",
+     "titre": "Admin: the gateway telemetry is judged over the smoke test window",
      "fusion": "Oct 10, 16:49",
      "build196": false
     },
     {
      "pr": 4693,
-     "titre": "TAK-998 : retirer la règle du pager natif de #4676, qui aggrave les pages noires d'Explorer",
+     "titre": "Explore: remove the native pager rule that made black pages worse",
      "fusion": "Oct 10, 16:24",
      "build196": true
     },
     {
      "pr": 4688,
-     "titre": "S86 admin staging smoke on Chromium and WebKit",
+     "titre": "Admin staging smoke test on Chromium and WebKit",
      "fusion": "Oct 10, 16:20",
      "build196": false
     },
     {
      "pr": 4692,
-     "titre": "Run the maps-api search eval in CI against main's ranking",
+     "titre": "Map search quality checked in CI against main's ranking",
      "fusion": "Oct 10, 16:19",
      "build196": false
     },
@@ -2485,7 +2502,7 @@
    "prs": [
     {
      "pr": 4691,
-     "titre": "Ask maps-api's shortened forms at once and share identical answers",
+     "titre": "Map search: short forms asked at once, identical answers shared",
      "fusion": "Oct 10, 16:19",
      "build196": false
     },
