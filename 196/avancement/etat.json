@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-10T18:47+09:00",
- "heure": "18:47",
+ "majLe": "2026-10-10T19:47+09:00",
+ "heure": "19:47",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 290,
-  "depuisDernierTableau": 95,
-  "enCours": 15,
-  "app": 112,
+  "fusionneesDepuis8Octobre": 291,
+  "depuisDernierTableau": 96,
+  "enCours": 14,
+  "app": 113,
   "siteEtAdmin": 60,
   "serveur": 60,
   "outilsEtDocs": 58
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "One more merged: the cold start, which makes 46 build 196 fixes today. Six PRs are now reviewed at zero with a green CI and only wait for their device measurement. Blocking: at about 18:28 the Claude agents on Replicas lost their connection (they ask to reconnect Claude Code in Settings, Agents), on top of the Codex limit until October 17. Only you or Jordan can reconnect Claude Code in the Replicas settings; until then the measurements stop one by one."
+  "texte": "One more merged: the flaky Explore test, which makes 47 build 196 fixes today. The cold start tests you asked for found three defects on main, all fixed and in review, and I checked on the Mac that changing the text size while the app runs now works. Replicas: some machines' Claude agents keep losing their connection at each new session, others work; I move the work to the ones that work. Reconnecting Claude Code in the Replicas settings would fix the rest. The Mac bench is ready for the final test loop."
  },
  "depuis": [
+  {
+   "heure": "19:10",
+   "pr": 4696,
+   "texte": "Test only: a flaky Explore test that failed one run in two on main no longer prints the whole test document at each failed check.",
+   "build196": true
+  },
   {
    "heure": "18:27",
    "pr": 4642,
@@ -611,18 +617,18 @@
  },
  "enCours": [
   {
-   "statut": "measuring",
+   "statut": "fixing",
    "sujet": "Text at the largest size, and size changes while the app runs",
    "pr": 4665,
-   "ouEnEst": "Covers Messages, the Top 8, profiles, the avatar editor, KnowMe and Take Rush. The live size change resizes the boxes without a restart and keeps what is inside a text. Reviewed at zero twice, CI green.",
-   "reste": "A device measurement is running, including a live change through the Settings app."
+   "ouEnEst": "Checked on the Mac's simulator: changing the iOS text size while Take runs now gives exactly the same screen as a cold start. The measurement found the Top 8 boxes too tall and « Enregistrer » cut mid-word (both fixed), and I found the welcome screen going under the clock at the largest size.",
+   "reste": "Being fixed with a main merge, then reviews and a short measurement."
   },
   {
    "statut": "measuring",
    "sujet": "Profile: a swipe from Questions closed the profile",
    "pr": 4659,
    "ouEnEst": "An invisible layer in its own window blocks touches during every close, and the tab row installs its gesture once instead of six times. Reviewed at zero twice, CI green.",
-   "reste": "A device measurement is running, then merge."
+   "reste": "Its measurement restarted on a machine that still works, then merge."
   },
   {
    "statut": "measuring",
@@ -632,32 +638,32 @@
    "reste": "A device measurement is running, then merge."
   },
   {
-   "statut": "measuring",
+   "statut": "fixing",
    "sujet": "Share counter moves as soon as you share",
    "pr": 4524,
-   "ouEnEst": "One of your build 195 reports. Closing the share sheet in an open Take no longer redraws the whole screen; only the counter does. Reviewed at zero twice, CI green.",
-   "reste": "A device measurement is running, then merge."
+   "ouEnEst": "One of your build 195 reports. The counter works everywhere and the open Take no longer redraws; tapping Copy link in the feed still redraws the Friends screen once.",
+   "reste": "Being fixed the same way as the vote, then a short measurement."
   },
   {
-   "statut": "review",
+   "statut": "measuring",
    "sujet": "Notifications and Activity tab rows",
    "pr": 4672,
-   "ouEnEst": "Took main, and fixed the underline that went back to a tab already passed during a fast burst: the bold word and the underline are now on the same tab at every frame.",
-   "reste": "Two reviews and a device measurement running."
+   "ouEnEst": "Took main, and fixed the underline that went back to a tab already passed during a fast burst. One review at zero, CI green.",
+   "reste": "A second review and a device measurement running."
   },
   {
    "statut": "measuring",
    "sujet": "Composer: Retry and Dismiss buttons, and why Import is greyed",
    "pr": 4569,
-   "ouEnEst": "After a failed upload, Retry and Dismiss become two real buttons for VoiceOver, and Import explains that a sound is already attached (a text you approved).",
-   "reste": "Its measurement stopped with the Replicas outage; it must take main first, then be measured again."
+   "ouEnEst": "After a failed upload, Retry and Dismiss become two real buttons for VoiceOver, and Import explains that a sound is already attached. Took main, reviewed at zero twice, CI green.",
+   "reste": "A device measurement is running, then merge."
   },
   {
    "statut": "review",
-   "sujet": "A flaky Explore test that failed one run in two on main",
-   "pr": 4696,
-   "ouEnEst": "Test only: each failed check printed the whole test document, about 2 s each, until the test ran out of time. Found and fixed.",
-   "reste": "Two reviews, then merge."
+   "sujet": "Cold start tests, second batch, and the three defects they found",
+   "pr": 4697,
+   "ouEnEst": "The tests you asked for this morning, for the six tabs. They found three defects on main: cold Home showed « empty Friends » for one frame, a fresh Explore offered « Retry » instead of the waiting room, and one on both pagers. All fixed in the same PR, CI green.",
+   "reste": "Two reviews and a device measurement running."
   },
   {
    "statut": "measuring",
@@ -667,17 +673,10 @@
    "reste": "Waiting for your design OK, because my guard asks you for any new component."
   },
   {
-   "statut": "fixing",
-   "sujet": "Cold start tests, second batch",
-   "pr": 0,
-   "ouEnEst": "The tests you asked for this morning: each tab at its first draw from cache, fast taps right after the splash, and a fresh install. The first batch is merged.",
-   "reste": "Being written; any defect found gets a ticket and a fix before the build."
-  },
-  {
    "statut": "measuring",
    "sujet": "Fast-switch tour of the whole app on the current main",
    "pr": 0,
-   "ouEnEst": "Two devices restarted it (Home and the bottom bar, then Explore, the map and the game); the other two zones wait for free measurers.",
+   "ouEnEst": "One device is on Home and the bottom bar; the other zones wait for machines whose connection works.",
    "reste": "Any problem gets a ticket and a fix before the build."
   },
   {
@@ -717,15 +716,14 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: the Claude fixing the Notifications rows, and the native build of the future main for the final test loop.",
-  "On Replicas: the Codex agents are blocked by their usage limit until October 17, and the Claude agents lost their connection at about 18:28; the ones still in a session keep measuring until they stop."
+  "Here on the Mac: the Claude on the Notifications rows, and the bench for the final loop (future main's native app, local API, fresh seeded database).",
+  "On Replicas: Codex agents blocked until October 17; Claude agents work on some machines and lose their connection on others, so the work goes to the ones that work: seven measurements, the reviews and the fixes."
  ],
  "etapes": [
-  "Reconnect Claude Code in the Replicas settings (you or Jordan), so the measurements can finish.",
-  "Merge each PR as soon as its measurement comes back clean: text size, profile swipe, Messages Back, share counter, Notifications rows, composer buttons, the flaky test fix, and the avatar with your OK.",
-  "Finish the fast-switch tour and the cold start tests; any problem gets a ticket and a fix before the build.",
+  "Merge each PR as soon as its measurement and reviews come back clean: profile swipe, Messages Back, composer buttons, Notifications rows, cold start tests, then text size and share counter after their last fixes, and the avatar with your OK.",
+  "Finish the fast-switch tour; any problem gets a ticket and a fix before the build.",
   "Show you what stays out, with reasons: the map preparation, the prefetch, the big VoiceOver change, the composer refresh and Explore's root black-page defect.",
-  "Full test loop on the final main (its native app is already building on the Mac), a last tour, then redeploy the staging API on that commit. Build 195 stops working on staging at that moment, as we decided.",
+  "Full test loop on the final main on the Mac bench (native app, local API and fresh database ready), a last tour, then redeploy the staging API on that commit. Build 195 stops working on staging at that moment, as we decided.",
   "Launch build 196, a new binary with the native fixes, then hand you the emulator on main."
  ],
  "fait": [
@@ -733,6 +731,12 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4696,
+     "titre": "test(mobile) : le test Explorer de l'échec de langue ne dépasse plus son délai, l'attente n'affiche plus le DOM (TAK-1014)",
+     "fusion": "Oct 10, 19:10",
+     "build196": true
+    },
     {
      "pr": 4642,
      "titre": "fix(mobile) : la relecture du cache à froid attend le lecteur, plus le montage (TAK-921, TAK-919)",
