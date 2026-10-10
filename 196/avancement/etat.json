@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-10T11:49+09:00",
- "heure": "11:49",
+ "majLe": "2026-10-10T11:50+09:00",
+ "heure": "11:50",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 323,
@@ -13,7 +13,7 @@
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Explore no longer shows gray placeholder bars, as your no-skeleton rule wants: that makes 9 fixes merged today. Replicas and the Mac are both running again on fresh accounts. The equal spacing still had two cases where a big number was cut; it is being fixed like X before the screenshots."
+  "texte": "Explore no longer shows gray placeholder bars, as your no-skeleton rule wants: that makes 24 build 196 fixes merged today. Replicas and the Mac are both running again on fresh accounts. The equal spacing still had two cases where a big number was cut; it is being fixed like X before the screenshots."
  },
  "depuis": [
   {
