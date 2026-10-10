@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-10T11:44+09:00",
- "heure": "11:44",
+ "majLe": "2026-10-10T11:49+09:00",
+ "heure": "11:49",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 322,
-  "depuisDernierTableau": 60,
-  "enCours": 30,
-  "app": 113,
+  "fusionneesDepuis8Octobre": 323,
+  "depuisDernierTableau": 61,
+  "enCours": 29,
+  "app": 114,
   "siteEtAdmin": 66,
   "serveur": 64,
   "outilsEtDocs": 79
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Two more fixes merged: the Profile after a cold start draws its counters and Top 8 at once, and a rare lost tap on native pages is gone. Replicas stopped for about 20 minutes when its Claude account hit its limit; it now runs on another account and every machine has resumed. Meanwhile the Mac's agents reviewed PRs, and they moved to a new account too."
+  "texte": "Explore no longer shows gray placeholder bars, as your no-skeleton rule wants: that makes 9 fixes merged today. Replicas and the Mac are both running again on fresh accounts. The equal spacing still had two cases where a big number was cut; it is being fixed like X before the screenshots."
  },
  "depuis": [
+  {
+   "heure": "11:49",
+   "pr": 4675,
+   "texte": "Explore: no more gray placeholder bars on a first load, as your no-skeleton rule wants; a test guards it.",
+   "build196": true
+  },
   {
    "heure": "11:21",
    "pr": 4653,
@@ -401,11 +407,11 @@
  },
  "enCours": [
   {
-   "statut": "review",
+   "statut": "claude",
    "sujet": "Counters hidden at 0, with equal spacing like X",
    "pr": 4526,
-   "ouEnEst": "One of your build 195 reports. Each action now has a column of the same width, so a number that appears or disappears moves nothing. It took today's main.",
-   "reste": "Reviews running here and on Replicas, and fresh screenshots for you, then a measurement."
+   "ouEnEst": "One of your build 195 reports. Each action has a column of the same width. Reviewers found two cases left: a large count like 9.9K or 100K is cut in its column, and the vote count runs past the edge at large text size.",
+   "reste": "A Claude here spreads the actions over the whole row like X, so nothing is ever cut. Then fresh screenshots for you, reviews and a measurement."
   },
   {
    "statut": "review",
@@ -499,13 +505,6 @@
    "reste": "Reviews and a device check, then merge."
   },
   {
-   "statut": "review",
-   "sujet": "Explore: gray placeholder bars on a first load",
-   "pr": 4675,
-   "ouEnEst": "This morning's Explore fix showed gray bars, against your rule of no skeleton anywhere. They become an invisible placeholder of the same size, with a guard so it cannot come back.",
-   "reste": "Reviews, then merge."
-  },
-  {
    "statut": "fixing",
    "sujet": "Text at the largest size",
    "pr": 4665,
@@ -544,8 +543,8 @@
    "statut": "review",
    "sujet": "Privacy settings changed offline",
    "pr": 4670,
-   "ouEnEst": "Logging out now clears the offline queue, and an old choice never overrides a newer one.",
-   "reste": "Reviews, then merge."
+   "ouEnEst": "Logging out now clears the offline queue, and an old choice never overrides a newer one. Reviewed at zero once; it now needs today's main.",
+   "reste": "Merge of main, a second review, then merge."
   },
   {
    "statut": "review",
@@ -628,6 +627,12 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4675,
+     "titre": "TAK-999: Explore keeps the space without a visible skeleton, as the design system wants",
+     "fusion": "Oct 10, 11:49",
+     "build196": true
+    },
     {
      "pr": 4653,
      "titre": "The Profile relaunched with cache draws its counters and Top 8 at once (TAK-937)",
