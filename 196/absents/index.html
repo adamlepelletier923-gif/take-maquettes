@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F3F6FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1420" media="(prefers-color-scheme: dark)">
+<title>Pas dans le build 196</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap">
+<style>
+:root{
+  --bg:#F3F6FB;--surface:#FFFFFF;--surface-2:#E9EEF7;--ink:#141B2D;--muted:#55607A;--line:#DCE3EF;--line-2:#C6D0E2;
+  --brand:#2A5BD7;--brand-dark:#1D43A8;--brand-soft:#E3EBFD;
+  --ok:#21995A;--ok-dark:#187444;--ok-soft:#DFF4E8;--ok-ink:#16653B;
+  --wait:#D9931C;--wait-dark:#A86F10;--wait-soft:#FCF0D8;--wait-ink:#7F530A;
+  --bench:#7A4FD6;--bench-dark:#5B36AA;--bench-soft:#EEE7FC;--bench-ink:#4E2D99;
+  --bad:#D9483B;--bad-dark:#A93329;--bad-soft:#FBE4E1;--bad-ink:#9A2C21;
+  --z-mobile:#2A5BD7;--z-web:#E0752D;--z-api:#21995A;--z-outillage:#7A4FD6;--z-docs:#C9449A;--z-autre:#7C8798;
+  --sans:"Nunito","Avenir Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0F1420;--surface:#18202F;--surface-2:#222C3E;--ink:#EEF2FA;--muted:#A5B0C6;--line:#2A3446;--line-2:#3A4659;
+  --brand:#7FA2F5;--brand-dark:#4F72C7;--brand-soft:#1B2944;
+  --ok:#42BE7C;--ok-dark:#2B8A57;--ok-soft:#15372A;--ok-ink:#93E2B7;
+  --wait:#E7B04F;--wait-dark:#B5852E;--wait-soft:#3A2E14;--wait-ink:#F3CF8C;
+  --bench:#AE8DF0;--bench-dark:#8466C4;--bench-soft:#2A2147;--bench-ink:#D3C2F8;
+  --bad:#EC6A5C;--bad-dark:#B8463B;--bad-soft:#3E201C;--bad-ink:#F7AEA4;
+  --z-mobile:#7FA2F5;--z-web:#F09A5C;--z-api:#42BE7C;--z-outillage:#AE8DF0;--z-docs:#E57FBF;--z-autre:#9AA5B8;
+  color-scheme:dark;
+}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.4;font-weight:600;-webkit-font-smoothing:antialiased}
+@media (prefers-color-scheme:dark){body{font-weight:700}}
+main{max-width:720px;margin:0 auto;padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(40px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:18px}
+h1{margin:0;font-size:28px;font-weight:900;letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
+.periode{margin:0;color:var(--muted);font-size:15px}
+.msg{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:16px;font-weight:800}
+.table-wrap{background:var(--surface);border:2px solid var(--line);border-radius:16px;box-shadow:0 3px 0 var(--line-2);overflow:hidden}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+th,td{text-align:left;vertical-align:top;padding:12px 14px;overflow-wrap:anywhere}
+thead th{color:var(--muted);font-size:14px;font-weight:900;border-bottom:2px solid var(--line)}
+tbody tr+tr td{border-top:1px solid var(--line)}
+td.endroit{width:44%;font-weight:900}
+td.valeur{font-variant-numeric:tabular-nums}
+.avant{color:var(--muted)}
+.fleche{color:var(--muted);padding:0 4px}
+.apres{color:var(--ok-ink);font-weight:900;white-space:nowrap}
+@media (prefers-color-scheme:dark){.apres{color:var(--ok)}}
+footer{color:var(--muted);font-size:14px;text-align:center}
+footer a{color:var(--muted);font-weight:700}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+ul.points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.point{background:var(--surface);border:2px solid var(--line);border-radius:16px;box-shadow:0 3px 0 var(--line-2);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.point h2{margin:0;font-size:18px;font-weight:900;line-height:1.25}
+.point p{margin:0;font-size:16px}
+.point .quoi{color:var(--muted)}
+.decide{background:var(--wait-soft);color:var(--wait-ink);border-radius:10px;padding:8px 10px}
+.decide.rien{background:var(--surface-2);color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Ce qui n'est pas dans le build 196</h1>
+  <p class="periode">14 points. Tu as 5 choix à faire, tout le reste attend sans rien te demander.</p>
+  <ul class="points">
+    <li class="point">
+      <h2>Carte « À proximité » chargée d'avance</h2>
+      <p class="quoi">La carte serait déjà prête quand on l'ouvre, comme sur Snap.</p>
+      <p><b>Pourquoi pas dedans :</b> La dernière mesure montrait le fil Amis un peu moins fluide que l'actuel. Une nouvelle mesure est en cours.</p>
+      <p class="decide rien"><b>À décider :</b> Rien pour l'instant : elle entre seulement si la mesure est au moins aussi bonne qu'avant.</p>
+    </li>
+    <li class="point">
+      <h2>Pages voisines lues d'avance</h2>
+      <p class="quoi">Messages, le Profil et les réponses d'un Take seraient lus avant qu'on y aille.</p>
+      <p><b>Pourquoi pas dedans :</b> Ça ne change rien tant que le réglage du préchargement reste éteint côté serveur. Une mesure est en cours.</p>
+      <p class="decide rien"><b>À décider :</b> Rien.</p>
+    </li>
+    <li class="point">
+      <h2>Explorer inspiré de celui de X</h2>
+      <p class="quoi">Une étude avec six propositions (onglet « Pour toi », lignes de tendances, page d'un sujet…), maquettes à l'appui.</p>
+      <p><b>Pourquoi pas dedans :</b> Rien n'est codé tant que tu n'as pas choisi.</p>
+      <p class="decide"><b>À décider :</b> Choisir parmi les six propositions.</p>
+    </li>
+    <li class="point">
+      <h2>Nouvelle disposition des icônes d'un Take</h2>
+      <p class="quoi">Commentaires, votes, j'aime, repost et partage rangés autrement sous un Take.</p>
+      <p><b>Pourquoi pas dedans :</b> Les maquettes sont en cours.</p>
+      <p class="decide"><b>À décider :</b> Choisir une maquette quand elles seront prêtes.</p>
+    </li>
+    <li class="point">
+      <h2>Chansons sur le profil</h2>
+      <p class="quoi">Un extrait de musique sur son profil.</p>
+      <p><b>Pourquoi pas dedans :</b> La fonction est cachée derrière un réglage éteint. L'allumer casserait les anciennes versions de l'app.</p>
+      <p class="decide rien"><b>À décider :</b> Rien avant que ce soit corrigé.</p>
+    </li>
+    <li class="point">
+      <h2>Site web : nos Takes encore signés</h2>
+      <p class="quoi">Sur le site, nos Takes affichent encore « Take » comme auteur. L'app, elle, est déjà corrigée.</p>
+      <p><b>Pourquoi pas dedans :</b> C'est le site, pas l'app. Un défaut reste à corriger avant de le publier.</p>
+      <p class="decide rien"><b>À décider :</b> Rien.</p>
+    </li>
+    <li class="point">
+      <h2>Message qui partage un Take illisible</h2>
+      <p class="quoi">Ce message n'arriverait plus en direct à quelqu'un qui ne peut pas lire ce Take.</p>
+      <p><b>Pourquoi pas dedans :</b> Repéré en relecture, pas encore confirmé.</p>
+      <p class="decide"><b>À décider :</b> Dire si c'est voulu ou s'il faut le corriger.</p>
+    </li>
+    <li class="point">
+      <h2>Vidéos des Takes officiels retirées</h2>
+      <p class="quoi">Une erreur passagère du site vidéo retirerait la vidéo du Take pour toujours.</p>
+      <p><b>Pourquoi pas dedans :</b> Repéré en relecture, pas encore confirmé.</p>
+      <p class="decide"><b>À décider :</b> Dire si c'est voulu ou s'il faut le corriger.</p>
+    </li>
+    <li class="point">
+      <h2>Limite pour bloquer et débloquer</h2>
+      <p class="quoi">Au plus 10 par minute et 100 par jour, et l'app réessaie jusqu'à 10 fois.</p>
+      <p><b>Pourquoi pas dedans :</b> Repéré en relecture, pas encore confirmé.</p>
+      <p class="decide"><b>À décider :</b> Dire si cette limite te convient.</p>
+    </li>
+    <li class="point">
+      <h2>Garde-fou contre les ralentissements</h2>
+      <p class="quoi">Un contrôle qui refuse tout changement de fluidité sans son étude de régression.</p>
+      <p><b>Pourquoi pas dedans :</b> Outil pour les développeurs, prévu juste après le 196, pas encore relu.</p>
+      <p class="decide rien"><b>À décider :</b> Rien.</p>
+    </li>
+    <li class="point">
+      <h2>Traces techniques du serveur</h2>
+      <p class="quoi">Deux détails dans les journaux du serveur.</p>
+      <p><b>Pourquoi pas dedans :</b> Invisible dans l'app.</p>
+      <p class="decide rien"><b>À décider :</b> Rien.</p>
+    </li>
+    <li class="point">
+      <h2>Petits défauts sans effet visible</h2>
+      <p class="quoi">Une trace interne gardée une heure au lieu d'une minute, un contrôle de captures trop facile à satisfaire.</p>
+      <p><b>Pourquoi pas dedans :</b> Invisible dans l'app.</p>
+      <p class="decide rien"><b>À décider :</b> Rien.</p>
+    </li>
+    <li class="point">
+      <h2>Tests qui échouent parfois</h2>
+      <p class="quoi">Trois tests automatiques instables (site, vidéos, une preuve technique).</p>
+      <p><b>Pourquoi pas dedans :</b> Ils ne changent rien à l'app.</p>
+      <p class="decide rien"><b>À décider :</b> Rien.</p>
+    </li>
+    <li class="point">
+      <h2>Améliorations des tests</h2>
+      <p class="quoi">Rendre deux familles de tests plus fidèles.</p>
+      <p><b>Pourquoi pas dedans :</b> Travail interne, sans effet sur l'app.</p>
+      <p class="decide rien"><b>À décider :</b> Rien.</p>
+    </li>
+  </ul>
+</main>
+</body>
+</html>
