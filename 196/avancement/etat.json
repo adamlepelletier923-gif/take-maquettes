@@ -1,21 +1,33 @@
 {
- "majLe": "2026-10-10T23:33+09:00",
- "heure": "23:33",
+ "majLe": "2026-10-10T23:50+09:00",
+ "heure": "23:50",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 314,
-  "depuisDernierTableau": 119,
-  "enCours": 19,
-  "app": 129,
+  "fusionneesDepuis8Octobre": 316,
+  "depuisDernierTableau": 121,
+  "enCours": 17,
+  "app": 131,
   "siteEtAdmin": 61,
   "serveur": 61,
   "outilsEtDocs": 63
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Your rule that our Takes sign nothing is back in a fix: the guest feed showed the curator's Takes signed “Take” with the logo. Three more fixes are merged (your profile photo, the guest feed during a late config, and the cold start tests), and the Take account is kept until you decide, because the curator publishes through it."
+  "texte": "Two more regression fixes are merged: refreshing an open Take you voted on shows the server's counts again, and coming back to a feed no longer re-reads Takes for nothing. Our Takes stay without an author while the curator keeps publishing, as you asked."
  },
  "depuis": [
+  {
+   "heure": "23:49",
+   "pr": 4711,
+   "texte": "fix(mobile) : les Takes déjà à l'écran sont préparés dès que la page prend le focus (TAK-1028, point 2)",
+   "build196": true
+  },
+  {
+   "heure": "23:49",
+   "pr": 4706,
+   "texte": "fix(mobile) : tirer pour rafraîchir un Take voté montre les compteurs et le vote du serveur (TAK-1026)",
+   "build196": true
+  },
   {
    "heure": "23:31",
    "pr": 4719,
@@ -758,22 +770,22 @@
    "statut": "fixing",
    "sujet": "Eighteen regressions found by reading everything changed since build 195",
    "pr": 0,
-   "ouEnEst": "Most are now fixed and merged: the anonymous vote, the sheets, sharing during a refresh, the map pins, the official profile, the notification settings, the map flight, your profile photo and four launch races.",
+   "ouEnEst": "Most are now fixed and merged: the anonymous vote, the sheets, sharing during a refresh, the map pins, the official profile, the notification settings, the map flight, your profile photo, the open Take counts and five launch races.",
    "reste": "The last ones have a fix in review or being corrected, with two reviews and a check before the build."
   },
   {
-   "statut": "fixing",
+   "statut": "review",
    "sujet": "Our Takes signed “Take” with the logo",
    "pr": 4728,
-   "ouEnEst": "Your rule is back: Takes from the app and the curator sign nothing, in the guest feed, Explore results, the open Take and shares. Tests fail on main and pass on the fix.",
-   "reste": "Two reviews running, then merge."
+   "ouEnEst": "Your rule is back: Takes from the app and the curator sign nothing, in the feeds, Explore results, the open Take, the long-press preview and shares. The curator keeps publishing.",
+   "reste": "Second round of reviews running, then merge."
   },
   {
    "statut": "review",
    "sujet": "Notifications: a blocked person and a refused Take stayed visible",
    "pr": 4703,
    "ouEnEst": "All edge cases fixed; reviewed at zero twice.",
-   "reste": "Waiting for its CI, then merge."
+   "reste": "Waiting for its CI, which is slow tonight, then merge."
   },
   {
    "statut": "fixing",
@@ -783,25 +795,11 @@
    "reste": "Being fixed, then reviews."
   },
   {
-   "statut": "review",
-   "sujet": "Open Take: pull-to-refresh did not update the counts after a vote",
-   "pr": 4706,
-   "ouEnEst": "Results and curve now agree after a refresh, even right after opening. One review at zero.",
-   "reste": "Second review running."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Visible Takes prepared as soon as the page gets focus",
-   "pr": 4711,
-   "ouEnEst": "No extra reads when you come back from an open Take. One review found one more case.",
-   "reste": "Being fixed, then reviews."
-  },
-  {
    "statut": "fixing",
    "sujet": "Repost after a refusal or a removal elsewhere",
    "pr": 4717,
-   "ouEnEst": "The open Take shows the repost the server kept. Reviews keep finding cases, so the fixer now writes the full state-by-state behaviour before coding.",
-   "reste": "Being fixed, then reviews."
+   "ouEnEst": "The open Take shows the repost the server kept. The fixer wrote the full state-by-state behaviour, then a test per line.",
+   "reste": "Two reviews running on it."
   },
   {
    "statut": "review",
@@ -814,8 +812,8 @@
    "statut": "review",
    "sujet": "Text at the largest size",
    "pr": 4665,
-   "ouEnEst": "The profile header no longer breaks your name in the middle of words; the last review points are fixed.",
-   "reste": "Reviews running, then merge."
+   "ouEnEst": "The profile header no longer breaks your name in the middle of words. The last reviews found two more small cases.",
+   "reste": "Being fixed, then reviews."
   },
   {
    "statut": "fixing",
@@ -835,8 +833,8 @@
    "statut": "fixing",
    "sujet": "Messages: blank screen after a cancelled swipe back",
    "pr": 4662,
-   "ouEnEst": "The Back is fixed and measured. Its CI is red.",
-   "reste": "Being fixed, then a remeasure."
+   "ouEnEst": "The Back is fixed and measured, its CI is green again, and opening a conversation no longer does extra work.",
+   "reste": "Two reviews and a device remeasure running."
   },
   {
    "statut": "review",
@@ -893,7 +891,7 @@
   "On Replicas: about fifteen Claude machines: two reviewers per fix, fixers for the repost, profile, launch and Messages regressions, device measurements, and the anti-regression method."
  ],
  "etapes": [
-  "Fix, review and check every remaining regression, then merge: Notifications, tapping an author, the open Take counts, a launch race, the repost, Messages, and our Takes with no author.",
+  "Fix, review and check every remaining regression, then merge: Notifications, tapping an author, the repost, Messages, text size, and our Takes with no author.",
   "Merge the earlier fixes as their measurements land: profile swipe (native), Notifications rows, cold start tests, text size, then Messages Back.",
   "A new full review of what changed since build 195, on the final main, before the build: the step that caught these regressions is now a rule.",
   "Full test loop on the final main on the Mac bench, a last tour, then redeploy the staging API on that commit. Build 195 stops working on staging at that moment, as we decided.",
@@ -904,6 +902,18 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4711,
+     "titre": "fix(mobile) : les Takes déjà à l'écran sont préparés dès que la page prend le focus (TAK-1028, point 2)",
+     "fusion": "Oct 10, 23:49",
+     "build196": true
+    },
+    {
+     "pr": 4706,
+     "titre": "fix(mobile) : tirer pour rafraîchir un Take voté montre les compteurs et le vote du serveur (TAK-1026)",
+     "fusion": "Oct 10, 23:49",
+     "build196": true
+    },
     {
      "pr": 4719,
      "titre": "Your profile photo changes at once, and tabs in error reload",
