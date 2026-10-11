@@ -1,21 +1,81 @@
 {
- "majLe": "2026-10-12T04:47+09:00",
- "heure": "04:50",
+ "majLe": "2026-10-12T05:46+09:00",
+ "heure": "05:50",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 19,
-  "depuisDernierTableau": 19,
+  "fusionneesDepuis8Octobre": 29,
+  "depuisDernierTableau": 29,
   "enCours": 8,
-  "app": 10,
-  "siteEtAdmin": 2,
-  "serveur": 3,
-  "outilsEtDocs": 4
+  "app": 13,
+  "siteEtAdmin": 6,
+  "serveur": 5,
+  "outilsEtDocs": 5
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Seven pull requests merged: two Hick's law changes, your private profile point, and four CI and test fixes. Your choices are in: the still map panel is pushed, and the composer's scrolling is approved."
+  "texte": "Ten more pull requests merged, including the single map arrow (Hick's law point 8) and five flaky tests. Your two new TestFlight bugs (vote flicker, frozen conversation) have their tickets and agents."
  },
  "depuis": [
+  {
+   "heure": "05:23",
+   "pr": 4843,
+   "texte": "CI: the secret scan can no longer be skipped by its cache, and every step has a time limit.",
+   "build196": true
+  },
+  {
+   "heure": "05:20",
+   "pr": 4846,
+   "texte": "App: when a screen's answer breaks its contract, the app reports which screen and field (never any data), instead of a silent « Couldn't load ».",
+   "build196": true
+  },
+  {
+   "heure": "05:19",
+   "pr": 4830,
+   "texte": "Hick's law point 8: the map keeps a single arrow, « Around you » gets a list icon, and « Search here » appears when you move the map.",
+   "build196": true
+  },
+  {
+   "heure": "05:06",
+   "pr": 4845,
+   "texte": "Website: notifications are marked read only up to what you actually saw; « Read all » had no limit at all.",
+   "build196": true
+  },
+  {
+   "heure": "04:53",
+   "pr": 4839,
+   "texte": "Test only: website tests wait for React to finish before removing their page, which ends random « window is not defined » failures.",
+   "build196": true
+  },
+  {
+   "heure": "04:52",
+   "pr": 4842,
+   "texte": "Server: traces of a withdrawn vote are forgotten after a minute, as the code says, instead of about an hour.",
+   "build196": true
+  },
+  {
+   "heure": "04:52",
+   "pr": 4841,
+   "texte": "Test only: two flaky security tests run on a frozen clock, and a rule nobody tested is now tested.",
+   "build196": true
+  },
+  {
+   "heure": "04:51",
+   "pr": 4840,
+   "texte": "Test only: the avatar editor's flaky tests drive their own clock.",
+   "build196": true
+  },
+  {
+   "heure": "04:50",
+   "pr": 4833,
+   "texte": "Test only: a flaky KnowMe test on the website now holds its own timers instead of the real clock.",
+   "build196": true
+  },
+  {
+   "heure": "04:49",
+   "pr": 4844,
+   "texte": "Test loop: on a Mac without cloud storage, the Takes tab no longer shows « Couldn't load »; an image the contract refuses is just left out.",
+   "build196": true
+  },
   {
    "heure": "04:43",
    "pr": 4769,
@@ -167,70 +227,70 @@
  },
  "enCours": [
   {
-   "statut": "review",
-   "sujet": "Hick's law: the five changes left of the seven you accepted",
+   "statut": "fixing",
+   "sujet": "Your two TestFlight bugs",
    "pr": 0,
-   "ouEnEst": "Two are merged (no cross on the sign-in sheet, sorting only on Top). Left: mentions in the most likely order (two pictures to redo, to prove an anonymous author never moves), the welcome screen, the map's single arrow, and the composer's « No limit » and single sound button. All are reviewed and green; they wait for their pictures.",
-   "reste": "Pictures, then merge."
+   "ouEnEst": "The vote that flickers (shows, disappears for a third of a second, comes back): the server re-reads the feed from a copy that can lag behind your vote. The conversation that freezes 2 s on the first tap after a cold start: the thread screen's code is only loaded at that tap. Both are being fixed, and the cold-start tap joins the test loop.",
+   "reste": "Fix, test, measure, then merge."
   },
   {
    "statut": "review",
-   "sujet": "Hick's law: your choice for points 1, 2, 6 and 7",
+   "sujet": "Hick's law: the last four of the seven you accepted",
    "pr": 0,
-   "ouEnEst": "The page shows 15 options for the four points you want redone. You said you will tell me later.",
-   "reste": "Your choice, then a Claude builds it."
+   "ouEnEst": "Three are merged (no cross on the sign-in sheet, sorting only on Top, single map arrow). Left: mentions in the most likely order (two pictures to redo), the welcome screen (one picture to redo), and the composer's « No limit » with its header fix and the single sound button (pictures on the Mac).",
+   "reste": "Pictures, then merge."
   },
   {
    "statut": "review",
    "sujet": "Map search: suggestions follow every letter, with the still panel",
    "pr": 4818,
-   "ouEnEst": "You chose the still panel: while you type, the panel takes the full height above the keyboard and the field no longer jumps. It is pushed, and the 184 tests of the map pass.",
-   "reste": "Pictures in light and dark, a review, then merge."
+   "ouEnEst": "Your still panel is pushed and reviewed.",
+   "reste": "Pictures in light and dark, then merge."
   },
   {
    "statut": "review",
    "sujet": "Mentions appear faster",
    "pr": 4822,
-   "ouEnEst": "Taken over by a Claude on the Mac: no fade on the panel, the list follows every letter, and a lookup is skipped when the previous answer is already complete, so the people-search quota is not used up. Reviewed, CI green.",
+   "ouEnEst": "Reviewed and green.",
    "reste": "Merge right after the mention ranking."
   },
   {
-   "statut": "review",
+   "statut": "measuring",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "The missing test is written and reviewed; CI is green.",
-   "reste": "Pictures and a measurement on a device, then your OK."
+   "ouEnEst": "You want it in build 197: a Replicas machine builds it and takes the pictures and the measurement on a cloud iPhone.",
+   "reste": "Pictures and measurement, then merge."
   },
   {
-   "statut": "later",
+   "statut": "measuring",
    "sujet": "Videos ahead in the feed",
    "pr": 4766,
-   "ouEnEst": "Found: in bounded mode, rows lose and get back their pictures while you scroll; a two-line fix removes it during the gesture. On the Mac's simulator, bounded mode is even 0.6 s smoother. The Release measurement stopped to save the disk.",
-   "reste": "Release measurement later; not in build 197, as you decided."
+   "ouEnEst": "You want it in build 197: a Replicas machine measures it in Release, data size included, with and without the two-line fix.",
+   "reste": "If it is smoother, push the fix and merge."
   },
   {
-   "statut": "review",
-   "sujet": "CI and test fixes",
-   "pr": 4843,
-   "ouEnEst": "Merged tonight: page names checked, real pictures only, the seed, the video checks. In review: a security check that could skip a new secret because of its cache (#4843), six flaky tests fixed at their cause, the seed without cloud storage that broke the Takes tab on the Mac (#4844), and a test-loop step for Back from a notification.",
-   "reste": "Reviews, then merge."
+   "statut": "fixing",
+   "sujet": "Old builds that break when the server adds a field",
+   "pr": 0,
+   "ouEnEst": "Today one new field can stop an installed build from starting (it broke build 195 on staging). Build 197 will ignore fields it does not know, while the tests stay strict.",
+   "reste": "Review, then merge before the build."
   },
   {
    "statut": "later",
-   "sujet": "Taps lost when two arrive within one frame",
+   "sujet": "Hick's law points 1, 2, 6 and 7",
    "pr": 0,
-   "ouEnEst": "Two fingers overlapping on the same button count once, which is React Native's normal touch model; taps apart, even barely, both count.",
-   "reste": "Decide whether anything should change."
+   "ouEnEst": "15 options on the page; you said you will tell me later.",
+   "reste": "Your choice, then a Claude builds it."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, six Claude agents (reviews, test fixes, the seed, mentions), audit-hick taking the composer pictures and measurement, and your emulator on staging.",
-  "On Replicas, on Muse Spark through OpenCode: wombat takes the remaining pictures on a cloud iPhone; fouine is down (its OpenCode answers error 400). Claude is still out on Replicas."
+  "Here on the Mac: me, five Claude agents (your two bugs, reviews, tolerant parsing), audit-hick taking the composer and map pictures, and your emulator on staging.",
+  "On Replicas, on Muse Spark through OpenCode: vison (videos ahead, Release measurement), harfang (Explore fix pictures and measurement), wombat (the last pictures). Claude is still out on Replicas."
  ],
  "etapes": [
-  "Pictures, then merge: map search, composer, mentions, welcome screen, map arrow.",
-  "Mentions: merge right after the mention ranking.",
-  "Hick's law points 1, 2, 6 and 7: when you choose.",
+  "Fix your two TestFlight bugs: vote flicker and frozen conversation.",
+  "Pictures, then merge: mentions, welcome screen, composer, map search.",
+  "Measure and merge the videos ahead and the Explore fix.",
   "Then the full regression loop on the exact build-197 commit, and your OK."
  ],
  "fait": [
@@ -238,6 +298,24 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4846,
+     "titre": "TAK-1161 : une lecture d'écran refusée par son schéma signale l'écran, le chemin et le code zod",
+     "fusion": "Oct 12, 05:20",
+     "build196": true
+    },
+    {
+     "pr": 4830,
+     "titre": "TAK-1154 : la carte garde une seule flèche et offre « Rechercher ici » quand on l'a déplacée (loi de Hick n° 8)",
+     "fusion": "Oct 12, 05:19",
+     "build196": true
+    },
+    {
+     "pr": 4840,
+     "titre": "TAK-1086 : le test de l'éditeur d'avatar pilote l'horloge de la garde « immobile » au lieu du temps du runner",
+     "fusion": "Oct 12, 04:51",
+     "build196": true
+    },
     {
      "pr": 4769,
      "titre": "s101: Perf Patrol step 0 — trustworthy measurement chain (advisory)",
@@ -305,6 +383,30 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 4845,
+     "titre": "TAK-1087 : le web lit les notifications sous l'instantané de la liste montrée, comme le mobile",
+     "fusion": "Oct 12, 05:06",
+     "build196": true
+    },
+    {
+     "pr": 4839,
+     "titre": "TAK-1158 : les tests web retirent happy-dom seulement après que React a fini son travail",
+     "fusion": "Oct 12, 04:53",
+     "build196": true
+    },
+    {
+     "pr": 4841,
+     "titre": "TAK-934 / TAK-1160 : les tests s60 de révocation et d'invité hébergé ne dépendent plus de l'horloge du runner",
+     "fusion": "Oct 12, 04:52",
+     "build196": true
+    },
+    {
+     "pr": 4833,
+     "titre": "TAK-1018 : le test KnowMe « a lost saved answer… » tient lui-même ses minuteurs",
+     "fusion": "Oct 12, 04:50",
+     "build196": true
+    },
+    {
      "pr": 4775,
      "titre": "Observability console screens plus the web and console browser SDK",
      "fusion": "Oct 12, 04:41",
@@ -322,6 +424,18 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4842,
+     "titre": "TAK-1061 : les traces de retrait de vote sont oubliées chaque minute, pas à la purge horaire",
+     "fusion": "Oct 12, 04:52",
+     "build196": true
+    },
+    {
+     "pr": 4844,
+     "titre": "TAK-1134 : une image héritée que le contrat refuse reste hors de media (fil Takes de la graine sans S3)",
+     "fusion": "Oct 12, 04:49",
+     "build196": true
+    },
     {
      "pr": 4836,
      "titre": "TAK-1012 : le pacer du recheck des vidéos espace les départs réels, plus des heures prévues",
@@ -346,6 +460,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4843,
+     "titre": "TAK-1096 : gitleaks ne rejoue plus un succès en cache, et les contrôles de sécurité tournent sur Mac",
+     "fusion": "Oct 12, 05:23",
+     "build196": true
+    },
     {
      "pr": 4832,
      "titre": "TAK-1156 : visual-evidence ne prend plus le logo d'un pied de page de bot pour une capture",
