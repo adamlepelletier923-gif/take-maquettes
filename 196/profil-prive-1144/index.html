@@ -36,6 +36,13 @@ p{margin:0;color:var(--muted);font-size:15px}
 .gain{margin-left:auto;font-weight:900;color:var(--ok-ink)}
 @media (prefers-color-scheme:dark){.gain{color:var(--ok)}}
 .genre,.note{color:var(--muted);font-size:13px;font-weight:700}
+.note{font-style:italic}
+@media (max-width:480px){body{font-size:16px}}
+.grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+img{display:block;width:100%;max-width:100%;height:auto;border-radius:16px;border:2px solid var(--line);background:var(--surface)}
+figcaption{color:var(--muted);font-size:13px;font-weight:700}
+</style>
 </head>
 <body>
 <main>
