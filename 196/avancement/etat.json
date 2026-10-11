@@ -1,21 +1,57 @@
 {
- "majLe": "2026-10-11T15:49+09:00",
- "heure": "15:50",
+ "majLe": "2026-10-11T16:49+09:00",
+ "heure": "16:50",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 384,
-  "depuisDernierTableau": 189,
+  "fusionneesDepuis8Octobre": 390,
+  "depuisDernierTableau": 195,
   "enCours": 8,
-  "app": 168,
-  "siteEtAdmin": 67,
+  "app": 171,
+  "siteEtAdmin": 68,
   "serveur": 73,
-  "outilsEtDocs": 76
+  "outilsEtDocs": 78
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The map is in main with your design OK: tapping the globe now shows the map at once. The cause of the old Take in Friends is found and fixed in the app's network library, with both reviews clean; it was already there in build 195, so build 196 fixes it for everyone."
+  "texte": "The fix for old Takes in Friends is in main, proven on cloud iPhones and measured as fast as before; the map pin and Nearby title fixes are in too, and the loop on today's main passed 22 of 22. The new tap-spam tests found a real privacy bug (an anonymous vote turning public in an open Take), already fixed and in review."
  },
  "depuis": [
+  {
+   "heure": "16:48",
+   "pr": 4798,
+   "texte": "Friends no longer shows an old copy of a Take: on iPhone, the app's network library could bring back an answer the server forbids it to keep, so a changed Take (a photo removed by moderation, a new count) stayed frozen. Proven red on main and green with the fix on cloud iPhones, including an app installed over an old poisoned cache; measured as fast as before.",
+   "build196": false
+  },
+  {
+   "heure": "16:47",
+   "pr": 4806,
+   "texte": "TAK-1132: check out transitive telemetry workspace deps in staging deploy",
+   "build196": false
+  },
+  {
+   "heure": "16:41",
+   "pr": 4805,
+   "texte": "TAK-1132: check out telemetry workspace deps in staging deploy",
+   "build196": false
+  },
+  {
+   "heure": "16:19",
+   "pr": 4797,
+   "texte": "Telemetry staging deploys: worker pipeline, secrets, map uploads, read-back",
+   "build196": false
+  },
+  {
+   "heure": "16:14",
+   "pr": 4802,
+   "texte": "After scrolling Friends, tapping 'Nearby' shows the city name from the first frame instead of 'Around you' first.",
+   "build196": false
+  },
+  {
+   "heure": "16:00",
+   "pr": 4796,
+   "texte": "The pin of a removed Take leaves the map, and after you block someone their pins no longer stay on a part of the map you had already seen.",
+   "build196": false
+  },
   {
    "heure": "15:46",
    "pr": 4794,
@@ -1188,76 +1224,93 @@
  "enCours": [
   {
    "statut": "review",
-   "sujet": "Friends showing an old version of a Take",
-   "pr": 4798,
-   "ouEnEst": "Cause found: on iPhone, the app's network library kept server answers the server forbids it to keep, and an older copy could come back, so a Take changed on the server (a photo removed by moderation, a new count) could stay frozen in Friends. It was already there in build 195. The fix is native, which a real build carries: the library no longer keeps those answers. Both reviews are clean, checks green.",
-   "reste": "putois proves on cloud iPhones that the old copy is gone, fouine measures that nothing gets slower, then merge."
+   "sujet": "An anonymous vote could turn public in an open Take",
+   "pr": 4804,
+   "ouEnEst": "Found tonight by the new tap-spam tests: in an open Take, voting Yes then tapping the ghost right away could leave the vote public while the ghost was on. Fixed like the feed row was, with tests that fail first; checks green, two reviews running.",
+   "reste": "Two clean reviews, then merge."
   },
   {
    "statut": "review",
-   "sujet": "The pin of a removed Take stayed on the map",
-   "pr": 4796,
-   "ouEnEst": "Fixed: the pin of a Take that answers 'not found' leaves the map. A review found a privacy hole on the way (after you block someone, their pins could stay on a part of the map you had already seen); castor closed it, with tests. Green checks, one clean review on the last version, the second running.",
-   "reste": "The second review, then merge."
+   "sujet": "'Know me' ignoring Back after a share sheet",
+   "pr": 4799,
+   "ouEnEst": "renard is closing the last window where Back was still lost (between the sheet disappearing and its removal) and preparing before-and-after pictures. The fix also makes the share sheets appear about half a second sooner, 'Send to' included: a motion change that waits for your OK.",
+   "reste": "Your OK on the faster sheets (or the fix without that part), two clean reviews, merge."
   },
   {
-   "statut": "measuring",
-   "sujet": "'Know me' ignoring Back after a share sheet",
+   "statut": "fixing",
+   "sujet": "Taps lost when two arrive within one frame",
    "pr": 0,
-   "ouEnEst": "renard is reproducing and measuring the fix on cloud iPhones.",
-   "reste": "A PR with a test that fails first, two reviews, merge."
+   "ouEnEst": "On cloud iPhones, two taps less than a frame apart (under about 16 ms) count as one on tabs, votes, repost and the ghost; from 33 ms on, which is faster than any finger, nothing is lost. manul is instrumenting the device and an agent on the Mac reads React Native's touch handling to find the common cause.",
+   "reste": "A fix per cause, measured, starting with the ghost."
   },
   {
    "statut": "loop",
    "sujet": "Final test loop and the 90-point tour",
    "pr": 0,
-   "ouEnEst": "The loop's own test fixes are merged. The full loop runs again once the cache, map pin and Know me fixes are in main, then the 90-point tour on the same commit.",
-   "reste": "Your emulator comes back from the cache investigation first."
-  },
-  {
-   "statut": "later",
-   "sujet": "Taps never lost, even when you spam",
-   "pr": 0,
-   "ouEnEst": "Your ask at 14:20: on cloud iPhones, manul fires taps less than a millisecond apart on tabs and actions; on the Mac, an agent writes tests that hammer votes, likes, repost and the ghost with no pause and check that the screen always ends on your last tap and that an anonymous vote never turns public.",
-   "reste": "Every defect it finds gets its ticket and its fix."
+   "ouEnEst": "The loop on today's main, map included, passed 22 of 22; the bench's time check was repaired after the app's new date clock. The filmed check of the Home bar is done on the final commit only.",
+   "reste": "Once the last fixes are in: the full loop, the filmed bar check and the 90-point tour on that exact commit."
   },
   {
    "statut": "later",
    "sujet": "Messages and the Profile read ahead, without a heavier launch",
    "pr": 4795,
-   "ouEnEst": "harfang's draft prepares Messages and the Profile one piece at a time while you are idle, instead of during launch. A review on the Mac found two defects; harfang is fixing them.",
+   "ouEnEst": "harfang's draft prepares Messages and the Profile one piece at a time while you are idle; a review found two defects, being fixed.",
    "reste": "After build 196: fixes, measurement, then switch it on from the server."
   },
   {
    "statut": "later",
    "sujet": "Hashtags on the website, as in the app",
    "pr": 4787,
-   "ouEnEst": "No more pills under a Take on the website either; grey links in the title, the same code as the app for translated titles. Green checks.",
-   "reste": "After build 196: pictures of the website in light and dark, then your OK."
+   "ouEnEst": "castor's pictures found two holes: on a Take opened from a shared link while signed in, the hashtag could not be tapped at all, and with the server switch off there was no way left to search it. castor is fixing both, keeping the pills until links can show.",
+   "reste": "After build 196: fixes, pictures in light and dark, then your OK."
+  },
+  {
+   "statut": "later",
+   "sujet": "Explore pages going blank during quick changes",
+   "pr": 4801,
+   "ouEnEst": "lemming's draft keeps the page you leave drawn during quick swipes; a review found the drawn copy cost 18 ms on almost every page change, and lemming pushed a fix.",
+   "reste": "Reviews and pictures for your OK, after build 196."
   },
   {
    "statut": "later",
    "sujet": "Videos ahead in the feed with preloading on",
    "pr": 4766,
-   "ouEnEst": "One video piece per video, no more cancelling while the video stays near. Brought up to date and green on a Replicas machine.",
-   "reste": "Measure, then turn the video switch on."
+   "ouEnEst": "belette is measuring on cloud iPhones whether switching videos ahead on makes anything heavier.",
+   "reste": "Then turn the video switch on from the server."
   }
  ],
  "equipe": [
-  "Here on the Mac, which is full, so no extra agents for now: me, an agent finishing the cache fix with your emulator, an agent reviewing everything merged since the last review, and an agent writing the tap-spam tests.",
-  "On Replicas: putois and fouine proving and measuring the cache fix, castor done on the map pin, renard on Know me, wombat on the 90-point tour, manul on the tap-spam bench, harfang on the read-ahead draft, and reviewers on each PR."
+  "Here on the Mac, which is nearly full: me, your emulator for the final loop, and an agent reading React Native's touch handling for the lost taps.",
+  "On Replicas: manul on lost taps, renard on Know me, castor on the website hashtags, lemming on Explore, harfang on read-ahead, belette measuring videos ahead, putois and fouine done on the cache fix, wombat on the 90-point tour, and reviewers on each PR."
  ],
  "etapes": [
-  "Merge the cache fix once its proof on cloud iPhones and its measurement are in, and the map pin fix after its second review.",
-  "The Know me Back fix: PR, reviews, merge.",
-  "The full loop and the 90-point tour on the final main, and the review of everything merged since the last one.",
-  "The list of what is not in build 196 for your OK, then the build."
+  "Merge the anonymous-vote fix after its reviews, and the Know me fix with or without the faster sheets.",
+  "The full loop, the filmed Home bar check and the 90-point tour on the final commit.",
+  "The list of what is not in build 196, then the build once you give the go."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4798,
+     "titre": "fix(mobile): TAK-1122 Nitro's iOS sessions keep no HTTP cache, so a 304 never revives an older body",
+     "fusion": "Oct 11, 16:48",
+     "build196": false
+    },
+    {
+     "pr": 4802,
+     "titre": "TAK-1123 : le nom de la zone est prêt quand on touche À proximité après un défilement",
+     "fusion": "Oct 11, 16:14",
+     "build196": false
+    },
+    {
+     "pr": 4796,
+     "titre": "TAK-1041 : le pin d'un Take qui répond « introuvable » quitte la carte",
+     "fusion": "Oct 11, 16:00",
+     "build196": false
+    },
     {
      "pr": 4793,
      "titre": "TAK-772 : la carte préparée sans la réécriture du composant carte (version D mesurée)",
@@ -2273,6 +2326,12 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 4797,
+     "titre": "Telemetry staging deploys: worker pipeline, secrets, map uploads, read-back",
+     "fusion": "Oct 11, 16:19",
+     "build196": false
+    },
+    {
      "pr": 4777,
      "titre": "fix(web): bind the owned staging QA account through its session, not the sign-in body",
      "fusion": "Oct 11, 08:48",
@@ -3124,6 +3183,18 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4806,
+     "titre": "TAK-1132: check out transitive telemetry workspace deps in staging deploy",
+     "fusion": "Oct 11, 16:47",
+     "build196": false
+    },
+    {
+     "pr": 4805,
+     "titre": "TAK-1132: check out telemetry workspace deps in staging deploy",
+     "fusion": "Oct 11, 16:41",
+     "build196": false
+    },
     {
      "pr": 4794,
      "titre": "test(mobile) : la boucle attend l'écran de lancement et le compositeur sur l'horloge de Maestro (TAK-1121)",
