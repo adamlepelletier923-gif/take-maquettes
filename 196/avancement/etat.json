@@ -1,21 +1,33 @@
 {
- "majLe": "2026-10-11T13:46+09:00",
- "heure": "13:46",
+ "majLe": "2026-10-11T14:48+09:00",
+ "heure": "14:55",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 379,
-  "depuisDernierTableau": 184,
-  "enCours": 6,
+  "fusionneesDepuis8Octobre": 381,
+  "depuisDernierTableau": 186,
+  "enCours": 7,
   "app": 167,
   "siteEtAdmin": 67,
   "serveur": 72,
-  "outilsEtDocs": 73
+  "outilsEtDocs": 75
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The icon gaps are now 16 pt, your pick, and a new loop flow tests today's novelties; both are merged. The final loop is running on that main, and Limrun is back: the map without its rewritten component looks as smooth as main and opens the map almost twice as fast."
+  "texte": "The map change passed its reviews once one real defect was fixed: the place name could change under your eyes when you arrived on Nearby. The final loop on the last main gave 20 of 22; both misses come from the tests themselves, and they are being made robust."
  },
  "depuis": [
+  {
+   "heure": "14:20",
+   "pr": 4785,
+   "texte": "TAK-1107: email alerts for telemetry spikes and crash-rate drops",
+   "build196": false
+  },
+  {
+   "heure": "14:00",
+   "pr": 4791,
+   "texte": "TAK-1113 : le flow 23 choisit l'onglet Takes du profil avant de chercher « 0 vote »",
+   "build196": false
+  },
   {
    "heure": "13:27",
    "pr": 4786,
@@ -1157,25 +1169,32 @@
  },
  "enCours": [
   {
-   "statut": "measuring",
+   "statut": "review",
    "sujet": "Map ready before you arrive, like Snap",
-   "pr": 4529,
-   "ouEnEst": "Limrun is back, and fouine measured version D, the change without its rewrite of the map component: launch like main, the prepared map opens almost twice as fast (630 to 825 ms instead of 1,130 to 1,170), and Friends scrolls at 65 ms against 57 on main, a gap that is not significant. So the rewrite is the culprit. The strict rule still refuses D by a hair, so 6 more pairs are running; castor is also trying to fix the rewrite itself.",
-   "reste": "If D holds over 12 pairs, the change ships as D (two reviews, then merge and the loop again); otherwise castor's fix, or build 196 without the map."
+   "pr": 4793,
+   "ouEnEst": "Version D, the change without its rewrite of the map component, is now its own clean PR: launch like main, and the prepared map opens almost twice as fast. The reviews found one real defect: a place with no name yet got its name only once Nearby was on screen, so the title changed under your eyes. castor fixed it (named at rest or at the start of the swipe, never during a scroll), with tests. Green checks.",
+   "reste": "Both reviews of the last commit, fouine's measurement of the final version with pictures of the globe opening, then merge and the full loop again."
   },
   {
    "statut": "loop",
-   "sujet": "Final test loop on your emulator",
+   "sujet": "Test loop on your emulator",
    "pr": 0,
-   "ouEnEst": "Running on the final main (with the 16 pt icon gaps and the new novelties flow): the first 11 of 22 flows passed. The new flow already passed on its own: '0 vote', no pills, and a hashtag tapped in a title opening its search.",
-   "reste": "The rest of the loop, then the 90-point tour on the same commit."
+   "ouEnEst": "The loop on the last main: 20 of 22 flows passed. The two misses come from the tests, not the app: the photo-menu flow wants nothing to vote on above the first photo in Friends, but the server rightly lists Léo's French Take first for a French reader; and the cold-start flow's 2-second wait for the launch screen lasted 0.7 s, so its tap landed on the launch screen. Run alone three times, it passed every time.",
+   "reste": "Make both flows robust, then the full loop on the final main."
   },
   {
    "statut": "review",
-   "sujet": "Final review of everything since the last one",
+   "sujet": "Two misses found by the 'nothing forgotten' tour",
    "pr": 0,
-   "ouEnEst": "A Replicas reviewer reads the whole app increment since the last final review (icon row, hashtags, 16 pt gaps, read-ahead switched off), looking for what per-change reviews miss.",
-   "reste": "Fix anything it finds before the build."
+   "ouEnEst": "The pin of a removed Take stayed on the map, and 'Know me' ignored Back right after a share sheet closed. Two Replicas machines are fixing them, each with a test that fails first.",
+   "reste": "Two reviews each, merge, then into the final loop."
+  },
+  {
+   "statut": "later",
+   "sujet": "Taps never lost, even when you spam",
+   "pr": 0,
+   "ouEnEst": "Your ask at 14:20: a Replicas machine is building a bench that fires taps less than a millisecond apart on tabs, votes, likes, repost and the ghost, and checks that the screen always ends on your last tap. The screen itself answers within one frame (8 ms at 120 Hz), like X and Instagram.",
+   "reste": "Every defect it finds gets its ticket and its fix."
   },
   {
    "statut": "later",
@@ -1188,7 +1207,7 @@
    "statut": "later",
    "sujet": "Switching on Messages and the Profile read ahead",
    "pr": 4643,
-   "ouEnEst": "Merged and switched off in build 196. Switched on, launch gets a bit heavier because the pages mount during startup; the mount is already split up, so a profile of what is heavy comes first (TAK-1114).",
+   "ouEnEst": "Merged and switched off in build 196. Switched on, launch gets a bit heavier because the pages mount during startup; a profile of what is heavy comes first (TAK-1114).",
    "reste": "After build 196: profile, lighten, measure, then switch it on from the server."
   },
   {
@@ -1200,13 +1219,13 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, and your emulator running the final loop.",
-  "On Replicas, back since 13:00: fouine and castor on the map, a final reviewer on the whole increment, and four machines on after-build work (videos ahead, the largest text sizes, Explorer, Messages read ahead)."
+  "Here on the Mac: me, your emulator (the final loop is done; now proving the two test fixes), and an agent that wrote the TestFlight notes for build 196.",
+  "On Replicas: castor and fouine on the map, two reviewers, putois and renard on the two forgotten fixes, wombat on the 90-point tour, manul on the tap-spam bench, and four machines on after-build work."
  ],
  "etapes": [
-  "Finish the final loop, then the 90-point tour on the same commit.",
-  "Settle the map with 6 more pairs: if version D holds, review and merge it, then run the loop again on the new main.",
-  "Fix anything the final review finds.",
+  "Map: both reviews of the last commit, fouine's measurement of the final version, then merge.",
+  "Make the photo-menu and cold-start flows robust, then the full loop and the 90-point tour on the final main.",
+  "Merge the two fixes from the 'nothing forgotten' tour (map pin, Know me Back).",
   "The list of what is not in build 196 for your OK, the build, and your emulator back on staging."
  ],
  "fait": [
@@ -3069,6 +3088,12 @@
    "nom": "CI, scripts and infra",
    "prs": [
     {
+     "pr": 4785,
+     "titre": "TAK-1107: email alerts for telemetry spikes and crash-rate drops",
+     "fusion": "Oct 11, 14:20",
+     "build196": false
+    },
+    {
      "pr": 4788,
      "titre": "TAK-1113 : la boucle teste les nouveautés du build 196 (« 0 vote », hashtags dans le titre)",
      "fusion": "Oct 11, 13:26",
@@ -3494,6 +3519,12 @@
    "zone": "autre",
    "nom": "Other",
    "prs": [
+    {
+     "pr": 4791,
+     "titre": "TAK-1113 : le flow 23 choisit l'onglet Takes du profil avant de chercher « 0 vote »",
+     "fusion": "Oct 11, 14:00",
+     "build196": false
+    },
     {
      "pr": 4691,
      "titre": "Map search: short forms asked at once, identical answers shared",
