@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-11T08:58+09:00",
- "heure": "08:58",
+ "majLe": "2026-10-11T09:47+09:00",
+ "heure": "09:47",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 371,
-  "depuisDernierTableau": 176,
-  "enCours": 7,
-  "app": 162,
+  "fusionneesDepuis8Octobre": 372,
+  "depuisDernierTableau": 177,
+  "enCours": 6,
+  "app": 163,
   "siteEtAdmin": 67,
   "serveur": 71,
   "outilsEtDocs": 71
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The unread badge, reading in the real order, the profile swipe (with your OK) and the touch zones under a Take's row are merged. The final re-read of main found zero new defects."
+  "texte": "The icon row is back to build 195, and Messages and the Profile read ahead join build 196 after a clean device measurement. The first test loop on your emulator passes every flow that does not need fresh test data."
  },
  "depuis": [
+  {
+   "heure": "09:07",
+   "pr": 4779,
+   "texte": "Take icons back to build 195: the ghost, repost, send and comments on the left, the vote count on the right, keeping the night's fixes (hidden zeros, touch zones on iPhone). Two reviews at zero, before and after captures.",
+   "build196": true
+  },
   {
    "heure": "08:50",
    "pr": 4773,
@@ -1074,6 +1080,10 @@
   }
  ],
  "statuts": {
+  "loop": {
+   "libelle": "Test loop",
+   "ton": "bench"
+  },
   "staging": {
    "libelle": "Waiting for the staging lock",
    "ton": "wait"
@@ -1106,17 +1116,31 @@
  "enCours": [
   {
    "statut": "review",
-   "sujet": "Take icons back to build 195: actions on the left, votes on the right",
-   "pr": 4779,
-   "ouEnEst": "Your new choice. The change is ready and keeps the night's fixes: a hidden zero keeps its place, and the touch zones work on iPhone. Build checks are running; two reviews and light and dark captures on a device have started.",
-   "reste": "Must be in build 196, as you said."
+   "sujet": "The same gap between all of a Take's icons, as in build 195",
+   "pr": 4783,
+   "ouEnEst": "Your request at 09:14: the gap after the repost was wider, because hidden zeros kept their place. The fix is ready and its build checks are green, but both reviews found two defects: the row grows by a few points when the first count appears, and small dead touch bands appear at 1.5 times the text size. An agent on the Mac is fixing both.",
+   "reste": "Must be in build 196."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Map ready before you arrive, like Snap",
+   "pr": 4529,
+   "ouEnEst": "You want it in build 196. It makes the map arrive twice as fast, but scrolling Friends was heavier than main. Two candidate fixes are being measured on a device to find the cause.",
+   "reste": "Joins build 196 as soon as it is as smooth as main."
+  },
+  {
+   "statut": "loop",
+   "sujet": "Test loop on your emulator",
+   "pr": 0,
+   "ouEnEst": "First run on today's main, on local test data: every flow that does not need fresh data passes. Six fail on the bench itself, as in last night's rehearsals: the test data were too old (empty Takes feed and Explore top), and two old test drafts were in the way. The data are refreshed and those six flows run again.",
+   "reste": "Then the full loop and the 90-point tour on the final main."
   },
   {
    "statut": "staging",
    "sujet": "Staging API redeploy for build 196",
    "pr": 0,
-   "ouEnEst": "Everything the server needs is merged, and the final re-read of main found zero new defects. Staging is locked by a machine that is not ours (a geocoder deploy) until 10:26 at the latest; we take the lock as soon as it is free.",
-   "reste": "Redeploy with preloading off, then run the final loop on your emulator."
+   "ouEnEst": "Staging is locked by another machine (a geocoder deploy), renewed until 11:36 for now. A watcher takes the lock the moment it is released or expires; we redeploy, then hand it back. The build does not need it, but your TestFlight tests do.",
+   "reste": "Redeploy with preloading off, as soon as the lock is free."
   },
   {
    "statut": "owner",
@@ -1127,48 +1151,33 @@
   },
   {
    "statut": "later",
-   "sujet": "Map ready before you arrive, like Snap",
-   "pr": 4529,
-   "ouEnEst": "Measured on a device: the map arrives twice as fast (642 ms instead of 1231), but scrolling Friends is still heavier than main (154 ms of jank instead of 61). An agent on the Mac is fixing that.",
-   "reste": "Joins a build only once it is as smooth as main."
-  },
-  {
-   "statut": "later",
-   "sujet": "Messages, Profile and replies read ahead",
-   "pr": 4643,
-   "ouEnEst": "Messages is fixed: a page read ahead is now mounted while the screen is at rest, as X and Instagram do. Build checks green; a device measurement is running.",
-   "reste": "After build 196, if the measurement is clean."
-  },
-  {
-   "statut": "later",
    "sujet": "Videos ahead in the feed with preloading on",
    "pr": 4766,
-   "ouEnEst": "One video piece per video, no more cancelling while the video stays near. Draft, for after build 196.",
+   "ouEnEst": "One video piece per video, no more cancelling while the video stays near. You put it after build 196.",
    "reste": "Measure, then turn the video switch on."
-  },
-  {
-   "statut": "later",
-   "sujet": "Icons of a Take: mockups",
-   "pr": 0,
-   "ouEnEst": "One page with ten numbered proposals, from both studies, with a recommendation based on X.",
-   "reste": "Your pick, by number."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator on staging, and two Claude agents (the icon row back to build 195, and the map).",
-  "On Replicas: two reviewers, device captures of the icon row and the preloading measurement, on Claude when it is available and otherwise on OpenCode with Muse."
+  "Here on the Mac: me, your emulator running the test loop on local test data, and one Claude agent fixing the icon gaps.",
+  "On Replicas: device measurements of the map and reviews, on Claude when it is available and otherwise on OpenCode with Muse."
  ],
  "etapes": [
-  "Merge the icon row back to build 195 once its two reviews, build checks and device captures are clean.",
+  "Fix and merge the same gap between icons; merge the map once a device measurement shows it as smooth as main.",
+  "Run the six flows that needed fresh test data again, then the full loop and the 90-point tour on the final main.",
   "Redeploy the staging API as soon as the lock is free, with preloading off.",
-  "Re-read what changed since the final review, then the full test loop on your emulator and the 90-point tour.",
-  "Update the list of what is not in build 196, launch it as a new binary, and hand you the emulator on main."
+  "Update the list of what is not in build 196, launch it as a new binary, and hand you the emulator back on staging."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4779,
+     "titre": "TAK-1098 : la barre d'actions d'un Take revient comme au build 195, actions à gauche et votes à droite",
+     "fusion": "Oct 11, 09:07",
+     "build196": true
+    },
     {
      "pr": 4773,
      "titre": "Reassure fluidity gate on every pull request touching the app",
