@@ -1,21 +1,33 @@
 {
- "majLe": "2026-10-11T10:46+09:00",
- "heure": "10:46",
+ "majLe": "2026-10-11T11:48+09:00",
+ "heure": "11:48",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 373,
-  "depuisDernierTableau": 178,
-  "enCours": 8,
-  "app": 164,
+  "fusionneesDepuis8Octobre": 375,
+  "depuisDernierTableau": 180,
+  "enCours": 5,
+  "app": 165,
   "siteEtAdmin": 67,
-  "serveur": 71,
+  "serveur": 72,
   "outilsEtDocs": 71
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Every test-loop flow has now passed on today's main, once the bench's own test data were fixed. The icon gaps with the always-visible '0 vote', and the hashtags in the title, are ready and in review."
+  "texte": "The same gap between all of a Take's icons, with '0 vote' always shown, is merged into main, and the staging API is redeployed for build 196 and checked. The hashtags in the title have two clean reviews and green checks; they wait for pictures of one spacing change and your OK."
  },
  "depuis": [
+  {
+   "heure": "11:25",
+   "pr": 4783,
+   "texte": "TAK-1099 : le même écart entre toutes les icônes d'un Take, comme au build 195",
+   "build196": false
+  },
+  {
+   "heure": "11:18",
+   "pr": 4781,
+   "texte": "Telemetry processing consumer with Postgres rollups and observability reads",
+   "build196": false
+  },
   {
    "heure": "09:49",
    "pr": 4643,
@@ -1122,38 +1134,24 @@
  "enCours": [
   {
    "statut": "review",
-   "sujet": "The same gap between all of a Take's icons, and the vote count always shown",
-   "pr": 4783,
-   "ouEnEst": "The two defects found in review are fixed, and '0 vote' now always shows on the right, as you asked at 10:21; it is the only zero you see. Build checks green, a first review of the newest version at zero, a second one running, and a smoothness measurement running on a device.",
-   "reste": "Must be in build 196."
-  },
-  {
-   "statut": "review",
    "sujet": "Hashtags tapped right in the title, grey like 'See translation', no pills",
    "pr": 4784,
-   "ouEnEst": "Your request at 10:04; you liked it at 10:33. A review found that VoiceOver could no longer reach the hashtags from the feed; that is fixed, and a full review of the new version is running.",
-   "reste": "Must be in build 196."
+   "ouEnEst": "Your request at 10:04; you liked it at 10:33. Since then, a translated title keeps the Take's own hashtags tappable (a tag the translation rewrote stays plain text, a tag it dropped is added at the end), and the empty band left under 'See translation' is folded, so a translated Take with hashtags has the same spacing as one without. Two reviews of these last changes found zero defects, and the build checks are green.",
+   "reste": "Before and after pictures of that band in light and dark, your OK, then merge."
   },
   {
-   "statut": "claude",
+   "statut": "measuring",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "Three versions measured on a device, and none scrolls Friends as smoothly as main, not even one that prepares the map exactly like main. So the cost is somewhere else in the change; an agent on the Mac is searching the whole change for the cause.",
-   "reste": "Joins build 196 once it is as smooth as main; you decide if it takes too long."
+   "ouEnEst": "None of the first three versions scrolls Friends as smoothly as main. Three new versions isolate the cause: D keeps main's map component as is, E carries only the new swipe gestures, F only the small globe and the Home screen hooks. Replicas is down, so they are measured here on your emulator: six runs per side, in alternating order.",
+   "reste": "The heavy version points to the cause: fix it, measure again, review, merge. Joins build 196 only once it is as smooth as main."
   },
   {
    "statut": "loop",
    "sujet": "Test loop on your emulator",
    "pr": 0,
-   "ouEnEst": "Every flow has now passed on today's main. The seven that failed needed fresh local test data or a cleaned test draft, not an app fix; a preparation script restores that data before each loop, and the local server now turns on the same text links as staging.",
-   "reste": "Final full loop and the 90-point tour on the final main."
-  },
-  {
-   "statut": "staging",
-   "sujet": "Staging API redeploy for build 196",
-   "pr": 0,
-   "ouEnEst": "Staging is locked by another machine (a geocoder deploy) until 11:36 for now. A watcher takes the lock the moment it is released or expires; we redeploy, then hand it back. The build does not need it, but your TestFlight tests do.",
-   "reste": "Redeploy with preloading off, as soon as the lock is free."
+   "ouEnEst": "Every flow passed on today's main once the bench's own test data were fixed; the bench now restores its data before each loop.",
+   "reste": "Final full loop and the 90-point tour on the final main, after the hashtags and the map."
   },
   {
    "statut": "later",
@@ -1161,13 +1159,6 @@
    "pr": 4643,
    "ouEnEst": "Merged and switched off in build 196. Measured switched on: Messages opens much faster and videos are unchanged, but launch gets a bit heavier, because the preparation falls during startup.",
    "reste": "After build 196: move that preparation after launch, then switch it on from the server."
-  },
-  {
-   "statut": "owner",
-   "sujet": "The curator stopped publishing on staging on October 4",
-   "pr": 0,
-   "ouEnEst": "Its newest Take on staging is 7 days old. Its owner has the ticket; nothing touched on our side.",
-   "reste": "Its owner restarts it; the app needs no change."
   },
   {
    "statut": "later",
@@ -1178,20 +1169,26 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator (showing the icon gaps, '0 vote' and the hashtags together), and three Claude agents (a review of the icon gaps, a review of the hashtags, and the map investigation).",
-  "On Replicas: castor measures the icon gaps on a device and fouine measured the map versions; the reviews come from the Mac while the Replicas reviewers are restored."
+  "Here on the Mac: me, your emulator (measuring the map versions), and one Claude agent running that measurement. The Mac is near its memory limit, so the after-build work starts as soon as room frees up.",
+  "On Replicas: every message to a machine has failed since about 11:20, and their devices answer with errors. Work moves back there once they recover."
  ],
  "etapes": [
-  "Merge the icon gaps with '0 vote' and the hashtags once their reviews and measurement are clean.",
-  "Find and fix what makes Friends heavier in the map change, then measure it again.",
-  "Redeploy the staging API as soon as the lock is free, with preloading off.",
-  "Final full test loop and the 90-point tour on the final main, then the list of what is not in build 196, the build itself, and your emulator back on staging."
+  "Measure the three map versions against main on your emulator, find what makes Friends heavier, fix it, then measure again.",
+  "Take pictures of the band under 'See translation', get your OK, then merge the hashtags.",
+  "Final full test loop and the 90-point tour on the final main, then the list of what is not in build 196, the build itself, and your emulator back on staging.",
+  "Start the after-build work on the Mac, one task at a time while Replicas is down: Messages and the Profile prepared after launch, hashtags on the website, the longest Take text, Explorer, and the local test data."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4783,
+     "titre": "TAK-1099 : le même écart entre toutes les icônes d'un Take, comme au build 195",
+     "fusion": "Oct 11, 11:25",
+     "build196": false
+    },
     {
      "pr": 4643,
      "titre": "TAK-723 : relire d'avance Messages, le Profil et les réponses repliées du Take ouvert",
@@ -2590,6 +2587,12 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4781,
+     "titre": "Telemetry processing consumer with Postgres rollups and observability reads",
+     "fusion": "Oct 11, 11:18",
+     "build196": false
+    },
     {
      "pr": 4776,
      "titre": "Telemetry ingest Worker with staging infra and SDK compat tests",
