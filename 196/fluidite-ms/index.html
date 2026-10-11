@@ -26,19 +26,18 @@ main{max-width:760px;margin:0 auto;padding:calc(18px + env(safe-area-inset-top,0
 h1{margin:0;font-size:28px;font-weight:900;letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
 h2{margin:8px 0 0;font-size:20px;font-weight:900}
 p{margin:0;color:var(--muted);font-size:15px}
-.table-wrap{background:var(--surface);border:2px solid var(--line);border-radius:16px;box-shadow:0 3px 0 var(--line-2);overflow:hidden}
-table{width:100%;border-collapse:collapse;table-layout:fixed}
-th,td{text-align:left;vertical-align:top;padding:12px 10px;overflow-wrap:anywhere}
-thead th{color:var(--muted);font-size:14px;font-weight:900;border-bottom:2px solid var(--line)}
-tbody tr+tr td{border-top:1px solid var(--line)}
-th.endroit,td.endroit{width:40%;font-weight:900}
-.genre,.note,.pct{display:block;color:var(--muted);font-size:13px;font-weight:700}
+.cartes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.carte{background:var(--surface);border:2px solid var(--line);border-radius:16px;box-shadow:0 3px 0 var(--line-2);padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.endroit{font-weight:900}
+.chiffres{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;font-size:18px}
+.avant{color:var(--muted)}
+.apres{color:var(--ok-ink);font-weight:900}
+@media (prefers-color-scheme:dark){.apres{color:var(--ok)}}
+.gain{margin-left:auto;font-weight:900;color:var(--ok-ink)}
+@media (prefers-color-scheme:dark){.gain{color:var(--ok)}}
+.genre,.note{color:var(--muted);font-size:13px;font-weight:700}
 .note{font-style:italic}
-td.avant{color:var(--muted);white-space:nowrap}
-td.apres{color:var(--ok-ink);font-weight:900;white-space:nowrap}
-@media (prefers-color-scheme:dark){td.apres{color:var(--ok)}}
-td.gain{font-weight:900;white-space:nowrap}
-@media (max-width:480px){body{font-size:15px}th,td{padding:10px 6px}th.endroit,td.endroit{width:36%}}
+@media (max-width:480px){body{font-size:16px}}
 </style>
 </head>
 <body>
@@ -46,38 +45,38 @@ td.gain{font-weight:900;white-space:nowrap}
 <h1>Fluidité du 196, en millisecondes</h1>
 <p>Avant → après chaque correctif, mesuré sur iPhone (simulateur du Mac ou iPhone cloud), du 8 au 11 octobre 2026. Plus bas, c'est mieux. La saccade, c'est le temps cumulé des images en retard. L'attente, c'est le temps entre ton geste et l'écran prêt.</p>
 <h2>Dans le build 196 (24 endroits)</h2>
-<div class="table-wrap"><table><thead><tr><th class="endroit">Endroit</th><th>Avant</th><th>Après</th><th>Gagné</th></tr></thead><tbody>
-<tr><td class="endroit">Accueil, glissé perdu<span class="genre">attente · #4603</span></td><td class="avant">3 349 ms</td><td class="apres">150 ms</td><td class="gain">−3 200 ms<span class="pct">−96 %</span></td></tr>
-<tr><td class="endroit">Takes vers Amis, trait<span class="genre">décalage · #4371</span></td><td class="avant">500 ms</td><td class="apres">0 ms</td><td class="gain">−500 ms<span class="pct">−100 %</span></td></tr>
-<tr><td class="endroit">Lancement sur une conversation<span class="genre">attente · #4744</span></td><td class="avant">1 442 ms</td><td class="apres">957 ms</td><td class="gain">−485 ms<span class="pct">−34 %</span></td></tr>
-<tr><td class="endroit">« Tu me connais », Retour après une feuille de partage<span class="genre">attente · #4799</span></td><td class="avant">900 ms</td><td class="apres">450 ms</td><td class="gain">−450 ms<span class="pct">−50 %</span></td></tr>
-<tr><td class="endroit">À proximité, carte prête après le lancement<span class="genre">attente · #4793</span><span class="note">1 133 à 1 167 ms avant, 632 à 825 ms après (milieux des plages)</span></td><td class="avant">1 150 ms</td><td class="apres">729 ms</td><td class="gain">−421 ms<span class="pct">−37 %</span></td></tr>
-<tr><td class="endroit">Petit globe vers la carte d&#x27;À proximité<span class="genre">attente · #4793</span><span class="note">le tour de planète de 350 ms est supprimé</span></td><td class="avant">350 ms</td><td class="apres">0 ms</td><td class="gain">−350 ms<span class="pct">−100 %</span></td></tr>
-<tr><td class="endroit">Messages, aller-retour<span class="genre">saccade · #4510</span></td><td class="avant">2 557 ms</td><td class="apres">2 297 ms</td><td class="gain">−260 ms<span class="pct">−10 %</span></td></tr>
-<tr><td class="endroit">Profil public, ouverture<span class="genre">saccade · #4540</span></td><td class="avant">2 529 ms</td><td class="apres">2 330 ms</td><td class="gain">−199 ms<span class="pct">−8 %</span></td></tr>
-<tr><td class="endroit">Profil, vibration d&#x27;onglet<span class="genre">décalage · #4479</span></td><td class="avant">214 ms</td><td class="apres">16 ms</td><td class="gain">−198 ms<span class="pct">−93 %</span></td></tr>
-<tr><td class="endroit">Appui sur un Take<span class="genre">saccade · #4685</span></td><td class="avant">185 ms</td><td class="apres">0 ms</td><td class="gain">−185 ms<span class="pct">−100 %</span></td></tr>
-<tr><td class="endroit">Messages, suggestions @<span class="genre">saccade · #4472</span></td><td class="avant">184 ms</td><td class="apres">9,9 ms</td><td class="gain">−174 ms<span class="pct">−95 %</span></td></tr>
-<tr><td class="endroit">Amis et Takes, défilement<span class="genre">saccade · #4566</span></td><td class="avant">4 603 ms</td><td class="apres">4 454 ms</td><td class="gain">−149 ms<span class="pct">−3 %</span></td></tr>
-<tr><td class="endroit">Onglets après un lien<span class="genre">saccade · #4677</span></td><td class="avant">541 ms</td><td class="apres">416 ms</td><td class="gain">−125 ms<span class="pct">−23 %</span></td></tr>
-<tr><td class="endroit">Top 8, ajout puis retrait<span class="genre">saccade · #4541</span></td><td class="avant">296 ms</td><td class="apres">182 ms</td><td class="gain">−114 ms<span class="pct">−39 %</span></td></tr>
-<tr><td class="endroit">Profil, onglets enchaînés<span class="genre">saccade · #4494</span></td><td class="avant">1 084 ms</td><td class="apres">1 010 ms</td><td class="gain">−73,5 ms<span class="pct">−7 %</span></td></tr>
-<tr><td class="endroit">Messages, ouverture<span class="genre">décalage · #4461</span></td><td class="avant">70 ms</td><td class="apres">0 ms</td><td class="gain">−70 ms<span class="pct">−100 %</span></td></tr>
-<tr><td class="endroit">Lancement<span class="genre">saccade · #4793</span></td><td class="avant">1 021 ms</td><td class="apres">975 ms</td><td class="gain">−46 ms<span class="pct">−5 %</span></td></tr>
-<tr><td class="endroit">Explorer, juste après le lancement<span class="genre">saccade · #4533</span></td><td class="avant">402 ms</td><td class="apres">361 ms</td><td class="gain">−41 ms<span class="pct">−10 %</span></td></tr>
-<tr><td class="endroit">Notifications, arrivée<span class="genre">saccade · #4516</span></td><td class="avant">83,3 ms</td><td class="apres">52,5 ms</td><td class="gain">−30,8 ms<span class="pct">−37 %</span></td></tr>
-<tr><td class="endroit">Amis, changer son vote<span class="genre">attente · #4686</span></td><td class="avant">95,7 ms</td><td class="apres">76,1 ms</td><td class="gain">−19,6 ms<span class="pct">−20 %</span></td></tr>
-<tr><td class="endroit">Messages, premier contenu<span class="genre">attente · #4482</span></td><td class="avant">1 617 ms</td><td class="apres">1 598 ms</td><td class="gain">−19 ms<span class="pct">−1 %</span></td></tr>
-<tr><td class="endroit">Publier une photo<span class="genre">saccade · #4565</span></td><td class="avant">227 ms</td><td class="apres">213 ms</td><td class="gain">−14,3 ms<span class="pct">−6 %</span></td></tr>
-<tr><td class="endroit">Take, repost rapide<span class="genre">saccade · #4666</span></td><td class="avant">204 ms</td><td class="apres">192 ms</td><td class="gain">−12 ms<span class="pct">−6 %</span></td></tr>
-<tr><td class="endroit">Take ouvert, vote<span class="genre">attente · #4644</span></td><td class="avant">141 ms</td><td class="apres">132 ms</td><td class="gain">−9,2 ms<span class="pct">−7 %</span></td></tr>
-</tbody></table></div>
+<ul class="cartes">
+<li class="carte"><div class="endroit">Accueil, glissé perdu</div><div class="chiffres"><span class="avant">3 349 ms</span> → <span class="apres">150 ms</span><span class="gain">−96 %</span></div><div class="genre">attente · −3 200 ms · #4603</div></li>
+<li class="carte"><div class="endroit">Takes vers Amis, trait</div><div class="chiffres"><span class="avant">500 ms</span> → <span class="apres">0 ms</span><span class="gain">−100 %</span></div><div class="genre">décalage · −500 ms · #4371</div></li>
+<li class="carte"><div class="endroit">Lancement sur une conversation</div><div class="chiffres"><span class="avant">1 442 ms</span> → <span class="apres">957 ms</span><span class="gain">−34 %</span></div><div class="genre">attente · −485 ms · #4744</div></li>
+<li class="carte"><div class="endroit">« Tu me connais », Retour après une feuille de partage</div><div class="chiffres"><span class="avant">900 ms</span> → <span class="apres">450 ms</span><span class="gain">−50 %</span></div><div class="genre">attente · −450 ms · #4799</div></li>
+<li class="carte"><div class="endroit">À proximité, carte prête après le lancement</div><div class="chiffres"><span class="avant">1 150 ms</span> → <span class="apres">729 ms</span><span class="gain">−37 %</span></div><div class="genre">attente · −421 ms · #4793</div><div class="note">1 133 à 1 167 ms avant, 632 à 825 ms après (milieux des plages)</div></li>
+<li class="carte"><div class="endroit">Petit globe vers la carte d&#x27;À proximité</div><div class="chiffres"><span class="avant">350 ms</span> → <span class="apres">0 ms</span><span class="gain">−100 %</span></div><div class="genre">attente · −350 ms · #4793</div><div class="note">le tour de planète de 350 ms est supprimé</div></li>
+<li class="carte"><div class="endroit">Messages, aller-retour</div><div class="chiffres"><span class="avant">2 557 ms</span> → <span class="apres">2 297 ms</span><span class="gain">−10 %</span></div><div class="genre">saccade · −260 ms · #4510</div></li>
+<li class="carte"><div class="endroit">Profil public, ouverture</div><div class="chiffres"><span class="avant">2 529 ms</span> → <span class="apres">2 330 ms</span><span class="gain">−8 %</span></div><div class="genre">saccade · −199 ms · #4540</div></li>
+<li class="carte"><div class="endroit">Profil, vibration d&#x27;onglet</div><div class="chiffres"><span class="avant">214 ms</span> → <span class="apres">16 ms</span><span class="gain">−93 %</span></div><div class="genre">décalage · −198 ms · #4479</div></li>
+<li class="carte"><div class="endroit">Appui sur un Take</div><div class="chiffres"><span class="avant">185 ms</span> → <span class="apres">0 ms</span><span class="gain">−100 %</span></div><div class="genre">saccade · −185 ms · #4685</div></li>
+<li class="carte"><div class="endroit">Messages, suggestions @</div><div class="chiffres"><span class="avant">184 ms</span> → <span class="apres">9,9 ms</span><span class="gain">−95 %</span></div><div class="genre">saccade · −174 ms · #4472</div></li>
+<li class="carte"><div class="endroit">Amis et Takes, défilement</div><div class="chiffres"><span class="avant">4 603 ms</span> → <span class="apres">4 454 ms</span><span class="gain">−3 %</span></div><div class="genre">saccade · −149 ms · #4566</div></li>
+<li class="carte"><div class="endroit">Onglets après un lien</div><div class="chiffres"><span class="avant">541 ms</span> → <span class="apres">416 ms</span><span class="gain">−23 %</span></div><div class="genre">saccade · −125 ms · #4677</div></li>
+<li class="carte"><div class="endroit">Top 8, ajout puis retrait</div><div class="chiffres"><span class="avant">296 ms</span> → <span class="apres">182 ms</span><span class="gain">−39 %</span></div><div class="genre">saccade · −114 ms · #4541</div></li>
+<li class="carte"><div class="endroit">Profil, onglets enchaînés</div><div class="chiffres"><span class="avant">1 084 ms</span> → <span class="apres">1 010 ms</span><span class="gain">−7 %</span></div><div class="genre">saccade · −73,5 ms · #4494</div></li>
+<li class="carte"><div class="endroit">Messages, ouverture</div><div class="chiffres"><span class="avant">70 ms</span> → <span class="apres">0 ms</span><span class="gain">−100 %</span></div><div class="genre">décalage · −70 ms · #4461</div></li>
+<li class="carte"><div class="endroit">Lancement</div><div class="chiffres"><span class="avant">1 021 ms</span> → <span class="apres">975 ms</span><span class="gain">−5 %</span></div><div class="genre">saccade · −46 ms · #4793</div></li>
+<li class="carte"><div class="endroit">Explorer, juste après le lancement</div><div class="chiffres"><span class="avant">402 ms</span> → <span class="apres">361 ms</span><span class="gain">−10 %</span></div><div class="genre">saccade · −41 ms · #4533</div></li>
+<li class="carte"><div class="endroit">Notifications, arrivée</div><div class="chiffres"><span class="avant">83,3 ms</span> → <span class="apres">52,5 ms</span><span class="gain">−37 %</span></div><div class="genre">saccade · −30,8 ms · #4516</div></li>
+<li class="carte"><div class="endroit">Amis, changer son vote</div><div class="chiffres"><span class="avant">95,7 ms</span> → <span class="apres">76,1 ms</span><span class="gain">−20 %</span></div><div class="genre">attente · −19,6 ms · #4686</div></li>
+<li class="carte"><div class="endroit">Messages, premier contenu</div><div class="chiffres"><span class="avant">1 617 ms</span> → <span class="apres">1 598 ms</span><span class="gain">−1 %</span></div><div class="genre">attente · −19 ms · #4482</div></li>
+<li class="carte"><div class="endroit">Publier une photo</div><div class="chiffres"><span class="avant">227 ms</span> → <span class="apres">213 ms</span><span class="gain">−6 %</span></div><div class="genre">saccade · −14,3 ms · #4565</div></li>
+<li class="carte"><div class="endroit">Take, repost rapide</div><div class="chiffres"><span class="avant">204 ms</span> → <span class="apres">192 ms</span><span class="gain">−6 %</span></div><div class="genre">saccade · −12 ms · #4666</div></li>
+<li class="carte"><div class="endroit">Take ouvert, vote</div><div class="chiffres"><span class="avant">141 ms</span> → <span class="apres">132 ms</span><span class="gain">−7 %</span></div><div class="genre">attente · −9,2 ms · #4644</div></li>
+</ul>
 <h2>Pour le build suivant, si on allume le mode borné depuis le serveur</h2>
 <p>Déjà dans main, éteint par défaut. Allumé, il ne ralentit aucun écran mesuré et fait 12 lectures réseau au lancement au lieu de 22.</p>
-<div class="table-wrap"><table><thead><tr><th class="endroit">Endroit</th><th>Avant</th><th>Après</th><th>Gagné</th></tr></thead><tbody>
-<tr><td class="endroit">Lancement, pire image<span class="genre">image · #4795</span></td><td class="avant">506 ms</td><td class="apres">336 ms</td><td class="gain">−170 ms<span class="pct">−34 %</span></td></tr>
-<tr><td class="endroit">Lancement<span class="genre">saccade · #4795</span></td><td class="avant">1 188 ms</td><td class="apres">1 115 ms</td><td class="gain">−73 ms<span class="pct">−6 %</span></td></tr>
-</tbody></table></div>
+<ul class="cartes">
+<li class="carte"><div class="endroit">Lancement, pire image</div><div class="chiffres"><span class="avant">506 ms</span> → <span class="apres">336 ms</span><span class="gain">−34 %</span></div><div class="genre">image · −170 ms · #4795</div></li>
+<li class="carte"><div class="endroit">Lancement</div><div class="chiffres"><span class="avant">1 188 ms</span> → <span class="apres">1 115 ms</span><span class="gain">−6 %</span></div><div class="genre">saccade · −73 ms · #4795</div></li>
+</ul>
 <p>Les autres gains de la semaine ne se comptent pas en millisecondes (images noires d'Explorer, touchers perdus, pages blanches). Ils sont sur la page « Fluidité sur 3 jours ».</p>
 </main>
 </body>
