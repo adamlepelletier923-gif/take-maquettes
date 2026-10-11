@@ -47,6 +47,12 @@ figcaption{color:var(--muted);font-size:13px;font-weight:700}
 <main>
 <h1>Recherche de la carte : les propositions suivent chaque lettre</h1>
 <p>Ton retour sur TestFlight 196 : « c pas assez fluide [...] les propositions donner quand tu ecris [...] c lent ». Mesuré le 12 octobre 2026 sur le simulateur du Mac, avec l'API de staging, en tapant une lettre toutes les 435 ms environ. L'app est relancée avant chaque essai.</p>
+<h2>Ton choix : le panneau qui ne bouge plus</h2>
+<p>Ce que tu voyais descendre, c'était le panneau de recherche. Il grandissait jusqu'en haut quand il y avait beaucoup de résultats, puis redescendait quand il en restait peu. Du coup, le champ sautait sous ton doigt à chaque lettre. Dans cette version, dès que tu tapes, le panneau prend toute la place au-dessus du clavier, comme dans Plans d'Apple. La liste change à l'intérieur, et le champ reste fixe.</p>
+<figure>
+<video src="frappe-panneau-stable.mp4?v=2" autoplay muted loop playsinline controls></video>
+<figcaption>« toulouse » tapé lettre par lettre : à gauche aujourd'hui, à droite le panneau fixe.</figcaption>
+</figure>
 <h2>La première proposition</h2>
 <ul class="cartes">
 <li class="carte"><div class="endroit">« toulouse »</div><div class="chiffres"><span class="avant">1 334 ms</span> → <span class="apres">445 ms</span><span class="gain">−67 %</span></div></li>
