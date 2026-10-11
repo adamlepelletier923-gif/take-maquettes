@@ -1,0 +1,220 @@
+{
+ "majLe": "2026-10-12T02:46+09:00",
+ "heure": "02:47",
+ "dernierTableau": "2026-10-11T22:35+09:00",
+ "resume": {
+  "fusionneesDepuis8Octobre": 6,
+  "depuisDernierTableau": 6,
+  "enCours": 8,
+  "app": 3,
+  "siteEtAdmin": 0,
+  "serveur": 1,
+  "outilsEtDocs": 2
+ },
+ "alerte": {
+  "titre": "This hour",
+  "texte": "Build 197 starts here: everything merged since build 196 is below. You accepted seven Hick's law changes, and four agents on the Mac are building them."
+ },
+ "depuis": [
+  {
+   "heure": "02:24",
+   "pr": 4821,
+   "texte": "A lint rule now blocks the two ways of opening a page that skipped the double-tap guard. Found by the Hick's law audit.",
+   "build196": true
+  },
+  {
+   "heure": "02:17",
+   "pr": 4726,
+   "texte": "Every pull request that changes the app must now show it breaks nothing (its regression study), or a check fails. Your request of 10/10.",
+   "build196": true
+  },
+  {
+   "heure": "01:28",
+   "pr": 4780,
+   "texte": "Profile song chip and picker on mobile and web",
+   "build196": true
+  },
+  {
+   "heure": "00:02",
+   "pr": 4816,
+   "texte": "On the map search, picking a suggestion writes its name in the bar, ready to be written over; the places follow the typing sooner and the flight takes 1.2 s instead of 2.4. Your TestFlight point; for the next build.",
+   "build196": true
+  },
+  {
+   "heure": "22:58",
+   "pr": 4795,
+   "texte": "Messages and the Profile are prepared ahead while you rest on Amis, switched off by default. Measured on a cloud iPhone: off, it costs nothing; on, it slows nothing and makes launch lighter (12 network reads instead of 22). For the next build.",
+   "build196": true
+  },
+  {
+   "heure": "22:38",
+   "pr": 4813,
+   "texte": "An official Take's video is removed only when the video site says it is gone twice, a day apart; one passing error no longer removes it for good. It reaches staging with the next server deploy.",
+   "build196": true
+  }
+ ],
+ "statuts": {
+  "loop": {
+   "libelle": "Test loop",
+   "ton": "bench"
+  },
+  "staging": {
+   "libelle": "Waiting for the staging lock",
+   "ton": "wait"
+  },
+  "review": {
+   "libelle": "Review and CI",
+   "ton": "wait"
+  },
+  "measuring": {
+   "libelle": "Measuring",
+   "ton": "bench"
+  },
+  "claude": {
+   "libelle": "A Claude is fixing it here",
+   "ton": "bad"
+  },
+  "later": {
+   "libelle": "Moved to the next build",
+   "ton": "wait"
+  },
+  "owner": {
+   "libelle": "With the curator's owner",
+   "ton": "wait"
+  },
+  "fixing": {
+   "libelle": "Being fixed",
+   "ton": "bad"
+  }
+ },
+ "enCours": [
+  {
+   "statut": "claude",
+   "sujet": "Hick's law: the seven changes you accepted",
+   "pr": 0,
+   "ouEnEst": "You accepted points 3, 4, 5, 8, 9, 10 and 12 of the Hick's law audit. Four Claude agents on the Mac build them, one pull request per point.",
+   "reste": "Pictures before and after, two reviews, then merge."
+  },
+  {
+   "statut": "claude",
+   "sujet": "Hick's law: new ideas for points 1, 2, 6 and 7",
+   "pr": 0,
+   "ouEnEst": "Two agents draw other ideas for the four points you want redone: one starts from X, the other from Instagram and Apple.",
+   "reste": "Added to the short Hick's law page, for your choice."
+  },
+  {
+   "statut": "review",
+   "sujet": "Map search suggestions follow every letter",
+   "pr": 4818,
+   "ouEnEst": "Suggestions come about three times sooner and follow every letter. Your remark: the search panel jumps up and down while typing. A version where it stays still is being made.",
+   "reste": "Your choice on the new video, then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Private profile shows friends, Takes and score",
+   "pr": 4819,
+   "ouEnEst": "You approved the pictures. The branch is being brought up to date with main, after a review found tests failing only because it was behind.",
+   "reste": "Two reviews, then merge."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Mentions appear faster",
+   "pr": 4822,
+   "ouEnEst": "The wait before each lookup is gone. Still to do: the slow panel animation you saw, and suggestions that keep up with each letter despite the trip to Los Angeles.",
+   "reste": "Measure with your Korean network delay, pictures, then your OK."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Explore pages going blank during quick changes",
+   "pr": 4801,
+   "ouEnEst": "The native fix works; a test is missing for one of its signals, and the before and after pictures are being made on a cloud Mac.",
+   "reste": "Test, pictures, then your OK."
+  },
+  {
+   "statut": "later",
+   "sujet": "Videos ahead in the feed",
+   "pr": 4766,
+   "ouEnEst": "A video's first image goes from 649 ms to 20 ms with 40 % less data, but switched on it adds about 80 ms of JS jank per run.",
+   "reste": "Find the extra jank, then measure again."
+  },
+  {
+   "statut": "later",
+   "sujet": "Taps lost when two arrive within one frame",
+   "pr": 0,
+   "ouEnEst": "Two fingers overlapping on the same button count once, which is React Native's normal touch model; taps apart, even barely, both count.",
+   "reste": "Decide whether anything should change."
+  }
+ ],
+ "equipe": [
+  "Here on the Mac: me, six Claude agents for Hick's law (four building, two drawing ideas), the audit agent, and your emulator on staging.",
+  "On Replicas, on Muse Spark through OpenCode: harfang (mentions), vison (private profile), lemming (Explore), and the reviewers."
+ ],
+ "etapes": [
+  "Hick's law: seven pull requests, pictures, reviews, merge.",
+  "Map search: a panel that stays still while typing, for your choice.",
+  "Private profile and mentions: reviews, then merge.",
+  "Explore pages: the missing test and the pictures."
+ ],
+ "fait": [
+  {
+   "zone": "mobile",
+   "nom": "iPhone and Android app",
+   "prs": [
+    {
+     "pr": 4780,
+     "titre": "Profile song chip and picker on mobile and web",
+     "fusion": "Oct 12, 01:28",
+     "build196": true
+    },
+    {
+     "pr": 4816,
+     "titre": "TAK-1145 : la recherche de la carte garde le lieu touché et va plus vite",
+     "fusion": "Oct 12, 00:02",
+     "build196": true
+    },
+    {
+     "pr": 4795,
+     "titre": "TAK-1114 : mode borné, Messages et le Profil se montent d'avance un morceau par créneau de repos, hors de la fenêtre du lancement",
+     "fusion": "Oct 11, 22:58",
+     "build196": true
+    }
+   ]
+  },
+  {
+   "zone": "api",
+   "nom": "Server",
+   "prs": [
+    {
+     "pr": 4813,
+     "titre": "TAK-1059: a curated video is dropped only after two gone answers a day apart",
+     "fusion": "Oct 11, 22:38",
+     "build196": true
+    }
+   ]
+  },
+  {
+   "zone": "outillage",
+   "nom": "CI, scripts and infra",
+   "prs": [
+    {
+     "pr": 4726,
+     "titre": "A CI guard: app changes need a regression study",
+     "fusion": "Oct 12, 02:17",
+     "build196": true
+    }
+   ]
+  },
+  {
+   "zone": "autre",
+   "nom": "Other",
+   "prs": [
+    {
+     "pr": 4821,
+     "titre": "TAK-1148 : le lint interdit aussi router et Link d'expo-router (garde du double toucher)",
+     "fusion": "Oct 12, 02:24",
+     "build196": true
+    }
+   ]
+  }
+ ]
+}
