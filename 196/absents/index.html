@@ -72,7 +72,10 @@ ul.points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
     <li class="point">
       <h2>Feuilles de partage plus rapides</h2>
       <p class="quoi">Le correctif de « Tu me connais » (le Retour perdu juste après une feuille de partage) fait aussi apparaître les feuilles de partage environ une demi-seconde plus tôt, « Envoyer à » compris.</p>
-      <p><b>Pourquoi pas dedans :</b> C'est un changement de mouvement, donc de design : il attend ton accord, avec l'avant/après en clair et en sombre. Sans ce changement, iOS avale le Retour pendant le fondu caché, donc le correctif entre en entier ou pas du tout.</p>
+      <p><b>Pourquoi pas dedans :</b> C'est un changement de mouvement, donc de design : il attend ton accord. Les deux relectures sont propres. Sans ce changement, iOS avale le Retour pendant le fondu caché, donc le correctif entre en entier ou pas du tout.</p>
+      <p>Avant/après, image toutes les 200 ms après le toucher sur « Partager mon score ». En haut, main : la feuille arrive vers 1 s. En bas, le correctif : elle arrive vers 0,4 s.</p>
+      <p><img src="feuilles-clair.png" alt="Feuille de partage, main puis correctif, en mode clair" style="width:100%;height:auto;border-radius:12px"></p>
+      <p><img src="feuilles-sombre.png" alt="Feuille de partage, main puis correctif, en mode sombre" style="width:100%;height:auto;border-radius:12px"></p>
       <p class="decide"><b>À décider :</b> Valider les feuilles plus rapides : le correctif entre alors dans le 196. Sinon, il attend le build suivant.</p>
     </li>
     <li class="point">
@@ -84,19 +87,19 @@ ul.points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
     <li class="point">
       <h2>Pages voisines lues d'avance</h2>
       <p class="quoi">Messages et le Profil seraient lus avant qu'on y aille.</p>
-      <p><b>Pourquoi pas dedans :</b> Le code est dans le 196 mais éteint : allumé, il alourdit un peu le lancement. Une version qui prépare ces pages morceau par morceau, au repos, est en cours de correction.</p>
+      <p><b>Pourquoi pas dedans :</b> Le code est dans le 196 mais éteint : allumé, il alourdit un peu le lancement. Une version qui prépare ces pages morceau par morceau, au repos, a ses deux défauts corrigés ; elle est en relecture.</p>
       <p class="decide rien"><b>À décider :</b> Rien. On l'allumera depuis le serveur, sans nouveau build.</p>
     </li>
     <li class="point">
       <h2>Vidéos préparées d'avance dans le fil</h2>
       <p class="quoi">Le début de chaque vidéo serait prêt avant qu'elle arrive à l'écran.</p>
-      <p><b>Pourquoi pas dedans :</b> Tu l'as mis après le 196. Mesurée cette nuit : la première image arrive en 46 ms au lieu de 343, et on télécharge neuf fois moins ; mais le défilement du fil devient plus lourd, c'est en correction.</p>
+      <p><b>Pourquoi pas dedans :</b> Tu l'as mis après le 196. Mesurée cette nuit : la première image arrive en 46 ms au lieu de 343, et on télécharge neuf fois moins ; mais le défilement du fil devenait plus lourd. Ce travail a été sorti du fil principal de l'app, il reste à le remesurer.</p>
       <p class="decide rien"><b>À décider :</b> Rien.</p>
     </li>
     <li class="point">
       <h2>Explorer : pages blanches pendant les changements rapides</h2>
       <p class="quoi">La page qu'on quitte resterait dessinée pendant une rafale de changements de page.</p>
-      <p><b>Pourquoi pas dedans :</b> Brouillon pour après le 196, en relecture et en correction ; les captures viendront pour ton accord.</p>
+      <p><b>Pourquoi pas dedans :</b> Brouillon pour après le 196. Le test qui manquait est en cours ; je ferai les captures sur le Mac pour ton accord.</p>
       <p class="decide rien"><b>À décider :</b> Rien pour l'instant.</p>
     </li>
     <li class="point">
@@ -114,7 +117,7 @@ ul.points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
     <li class="point">
       <h2>Hashtags sur le site web</h2>
       <p class="quoi">Sur le site aussi, les hashtags deviennent des liens gris dans le titre, sans pastille.</p>
-      <p><b>Pourquoi pas dedans :</b> C'est le site, pour après le 196. Les captures ont trouvé deux trous et un petit saut sur les profils publics, en correction.</p>
+      <p><b>Pourquoi pas dedans :</b> C'est le site, pour après le 196. Les captures ont trouvé deux trous, corrigés, et un petit saut sur les profils publics, dont la correction doit encore être poussée.</p>
       <p class="decide rien"><b>À décider :</b> Rien pour l'instant ; ton accord viendra avec les captures.</p>
     </li>
     <li class="point">
