@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-11T23:49+09:00",
- "heure": "23:50",
+ "majLe": "2026-10-12T00:46+09:00",
+ "heure": "00:46",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 403,
-  "depuisDernierTableau": 208,
+  "fusionneesDepuis8Octobre": 404,
+  "depuisDernierTableau": 209,
   "enCours": 6,
-  "app": 179,
+  "app": 180,
   "siteEtAdmin": 69,
   "serveur": 74,
   "outilsEtDocs": 81
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Build 196 is on TestFlight, and the staging API is deployed with the official videos fix. Your three TestFlight points have their tickets: the map search is fixed and tested on your emulator; mentions and the private profile are being worked on."
+  "texte": "The map search fix is in main for the next build, after two clean reviews. An Opus at max effort started a full Hick's law tour of the app on a second emulator."
  },
  "depuis": [
+  {
+   "heure": "00:02",
+   "pr": 4816,
+   "texte": "On the map search, picking a suggestion writes its name in the bar, ready to be written over; the places follow the typing sooner and the flight takes 1.2 s instead of 2.4. Your TestFlight point; for the next build.",
+   "build196": false
+  },
   {
    "heure": "22:58",
    "pr": 4795,
@@ -1301,24 +1307,24 @@
  },
  "enCours": [
   {
-   "statut": "review",
-   "sujet": "Map search keeps the place you picked",
-   "pr": 4816,
-   "ouEnEst": "Your TestFlight point: picking a suggestion now writes its name in the bar, ready to be written over. The places follow the typing sooner (150 ms instead of 250) and the flight takes 1.2 s instead of 2.4. Tested on your emulator.",
-   "reste": "Checks, then merge for the next build."
+   "statut": "claude",
+   "sujet": "Hick's law audit of the whole app",
+   "pr": 0,
+   "ouEnEst": "You asked for it tonight: an Opus at max effort tours the app on its own emulator here on the Mac, counting the choices on each screen to see where they slow the decision.",
+   "reste": "One readable page with numbered proposals, for your decisions."
   },
   {
    "statut": "measuring",
    "sujet": "Mentions appear faster",
    "pr": 0,
-   "ouEnEst": "Your TestFlight point: the @ suggestions are slow in Messages and comments. A cloud machine measures where the time goes on a cloud iPhone.",
+   "ouEnEst": "Your TestFlight point: a cloud machine measures on a cloud iPhone where the time goes between typing @ and the first suggestion.",
    "reste": "Fix, measure before and after, then your OK."
   },
   {
    "statut": "fixing",
    "sujet": "Private profile shows its score and friends",
    "pr": 0,
-   "ouEnEst": "Your TestFlight point: a private profile (like Ines) shows only its Takes count. A cloud machine adds the score, if any, and the friends count: numbers only, never lists.",
+   "ouEnEst": "Your TestFlight point. The first cloud machine lost its conversation, so another one took it over from the start: numbers only, never lists.",
    "reste": "Pictures before and after, for your OK."
   },
   {
@@ -1344,19 +1350,25 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, on the map search, and your emulator on staging.",
-  "On Replicas, on Muse Spark through OpenCode: harfang (mentions), putois (private profile), wombat (tour of the build), lemming (Explore)."
+  "Here on the Mac: me, the Hick's law audit (Opus at max effort, its own emulator), and your emulator on staging.",
+  "On Replicas, on Muse Spark through OpenCode: harfang (mentions), castor (private profile), wombat (tour of the build), lemming (Explore)."
  ],
  "etapes": [
-  "Map search: checks, then merge.",
   "Mentions: measure, fix, measure again.",
-  "Private profile: score and friends, then your OK on the pictures."
+  "Private profile: score and friends, then your OK on the pictures.",
+  "Hick's law audit: one page with numbered proposals."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4816,
+     "titre": "TAK-1145 : la recherche de la carte garde le lieu touché et va plus vite",
+     "fusion": "Oct 12, 00:02",
+     "build196": false
+    },
     {
      "pr": 4795,
      "titre": "TAK-1114 : mode borné, Messages et le Profil se montent d'avance un morceau par créneau de repos, hors de la fenêtre du lancement",
