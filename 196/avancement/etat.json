@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-11T09:47+09:00",
- "heure": "09:47",
+ "majLe": "2026-10-11T10:46+09:00",
+ "heure": "10:46",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 372,
-  "depuisDernierTableau": 177,
-  "enCours": 6,
-  "app": 163,
+  "fusionneesDepuis8Octobre": 373,
+  "depuisDernierTableau": 178,
+  "enCours": 8,
+  "app": 164,
   "siteEtAdmin": 67,
   "serveur": 71,
   "outilsEtDocs": 71
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The icon row is back to build 195, and Messages and the Profile read ahead join build 196 after a clean device measurement. The first test loop on your emulator passes every flow that does not need fresh test data."
+  "texte": "Every test-loop flow has now passed on today's main, once the bench's own test data were fixed. The icon gaps with the always-visible '0 vote', and the hashtags in the title, are ready and in review."
  },
  "depuis": [
+  {
+   "heure": "09:49",
+   "pr": 4643,
+   "texte": "Messages, the Profile and folded replies are read ahead, behind the preloading switch that stays off for build 196; measured on a device with the switch off, none of six paths is less smooth than main. It is turned on from the server once the videos ahead are ready, without a new build.",
+   "build196": true
+  },
   {
    "heure": "09:07",
    "pr": 4779,
@@ -1116,31 +1122,45 @@
  "enCours": [
   {
    "statut": "review",
-   "sujet": "The same gap between all of a Take's icons, as in build 195",
+   "sujet": "The same gap between all of a Take's icons, and the vote count always shown",
    "pr": 4783,
-   "ouEnEst": "Your request at 09:14: the gap after the repost was wider, because hidden zeros kept their place. The fix is ready and its build checks are green, but both reviews found two defects: the row grows by a few points when the first count appears, and small dead touch bands appear at 1.5 times the text size. An agent on the Mac is fixing both.",
+   "ouEnEst": "The two defects found in review are fixed, and '0 vote' now always shows on the right, as you asked at 10:21; it is the only zero you see. Build checks green, a first review of the newest version at zero, a second one running, and a smoothness measurement running on a device.",
    "reste": "Must be in build 196."
   },
   {
-   "statut": "measuring",
+   "statut": "review",
+   "sujet": "Hashtags tapped right in the title, grey like 'See translation', no pills",
+   "pr": 4784,
+   "ouEnEst": "Your request at 10:04; you liked it at 10:33. A review found that VoiceOver could no longer reach the hashtags from the feed; that is fixed, and a full review of the new version is running.",
+   "reste": "Must be in build 196."
+  },
+  {
+   "statut": "claude",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "You want it in build 196. It makes the map arrive twice as fast, but scrolling Friends was heavier than main. Two candidate fixes are being measured on a device to find the cause.",
-   "reste": "Joins build 196 as soon as it is as smooth as main."
+   "ouEnEst": "Three versions measured on a device, and none scrolls Friends as smoothly as main, not even one that prepares the map exactly like main. So the cost is somewhere else in the change; an agent on the Mac is searching the whole change for the cause.",
+   "reste": "Joins build 196 once it is as smooth as main; you decide if it takes too long."
   },
   {
    "statut": "loop",
    "sujet": "Test loop on your emulator",
    "pr": 0,
-   "ouEnEst": "First run on today's main, on local test data: every flow that does not need fresh data passes. Six fail on the bench itself, as in last night's rehearsals: the test data were too old (empty Takes feed and Explore top), and two old test drafts were in the way. The data are refreshed and those six flows run again.",
-   "reste": "Then the full loop and the 90-point tour on the final main."
+   "ouEnEst": "Every flow has now passed on today's main. The seven that failed needed fresh local test data or a cleaned test draft, not an app fix; a preparation script restores that data before each loop, and the local server now turns on the same text links as staging.",
+   "reste": "Final full loop and the 90-point tour on the final main."
   },
   {
    "statut": "staging",
    "sujet": "Staging API redeploy for build 196",
    "pr": 0,
-   "ouEnEst": "Staging is locked by another machine (a geocoder deploy), renewed until 11:36 for now. A watcher takes the lock the moment it is released or expires; we redeploy, then hand it back. The build does not need it, but your TestFlight tests do.",
+   "ouEnEst": "Staging is locked by another machine (a geocoder deploy) until 11:36 for now. A watcher takes the lock the moment it is released or expires; we redeploy, then hand it back. The build does not need it, but your TestFlight tests do.",
    "reste": "Redeploy with preloading off, as soon as the lock is free."
+  },
+  {
+   "statut": "later",
+   "sujet": "Switching on Messages and the Profile read ahead",
+   "pr": 4643,
+   "ouEnEst": "Merged and switched off in build 196. Measured switched on: Messages opens much faster and videos are unchanged, but launch gets a bit heavier, because the preparation falls during startup.",
+   "reste": "After build 196: move that preparation after launch, then switch it on from the server."
   },
   {
    "statut": "owner",
@@ -1158,20 +1178,26 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator running the test loop on local test data, and one Claude agent fixing the icon gaps.",
-  "On Replicas: device measurements of the map and reviews, on Claude when it is available and otherwise on OpenCode with Muse."
+  "Here on the Mac: me, your emulator (showing the icon gaps, '0 vote' and the hashtags together), and three Claude agents (a review of the icon gaps, a review of the hashtags, and the map investigation).",
+  "On Replicas: castor measures the icon gaps on a device and fouine measured the map versions; the reviews come from the Mac while the Replicas reviewers are restored."
  ],
  "etapes": [
-  "Fix and merge the same gap between icons; merge the map once a device measurement shows it as smooth as main.",
-  "Run the six flows that needed fresh test data again, then the full loop and the 90-point tour on the final main.",
+  "Merge the icon gaps with '0 vote' and the hashtags once their reviews and measurement are clean.",
+  "Find and fix what makes Friends heavier in the map change, then measure it again.",
   "Redeploy the staging API as soon as the lock is free, with preloading off.",
-  "Update the list of what is not in build 196, launch it as a new binary, and hand you the emulator back on staging."
+  "Final full test loop and the 90-point tour on the final main, then the list of what is not in build 196, the build itself, and your emulator back on staging."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4643,
+     "titre": "TAK-723 : relire d'avance Messages, le Profil et les réponses repliées du Take ouvert",
+     "fusion": "Oct 11, 09:49",
+     "build196": true
+    },
     {
      "pr": 4779,
      "titre": "TAK-1098 : la barre d'actions d'un Take revient comme au build 195, actions à gauche et votes à droite",
