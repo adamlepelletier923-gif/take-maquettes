@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-12T02:46+09:00",
- "heure": "02:47",
+ "majLe": "2026-10-12T02:48+09:00",
+ "heure": "02:49",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 6,
@@ -92,7 +92,7 @@
    "statut": "claude",
    "sujet": "Hick's law: the seven changes you accepted",
    "pr": 0,
-   "ouEnEst": "You accepted points 3, 4, 5, 8, 9, 10 and 12 of the Hick's law audit. Four Claude agents on the Mac build them, one pull request per point.",
+   "ouEnEst": "You accepted points 3, 4, 5, 8, 9, 10 and 12 of the Hick's law audit. Four Claude agents on the Mac build them, one pull request per point. Three are already open: the sign-in sheet closes one way, the composer shows « No limit », and search sorts by its tabs.",
    "reste": "Pictures before and after, two reviews, then merge."
   },
   {
