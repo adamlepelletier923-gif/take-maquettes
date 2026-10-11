@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-11T19:56+09:00",
- "heure": "19:55",
+ "majLe": "2026-10-11T20:57+09:00",
+ "heure": "20:56",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 396,
-  "depuisDernierTableau": 201,
+  "fusionneesDepuis8Octobre": 397,
+  "depuisDernierTableau": 202,
   "enCours": 7,
-  "app": 174,
+  "app": 175,
   "siteEtAdmin": 69,
   "serveur": 73,
   "outilsEtDocs": 80
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Main now holds exactly the code the final loop tested, all green, with the last two fixes merged (a Take that no longer exists, the link to Messages). The review of everything merged since the last full review found no regression."
+  "texte": "You validated the faster share sheets: they are in main. The page tour on today's main found one real bug (counts at a third of their size in 'Your activity'), already fixed and in review."
  },
  "depuis": [
+  {
+   "heure": "20:48",
+   "pr": 4799,
+   "texte": "In 'Know me', Back works again right after a share sheet, and the share sheets appear sooner (about 0.4 s instead of 1 s), 'Send to' included. You validated the before-and-after tonight.",
+   "build196": false
+  },
   {
    "heure": "19:49",
    "pr": 4811,
@@ -1259,69 +1265,75 @@
  },
  "enCours": [
   {
+   "statut": "review",
+   "sujet": "Counts drawn at a third of their size in 'Your activity'",
+   "pr": 4812,
+   "ouEnEst": "Found by tonight's page tour: in Settings > Your activity > Reposts, the repost and comment counts and '7 votes' were tiny. Cause found and fixed; on the Mac's iPhone the label goes from under 1 point to 10 points tall, with nothing else moving. A review found a missing test declaration for the checks, fixed; checks and the second review are running.",
+   "reste": "Two clean reviews, merge, then the final loop."
+  },
+  {
    "statut": "loop",
    "sujet": "Build 196 ready to go",
    "pr": 0,
-   "ouEnEst": "Main now holds exactly the code the final loop tested, all green: 22 of 22 tests, the 6 long-press cases, the time labels, and the Home bar filmed while Takes and Friends scroll. The review of everything merged since the last full review found no regression. The page tour (one picture of every page) is running on the Mac.",
-   "reste": "Read the tour's pictures, then the build as soon as you give the go."
-  },
-  {
-   "statut": "review",
-   "sujet": "'Know me' ignoring Back after a share sheet",
-   "pr": 4799,
-   "ouEnEst": "Both reviews of the latest version are clean and checks are green. It also makes the share sheets appear sooner (about 0.4 s instead of 1 s): the before-and-after pictures, light and dark, are on the list of what is not in build 196.",
-   "reste": "Your OK on the faster sheets, then merge and one more loop."
+   "ouEnEst": "Main now holds the faster share sheets you validated. The final test loop and the filmed Home bar run again once the counts fix is in, on that exact code.",
+   "reste": "Then your go for the build."
   },
   {
    "statut": "later",
    "sujet": "Taps lost when two arrive within one frame",
    "pr": 0,
-   "ouEnEst": "Two taps less than a frame apart count as one on tabs, votes, repost and the ghost; from 33 ms on, faster than any finger, nothing is lost. The search for the cause is paused while the cloud machines have no Claude.",
-   "reste": "Resume when the accounts are back, then a fix per cause."
+   "ouEnEst": "You asked to finish it: a cloud machine is reading React Native's touch handling to find the cause. From 33 ms on, faster than any finger, nothing is lost.",
+   "reste": "A fix per cause, proven without regression, for the next build."
   },
   {
    "statut": "later",
    "sujet": "Messages and the Profile read ahead, without a heavier launch",
    "pr": 4795,
-   "ouEnEst": "One clean review on the fixed version; the other reviewers stopped when their Claude ran out.",
-   "reste": "After build 196: a second review, measurement, then switch it on from the server."
+   "ouEnEst": "You asked to finish it: two clean reviews. It touches launch, tabs and the Profile, so it must be measured as smooth as main before it can enter.",
+   "reste": "Measurement on the Mac, then the next build, switched on from the server."
   },
   {
    "statut": "later",
    "sujet": "Hashtags on the website, as in the app",
    "pr": 4787,
-   "ouEnEst": "castor's fix for the small jump on public profiles is still not pushed; asked again through its backup model.",
-   "reste": "After build 196: pictures in light and dark, then your OK."
+   "ouEnEst": "All fixed, two clean reviews, checks green. Before-and-after pictures in light and dark are on the list of what is not in build 196.",
+   "reste": "Your OK on the pictures, then merge."
   },
   {
    "statut": "later",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "lemming asked again to push the missing test; I take the before-and-after pictures on the Mac.",
-   "reste": "Your OK on the pictures, after build 196."
+   "ouEnEst": "You asked to finish it: its native test fails without the fix and passes with it. It changes the native pager, so its pictures and smoothness need a real build of the app.",
+   "reste": "Pictures and measurement on a real build, then your OK."
   },
   {
    "statut": "later",
    "sujet": "Videos ahead in the feed with preloading on",
    "pr": 4766,
-   "ouEnEst": "vison moved the heavy part off the app's main thread: video pieces download straight to their file, and a scroll asks for each window only once.",
-   "reste": "Measure again on the Mac after the build, then turn the video switch on from the server."
+   "ouEnEst": "You asked to finish it: the heavy part was moved off the app's main thread, but the branch now conflicts with main.",
+   "reste": "Update the branch, reviews, measurement, then the next build."
   }
  ],
  "equipe": [
-  "Here on the Mac: me and your emulator running the page tour on main's exact code.",
-  "On Replicas, on their backup model until the Claude accounts come back on 16/10: castor on the website hashtags, lemming on Explore, mouflon and orignal reviewing."
+  "Here on the Mac: me and your emulator, for the final loop and the measurements.",
+  "On Replicas, on Muse Spark through OpenCode until the Claude accounts come back on 16/10: mouflon and orignal reviewing, fouine on lost taps, castor on the website, putois, lemming and vison on the next build's points."
  ],
  "etapes": [
-  "Read the page tour's pictures on main's exact code.",
-  "Your choices on the list of what is not in build 196, the faster share sheets first.",
-  "Then the build once you give the go; if you OK the faster sheets, one more loop before it."
+  "Merge the counts fix after its reviews.",
+  "The final loop and the filmed Home bar on that exact code.",
+  "Your OK on the website pictures, then your go for the build."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4799,
+     "titre": "TAK-974 : « Retour » répond dès que la feuille de partage KnowMe a disparu",
+     "fusion": "Oct 11, 20:48",
+     "build196": false
+    },
     {
      "pr": 4811,
      "titre": "TAK-1126: un toucher envoyé avant un lien mais atterrissant après perd contre le lien",
