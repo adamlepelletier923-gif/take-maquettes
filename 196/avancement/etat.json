@@ -1,21 +1,39 @@
 {
- "majLe": "2026-10-11T12:46+09:00",
- "heure": "12:46",
+ "majLe": "2026-10-11T13:46+09:00",
+ "heure": "13:46",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 376,
-  "depuisDernierTableau": 181,
+  "fusionneesDepuis8Octobre": 379,
+  "depuisDernierTableau": 184,
   "enCours": 6,
-  "app": 166,
+  "app": 167,
   "siteEtAdmin": 67,
   "serveur": 72,
-  "outilsEtDocs": 71
+  "outilsEtDocs": 73
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The hashtags in the title are merged into main, with your design OK. On the Mac bench, none of the three map versions scrolls Friends worse than main; the whole map change is being measured against main now, to learn whether the Mac sees what the cloud devices saw."
+  "texte": "The icon gaps are now 16 pt, your pick, and a new loop flow tests today's novelties; both are merged. The final loop is running on that main, and Limrun is back: the map without its rewritten component looks as smooth as main and opens the map almost twice as fast."
  },
  "depuis": [
+  {
+   "heure": "13:27",
+   "pr": 4786,
+   "texte": "TAK-1112 : les icônes d'un Take un peu plus serrées (16 pt au lieu de 20)",
+   "build196": false
+  },
+  {
+   "heure": "13:26",
+   "pr": 4788,
+   "texte": "TAK-1113 : la boucle teste les nouveautés du build 196 (« 0 vote », hashtags dans le titre)",
+   "build196": false
+  },
+  {
+   "heure": "13:13",
+   "pr": 4789,
+   "texte": "S103: Cloudflare Traces on staging at 100 percent, OTLP and rule variables, proven under lease",
+   "build196": false
+  },
   {
    "heure": "12:05",
    "pr": 4784,
@@ -1142,53 +1160,53 @@
    "statut": "measuring",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "On the Mac bench, none of the three versions that each keep one part of the change scrolls Friends worse than main (24 runs). The whole change is now measured against main on the same bench: heavy here too, and the cause is narrowed down; not heavy, and the Mac does not see what the cloud devices saw.",
-   "reste": "Fix what is heavy and measure again, or let you decide if the Mac cannot see it. Joins build 196 only once it is as smooth as main."
-  },
-  {
-   "statut": "review",
-   "sujet": "Take icons a little closer together",
-   "pr": 4786,
-   "ouEnEst": "Your request at 12:06 ('maybe tighten a bit'): the gap between the four icons goes from 20 to 16 pt, touch areas following, with green checks.",
-   "reste": "Pictures of 20, 18 and 16 pt in light and dark on your emulator, your pick, two reviews, merge."
+   "ouEnEst": "Limrun is back, and fouine measured version D, the change without its rewrite of the map component: launch like main, the prepared map opens almost twice as fast (630 to 825 ms instead of 1,130 to 1,170), and Friends scrolls at 65 ms against 57 on main, a gap that is not significant. So the rewrite is the culprit. The strict rule still refuses D by a hair, so 6 more pairs are running; castor is also trying to fix the rewrite itself.",
+   "reste": "If D holds over 12 pairs, the change ships as D (two reviews, then merge and the loop again); otherwise castor's fix, or build 196 without the map."
   },
   {
    "statut": "loop",
-   "sujet": "Test loop on your emulator",
-   "pr": 4788,
-   "ouEnEst": "Every flow passed on today's main once the bench's own data were fixed. A new flow, as you asked, tests today's novelties: '0 vote' on a Take nobody voted on, no pills under a Take, and a hashtag tapped in a title opening its search. Green checks.",
-   "reste": "Run the new flow once on your emulator, then the final full loop and the 90-point tour on the final main."
+   "sujet": "Final test loop on your emulator",
+   "pr": 0,
+   "ouEnEst": "Running on the final main (with the 16 pt icon gaps and the new novelties flow): the first 11 of 22 flows passed. The new flow already passed on its own: '0 vote', no pills, and a hashtag tapped in a title opening its search.",
+   "reste": "The rest of the loop, then the 90-point tour on the same commit."
+  },
+  {
+   "statut": "review",
+   "sujet": "Final review of everything since the last one",
+   "pr": 0,
+   "ouEnEst": "A Replicas reviewer reads the whole app increment since the last final review (icon row, hashtags, 16 pt gaps, read-ahead switched off), looking for what per-change reviews miss.",
+   "reste": "Fix anything it finds before the build."
   },
   {
    "statut": "later",
    "sujet": "Hashtags on the website, as in the app",
    "pr": 4787,
-   "ouEnEst": "No more pills under a Take on the website either; the title's hashtags are grey links to their search, and a translated title keeps the Take's own tags (the same code as the app now). Green checks.",
+   "ouEnEst": "No more pills under a Take on the website either; grey links in the title, the same code as the app for translated titles. Green checks.",
    "reste": "After build 196: pictures of the website in light and dark, then your OK."
   },
   {
    "statut": "later",
    "sujet": "Switching on Messages and the Profile read ahead",
    "pr": 4643,
-   "ouEnEst": "Merged and switched off in build 196. Measured switched on: Messages opens much faster and videos are unchanged, but launch gets a bit heavier, because the preparation falls during startup.",
-   "reste": "After build 196: move that preparation after launch, then switch it on from the server."
+   "ouEnEst": "Merged and switched off in build 196. Switched on, launch gets a bit heavier because the pages mount during startup; the mount is already split up, so a profile of what is heavy comes first (TAK-1114).",
+   "reste": "After build 196: profile, lighten, measure, then switch it on from the server."
   },
   {
    "statut": "later",
    "sujet": "Videos ahead in the feed with preloading on",
    "pr": 4766,
-   "ouEnEst": "One video piece per video, no more cancelling while the video stays near. You put it after build 196.",
+   "ouEnEst": "One video piece per video, no more cancelling while the video stays near. Brought up to date and green on a Replicas machine.",
    "reste": "Measure, then turn the video switch on."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, and one Claude agent measuring the map on your emulator. While it measures, I did after-build work myself: the website hashtags, and the guard that asks every app change for a regression study, brought up to date with main.",
-  "On Replicas: down since about 11:20; nothing runs there until it is back."
+  "Here on the Mac: me, and your emulator running the final loop.",
+  "On Replicas, back since 13:00: fouine and castor on the map, a final reviewer on the whole increment, and four machines on after-build work (videos ahead, the largest text sizes, Explorer, Messages read ahead)."
  ],
  "etapes": [
-  "Finish the whole-change map measurement, then fix what is heavy, or let you decide if the Mac cannot see it.",
-  "Pictures of the icon gaps at 20, 18 and 16 pt, your pick, two reviews, merge.",
-  "Run the new novelties flow once, merge it, then the final full loop and the 90-point tour on the final main.",
+  "Finish the final loop, then the 90-point tour on the same commit.",
+  "Settle the map with 6 more pairs: if version D holds, review and merge it, then run the loop again on the new main.",
+  "Fix anything the final review finds.",
   "The list of what is not in build 196 for your OK, the build, and your emulator back on staging."
  ],
  "fait": [
@@ -1196,6 +1214,12 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4786,
+     "titre": "TAK-1112 : les icônes d'un Take un peu plus serrées (16 pt au lieu de 20)",
+     "fusion": "Oct 11, 13:27",
+     "build196": false
+    },
     {
      "pr": 4784,
      "titre": "TAK-1102 : les hashtags d'un Take se touchent dans le titre, en gris comme « Traduire », sans pastille dessous",
@@ -3044,6 +3068,18 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4788,
+     "titre": "TAK-1113 : la boucle teste les nouveautés du build 196 (« 0 vote », hashtags dans le titre)",
+     "fusion": "Oct 11, 13:26",
+     "build196": false
+    },
+    {
+     "pr": 4789,
+     "titre": "S103: Cloudflare Traces on staging at 100 percent, OTLP and rule variables, proven under lease",
+     "fusion": "Oct 11, 13:13",
+     "build196": false
+    },
     {
      "pr": 4768,
      "titre": "CI security quick wins: gitleaks, zizmor, squawk",
