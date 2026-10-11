@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-12T00:46+09:00",
- "heure": "00:46",
+ "majLe": "2026-10-12T01:47+09:00",
+ "heure": "01:47",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 404,
-  "depuisDernierTableau": 209,
-  "enCours": 6,
-  "app": 180,
+  "fusionneesDepuis8Octobre": 405,
+  "depuisDernierTableau": 210,
+  "enCours": 8,
+  "app": 181,
   "siteEtAdmin": 69,
   "serveur": 74,
   "outilsEtDocs": 81
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The map search fix is in main for the next build, after two clean reviews. An Opus at max effort started a full Hick's law tour of the app on a second emulator."
+  "texte": "The map search fix is ready: suggestions come about three times sooner and follow every letter. The private profile fix shows friends, Takes and score. Both wait for your OK on the pictures."
  },
  "depuis": [
+  {
+   "heure": "01:28",
+   "pr": 4780,
+   "texte": "Profile song chip and picker on mobile and web",
+   "build196": false
+  },
   {
    "heure": "00:02",
    "pr": 4816,
@@ -1307,11 +1313,18 @@
  },
  "enCours": [
   {
-   "statut": "claude",
-   "sujet": "Hick's law audit of the whole app",
-   "pr": 0,
-   "ouEnEst": "You asked for it tonight: an Opus at max effort tours the app on its own emulator here on the Mac, counting the choices on each screen to see where they slow the decision.",
-   "reste": "One readable page with numbered proposals, for your decisions."
+   "statut": "review",
+   "sujet": "Map search suggestions follow every letter",
+   "pr": 4818,
+   "ouEnEst": "Your TestFlight point: the first suggestion came after 1.0 to 1.4 s, because each new letter cancelled the answer on its way. Now it comes after 0.45 to 0.65 s, and the list narrows within 25 ms of each letter. Same look. CI green, two clean reviews.",
+   "reste": "Your OK on the video, then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Private profile shows friends, Takes and score",
+   "pr": 4819,
+   "ouEnEst": "Your TestFlight point: on a private profile the app asked for no number at all, so the line showed only what was left in memory (your Takes alone). Now the three numbers are read; the lists stay hidden and a blocked account sees 0.",
+   "reste": "Two reviews on privacy and anonymous Takes, then your OK on the pictures."
   },
   {
    "statut": "measuring",
@@ -1321,11 +1334,18 @@
    "reste": "Fix, measure before and after, then your OK."
   },
   {
-   "statut": "fixing",
-   "sujet": "Private profile shows its score and friends",
+   "statut": "claude",
+   "sujet": "Hick's law audit of the whole app",
    "pr": 0,
-   "ouEnEst": "Your TestFlight point. The first cloud machine lost its conversation, so another one took it over from the start: numbers only, never lists.",
-   "reste": "Pictures before and after, for your OK."
+   "ouEnEst": "You asked for it tonight: the agent toured the whole app on its own emulator (85 pictures) and now writes its page, with dark pictures of the screens that matter.",
+   "reste": "One readable page with numbered proposals, for your decisions."
+  },
+  {
+   "statut": "review",
+   "sujet": "Regression study required for every agent",
+   "pr": 4726,
+   "ouEnEst": "Your request of 10/10: a pull request that touches the app must show it regresses nothing. Brought up to date with main after build 196, CI green.",
+   "reste": "Two reviews, then merge."
   },
   {
    "statut": "later",
@@ -1351,11 +1371,12 @@
  ],
  "equipe": [
   "Here on the Mac: me, the Hick's law audit (Opus at max effort, its own emulator), and your emulator on staging.",
-  "On Replicas, on Muse Spark through OpenCode: harfang (mentions), castor (private profile), wombat (tour of the build), lemming (Explore)."
+  "On Replicas, on Muse Spark through OpenCode: harfang (mentions), vison (private profile), orignal and mouflon (reviews), fouine and tatou (reviews of the guard), lemming (Explore)."
  ],
  "etapes": [
+  "Map search: your OK on the video, then merge.",
+  "Private profile: two reviews, then your OK on the pictures.",
   "Mentions: measure, fix, measure again.",
-  "Private profile: score and friends, then your OK on the pictures.",
   "Hick's law audit: one page with numbered proposals."
  ],
  "fait": [
@@ -1363,6 +1384,12 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4780,
+     "titre": "Profile song chip and picker on mobile and web",
+     "fusion": "Oct 12, 01:28",
+     "build196": false
+    },
     {
      "pr": 4816,
      "titre": "TAK-1145 : la recherche de la carte garde le lieu touché et va plus vite",
