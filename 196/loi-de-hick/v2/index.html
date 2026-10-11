@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Take et la loi de Hick</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap">
+<style>
+/* Layout: one reading column of 42rem; each point's before/after opens to 60rem.
+   Colour comes only from the audit's two marks (orange: the problem, green: the change)
+   and from the decision chips. */
+:root {
+  --paper: #ffffff;
+  --panel: #f1f2f5;
+  --ink: #111114;
+  --ink-soft: #5d5e66;
+  --rule: #e2e3e8;
+  --problem-mark: #ff8a00;
+  --change-mark: #14b85a;
+  --accepted: #0b7a3e;
+  --accepted-wash: #e2f5e9;
+  --review: #845d00;
+  --review-wash: #fbf1d3;
+  --refused: #8a2b2b;
+  --refused-wash: #fbe6e6;
+  --shadow: rgba(17, 17, 20, 0.14);
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0e0e10;
+    --panel: #1b1b1f;
+    --ink: #f2f2f5;
+    --ink-soft: #a3a4ad;
+    --rule: #2b2c32;
+    --accepted: #5ad08d;
+    --accepted-wash: #11301e;
+    --review: #f0c75a;
+    --review-wash: #34290c;
+    --refused: #f19a9a;
+    --refused-wash: #3a1616;
+    --shadow: rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0e0e10;
+  --panel: #1b1b1f;
+  --ink: #f2f2f5;
+  --ink-soft: #a3a4ad;
+  --rule: #2b2c32;
+  --accepted: #5ad08d;
+  --accepted-wash: #11301e;
+  --review: #f0c75a;
+  --review-wash: #34290c;
+  --refused: #f19a9a;
+  --refused-wash: #3a1616;
+  --shadow: rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding-inline: 1rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+@media (min-width: 40rem) { body { padding-inline: 1.5rem; } }
+img { max-width: 100%; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 0.3rem; }
+p { margin: 0; }
+.col { max-width: 42rem; margin-inline: auto; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+h1 { font-weight: 760; font-size: clamp(2.4rem, 1.3rem + 5vw, 4.2rem); line-height: 0.98; letter-spacing: -0.03em; margin: 0.5rem 0 0; }
+h2 { font-weight: 680; font-size: clamp(1.55rem, 1.2rem + 1.4vw, 2.1rem); line-height: 1.08; letter-spacing: -0.018em; margin: 0 0 0.4rem; }
+h3 { font-weight: 640; font-size: clamp(1.2rem, 1.06rem + 0.6vw, 1.45rem); line-height: 1.2; letter-spacing: -0.01em; margin: 0; }
+
+.hero { padding-block: 2.5rem 0.5rem; }
+.kicker { font-size: 0.8125rem; color: var(--ink-soft); letter-spacing: 0.02em; }
+.lede { font-size: 1.1875rem; line-height: 1.5; margin-top: 1rem; }
+
+/* Adam's decisions */
+.decisions { margin-top: 1.75rem; display: grid; gap: 0.9rem; }
+.decision { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.45rem; padding: 0.9rem 1rem; border-radius: 0.85rem; }
+.decision--accepted { background: var(--accepted-wash); }
+.decision--review { background: var(--review-wash); }
+.decision--refused { background: var(--refused-wash); }
+.decision h2 { font-size: 1.05rem; margin: 0; font-family: var(--font-body); font-weight: 700; letter-spacing: 0; }
+.decision--accepted h2 { color: var(--accepted); }
+.decision--review h2 { color: var(--review); }
+.decision--refused h2 { color: var(--refused); }
+.decision ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.25rem; }
+.decision li { font-size: 0.9375rem; }
+.decision li a { text-decoration: none; }
+.decision li a:hover .d-title { text-decoration: underline; text-underline-offset: 0.18em; }
+.d-num { display: inline-block; min-width: 1.6rem; font-family: var(--font-display); font-weight: 760; font-variant-numeric: tabular-nums; }
+.legend { margin-top: 1rem; font-size: 0.9375rem; color: var(--ink-soft); }
+.swatch { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 50%; vertical-align: -0.05em; margin-right: 0.3rem; }
+.swatch--problem { background: var(--problem-mark); }
+.swatch--change { background: var(--change-mark); }
+
+section.group { padding-block: 2.75rem 0.5rem; }
+.group-intro { color: var(--ink-soft); }
+
+/* One point */
+.point { padding-block: 2rem 0.5rem; border-top: 1px solid var(--rule); }
+.group .point:first-of-type { margin-top: 1.25rem; }
+.point-head { max-width: 42rem; margin-inline: auto; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.2rem 0.9rem; align-items: start; }
+.point-num { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.5rem, 1.9rem + 2.6vw, 3.6rem); line-height: 0.85; letter-spacing: -0.04em; margin: 0; min-width: 1.15ch; font-variant-numeric: tabular-nums; }
+.status { justify-self: start; margin-top: 0.45rem; font-size: 0.8125rem; font-weight: 650; padding: 0.12rem 0.6rem; border-radius: 999px; white-space: nowrap; }
+.status--accepted { background: var(--accepted-wash); color: var(--accepted); }
+.status--review { background: var(--review-wash); color: var(--review); }
+.why { max-width: 42rem; margin: 1rem auto 0; }
+
+.pair { max-width: 60rem; margin: 1.25rem auto 0.5rem; }
+.pair--band { max-width: 42rem; }
+.pair--map { max-width: 40rem; }
+.pair-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 0.8rem; }
+.pair-bar figcaption { font-size: 0.9375rem; color: var(--ink-soft); }
+.pair-grid { display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 46rem) { .pair--tall .pair-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.pair--map .pair-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.shot { min-width: 0; }
+.shot-label { display: flex; align-items: center; gap: 0.45rem; margin: 0 0 0.45rem; font-size: 0.8125rem; font-weight: 650; }
+.shot-label::before { content: ""; flex: none; width: 0.7rem; height: 0.7rem; border-radius: 50%; }
+.shot-label--avant::before { background: var(--problem-mark); }
+.shot-label--apres::before { background: var(--change-mark); }
+.shot-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 1rem; }
+.shot-open img { display: block; width: 100%; height: auto; border-radius: 1rem; border: 1px solid var(--rule); background: var(--panel); }
+.seg { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: var(--panel); }
+.seg button { min-height: 2.25rem; padding: 0.3rem 0.95rem; border: 0; border-radius: 999px; background: transparent; color: var(--ink-soft); font-size: 0.8125rem; font-weight: 620; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--paper); color: var(--ink); box-shadow: 0 1px 3px var(--shadow); }
+
+/* Room for the other agents' ideas, filled later */
+.ideas { max-width: 42rem; margin: 1rem auto 0; padding: 0.9rem 1rem; border: 1px dashed var(--review); border-radius: 0.85rem; }
+.ideas h4 { margin: 0 0 0.3rem; font-size: 0.75rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; color: var(--review); }
+.ideas p { color: var(--ink-soft); font-size: 0.9375rem; }
+
+.foot { padding-block: 2.5rem 3rem; margin-top: 2.5rem; border-top: 1px solid var(--rule); font-size: 0.875rem; color: var(--ink-soft); }
+
+/* Full-screen viewer */
+.viewer { padding: 0; border: 0; border-radius: 1.1rem; background: var(--paper); color: var(--ink); width: min(30rem, calc(100vw - 1.5rem)); max-height: calc(100dvh - 1.5rem); overflow: auto; box-shadow: 0 1.5rem 4rem var(--shadow); }
+.viewer::backdrop { background: rgba(8, 8, 10, 0.74); }
+.viewer-bar { position: sticky; top: 0; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.75rem; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.viewer-title { flex: 1 1 100%; margin: 0; font-size: 0.875rem; color: var(--ink-soft); }
+.viewer-close { min-height: 2.25rem; padding: 0.3rem 1rem; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); font-size: 0.8125rem; font-weight: 620; cursor: pointer; }
+.viewer img { display: block; width: auto; max-width: 100%; height: auto; max-height: calc(100dvh - 8.5rem); margin: 0.75rem auto; border-radius: 0.9rem; }
+</style>
+</head>
+<body>
+<header class="hero col">
+  <p class="kicker">Audit loi de Hick · Take pour iPhone · version courte du 12 octobre 2026</p>
+  <h1>Take et la loi de Hick</h1>
+  <p class="lede">Moins de choix inutiles à l’écran, c’est une décision plus rapide. Point par point : ce qui change, et pourquoi. Les numéros sont ceux de la première version.</p>
+  <div class="decisions">
+    <div class="decision decision--accepted"><h2>Acceptés, en cours de réalisation</h2><ul><li><a href="#p3"><span class="d-num">3</span><span class="d-title">Portail « Connecte-toi » : une seule façon de fermer</span></a></li><li><a href="#p4"><span class="d-num">4</span><span class="d-title">Compositeur : « Sans limite » à la place de « Plus d’options »</span></a></li><li><a href="#p5"><span class="d-num">5</span><span class="d-title">Mentions : les plus probables en premier</span></a></li><li><a href="#p8"><span class="d-num">8</span><span class="d-title">Carte : une seule flèche, et « Rechercher ici » quand on a bougé</span></a></li><li><a href="#p9"><span class="d-num">9</span><span class="d-title">Compositeur : un seul bouton son</span></a></li><li><a href="#p10"><span class="d-num">10</span><span class="d-title">Accueil : « Créer un compte » en grand, « Se connecter » en lien</span></a></li><li><a href="#p12"><span class="d-num">12</span><span class="d-title">Recherche : un seul endroit pour l’ordre des résultats</span></a></li></ul></div>
+    <div class="decision decision--review"><h2>À revoir, avec de nouvelles idées</h2><ul><li><a href="#p1"><span class="d-num">1</span><span class="d-title">Take ouvert : photo et son du commentaire seulement quand on écrit</span></a></li><li><a href="#p2"><span class="d-num">2</span><span class="d-title">Take ouvert : le fantôme du vote sous le vote, comme dans le fil</span></a></li><li><a href="#p6"><span class="d-num">6</span><span class="d-title">Activité : les filtres seulement quand la liste est longue</span></a></li><li><a href="#p7"><span class="d-num">7</span><span class="d-title">Vote anonyme par défaut, pour qui le veut</span></a></li></ul></div>
+    <div class="decision decision--refused"><h2>Refusé</h2><ul><li><span class="d-num">11</span><span class="d-title">Appui long sur un message : « Supprimer pour tous » mis à part (retiré de la page)</span></li></ul></div>
+  </div>
+  <p class="legend"><span class="swatch swatch--problem"></span>Orange : ce qui pose problème. <span class="swatch swatch--change"></span>Vert : ce qui change. Touche une image pour voir l’écran entier.</p>
+</header>
+
+<main>
+  <section class="group" id="acceptes">
+    <div class="col">
+      <h2>Acceptés, en cours de réalisation</h2>
+    </div>
+    
+    <article class="point" id="p3">
+      <header class="point-head">
+        <p class="point-num" aria-hidden="true">3</p>
+        <div>
+          <h3><span class="visually-hidden">Point 3 : </span>Portail « Connecte-toi » : une seule façon de fermer</h3>
+          <p class="status status--accepted">en cours de réalisation</p>
+        </div>
+      </header>
+      <p class="why">La croix et « Plus tard » font la même chose. On garde « Plus tard » et le glissé vers le bas : une seule sortie, rien à comparer.</p>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le portail qui s’ouvre quand un invité touche un vote</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/portail-light-avant-zoom.webp" data-src-light="img/portail-light-avant-zoom.webp" data-full-light="img/portail-light-avant.webp" data-src-dark="img/portail-dark-avant-zoom.webp" data-full-dark="img/portail-dark-avant.webp" width="900" height="769" loading="lazy" decoding="async" alt="Aujourd’hui : la feuille « Connecte-toi à Take » avec une croix en haut et « Plus tard » en bas, entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/portail-light-apres-zoom.webp" data-src-light="img/portail-light-apres-zoom.webp" data-full-light="img/portail-light-apres.webp" data-src-dark="img/portail-dark-apres-zoom.webp" data-full-dark="img/portail-dark-apres.webp" width="900" height="769" loading="lazy" decoding="async" alt="Proposé : la même feuille sans la croix ; « Plus tard » entouré en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+    </article>
+    <article class="point" id="p4">
+      <header class="point-head">
+        <p class="point-num" aria-hidden="true">4</p>
+        <div>
+          <h3><span class="visually-hidden">Point 4 : </span>Compositeur : « Sans limite » à la place de « Plus d’options »</h3>
+          <p class="status status--accepted">en cours de réalisation</p>
+        </div>
+      </header>
+      <p class="why">« Plus d’options » ne cache qu’un réglage, la durée. On l’affiche tout de suite, et le panneau Format remonte entier au-dessus de Publier.</p>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Les puces sous la question</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/compositeur-light-avant-zoom.webp" data-src-light="img/compositeur-light-avant-zoom.webp" data-full-light="img/compositeur-light-avant.webp" data-src-dark="img/compositeur-dark-avant-zoom.webp" data-full-dark="img/compositeur-dark-avant.webp" width="900" height="1015" loading="lazy" decoding="async" alt="Aujourd’hui : le compositeur, avec les puces format, destination et « Plus d’options », cette dernière entourée en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/compositeur-light-apres-zoom.webp" data-src-light="img/compositeur-light-apres-zoom.webp" data-full-light="img/compositeur-light-apres.webp" data-src-dark="img/compositeur-dark-apres-zoom.webp" data-full-dark="img/compositeur-dark-apres.webp" width="900" height="1015" loading="lazy" decoding="async" alt="Proposé : la troisième puce affiche « Sans limite », entourée en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le panneau Format, clavier ouvert</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/compositeur-panneau-light-avant-zoom.webp" data-src-light="img/compositeur-panneau-light-avant-zoom.webp" data-full-light="img/compositeur-panneau-light-avant.webp" data-src-dark="img/compositeur-panneau-dark-avant-zoom.webp" data-full-dark="img/compositeur-panneau-dark-avant.webp" width="900" height="806" loading="lazy" decoding="async" alt="Aujourd’hui : panneau Format ouvert ; le choix « Note » est coupé par la barre Publier, entouré en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/compositeur-panneau-light-apres-zoom.webp" data-src-light="img/compositeur-panneau-light-apres-zoom.webp" data-full-light="img/compositeur-panneau-light-apres.webp" data-src-dark="img/compositeur-panneau-dark-apres-zoom.webp" data-full-dark="img/compositeur-panneau-dark-apres.webp" width="900" height="806" loading="lazy" decoding="async" alt="Proposé : le panneau remonte et « Note » est entier, entouré en vert ; la troisième puce affiche « Sans limite ».">
+          </button>
+        </div>
+        </div>
+      </figure>
+    </article>
+    <article class="point" id="p5">
+      <header class="point-head">
+        <p class="point-num" aria-hidden="true">5</p>
+        <div>
+          <h3><span class="visually-hidden">Point 5 : </span>Mentions : les plus probables en premier</h3>
+          <p class="status status--accepted">en cours de réalisation</p>
+        </div>
+      </header>
+      <p class="why">La liste « @ » est rangée par ordre alphabétique. Les personnes à qui tu écris le plus passent en tête.</p>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>« @ » dans la conversation avec Sofia</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/mentions-light-avant-zoom.webp" data-src-light="img/mentions-light-avant-zoom.webp" data-full-light="img/mentions-light-avant.webp" data-src-dark="img/mentions-dark-avant-zoom.webp" data-full-dark="img/mentions-dark-avant.webp" width="900" height="806" loading="lazy" decoding="async" alt="Aujourd’hui : la liste « @ » par ordre alphabétique, Amir, Emma, Léo, Lucas, Maya, puis Noah coupé ; Amir et Emma entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/mentions-light-apres-zoom.webp" data-src-light="img/mentions-light-apres-zoom.webp" data-full-light="img/mentions-light-apres.webp" data-src-dark="img/mentions-dark-apres-zoom.webp" data-full-dark="img/mentions-dark-apres.webp" width="900" height="806" loading="lazy" decoding="async" alt="Proposé : Noah, Léo, Maya et Lucas en tête, dans l’ordre de la boîte de messages, entourés en vert, puis Amir et Emma.">
+          </button>
+        </div>
+        </div>
+      </figure>
+    </article>
+    <article class="point" id="p8">
+      <header class="point-head">
+        <p class="point-num" aria-hidden="true">8</p>
+        <div>
+          <h3><span class="visually-hidden">Point 8 : </span>Carte : une seule flèche, et « Rechercher ici » quand on a bougé</h3>
+          <p class="status status--accepted">en cours de réalisation</p>
+        </div>
+      </header>
+      <p class="why">Deux flèches identiques font deux choses différentes. Une seule flèche reste, « Autour de toi » prend une icône de liste, et « Rechercher ici » n’apparaît qu’après un déplacement de la carte.</p>
+      
+      <figure class="pair pair--map" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>La carte d’À proximité, en entier</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/carte-light-avant-zoom.webp" data-src-light="img/carte-light-avant-zoom.webp" data-full-light="img/carte-light-avant.webp" data-src-dark="img/carte-dark-avant-zoom.webp" data-full-dark="img/carte-dark-avant.webp" width="700" height="1277" loading="lazy" decoding="async" alt="Aujourd’hui : la carte avec « Autour de toi » en haut et, dans la barre de recherche, un globe et une flèche ; les trois entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/carte-light-apres-zoom.webp" data-src-light="img/carte-light-apres-zoom.webp" data-full-light="img/carte-light-apres.webp" data-src-dark="img/carte-dark-apres-zoom.webp" data-full-dark="img/carte-dark-apres.webp" width="700" height="1277" loading="lazy" decoding="async" alt="Proposé : « Autour de toi » avec une icône de liste, une pastille « Rechercher ici » sous les onglets et une seule flèche dans la barre ; changements entourés en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+    </article>
+    <article class="point" id="p9">
+      <header class="point-head">
+        <p class="point-num" aria-hidden="true">9</p>
+        <div>
+          <h3><span class="visually-hidden">Point 9 : </span>Compositeur : un seul bouton son</h3>
+          <p class="status status--accepted">en cours de réalisation</p>
+        </div>
+      </header>
+      <p class="why">Importer un fichier son sert très rarement mais prend autant de place que les photos. Il passe dans un appui long sur le micro, et Publier s’élargit.</p>
+      
+      <figure class="pair pair--band" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>La barre du bas du compositeur</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/son-light-avant-zoom.webp" data-src-light="img/son-light-avant-zoom.webp" data-full-light="img/son-light-avant.webp" data-src-dark="img/son-dark-avant-zoom.webp" data-full-dark="img/son-dark-avant.webp" width="900" height="209" loading="lazy" decoding="async" alt="Aujourd’hui : trois icônes, photos, micro et importer un son, puis Publier ; « Importer un son » entouré en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/son-light-apres-zoom.webp" data-src-light="img/son-light-apres-zoom.webp" data-full-light="img/son-light-apres.webp" data-src-dark="img/son-dark-apres-zoom.webp" data-full-dark="img/son-dark-apres.webp" width="900" height="209" loading="lazy" decoding="async" alt="Proposé : photos et micro, puis un bouton Publier plus large ; le micro, qui garde l’import en appui long, entouré en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+    </article>
+    <article class="point" id="p10">
+      <header class="point-head">
+        <p class="point-num" aria-hidden="true">10</p>
+        <div>
+          <h3><span class="visually-hidden">Point 10 : </span>Accueil : « Créer un compte » en grand, « Se connecter » en lien</h3>
+          <p class="status status--accepted">en cours de réalisation</p>
+        </div>
+      </header>
+      <p class="why">La plupart des gens qui arrivent ici viennent d’installer l’app. « Créer un compte » devient le bouton principal ; « Se connecter » reste à un toucher.</p>
+      
+      <figure class="pair pair--tall" data-variants="light">
+        <div class="pair-bar">
+          <figcaption>Le bas de l’écran d’accueil</figcaption>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/accueil-avant-zoom.webp" data-src-light="img/accueil-avant-zoom.webp" data-full-light="img/accueil-avant.webp" width="900" height="687" loading="lazy" decoding="async" alt="Aujourd’hui : Google et Apple, « Se connecter » en blanc plein et « S’inscrire » ; ces deux boutons entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/accueil-apres-zoom.webp" data-src-light="img/accueil-apres-zoom.webp" data-full-light="img/accueil-apres.webp" width="900" height="687" loading="lazy" decoding="async" alt="Proposé : « Créer un compte » en blanc plein, « Découvrir sans compte », puis « Déjà un compte ? Se connecter » ; changements entourés en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+    </article>
+    <article class="point" id="p12">
+      <header class="point-head">
+        <p class="point-num" aria-hidden="true">12</p>
+        <div>
+          <h3><span class="visually-hidden">Point 12 : </span>Recherche : un seul endroit pour l’ordre des résultats</h3>
+          <p class="status status--accepted">en cours de réalisation</p>
+        </div>
+      </header>
+      <p class="why">Les onglets Top et Plus récents choisissent déjà l’ordre des résultats. La feuille de filtres ne le redemande plus, pour éviter deux réglages qui se contredisent.</p>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>La feuille de filtres d’une recherche</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/filtres-light-avant-zoom.webp" data-src-light="img/filtres-light-avant-zoom.webp" data-full-light="img/filtres-light-avant.webp" data-src-dark="img/filtres-dark-avant-zoom.webp" data-full-dark="img/filtres-dark-avant.webp" width="900" height="776" loading="lazy" decoding="async" alt="Aujourd’hui : « Trier par : Pertinence, Plus récents, Plus votés » ; « Plus récents » entouré en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/filtres-light-apres-zoom.webp" data-src-light="img/filtres-light-apres-zoom.webp" data-full-light="img/filtres-light-apres.webp" data-src-dark="img/filtres-dark-apres-zoom.webp" data-full-dark="img/filtres-dark-apres.webp" width="900" height="776" loading="lazy" decoding="async" alt="Proposé : « Trier par : Pertinence, Plus votés », entouré en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+    </article>
+  </section>
+
+  <section class="group" id="a-revoir">
+    <div class="col">
+      <h2>À revoir</h2>
+      <p class="group-intro">La proposition actuelle reste affichée ; d’autres agents proposent de nouvelles idées pour chacun de ces points.</p>
+    </div>
+    
+    <article class="point" id="p1">
+      <header class="point-head">
+        <p class="point-num" aria-hidden="true">1</p>
+        <div>
+          <h3><span class="visually-hidden">Point 1 : </span>Take ouvert : photo et son du commentaire seulement quand on écrit</h3>
+          <p class="status status--review">à revoir</p>
+        </div>
+      </header>
+      <p class="why">La photo et le micro du commentaire servent rarement, mais restent toujours affichés. Ils apparaîtraient seulement quand on touche le champ pour écrire.</p>
+      
+      <figure class="pair pair--band" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le champ de commentaire, en bas du Take ouvert</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/commentaire-light-avant-zoom.webp" data-src-light="img/commentaire-light-avant-zoom.webp" data-full-light="img/commentaire-light-avant.webp" data-src-dark="img/commentaire-dark-avant-zoom.webp" data-full-dark="img/commentaire-dark-avant.webp" width="900" height="299" loading="lazy" decoding="async" alt="Aujourd’hui : le champ « Donne ton avis… » avec trois icônes, fantôme, photo et micro ; photo et micro entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/commentaire-light-apres-zoom.webp" data-src-light="img/commentaire-light-apres-zoom.webp" data-full-light="img/commentaire-light-apres.webp" data-src-dark="img/commentaire-dark-apres-zoom.webp" data-full-dark="img/commentaire-dark-apres.webp" width="900" height="299" loading="lazy" decoding="async" alt="Proposé : le même champ avec le fantôme seul, entouré en vert ; photo et micro apparaissent quand on écrit.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="ideas" id="idees-1">
+        <h4>Nouvelles idées</h4>
+        <p>En attente des propositions des autres agents.</p>
+      </div>
+    </article>
+    <article class="point" id="p2">
+      <header class="point-head">
+        <p class="point-num" aria-hidden="true">2</p>
+        <div>
+          <h3><span class="visually-hidden">Point 2 : </span>Take ouvert : le fantôme du vote sous le vote, comme dans le fil</h3>
+          <p class="status status--review">à revoir</p>
+        </div>
+      </header>
+      <p class="why">Le fantôme du vote change de place entre le fil et le Take ouvert, et l’icône ⓘ montre en fait une photo. Il reviendrait sous le vote, comme dans le fil, avec une vraie icône photo.</p>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le haut du Take ouvert</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/take-ouvert-light-avant-zoom.webp" data-src-light="img/take-ouvert-light-avant-zoom.webp" data-full-light="img/take-ouvert-light-avant.webp" data-src-dark="img/take-ouvert-dark-avant-zoom.webp" data-full-dark="img/take-ouvert-dark-avant.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Aujourd’hui : le Take ouvert, avec le fantôme du vote à côté du nom de l’auteur et une icône ⓘ, entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/take-ouvert-light-apres-zoom.webp" data-src-light="img/take-ouvert-light-apres-zoom.webp" data-full-light="img/take-ouvert-light-apres.webp" data-src-dark="img/take-ouvert-dark-apres-zoom.webp" data-full-dark="img/take-ouvert-dark-apres.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Proposé : le fantôme du vote sous les boutons Non et Oui, à gauche, entouré en vert, et une icône photo à la place de ⓘ.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="ideas" id="idees-2">
+        <h4>Nouvelles idées</h4>
+        <p>En attente des propositions des autres agents.</p>
+      </div>
+    </article>
+    <article class="point" id="p6">
+      <header class="point-head">
+        <p class="point-num" aria-hidden="true">6</p>
+        <div>
+          <h3><span class="visually-hidden">Point 6 : </span>Activité : les filtres seulement quand la liste est longue</h3>
+          <p class="status status--review">à revoir</p>
+        </div>
+      </header>
+      <p class="why">Cinq filtres s’affichent même quand il n’y a que deux notifications. Ils n’apparaîtraient que quand la liste devient longue.</p>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Activité avec les notifications de la graine</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/notifications-light-avant-zoom.webp" data-src-light="img/notifications-light-avant-zoom.webp" data-full-light="img/notifications-light-avant.webp" data-src-dark="img/notifications-dark-avant-zoom.webp" data-full-dark="img/notifications-dark-avant.webp" width="900" height="672" loading="lazy" decoding="async" alt="Aujourd’hui : Activité avec cinq filtres au-dessus de quelques notifications ; les filtres entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/notifications-light-apres-zoom.webp" data-src-light="img/notifications-light-apres-zoom.webp" data-full-light="img/notifications-light-apres.webp" data-src-dark="img/notifications-dark-apres-zoom.webp" data-full-dark="img/notifications-dark-apres.webp" width="900" height="672" loading="lazy" decoding="async" alt="Proposé : la même liste sans la rangée de filtres.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="ideas" id="idees-6">
+        <h4>Nouvelles idées</h4>
+        <p>En attente des propositions des autres agents.</p>
+      </div>
+    </article>
+    <article class="point" id="p7">
+      <header class="point-head">
+        <p class="point-num" aria-hidden="true">7</p>
+        <div>
+          <h3><span class="visually-hidden">Point 7 : </span>Vote anonyme par défaut, pour qui le veut</h3>
+          <p class="status status--review">à revoir</p>
+        </div>
+      </header>
+      <p class="why">Quelqu’un qui vote toujours en anonyme doit y penser à chaque Take. Un réglage dans Confidentialité le ferait une fois pour toutes.</p>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Confidentialité, dans les paramètres</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="../img/anonyme-light-avant-zoom.webp" data-src-light="img/anonyme-light-avant-zoom.webp" data-full-light="img/anonyme-light-avant.webp" data-src-dark="img/anonyme-dark-avant-zoom.webp" data-full-dark="img/anonyme-dark-avant.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Aujourd’hui : Confidentialité, avec « Qui peut voir tes takes » et « Qui peut t’écrire ».">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="../img/anonyme-light-apres-zoom.webp" data-src-light="img/anonyme-light-apres-zoom.webp" data-full-light="img/anonyme-light-apres.webp" data-src-dark="img/anonyme-dark-apres-zoom.webp" data-full-dark="img/anonyme-dark-apres.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Proposé : un troisième réglage « Tes votes : Anonymes / Publics », entouré en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="ideas" id="idees-7">
+        <h4>Nouvelles idées</h4>
+        <p>En attente des propositions des autres agents.</p>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer class="col foot">
+  <p>Audit fait sur le simulateur iPhone avec les données de test de Take. Rien n’est codé ici : les points acceptés sont en cours de réalisation à part.</p>
+</footer>
+
+<dialog id="viewer" class="viewer" aria-labelledby="viewer-title">
+  <div class="viewer-bar">
+    <p class="viewer-title" id="viewer-title"></p>
+    <div class="seg" role="group" aria-label="Aujourd’hui ou proposé">
+      <button type="button" data-side-choice="avant" aria-pressed="true">Aujourd’hui</button>
+      <button type="button" data-side-choice="apres" aria-pressed="false">Proposé</button>
+    </div>
+    <button type="button" class="viewer-close" data-close>Fermer</button>
+  </div>
+  <img alt="">
+</dialog>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  const pageTheme = () => {
+    const chosen = root.getAttribute("data-theme");
+    if (chosen === "dark" || chosen === "light") return chosen;
+    return media && media.matches ? "dark" : "light";
+  };
+  const groups = Array.from(document.querySelectorAll("[data-variants]"));
+  const paint = (group, wanted) => {
+    const available = group.dataset.variants.split(" ");
+    const theme = available.includes(wanted) ? wanted : available[0];
+    group.dataset.shown = theme;
+    group.querySelectorAll("img[data-src-light]").forEach((img) => {
+      const src = img.getAttribute("data-src-" + theme) || img.getAttribute("data-src-light");
+      if (img.getAttribute("src") !== src) img.setAttribute("src", src);
+    });
+    group.querySelectorAll("[data-theme-choice]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.themeChoice === theme));
+    });
+  };
+  const follow = () => groups.forEach((group) => { if (!group.dataset.pinned) paint(group, pageTheme()); });
+  follow();
+  if (media) {
+    if (media.addEventListener) media.addEventListener("change", follow);
+    else if (media.addListener) media.addListener(follow);
+  }
+  new MutationObserver(follow).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+  const viewer = document.getElementById("viewer");
+  const viewerImg = viewer.querySelector("img");
+  const viewerTitle = viewer.querySelector(".viewer-title");
+  let current = null;
+  const showSide = (side) => {
+    const theme = current.dataset.shown || "light";
+    const img = current.querySelector('.shot-open[data-side="' + side + '"] img');
+    viewerImg.src = img.getAttribute("data-full-" + theme) || img.getAttribute("data-full-light");
+    viewerImg.alt = img.alt;
+    const caption = current.querySelector("figcaption");
+    viewerTitle.textContent = caption ? caption.textContent : "";
+    viewer.querySelectorAll("[data-side-choice]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.sideChoice === side));
+    });
+  };
+  const close = () => { if (viewer.close) viewer.close(); else viewer.removeAttribute("open"); };
+  document.addEventListener("click", (event) => {
+    const themeChoice = event.target.closest("[data-theme-choice]");
+    if (themeChoice) {
+      const group = themeChoice.closest("[data-variants]");
+      group.dataset.pinned = "1";
+      paint(group, themeChoice.dataset.themeChoice);
+      return;
+    }
+    const opener = event.target.closest(".shot-open");
+    if (opener) {
+      current = opener.closest("[data-variants]");
+      showSide(opener.dataset.side);
+      if (viewer.showModal) viewer.showModal(); else viewer.setAttribute("open", "");
+      return;
+    }
+    const sideChoice = event.target.closest("[data-side-choice]");
+    if (sideChoice && current) { showSide(sideChoice.dataset.sideChoice); return; }
+    if (event.target.closest("[data-close]") || event.target === viewer) close();
+  });
+})();
+</script>
+
+</body>
+</html>

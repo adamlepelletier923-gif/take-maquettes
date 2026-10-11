@@ -2,8 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Take et la loi de Hick</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,303 +157,54 @@ section.group { padding-block: 2.75rem 0.5rem; }
 .viewer-title { flex: 1 1 100%; margin: 0; font-size: 0.875rem; color: var(--ink-soft); }
 .viewer-close { min-height: 2.25rem; padding: 0.3rem 1rem; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); font-size: 0.8125rem; font-weight: 620; cursor: pointer; }
 .viewer img { display: block; width: auto; max-width: 100%; height: auto; max-height: calc(100dvh - 8.5rem); margin: 0.75rem auto; border-radius: 0.9rem; }
+
+.topic { font-size: clamp(1.35rem, 1.1rem + 1vw, 1.8rem); margin: 0; text-wrap: balance; }
+.why { max-width: 42rem; margin: 1rem auto 0; padding: 0.9rem 1rem; background: var(--panel); border-radius: 0.85rem; }
+.why h4 { margin: 0 0 0.3rem; font-size: 0.75rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+.why p { margin: 0; }
+.option-list { max-width: 42rem; margin: 1rem auto 0; padding: 0; list-style: none; display: grid; gap: 0.15rem; }
+.option-list a { display: flex; gap: 0.75rem; align-items: baseline; padding: 0.3rem 0; color: var(--ink); text-decoration: none; }
+.option-list a:hover .t { text-decoration: underline; }
+.option-list .n { flex: none; min-width: 2rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.option { max-width: 60rem; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--rule); scroll-margin-top: 1rem; }
+.option-text { max-width: 42rem; margin-inline: auto; }
+.option-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; margin: 0 0 0.5rem; font-size: 0.8125rem; color: var(--ink-soft); }
+.option-num { display: inline-grid; place-items: center; min-width: 2.5rem; height: 1.75rem; padding: 0 0.55rem; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 0.875rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.option-bold { padding: 0.05rem 0.55rem; border: 1px solid var(--review); border-radius: 999px; color: var(--review); font-weight: 600; }
+.option h3 { margin: 0 0 0.45rem; font-size: 1.2rem; line-height: 1.3; text-wrap: balance; }
+.option-text p { margin: 0.4rem 0 0; }
+.option-text strong { font-weight: 650; }
+.pair--three.pair--tall { max-width: 60rem; }
+@media (min-width: 46rem) { .pair--three.pair--tall .pair-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.viewer-seg { flex-wrap: wrap; border-radius: 1.1rem; }
+.lede-note { max-width: 42rem; margin: 0.75rem 0 0; color: var(--ink-soft); font-size: 0.9375rem; }
 </style>
 </head>
 <body>
 <header class="hero col">
-  <p class="kicker">Audit loi de Hick · Take pour iPhone · version courte du 12 octobre 2026</p>
+  <p class="kicker">Audit loi de Hick · Take pour iPhone · points à revoir, 12 octobre 2026</p>
   <h1>Take et la loi de Hick</h1>
-  <p class="lede">Moins de choix inutiles à l’écran, c’est une décision plus rapide. Point par point : ce qui change, et pourquoi. Les numéros sont ceux de la première version.</p>
-  <div class="decisions">
-    <div class="decision decision--accepted"><h2>Acceptés, en cours de réalisation</h2><ul><li><a href="#p3"><span class="d-num">3</span><span class="d-title">Portail « Connecte-toi » : une seule façon de fermer</span></a></li><li><a href="#p4"><span class="d-num">4</span><span class="d-title">Compositeur : « Sans limite » à la place de « Plus d’options »</span></a></li><li><a href="#p5"><span class="d-num">5</span><span class="d-title">Mentions : les plus probables en premier</span></a></li><li><a href="#p8"><span class="d-num">8</span><span class="d-title">Carte : une seule flèche, et « Rechercher ici » quand on a bougé</span></a></li><li><a href="#p9"><span class="d-num">9</span><span class="d-title">Compositeur : un seul bouton son</span></a></li><li><a href="#p10"><span class="d-num">10</span><span class="d-title">Accueil : « Créer un compte » en grand, « Se connecter » en lien</span></a></li><li><a href="#p12"><span class="d-num">12</span><span class="d-title">Recherche : un seul endroit pour l’ordre des résultats</span></a></li></ul></div>
-    <div class="decision decision--review"><h2>À revoir, avec de nouvelles idées</h2><ul><li><a href="#p1"><span class="d-num">1</span><span class="d-title">Take ouvert : photo et son du commentaire seulement quand on écrit</span></a></li><li><a href="#p2"><span class="d-num">2</span><span class="d-title">Take ouvert : le fantôme du vote sous le vote, comme dans le fil</span></a></li><li><a href="#p6"><span class="d-num">6</span><span class="d-title">Activité : les filtres seulement quand la liste est longue</span></a></li><li><a href="#p7"><span class="d-num">7</span><span class="d-title">Vote anonyme par défaut, pour qui le veut</span></a></li></ul></div>
-    <div class="decision decision--refused"><h2>Refusé</h2><ul><li><span class="d-num">11</span><span class="d-title">Appui long sur un message : « Supprimer pour tous » mis à part (retiré de la page)</span></li></ul></div>
-  </div>
+  <p class="lede">Les quatre points à revoir, avec 15 options. Pour chaque point : pourquoi changer, puis les options, chacune avec sa raison et sa maquette, en clair et en sombre.</p>
+  <p class="lede-note">Trois pistes ont cherché : l’audit, l’agent A parti de X, l’agent B parti d’Instagram, de Threads et d’Apple. Une idée trouvée par deux pistes n’apparaît qu’une fois.</p>
   <p class="legend"><span class="swatch swatch--problem"></span>Orange : ce qui pose problème. <span class="swatch swatch--change"></span>Vert : ce qui change. Touche une image pour voir l’écran entier.</p>
 </header>
 
 <main>
-  <section class="group" id="acceptes">
-    <div class="col">
-      <h2>Acceptés, en cours de réalisation</h2>
-    </div>
-    
-    <article class="point" id="p3">
-      <header class="point-head">
-        <p class="point-num" aria-hidden="true">3</p>
-        <div>
-          <h3><span class="visually-hidden">Point 3 : </span>Portail « Connecte-toi » : une seule façon de fermer</h3>
-          <p class="status status--accepted">en cours de réalisation</p>
-        </div>
-      </header>
-      <p class="why">La croix et « Plus tard » font la même chose. On garde « Plus tard » et le glissé vers le bas : une seule sortie, rien à comparer.</p>
-      
-      <figure class="pair pair--tall" data-variants="light dark">
-        <div class="pair-bar">
-          <figcaption>Le portail qui s’ouvre quand un invité touche un vote</figcaption>
-        <div class="seg" role="group" aria-label="Thème des captures">
-          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
-          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
-        </div>
-        </div>
-        <div class="pair-grid">
-        <div class="shot">
-          <p class="shot-label shot-label--avant">Aujourd’hui</p>
-          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/portail-light-avant-zoom.webp" data-src-light="img/portail-light-avant-zoom.webp" data-full-light="img/portail-light-avant.webp" data-src-dark="img/portail-dark-avant-zoom.webp" data-full-dark="img/portail-dark-avant.webp" width="900" height="769" loading="lazy" decoding="async" alt="Aujourd’hui : la feuille « Connecte-toi à Take » avec une croix en haut et « Plus tard » en bas, entourés en orange.">
-          </button>
-        </div>
-        <div class="shot">
-          <p class="shot-label shot-label--apres">Proposé</p>
-          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/portail-light-apres-zoom.webp" data-src-light="img/portail-light-apres-zoom.webp" data-full-light="img/portail-light-apres.webp" data-src-dark="img/portail-dark-apres-zoom.webp" data-full-dark="img/portail-dark-apres.webp" width="900" height="769" loading="lazy" decoding="async" alt="Proposé : la même feuille sans la croix ; « Plus tard » entouré en vert.">
-          </button>
-        </div>
-        </div>
-      </figure>
-    </article>
-    <article class="point" id="p4">
-      <header class="point-head">
-        <p class="point-num" aria-hidden="true">4</p>
-        <div>
-          <h3><span class="visually-hidden">Point 4 : </span>Compositeur : « Sans limite » à la place de « Plus d’options »</h3>
-          <p class="status status--accepted">en cours de réalisation</p>
-        </div>
-      </header>
-      <p class="why">« Plus d’options » ne cache qu’un réglage, la durée. On l’affiche tout de suite, et le panneau Format remonte entier au-dessus de Publier.</p>
-      
-      <figure class="pair pair--tall" data-variants="light dark">
-        <div class="pair-bar">
-          <figcaption>Les puces sous la question</figcaption>
-        <div class="seg" role="group" aria-label="Thème des captures">
-          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
-          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
-        </div>
-        </div>
-        <div class="pair-grid">
-        <div class="shot">
-          <p class="shot-label shot-label--avant">Aujourd’hui</p>
-          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/compositeur-light-avant-zoom.webp" data-src-light="img/compositeur-light-avant-zoom.webp" data-full-light="img/compositeur-light-avant.webp" data-src-dark="img/compositeur-dark-avant-zoom.webp" data-full-dark="img/compositeur-dark-avant.webp" width="900" height="1015" loading="lazy" decoding="async" alt="Aujourd’hui : le compositeur, avec les puces format, destination et « Plus d’options », cette dernière entourée en orange.">
-          </button>
-        </div>
-        <div class="shot">
-          <p class="shot-label shot-label--apres">Proposé</p>
-          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/compositeur-light-apres-zoom.webp" data-src-light="img/compositeur-light-apres-zoom.webp" data-full-light="img/compositeur-light-apres.webp" data-src-dark="img/compositeur-dark-apres-zoom.webp" data-full-dark="img/compositeur-dark-apres.webp" width="900" height="1015" loading="lazy" decoding="async" alt="Proposé : la troisième puce affiche « Sans limite », entourée en vert.">
-          </button>
-        </div>
-        </div>
-      </figure>
-      <figure class="pair pair--tall" data-variants="light dark">
-        <div class="pair-bar">
-          <figcaption>Le panneau Format, clavier ouvert</figcaption>
-        <div class="seg" role="group" aria-label="Thème des captures">
-          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
-          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
-        </div>
-        </div>
-        <div class="pair-grid">
-        <div class="shot">
-          <p class="shot-label shot-label--avant">Aujourd’hui</p>
-          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/compositeur-panneau-light-avant-zoom.webp" data-src-light="img/compositeur-panneau-light-avant-zoom.webp" data-full-light="img/compositeur-panneau-light-avant.webp" data-src-dark="img/compositeur-panneau-dark-avant-zoom.webp" data-full-dark="img/compositeur-panneau-dark-avant.webp" width="900" height="806" loading="lazy" decoding="async" alt="Aujourd’hui : panneau Format ouvert ; le choix « Note » est coupé par la barre Publier, entouré en orange.">
-          </button>
-        </div>
-        <div class="shot">
-          <p class="shot-label shot-label--apres">Proposé</p>
-          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/compositeur-panneau-light-apres-zoom.webp" data-src-light="img/compositeur-panneau-light-apres-zoom.webp" data-full-light="img/compositeur-panneau-light-apres.webp" data-src-dark="img/compositeur-panneau-dark-apres-zoom.webp" data-full-dark="img/compositeur-panneau-dark-apres.webp" width="900" height="806" loading="lazy" decoding="async" alt="Proposé : le panneau remonte et « Note » est entier, entouré en vert ; la troisième puce affiche « Sans limite ».">
-          </button>
-        </div>
-        </div>
-      </figure>
-    </article>
-    <article class="point" id="p5">
-      <header class="point-head">
-        <p class="point-num" aria-hidden="true">5</p>
-        <div>
-          <h3><span class="visually-hidden">Point 5 : </span>Mentions : les plus probables en premier</h3>
-          <p class="status status--accepted">en cours de réalisation</p>
-        </div>
-      </header>
-      <p class="why">La liste « @ » est rangée par ordre alphabétique. Les personnes à qui tu écris le plus passent en tête.</p>
-      
-      <figure class="pair pair--tall" data-variants="light dark">
-        <div class="pair-bar">
-          <figcaption>« @ » dans la conversation avec Sofia</figcaption>
-        <div class="seg" role="group" aria-label="Thème des captures">
-          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
-          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
-        </div>
-        </div>
-        <div class="pair-grid">
-        <div class="shot">
-          <p class="shot-label shot-label--avant">Aujourd’hui</p>
-          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/mentions-light-avant-zoom.webp" data-src-light="img/mentions-light-avant-zoom.webp" data-full-light="img/mentions-light-avant.webp" data-src-dark="img/mentions-dark-avant-zoom.webp" data-full-dark="img/mentions-dark-avant.webp" width="900" height="806" loading="lazy" decoding="async" alt="Aujourd’hui : la liste « @ » par ordre alphabétique, Amir, Emma, Léo, Lucas, Maya, puis Noah coupé ; Amir et Emma entourés en orange.">
-          </button>
-        </div>
-        <div class="shot">
-          <p class="shot-label shot-label--apres">Proposé</p>
-          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/mentions-light-apres-zoom.webp" data-src-light="img/mentions-light-apres-zoom.webp" data-full-light="img/mentions-light-apres.webp" data-src-dark="img/mentions-dark-apres-zoom.webp" data-full-dark="img/mentions-dark-apres.webp" width="900" height="806" loading="lazy" decoding="async" alt="Proposé : Noah, Léo, Maya et Lucas en tête, dans l’ordre de la boîte de messages, entourés en vert, puis Amir et Emma.">
-          </button>
-        </div>
-        </div>
-      </figure>
-    </article>
-    <article class="point" id="p8">
-      <header class="point-head">
-        <p class="point-num" aria-hidden="true">8</p>
-        <div>
-          <h3><span class="visually-hidden">Point 8 : </span>Carte : une seule flèche, et « Rechercher ici » quand on a bougé</h3>
-          <p class="status status--accepted">en cours de réalisation</p>
-        </div>
-      </header>
-      <p class="why">Deux flèches identiques font deux choses différentes. Une seule flèche reste, « Autour de toi » prend une icône de liste, et « Rechercher ici » n’apparaît qu’après un déplacement de la carte.</p>
-      
-      <figure class="pair pair--map" data-variants="light dark">
-        <div class="pair-bar">
-          <figcaption>La carte d’À proximité, en entier</figcaption>
-        <div class="seg" role="group" aria-label="Thème des captures">
-          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
-          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
-        </div>
-        </div>
-        <div class="pair-grid">
-        <div class="shot">
-          <p class="shot-label shot-label--avant">Aujourd’hui</p>
-          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/carte-light-avant-zoom.webp" data-src-light="img/carte-light-avant-zoom.webp" data-full-light="img/carte-light-avant.webp" data-src-dark="img/carte-dark-avant-zoom.webp" data-full-dark="img/carte-dark-avant.webp" width="700" height="1277" loading="lazy" decoding="async" alt="Aujourd’hui : la carte avec « Autour de toi » en haut et, dans la barre de recherche, un globe et une flèche ; les trois entourés en orange.">
-          </button>
-        </div>
-        <div class="shot">
-          <p class="shot-label shot-label--apres">Proposé</p>
-          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/carte-light-apres-zoom.webp" data-src-light="img/carte-light-apres-zoom.webp" data-full-light="img/carte-light-apres.webp" data-src-dark="img/carte-dark-apres-zoom.webp" data-full-dark="img/carte-dark-apres.webp" width="700" height="1277" loading="lazy" decoding="async" alt="Proposé : « Autour de toi » avec une icône de liste, une pastille « Rechercher ici » sous les onglets et une seule flèche dans la barre ; changements entourés en vert.">
-          </button>
-        </div>
-        </div>
-      </figure>
-    </article>
-    <article class="point" id="p9">
-      <header class="point-head">
-        <p class="point-num" aria-hidden="true">9</p>
-        <div>
-          <h3><span class="visually-hidden">Point 9 : </span>Compositeur : un seul bouton son</h3>
-          <p class="status status--accepted">en cours de réalisation</p>
-        </div>
-      </header>
-      <p class="why">Importer un fichier son sert très rarement mais prend autant de place que les photos. Il passe dans un appui long sur le micro, et Publier s’élargit.</p>
-      
-      <figure class="pair pair--band" data-variants="light dark">
-        <div class="pair-bar">
-          <figcaption>La barre du bas du compositeur</figcaption>
-        <div class="seg" role="group" aria-label="Thème des captures">
-          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
-          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
-        </div>
-        </div>
-        <div class="pair-grid">
-        <div class="shot">
-          <p class="shot-label shot-label--avant">Aujourd’hui</p>
-          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/son-light-avant-zoom.webp" data-src-light="img/son-light-avant-zoom.webp" data-full-light="img/son-light-avant.webp" data-src-dark="img/son-dark-avant-zoom.webp" data-full-dark="img/son-dark-avant.webp" width="900" height="209" loading="lazy" decoding="async" alt="Aujourd’hui : trois icônes, photos, micro et importer un son, puis Publier ; « Importer un son » entouré en orange.">
-          </button>
-        </div>
-        <div class="shot">
-          <p class="shot-label shot-label--apres">Proposé</p>
-          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/son-light-apres-zoom.webp" data-src-light="img/son-light-apres-zoom.webp" data-full-light="img/son-light-apres.webp" data-src-dark="img/son-dark-apres-zoom.webp" data-full-dark="img/son-dark-apres.webp" width="900" height="209" loading="lazy" decoding="async" alt="Proposé : photos et micro, puis un bouton Publier plus large ; le micro, qui garde l’import en appui long, entouré en vert.">
-          </button>
-        </div>
-        </div>
-      </figure>
-    </article>
-    <article class="point" id="p10">
-      <header class="point-head">
-        <p class="point-num" aria-hidden="true">10</p>
-        <div>
-          <h3><span class="visually-hidden">Point 10 : </span>Accueil : « Créer un compte » en grand, « Se connecter » en lien</h3>
-          <p class="status status--accepted">en cours de réalisation</p>
-        </div>
-      </header>
-      <p class="why">La plupart des gens qui arrivent ici viennent d’installer l’app. « Créer un compte » devient le bouton principal ; « Se connecter » reste à un toucher.</p>
-      
-      <figure class="pair pair--tall" data-variants="light">
-        <div class="pair-bar">
-          <figcaption>Le bas de l’écran d’accueil</figcaption>
-        </div>
-        <div class="pair-grid">
-        <div class="shot">
-          <p class="shot-label shot-label--avant">Aujourd’hui</p>
-          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/accueil-avant-zoom.webp" data-src-light="img/accueil-avant-zoom.webp" data-full-light="img/accueil-avant.webp" width="900" height="687" loading="lazy" decoding="async" alt="Aujourd’hui : Google et Apple, « Se connecter » en blanc plein et « S’inscrire » ; ces deux boutons entourés en orange.">
-          </button>
-        </div>
-        <div class="shot">
-          <p class="shot-label shot-label--apres">Proposé</p>
-          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/accueil-apres-zoom.webp" data-src-light="img/accueil-apres-zoom.webp" data-full-light="img/accueil-apres.webp" width="900" height="687" loading="lazy" decoding="async" alt="Proposé : « Créer un compte » en blanc plein, « Découvrir sans compte », puis « Déjà un compte ? Se connecter » ; changements entourés en vert.">
-          </button>
-        </div>
-        </div>
-      </figure>
-    </article>
-    <article class="point" id="p12">
-      <header class="point-head">
-        <p class="point-num" aria-hidden="true">12</p>
-        <div>
-          <h3><span class="visually-hidden">Point 12 : </span>Recherche : un seul endroit pour l’ordre des résultats</h3>
-          <p class="status status--accepted">en cours de réalisation</p>
-        </div>
-      </header>
-      <p class="why">Les onglets Top et Plus récents choisissent déjà l’ordre des résultats. La feuille de filtres ne le redemande plus, pour éviter deux réglages qui se contredisent.</p>
-      
-      <figure class="pair pair--tall" data-variants="light dark">
-        <div class="pair-bar">
-          <figcaption>La feuille de filtres d’une recherche</figcaption>
-        <div class="seg" role="group" aria-label="Thème des captures">
-          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
-          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
-        </div>
-        </div>
-        <div class="pair-grid">
-        <div class="shot">
-          <p class="shot-label shot-label--avant">Aujourd’hui</p>
-          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/filtres-light-avant-zoom.webp" data-src-light="img/filtres-light-avant-zoom.webp" data-full-light="img/filtres-light-avant.webp" data-src-dark="img/filtres-dark-avant-zoom.webp" data-full-dark="img/filtres-dark-avant.webp" width="900" height="776" loading="lazy" decoding="async" alt="Aujourd’hui : « Trier par : Pertinence, Plus récents, Plus votés » ; « Plus récents » entouré en orange.">
-          </button>
-        </div>
-        <div class="shot">
-          <p class="shot-label shot-label--apres">Proposé</p>
-          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/filtres-light-apres-zoom.webp" data-src-light="img/filtres-light-apres-zoom.webp" data-full-light="img/filtres-light-apres.webp" data-src-dark="img/filtres-dark-apres-zoom.webp" data-full-dark="img/filtres-dark-apres.webp" width="900" height="776" loading="lazy" decoding="async" alt="Proposé : « Trier par : Pertinence, Plus votés », entouré en vert.">
-          </button>
-        </div>
-        </div>
-      </figure>
-    </article>
-  </section>
-
-  <section class="group" id="a-revoir">
-    <div class="col">
-      <h2>À revoir</h2>
-      <p class="group-intro">La proposition actuelle reste affichée ; d’autres agents proposent de nouvelles idées pour chacun de ces points.</p>
-    </div>
-    
     <article class="point" id="p1">
       <header class="point-head">
         <p class="point-num" aria-hidden="true">1</p>
-        <div>
-          <h3><span class="visually-hidden">Point 1 : </span>Take ouvert : photo et son du commentaire seulement quand on écrit</h3>
-          <p class="status status--review">à revoir</p>
-        </div>
+        <div><h2 class="topic"><span class="visually-hidden">Point 1 : </span>Take ouvert : la photo et le son du commentaire</h2></div>
       </header>
-      <p class="why">La photo et le micro du commentaire servent rarement, mais restent toujours affichés. Ils apparaîtraient seulement quand on touche le champ pour écrire.</p>
-      
-      <figure class="pair pair--band" data-variants="light dark">
+      <div class="why"><h4>Pourquoi</h4><p>Sous chaque Take, le champ de commentaire montre toujours trois icônes : fantôme, photo, micro. Joindre une photo ou un son sert rarement, mais on les voit à chaque visite.</p></div>
+      <ul class="option-list" aria-label="Options du point 1"><li><a href="#o-1A"><span class="n">1A</span><span class="t">Un seul « + » pour joindre quelque chose</span></a></li><li><a href="#o-1B"><span class="n">1B</span><span class="t">Ta photo dit qui parle</span></a></li><li><a href="#o-1C"><span class="n">1C</span><span class="t">La réponse s’ouvre en grand, comme sur Threads</span></a></li></ul>
+      <section class="option" id="o-1A" aria-labelledby="o-1A-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">1A</span><span>Agent A et audit</span></p>
+          <h3 id="o-1A-t">Un seul « + » pour joindre quelque chose</h3>
+          <p><strong>Ce qui change.</strong> La photo et le micro laissent la place à un seul « + », qui ouvre Photo, GIF et Son.</p>
+          <p><strong>Pourquoi.</strong> Au repos, le champ garde deux icônes au lieu de trois, et écrire, ce qu’on fait le plus, reste devant. C’est le « + » d’iMessage et de WhatsApp, que tout le monde connaît.</p>
+        </div>
+      <figure class="pair pair--band pair--three" data-variants="light dark">
         <div class="pair-bar">
           <figcaption>Le champ de commentaire, en bas du Take ouvert</figcaption>
         <div class="seg" role="group" aria-label="Thème des captures">
@@ -466,32 +216,167 @@ section.group { padding-block: 2.75rem 0.5rem; }
         <div class="shot">
           <p class="shot-label shot-label--avant">Aujourd’hui</p>
           <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/commentaire-light-avant-zoom.webp" data-src-light="img/commentaire-light-avant-zoom.webp" data-full-light="img/commentaire-light-avant.webp" data-src-dark="img/commentaire-dark-avant-zoom.webp" data-full-dark="img/commentaire-dark-avant.webp" width="900" height="299" loading="lazy" decoding="async" alt="Aujourd’hui : le champ « Donne ton avis… » avec trois icônes, fantôme, photo et micro ; photo et micro entourés en orange.">
+            <img src="img/p1a-light-avant-zoom.webp" data-src-light="img/p1a-light-avant-zoom.webp" data-full-light="img/p1a-light-avant.webp" data-src-dark="img/p1a-dark-avant-zoom.webp" data-full-dark="img/p1a-dark-avant.webp" width="900" height="390" loading="lazy" decoding="async" alt="Aujourd’hui : la photo et le micro, toujours affichés, entourés en orange.">
           </button>
         </div>
         <div class="shot">
           <p class="shot-label shot-label--apres">Proposé</p>
           <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/commentaire-light-apres-zoom.webp" data-src-light="img/commentaire-light-apres-zoom.webp" data-full-light="img/commentaire-light-apres.webp" data-src-dark="img/commentaire-dark-apres-zoom.webp" data-full-dark="img/commentaire-dark-apres.webp" width="900" height="299" loading="lazy" decoding="async" alt="Proposé : le même champ avec le fantôme seul, entouré en vert ; photo et micro apparaissent quand on écrit.">
+            <img src="img/p1a-light-apres-zoom.webp" data-src-light="img/p1a-light-apres-zoom.webp" data-full-light="img/p1a-light-apres.webp" data-src-dark="img/p1a-dark-apres-zoom.webp" data-full-dark="img/p1a-dark-apres.webp" width="900" height="390" loading="lazy" decoding="async" alt="Proposé : le fantôme et un seul bouton « + ».">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Après un toucher sur « + »</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Après un toucher sur « + » : voir l’écran entier">
+            <img src="img/p1a-light-apres-menu-zoom.webp" data-src-light="img/p1a-light-apres-menu-zoom.webp" data-full-light="img/p1a-light-apres-menu.webp" data-src-dark="img/p1a-dark-apres-menu-zoom.webp" data-full-dark="img/p1a-dark-apres-menu.webp" width="900" height="613" loading="lazy" decoding="async" alt="Après un toucher sur « + » : un petit menu Photo, GIF, Son au-dessus du champ.">
           </button>
         </div>
         </div>
       </figure>
-      <div class="ideas" id="idees-1">
-        <h4>Nouvelles idées</h4>
-        <p>En attente des propositions des autres agents.</p>
-      </div>
+      </section>
+      <section class="option" id="o-1B" aria-labelledby="o-1B-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">1B</span><span>Agents A et B</span></p>
+          <h3 id="o-1B-t">Ta photo dit qui parle</h3>
+          <p><strong>Ce qui change.</strong> Le fantôme quitte le champ. Ta photo s’affiche à gauche ; un toucher la change en fantôme pour commenter en anonyme.</p>
+          <p><strong>Pourquoi.</strong> Une icône de moins dans le champ, et on voit tout de suite sous quel nom on va parler. X, Instagram et Threads montrent ta photo à côté du champ de réponse.</p>
+        </div>
+      <figure class="pair pair--band pair--three" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le champ de commentaire, en bas du Take ouvert</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/p1b-light-avant-zoom.webp" data-src-light="img/p1b-light-avant-zoom.webp" data-full-light="img/p1b-light-avant.webp" data-src-dark="img/p1b-dark-avant-zoom.webp" data-full-dark="img/p1b-dark-avant.webp" width="900" height="390" loading="lazy" decoding="async" alt="Aujourd’hui : le fantôme du commentaire, entouré en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/p1b-light-apres-zoom.webp" data-src-light="img/p1b-light-apres-zoom.webp" data-full-light="img/p1b-light-apres.webp" data-src-dark="img/p1b-dark-apres-zoom.webp" data-full-dark="img/p1b-dark-apres.webp" width="900" height="390" loading="lazy" decoding="async" alt="Proposé : la photo d’Ava Martin à gauche du champ, qui garde photo et micro.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé, après un toucher</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé, après un toucher : voir l’écran entier">
+            <img src="img/p1b-light-apres-anonyme-zoom.webp" data-src-light="img/p1b-light-apres-anonyme-zoom.webp" data-full-light="img/p1b-light-apres-anonyme.webp" data-src-dark="img/p1b-dark-apres-anonyme-zoom.webp" data-full-dark="img/p1b-dark-apres-anonyme.webp" width="900" height="390" loading="lazy" decoding="async" alt="Proposé, après un toucher : la photo devenue fantôme, et « Commenter en anonyme… ».">
+          </button>
+        </div>
+        </div>
+      </figure>
+      </section>
+      <section class="option" id="o-1C" aria-labelledby="o-1C-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">1C</span><span>Agent B</span><span class="option-bold">idée audacieuse</span></p>
+          <h3 id="o-1C-t">La réponse s’ouvre en grand, comme sur Threads</h3>
+          <p><strong>Ce qui change.</strong> Au repos, le bas du Take n’a plus qu’une pastille « Réponds à Léo Bernard… ». La toucher ouvre un écran de réponse, avec la question en haut et quatre outils nommés : Anonyme, Photo, GIF, Son.</p>
+          <p><strong>Pourquoi.</strong> Qui lit seulement n’a plus rien à trier en bas de l’écran ; qui répond trouve tous ses outils au même endroit, avec leur nom. Threads ouvre ainsi chaque réponse dans son propre écran.</p>
+        </div>
+      <figure class="pair pair--band" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le champ de commentaire, au repos</figcaption>
+          <div class="seg" role="group" aria-label="Thème des captures">
+            <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+          </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/b-p1-avant-light-zoom.webp" data-src-light="img/b-p1-avant-light-zoom.webp" data-full-light="img/b-p1-avant-light.webp" data-src-dark="img/b-p1-avant-dark-zoom.webp" data-full-dark="img/b-p1-avant-dark.webp" width="900" height="242" loading="lazy" decoding="async" alt="Aujourd’hui : le champ « Donne ton avis… » avec le fantôme, la photo et le micro ; photo et micro entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/b-p1a-apres-light-zoom.webp" data-src-light="img/b-p1a-apres-light-zoom.webp" data-full-light="img/b-p1a-apres-light.webp" data-src-dark="img/b-p1a-apres-dark-zoom.webp" data-full-dark="img/b-p1a-apres-dark.webp" width="900" height="242" loading="lazy" decoding="async" alt="Proposé : une seule pastille avec ta photo et « Réponds à Léo Bernard… », entourée en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Après un toucher sur la pastille</figcaption>
+          <div class="seg" role="group" aria-label="Thème des captures">
+            <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+          </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/b-p1-avant-light-zoom.webp" data-src-light="img/b-p1-avant-light-zoom.webp" data-full-light="img/b-p1-avant-light.webp" data-src-dark="img/b-p1-avant-dark-zoom.webp" data-full-dark="img/b-p1-avant-dark.webp" width="900" height="242" loading="lazy" decoding="async" alt="Aujourd’hui : le champ « Donne ton avis… » avec le fantôme, la photo et le micro ; photo et micro entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/b-p1a-compositeur-light-zoom.webp" data-src-light="img/b-p1a-compositeur-light-zoom.webp" data-full-light="img/b-p1a-compositeur-light.webp" data-src-dark="img/b-p1a-compositeur-dark-zoom.webp" data-full-dark="img/b-p1a-compositeur-dark.webp" width="900" height="1119" loading="lazy" decoding="async" alt="Proposé : l’écran de réponse, la question de Léo Bernard en haut, ton nom, puis les outils Anonyme, Photo, GIF et Son entourés en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      </section>
     </article>
     <article class="point" id="p2">
       <header class="point-head">
         <p class="point-num" aria-hidden="true">2</p>
-        <div>
-          <h3><span class="visually-hidden">Point 2 : </span>Take ouvert : le fantôme du vote sous le vote, comme dans le fil</h3>
-          <p class="status status--review">à revoir</p>
-        </div>
+        <div><h2 class="topic"><span class="visually-hidden">Point 2 : </span>Take ouvert : le fantôme du vote et la photo</h2></div>
       </header>
-      <p class="why">Le fantôme du vote change de place entre le fil et le Take ouvert, et l’icône ⓘ montre en fait une photo. Il reviendrait sous le vote, comme dans le fil, avec une vraie icône photo.</p>
-      
+      <div class="why"><h4>Pourquoi</h4><p>Deux fantômes identiques font deux choses différentes : celui du haut rend ton vote anonyme, celui du bas ton commentaire. Et l’icône ⓘ ne donne pas d’infos : elle montre la photo du Take.</p></div>
+      <ul class="option-list" aria-label="Options du point 2"><li><a href="#o-2A"><span class="n">2A</span><span class="t">Une pastille qui dit ce qu’elle fait</span></a></li><li><a href="#o-2B"><span class="n">2B</span><span class="t">La photo se montre, plus de ⓘ</span></a></li><li><a href="#o-2C"><span class="n">2C</span><span class="t">Le fantôme arrive après le vote</span></a></li><li><a href="#o-2D"><span class="n">2D</span><span class="t">Appui long sur une réponse pour voter en anonyme</span></a></li><li><a href="#o-2E"><span class="n">2E</span><span class="t">Un seul interrupteur « Anonyme » pour tout le Take</span></a></li></ul>
+      <section class="option" id="o-2A" aria-labelledby="o-2A-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">2A</span><span>Agent A</span></p>
+          <h3 id="o-2A-t">Une pastille qui dit ce qu’elle fait</h3>
+          <p><strong>Ce qui change.</strong> Sous Oui et Non, une pastille « Vote public » ; un toucher la passe à « Vote anonyme ». Le fantôme quitte la ligne de l’auteur.</p>
+          <p><strong>Pourquoi.</strong> Un mot se comprend plus vite qu’une icône à deviner, et la pastille est là où l’on vote. X fait pareil avec sa pastille « Tout le monde peut répondre ».</p>
+        </div>
+      <figure class="pair pair--tall pair--three" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le haut du Take ouvert</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/p2a-light-avant-zoom.webp" data-src-light="img/p2a-light-avant-zoom.webp" data-full-light="img/p2a-light-avant.webp" data-src-dark="img/p2a-dark-avant-zoom.webp" data-full-dark="img/p2a-dark-avant.webp" width="900" height="985" loading="lazy" decoding="async" alt="Aujourd’hui : le fantôme du vote sur la ligne de l’auteur, entouré en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/p2a-light-apres-zoom.webp" data-src-light="img/p2a-light-apres-zoom.webp" data-full-light="img/p2a-light-apres.webp" data-src-dark="img/p2a-dark-apres-zoom.webp" data-full-dark="img/p2a-dark-apres.webp" width="900" height="985" loading="lazy" decoding="async" alt="Proposé : une pastille « Vote public » sous les boutons de vote.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé, après un toucher</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé, après un toucher : voir l’écran entier">
+            <img src="img/p2a-light-apres-anonyme-zoom.webp" data-src-light="img/p2a-light-apres-anonyme-zoom.webp" data-full-light="img/p2a-light-apres-anonyme.webp" data-src-dark="img/p2a-dark-apres-anonyme-zoom.webp" data-full-dark="img/p2a-dark-apres-anonyme.webp" width="900" height="985" loading="lazy" decoding="async" alt="Proposé, après un toucher : la pastille passée à « Vote anonyme ».">
+          </button>
+        </div>
+        </div>
+      </figure>
+      </section>
+      <section class="option" id="o-2B" aria-labelledby="o-2B-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">2B</span><span>Agent A</span></p>
+          <h3 id="o-2B-t">La photo se montre, plus de ⓘ</h3>
+          <p><strong>Ce qui change.</strong> Le ⓘ disparaît : la photo du Take apparaît en vignette dans le coin de la carte Contexte, et la toucher retourne la carte sur la photo.</p>
+          <p><strong>Pourquoi.</strong> On voit qu’il y a une photo au lieu de deviner ce que cache un ⓘ. X montre toujours l’image dans le post ouvert. Elle peut s’ajouter à une autre option de ce point.</p>
+        </div>
       <figure class="pair pair--tall" data-variants="light dark">
         <div class="pair-bar">
           <figcaption>Le haut du Take ouvert</figcaption>
@@ -504,35 +389,129 @@ section.group { padding-block: 2.75rem 0.5rem; }
         <div class="shot">
           <p class="shot-label shot-label--avant">Aujourd’hui</p>
           <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/take-ouvert-light-avant-zoom.webp" data-src-light="img/take-ouvert-light-avant-zoom.webp" data-full-light="img/take-ouvert-light-avant.webp" data-src-dark="img/take-ouvert-dark-avant-zoom.webp" data-full-dark="img/take-ouvert-dark-avant.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Aujourd’hui : le Take ouvert, avec le fantôme du vote à côté du nom de l’auteur et une icône ⓘ, entourés en orange.">
+            <img src="img/p2b-light-avant-zoom.webp" data-src-light="img/p2b-light-avant-zoom.webp" data-full-light="img/p2b-light-avant.webp" data-src-dark="img/p2b-dark-avant-zoom.webp" data-full-dark="img/p2b-dark-avant.webp" width="900" height="784" loading="lazy" decoding="async" alt="Aujourd’hui : le ⓘ qui montre la photo, entouré en orange.">
           </button>
         </div>
         <div class="shot">
           <p class="shot-label shot-label--apres">Proposé</p>
           <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/take-ouvert-light-apres-zoom.webp" data-src-light="img/take-ouvert-light-apres-zoom.webp" data-full-light="img/take-ouvert-light-apres.webp" data-src-dark="img/take-ouvert-dark-apres-zoom.webp" data-full-dark="img/take-ouvert-dark-apres.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Proposé : le fantôme du vote sous les boutons Non et Oui, à gauche, entouré en vert, et une icône photo à la place de ⓘ.">
+            <img src="img/p2b-light-apres-zoom.webp" data-src-light="img/p2b-light-apres-zoom.webp" data-full-light="img/p2b-light-apres.webp" data-src-dark="img/p2b-dark-apres-zoom.webp" data-full-dark="img/p2b-dark-apres.webp" width="900" height="784" loading="lazy" decoding="async" alt="Proposé : une vignette de la photo dans le coin de la carte Contexte.">
           </button>
         </div>
         </div>
       </figure>
-      <div class="ideas" id="idees-2">
-        <h4>Nouvelles idées</h4>
-        <p>En attente des propositions des autres agents.</p>
-      </div>
+      </section>
+      <section class="option" id="o-2C" aria-labelledby="o-2C-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">2C</span><span>Agent B</span></p>
+          <h3 id="o-2C-t">Le fantôme arrive après le vote</h3>
+          <p><strong>Ce qui change.</strong> Avant de voter, le Take ouvert ne montre que les réponses. Le vote part en public, puis une ligne « ton vote est public » apparaît sous les réponses, avec le fantôme pour le rendre anonyme.</p>
+          <p><strong>Pourquoi.</strong> Au moment de voter, il ne reste que Non ou Oui à regarder ; l’anonymat se décide juste après, comme « Annuler l’envoi » dans Mail.</p>
+        </div>
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le haut du Take ouvert, après un vote « Oui »</figcaption>
+          <div class="seg" role="group" aria-label="Thème des captures">
+            <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+          </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/b-p2-avant-light-zoom.webp" data-src-light="img/b-p2-avant-light-zoom.webp" data-full-light="img/b-p2-avant-light.webp" data-src-dark="img/b-p2-avant-dark-zoom.webp" data-full-dark="img/b-p2-avant-dark.webp" width="900" height="963" loading="lazy" decoding="async" alt="Aujourd’hui : le haut du Take ouvert, le fantôme du vote entouré en orange à côté du nom de l’auteur.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/b-p2a-apres-light-zoom.webp" data-src-light="img/b-p2a-apres-light-zoom.webp" data-full-light="img/b-p2a-apres-light.webp" data-src-dark="img/b-p2a-apres-dark-zoom.webp" data-full-dark="img/b-p2a-apres-dark.webp" width="900" height="963" loading="lazy" decoding="async" alt="Proposé : plus de fantôme en haut ; « Oui » choisi, et sous les réponses la ligne « 8 votes · ton vote est public » avec le fantôme, entourée en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      </section>
+      <section class="option" id="o-2D" aria-labelledby="o-2D-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">2D</span><span>Agent B</span><span class="option-bold">idée audacieuse</span></p>
+          <h3 id="o-2D-t">Appui long sur une réponse pour voter en anonyme</h3>
+          <p><strong>Ce qui change.</strong> Plus de fantôme du vote affiché. Toucher une réponse vote en public ; un appui long sur elle ouvre « Voter Oui en anonyme ».</p>
+          <p><strong>Pourquoi.</strong> L’écran garde un seul geste évident, toucher sa réponse ; le choix rare va dans l’appui long, comme les effets d’envoi de Messages.</p>
+        </div>
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Appui long sur « Oui »</figcaption>
+          <div class="seg" role="group" aria-label="Thème des captures">
+            <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+          </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/b-p2-avant-light-zoom.webp" data-src-light="img/b-p2-avant-light-zoom.webp" data-full-light="img/b-p2-avant-light.webp" data-src-dark="img/b-p2-avant-dark-zoom.webp" data-full-dark="img/b-p2-avant-dark.webp" width="900" height="963" loading="lazy" decoding="async" alt="Aujourd’hui : le haut du Take ouvert, le fantôme du vote entouré en orange à côté du nom de l’auteur.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/b-p2b-apres-light-zoom.webp" data-src-light="img/b-p2b-apres-light-zoom.webp" data-full-light="img/b-p2b-apres-light.webp" data-src-dark="img/b-p2b-apres-dark-zoom.webp" data-full-dark="img/b-p2b-apres-dark.webp" width="900" height="963" loading="lazy" decoding="async" alt="Proposé : l’écran assombri, « Oui » soulevé, et un menu « Voter Oui en anonyme » entouré en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      </section>
+      <section class="option" id="o-2E" aria-labelledby="o-2E-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">2E</span><span>Audit</span></p>
+          <h3 id="o-2E-t">Un seul interrupteur « Anonyme » pour tout le Take</h3>
+          <p><strong>Ce qui change.</strong> Une pastille « Anonyme », en haut à la place du fantôme du vote, rend anonymes ensemble ton vote et ton commentaire sur ce Take. Le fantôme du champ disparaît.</p>
+          <p><strong>Pourquoi.</strong> Un seul choix, avec son nom, au lieu de deux fantômes identiques qui font deux choses différentes.</p>
+        </div>
+      <figure class="pair pair--map" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le Take ouvert, en entier</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/v3-take-ouvert-light-avant-zoom.webp" data-src-light="img/v3-take-ouvert-light-avant-zoom.webp" data-full-light="img/v3-take-ouvert-light-avant.webp" data-src-dark="img/v3-take-ouvert-dark-avant-zoom.webp" data-full-dark="img/v3-take-ouvert-dark-avant.webp" width="700" height="1393" loading="lazy" decoding="async" alt="Aujourd’hui : un fantôme près du nom de l’auteur et un autre dans le champ de commentaire, entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/v3-take-ouvert-light-apres-zoom.webp" data-src-light="img/v3-take-ouvert-light-apres-zoom.webp" data-full-light="img/v3-take-ouvert-light-apres.webp" data-src-dark="img/v3-take-ouvert-dark-apres-zoom.webp" data-full-dark="img/v3-take-ouvert-dark-apres.webp" width="700" height="1393" loading="lazy" decoding="async" alt="Proposé : une pastille « Anonyme » près du nom de l’auteur, entourée en vert, et un champ de commentaire sans fantôme.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      </section>
     </article>
     <article class="point" id="p6">
       <header class="point-head">
         <p class="point-num" aria-hidden="true">6</p>
-        <div>
-          <h3><span class="visually-hidden">Point 6 : </span>Activité : les filtres seulement quand la liste est longue</h3>
-          <p class="status status--review">à revoir</p>
-        </div>
+        <div><h2 class="topic"><span class="visually-hidden">Point 6 : </span>Activité : les filtres</h2></div>
       </header>
-      <p class="why">Cinq filtres s’affichent même quand il n’y a que deux notifications. Ils n’apparaîtraient que quand la liste devient longue.</p>
-      
+      <div class="why"><h4>Pourquoi</h4><p>Cinq filtres s’affichent même quand il n’y a que deux notifications à lire.</p></div>
+      <ul class="option-list" aria-label="Options du point 6"><li><a href="#o-6A"><span class="n">6A</span><span class="t">Deux onglets, comme X</span></a></li><li><a href="#o-6B"><span class="n">6B</span><span class="t">Un seul bouton Filtrer</span></a></li><li><a href="#o-6C"><span class="n">6C</span><span class="t">Seulement les filtres qui ont quelque chose</span></a></li><li><a href="#o-6D"><span class="n">6D</span><span class="t">Pas de filtres : ce qui attend une réponse passe en premier</span></a></li></ul>
+      <section class="option" id="o-6A" aria-labelledby="o-6A-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">6A</span><span>Agent A</span></p>
+          <h3 id="o-6A-t">Deux onglets, comme X</h3>
+          <p><strong>Ce qui change.</strong> « Tout » et « À répondre » (les commentaires et les questions qui t’attendent) remplacent les cinq filtres.</p>
+          <p><strong>Pourquoi.</strong> On ouvre Activité pour tout voir, ou pour ce qui attend une réponse : deux choix suffisent. X s’en tient à trois onglets.</p>
+        </div>
       <figure class="pair pair--tall" data-variants="light dark">
         <div class="pair-bar">
-          <figcaption>Activité avec les notifications de la graine</figcaption>
+          <figcaption>Activité avec les notifications de test</figcaption>
         <div class="seg" role="group" aria-label="Thème des captures">
           <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
           <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
@@ -542,35 +521,141 @@ section.group { padding-block: 2.75rem 0.5rem; }
         <div class="shot">
           <p class="shot-label shot-label--avant">Aujourd’hui</p>
           <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/notifications-light-avant-zoom.webp" data-src-light="img/notifications-light-avant-zoom.webp" data-full-light="img/notifications-light-avant.webp" data-src-dark="img/notifications-dark-avant-zoom.webp" data-full-dark="img/notifications-dark-avant.webp" width="900" height="672" loading="lazy" decoding="async" alt="Aujourd’hui : Activité avec cinq filtres au-dessus de quelques notifications ; les filtres entourés en orange.">
+            <img src="img/p6a-light-avant-zoom.webp" data-src-light="img/p6a-light-avant-zoom.webp" data-full-light="img/p6a-light-avant.webp" data-src-dark="img/p6a-dark-avant-zoom.webp" data-full-dark="img/p6a-dark-avant.webp" width="900" height="604" loading="lazy" decoding="async" alt="Aujourd’hui : cinq filtres, entourés en orange.">
           </button>
         </div>
         <div class="shot">
           <p class="shot-label shot-label--apres">Proposé</p>
           <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/notifications-light-apres-zoom.webp" data-src-light="img/notifications-light-apres-zoom.webp" data-full-light="img/notifications-light-apres.webp" data-src-dark="img/notifications-dark-apres-zoom.webp" data-full-dark="img/notifications-dark-apres.webp" width="900" height="672" loading="lazy" decoding="async" alt="Proposé : la même liste sans la rangée de filtres.">
+            <img src="img/p6a-light-apres-zoom.webp" data-src-light="img/p6a-light-apres-zoom.webp" data-full-light="img/p6a-light-apres.webp" data-src-dark="img/p6a-dark-apres-zoom.webp" data-full-dark="img/p6a-dark-apres.webp" width="900" height="604" loading="lazy" decoding="async" alt="Proposé : deux onglets, Tout et À répondre.">
           </button>
         </div>
         </div>
       </figure>
-      <div class="ideas" id="idees-6">
-        <h4>Nouvelles idées</h4>
-        <p>En attente des propositions des autres agents.</p>
-      </div>
+      </section>
+      <section class="option" id="o-6B" aria-labelledby="o-6B-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">6B</span><span>Agent A et audit</span></p>
+          <h3 id="o-6B-t">Un seul bouton Filtrer</h3>
+          <p><strong>Ce qui change.</strong> La rangée de filtres disparaît ; un bouton en haut à droite ouvre une feuille avec les cinq catégories.</p>
+          <p><strong>Pourquoi.</strong> La liste prend toute la place, et les filtres restent à un toucher pour qui les veut, comme le bouton des filtres de la recherche de X.</p>
+        </div>
+      <figure class="pair pair--tall pair--three" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Activité avec les notifications de test</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/p6b-light-avant-zoom.webp" data-src-light="img/p6b-light-avant-zoom.webp" data-full-light="img/p6b-light-avant.webp" data-src-dark="img/p6b-dark-avant-zoom.webp" data-full-dark="img/p6b-dark-avant.webp" width="900" height="604" loading="lazy" decoding="async" alt="Aujourd’hui : cinq filtres, entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/p6b-light-apres-zoom.webp" data-src-light="img/p6b-light-apres-zoom.webp" data-full-light="img/p6b-light-apres.webp" data-src-dark="img/p6b-dark-apres-zoom.webp" data-full-dark="img/p6b-dark-apres.webp" width="900" height="604" loading="lazy" decoding="async" alt="Proposé : plus de rangée de filtres, une icône de filtre en haut à droite.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Après un toucher sur l’icône</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Après un toucher sur l’icône : voir l’écran entier">
+            <img src="img/p6b-light-apres-feuille-zoom.webp" data-src-light="img/p6b-light-apres-feuille-zoom.webp" data-full-light="img/p6b-light-apres-feuille.webp" data-src-dark="img/p6b-dark-apres-feuille-zoom.webp" data-full-dark="img/p6b-dark-apres-feuille.webp" width="900" height="1106" loading="lazy" decoding="async" alt="Après un toucher sur l’icône : la feuille Filtrer avec Tout, Votes, Commentaires, Questions, Amis.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      </section>
+      <section class="option" id="o-6C" aria-labelledby="o-6C-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">6C</span><span>Agents A et B</span></p>
+          <h3 id="o-6C-t">Seulement les filtres qui ont quelque chose</h3>
+          <p><strong>Ce qui change.</strong> Un filtre sans notification ne s’affiche pas : avec deux notifications, il reste Tout, Votes et Amis. En variante, chaque filtre montre son nombre.</p>
+          <p><strong>Pourquoi.</strong> Un filtre qui mène à une liste vide est un choix pour rien. La rangée se décide à l’ouverture de l’écran, jamais pendant qu’on la regarde.</p>
+        </div>
+      <figure class="pair pair--tall pair--three" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Activité avec les notifications de test</figcaption>
+          <div class="seg" role="group" aria-label="Thème des captures">
+            <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+          </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/p6c-light-avant-zoom.webp" data-src-light="img/p6c-light-avant-zoom.webp" data-full-light="img/p6c-light-avant.webp" data-src-dark="img/p6c-dark-avant-zoom.webp" data-full-dark="img/p6c-dark-avant.webp" width="900" height="604" loading="lazy" decoding="async" alt="Aujourd’hui : cinq filtres, entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/p6c-light-apres-zoom.webp" data-src-light="img/p6c-light-apres-zoom.webp" data-full-light="img/p6c-light-apres.webp" data-src-dark="img/p6c-dark-apres-zoom.webp" data-full-dark="img/p6c-dark-apres.webp" width="900" height="604" loading="lazy" decoding="async" alt="Proposé : trois filtres, Tout, Votes, Amis.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Variante : avec leur nombre</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Variante : avec leur nombre : voir l’écran entier">
+            <img src="img/b-p6a-apres-light-zoom.webp" data-src-light="img/b-p6a-apres-light-zoom.webp" data-full-light="img/b-p6a-apres-light.webp" data-src-dark="img/b-p6a-apres-dark-zoom.webp" data-full-dark="img/b-p6a-apres-dark.webp" width="900" height="672" loading="lazy" decoding="async" alt="Proposé : trois filtres seulement, « Tout 2 », « Votes 1 » et « Amis 1 », entourés en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      </section>
+      <section class="option" id="o-6D" aria-labelledby="o-6D-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">6D</span><span>Agent B</span></p>
+          <h3 id="o-6D-t">Pas de filtres : ce qui attend une réponse passe en premier</h3>
+          <p><strong>Ce qui change.</strong> Plus de filtres. En haut, une ligne « Demandes d’ami » regroupe ce qui attend ta réponse ; le reste suit par date.</p>
+          <p><strong>Pourquoi.</strong> La seule chose à faire dans Activité, c’est répondre aux demandes : elle passe en tête, et le reste se lit sans rien à choisir. Instagram range ainsi ses notifications.</p>
+        </div>
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Activité ; la ligne « Demandes d’ami » est dessinée pour l’exemple</figcaption>
+          <div class="seg" role="group" aria-label="Thème des captures">
+            <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+          </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/b-p6-avant-light-zoom.webp" data-src-light="img/b-p6-avant-light-zoom.webp" data-full-light="img/b-p6-avant-light.webp" data-src-dark="img/b-p6-avant-dark-zoom.webp" data-full-dark="img/b-p6-avant-dark.webp" width="900" height="672" loading="lazy" decoding="async" alt="Aujourd’hui : Activité avec cinq filtres entourés en orange au-dessus de deux notifications.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/b-p6b-apres-light-zoom.webp" data-src-light="img/b-p6b-apres-light-zoom.webp" data-full-light="img/b-p6b-apres-light.webp" data-src-dark="img/b-p6b-apres-dark-zoom.webp" data-full-dark="img/b-p6b-apres-dark.webp" width="900" height="672" loading="lazy" decoding="async" alt="Proposé : plus de filtres ; une ligne « Demandes d’ami, Maya Patel et Lucas Costa » en haut, entourée en vert, puis « Hier ».">
+          </button>
+        </div>
+        </div>
+      </figure>
+      </section>
     </article>
     <article class="point" id="p7">
       <header class="point-head">
         <p class="point-num" aria-hidden="true">7</p>
-        <div>
-          <h3><span class="visually-hidden">Point 7 : </span>Vote anonyme par défaut, pour qui le veut</h3>
-          <p class="status status--review">à revoir</p>
-        </div>
+        <div><h2 class="topic"><span class="visually-hidden">Point 7 : </span>Le vote anonyme, pour qui le veut toujours</h2></div>
       </header>
-      <p class="why">Quelqu’un qui vote toujours en anonyme doit y penser à chaque Take. Un réglage dans Confidentialité le ferait une fois pour toutes.</p>
-      
+      <div class="why"><h4>Pourquoi</h4><p>Quelqu’un qui vote toujours en anonyme doit allumer le fantôme à chaque Take, et un oubli rend son vote public.</p></div>
+      <ul class="option-list" aria-label="Options du point 7"><li><a href="#o-7A"><span class="n">7A</span><span class="t">Le fantôme se souvient</span></a></li><li><a href="#o-7B"><span class="n">7B</span><span class="t">Proposé au bon moment</span></a></li><li><a href="#o-7C"><span class="n">7C</span><span class="t">Un mode fantôme pour toute l’app</span></a></li></ul>
+      <section class="option" id="o-7A" aria-labelledby="o-7A-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">7A</span><span>Agent A et audit</span></p>
+          <h3 id="o-7A-t">Le fantôme se souvient</h3>
+          <p><strong>Ce qui change.</strong> Après un vote anonyme, le fantôme reste allumé sur les Takes suivants jusqu’à ce que tu l’éteignes ; un message le dit la première fois.</p>
+          <p><strong>Pourquoi.</strong> Qui vote toujours en anonyme n’y pense plus, sans passer par les réglages, et les autres ne voient rien changer. Le fantôme reste sous chaque Take : on voit toujours comment on va voter.</p>
+        </div>
       <figure class="pair pair--tall" data-variants="light dark">
         <div class="pair-bar">
-          <figcaption>Confidentialité, dans les paramètres</figcaption>
+          <figcaption>Le fil Takes</figcaption>
         <div class="seg" role="group" aria-label="Thème des captures">
           <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
           <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
@@ -580,36 +665,120 @@ section.group { padding-block: 2.75rem 0.5rem; }
         <div class="shot">
           <p class="shot-label shot-label--avant">Aujourd’hui</p>
           <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
-            <img src="img/anonyme-light-avant-zoom.webp" data-src-light="img/anonyme-light-avant-zoom.webp" data-full-light="img/anonyme-light-avant.webp" data-src-dark="img/anonyme-dark-avant-zoom.webp" data-full-dark="img/anonyme-dark-avant.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Aujourd’hui : Confidentialité, avec « Qui peut voir tes takes » et « Qui peut t’écrire ».">
+            <img src="img/p7a-light-avant-zoom.webp" data-src-light="img/p7a-light-avant-zoom.webp" data-full-light="img/p7a-light-avant.webp" data-src-dark="img/p7a-dark-avant-zoom.webp" data-full-dark="img/p7a-dark-avant.webp" width="900" height="1254" loading="lazy" decoding="async" alt="Aujourd’hui : le fantôme éteint sur un nouveau Take, entouré en orange.">
           </button>
         </div>
         <div class="shot">
           <p class="shot-label shot-label--apres">Proposé</p>
           <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
-            <img src="img/anonyme-light-apres-zoom.webp" data-src-light="img/anonyme-light-apres-zoom.webp" data-full-light="img/anonyme-light-apres.webp" data-src-dark="img/anonyme-dark-apres-zoom.webp" data-full-dark="img/anonyme-dark-apres.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Proposé : un troisième réglage « Tes votes : Anonymes / Publics », entouré en vert.">
+            <img src="img/p7a-light-apres-zoom.webp" data-src-light="img/p7a-light-apres-zoom.webp" data-full-light="img/p7a-light-apres.webp" data-src-dark="img/p7a-dark-apres-zoom.webp" data-full-dark="img/p7a-dark-apres.webp" width="900" height="1254" loading="lazy" decoding="async" alt="Proposé : le fantôme déjà allumé, et le message « Tes prochains votes restent anonymes ».">
           </button>
         </div>
         </div>
       </figure>
-      <div class="ideas" id="idees-7">
-        <h4>Nouvelles idées</h4>
-        <p>En attente des propositions des autres agents.</p>
-      </div>
+      </section>
+      <section class="option" id="o-7B" aria-labelledby="o-7B-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">7B</span><span>Agents A et B</span></p>
+          <h3 id="o-7B-t">Proposé au bon moment</h3>
+          <p><strong>Ce qui change.</strong> Après plusieurs votes anonymes d’affilée, l’app propose une seule fois de garder l’anonymat pour tous les votes : une carte dans le fil, ou une feuille après le troisième vote.</p>
+          <p><strong>Pourquoi.</strong> Le choix arrive quand il sert, et seulement à ceux qu’il concerne, au lieu d’attendre dans les réglages. X glisse ainsi des cartes de suggestion dans son fil.</p>
+        </div>
+      <figure class="pair pair--tall pair--three" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le fil Takes</figcaption>
+          <div class="seg" role="group" aria-label="Thème des captures">
+            <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+          </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/p7b-light-avant-zoom.webp" data-src-light="img/p7b-light-avant-zoom.webp" data-full-light="img/p7b-light-avant.webp" data-src-dark="img/p7b-dark-avant-zoom.webp" data-full-dark="img/p7b-dark-avant.webp" width="900" height="828" loading="lazy" decoding="async" alt="Aujourd’hui : le fantôme à rallumer à chaque Take, entouré en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Une carte dans le fil</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Une carte dans le fil : voir l’écran entier">
+            <img src="img/p7b-light-apres-zoom.webp" data-src-light="img/p7b-light-apres-zoom.webp" data-full-light="img/p7b-light-apres.webp" data-src-dark="img/p7b-dark-apres-zoom.webp" data-full-dark="img/p7b-dark-apres.webp" width="900" height="828" loading="lazy" decoding="async" alt="Proposé : une carte « Tu votes souvent en anonyme », avec Oui et Non merci.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Ou une feuille après le troisième vote</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Ou une feuille après le troisième vote : voir l’écran entier">
+            <img src="img/b-p7b-apres-light-zoom.webp" data-src-light="img/b-p7b-apres-light-zoom.webp" data-full-light="img/b-p7b-apres-light.webp" data-src-dark="img/b-p7b-apres-dark-zoom.webp" data-full-dark="img/b-p7b-apres-dark.webp" width="900" height="1106" loading="lazy" decoding="async" alt="Proposé : une feuille « Toujours voter en anonyme ? » avec « Oui, toujours » et « Non, au cas par cas », entourée en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      </section>
+      <section class="option" id="o-7C" aria-labelledby="o-7C-t">
+        <div class="option-text">
+          <p class="option-meta"><span class="option-num">7C</span><span>Agent B</span><span class="option-bold">idée audacieuse</span></p>
+          <h3 id="o-7C-t">Un mode fantôme pour toute l’app</h3>
+          <p><strong>Ce qui change.</strong> Un appui long sur l’onglet profil allume le mode fantôme : l’onglet devient un fantôme, et tous tes votes et commentaires sont anonymes jusqu’à ce que tu l’éteignes.</p>
+          <p><strong>Pourquoi.</strong> Le choix se fait une fois, pas avant chaque vote, et l’onglet fantôme reste sous les yeux : pas d’oubli. C’est la navigation privée de Safari.</p>
+        </div>
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le fil, mode fantôme allumé</figcaption>
+          <div class="seg" role="group" aria-label="Thème des captures">
+            <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+          </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/b-p7-avant-light-zoom.webp" data-src-light="img/b-p7-avant-light-zoom.webp" data-full-light="img/b-p7-avant-light.webp" data-src-dark="img/b-p7-avant-dark-zoom.webp" data-full-dark="img/b-p7-avant-dark.webp" width="900" height="1106" loading="lazy" decoding="async" alt="Aujourd’hui : un Take du fil, le fantôme éteint entouré en orange sous les réponses.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/b-p7a-apres-light-zoom.webp" data-src-light="img/b-p7a-apres-light-zoom.webp" data-full-light="img/b-p7a-apres-light.webp" data-src-dark="img/b-p7a-apres-dark-zoom.webp" data-full-dark="img/b-p7a-apres-dark.webp" width="900" height="1106" loading="lazy" decoding="async" alt="Proposé : l’onglet profil devenu un fantôme et le fantôme du Take allumé, entourés en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Appui long sur l’onglet profil</figcaption>
+          <div class="seg" role="group" aria-label="Thème des captures">
+            <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+          </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/b-p7-avant-light-zoom.webp" data-src-light="img/b-p7-avant-light-zoom.webp" data-full-light="img/b-p7-avant-light.webp" data-src-dark="img/b-p7-avant-dark-zoom.webp" data-full-dark="img/b-p7-avant-dark.webp" width="900" height="1106" loading="lazy" decoding="async" alt="Aujourd’hui : un Take du fil, le fantôme éteint entouré en orange sous les réponses.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/b-p7a-menu-light-zoom.webp" data-src-light="img/b-p7a-menu-light-zoom.webp" data-full-light="img/b-p7a-menu-light.webp" data-src-dark="img/b-p7a-menu-dark-zoom.webp" data-full-dark="img/b-p7a-menu-dark.webp" width="900" height="1106" loading="lazy" decoding="async" alt="Proposé : l’écran assombri et un menu « Mode fantôme, tes votes et tes avis en anonyme » au-dessus de l’onglet profil.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      </section>
     </article>
-  </section>
 </main>
 
 <footer class="col foot">
-  <p>Audit fait sur le simulateur iPhone avec les données de test de Take. Rien n’est codé ici : les points acceptés sont en cours de réalisation à part.</p>
+  <p>Maquettes dessinées sur de vraies captures du simulateur iPhone, avec les données de test de Take. Rien n’est codé.</p>
 </footer>
 
 <dialog id="viewer" class="viewer" aria-labelledby="viewer-title">
   <div class="viewer-bar">
     <p class="viewer-title" id="viewer-title"></p>
-    <div class="seg" role="group" aria-label="Aujourd’hui ou proposé">
-      <button type="button" data-side-choice="avant" aria-pressed="true">Aujourd’hui</button>
-      <button type="button" data-side-choice="apres" aria-pressed="false">Proposé</button>
-    </div>
+    <div class="seg viewer-seg" role="group" aria-label="Capture"></div>
     <button type="button" class="viewer-close" data-close>Fermer</button>
   </div>
   <img alt="">
@@ -645,20 +814,38 @@ section.group { padding-block: 2.75rem 0.5rem; }
   }
   new MutationObserver(follow).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
 
+  // The viewer shows the shot that was touched; one button per shot of the figure switches between them.
   const viewer = document.getElementById("viewer");
   const viewerImg = viewer.querySelector("img");
   const viewerTitle = viewer.querySelector(".viewer-title");
+  const viewerSeg = viewer.querySelector(".viewer-seg");
   let current = null;
-  const showSide = (side) => {
+  const shotsOf = (group) => Array.from(group.querySelectorAll(".shot"));
+  const showShot = (index) => {
+    const shot = shotsOf(current)[index];
     const theme = current.dataset.shown || "light";
-    const img = current.querySelector('.shot-open[data-side="' + side + '"] img');
+    const img = shot.querySelector("img");
     viewerImg.src = img.getAttribute("data-full-" + theme) || img.getAttribute("data-full-light");
     viewerImg.alt = img.alt;
     const caption = current.querySelector("figcaption");
     viewerTitle.textContent = caption ? caption.textContent : "";
-    viewer.querySelectorAll("[data-side-choice]").forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.sideChoice === side));
+    viewerSeg.querySelectorAll("button").forEach((button, i) => {
+      button.setAttribute("aria-pressed", String(i === index));
     });
+  };
+  const open = (opener) => {
+    current = opener.closest("[data-variants]");
+    const shots = shotsOf(current);
+    viewerSeg.replaceChildren(...shots.map((shot, i) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.shotIndex = String(i);
+      const label = shot.querySelector(".shot-label");
+      button.textContent = label ? label.textContent : String(i + 1);
+      return button;
+    }));
+    showShot(Math.max(0, shots.indexOf(opener.closest(".shot"))));
+    if (viewer.showModal) viewer.showModal(); else viewer.setAttribute("open", "");
   };
   const close = () => { if (viewer.close) viewer.close(); else viewer.removeAttribute("open"); };
   document.addEventListener("click", (event) => {
@@ -670,18 +857,12 @@ section.group { padding-block: 2.75rem 0.5rem; }
       return;
     }
     const opener = event.target.closest(".shot-open");
-    if (opener) {
-      current = opener.closest("[data-variants]");
-      showSide(opener.dataset.side);
-      if (viewer.showModal) viewer.showModal(); else viewer.setAttribute("open", "");
-      return;
-    }
-    const sideChoice = event.target.closest("[data-side-choice]");
-    if (sideChoice && current) { showSide(sideChoice.dataset.sideChoice); return; }
+    if (opener) { open(opener); return; }
+    const shotChoice = event.target.closest("[data-shot-index]");
+    if (shotChoice && current) { showShot(Number(shotChoice.dataset.shotIndex)); return; }
     if (event.target.closest("[data-close]") || event.target === viewer) close();
   });
 })();
 </script>
-
 </body>
 </html>
