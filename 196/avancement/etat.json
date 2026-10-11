@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-11T17:46+09:00",
- "heure": "17:50",
+ "majLe": "2026-10-11T18:47+09:00",
+ "heure": "18:50",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 394,
@@ -13,7 +13,7 @@
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The anonymous-vote fix is in main. The 90-point tour on cloud iPhones is done: almost everything green, with two real defects (a blocked Take staying open, a link to Messages lost after quick tab taps) being fixed now."
+  "texte": "The full test loop on today's main is green with every check, including the filmed Home bar; a second loop already runs on the code main will have with the last two fixes. The fix for a Take that no longer exists is proven on the Mac's iPhone."
  },
  "depuis": [
   {
@@ -1247,78 +1247,78 @@
  },
  "enCours": [
   {
-   "statut": "fixing",
-   "sujet": "A Take blocked by moderation stayed open",
-   "pr": 0,
-   "ouEnEst": "Found by the 90-point tour: when a Take is blocked while you have it open, it stayed on screen 25 s and more with 'The discussion is not answering, Retry', although the server already answers that it no longer exists. putois has tests that fail on main and is writing the fix.",
-   "reste": "A PR with proof on a cloud iPhone, two reviews, merge."
+   "statut": "review",
+   "sujet": "A Take that no longer exists stayed open with 'Retry'",
+   "pr": 4810,
+   "ouEnEst": "putois's fix: when the server answers that a Take no longer exists (blocked by moderation or deleted), the page leaves instead of showing 'The discussion is not answering, Retry'. Proven on the Mac's iPhone: on main the error and Retry stay on screen; with the fix the page opens and goes back to Home about half a second later, with no error in any frame. Checks green. The first reviews were lost when the reviewers ran out of Claude; resent to dingo and renard.",
+   "reste": "Two clean reviews, then merge."
   },
   {
-   "statut": "fixing",
+   "statut": "review",
    "sujet": "A link to Messages lost after quick tab taps",
-   "pr": 0,
-   "ouEnEst": "Found by the 90-point tour: three quick tab taps followed by a link to Messages ended on Home 2 times out of 9. fouine is looking for the place where the link gets overwritten.",
-   "reste": "A PR with a test that fails first and 20 tries on a device, two reviews, merge."
+   "pr": 4811,
+   "ouEnEst": "fouine's fix: a tab tap sent before a link, but reaching the app after it, no longer steals the link; the last thing you asked for wins. On a cloud iPhone, main lost the link 3 times out of 8 after a pause, the fix 0 out of 8. Checks green. Reviews resent to mouflon and orignal after the same Claude outage.",
+   "reste": "Two clean reviews, then merge."
   },
   {
    "statut": "review",
    "sujet": "'Know me' ignoring Back after a share sheet",
    "pr": 4799,
-   "ouEnEst": "Back is now kept while the share sheet slides away and runs as soon as it is gone, with no lost tap at 300 or 450 ms. A review asks for one more test proving the real sheet is wired; renard is adding it with the before-and-after pictures. The fix makes the share sheets appear half a second sooner, so it waits for your OK.",
-   "reste": "Your OK on the faster sheets, two clean reviews, merge."
+   "ouEnEst": "renard added the missing test on the real sheet, proven to fail if either half of the fix is removed. Both reviews on this version are clean, checks green. The fix also makes the share sheets appear about half a second sooner, so it waits for your OK.",
+   "reste": "Your OK on the faster sheets, then merge."
   },
   {
    "statut": "loop",
-   "sujet": "Final test loop and the 90-point tour",
+   "sujet": "Final test loop for the build",
    "pr": 0,
-   "ouEnEst": "The 90-point tour is done on cloud iPhones: almost everything green, the two real defects above being fixed. The full loop runs again on today's main with the cache, map pin, Nearby title and anonymous-vote fixes.",
-   "reste": "The full loop, the filmed Home bar check and the tour's map points on the final commit."
+   "ouEnEst": "The full loop on today's main is green with every check: 22 of 22 tests, the 6 long-press cases, the time labels, and the Home bar filmed while Takes and Friends scroll (the bell and the tab names never move by a single pixel). A second loop is running now on the exact code main will have once the two fixes above are merged, so the build will not wait for another one.",
+   "reste": "If main gets exactly that code, this loop counts for the build; then the filmed bar check on it."
   },
   {
    "statut": "later",
    "sujet": "Taps lost when two arrive within one frame",
    "pr": 0,
-   "ouEnEst": "Two taps less than a frame apart count as one on tabs, votes, repost and the ghost; from 33 ms on, faster than any finger, nothing is lost. The search for the cause is paused: the cloud machine doing it has no Claude left tonight.",
-   "reste": "Resume as soon as the accounts are back, then a fix per cause."
+   "ouEnEst": "Two taps less than a frame apart count as one on tabs, votes, repost and the ghost; from 33 ms on, faster than any finger, nothing is lost. The search for the cause is paused while the cloud machines have no Claude.",
+   "reste": "Resume when the accounts are back, then a fix per cause."
   },
   {
    "statut": "later",
    "sujet": "Messages and the Profile read ahead, without a heavier launch",
    "pr": 4795,
-   "ouEnEst": "harfang fixed the two defects a review found; checks green, two new reviews running.",
-   "reste": "After build 196: measurement, then switch it on from the server."
+   "ouEnEst": "harfang fixed the two defects a review found; checks green. Its two reviewers stopped when their Claude ran out, before reviewing.",
+   "reste": "After build 196: reviews, measurement, then switch it on from the server."
   },
   {
    "statut": "later",
    "sujet": "Hashtags on the website, as in the app",
    "pr": 4787,
-   "ouEnEst": "castor fixed the two holes his pictures found; a review then found a small jump on public profiles (pills shown, then removed). castor is making the page show its final state from the start.",
+   "ouEnEst": "castor says its fix for the small jump on public profiles is green on its machine, but has not pushed it yet; asked to push it.",
    "reste": "After build 196: pictures in light and dark, then your OK."
   },
   {
    "statut": "later",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "One clean review and one asking for a test that fails if the fix is undone; lemming is adding it with pictures.",
+   "ouEnEst": "lemming was stuck waiting for a cloud test device; it now pushes the test without a device, and I take the before-and-after pictures on the Mac.",
    "reste": "Your OK on the pictures, after build 196."
   },
   {
    "statut": "later",
    "sujet": "Videos ahead in the feed with preloading on",
    "pr": 4766,
-   "ouEnEst": "Measured tonight: the first frame of a video arrives in 46 ms instead of 343 and the feed downloads nine times less, but scrolling gets heavier on the JS side. vison is moving that work out of the scroll.",
+   "ouEnEst": "vison moved the heavy part off the app's main thread: video pieces now download straight to their file, and a scroll asks for each window only once.",
    "reste": "Measure again, then turn the video switch on from the server."
   }
  ],
  "equipe": [
-  "Here on the Mac: me and your emulator running the loop; no new agent can start tonight.",
-  "On Replicas, now on OpenCode: putois and fouine on the two tour defects, renard on Know me, castor on the website hashtags, lemming on Explore, vison on videos ahead, harfang's draft in review."
+  "Here on the Mac, which is nearly full: me and your emulator running the loop for the build.",
+  "On Replicas, on their backup model tonight: dingo, renard, mouflon and orignal reviewing the two build fixes; castor on the website hashtags, lemming on Explore, vison on videos ahead."
  ],
  "etapes": [
-  "Fix the blocked Take staying open and the lost link to Messages.",
-  "Merge the Know me fix once you OK the faster sheets.",
-  "The full loop, the filmed Home bar check and the tour's map points on the final commit.",
-  "The list of what is not in build 196 (six choices for you), then the build once you give the go."
+  "Merge the two last fixes (a Take that no longer exists, the lost link to Messages) after their reviews.",
+  "The loop running now then counts for the build; film the Home bar on it.",
+  "Your OK on the faster share sheets and on the six choices in the list of what is not in build 196.",
+  "Then the build, once you give the go."
  ],
  "fait": [
   {
