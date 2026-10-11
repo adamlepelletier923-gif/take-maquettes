@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-11T11:58+09:00",
- "heure": "11:58",
+ "majLe": "2026-10-11T12:46+09:00",
+ "heure": "12:46",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 375,
-  "depuisDernierTableau": 180,
-  "enCours": 5,
-  "app": 165,
+  "fusionneesDepuis8Octobre": 376,
+  "depuisDernierTableau": 181,
+  "enCours": 6,
+  "app": 166,
   "siteEtAdmin": 67,
   "serveur": 72,
   "outilsEtDocs": 71
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The same gap between all of a Take's icons, with '0 vote' always shown, is merged into main, and the staging API is redeployed for build 196 and checked. The hashtags in the title have two clean reviews and green checks; they wait for pictures of one spacing change and your OK."
+  "texte": "The hashtags in the title are merged into main, with your design OK. On the Mac bench, none of the three map versions scrolls Friends worse than main; the whole map change is being measured against main now, to learn whether the Mac sees what the cloud devices saw."
  },
  "depuis": [
+  {
+   "heure": "12:05",
+   "pr": 4784,
+   "texte": "TAK-1102 : les hashtags d'un Take se touchent dans le titre, en gris comme « Traduire », sans pastille dessous",
+   "build196": false
+  },
   {
    "heure": "11:25",
    "pr": 4783,
@@ -1133,25 +1139,32 @@
  },
  "enCours": [
   {
-   "statut": "review",
-   "sujet": "Hashtags tapped right in the title, grey like 'See translation', no pills",
-   "pr": 4784,
-   "ouEnEst": "Your request at 10:04; you liked it at 10:33. Since then, a translated title keeps the Take's own hashtags tappable (a tag the translation rewrote stays plain text, a tag it dropped is added at the end), and the empty band left under 'See translation' is folded, so a translated Take with hashtags has the same spacing as one without. Two reviews of these last changes found zero defects, and the build checks are green.",
-   "reste": "Before and after pictures of that band in light and dark, your OK, then merge."
-  },
-  {
    "statut": "measuring",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4529,
-   "ouEnEst": "None of the first three versions scrolls Friends as smoothly as main. Three new versions isolate the cause: D keeps main's map component as is, E carries only the new swipe gestures, F only the small globe and the Home screen hooks. Replicas is down, so they are measured here on your emulator: six runs per side, in alternating order.",
-   "reste": "The heavy version points to the cause: fix it, measure again, review, merge. Joins build 196 only once it is as smooth as main."
+   "ouEnEst": "On the Mac bench, none of the three versions that each keep one part of the change scrolls Friends worse than main (24 runs). The whole change is now measured against main on the same bench: heavy here too, and the cause is narrowed down; not heavy, and the Mac does not see what the cloud devices saw.",
+   "reste": "Fix what is heavy and measure again, or let you decide if the Mac cannot see it. Joins build 196 only once it is as smooth as main."
+  },
+  {
+   "statut": "review",
+   "sujet": "Take icons a little closer together",
+   "pr": 4786,
+   "ouEnEst": "Your request at 12:06 ('maybe tighten a bit'): the gap between the four icons goes from 20 to 16 pt, touch areas following, with green checks.",
+   "reste": "Pictures of 20, 18 and 16 pt in light and dark on your emulator, your pick, two reviews, merge."
   },
   {
    "statut": "loop",
    "sujet": "Test loop on your emulator",
-   "pr": 0,
-   "ouEnEst": "Every flow passed on today's main once the bench's own test data were fixed; the bench now restores its data before each loop.",
-   "reste": "Final full loop and the 90-point tour on the final main, after the hashtags and the map."
+   "pr": 4788,
+   "ouEnEst": "Every flow passed on today's main once the bench's own data were fixed. A new flow, as you asked, tests today's novelties: '0 vote' on a Take nobody voted on, no pills under a Take, and a hashtag tapped in a title opening its search. Green checks.",
+   "reste": "Run the new flow once on your emulator, then the final full loop and the 90-point tour on the final main."
+  },
+  {
+   "statut": "later",
+   "sujet": "Hashtags on the website, as in the app",
+   "pr": 4787,
+   "ouEnEst": "No more pills under a Take on the website either; the title's hashtags are grey links to their search, and a translated title keeps the Take's own tags (the same code as the app now). Green checks.",
+   "reste": "After build 196: pictures of the website in light and dark, then your OK."
   },
   {
    "statut": "later",
@@ -1169,20 +1182,26 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator (measuring the map versions), and one Claude agent running that measurement. The Mac is near its memory limit, so the after-build work starts as soon as room frees up.",
-  "On Replicas: every message to a machine has failed since about 11:20, and their devices answer with errors. Work moves back there once they recover."
+  "Here on the Mac: me, and one Claude agent measuring the map on your emulator. While it measures, I did after-build work myself: the website hashtags, and the guard that asks every app change for a regression study, brought up to date with main.",
+  "On Replicas: down since about 11:20; nothing runs there until it is back."
  ],
  "etapes": [
-  "Measure the three map versions against main on your emulator, find what makes Friends heavier, fix it, then measure again.",
-  "Take pictures of the band under 'See translation', get your OK, then merge the hashtags.",
-  "Final full test loop and the 90-point tour on the final main, then the list of what is not in build 196, the build itself, and your emulator back on staging.",
-  "Start the after-build work on the Mac, one task at a time while Replicas is down: Messages and the Profile prepared after launch, hashtags on the website, the longest Take text, Explorer, and the local test data."
+  "Finish the whole-change map measurement, then fix what is heavy, or let you decide if the Mac cannot see it.",
+  "Pictures of the icon gaps at 20, 18 and 16 pt, your pick, two reviews, merge.",
+  "Run the new novelties flow once, merge it, then the final full loop and the 90-point tour on the final main.",
+  "The list of what is not in build 196 for your OK, the build, and your emulator back on staging."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4784,
+     "titre": "TAK-1102 : les hashtags d'un Take se touchent dans le titre, en gris comme « Traduire », sans pastille dessous",
+     "fusion": "Oct 11, 12:05",
+     "build196": false
+    },
     {
      "pr": 4783,
      "titre": "TAK-1099 : le même écart entre toutes les icônes d'un Take, comme au build 195",
