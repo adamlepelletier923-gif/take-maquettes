@@ -1,21 +1,93 @@
 {
- "majLe": "2026-10-12T07:47+09:00",
- "heure": "07:47",
+ "majLe": "2026-10-12T08:47+09:00",
+ "heure": "08:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 42,
-  "depuisDernierTableau": 42,
-  "enCours": 12,
-  "app": 22,
+  "fusionneesDepuis8Octobre": 54,
+  "depuisDernierTableau": 54,
+  "enCours": 10,
+  "app": 27,
   "siteEtAdmin": 6,
-  "serveur": 7,
-  "outilsEtDocs": 7
+  "serveur": 11,
+  "outilsEtDocs": 10
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Your vote fix and ten other pull requests are merged, and the full test loop on the merged code is green, except one old profile swipe problem that is now fixed."
+  "texte": "Twelve more pull requests are merged, including one wave per tap, the faster mentions and the composer without extra redraws, and main stays green."
  },
  "depuis": [
+  {
+   "heure": "08:43",
+   "pr": 4859,
+   "texte": "Map, built in but switched off: nearby places like schools on the map, plus a general address repair.",
+   "build196": true
+  },
+  {
+   "heure": "08:34",
+   "pr": 4792,
+   "texte": "Largest text size: the « Choose a place manually » button keeps whole words.",
+   "build196": true
+  },
+  {
+   "heure": "08:11",
+   "pr": 4860,
+   "texte": "Test loop: the profile steps scroll from the list, not from the tabs row.",
+   "build196": true
+  },
+  {
+   "heure": "08:11",
+   "pr": 4868,
+   "texte": "Server and web: the unknown-media report is sent at most once per kind and per hour.",
+   "build196": true
+  },
+  {
+   "heure": "08:09",
+   "pr": 4863,
+   "texte": "Avatars: a real human wave, from public motion capture, is measured as the reference for a more natural wave.",
+   "build196": true
+  },
+  {
+   "heure": "08:08",
+   "pr": 4871,
+   "texte": "Tools only: a dependency lock repair for crash reporting.",
+   "build196": true
+  },
+  {
+   "heure": "08:03",
+   "pr": 4864,
+   "texte": "Avatars: one tap plays one single wave, never several.",
+   "build196": true
+  },
+  {
+   "heure": "07:58",
+   "pr": 4856,
+   "texte": "Test only: the rollback script of the latest database change is now tested.",
+   "build196": true
+  },
+  {
+   "heure": "07:57",
+   "pr": 4822,
+   "texte": "Mentions follow every letter, with no extra read when a shorter search already had the full answer.",
+   "build196": true
+  },
+  {
+   "heure": "07:54",
+   "pr": 4854,
+   "texte": "Composer: scrolling a panel no longer redraws the whole composer.",
+   "build196": true
+  },
+  {
+   "heure": "07:48",
+   "pr": 4858,
+   "texte": "Public pages without an account keep their pictures when one media kind is unknown, and the problem is reported.",
+   "build196": true
+  },
+  {
+   "heure": "07:47",
+   "pr": 4827,
+   "texte": "Hick's law point 5: after « @ », mentions offer the people of the thread first, then your inbox. An anonymous author never moves up.",
+   "build196": true
+  },
   {
    "heure": "07:44",
    "pr": 4766,
@@ -308,36 +380,22 @@
    "statut": "measuring",
    "sujet": "Your conversation that freezes 2 s on a cold start",
    "pr": 4850,
-   "ouEnEst": "Fixed and reviewed twice: the conversation screen is prepared while you look at Messages, only once the inbox list is at rest.",
-   "reste": "Release measurement on the Mac bench (running), then merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Mentions in the most likely order, then faster mentions",
-   "pr": 4827,
-   "ouEnEst": "The picture was redone on a single database and checked: a signed commenter comes first, and an anonymous author keeps their usual place. Merging now.",
-   "reste": "Then the faster mentions, right after."
+   "ouEnEst": "Fixed and reviewed twice. The Release build for its measurement is compiling on the Mac, and a new agent plays its test-loop flow on a fresh simulator.",
+   "reste": "Measurement, then merge."
   },
   {
    "statut": "review",
    "sujet": "Profile: a swipe that starts on the tabs no longer gets stuck",
    "pr": 4861,
-   "ouEnEst": "Found by the test loop (it was already there in build 196). Fixed and reviewed, and the test loop's profile steps are hardened too.",
-   "reste": "Measure the profile scroll on a Replicas iPhone, then merge."
+   "ouEnEst": "Fixed and reviewed. A Replicas iPhone measures the profile scroll.",
+   "reste": "Measurement, then merge."
   },
   {
-   "statut": "review",
-   "sujet": "Public pages keep their pictures when one media kind is unknown",
-   "pr": 4858,
-   "ouEnEst": "Reviewed and green. A follow-up limits how often the problem is reported.",
-   "reste": "Merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Composer: no extra renders while typing",
-   "pr": 4854,
-   "ouEnEst": "Fixed and reviewed, then updated with main after a conflict.",
-   "reste": "Control pictures and measurement, then merge."
+   "statut": "measuring",
+   "sujet": "Explore pages going blank during quick changes",
+   "pr": 4801,
+   "ouEnEst": "Fixed and reviewed again: each pager now keeps its own activity, so a glide no longer pays for another pager. A Replicas iPhone measures it.",
+   "reste": "If the cost is gone, merge; otherwise a fluidity call."
   },
   {
    "statut": "review",
@@ -347,18 +405,11 @@
    "reste": "Picture, then merge."
   },
   {
-   "statut": "measuring",
-   "sujet": "Explore pages going blank during quick changes",
-   "pr": 4801,
-   "ouEnEst": "Reviewed: it works, but in bursts about 1 glide in 10 costs 18 ms. A fix to cut that cost is being measured.",
-   "reste": "If the cost drops, merge; otherwise a fluidity call before the build."
-  },
-  {
-   "statut": "loop",
-   "sujet": "Test loop on the merged main",
-   "pr": 0,
-   "ouEnEst": "Done on the merged main: 21 of 22 flows green. The only red one is the profile swipe that already failed in build 196, fixed above. Nothing merged this morning broke what the loop covers.",
-   "reste": "Final loop on the exact build-197 commit."
+   "statut": "review",
+   "sujet": "Test loop: answers the iOS access alert, and opens a thread from a notification",
+   "pr": 4857,
+   "ouEnEst": "Both reviewed. A new agent plays them on a fresh simulator right now.",
+   "reste": "Merge after the run."
   },
   {
    "statut": "measuring",
@@ -371,8 +422,15 @@
    "statut": "claude",
    "sujet": "Avatars, continuously (six Codex)",
    "pr": 0,
-   "ouEnEst": "Six Codex agents work on the avatars: one wave per tap, the full avatar like Instagram, a human wave from a real analysed wave, the wave's proportions, head items and body items. The first pull requests are open.",
-   "reste": "Each one merges once its before/after board is checked."
+   "ouEnEst": "One wave per tap is merged, and the real human wave reference too. Next in review: the shoulder keeps its volume during the wave, the arm follows the human posture, a shirt no longer shows skin at the elbow, and the full avatar like Instagram.",
+   "reste": "Each one merges once its board is checked."
+  },
+  {
+   "statut": "later",
+   "sujet": "Fewer requests (after build 197)",
+   "pr": 0,
+   "ouEnEst": "Ready and reviewed: the Friends check reads 84% less data, and an open Take that stays calm re-reads its counters 2 times a minute instead of 5.",
+   "reste": "Merge right after build 197."
   },
   {
    "statut": "later",
@@ -385,18 +443,17 @@
    "statut": "later",
    "sujet": "Taps less than 1 ms apart get lost",
    "pr": 0,
-   "ouEnEst": "Found by the tap bench: a second tap under 1 ms after the first is lost before the app sees it (native touch handling). No finger does that, and 33 to 300 ms lose nothing. A cold-start re-measurement is running.",
+   "ouEnEst": "Native touch handling; no finger does that. A cold-start re-measurement checks the 65 ms case.",
    "reste": "After build 197, unless the re-measurement shows a real loss."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, five Claude agents (fixes and reviews), audit-hick on the bench (frozen conversation measurement), and six Codex agents on the avatars.",
-  "On Replicas, on Muse Spark through OpenCode: vison (profile scroll, then before/after the merges), harfang (Explore fix), wombat (pictures, then the conversation measurement), belette (pictures, then the tap re-measurement). Claude is still rate-limited on Replicas."
+  "Here on the Mac: me, five Claude agents (fixes and reviews), audit-hick on the bench (frozen conversation measurement), flows-197 on a fresh simulator, and six Codex agents on the avatars.",
+  "On Replicas, on Muse Spark through OpenCode: vison (profile scroll, then before/after), harfang (Explore), wombat (welcome screen picture, then the conversation), belette (pictures, then the tap re-measurement). Six measurers were archived this morning by a ticket I unlinked; a guard now prevents it."
  ],
  "etapes": [
-  "Merge the last reviewed pull requests: mentions, public pages, profile swipe, composer renders.",
-  "Finish the measurements: frozen conversation, before/after the merges, profile scroll, Explore.",
-  "Last picture (welcome screen), then merge.",
+  "Finish the measurements: frozen conversation, profile scroll, Explore, before/after the merges.",
+  "Last picture (welcome screen) and the test-loop flows on a fresh simulator, then merge.",
   "Final regression loop on the exact build-197 commit, the list of what is in and out, and your OK."
  ],
  "fait": [
@@ -404,6 +461,36 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4859,
+     "titre": "TAK-1165: map exploration ambient places on mobile and web plus structured address repair",
+     "fusion": "Oct 12, 08:43",
+     "build196": true
+    },
+    {
+     "pr": 4792,
+     "titre": "TAK-970: au texte maximal, un bouton garde ses mots entiers (« Choisir un lieu manuellement » sur À proximité)",
+     "fusion": "Oct 12, 08:34",
+     "build196": true
+    },
+    {
+     "pr": 4864,
+     "titre": "TAK-1180 : un seul coucou par appui",
+     "fusion": "Oct 12, 08:03",
+     "build196": true
+    },
+    {
+     "pr": 4822,
+     "titre": "TAK-1143 : les mentions suivent chaque lettre, sans lecture quand la réponse d'un préfixe est complète",
+     "fusion": "Oct 12, 07:57",
+     "build196": true
+    },
+    {
+     "pr": 4854,
+     "titre": "TAK-1176 : le défilement d'un panneau ne redessine plus la racine du compositeur",
+     "fusion": "Oct 12, 07:54",
+     "build196": true
+    },
     {
      "pr": 4766,
      "titre": "fix(web,mobile) : TAK-839 un segment vidéo par vidéo dans le fil borné, plus d'annulation tant que la vidéo reste dans la fenêtre ; registre S67c et D1053",
@@ -585,6 +672,30 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4868,
+     "titre": "TAK-1188 : public_contract_broken une fois par kind inconnu et par heure",
+     "fusion": "Oct 12, 08:11",
+     "build196": true
+    },
+    {
+     "pr": 4856,
+     "titre": "TAK-1177 : un test rejoue le script de retour de la migration 0078",
+     "fusion": "Oct 12, 07:58",
+     "build196": true
+    },
+    {
+     "pr": 4858,
+     "titre": "TAK-1175 : un média d'un kind inconnu est sauté et signalé, la carte garde ses autres médias",
+     "fusion": "Oct 12, 07:48",
+     "build196": true
+    },
+    {
+     "pr": 4827,
+     "titre": "TAK-1153 : les mentions proposent d'abord les personnes du fil, puis la boîte de messages",
+     "fusion": "Oct 12, 07:47",
+     "build196": true
+    },
+    {
      "pr": 4855,
      "titre": "TAK-1178 : un lecteur qui vient de voter relit son vote sur la base principale (drapeau éteint par défaut)",
      "fusion": "Oct 12, 07:43",
@@ -665,9 +776,33 @@
    ]
   },
   {
+   "zone": "docs",
+   "nom": "Docs",
+   "prs": [
+    {
+     "pr": 4860,
+     "titre": "TAK-1185 : le flow 23 fait défiler le Profil depuis la liste, pas depuis la rangée d'onglets",
+     "fusion": "Oct 12, 08:11",
+     "build196": true
+    },
+    {
+     "pr": 4863,
+     "titre": "TAK-1182 : la référence d'un vrai salut humain, analysée",
+     "fusion": "Oct 12, 08:09",
+     "build196": true
+    }
+   ]
+  },
+  {
    "zone": "autre",
    "nom": "Other",
    "prs": [
+    {
+     "pr": 4871,
+     "titre": "Repair the Sentry bundler-plugins lock subtree ranges",
+     "fusion": "Oct 12, 08:08",
+     "build196": true
+    },
     {
      "pr": 4837,
      "titre": "TAK-1091: persist the redacted raw projection, never original envelope bytes",
