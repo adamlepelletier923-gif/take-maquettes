@@ -1,21 +1,75 @@
 {
- "majLe": "2026-10-12T03:48+09:00",
- "heure": "03:50",
+ "majLe": "2026-10-12T04:47+09:00",
+ "heure": "04:50",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 10,
-  "depuisDernierTableau": 10,
-  "enCours": 10,
-  "app": 5,
-  "siteEtAdmin": 1,
-  "serveur": 1,
-  "outilsEtDocs": 3
+  "fusionneesDepuis8Octobre": 19,
+  "depuisDernierTableau": 19,
+  "enCours": 8,
+  "app": 10,
+  "siteEtAdmin": 2,
+  "serveur": 3,
+  "outilsEtDocs": 4
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Your choices are ready: the still map panel (video on the map page) and points 1, 2, 6 and 7 of Hick's law (15 options). All seven accepted Hick's law changes are reviewed and wait for their pictures."
+  "texte": "Seven pull requests merged: two Hick's law changes, your private profile point, and four CI and test fixes. Your choices are in: the still map panel is pushed, and the composer's scrolling is approved."
  },
  "depuis": [
+  {
+   "heure": "04:43",
+   "pr": 4769,
+   "texte": "Team only: first step of a performance patrol, a measurement chain marked advisory.",
+   "build196": true
+  },
+  {
+   "heure": "04:41",
+   "pr": 4775,
+   "texte": "Team only: an observability console, with its screens and a browser SDK for the website and the console.",
+   "build196": true
+  },
+  {
+   "heure": "04:10",
+   "pr": 4819,
+   "texte": "Private profile: a locked profile now shows Friends, Takes and Score. Your TestFlight point.",
+   "build196": true
+  },
+  {
+   "heure": "04:08",
+   "pr": 4825,
+   "texte": "Hick's law point 12: in search, « Sort by » stays only on the Top tab; Latest, Photos and Videos keep Date and From.",
+   "build196": true
+  },
+  {
+   "heure": "04:08",
+   "pr": 4824,
+   "texte": "Hick's law point 3: the sign-in sheet has no cross any more, only « Later » and a swipe down.",
+   "build196": true
+  },
+  {
+   "heure": "04:07",
+   "pr": 4832,
+   "texte": "CI: the picture check of pull requests no longer takes a bot's logo for a screenshot; only real pictures count.",
+   "build196": true
+  },
+  {
+   "heure": "04:06",
+   "pr": 4834,
+   "texte": "CI: the app's page names are finally type-checked, so a link to a page that does not exist can no longer pass.",
+   "build196": true
+  },
+  {
+   "heure": "04:04",
+   "pr": 4836,
+   "texte": "Server: checks of curated videos no longer call the video sites in bursts after a delay; they stay 50 ms apart.",
+   "build196": true
+  },
+  {
+   "heure": "04:03",
+   "pr": 4831,
+   "texte": "Test loop: the development seed now writes everything the regression loop needs, so no more manual catch-up after each seed.",
+   "build196": true
+  },
   {
    "heure": "03:23",
    "pr": 4820,
@@ -114,66 +168,52 @@
  "enCours": [
   {
    "statut": "review",
-   "sujet": "Hick's law: the seven changes you accepted",
+   "sujet": "Hick's law: the five changes left of the seven you accepted",
    "pr": 0,
-   "ouEnEst": "One pull request per point you accepted (3, 4, 5, 8, 9, 10 and 12). Each had two reviews; the five defects they found are fixed. Cloud iPhones are taking the before and after pictures: the sign-in sheet without its cross already matches the mock-up.",
-   "reste": "Pictures, then merge them one by one."
+   "ouEnEst": "Two are merged (no cross on the sign-in sheet, sorting only on Top). Left: mentions in the most likely order (two pictures to redo, to prove an anonymous author never moves), the welcome screen, the map's single arrow, and the composer's « No limit » and single sound button. All are reviewed and green; they wait for their pictures.",
+   "reste": "Pictures, then merge."
   },
   {
    "statut": "review",
    "sujet": "Hick's law: your choice for points 1, 2, 6 and 7",
    "pr": 0,
-   "ouEnEst": "The Hick's law page now shows only the four points you want redone, with 15 options from the audit and two agents (one starting from X, one from Instagram, Threads and Apple).",
+   "ouEnEst": "The page shows 15 options for the four points you want redone. You said you will tell me later.",
    "reste": "Your choice, then a Claude builds it."
   },
   {
    "statut": "review",
-   "sujet": "Map search suggestions follow every letter",
+   "sujet": "Map search: suggestions follow every letter, with the still panel",
    "pr": 4818,
-   "ouEnEst": "Suggestions come about three times sooner and follow every letter. The still panel you asked for is filmed side by side and already coded.",
-   "reste": "Your choice on the video, then merge."
+   "ouEnEst": "You chose the still panel: while you type, the panel takes the full height above the keyboard and the field no longer jumps. It is pushed, and the 184 tests of the map pass.",
+   "reste": "Pictures in light and dark, a review, then merge."
   },
   {
    "statut": "review",
-   "sujet": "Private profile shows friends, Takes and score",
-   "pr": 4819,
-   "ouEnEst": "You approved the pictures. Brought up to date with main; a last check of the test that failed only because the branch was behind is running.",
-   "reste": "Last check, then merge."
-  },
-  {
-   "statut": "fixing",
    "sujet": "Mentions appear faster",
    "pr": 4822,
-   "ouEnEst": "No more fade on the suggestion panel, and the list follows every letter. A review found two problems: the CI is still red, and one lookup per letter would use up the people-search quota, so suggestions and profiles could be refused. Fixed in the app, without touching the rate limiter.",
-   "reste": "Fix, review, measure with your network delay, then your OK."
+   "ouEnEst": "Taken over by a Claude on the Mac: no fade on the panel, the list follows every letter, and a lookup is skipped when the previous answer is already complete, so the people-search quota is not used up. Reviewed, CI green.",
+   "reste": "Merge right after the mention ranking."
   },
   {
    "statut": "review",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "The missing test is written and reviewed: it fails when the fix's lines are removed. CI is green.",
+   "ouEnEst": "The missing test is written and reviewed; CI is green.",
    "reste": "Pictures and a measurement on a device, then your OK."
   },
   {
-   "statut": "measuring",
+   "statut": "later",
    "sujet": "Videos ahead in the feed",
    "pr": 4766,
-   "ouEnEst": "Cause found: in bounded mode, rows already drawn lose and get back their pictures and videos about 165 times per scroll, against 0 when it is off. A two-line fix is ready; the clean measurement runs on the Mac until about 4:05.",
-   "reste": "If the extra jank goes away, the fix goes into the pull request."
+   "ouEnEst": "Found: in bounded mode, rows lose and get back their pictures while you scroll; a two-line fix removes it during the gesture. On the Mac's simulator, bounded mode is even 0.6 s smoother. The Release measurement stopped to save the disk.",
+   "reste": "Release measurement later; not in build 197, as you decided."
   },
   {
    "statut": "review",
-   "sujet": "Development seed carries the test loop's data",
-   "pr": 4831,
-   "ouEnEst": "The seed now writes everything the regression loop needs, so no more manual catch-up after each seed, and it clears its accounts' old quizzes and precomputed pages. Two reviews, CI green.",
-   "reste": "Merge after the measurement."
-  },
-  {
-   "statut": "review",
-   "sujet": "CI checks: route names and pictures",
-   "pr": 4834,
-   "ouEnEst": "Found tonight: the CI never checked page names in the app, so a wrong one could pass; the fix is in review. The picture check of pull requests passed on bot logos; now only real pictures count (#4832, ready). Two flaky tests are fixed too, one of which hid real bursts of video-check calls to oEmbed (#4836).",
-   "reste": "CI, reviews, then merge."
+   "sujet": "CI and test fixes",
+   "pr": 4843,
+   "ouEnEst": "Merged tonight: page names checked, real pictures only, the seed, the video checks. In review: a security check that could skip a new secret because of its cache (#4843), six flaky tests fixed at their cause, the seed without cloud storage that broke the Takes tab on the Mac (#4844), and a test-loop step for Back from a notification.",
+   "reste": "Reviews, then merge."
   },
   {
    "statut": "later",
@@ -184,20 +224,50 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, five Claude agents (fixes, reviews, tests), the audit agent measuring the videos, and your emulator on staging.",
-  "On Replicas, on Muse Spark through OpenCode: wombat and fouine (pictures on cloud iPhones), harfang (mentions) and vison (private profile). Claude is still out on Replicas."
+  "Here on the Mac: me, six Claude agents (reviews, test fixes, the seed, mentions), audit-hick taking the composer pictures and measurement, and your emulator on staging.",
+  "On Replicas, on Muse Spark through OpenCode: wombat takes the remaining pictures on a cloud iPhone; fouine is down (its OpenCode answers error 400). Claude is still out on Replicas."
  ],
  "etapes": [
-  "Your choices: the map panel, and Hick's law points 1, 2, 6 and 7.",
-  "Hick's law: pictures, then merge the seven pull requests.",
-  "After the video measurement: merge the ready ones (seed, picture check, private profile).",
-  "Mentions: fix the two review problems, then measure with your network delay."
+  "Pictures, then merge: map search, composer, mentions, welcome screen, map arrow.",
+  "Mentions: merge right after the mention ranking.",
+  "Hick's law points 1, 2, 6 and 7: when you choose.",
+  "Then the full regression loop on the exact build-197 commit, and your OK."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4769,
+     "titre": "s101: Perf Patrol step 0 — trustworthy measurement chain (advisory)",
+     "fusion": "Oct 12, 04:43",
+     "build196": true
+    },
+    {
+     "pr": 4819,
+     "titre": "TAK-1144 : le profil privé verrouillé montre Amis, Takes et Score",
+     "fusion": "Oct 12, 04:10",
+     "build196": true
+    },
+    {
+     "pr": 4825,
+     "titre": "TAK-1155 : la feuille de filtres de la recherche ne trie plus que l'onglet Top (loi de Hick n° 12)",
+     "fusion": "Oct 12, 04:08",
+     "build196": true
+    },
+    {
+     "pr": 4824,
+     "titre": "TAK-1149 : le portail « Connecte-toi » se ferme par « Plus tard », sans croix (loi de Hick n° 3)",
+     "fusion": "Oct 12, 04:08",
+     "build196": true
+    },
+    {
+     "pr": 4834,
+     "titre": "TAK-1157 : le typage du mobile vérifie les noms de route, générés sans Metro",
+     "fusion": "Oct 12, 04:06",
+     "build196": true
+    },
     {
      "pr": 4817,
      "titre": "TAK-1141: thread Back falls back to the DM list with no local previous screen",
@@ -235,6 +305,12 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 4775,
+     "titre": "Observability console screens plus the web and console browser SDK",
+     "fusion": "Oct 12, 04:41",
+     "build196": true
+    },
+    {
      "pr": 4782,
      "titre": "fix(web): force the matrix locale on documents and stop prefetching the welcome identity entries",
      "fusion": "Oct 12, 03:01",
@@ -247,6 +323,18 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4836,
+     "titre": "TAK-1012 : le pacer du recheck des vidéos espace les départs réels, plus des heures prévues",
+     "fusion": "Oct 12, 04:04",
+     "build196": true
+    },
+    {
+     "pr": 4831,
+     "titre": "TAK-1103 : le seed de développement porte les données de la boucle de régression",
+     "fusion": "Oct 12, 04:03",
+     "build196": true
+    },
+    {
      "pr": 4813,
      "titre": "TAK-1059: a curated video is dropped only after two gone answers a day apart",
      "fusion": "Oct 11, 22:38",
@@ -258,6 +346,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4832,
+     "titre": "TAK-1156 : visual-evidence ne prend plus le logo d'un pied de page de bot pour une capture",
+     "fusion": "Oct 12, 04:07",
+     "build196": true
+    },
     {
      "pr": 4820,
      "titre": "TAK-1147: grant the route sweep job issues:write for tracking writes",
