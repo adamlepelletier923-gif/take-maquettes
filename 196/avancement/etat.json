@@ -1,11 +1,11 @@
 {
- "majLe": "2026-10-11T14:48+09:00",
- "heure": "14:55",
+ "majLe": "2026-10-11T15:19+09:00",
+ "heure": "15:20",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 381,
   "depuisDernierTableau": 186,
-  "enCours": 7,
+  "enCours": 8,
   "app": 167,
   "siteEtAdmin": 67,
   "serveur": 72,
@@ -13,7 +13,7 @@
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The map change passed its reviews once one real defect was fixed: the place name could change under your eyes when you arrived on Nearby. The final loop on the last main gave 20 of 22; both misses come from the tests themselves, and they are being made robust."
+  "texte": "A real bug turned up on the Mac's iPhone: Friends could show an old version of a Take, served from iOS's network cache; it has its urgent ticket and an agent before the build. The map change has both reviews clean, and the final loop's two misses were the tests' own, now fixed."
  },
  "depuis": [
   {
@@ -1169,31 +1169,38 @@
  },
  "enCours": [
   {
-   "statut": "review",
+   "statut": "claude",
+   "sujet": "Friends showing an old version of a Take",
+   "pr": 0,
+   "ouEnEst": "Found while fixing a test: on the Mac's iPhone, Friends kept showing a Take as it was hours earlier, without the photo it had since received and with the wrong age, even after relaunching and pulling to refresh. Emptying the phone's caches one by one shows the old copy comes from iOS's own network cache, which keeps an answer our server says must never be kept. For testers, that could mean a Take frozen in Friends, for example a photo removed by moderation still showing. Urgent ticket (TAK-1122); an agent on the Mac has your emulator to find the cause.",
+   "reste": "The fix with a test, proof on the iPhone with the same cache test, two reviews, merge."
+  },
+  {
+   "statut": "measuring",
    "sujet": "Map ready before you arrive, like Snap",
    "pr": 4793,
-   "ouEnEst": "Version D, the change without its rewrite of the map component, is now its own clean PR: launch like main, and the prepared map opens almost twice as fast. The reviews found one real defect: a place with no name yet got its name only once Nearby was on screen, so the title changed under your eyes. castor fixed it (named at rest or at the start of the swipe, never during a scroll), with tests. Green checks.",
-   "reste": "Both reviews of the last commit, fouine's measurement of the final version with pictures of the globe opening, then merge and the full loop again."
-  },
-  {
-   "statut": "loop",
-   "sujet": "Test loop on your emulator",
-   "pr": 0,
-   "ouEnEst": "The loop on the last main: 20 of 22 flows passed. The two misses come from the tests, not the app: the photo-menu flow wants nothing to vote on above the first photo in Friends, but the server rightly lists Léo's French Take first for a French reader; and the cold-start flow's 2-second wait for the launch screen lasted 0.7 s, so its tap landed on the launch screen. Run alone three times, it passed every time.",
-   "reste": "Make both flows robust, then the full loop on the final main."
+   "ouEnEst": "Both reviews are clean on the last commit and the checks are green. The place name now gets ready while you rest on Friends or as you start the swipe, so it never changes under your eyes when you arrive on Nearby. fouine is measuring this version against main on cloud iPhones (about 50 minutes), with pictures of the globe opening in light and dark.",
+   "reste": "Your OK on the globe pictures, then merge and the loop again."
   },
   {
    "statut": "review",
+   "sujet": "The final loop's two misses",
+   "pr": 4794,
+   "ouEnEst": "Both came from the tests, not the app. The photo-menu test is fixed in the bench data: Friends lists your language first, so Léo's French Take now carries a photo. The cold-start test waited 0.5 s instead of 2 s for the launch screen; it now waits on a real clock and passed 3 times out of 3, and the Know me test, which had the same trap, is fixed too. Green checks.",
+   "reste": "One review, merge, then the full loop on the final main."
+  },
+  {
+   "statut": "fixing",
    "sujet": "Two misses found by the 'nothing forgotten' tour",
    "pr": 0,
-   "ouEnEst": "The pin of a removed Take stayed on the map, and 'Know me' ignored Back right after a share sheet closed. Two Replicas machines are fixing them, each with a test that fails first.",
-   "reste": "Two reviews each, merge, then into the final loop."
+   "ouEnEst": "putois's fix for the pin of a removed Take that stayed on the map is in its full checks; renard is measuring its fix for 'Know me' ignoring Back right after a share sheet, on cloud iPhones.",
+   "reste": "A PR each with a test that fails first, two reviews each, merge."
   },
   {
    "statut": "later",
    "sujet": "Taps never lost, even when you spam",
    "pr": 0,
-   "ouEnEst": "Your ask at 14:20: a Replicas machine is building a bench that fires taps less than a millisecond apart on tabs, votes, likes, repost and the ghost, and checks that the screen always ends on your last tap. The screen itself answers within one frame (8 ms at 120 Hz), like X and Instagram.",
+   "ouEnEst": "Your ask at 14:20: a Replicas machine is building a bench that fires taps less than a millisecond apart on tabs, votes, likes, repost and the ghost, and checks that the screen always ends on your last tap; its first run is on the bottom tabs. The screen itself answers within one frame (8 ms at 120 Hz), like X and Instagram.",
    "reste": "Every defect it finds gets its ticket and its fix."
   },
   {
@@ -1219,14 +1226,14 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, your emulator (the final loop is done; now proving the two test fixes), and an agent that wrote the TestFlight notes for build 196.",
-  "On Replicas: castor and fouine on the map, two reviewers, putois and renard on the two forgotten fixes, wombat on the 90-point tour, manul on the tap-spam bench, and four machines on after-build work."
+  "Here on the Mac: me, and an agent with your emulator on the old-version bug.",
+  "On Replicas: fouine measuring the map, putois and renard on the two forgotten fixes, wombat on the 90-point tour, manul on the tap-spam bench, dingo reviewing the loop fix, and machines on after-build work (Explorer, what is heavy at launch)."
  ],
  "etapes": [
-  "Map: both reviews of the last commit, fouine's measurement of the final version, then merge.",
-  "Make the photo-menu and cold-start flows robust, then the full loop and the 90-point tour on the final main.",
-  "Merge the two fixes from the 'nothing forgotten' tour (map pin, Know me Back).",
-  "The list of what is not in build 196 for your OK, the build, and your emulator back on staging."
+  "Fix the old version of a Take in Friends (iOS network cache), with proof on the iPhone.",
+  "Map: fouine's measurement of the final version and the globe pictures for your OK, then merge.",
+  "Merge the loop-test fix and the two forgotten fixes (map pin, Know me Back).",
+  "The full loop and the 90-point tour on the final main, the list of what is not in build 196 for your OK, then the build."
  ],
  "fait": [
   {
