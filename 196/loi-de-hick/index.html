@@ -1,0 +1,1305 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Take et la loi de Hick</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400..600&display=swap">
+<style>
+/* Layout: one reading column of 42rem; figures and the screen table open to 60rem.
+   Proposals are fiches separated by rules, their rank set large beside the title.
+   Colour comes only from the audit's two marks: orange for a problem, green for a change. */
+:root {
+  --paper: #ffffff;
+  --panel: #f1f2f5;
+  --ink: #111114;
+  --ink-soft: #5d5e66;
+  --rule: #e2e3e8;
+  --problem: #b45200;
+  --problem-wash: #fff0e0;
+  --problem-mark: #ff8a00;
+  --change: #0b7a3e;
+  --change-wash: #e2f5e9;
+  --change-mark: #14b85a;
+  --watch: #845d00;
+  --watch-wash: #fbf1d3;
+  --shadow: rgba(17, 17, 20, 0.14);
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+  --font-data: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0e0e10;
+    --panel: #1b1b1f;
+    --ink: #f2f2f5;
+    --ink-soft: #a3a4ad;
+    --rule: #2b2c32;
+    --problem: #ffab5c;
+    --problem-wash: #3b230d;
+    --change: #5ad08d;
+    --change-wash: #11301e;
+    --watch: #f0c75a;
+    --watch-wash: #34290c;
+    --shadow: rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0e0e10;
+  --panel: #1b1b1f;
+  --ink: #f2f2f5;
+  --ink-soft: #a3a4ad;
+  --rule: #2b2c32;
+  --problem: #ffab5c;
+  --problem-wash: #3b230d;
+  --change: #5ad08d;
+  --change-wash: #11301e;
+  --watch: #f0c75a;
+  --watch-wash: #34290c;
+  --shadow: rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding-inline: 1rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+@media (min-width: 40rem) { body { padding-inline: 1.5rem; } }
+img { max-width: 100%; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 0.3rem; }
+p { margin: 0 0 1rem; }
+.col { max-width: 42rem; margin-inline: auto; }
+.wide { max-width: 60rem; margin-inline: auto; }
+.data { font-family: var(--font-data); font-variant-numeric: tabular-nums; font-size: 0.92em; }
+code { font-family: var(--font-data); font-size: 0.84em; background: var(--panel); padding: 0.05em 0.35em; border-radius: 0.3em; overflow-wrap: anywhere; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+h1 { font-weight: 760; font-size: clamp(2.5rem, 1.3rem + 5.2vw, 4.4rem); line-height: 0.98; letter-spacing: -0.03em; margin: 0.5rem 0 0; }
+h2 { font-weight: 680; font-size: clamp(1.65rem, 1.2rem + 1.6vw, 2.3rem); line-height: 1.08; letter-spacing: -0.018em; margin: 0 0 0.9rem; }
+h3 { font-weight: 640; font-size: clamp(1.25rem, 1.08rem + 0.7vw, 1.55rem); line-height: 1.18; letter-spacing: -0.01em; margin: 0; }
+h3.sub { font-size: 1.2rem; margin: 2.25rem 0 0.75rem; }
+h4 { font-family: var(--font-body); font-size: 0.75rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 0.3rem; }
+
+/* Hero */
+.hero { padding-block: 2.5rem 1rem; }
+.kicker { font-family: var(--font-data); font-size: 0.8125rem; color: var(--ink-soft); margin: 0; }
+.formula {
+  font-family: var(--font-data);
+  font-size: clamp(1.15rem, 0.8rem + 1.9vw, 1.9rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 1.4rem 0 1.4rem;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+.formula .n { color: var(--problem); }
+.lede { font-size: 1.1875rem; line-height: 1.5; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem 1.25rem; margin: 1.5rem 0 0; padding-top: 1.1rem; border-top: 1px solid var(--rule); }
+@media (min-width: 40rem) { .facts { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.facts dt { font-size: 0.75rem; color: var(--ink-soft); }
+.facts dd { margin: 0.1rem 0 0; font-size: 0.875rem; font-weight: 600; }
+
+section { padding-block: 2.75rem 0.5rem; }
+.brief { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.7rem; }
+.brief li::marker { color: var(--ink-soft); }
+.legend { margin: 1.5rem 0 0; padding: 0.9rem 1rem; background: var(--panel); border-radius: 0.75rem; font-size: 0.9375rem; }
+.swatch { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 50%; vertical-align: -0.05em; margin-right: 0.3rem; }
+.swatch--problem { background: var(--problem-mark); }
+.swatch--change { background: var(--change-mark); }
+
+/* Summary of the twelve */
+.summary { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.summary li { border-bottom: 1px solid var(--rule); }
+.sum-link { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); column-gap: 0.75rem; row-gap: 0.2rem; padding: 0.8rem 0; color: inherit; text-decoration: none; }
+.sum-num { grid-row: 1 / span 3; font-family: var(--font-display); font-weight: 760; font-size: 1.6rem; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.sum-title { font-weight: 620; line-height: 1.35; }
+.sum-gain { color: var(--ink-soft); font-size: 0.9375rem; }
+.sum-risk { justify-self: start; }
+.sum-link:hover .sum-title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+@media (min-width: 44rem) {
+  .sum-link { grid-template-columns: 2.4rem minmax(0, 1fr) 9.5rem; }
+  .sum-num { grid-row: 1 / span 2; }
+  .sum-risk { grid-column: 3; grid-row: 1; justify-self: end; }
+}
+.chip { display: inline-block; font-size: 0.8125rem; font-weight: 620; line-height: 1.3; padding: 0.15rem 0.6rem; border-radius: 999px; white-space: nowrap; }
+.chip--fix, .risk--high { background: var(--problem-wash); color: var(--problem); }
+.chip--watch, .risk--mid { background: var(--watch-wash); color: var(--watch); }
+.risk--lowmid { background: var(--panel); color: var(--ink-soft); }
+.chip--good, .risk--low { background: var(--change-wash); color: var(--change); }
+.sum-risk { font-size: 0.8125rem; font-weight: 620; padding: 0.12rem 0.6rem; border-radius: 999px; white-space: nowrap; }
+
+/* The law */
+.formulas { display: grid; gap: 0.4rem; margin: 0 0 1rem; padding: 0.9rem 1rem; background: var(--panel); border-radius: 0.75rem; }
+.formulas p { margin: 0; }
+.chart-figure { margin: 1.5rem 0 1.25rem; }
+.chart { display: block; width: 100%; max-width: 34rem; height: auto; margin-inline: auto; overflow: visible; }
+.chart .axis { stroke: var(--ink-soft); stroke-width: 1; }
+.chart .guide { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 3 3; }
+.chart .curve { fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linejoin: round; }
+.chart .dot { fill: var(--problem-mark); stroke: var(--paper); stroke-width: 1.5; }
+.chart text { font-family: var(--font-body); fill: var(--ink-soft); }
+.chart .tick { font-family: var(--font-data); font-size: 10px; }
+.chart .mark { font-size: 10.5px; fill: var(--ink); font-weight: 600; }
+.chart .axis-title { font-size: 10px; }
+.chart-figure figcaption { font-size: 0.9375rem; color: var(--ink-soft); margin-top: 0.6rem; }
+.readers { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 36rem) { .readers { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.readers > div { padding: 1rem; border: 1px solid var(--rule); border-radius: 0.75rem; }
+.readers p { margin: 0; }
+.inverse { margin: 1.5rem 0 1.25rem; padding: 1.1rem 1rem; background: var(--panel); border-radius: 0.75rem; }
+.inverse-figure { font-family: var(--font-data); font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); font-weight: 600; margin: 0 0 0.5rem; }
+.inverse p:last-child { margin: 0; }
+
+/* Screens table */
+.intro { max-width: 42rem; margin-inline: auto; }
+.table-wrap { overflow-x: auto; }
+.moments { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.moments th, .moments td { text-align: left; vertical-align: top; padding: 0.8rem 0.55rem; border-bottom: 1px solid var(--rule); }
+.moments thead th { font-size: 0.75rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); padding-block: 0.5rem; }
+.m-name { font-weight: 400; min-width: 15rem; }
+.m-title { display: block; font-weight: 650; }
+.m-note { display: block; color: var(--ink-soft); font-size: 0.875rem; margin-top: 0.15rem; line-height: 1.45; }
+.m-top { display: block; color: var(--ink-soft); font-size: 0.8125rem; margin-top: 0.3rem; }
+.m-n, .m-bits, .m-time { font-family: var(--font-data); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.m-n { text-align: right; }
+.bar { display: block; position: relative; width: 7rem; height: 0.4rem; margin-top: 0.45rem; background: var(--panel); border-radius: 0.2rem; }
+.bar i { position: absolute; top: 0; bottom: 0; left: 0; background: var(--ink); border-radius: 0.2rem; }
+.bar b { position: absolute; top: -0.22rem; bottom: -0.22rem; width: 2px; margin-left: -1px; background: var(--ink-soft); }
+.m-conf { display: inline-block; margin-left: 0.4rem; font-family: var(--font-data); font-size: 0.75rem; color: var(--ink-soft); white-space: nowrap; }
+.m-props { white-space: nowrap; }
+.table-legend { font-size: 0.875rem; color: var(--ink-soft); margin-top: 0.75rem; }
+@media (max-width: 40rem) {
+  .moments thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .moments, .moments tbody { display: block; }
+  .moments tr { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1.1rem; padding: 0.95rem 0; border-bottom: 1px solid var(--rule); }
+  .moments th, .moments td { display: block; padding: 0; border: 0; }
+  .moments .m-name { flex: 1 1 calc(100% - 8rem); min-width: 0; }
+  .moments .m-verdict { flex: 0 0 auto; text-align: right; }
+  .moments .m-n, .moments .m-bits, .moments .m-time, .moments .m-props { flex: 0 0 auto; text-align: left; }
+  .moments td[data-label]:not(.m-verdict)::before { content: attr(data-label) " "; font-family: var(--font-body); font-size: 0.75rem; color: var(--ink-soft); }
+  .moments .m-time { display: flex; align-items: center; gap: 0.5rem; }
+  .moments .bar { margin-top: 0; width: 5rem; }
+}
+
+/* Proposals */
+.prop { padding-block: 2.75rem 0.5rem; border-top: 1px solid var(--rule); }
+.prop:first-of-type { margin-top: 1.5rem; }
+.prop-head { max-width: 42rem; margin-inline: auto; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.25rem 1rem; align-items: start; }
+.prop-num { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.9rem, 2rem + 3.4vw, 4.4rem); line-height: 0.82; letter-spacing: -0.04em; margin: 0; min-width: 1.15ch; font-variant-numeric: tabular-nums; }
+.prop-where { color: var(--ink-soft); margin: 0.4rem 0 0; font-size: 0.9375rem; }
+.tie { margin: 0.45rem 0 0; font-size: 0.875rem; color: var(--watch); }
+.stats { max-width: 42rem; margin: 1.25rem auto 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem 1.1rem; padding: 0.95rem 1rem; background: var(--panel); border-radius: 0.75rem; }
+@media (min-width: 40rem) { .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.stat dt { font-size: 0.75rem; color: var(--ink-soft); }
+.stat dd { margin: 0.12rem 0 0; font-size: 0.9375rem; font-weight: 600; line-height: 1.35; font-variant-numeric: tabular-nums; }
+
+.pair { max-width: 60rem; margin: 1.75rem auto; }
+.pair--band { max-width: 42rem; }
+.pair--map { max-width: 40rem; }
+.pair-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 0.8rem; }
+.pair-bar figcaption { font-size: 0.9375rem; color: var(--ink-soft); }
+.pair-grid { display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 46rem) { .pair--tall .pair-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.pair--map .pair-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.shot { min-width: 0; }
+.shot-label { display: flex; align-items: center; gap: 0.45rem; margin: 0 0 0.45rem; font-size: 0.8125rem; font-weight: 650; }
+.shot-label::before { content: ""; flex: none; width: 0.7rem; height: 0.7rem; border-radius: 50%; }
+.shot-label--avant::before { background: var(--problem-mark); }
+.shot-label--apres::before { background: var(--change-mark); }
+.shot-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 1rem; }
+.shot-open img { display: block; width: 100%; height: auto; border-radius: 1rem; border: 1px solid var(--rule); background: var(--panel); }
+.seg { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: var(--panel); }
+.seg button { min-height: 2.25rem; padding: 0.3rem 0.95rem; border: 0; border-radius: 999px; background: transparent; color: var(--ink-soft); font-size: 0.8125rem; font-weight: 620; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--paper); color: var(--ink); box-shadow: 0 1px 3px var(--shadow); }
+.seg-note { margin: 0; font-size: 0.8125rem; color: var(--ink-soft); }
+
+.prop-body { max-width: 42rem; margin-inline: auto; display: grid; gap: 1.15rem; }
+.prop-body p { margin: 0; }
+.option { margin-top: 0.9rem; padding: 0.85rem 1rem; border: 1px dashed var(--watch); border-radius: 0.75rem; background: var(--watch-wash); }
+.option h4 { color: var(--watch); }
+.back { margin: 0.25rem 0 0; font-size: 0.875rem; }
+.back a { color: var(--ink-soft); }
+
+/* Good practices */
+.goods { display: grid; gap: 1.75rem 1.25rem; grid-template-columns: minmax(0, 1fr); margin-top: 1.25rem; }
+@media (min-width: 40rem) { .goods { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 60rem) { .goods { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.good { margin: 0; min-width: 0; }
+.good-shots { display: grid; gap: 0.5rem; }
+.good-shots img { display: block; width: 100%; height: auto; border-radius: 0.9rem; border: 1px solid var(--rule); background: var(--panel); }
+.good figcaption { margin-top: 0.7rem; font-size: 0.9375rem; color: var(--ink-soft); }
+.good figcaption strong { display: block; margin-bottom: 0.15rem; color: var(--ink); font-family: var(--font-display); font-size: 1.125rem; font-weight: 650; }
+
+/* Other screens */
+.others-group h3.sub { margin-top: 1.75rem; }
+.others { margin: 0; display: grid; gap: 0; border-top: 1px solid var(--rule); }
+.others > div { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.15rem 1.25rem; padding: 0.7rem 0; border-bottom: 1px solid var(--rule); }
+@media (min-width: 40rem) { .others > div { grid-template-columns: 11rem minmax(0, 1fr); } }
+.others dt { font-weight: 650; }
+.others dd { margin: 0; color: var(--ink-soft); }
+.others .ref { color: var(--ink); white-space: nowrap; }
+
+/* Method */
+.families { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+.families li { padding: 0.9rem 1rem; border: 1px solid var(--rule); border-radius: 0.75rem; }
+.families strong { display: block; font-family: var(--font-display); font-weight: 650; font-size: 1.05rem; }
+.families .type { display: block; font-size: 0.875rem; color: var(--ink-soft); margin: 0.1rem 0 0.4rem; }
+.families p { margin: 0; font-size: 0.9375rem; }
+.effects { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.6rem; }
+.jev { border-collapse: collapse; width: 100%; font-size: 0.875rem; }
+.jev th, .jev td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.jev thead th { font-size: 0.75rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+.jev .dist { display: block; color: var(--ink-soft); font-size: 0.8125rem; }
+.jev th[scope="row"] { white-space: nowrap; }
+.jev th[scope="row"] code { overflow-wrap: normal; }
+.limits { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.6rem; }
+.foot { padding-block: 2.5rem 3rem; margin-top: 2.5rem; border-top: 1px solid var(--rule); font-size: 0.875rem; color: var(--ink-soft); }
+
+/* Full-screen viewer */
+.viewer { padding: 0; border: 0; border-radius: 1.1rem; background: var(--paper); color: var(--ink); width: min(30rem, calc(100vw - 1.5rem)); max-height: calc(100dvh - 1.5rem); overflow: auto; box-shadow: 0 1.5rem 4rem var(--shadow); }
+.viewer::backdrop { background: rgba(8, 8, 10, 0.74); }
+.viewer-bar { position: sticky; top: 0; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.75rem; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.viewer-title { flex: 1 1 100%; margin: 0; font-size: 0.875rem; color: var(--ink-soft); }
+.viewer-close { min-height: 2.25rem; padding: 0.3rem 1rem; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); font-size: 0.8125rem; font-weight: 620; cursor: pointer; }
+.viewer img { display: block; width: auto; max-width: 100%; height: auto; max-height: calc(100dvh - 8.5rem); margin: 0.75rem auto; border-radius: 0.9rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .shot-open img { transition: opacity 0.15s ease; }
+}
+</style>
+</head>
+<body>
+<header class="hero col">
+  <p class="kicker">Audit d’interface · Take pour iPhone · 12 octobre 2026</p>
+  <h1>Take et la loi de Hick</h1>
+  <p class="formula" role="img" aria-label="T environ égal à a plus b fois le logarithme en base 2 de n plus 1">T ≈ a + b · log₂(<span class="n">n</span> + 1)</p>
+  <p class="lede">J’ai refait le tour de l’app en comptant, écran par écran, les choix qu’elle te demande et ce qu’ils coûtent en temps. Quinze moments de décision mesurés, douze propositions dessinées sur de vraies captures et classées par gain. Rien n’est codé : la direction artistique reste ta décision.</p>
+  <dl class="facts">
+    <div><dt>Version</dt><dd>main 3b5c7f23c6, 11/10 22:58</dd></div>
+    <div><dt>Appareil</dt><dd>simulateur iPhone 17 Pro, iOS 26.5</dd></div>
+    <div><dt>Données</dt><dd>graine de développement, comptes de test</dd></div>
+    <div><dt>Jugements</dt><dd>301 réponses typées de Jev</dd></div>
+  </dl>
+</header>
+
+<main>
+  <section class="col" id="bref">
+    <h2>En bref</h2>
+    <ul class="brief">
+      <li>Take respecte déjà la loi là où on passe le plus de temps. On vote en un toucher, le menu « … » d’un Take n’a que deux choix, la feuille de partage range tes amis par conversation récente, et la conversation replie ses outils quand tu écris.</li>
+      <li>Les écarts viennent de trois choses. Des doublons : deux façons de fermer le portail, deux flèches sur la carte, deux réglages de tri. Des options rares affichées en permanence : photo et micro du commentaire, importer un son, cinq filtres d’activité. Et des libellés qui ne disent pas ce qu’ils font : ⓘ qui montre une photo, « Plus d’options » qui ne contient qu’une durée, un globe qui lance une recherche.</li>
+      <li>La loi est logarithmique : retirer deux options sur seize ne fait gagner qu’une vingtaine de millisecondes à un habitué. Les vrais gains sont ailleurs. Pour le nouveau venu, qui lit chaque option. Quand le choix le plus fréquent est en double. Et quand une décision disparaît, comme avec le vote anonyme par défaut.</li>
+      <li>Deux propositions seulement ajoutent un toucher, et sur des actions rares : importer un son (0,8 % des visites du compositeur), et commenter par une photo ou un son sans texte (moins de 3 % des visites du Take ouvert).</li>
+      <li>Le classement, les risques et le verdict de chaque écran viennent de Jev. Les fréquences d’usage sont ses estimations, pas des mesures : à vérifier dans les vraies statistiques avant de trancher.</li>
+    </ul>
+    <p class="legend"><span class="swatch swatch--problem"></span>Orange : ce qui pose problème. <span class="swatch swatch--change"></span>Vert : ce qui change. Chaque image est une vraie capture du simulateur, retouchée à l’échelle. Touche-la pour voir l’écran entier et passer d’aujourd’hui à la proposition.</p>
+    <h3 class="sub" id="sommaire">Les douze propositions, de la plus utile à la moins utile</h3>
+    <ol class="summary">
+      <li><a class="sum-link" href="#p1"><span class="sum-num">1</span><span class="sum-title">Take ouvert : photo et son du commentaire seulement quand on écrit</span><span class="sum-gain">deux icônes de moins au repos</span><span class="sum-risk risk--lowmid">risque faible à moyen</span></a></li>
+      <li><a class="sum-link" href="#p2"><span class="sum-num">2</span><span class="sum-title">Take ouvert : le fantôme du vote sous le vote, comme dans le fil</span><span class="sum-gain">le fantôme du vote reste à sa place</span><span class="sum-risk risk--mid">risque moyen</span></a></li>
+      <li><a class="sum-link" href="#p3"><span class="sum-num">3</span><span class="sum-title">Portail « Connecte-toi » : une seule façon de fermer</span><span class="sum-gain">une seule sortie, 0,44 bit de moins</span><span class="sum-risk risk--lowmid">risque faible à moyen</span></a></li>
+      <li><a class="sum-link" href="#p4"><span class="sum-num">4</span><span class="sum-title">Compositeur : « Sans limite » à la place de « Plus d’options »</span><span class="sum-gain">la durée se lit sans toucher</span><span class="sum-risk risk--low">risque faible</span></a></li>
+      <li><a class="sum-link" href="#p5"><span class="sum-num">5</span><span class="sum-title">Mentions : les plus probables en premier</span><span class="sum-gain">la bonne personne en tête</span><span class="sum-risk risk--lowmid">risque faible à moyen</span></a></li>
+      <li><a class="sum-link" href="#p6"><span class="sum-num">6</span><span class="sum-title">Activité : les filtres seulement quand la liste est longue</span><span class="sum-gain">1,47 bit de moins quand la liste est courte</span><span class="sum-risk risk--mid">risque moyen</span></a></li>
+      <li><a class="sum-link" href="#p7"><span class="sum-num">7</span><span class="sum-title">Vote anonyme par défaut, pour qui le veut</span><span class="sum-gain">une décision de moins par vote</span><span class="sum-risk risk--high">risque moyen à fort</span></a></li>
+      <li><a class="sum-link" href="#p8"><span class="sum-num">8</span><span class="sum-title">Carte : une seule flèche, et « Rechercher ici » quand on a bougé</span><span class="sum-gain">plus de flèche ambiguë</span><span class="sum-risk risk--mid">risque moyen</span></a></li>
+      <li><a class="sum-link" href="#p9"><span class="sum-num">9</span><span class="sum-title">Compositeur : un seul bouton son</span><span class="sum-gain">un bouton Publier plus large</span><span class="sum-risk risk--lowmid">risque faible à moyen</span></a></li>
+      <li><a class="sum-link" href="#p10"><span class="sum-num">10</span><span class="sum-title">Accueil : « Créer un compte » en grand, « Se connecter » en lien</span><span class="sum-gain">le choix fréquent mis en avant</span><span class="sum-risk risk--mid">risque moyen</span></a></li>
+      <li><a class="sum-link" href="#p11"><span class="sum-num">11</span><span class="sum-title">Appui long sur un message : « Supprimer pour tous » mis à part</span><span class="sum-gain">moins d’erreurs définitives</span><span class="sum-risk risk--low">risque faible</span></a></li>
+      <li><a class="sum-link" href="#p12"><span class="sum-num">12</span><span class="sum-title">Recherche : un seul endroit pour l’ordre des résultats</span><span class="sum-gain">un seul réglage de tri</span><span class="sum-risk risk--lowmid">risque faible à moyen</span></a></li>
+    </ol>
+  </section>
+
+  <section class="col" id="loi">
+    <h2>La loi de Hick en une minute</h2>
+    <p>En 1952, William Hick mesure que le temps pour choisir grandit avec le nombre de choix, mais de moins en moins vite : il suit le logarithme du nombre d’options. En 1953, Ray Hyman montre que ce qui compte vraiment, c’est l’incertitude. Si une option est choisie neuf fois sur dix, la décision est rapide, même entourée de beaucoup d’autres.</p>
+    <div class="formulas">
+      <p><span class="data">T ≈ a + b · log₂(n + 1)</span> quand les n options se valent ;</p>
+      <p><span class="data">T ≈ a + b · H</span>, avec <span class="data">H = Σ p · log₂(1/p)</span>, quand chaque option a sa fréquence p.</p>
+    </div>
+    <p>J’ai pris b ≈ 150 ms par bit, la valeur de Card, Moran et Newell (1983), et a ≈ 200 ms, l’ordre d’un temps de réaction simple. Ce sont des ordres de grandeur : seules les différences entre aujourd’hui et la proposition comptent.</p>
+    <figure class="chart-figure">
+    <svg class="chart" viewBox="0 0 400 252" role="img" aria-labelledby="chart-title chart-desc">
+      <title id="chart-title">Temps de décision selon le nombre d’options</title>
+      <desc id="chart-desc">Courbe T = 200 + 150 × log2(n + 1) millisecondes pour n de 0 à 16 options. À 1, 3, 7 et 15 options, le temps vaut 350, 500, 650 et 800 ms : chaque doublement ajoute 150 ms. Le menu « … » (3 choix) est à 500 ms, l’accueil, le portail et l’Activité (7 cibles) à 650 ms, le Take ouvert (16 cibles) à 813 ms.</desc>
+      <line class="axis" x1="44" y1="214" x2="384" y2="214"/>
+      <line class="axis" x1="44" y1="214" x2="44" y2="14"/>
+      <line class="guide" x1="44" y1="169.6" x2="44.0" y2="169.6"/><line class="guide" x1="65.2" y1="214" x2="65.2" y2="136.2"/><line class="guide" x1="44" y1="136.2" x2="65.2" y2="136.2"/><line class="guide" x1="107.8" y1="214" x2="107.8" y2="102.9"/><line class="guide" x1="44" y1="102.9" x2="107.8" y2="102.9"/><line class="guide" x1="192.8" y1="214" x2="192.8" y2="69.6"/><line class="guide" x1="44" y1="69.6" x2="192.8" y2="69.6"/><line class="guide" x1="362.8" y1="214" x2="362.8" y2="36.2"/><line class="guide" x1="44" y1="36.2" x2="362.8" y2="36.2"/>
+      <polyline class="curve" points="44.0,169.6 46.7,163.9 49.3,158.8 52.0,154.2 54.6,150.1 57.3,146.2 59.9,142.6 62.6,139.3 65.2,136.2 67.9,133.3 70.6,130.6 73.2,128.0 75.9,125.5 78.5,123.1 81.2,120.9 83.8,118.8 86.5,116.7 89.2,114.8 91.8,112.9 94.5,111.1 97.1,109.3 99.8,107.6 102.4,106.0 105.1,104.4 107.8,102.9 110.4,101.4 113.1,100.0 115.7,98.6 118.4,97.2 121.0,95.9 123.7,94.6 126.3,93.4 129.0,92.2 131.7,91.0 134.3,89.8 137.0,88.7 139.6,87.6 142.3,86.5 144.9,85.4 147.6,84.4 150.2,83.4 152.9,82.4 155.6,81.4 158.2,80.5 160.9,79.5 163.5,78.6 166.2,77.7 168.8,76.8 171.5,76.0 174.2,75.1 176.8,74.3 179.5,73.5 182.1,72.7 184.8,71.9 187.4,71.1 190.1,70.3 192.8,69.6 195.4,68.8 198.1,68.1 200.7,67.4 203.4,66.6 206.0,65.9 208.7,65.2 211.3,64.6 214.0,63.9 216.7,63.2 219.3,62.6 222.0,61.9 224.6,61.3 227.3,60.7 229.9,60.0 232.6,59.4 235.2,58.8 237.9,58.2 240.6,57.6 243.2,57.1 245.9,56.5 248.5,55.9 251.2,55.3 253.8,54.8 256.5,54.2 259.2,53.7 261.8,53.2 264.5,52.6 267.1,52.1 269.8,51.6 272.4,51.1 275.1,50.6 277.8,50.1 280.4,49.6 283.1,49.1 285.7,48.6 288.4,48.1 291.0,47.6 293.7,47.1 296.3,46.7 299.0,46.2 301.7,45.7 304.3,45.3 307.0,44.8 309.6,44.4 312.3,43.9 314.9,43.5 317.6,43.1 320.2,42.6 322.9,42.2 325.6,41.8 328.2,41.4 330.9,41.0 333.5,40.5 336.2,40.1 338.8,39.7 341.5,39.3 344.2,38.9 346.8,38.5 349.5,38.1 352.1,37.7 354.8,37.4 357.4,37.0 360.1,36.6 362.8,36.2 365.4,35.8 368.1,35.5 370.7,35.1 373.4,34.7 376.0,34.4 378.7,34.0 381.3,33.7 384.0,33.3"/>
+      <circle class="dot" cx="107.8" cy="102.9" r="3.6"/><text class="mark" x="114.8" y="117.9" text-anchor="start">Menu « … »</text><circle class="dot" cx="192.8" cy="69.6" r="3.6"/><text class="mark" x="199.8" y="84.6" text-anchor="start">Accueil, portail, Activité</text><circle class="dot" cx="384.0" cy="33.3" r="3.6"/><text class="mark" x="378.0" y="55.3" text-anchor="end">Take ouvert</text>
+      <text class="tick" x="44.0" y="229" text-anchor="middle">0</text><text class="tick" x="65.2" y="229" text-anchor="middle">1</text><text class="tick" x="107.8" y="229" text-anchor="middle">3</text><text class="tick" x="192.8" y="229" text-anchor="middle">7</text><text class="tick" x="362.8" y="229" text-anchor="middle">15</text>
+      <text class="tick" x="38" y="173.1" text-anchor="end">200</text><text class="tick" x="38" y="139.7" text-anchor="end">350</text><text class="tick" x="38" y="106.4" text-anchor="end">500</text><text class="tick" x="38" y="73.1" text-anchor="end">650</text><text class="tick" x="38" y="39.7" text-anchor="end">800</text>
+      <text class="axis-title" x="38" y="12" text-anchor="end">ms</text>
+      <text class="axis-title" x="384" y="246" text-anchor="end">options visibles (n)</text>
+    </svg>
+      <figcaption>Chaque fois que le nombre de choix double (1, 3, 7, 15), le temps grimpe d’environ 150 ms. Passer de 16 à 14 cibles fait gagner une vingtaine de millisecondes ; passer de 7 à 2, plus de 200.</figcaption>
+    </figure>
+    <h3 class="sub">Deux lecteurs</h3>
+    <div class="readers">
+      <div><h4>L’habitué</h4><p>Il sait où sont les choses. Pour lui, la loi s’applique telle quelle : une option de plus ou de moins pèse peu, sauf si elle touche un choix fréquent.</p></div>
+      <div><h4>Le nouveau venu</h4><p>Il ne sait pas encore. Il lit chaque option, environ un quart de seconde chacune. Pour lui, le coût suit le nombre d’options, pas son logarithme, et un libellé flou coûte cher.</p></div>
+    </div>
+    <div class="inverse">
+      <p class="inverse-figure">+1 toucher ≈ 0,5 à 1 s</p>
+      <p>Cacher une option a un prix. Un toucher de plus, c’est viser, toucher, attendre l’écran suivant et relire : l’équivalent de 3 à 7 bits, plus que tout ce qu’on gagne en retirant des options d’un écran. La règle suivie ici : ne cacher que le rare, et jamais derrière plus d’un toucher.</p>
+    </div>
+    <p>La loi ne dit rien de trois choses que j’ai traitées à part : chercher un nom dans une liste qu’on ne connaît pas (n° 5), retrouver un bouton qui change de place (n° 2) et le prix d’une erreur (n° 11).</p>
+  </section>
+
+  <section class="wide" id="ecrans">
+    <div class="intro">
+      <h2>Les quinze moments de décision</h2>
+      <p>Pour chaque écran : les cibles visibles, comptées dans l’arbre d’accessibilité ; l’incertitude si tout se valait, puis avec les fréquences estimées par Jev ; le temps de décision d’un habitué ; et le verdict de Jev, avec sa probabilité.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="moments">
+        <thead>
+          <tr><th scope="col">Écran</th><th scope="col">Cibles</th><th scope="col">Bits</th><th scope="col">Temps</th><th scope="col">Verdict de Jev</th><th scope="col">Propositions</th></tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Écran d’accueil sans compte</span><span class="m-note">Le bouton le plus voyant, « Se connecter », est le moins choisi par qui vient d’installer.</span><span class="m-top">Le plus fréquent : Continuer avec Apple, 46 %</span></th>
+          <td class="m-n" data-label="Cibles">7</td>
+          <td class="m-bits" data-label="Bits"><span class="data">3,00 → 2,15</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 523 ms</span><span class="bar" aria-hidden="true"><i style="width:61.5%"></i><b style="left:76.5%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--fix">à améliorer</span><span class="m-conf">96 %</span></td>
+          <td class="m-props" data-label="Propositions"><a href="#p10">n° 10</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Portail « Connecte-toi à Take »</span><span class="m-note">Deux sorties identiques pour le choix le plus fréquent : fermer (44 %).</span><span class="m-top">Le plus fréquent : Continuer avec Apple, 29 %</span></th>
+          <td class="m-n" data-label="Cibles">7</td>
+          <td class="m-bits" data-label="Bits"><span class="data">3,00 → 2,36</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 554 ms</span><span class="bar" aria-hidden="true"><i style="width:65.2%"></i><b style="left:76.5%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--fix">à améliorer</span><span class="m-conf">92 %</span></td>
+          <td class="m-props" data-label="Propositions"><a href="#p3">n° 3</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Rangée d’un Take dans le fil Amis</span><span class="m-note">Le vote est la plus grosse cible, et passer ne coûte rien (49 %). L’anonymat se redemande à chaque vote.</span><span class="m-top">Le plus fréquent : Passer au Take suivant, 49 %</span></th>
+          <td class="m-n" data-label="Cibles">10</td>
+          <td class="m-bits" data-label="Bits"><span class="data">3,46 → 2,51</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 576 ms</span><span class="bar" aria-hidden="true"><i style="width:67.7%"></i><b style="left:84.6%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--watch">à surveiller</span><span class="m-conf">63 %</span></td>
+          <td class="m-props" data-label="Propositions"><a href="#p7">n° 7</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Take ouvert</span><span class="m-note">L’écran le plus chargé : deux fantômes aux rôles différents, ⓘ qui montre une photo, photo et micro au repos.</span><span class="m-top">Le plus fréquent : Lire les commentaires, 27 %</span></th>
+          <td class="m-n" data-label="Cibles">16</td>
+          <td class="m-bits" data-label="Bits"><span class="data">4,09 → 3,40</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 710 ms</span><span class="bar" aria-hidden="true"><i style="width:83.5%"></i><b style="left:95.7%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--fix">à améliorer</span><span class="m-conf">99 %</span></td>
+          <td class="m-props" data-label="Propositions"><a href="#p1">n° 1</a>, <a href="#p2">n° 2</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Menu « … » d’un Take d’ami</span><span class="m-note">Masquer, Signaler, fermer : le modèle à suivre.</span><span class="m-top">Le plus fréquent : Fermer sans rien choisir, 77 %</span></th>
+          <td class="m-n" data-label="Cibles">3</td>
+          <td class="m-bits" data-label="Bits"><span class="data">2,00 → 0,92</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 338 ms</span><span class="bar" aria-hidden="true"><i style="width:39.7%"></i><b style="left:58.8%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--good">bon</span><span class="m-conf">57 %</span></td>
+          <td class="m-props" data-label="Propositions">—</td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Feuille de partage</span><span class="m-note">14 cibles, mais le premier ami est choisi une fois sur trois : l’ordre fait le travail.</span><span class="m-top">Le plus fréquent : Envoyer au 1er ami, 33 %</span></th>
+          <td class="m-n" data-label="Cibles">14</td>
+          <td class="m-bits" data-label="Bits"><span class="data">3,91 → 2,96</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 644 ms</span><span class="bar" aria-hidden="true"><i style="width:75.8%"></i><b style="left:92.5%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--watch">à surveiller</span><span class="m-conf">63 %</span></td>
+          <td class="m-props" data-label="Propositions">—</td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Compositeur de Take</span><span class="m-note">« Plus d’options » ne cache qu’une durée ; deux boutons de son ; un panneau coupé par la barre Publier.</span><span class="m-top">Le plus fréquent : Écrire la question, 42 %</span></th>
+          <td class="m-n" data-label="Cibles">9</td>
+          <td class="m-bits" data-label="Bits"><span class="data">3,32 → 2,28</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 542 ms</span><span class="bar" aria-hidden="true"><i style="width:63.7%"></i><b style="left:82.2%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--fix">à améliorer</span><span class="m-conf">81 %</span></td>
+          <td class="m-props" data-label="Propositions"><a href="#p4">n° 4</a>, <a href="#p9">n° 9</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Filtres de la recherche d’Explorer</span><span class="m-note">« Trier par Plus récents » double l’onglet du même nom.</span><span class="m-top">Le plus fréquent : Fermer sans rien changer, 21 %</span></th>
+          <td class="m-n" data-label="Cibles">10</td>
+          <td class="m-bits" data-label="Bits"><span class="data">3,46 → 2,95</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 643 ms</span><span class="bar" aria-hidden="true"><i style="width:75.7%"></i><b style="left:84.6%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--fix">à améliorer</span><span class="m-conf">98 %</span></td>
+          <td class="m-props" data-label="Propositions"><a href="#p12">n° 12</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Carte d’À proximité</span><span class="m-note">Deux flèches identiques pour deux actions, un globe qui ne dit pas qu’il cherche.</span><span class="m-top">Le plus fréquent : Déplacer la carte, 39 %</span></th>
+          <td class="m-n" data-label="Cibles">8</td>
+          <td class="m-bits" data-label="Bits"><span class="data">3,17 → 2,54</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 581 ms</span><span class="bar" aria-hidden="true"><i style="width:68.3%"></i><b style="left:79.5%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--fix">à améliorer</span><span class="m-conf">93 %</span></td>
+          <td class="m-props" data-label="Propositions"><a href="#p8">n° 8</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Conversation privée</span><span class="m-note">Quatre outils au repos, repliés dès qu’on écrit. Les jeux sont rares mais restent discrets.</span><span class="m-top">Le plus fréquent : Écrire un message, 59 %</span></th>
+          <td class="m-n" data-label="Cibles">8</td>
+          <td class="m-bits" data-label="Bits"><span class="data">3,17 → 1,88</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 481 ms</span><span class="bar" aria-hidden="true"><i style="width:56.6%"></i><b style="left:79.5%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--watch">à surveiller</span><span class="m-conf">77 %</span></td>
+          <td class="m-props" data-label="Propositions">—</td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Appui long sur un message</span><span class="m-note">Six actions, comme Instagram ; « Supprimer pour tous » collé à « Modifier ».</span><span class="m-top">Le plus fréquent : Fermer sans rien faire, 47 %</span></th>
+          <td class="m-n" data-label="Cibles">12</td>
+          <td class="m-bits" data-label="Bits"><span class="data">3,70 → 2,68</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 602 ms</span><span class="bar" aria-hidden="true"><i style="width:70.9%"></i><b style="left:88.8%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--fix">à améliorer</span><span class="m-conf">78 %</span></td>
+          <td class="m-props" data-label="Propositions"><a href="#p11">n° 11</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Activité (notifications)</span><span class="m-note">Cinq filtres, même pour deux notifications.</span><span class="m-top">Le plus fréquent : Ouvrir une notification, 45 %</span></th>
+          <td class="m-n" data-label="Cibles">7</td>
+          <td class="m-bits" data-label="Bits"><span class="data">3,00 → 2,17</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 525 ms</span><span class="bar" aria-hidden="true"><i style="width:61.8%"></i><b style="left:76.5%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--fix">à améliorer</span><span class="m-conf">69 %</span></td>
+          <td class="m-props" data-label="Propositions"><a href="#p6">n° 6</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Mon profil</span><span class="m-note">16 cibles, mais 46 % des visites servent à faire défiler ses Takes.</span><span class="m-top">Le plus fréquent : Faire défiler ses Takes, 46 %</span></th>
+          <td class="m-n" data-label="Cibles">16</td>
+          <td class="m-bits" data-label="Bits"><span class="data">4,09 → 2,58</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 588 ms</span><span class="bar" aria-hidden="true"><i style="width:69.1%"></i><b style="left:95.7%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--watch">à surveiller</span><span class="m-conf">70 %</span></td>
+          <td class="m-props" data-label="Propositions">—</td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Profil privé d’un non-ami</span><span class="m-note">Ajouter en ami, Message, et un cadenas qui explique : l’essentiel.</span><span class="m-top">Le plus fréquent : Revenir en arrière, 56 %</span></th>
+          <td class="m-n" data-label="Cibles">4</td>
+          <td class="m-bits" data-label="Bits"><span class="data">2,32 → 1,54</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 431 ms</span><span class="bar" aria-hidden="true"><i style="width:50.7%"></i><b style="left:64.5%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--good">bon</span><span class="m-conf">62 %</span></td>
+          <td class="m-props" data-label="Propositions">—</td>
+        </tr>
+        <tr>
+          <th scope="row" class="m-name"><span class="m-title">Paramètres</span><span class="m-note">Sept lignes simples. C’est ici, dans Confidentialité, qu’irait le vote anonyme par défaut.</span><span class="m-top">Le plus fréquent : Revenir en arrière, 28 %</span></th>
+          <td class="m-n" data-label="Cibles">8</td>
+          <td class="m-bits" data-label="Bits"><span class="data">3,17 → 2,61</span></td>
+          <td class="m-time" data-label="Temps"><span class="data">≈ 592 ms</span><span class="bar" aria-hidden="true"><i style="width:69.6%"></i><b style="left:79.5%"></b></span></td>
+          <td class="m-verdict" data-label="Verdict de Jev"><span class="chip chip--watch">à surveiller</span><span class="m-conf">58 %</span></td>
+          <td class="m-props" data-label="Propositions"><a href="#p7">n° 7</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-legend intro">Bits : si toutes les options se valaient → avec les fréquences. Barre : le temps avec les fréquences ; trait : le temps si tout se valait.</p>
+  </section>
+
+  <section id="propositions">
+    <div class="intro">
+      <h2>Les douze propositions</h2>
+      <p>Classées par Jev, du plus gros gain total au plus petit. Chaque proposition a été opposée à chacune des onze autres, dans les deux ordres, sur une seule question : « laquelle fera gagner le plus de temps de décision, au total, à tous ceux qui utilisent Take ? ». Jev tient compte de la fréquence de l’écran, de l’hésitation retirée et des touchers économisés.</p>
+    </div>
+    
+    <article class="prop" id="p1">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">1</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 1 : </span>Take ouvert : photo et son du commentaire seulement quand on écrit</h3>
+          <p class="prop-where">Take ouvert, à chaque visite</p>
+          <p class="tie">À égalité avec la n° 2 : dans leur duel, Jev a préféré à chaque fois la proposition présentée en second.</p>
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Cibles au repos</dt><dd>16 → 14</dd></div><div class="stat"><dt>Incertitude</dt><dd>3,40 → 3,28 bits</dd></div><div class="stat"><dt>Gain</dt><dd>≈ 18 ms par visite</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>1, pour une photo ou un son sans texte</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>84 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>1,5 sur 3, faible à moyen</dd></div></dl>
+      
+      <figure class="pair pair--band" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le champ de commentaire, en bas du Take ouvert</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/commentaire-light-avant-zoom.webp" data-src-light="img/commentaire-light-avant-zoom.webp" data-full-light="img/commentaire-light-avant.webp" data-src-dark="img/commentaire-dark-avant-zoom.webp" data-full-dark="img/commentaire-dark-avant.webp" width="900" height="299" loading="lazy" decoding="async" alt="Aujourd’hui : le champ « Donne ton avis… » avec trois icônes, fantôme, photo et micro ; photo et micro entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/commentaire-light-apres-zoom.webp" data-src-light="img/commentaire-light-apres-zoom.webp" data-full-light="img/commentaire-light-apres.webp" data-src-dark="img/commentaire-dark-apres-zoom.webp" data-full-dark="img/commentaire-dark-apres.webp" width="900" height="299" loading="lazy" decoding="async" alt="Proposé : le même champ avec le fantôme seul, entouré en vert ; photo et micro apparaissent quand on écrit.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>En bas du Take ouvert, le champ de commentaire montre en permanence trois icônes : le fantôme, la photo et le micro. Joindre une photo ou un son fait partie des choix les plus rares de l’écran : 2 % et 0,9 % des visites selon Jev. Et le Take ouvert est déjà l’écran le plus chargé de l’app, avec 16 cibles.</p></section>
+        <section><h4>Ce que dit Hick</h4><p>Hick compte tout ce que l’œil doit écarter avant d’agir, même ce qu’on ne touche presque jamais. Pour un habitué, deux icônes rares pèsent peu : 3,40 → 3,28 bits. Pour un nouveau venu, ce sont deux pictogrammes de plus à déchiffrer, juste sous le pouce, à chaque Take. Les montrer quand on écrit, c’est de la divulgation progressive : l’option rare apparaît au moment où elle devient probable.</p></section>
+        <section><h4>Proposé</h4><p>Au repos, le champ ne montre que « Donne ton avis… » et le fantôme. La photo et le micro apparaissent dès que tu touches le champ pour écrire.</p></section>
+        <section><h4>À savoir avant de trancher</h4><p>Commenter par une photo ou un son sans écrire demande un toucher de plus : toucher le champ d’abord. C’est moins de 3 % des visites. Ne change ni le vote, ni le fil, ni les compteurs. Contradiction avec tes décisions selon Jev : 10 %.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>Sur X, les outils d’une réponse (image, GIF…) n’apparaissent qu’une fois la réponse ouverte. Take adapte déjà ses outils au moment dans les messages : ils se replient quand on écrit, parce qu’en conversation les médias sont fréquents. Sous un Take, on lit et on vote ; le média est rare, d’où le sens inverse.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+    <article class="prop" id="p2">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">2</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 2 : </span>Take ouvert : le fantôme du vote sous le vote, comme dans le fil</h3>
+          <p class="prop-where">Take ouvert, à chaque visite</p>
+          <p class="tie">À égalité avec la n° 1 : dans leur duel, Jev a préféré à chaque fois la proposition présentée en second.</p>
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Cibles</dt><dd>16 → 16</dd></div><div class="stat"><dt>Incertitude</dt><dd>inchangée</dd></div><div class="stat"><dt>Gain</dt><dd>une cible qui ne bouge plus, une icône qui dit vrai</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>0 (option : Partager en 1 au lieu de 2)</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>83 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>2,0 sur 3, moyen</dd></div></dl>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le haut du Take ouvert</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/take-ouvert-light-avant-zoom.webp" data-src-light="img/take-ouvert-light-avant-zoom.webp" data-full-light="img/take-ouvert-light-avant.webp" data-src-dark="img/take-ouvert-dark-avant-zoom.webp" data-full-dark="img/take-ouvert-dark-avant.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Aujourd’hui : le Take ouvert, avec le fantôme du vote à côté du nom de l’auteur et une icône ⓘ, entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/take-ouvert-light-apres-zoom.webp" data-src-light="img/take-ouvert-light-apres-zoom.webp" data-full-light="img/take-ouvert-light-apres.webp" data-src-dark="img/take-ouvert-dark-apres-zoom.webp" data-full-dark="img/take-ouvert-dark-apres.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Proposé : le fantôme du vote sous les boutons Non et Oui, à gauche, entouré en vert, et une icône photo à la place de ⓘ.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>Dans le fil, le fantôme du vote est sous les boutons de vote, à gauche. Une fois le Take ouvert, il monte sur la ligne de l’auteur, à droite, près d’une icône ⓘ qui ne donne pas d’infos mais montre la photo. En bas, un second fantôme identique sert au commentaire.</p></section>
+        <section><h4>Ce que dit Hick</h4><p>La loi de Hick suppose que tu sais où est chaque option. Quand un même bouton change de place entre le fil et le Take ouvert, l’habitude du fil ne sert plus : il faut le chercher, et chercher coûte plus que choisir. Deux fantômes identiques qui font deux choses différentes (rendre son vote anonyme, commenter en anonyme) obligent à lire leur position pour savoir lequel est lequel. Et une icône ⓘ qui montre une photo crée une hésitation, voire un toucher pour rien.</p></section>
+        <section><h4>Proposé</h4><p>Sous les boutons de vote, à gauche, le fantôme du vote, à la même place que dans le fil. Ni repost ni compteur, comme tu l’as décidé le 24/09. L’icône ⓘ, qui montre la photo, devient une icône photo.</p>
+        <div class="option">
+          <h4>Option à trancher</h4>
+          <p>Ajouter l’avion Partager à côté du fantôme. Partager passerait de 2 touchers à 1, mais sortirait du menu « … », où tu l’as mis en tête le 24/09 : Jev juge que cette option contredit ta décision. La maquette ne la montre pas.</p>
+        </div></section>
+        <section><h4>À savoir avant de trancher</h4><p>Une ligne de plus entre le vote et les commentaires, environ 30 pt : c’est de la direction artistique, donc ta décision. Jev met le risque à moyen, parce qu’une habitude change. Contradiction avec tes décisions selon Jev : 29 % pour la proposition, 85 % pour l’option Partager.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>Sur X, le post ouvert garde les actions du fil à la même place. Instagram aussi : la même rangée sous la photo, dans le fil comme dans la publication ouverte.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+    <article class="prop" id="p3">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">3</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 3 : </span>Portail « Connecte-toi » : une seule façon de fermer</h3>
+          <p class="prop-where">Portail des invités, à chaque action réservée</p>
+          
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Cibles</dt><dd>7 → 6</dd></div><div class="stat"><dt>Incertitude</dt><dd>2,36 → 1,92 bits</dd></div><div class="stat"><dt>Gain</dt><dd>≈ 66 ms à chaque portail</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>0</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>70 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>1,6 sur 3, faible à moyen</dd></div></dl>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le portail qui s’ouvre quand un invité touche un vote</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/portail-light-avant-zoom.webp" data-src-light="img/portail-light-avant-zoom.webp" data-full-light="img/portail-light-avant.webp" data-src-dark="img/portail-dark-avant-zoom.webp" data-full-dark="img/portail-dark-avant.webp" width="900" height="769" loading="lazy" decoding="async" alt="Aujourd’hui : la feuille « Connecte-toi à Take » avec une croix en haut et « Plus tard » en bas, entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/portail-light-apres-zoom.webp" data-src-light="img/portail-light-apres-zoom.webp" data-full-light="img/portail-light-apres.webp" data-src-dark="img/portail-dark-apres-zoom.webp" data-full-dark="img/portail-dark-apres.webp" width="900" height="769" loading="lazy" decoding="async" alt="Proposé : la même feuille sans la croix ; « Plus tard » entouré en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>La feuille « Connecte-toi à Take » a deux sorties qui font la même chose : la croix en haut et « Plus tard » en bas. Or fermer est le choix le plus fréquent ici : 44 % des cas selon Jev, partagés entre deux cibles.</p></section>
+        <section><h4>Ce que dit Hick</h4><p>Deux cibles qui font la même chose comptent comme deux choix, et l’œil doit vérifier qu’elles font bien la même chose avant de toucher. Réunir le choix le plus fréquent en une seule cible fait tomber l’incertitude de 2,36 à 1,92 bits, le deuxième plus gros gain par écran de l’audit. Et un invité voit ce portail plusieurs fois : à chaque vote ou onglet réservé.</p></section>
+        <section><h4>Proposé</h4><p>Garder « Plus tard » et le glissé vers le bas ; retirer la croix.</p></section>
+        <section><h4>À savoir avant de trancher</h4><p>Ne change rien aux trois façons de se connecter. Jev place le risque entre faible et moyen, parce que la croix est une habitude d’iOS. Contradiction avec tes décisions selon Jev : 12 %.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>Apple demande une façon claire de fermer une feuille ; une seule suffit, le glissé vers le bas restant toujours possible.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+    <article class="prop" id="p4">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">4</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 4 : </span>Compositeur : « Sans limite » à la place de « Plus d’options »</h3>
+          <p class="prop-where">Compositeur, à chaque Take écrit</p>
+          
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Cibles</dt><dd>9 → 9</dd></div><div class="stat"><dt>Incertitude</dt><dd>un libellé flou de moins</dd></div><div class="stat"><dt>Gain</dt><dd>voir la durée sans ouvrir : 2 touchers de moins</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>0</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>67 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>1,1 sur 3, faible</dd></div></dl>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Les puces sous la question</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/compositeur-light-avant-zoom.webp" data-src-light="img/compositeur-light-avant-zoom.webp" data-full-light="img/compositeur-light-avant.webp" data-src-dark="img/compositeur-dark-avant-zoom.webp" data-full-dark="img/compositeur-dark-avant.webp" width="900" height="1015" loading="lazy" decoding="async" alt="Aujourd’hui : le compositeur, avec les puces format, destination et « Plus d’options », cette dernière entourée en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/compositeur-light-apres-zoom.webp" data-src-light="img/compositeur-light-apres-zoom.webp" data-full-light="img/compositeur-light-apres.webp" data-src-dark="img/compositeur-dark-apres-zoom.webp" data-full-dark="img/compositeur-dark-apres.webp" width="900" height="1015" loading="lazy" decoding="async" alt="Proposé : la troisième puce affiche « Sans limite », entourée en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le panneau Format, clavier ouvert</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/compositeur-panneau-light-avant-zoom.webp" data-src-light="img/compositeur-panneau-light-avant-zoom.webp" data-full-light="img/compositeur-panneau-light-avant.webp" data-src-dark="img/compositeur-panneau-dark-avant-zoom.webp" data-full-dark="img/compositeur-panneau-dark-avant.webp" width="900" height="806" loading="lazy" decoding="async" alt="Aujourd’hui : panneau Format ouvert ; le choix « Note » est coupé par la barre Publier, entouré en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/compositeur-panneau-light-apres-zoom.webp" data-src-light="img/compositeur-panneau-light-apres-zoom.webp" data-full-light="img/compositeur-panneau-light-apres.webp" data-src-dark="img/compositeur-panneau-dark-apres-zoom.webp" data-full-dark="img/compositeur-panneau-dark-apres.webp" width="900" height="806" loading="lazy" decoding="async" alt="Proposé : le panneau remonte et « Note » est entier, entouré en vert ; la troisième puce affiche « Sans limite ».">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>Sous la question, trois puces : une icône seule pour le format, la destination (ta zone, Amis ou Takes) et « Plus d’options ». Cette dernière ne contient qu’un réglage, la durée, et devient « Sans limite » une fois touchée. Clavier ouvert, la deuxième ligne d’un panneau (« Note », « 3 j », « 7 j ») passe sous la barre Publier tant qu’on ne fait pas défiler.</p></section>
+        <section><h4>Ce que dit Hick</h4><p>Hyman mesure l’incertitude, et un libellé vague en ajoute : « Plus d’options » ne dit ni combien d’options il cache, ni lesquelles. Pour savoir s’il y a quelque chose à régler, il faut l’ouvrir puis le refermer. Afficher la valeur, « Sans limite », remplace une question par une information lue d’un coup d’œil. Le panneau coupé pose le problème inverse : un choix qu’on ne voit pas n’entre même pas dans la décision.</p></section>
+        <section><h4>Proposé</h4><p>Dès l’ouverture, la troisième puce affiche « Sans limite », comme aujourd’hui après le premier toucher. Un panneau ouvert remonte entier au-dessus de la barre Publier.</p></section>
+        <section><h4>À savoir avant de trancher</h4><p>La puce existe déjà dans le code. À vérifier en allemand, où les libellés sont longs, et sur petit écran. Suit ta demande du 04/09 : pas d’expiration par défaut, et la pastille pour choisir les heures. Contradiction avec tes décisions selon Jev : 19 %.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>X écrit son réglage avec sa valeur sous le texte : « Tout le monde peut répondre ». On le lit sans l’ouvrir.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+    <article class="prop" id="p5">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">5</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 5 : </span>Mentions : les plus probables en premier</h3>
+          <p class="prop-where">Messages et commentaires, à chaque « @ »</p>
+          
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Liste</dt><dd>6 à 8 noms visibles</dd></div><div class="stat"><dt>Ordre</dt><dd>alphabétique → le plus probable d’abord</dd></div><div class="stat"><dt>Gain</dt><dd>la bonne personne en 1re ou 2e place au lieu de la 3e ou 4e (estimation)</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>0, souvent un défilement de moins</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>64 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>1,5 sur 3, faible à moyen</dd></div></dl>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>« @ » dans la conversation avec Sofia</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/mentions-light-avant-zoom.webp" data-src-light="img/mentions-light-avant-zoom.webp" data-full-light="img/mentions-light-avant.webp" data-src-dark="img/mentions-dark-avant-zoom.webp" data-full-dark="img/mentions-dark-avant.webp" width="900" height="806" loading="lazy" decoding="async" alt="Aujourd’hui : la liste « @ » par ordre alphabétique, Amir, Emma, Léo, Lucas, Maya, puis Noah coupé ; Amir et Emma entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/mentions-light-apres-zoom.webp" data-src-light="img/mentions-light-apres-zoom.webp" data-full-light="img/mentions-light-apres.webp" data-src-dark="img/mentions-dark-apres-zoom.webp" data-full-dark="img/mentions-dark-apres.webp" width="900" height="806" loading="lazy" decoding="async" alt="Proposé : Noah, Léo, Maya et Lucas en tête, dans l’ordre de la boîte de messages, entourés en vert, puis Amir et Emma.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>« @ » ouvre la liste de tes amis par ordre alphabétique. Dans la conversation avec Sofia, la liste commence par Amir et Emma ; Noah, en tête de ta boîte de messages, arrive 6e, coupé par le bord. Le serveur trie « amis d’abord, puis nom d’utilisateur ».</p></section>
+        <section><h4>Ce que dit Hick</h4><p>Dans une liste qu’on ne connaît pas par cœur, l’œil lit de haut en bas : le temps grandit avec le rang de la personne cherchée, pas avec son logarithme. C’est là que l’ordre compte le plus. Mettre en tête les personnes les plus probables, c’est appliquer Hyman : un choix fréquent doit coûter peu.</p></section>
+        <section><h4>Proposé</h4><p>D’abord les personnes du fil : dans un commentaire, l’auteur du Take quand il n’est pas anonyme et ceux qui ont commenté. Puis celles à qui tu écris le plus, dans l’ordre de ta boîte. Puis le reste, par ordre alphabétique.</p></section>
+        <section><h4>À savoir avant de trancher</h4><p>Le tri se fait côté serveur. Ne montre jamais l’auteur d’un Take anonyme (TAK-540). Contradiction avec tes décisions selon Jev : 9 %.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>Take le fait déjà dans sa feuille de partage : les amis y sont rangés par conversation récente. X et Instagram ne documentent pas l’ordre de leurs mentions.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+    <article class="prop" id="p6">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">6</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 6 : </span>Activité : les filtres seulement quand la liste est longue</h3>
+          <p class="prop-where">Activité, à chaque ouverture</p>
+          
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Cibles</dt><dd>7 → 2 (liste courte)</dd></div><div class="stat"><dt>Incertitude</dt><dd>2,17 → 0,70 bits</dd></div><div class="stat"><dt>Gain</dt><dd>≈ 220 ms à chaque ouverture</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>0</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>60 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>1,8 sur 3, moyen</dd></div></dl>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Activité avec les notifications de la graine</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/notifications-light-avant-zoom.webp" data-src-light="img/notifications-light-avant-zoom.webp" data-full-light="img/notifications-light-avant.webp" data-src-dark="img/notifications-dark-avant-zoom.webp" data-full-dark="img/notifications-dark-avant.webp" width="900" height="672" loading="lazy" decoding="async" alt="Aujourd’hui : Activité avec cinq filtres au-dessus de quelques notifications ; les filtres entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/notifications-light-apres-zoom.webp" data-src-light="img/notifications-light-apres-zoom.webp" data-full-light="img/notifications-light-apres.webp" data-src-dark="img/notifications-dark-apres-zoom.webp" data-full-dark="img/notifications-dark-apres.webp" width="900" height="672" loading="lazy" decoding="async" alt="Proposé : la même liste sans la rangée de filtres.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>Cinq filtres (Tout, Votes, Commentaires, Questions, Amis) s’affichent toujours, même quand il n’y a que deux notifications à lire.</p></section>
+        <section><h4>Ce que dit Hick</h4><p>C’est le plus gros gain en bits de l’audit. Avec deux notifications, l’écran pose sept choix alors qu’il n’y a presque rien à trier. Selon Jev, ouvrir une notification représente 45 % des choix ici et le filtre « Tout » 27 % ; les quatre autres filtres pèsent peu. Sans eux, la décision tombe à 0,70 bit. Ce gain ne vaut que tant que la liste est courte : avec beaucoup de notifications, les filtres servent et restent.</p></section>
+        <section><h4>Proposé</h4><p>Les filtres n’apparaissent que si la liste dépasse un écran, comme la recherche de la feuille de partage, qui n’apparaît que s’il y a beaucoup d’amis.</p></section>
+        <section><h4>À savoir avant de trancher</h4><p>Un écran qui change selon la quantité peut surprendre la première fois. Le seuil, un écran plein, est à régler. Contradiction avec tes décisions selon Jev : 11 %.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>X n’a que trois onglets d’activité (Tout, Vérifiés, Mentions). Take montre déjà la recherche de sa feuille de partage seulement quand il y a beaucoup d’amis.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+    <article class="prop" id="p7">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">7</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 7 : </span>Vote anonyme par défaut, pour qui le veut</h3>
+          <p class="prop-where">Rangée d’un Take et Confidentialité</p>
+          
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Cibles</dt><dd>10 → 10</dd></div><div class="stat"><dt>Décisions</dt><dd>2 → 1 par vote, pour qui vote toujours en anonyme</dd></div><div class="stat"><dt>Gain</dt><dd>un toucher de moins par vote, et plus d’oubli</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>0 ; 1 de moins pour ces personnes</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>52 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>2,3 sur 3, moyen à fort</dd></div></dl>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Confidentialité, dans les paramètres</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/anonyme-light-avant-zoom.webp" data-src-light="img/anonyme-light-avant-zoom.webp" data-full-light="img/anonyme-light-avant.webp" data-src-dark="img/anonyme-dark-avant-zoom.webp" data-full-dark="img/anonyme-dark-avant.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Aujourd’hui : Confidentialité, avec « Qui peut voir tes takes » et « Qui peut t’écrire ».">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/anonyme-light-apres-zoom.webp" data-src-light="img/anonyme-light-apres-zoom.webp" data-full-light="img/anonyme-light-apres.webp" data-src-dark="img/anonyme-dark-apres-zoom.webp" data-full-dark="img/anonyme-dark-apres.webp" width="900" height="1045" loading="lazy" decoding="async" alt="Proposé : un troisième réglage « Tes votes : Anonymes / Publics », entouré en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>L’anonymat se choisit vote par vote, avec le fantôme, avant de voter. Quelqu’un qui vote toujours en anonyme doit y penser à chaque Take. S’il oublie, son vote part en public.</p></section>
+        <section><h4>Ce que dit Hick</h4><p>La façon la plus sûre de réduire un temps de décision, c’est de supprimer la décision. Aujourd’hui, chaque vote pose deux questions à qui vote toujours en anonyme : quoi voter, et penser au fantôme avant. Un réglage par défaut pose la seconde une fois pour toutes. L’écran ne change pas ; c’est la décision répétée qui disparaît, avec l’oubli qui rend un vote public.</p></section>
+        <section><h4>Proposé</h4><p>Dans Confidentialité, une ligne « Tes votes : Anonymes / Publics », sur le modèle des deux réglages au-dessus. Le fantôme reste sous chaque Take pour faire l’inverse au cas par cas.</p></section>
+        <section><h4>À savoir avant de trancher</h4><p>C’est un choix de produit, à trancher par toi : plus de votes anonymes, donc des résultats moins signés. Jev le juge le plus risqué des douze. Le fantôme et la brume de l’anonymat ne changent pas. Contradiction avec tes décisions selon Jev : 12 %.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>Sur X, les sondages sont toujours anonymes : aucune décision. Sur Instagram, l’auteur d’un sondage en story voit qui a voté : aucune décision non plus. Take laisse le choix ; un réglage par défaut évite de le reposer à chaque vote.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+    <article class="prop" id="p8">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">8</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 8 : </span>Carte : une seule flèche, et « Rechercher ici » quand on a bougé</h3>
+          <p class="prop-where">Carte d’À proximité, à chaque ouverture</p>
+          
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Cibles</dt><dd>8 → 7</dd></div><div class="stat"><dt>Incertitude</dt><dd>2,54 → 2,38 bits</dd></div><div class="stat"><dt>Gain</dt><dd>≈ 23 ms, et plus de toucher sur la mauvaise flèche</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>0</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>44 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>2,1 sur 3, moyen</dd></div></dl>
+      
+      <figure class="pair pair--map" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>La carte d’À proximité, en entier</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/carte-light-avant-zoom.webp" data-src-light="img/carte-light-avant-zoom.webp" data-full-light="img/carte-light-avant.webp" data-src-dark="img/carte-dark-avant-zoom.webp" data-full-dark="img/carte-dark-avant.webp" width="700" height="1277" loading="lazy" decoding="async" alt="Aujourd’hui : la carte avec « Autour de toi » en haut et, dans la barre de recherche, un globe et une flèche ; les trois entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/carte-light-apres-zoom.webp" data-src-light="img/carte-light-apres-zoom.webp" data-full-light="img/carte-light-apres.webp" data-src-dark="img/carte-dark-apres-zoom.webp" data-full-dark="img/carte-dark-apres.webp" width="700" height="1277" loading="lazy" decoding="async" alt="Proposé : « Autour de toi » avec une icône de liste, une pastille « Rechercher ici » sous les onglets et une seule flèche dans la barre ; changements entourés en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>Trois boutons pour se repérer : « Autour de toi » en haut, avec une flèche, puis un globe et une flèche dans la barre de recherche. Les deux flèches font deux choses différentes : revenir à la liste, et recentrer la carte. Le globe lance une recherche dans la zone affichée, ce que son icône ne dit pas.</p></section>
+        <section><h4>Ce que dit Hick</h4><p>Deux icônes identiques qui font deux choses différentes, c’est le pire cas : l’icône ne permet pas de choisir, il faut se souvenir de sa position, et un toucher sur la mauvaise coûte un aller-retour. En montrant « Rechercher ici » seulement quand la carte a bougé, l’option apparaît au moment où elle devient utile.</p></section>
+        <section><h4>Proposé</h4><p>« Autour de toi » prend une icône de liste. La barre ne garde que la flèche, pour revenir à sa position. Une pastille « Rechercher ici » apparaît au-dessus de la carte, seulement quand on l’a déplacée.</p></section>
+        <section><h4>À savoir avant de trancher</h4><p>TAK-1145 change la recherche de la carte en ce moment : à faire après, ou dedans. Va dans le sens du batch 17, où la recherche reste le geste principal. Contradiction avec tes décisions selon Jev : 12 %.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>X n’a pas de carte. Google Maps affiche « Rechercher dans cette zone » après un déplacement, et Plans d’Apple montre « Rechercher ici » quand il ne rafraîchit pas tout seul.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+    <article class="prop" id="p9">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">9</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 9 : </span>Compositeur : un seul bouton son</h3>
+          <p class="prop-where">Compositeur, à chaque Take écrit</p>
+          
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Cibles</dt><dd>9 → 8</dd></div><div class="stat"><dt>Incertitude</dt><dd>2,28 → 2,23 bits</dd></div><div class="stat"><dt>Gain</dt><dd>≈ 8 ms, et un Publier plus large</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>importer un son passe en appui long (0,8 % des visites)</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>29 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>1,5 sur 3, faible à moyen</dd></div></dl>
+      
+      <figure class="pair pair--band" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>La barre du bas du compositeur</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/son-light-avant-zoom.webp" data-src-light="img/son-light-avant-zoom.webp" data-full-light="img/son-light-avant.webp" data-src-dark="img/son-dark-avant-zoom.webp" data-full-dark="img/son-dark-avant.webp" width="900" height="209" loading="lazy" decoding="async" alt="Aujourd’hui : trois icônes, photos, micro et importer un son, puis Publier ; « Importer un son » entouré en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/son-light-apres-zoom.webp" data-src-light="img/son-light-apres-zoom.webp" data-full-light="img/son-light-apres.webp" data-src-dark="img/son-dark-apres-zoom.webp" data-full-dark="img/son-dark-apres.webp" width="900" height="209" loading="lazy" decoding="async" alt="Proposé : photos et micro, puis un bouton Publier plus large ; le micro, qui garde l’import en appui long, entouré en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>En bas du compositeur, trois icônes de même taille : photos, enregistrer un son, importer un son. Importer un fichier son est le choix le plus rare de l’écran selon Jev (0,8 %), mais il a la même place que les photos.</p></section>
+        <section><h4>Ce que dit Hick</h4><p>Retirer une option rare fait gagner peu en bits : 2,28 → 2,23. Le gain est surtout dans la place : le bouton Publier, deuxième choix le plus fréquent (28 %), s’élargit et se trouve plus vite. C’est la seule proposition qui cache une action derrière un geste, et elle ne le fait que pour l’action la plus rare de l’écran.</p></section>
+        <section><h4>Proposé</h4><p>Le micro enregistre au toucher, comme aujourd’hui. « Importer un son » passe dans un appui long sur le micro.</p></section>
+        <section><h4>À savoir avant de trancher</h4><p>Un appui long se découvre mal. Il se justifie ici parce qu’importer un fichier son est très rare ; à ne pas reproduire pour une action courante. Contradiction avec tes décisions selon Jev : 10 %.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>Ni X ni Instagram ne proposent d’importer un fichier son dans leur compositeur : le besoin est rare.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+    <article class="prop" id="p10">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">10</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 10 : </span>Accueil : « Créer un compte » en grand, « Se connecter » en lien</h3>
+          <p class="prop-where">Accueil sans compte, une fois par nouvel utilisateur</p>
+          
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Cibles</dt><dd>7 → 7</dd></div><div class="stat"><dt>Incertitude</dt><dd>inchangée</dd></div><div class="stat"><dt>Gain</dt><dd>le plus voyant devient un choix fréquent : 16 % au lieu de 5 %</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>0</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>20 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>1,9 sur 3, moyen</dd></div></dl>
+      
+      <figure class="pair pair--tall" data-variants="light">
+        <div class="pair-bar">
+          <figcaption>Le bas de l’écran d’accueil</figcaption>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/accueil-avant-zoom.webp" data-src-light="img/accueil-avant-zoom.webp" data-full-light="img/accueil-avant.webp" width="900" height="687" loading="lazy" decoding="async" alt="Aujourd’hui : Google et Apple, « Se connecter » en blanc plein et « S’inscrire » ; ces deux boutons entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/accueil-apres-zoom.webp" data-src-light="img/accueil-apres-zoom.webp" data-full-light="img/accueil-apres.webp" width="900" height="687" loading="lazy" decoding="async" alt="Proposé : « Créer un compte » en blanc plein, « Découvrir sans compte », puis « Déjà un compte ? Se connecter » ; changements entourés en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>Quatre boutons et un lien : Google et Apple côte à côte, puis « Se connecter » en blanc plein, « S’inscrire » en gris, et « Découvrir sans compte ». Le plus voyant est « Se connecter », alors que les gens qui voient cet écran viennent surtout d’installer l’app : selon Jev, ils choisissent « Se connecter » dans 5 % des cas, contre 16 % pour « S’inscrire ». Les deux boutons mènent au même écran e-mail, seul le titre change.</p></section>
+        <section><h4>Ce que dit Hick</h4><p>Le nombre de choix ne change pas, l’ordre de lecture si. Hyman donne à chaque option un coût qui dépend de sa probabilité, log₂(1/p). Un nouveau venu, qui lit tout, commence par le plus voyant. Mettre en avant « Créer un compte » aligne la hiérarchie visuelle sur ce que les gens viennent faire.</p></section>
+        <section><h4>Proposé</h4><p>Garder Google et Apple en haut. En dessous, un seul bouton plein « Créer un compte ». Plus bas, « Découvrir sans compte », puis une ligne « Déjà un compte ? Se connecter ». Les deux mènent toujours au même écran e-mail.</p></section>
+        <section><h4>À savoir avant de trancher</h4><p>Garde un bouton d’inscription visible, la raison de ta décision du 26/09. Un ancien utilisateur doit lire la petite ligne, comme sur X depuis des années. L’accueil est sombre dans les deux thèmes : une seule maquette. Contradiction avec tes décisions selon Jev : 19 %.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>X : Google et Apple en haut, un grand bouton « Créer un compte », puis en petit « Vous avez déjà un compte ? Se connecter ». Instagram fait l’inverse, parce que son premier écran est un formulaire de connexion avec mot de passe ; Take n’a pas de mot de passe.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+    <article class="prop" id="p11">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">11</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 11 : </span>Appui long sur un message : « Supprimer pour tous » mis à part</h3>
+          <p class="prop-where">Appui long sur un de tes messages</p>
+          
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Cibles</dt><dd>11 → 11</dd></div><div class="stat"><dt>Incertitude</dt><dd>inchangée</dd></div><div class="stat"><dt>Gain</dt><dd>moins de « Supprimer pour tous » par erreur</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>0</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>19 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>1,0 sur 3, faible</dd></div></dl>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>Le menu d’un message, après un appui long</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/message-light-avant-zoom.webp" data-src-light="img/message-light-avant-zoom.webp" data-full-light="img/message-light-avant.webp" data-src-dark="img/message-dark-avant-zoom.webp" data-full-dark="img/message-dark-avant.webp" width="700" height="898" loading="lazy" decoding="async" alt="Aujourd’hui : « Modifier » et « Supprimer pour tous » collés, entourés en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/message-light-apres-zoom.webp" data-src-light="img/message-light-apres-zoom.webp" data-full-light="img/message-light-apres.webp" data-src-dark="img/message-dark-apres-zoom.webp" data-full-dark="img/message-dark-apres.webp" width="700" height="898" loading="lazy" decoding="async" alt="Proposé : un espace avant « Supprimer pour tous », entouré en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>Le menu a six actions, à peu près comme celui d’Instagram. Mais « Supprimer pour tous », définitif, est collé sous « Modifier », sans espace : le doigt qui vise « Modifier » peut glisser d’une ligne.</p></section>
+        <section><h4>Ce que dit Hick</h4><p>Ici, Hick ne demande rien de retirer. Le problème est le prix d’une erreur. Quand deux cibles sont collées, la plus dangereuse doit être mise à part. Un espace ne change pas les bits ; il change ce que coûte un geste raté.</p></section>
+        <section><h4>Proposé</h4><p>Un trait ou un espace avant « Supprimer pour tous », qui reste en bas et en rouge.</p></section>
+        <section><h4>À savoir avant de trancher</h4><p>Aucune action retirée. Contradiction avec tes décisions selon Jev : 13 %.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>Les menus d’iOS mettent l’action destructive en rouge, à part des actions courantes ; Material fait de même.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+    <article class="prop" id="p12">
+      <header class="prop-head">
+        <p class="prop-num" aria-hidden="true">12</p>
+        <div class="prop-titles">
+          <h3><span class="visually-hidden">Proposition 12 : </span>Recherche : un seul endroit pour l’ordre des résultats</h3>
+          <p class="prop-where">Filtres de la recherche d’Explorer</p>
+          
+        </div>
+      </header>
+      <dl class="stats"><div class="stat"><dt>Choix</dt><dd>10 → 9</dd></div><div class="stat"><dt>Incertitude</dt><dd>2,95 → 2,78 bits</dd></div><div class="stat"><dt>Gain</dt><dd>≈ 26 ms, et plus de réglages contradictoires</dd></div><div class="stat"><dt>Touchers en plus</dt><dd>0</dd></div><div class="stat"><dt>Duels gagnés (Jev)</dt><dd>7 %</dd></div><div class="stat"><dt>Risque (Jev)</dt><dd>1,3 sur 3, faible à moyen</dd></div></dl>
+      
+      <figure class="pair pair--tall" data-variants="light dark">
+        <div class="pair-bar">
+          <figcaption>La feuille de filtres d’une recherche</figcaption>
+        <div class="seg" role="group" aria-label="Thème des captures">
+          <button type="button" data-theme-choice="light" aria-pressed="true">Clair</button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button>
+        </div>
+        </div>
+        <div class="pair-grid">
+        <div class="shot">
+          <p class="shot-label shot-label--avant">Aujourd’hui</p>
+          <button class="shot-open" type="button" data-side="avant" aria-label="Aujourd’hui : voir l’écran entier">
+            <img src="img/filtres-light-avant-zoom.webp" data-src-light="img/filtres-light-avant-zoom.webp" data-full-light="img/filtres-light-avant.webp" data-src-dark="img/filtres-dark-avant-zoom.webp" data-full-dark="img/filtres-dark-avant.webp" width="900" height="776" loading="lazy" decoding="async" alt="Aujourd’hui : « Trier par : Pertinence, Plus récents, Plus votés » ; « Plus récents » entouré en orange.">
+          </button>
+        </div>
+        <div class="shot">
+          <p class="shot-label shot-label--apres">Proposé</p>
+          <button class="shot-open" type="button" data-side="apres" aria-label="Proposé : voir l’écran entier">
+            <img src="img/filtres-light-apres-zoom.webp" data-src-light="img/filtres-light-apres-zoom.webp" data-full-light="img/filtres-light-apres.webp" data-src-dark="img/filtres-dark-apres-zoom.webp" data-full-dark="img/filtres-dark-apres.webp" width="900" height="776" loading="lazy" decoding="async" alt="Proposé : « Trier par : Pertinence, Plus votés », entouré en vert.">
+          </button>
+        </div>
+        </div>
+      </figure>
+      <div class="prop-body">
+        <section><h4>Le problème</h4><p>Les résultats ont déjà des onglets Top et Plus récents. La feuille de filtres redemande « Trier par : Pertinence, Plus récents, Plus votés ». On peut donc être sur l’onglet Plus récents avec « Trier par pertinence » : deux réglages se contredisent.</p></section>
+        <section><h4>Ce que dit Hick</h4><p>Deux réglages qui décident la même chose, c’est un choix de trop, et un choix qui peut contredire l’autre. Retirer le doublon fait passer la feuille de 10 à 9 choix. Peu de gens ouvrent cette feuille : c’est pour ça qu’elle arrive dernière au classement.</p></section>
+        <section><h4>Proposé</h4><p>L’ordre se choisit par les onglets. Dans la feuille, « Trier par » n’apparaît que sur Top, avec deux choix : Pertinence et Plus votés. « Date » et « De » ne bougent pas.</p></section>
+        <section><h4>À savoir avant de trancher</h4><p>Les tests de la feuille sont à adapter. Ne touche ni Explorer ni ses thèmes. Contradiction avec tes décisions selon Jev : 10 %.</p></section>
+        <section><h4>Chez X et Instagram</h4><p>X : l’ordre se choisit par les onglets Top et Récent. Ses filtres ne portent que sur les personnes (tout le monde ou ceux que tu suis) et le lieu.</p></section>
+        <p class="back"><a href="#sommaire">Retour au sommaire</a></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="wide" id="bien">
+    <div class="intro">
+      <h2>Ce que Take fait déjà bien</h2>
+      <p>Là où on passe le plus de temps, l’app respecte déjà la loi. Ces écrans servent de modèles aux propositions.</p>
+    </div>
+    <div class="goods">
+      <figure class="good" data-variants="light dark" data-follow>
+        <div class="good-shots" role="img" aria-label="Une rangée du fil Amis : la question, la photo, les boutons Non et Oui, puis quatre petites icônes grises."><img src="img/bien-rangee-light.webp" data-src-light="img/bien-rangee-light.webp" data-src-dark="img/bien-rangee-dark.webp" width="600" height="582" loading="lazy" decoding="async" alt=""></div>
+        <figcaption><strong>Le vote d’abord</strong> Dans le fil, Non et Oui sont les plus grosses cibles, à un toucher. Passer au Take suivant ne coûte rien : c’est le choix le plus fréquent, 49 % selon Jev.</figcaption>
+      </figure>
+      <figure class="good" data-variants="light dark" data-follow>
+        <div class="good-shots" role="img" aria-label="Le menu « … » d’un Take d’ami, avec Masquer ce take et Signaler."><img src="img/bien-menu-light.webp" data-src-light="img/bien-menu-light.webp" data-src-dark="img/bien-menu-dark.webp" width="600" height="260" loading="lazy" decoding="async" alt=""></div>
+        <figcaption><strong>Des menus courts</strong> Le menu « … » d’un Take d’ami : Masquer et Signaler, rien d’autre. Avec les fréquences, 0,92 bit.</figcaption>
+      </figure>
+      <figure class="good" data-variants="light dark" data-follow>
+        <div class="good-shots" role="img" aria-label="La feuille de partage : une grille d’amis puis une rangée d’apps."><img src="img/bien-partage-light.webp" data-src-light="img/bien-partage-light.webp" data-src-dark="img/bien-partage-dark.webp" width="600" height="563" loading="lazy" decoding="async" alt=""></div>
+        <figcaption><strong>Le bon ordre</strong> La feuille de partage range tes amis par conversation récente : le premier est choisi une fois sur trois. Sa recherche n’apparaît que s’il y a beaucoup d’amis.</figcaption>
+      </figure>
+      <figure class="good" data-variants="light dark" data-follow>
+        <div class="good-shots" role="img" aria-label="En haut, le champ de message au repos avec quatre outils ; en bas, pendant qu’on écrit, seulement les emojis et l’envoi."><img src="img/bien-conversation-repos-light.webp" data-src-light="img/bien-conversation-repos-light.webp" data-src-dark="img/bien-conversation-repos-dark.webp" width="600" height="119" loading="lazy" decoding="async" alt=""><img src="img/bien-conversation-ecrit-light.webp" data-src-light="img/bien-conversation-ecrit-light.webp" data-src-dark="img/bien-conversation-ecrit-dark.webp" width="600" height="114" loading="lazy" decoding="async" alt=""></div>
+        <figcaption><strong>Les outils au bon moment</strong> Dans une conversation, l’appareil photo, les jeux, les GIF et le micro sont là au repos. Dès que tu écris, ils se replient pour laisser la place au texte et à l’envoi.</figcaption>
+      </figure>
+      <figure class="good" data-variants="light dark" data-follow>
+        <div class="good-shots" role="img" aria-label="Le profil privé d’Amir Haddad : Ajouter en ami, Message, et Compte privé avec un cadenas."><img src="img/bien-prive-light.webp" data-src-light="img/bien-prive-light.webp" data-src-dark="img/bien-prive-dark.webp" width="600" height="572" loading="lazy" decoding="async" alt=""></div>
+        <figcaption><strong>L’essentiel</strong> Le profil privé d’un non-ami : Ajouter en ami, Message, et un cadenas qui explique pourquoi on ne voit rien. Quatre cibles.</figcaption>
+      </figure>
+      <figure class="good" data-variants="light dark" data-follow>
+        <div class="good-shots" role="img" aria-label="La page Paramètres : Compte, Confidentialité et sécurité, Notifications, Ton activité, Apparence, À propos, Se déconnecter."><img src="img/bien-reglages-light.webp" data-src-light="img/bien-reglages-light.webp" data-src-dark="img/bien-reglages-dark.webp" width="600" height="527" loading="lazy" decoding="async" alt=""></div>
+        <figcaption><strong>Des paramètres courts</strong> Sept lignes simples, chacune avec son icône et un libellé clair. Le choix le plus fréquent, revenir, ne demande rien.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="col" id="autres">
+    <h2>Les autres écrans parcourus</h2>
+    <p>Le tour a aussi couvert ces écrans. Ils ne posent pas de problème de choix à part ceux déjà proposés, auxquels ils renvoient.</p>
+      <div class="others-group">
+        <h3 class="sub">Accueil et lieux</h3>
+        <dl class="others"><div><dt>Fil Takes</dt><dd>Les Takes à choix montrent leurs options en liste pleine largeur, faciles à viser. La rangée suit le même ordre que dans Amis.</dd></div><div><dt>À proximité</dt><dd>L’en-tête « Paris · 3 takes dans les 2 km » ouvre « Changer de lieu » : ma position, une ville, le rayon, puis « Appliquer ». Quatre choix clairs ; « Appliquer » coûte un toucher, justifié parce que le rayon se règle au doigt.</dd></div><div><dt>Recherche de lieu</dt><dd>Un champ, puis le rayon, le nombre de Takes et le tri. La recherche reste le geste principal. <a class="ref" href="#p8">n° 8</a></dd></div><div><dt>Sans compte</dt><dd>Amis montre les trois façons de se connecter sans feuille à fermer ; À proximité demande la position, avec « Choisir un lieu manuellement » en second. Une action principale en noir plein à chaque fois. <a class="ref" href="#p3">n° 3</a></dd></div><div><dt>Écran e-mail</dt><dd>Un champ et « Recevoir le code » : une seule décision par écran.</dd></div></dl>
+      </div>
+      <div class="others-group">
+        <h3 class="sub">Take ouvert</h3>
+        <dl class="others"><div><dt>Photo du Take</dt><dd>Plein écran, la question par-dessus : aucun choix en plus.</dd></div><div><dt>Menu « … »</dt><dd>Partager, Masquer, Signaler : trois choix, l’action la plus lourde en rouge et en dernier. <a class="ref" href="#p2">n° 2</a></dd></div><div><dt>Appui long sur un commentaire</dt><dd>Partager, Signaler, Bloquer, même rangement.</dd></div><div><dt>Écrire un commentaire</dt><dd>Le clavier s’ouvre sur « Donne ton avis… » avec le fantôme, la photo et le micro. <a class="ref" href="#p1">n° 1</a></dd></div></dl>
+      </div>
+      <div class="others-group">
+        <h3 class="sub">Explorer</h3>
+        <dl class="others"><div><dt>Accueil d’Explorer</dt><dd>Recherche, thèmes en onglets, le Take n° 1 en grand puis la liste numérotée. Après un vote, le n° 1 montre ses résultats en barres.</dd></div><div><dt>Recherche</dt><dd>Le champ et « Annuler », puis cinq onglets de résultats et un bouton de filtres. <a class="ref" href="#p12">n° 12</a></dd></div></dl>
+      </div>
+      <div class="others-group">
+        <h3 class="sub">Messages</h3>
+        <dl class="others"><div><dt>Boîte</dt><dd>Une recherche, puis les conversations. L’appui long propose Épingler, Archiver, Supprimer, la suppression en rouge et en dernier.</dd></div><div><dt>Mentions</dt><dd>La liste « @ » suit l’ordre alphabétique. <a class="ref" href="#p5">n° 5</a></dd></div></dl>
+      </div>
+      <div class="others-group">
+        <h3 class="sub">Profil et réglages</h3>
+        <dl class="others"><div><dt>Profil d’un ami</dt><dd>Amis et Message, puis Takes, Questions et Reposts. L’onglet Questions n’a qu’un champ « Demande à … » et l’option Anonyme à côté.</dd></div><div><dt>Modifier le profil</dt><dd>Deux boutons pour l’image, puis six lignes : rien à retirer.</dd></div><div><dt>Réglages des notifications</dt><dd>Un interrupteur général, puis deux groupes, « Ce que tu reçois » et « Moins urgent » : le rare est déjà mis à part.</dd></div><div><dt>Se déconnecter</dt><dd>Une confirmation à deux choix, l’action en rouge.</dd></div></dl>
+      </div>
+  </section>
+
+  <section class="col" id="methode">
+    <h2>Comment j’ai mesuré</h2>
+    <p>Le tour s’est fait sur un simulateur à moi, « Take — audit-hick », avec l’app de main au commit 3b5c7f23c6, une API locale et les données de la graine de développement. Connexion avec un compte de test par le circuit local : aucun mot de passe réel, aucun compte Google ou Apple. Les cibles de chaque écran sont comptées dans l’arbre d’accessibilité : tout ce qui se voit et se touche compte, même une petite icône grise.</p>
+    <h3 class="sub">Les questions posées à Jev</h3>
+    <p>Jev, le modèle de TypeSafe, rend des réponses typées avec leurs probabilités, pas du texte. 301 réponses ont servi à cette page.</p>
+    <ul class="families">
+      <li><strong>Fréquence de chaque option</strong><span class="type">Choice : principal, fréquent, occasionnel ou rare · 128 questions</span><p>Une requête par écran (<code>freq-accueil</code> à <code>freq-reglages</code>), une question par option (<code>o0</code> à <code>o15</code>). Les classes valent 0,60, 0,15, 0,04 et 0,01, puis sont normalisées : ce sont les fréquences p du tableau et des gains. Exemple : sur l’accueil, « Se connecter » est rare à 59 %, occasionnel à 34 %.</p></li>
+      <li><strong>Duels de gain</strong><span class="type">Choice : A ou B · 132 questions</span><p>Les 66 paires de propositions, dans les deux ordres (<code>pair__notifications__filtres</code>…). Le taux de duels gagnés donne l’ordre des douze. Exemple : l’Activité bat les filtres à 98 % et 99 %.</p></li>
+      <li><strong>Risque</strong><span class="type">Score sur 4 niveaux, d’« aucun risque » à « risque fort » · 12 questions</span><p><code>risk__anonyme</code>, etc. Exemple : le vote anonyme par défaut obtient 2,27 sur 3 (moyen à 62 %, fort à 33 %).</p></li>
+      <li><strong>Contradiction avec tes décisions</strong><span class="type">Noul, oui ou non · 14 questions</span><p>Chaque proposition face à neuf de tes décisions notées (accueil du 26/09, Take ouvert du 24/09, en-tête du 10/10, rangée et Explorer du 11/10, durée du 04/09, recherche de lieu du batch 17…) : <code>conflict__accueil</code>, etc. Pour le Take ouvert, deux questions de plus : <code>conflict__core</code> 0,29 et <code>conflict__option</code> 0,85.</p></li>
+      <li><strong>Verdict par écran</strong><span class="type">Choice : bon, à surveiller ou à améliorer · 15 questions</span><p><code>verdict__take_ouvert</code>, etc. C’est la colonne « Verdict de Jev » du tableau.</p></li>
+    </ul>
+    <h3 class="sub">Ce que Jev a changé dans la page</h3>
+    <ul class="effects">
+      <li>L’ordre des douze propositions est celui des duels. Les n° 1 et 2 sont à égalité : 84 % et 83 %.</li>
+      <li>« Partager en un toucher » faisait partie de la proposition du Take ouvert. Jev l’a jugé contraire à ta décision du 24/09 (85 %) : c’est devenu une option à trancher, et le classement a été refait.</li>
+      <li>Un premier essai des fréquences a été jeté : les options décrivaient leur apparence (« bouton blanc plein, le plus visible ») et Jev jugeait l’apparence plus que l’usage. Les options ont été réécrites de façon neutre, avec la population de chaque écran.</li>
+      <li>Biais de position : dans les 132 duels, Jev a choisi la proposition présentée en premier 47 % du temps. Chaque paire est posée dans les deux ordres, et les deux réponses comptent.</li>
+      <li>Les verdicts « à surveiller » de la rangée, du partage, de la conversation, du profil et des paramètres restent tels quels ; mon commentaire dans le tableau dit pourquoi je ne propose rien de plus.</li>
+    </ul>
+    <h3 class="sub">Les réponses de Jev, proposition par proposition</h3>
+    <div class="table-wrap">
+      <table class="jev">
+        <thead><tr><th scope="col">N°</th><th scope="col">Duels gagnés</th><th scope="col">Risque sur 3</th><th scope="col">Conflit</th></tr></thead>
+        <tbody>
+        <tr>
+          <th scope="row"><a href="#p1">1</a> <code>commentaire</code></th>
+          <td class="data">84 %</td>
+          <td class="data">1,53<span class="dist">aucun 0 % · faible 47 % · moyen 53 % · fort 0 %</span></td>
+          <td class="data">0,10</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#p2">2</a> <code>take_ouvert</code></th>
+          <td class="data">83 %</td>
+          <td class="data">2,04<span class="dist">aucun 1 % · faible 13 % · moyen 68 % · fort 18 %</span></td>
+          <td class="data">0,55</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#p3">3</a> <code>portail</code></th>
+          <td class="data">70 %</td>
+          <td class="data">1,60<span class="dist">aucun 1 % · faible 42 % · moyen 54 % · fort 3 %</span></td>
+          <td class="data">0,12</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#p4">4</a> <code>compositeur</code></th>
+          <td class="data">67 %</td>
+          <td class="data">1,05<span class="dist">aucun 1 % · faible 94 % · moyen 4 % · fort 1 %</span></td>
+          <td class="data">0,19</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#p5">5</a> <code>mentions</code></th>
+          <td class="data">64 %</td>
+          <td class="data">1,47<span class="dist">aucun 2 % · faible 49 % · moyen 49 % · fort 0 %</span></td>
+          <td class="data">0,09</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#p6">6</a> <code>notifications</code></th>
+          <td class="data">60 %</td>
+          <td class="data">1,80<span class="dist">aucun 0 % · faible 21 % · moyen 77 % · fort 2 %</span></td>
+          <td class="data">0,11</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#p7">7</a> <code>anonyme</code></th>
+          <td class="data">52 %</td>
+          <td class="data">2,27<span class="dist">aucun 0 % · faible 5 % · moyen 62 % · fort 33 %</span></td>
+          <td class="data">0,12</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#p8">8</a> <code>carte</code></th>
+          <td class="data">44 %</td>
+          <td class="data">2,05<span class="dist">aucun 0 % · faible 5 % · moyen 85 % · fort 10 %</span></td>
+          <td class="data">0,12</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#p9">9</a> <code>son</code></th>
+          <td class="data">29 %</td>
+          <td class="data">1,54<span class="dist">aucun 1 % · faible 45 % · moyen 53 % · fort 1 %</span></td>
+          <td class="data">0,10</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#p10">10</a> <code>accueil</code></th>
+          <td class="data">20 %</td>
+          <td class="data">1,89<span class="dist">aucun 1 % · faible 14 % · moyen 80 % · fort 5 %</span></td>
+          <td class="data">0,19</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#p11">11</a> <code>message</code></th>
+          <td class="data">19 %</td>
+          <td class="data">0,96<span class="dist">aucun 9 % · faible 86 % · moyen 4 % · fort 1 %</span></td>
+          <td class="data">0,13</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#p12">12</a> <code>filtres</code></th>
+          <td class="data">7 %</td>
+          <td class="data">1,33<span class="dist">aucun 0 % · faible 68 % · moyen 32 % · fort 0 %</span></td>
+          <td class="data">0,10</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="col" id="limites">
+    <h2>Limites</h2>
+    <ul class="limits">
+      <li>Les fréquences d’usage sont des estimations de Jev, pas des mesures. Avant de trancher l’Activité (n° 6) et le vote anonyme par défaut (n° 7), il vaut mieux les compter dans les vraies statistiques d’usage.</li>
+      <li>iPhone seulement : Android n’a pas été vérifié.</li>
+      <li>Données de la graine : une poignée d’amis et quelques notifications. Avec de vrais volumes, l’Activité et les mentions changent de visage.</li>
+      <li>Les millisecondes servent à comparer, pas à prédire : a et b sont des ordres de grandeur.</li>
+      <li>Chaque maquette existe en clair et en sombre, sauf l’accueil, qui est sombre dans les deux thèmes. Quatre captures sombres de la première passe étaient en fait claires, le thème n’ayant pas encore basculé : elles ont été refaites.</li>
+      <li>Aucune ligne de l’app n’a changé : ni PR, ni build. Ce sont des propositions.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="col foot">
+  <p>Audit fait le 12 octobre 2026 par Claude (Opus 5.5) pour Adam, sur main 3b5c7f23c6. Références : W. E. Hick, « On the rate of gain of information », 1952 ; R. Hyman, « Stimulus information as a determinant of reaction time », 1953 ; S. Card, T. Moran et A. Newell, The Psychology of Human-Computer Interaction, 1983.</p>
+</footer>
+
+<dialog id="viewer" class="viewer" aria-labelledby="viewer-title">
+  <div class="viewer-bar">
+    <p class="viewer-title" id="viewer-title"></p>
+    <div class="seg" role="group" aria-label="Aujourd’hui ou proposé">
+      <button type="button" data-side-choice="avant" aria-pressed="true">Aujourd’hui</button>
+      <button type="button" data-side-choice="apres" aria-pressed="false">Proposé</button>
+    </div>
+    <button type="button" class="viewer-close" data-close>Fermer</button>
+  </div>
+  <img alt="">
+</dialog>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  const pageTheme = () => {
+    const chosen = root.getAttribute("data-theme");
+    if (chosen === "dark" || chosen === "light") return chosen;
+    return media && media.matches ? "dark" : "light";
+  };
+  const groups = Array.from(document.querySelectorAll("[data-variants]"));
+  const paint = (group, wanted) => {
+    const available = group.dataset.variants.split(" ");
+    const theme = available.includes(wanted) ? wanted : available[0];
+    group.dataset.shown = theme;
+    group.querySelectorAll("img[data-src-light]").forEach((img) => {
+      const src = img.getAttribute("data-src-" + theme) || img.getAttribute("data-src-light");
+      if (img.getAttribute("src") !== src) img.setAttribute("src", src);
+    });
+    group.querySelectorAll("[data-theme-choice]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.themeChoice === theme));
+    });
+  };
+  const follow = () => groups.forEach((group) => { if (!group.dataset.pinned) paint(group, pageTheme()); });
+  follow();
+  if (media) {
+    if (media.addEventListener) media.addEventListener("change", follow);
+    else if (media.addListener) media.addListener(follow);
+  }
+  new MutationObserver(follow).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+  const viewer = document.getElementById("viewer");
+  const viewerImg = viewer.querySelector("img");
+  const viewerTitle = viewer.querySelector(".viewer-title");
+  let current = null;
+  const showSide = (side) => {
+    const theme = current.dataset.shown || "light";
+    const img = current.querySelector('.shot-open[data-side="' + side + '"] img');
+    viewerImg.src = img.getAttribute("data-full-" + theme) || img.getAttribute("data-full-light");
+    viewerImg.alt = img.alt;
+    const caption = current.querySelector("figcaption");
+    viewerTitle.textContent = caption ? caption.textContent : "";
+    viewer.querySelectorAll("[data-side-choice]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.sideChoice === side));
+    });
+  };
+  const close = () => { if (viewer.close) viewer.close(); else viewer.removeAttribute("open"); };
+  document.addEventListener("click", (event) => {
+    const themeChoice = event.target.closest("[data-theme-choice]");
+    if (themeChoice) {
+      const group = themeChoice.closest("[data-variants]");
+      group.dataset.pinned = "1";
+      paint(group, themeChoice.dataset.themeChoice);
+      return;
+    }
+    const opener = event.target.closest(".shot-open");
+    if (opener) {
+      current = opener.closest("[data-variants]");
+      showSide(opener.dataset.side);
+      if (viewer.showModal) viewer.showModal(); else viewer.setAttribute("open", "");
+      return;
+    }
+    const sideChoice = event.target.closest("[data-side-choice]");
+    if (sideChoice && current) { showSide(sideChoice.dataset.sideChoice); return; }
+    if (event.target.closest("[data-close]") || event.target === viewer) close();
+  });
+})();
+</script>
+
+</body>
+</html>
