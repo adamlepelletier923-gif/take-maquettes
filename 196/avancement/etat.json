@@ -1,21 +1,39 @@
 {
- "majLe": "2026-10-11T15:19+09:00",
- "heure": "15:20",
+ "majLe": "2026-10-11T15:49+09:00",
+ "heure": "15:50",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 381,
-  "depuisDernierTableau": 186,
+  "fusionneesDepuis8Octobre": 384,
+  "depuisDernierTableau": 189,
   "enCours": 8,
-  "app": 167,
+  "app": 168,
   "siteEtAdmin": 67,
-  "serveur": 72,
-  "outilsEtDocs": 75
+  "serveur": 73,
+  "outilsEtDocs": 76
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "A real bug turned up on the Mac's iPhone: Friends could show an old version of a Take, served from iOS's network cache; it has its urgent ticket and an agent before the build. The map change has both reviews clean, and the final loop's two misses were the tests' own, now fixed."
+  "texte": "The map is in main with your design OK: tapping the globe now shows the map at once. The cause of the old Take in Friends is found and fixed in the app's network library, with both reviews clean; it was already there in build 195, so build 196 fixes it for everyone."
  },
  "depuis": [
+  {
+   "heure": "15:46",
+   "pr": 4794,
+   "texte": "Test only: two loop tests now wait on a real clock (the launch screen, the Know me composer); one of them gave up after 0.5 s instead of 2 s and tapped the launch screen.",
+   "build196": false
+  },
+  {
+   "heure": "15:27",
+   "pr": 4793,
+   "texte": "The map is ready before you arrive, like Snap: it is prepared while you rest on Friends, so tapping the globe shows the map at once, already drawn (0.7 s instead of 1.3 s), with your design OK. Measured on cloud iPhones, Friends scrolling, launch and the swipe to Nearby stay as smooth as main; the place name never changes under your eyes.",
+   "build196": false
+  },
+  {
+   "heure": "15:20",
+   "pr": 4790,
+   "texte": "TAK-1108: retention sweep and per-request deletion answer for telemetry",
+   "build196": false
+  },
   {
    "heure": "14:20",
    "pr": 4785,
@@ -1169,39 +1187,46 @@
  },
  "enCours": [
   {
-   "statut": "claude",
+   "statut": "review",
    "sujet": "Friends showing an old version of a Take",
-   "pr": 0,
-   "ouEnEst": "Found while fixing a test: on the Mac's iPhone, Friends kept showing a Take as it was hours earlier, without the photo it had since received and with the wrong age, even after relaunching and pulling to refresh. Emptying the phone's caches one by one shows the old copy comes from iOS's own network cache, which keeps an answer our server says must never be kept. For testers, that could mean a Take frozen in Friends, for example a photo removed by moderation still showing. Urgent ticket (TAK-1122); an agent on the Mac has your emulator to find the cause.",
-   "reste": "The fix with a test, proof on the iPhone with the same cache test, two reviews, merge."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Map ready before you arrive, like Snap",
-   "pr": 4793,
-   "ouEnEst": "Both reviews are clean on the last commit and the checks are green. The place name now gets ready while you rest on Friends or as you start the swipe, so it never changes under your eyes when you arrive on Nearby. fouine is measuring this version against main on cloud iPhones (about 50 minutes), with pictures of the globe opening in light and dark.",
-   "reste": "Your OK on the globe pictures, then merge and the loop again."
+   "pr": 4798,
+   "ouEnEst": "Cause found: on iPhone, the app's network library kept server answers the server forbids it to keep, and an older copy could come back, so a Take changed on the server (a photo removed by moderation, a new count) could stay frozen in Friends. It was already there in build 195. The fix is native, which a real build carries: the library no longer keeps those answers. Both reviews are clean, checks green.",
+   "reste": "putois proves on cloud iPhones that the old copy is gone, fouine measures that nothing gets slower, then merge."
   },
   {
    "statut": "review",
-   "sujet": "The final loop's two misses",
-   "pr": 4794,
-   "ouEnEst": "Both came from the tests, not the app. The photo-menu test is fixed in the bench data: Friends lists your language first, so Léo's French Take now carries a photo. The cold-start test waited 0.5 s instead of 2 s for the launch screen; it now waits on a real clock and passed 3 times out of 3, and the Know me test, which had the same trap, is fixed too. Green checks.",
-   "reste": "One review, merge, then the full loop on the final main."
+   "sujet": "The pin of a removed Take stayed on the map",
+   "pr": 4796,
+   "ouEnEst": "Fixed: the pin of a Take that answers 'not found' leaves the map. A review found a privacy hole on the way (after you block someone, their pins could stay on a part of the map you had already seen); castor closed it, with tests. Green checks, one clean review on the last version, the second running.",
+   "reste": "The second review, then merge."
   },
   {
-   "statut": "fixing",
-   "sujet": "Two misses found by the 'nothing forgotten' tour",
+   "statut": "measuring",
+   "sujet": "'Know me' ignoring Back after a share sheet",
    "pr": 0,
-   "ouEnEst": "putois's fix for the pin of a removed Take that stayed on the map is in its full checks; renard is measuring its fix for 'Know me' ignoring Back right after a share sheet, on cloud iPhones.",
-   "reste": "A PR each with a test that fails first, two reviews each, merge."
+   "ouEnEst": "renard is reproducing and measuring the fix on cloud iPhones.",
+   "reste": "A PR with a test that fails first, two reviews, merge."
+  },
+  {
+   "statut": "loop",
+   "sujet": "Final test loop and the 90-point tour",
+   "pr": 0,
+   "ouEnEst": "The loop's own test fixes are merged. The full loop runs again once the cache, map pin and Know me fixes are in main, then the 90-point tour on the same commit.",
+   "reste": "Your emulator comes back from the cache investigation first."
   },
   {
    "statut": "later",
    "sujet": "Taps never lost, even when you spam",
    "pr": 0,
-   "ouEnEst": "Your ask at 14:20: a Replicas machine is building a bench that fires taps less than a millisecond apart on tabs, votes, likes, repost and the ghost, and checks that the screen always ends on your last tap; its first run is on the bottom tabs. The screen itself answers within one frame (8 ms at 120 Hz), like X and Instagram.",
+   "ouEnEst": "Your ask at 14:20: on cloud iPhones, manul fires taps less than a millisecond apart on tabs and actions; on the Mac, an agent writes tests that hammer votes, likes, repost and the ghost with no pause and check that the screen always ends on your last tap and that an anonymous vote never turns public.",
    "reste": "Every defect it finds gets its ticket and its fix."
+  },
+  {
+   "statut": "later",
+   "sujet": "Messages and the Profile read ahead, without a heavier launch",
+   "pr": 4795,
+   "ouEnEst": "harfang's draft prepares Messages and the Profile one piece at a time while you are idle, instead of during launch. A review on the Mac found two defects; harfang is fixing them.",
+   "reste": "After build 196: fixes, measurement, then switch it on from the server."
   },
   {
    "statut": "later",
@@ -1212,13 +1237,6 @@
   },
   {
    "statut": "later",
-   "sujet": "Switching on Messages and the Profile read ahead",
-   "pr": 4643,
-   "ouEnEst": "Merged and switched off in build 196. Switched on, launch gets a bit heavier because the pages mount during startup; a profile of what is heavy comes first (TAK-1114).",
-   "reste": "After build 196: profile, lighten, measure, then switch it on from the server."
-  },
-  {
-   "statut": "later",
    "sujet": "Videos ahead in the feed with preloading on",
    "pr": 4766,
    "ouEnEst": "One video piece per video, no more cancelling while the video stays near. Brought up to date and green on a Replicas machine.",
@@ -1226,20 +1244,26 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, and an agent with your emulator on the old-version bug.",
-  "On Replicas: fouine measuring the map, putois and renard on the two forgotten fixes, wombat on the 90-point tour, manul on the tap-spam bench, dingo reviewing the loop fix, and machines on after-build work (Explorer, what is heavy at launch)."
+  "Here on the Mac, which is full, so no extra agents for now: me, an agent finishing the cache fix with your emulator, an agent reviewing everything merged since the last review, and an agent writing the tap-spam tests.",
+  "On Replicas: putois and fouine proving and measuring the cache fix, castor done on the map pin, renard on Know me, wombat on the 90-point tour, manul on the tap-spam bench, harfang on the read-ahead draft, and reviewers on each PR."
  ],
  "etapes": [
-  "Fix the old version of a Take in Friends (iOS network cache), with proof on the iPhone.",
-  "Map: fouine's measurement of the final version and the globe pictures for your OK, then merge.",
-  "Merge the loop-test fix and the two forgotten fixes (map pin, Know me Back).",
-  "The full loop and the 90-point tour on the final main, the list of what is not in build 196 for your OK, then the build."
+  "Merge the cache fix once its proof on cloud iPhones and its measurement are in, and the map pin fix after its second review.",
+  "The Know me Back fix: PR, reviews, merge.",
+  "The full loop and the 90-point tour on the final main, and the review of everything merged since the last one.",
+  "The list of what is not in build 196 for your OK, then the build."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4793,
+     "titre": "TAK-772 : la carte préparée sans la réécriture du composant carte (version D mesurée)",
+     "fusion": "Oct 11, 15:27",
+     "build196": false
+    },
     {
      "pr": 4786,
      "titre": "TAK-1112 : les icônes d'un Take un peu plus serrées (16 pt au lieu de 20)",
@@ -2657,6 +2681,12 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4790,
+     "titre": "TAK-1108: retention sweep and per-request deletion answer for telemetry",
+     "fusion": "Oct 11, 15:20",
+     "build196": false
+    },
+    {
      "pr": 4781,
      "titre": "Telemetry processing consumer with Postgres rollups and observability reads",
      "fusion": "Oct 11, 11:18",
@@ -3094,6 +3124,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4794,
+     "titre": "test(mobile) : la boucle attend l'écran de lancement et le compositeur sur l'horloge de Maestro (TAK-1121)",
+     "fusion": "Oct 11, 15:46",
+     "build196": false
+    },
     {
      "pr": 4785,
      "titre": "TAK-1107: email alerts for telemetry spikes and crash-rate drops",
