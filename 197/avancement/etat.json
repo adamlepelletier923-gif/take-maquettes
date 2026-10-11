@@ -1,21 +1,87 @@
 {
- "majLe": "2026-10-12T06:48+09:00",
- "heure": "06:48",
+ "majLe": "2026-10-12T07:47+09:00",
+ "heure": "07:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 31,
-  "depuisDernierTableau": 31,
-  "enCours": 13,
-  "app": 14,
+  "fusionneesDepuis8Octobre": 42,
+  "depuisDernierTableau": 42,
+  "enCours": 12,
+  "app": 22,
   "siteEtAdmin": 6,
-  "serveur": 5,
-  "outilsEtDocs": 6
+  "serveur": 7,
+  "outilsEtDocs": 7
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Your vote fix is reviewed with zero defects and green: it merges right after the test loop. The full review of everything since build 196 found no defect so far on the server and on most screens, and nothing that could break build 196."
+  "texte": "Your vote fix and ten other pull requests are merged, and the full test loop on the merged code is green, except one old profile swipe problem that is now fixed."
  },
  "depuis": [
+  {
+   "heure": "07:44",
+   "pr": 4766,
+   "texte": "Videos ahead in the feed: built in but switched off. On, a video starts 29 times faster with half the data, but scrolling costs a little more work.",
+   "build196": true
+  },
+  {
+   "heure": "07:43",
+   "pr": 4855,
+   "texte": "Server: for 30 s after you vote, your own reads come from the main database. Switched off until it is measured on staging.",
+   "build196": true
+  },
+  {
+   "heure": "07:43",
+   "pr": 4853,
+   "texte": "Fewer requests: back on your Profile, the friend count and score are re-read after 2 minutes instead of 30 s, and right away after a friend change.",
+   "build196": true
+  },
+  {
+   "heure": "07:42",
+   "pr": 4852,
+   "texte": "Fewer requests: Expert notes are re-read every minute only on a Take that has some, or for an Expert. Pulling to refresh re-reads them.",
+   "build196": true
+  },
+  {
+   "heure": "07:08",
+   "pr": 4803,
+   "texte": "Tool only: a bench that fires taps less than a millisecond apart on a cloud iPhone.",
+   "build196": true
+  },
+  {
+   "heure": "07:08",
+   "pr": 4826,
+   "texte": "Composer: « No limit » instead of « More options », and an open panel scrolls fully above Publish, as you chose.",
+   "build196": true
+  },
+  {
+   "heure": "07:06",
+   "pr": 4818,
+   "texte": "Map search: suggestions follow every letter, and the panel stays still while you type, as you chose. On Android, the back key shrinks it back.",
+   "build196": true
+  },
+  {
+   "heure": "07:03",
+   "pr": 4849,
+   "texte": "Your TestFlight bug: a vote you just made no longer disappears for a moment, in the feed or in the opened Take.",
+   "build196": true
+  },
+  {
+   "heure": "07:02",
+   "pr": 4848,
+   "texte": "In a list, one card of an unknown kind is skipped and reported, instead of blanking the whole list.",
+   "build196": true
+  },
+  {
+   "heure": "07:02",
+   "pr": 4847,
+   "texte": "Old builds no longer break when the server adds a field to an answer: new builds ignore fields they do not know, and the tests stay strict.",
+   "build196": true
+  },
+  {
+   "heure": "06:47",
+   "pr": 4838,
+   "texte": "Server, outside the app: an alert is claimed before it is sent, so it is never sent twice.",
+   "build196": true
+  },
   {
    "heure": "06:43",
    "pr": 4837,
@@ -239,88 +305,74 @@
  },
  "enCours": [
   {
-   "statut": "review",
-   "sujet": "Your vote that flickers",
-   "pr": 4849,
-   "ouEnEst": "Fixed for the feed, where you filmed it, and for the opened Take: a late read can no longer hide your vote. Reviews found three more edge cases (anonymity, a read sent while the vote travels). All are fixed, the last review found zero defects, and CI is green.",
-   "reste": "Merge right after the test loop."
-  },
-  {
-   "statut": "fixing",
+   "statut": "measuring",
    "sujet": "Your conversation that freezes 2 s on a cold start",
    "pr": 4850,
-   "ouEnEst": "The conversation screen is now prepared while you look at Messages. A review found it could stutter during a scroll of the inbox: fixed, it waits for the list to rest. Second review in progress.",
-   "reste": "Measure on a Replicas iPhone in Release, then merge."
-  },
-  {
-   "statut": "loop",
-   "sujet": "Test loop on today's main",
-   "pr": 0,
-   "ouEnEst": "A full rehearsal of the regression loop on the Mac. First pass: flows 1 to 8 green, then an iOS camera permission alert on a fresh simulator stopped flow 9 (not a regression: nothing changed touches the camera). Restarted at 06:35 with permissions granted.",
-   "reste": "Any red flow gets its ticket right away."
+   "ouEnEst": "Fixed and reviewed twice: the conversation screen is prepared while you look at Messages, only once the inbox list is at rest.",
+   "reste": "Release measurement on the Mac bench (running), then merge."
   },
   {
    "statut": "review",
-   "sujet": "Full review of everything changed since build 196",
-   "pr": 0,
-   "ouEnEst": "Three Replicas machines re-read every change, zone by zone. Server and contract: no defect, and nothing can break build 196 for its testers. Messages, profile, Explore, map and composer: no defect in 56 files. Feed, vote and navigation: in progress.",
-   "reste": "Anything found is fixed before the build."
-  },
-  {
-   "statut": "review",
-   "sujet": "Ready to merge after the loop",
-   "pr": 0,
-   "ouEnEst": "Green and reviewed: old builds ignore new server fields, unknown cards are skipped instead of blanking a list, the composer with its extra renders removed, and Expert notes read less often.",
-   "reste": "Merge as soon as the loop ends."
-  },
-  {
-   "statut": "review",
-   "sujet": "Map search: the still panel",
-   "pr": 4818,
-   "ouEnEst": "Your still panel, plus an Android fix found in review: the back key closes the keyboard and the panel shrinks back. A last iOS detail is being fixed.",
-   "reste": "Android picture on Replicas, then merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Mentions in the most likely order",
+   "sujet": "Mentions in the most likely order, then faster mentions",
    "pr": 4827,
-   "ouEnEst": "Reviewed. One picture is being redone on a single database: the first one was taken on another database.",
-   "reste": "Picture, then merge, then the faster mentions."
+   "ouEnEst": "The picture was redone on a single database and checked: a signed commenter comes first, and an anonymous author keeps their usual place. Merging now.",
+   "reste": "Then the faster mentions, right after."
+  },
+  {
+   "statut": "review",
+   "sujet": "Profile: a swipe that starts on the tabs no longer gets stuck",
+   "pr": 4861,
+   "ouEnEst": "Found by the test loop (it was already there in build 196). Fixed and reviewed, and the test loop's profile steps are hardened too.",
+   "reste": "Measure the profile scroll on a Replicas iPhone, then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Public pages keep their pictures when one media kind is unknown",
+   "pr": 4858,
+   "ouEnEst": "Reviewed and green. A follow-up limits how often the problem is reported.",
+   "reste": "Merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Composer: no extra renders while typing",
+   "pr": 4854,
+   "ouEnEst": "Fixed and reviewed, then updated with main after a conflict.",
+   "reste": "Control pictures and measurement, then merge."
   },
   {
    "statut": "review",
    "sujet": "Welcome screen without an account",
    "pr": 4829,
-   "ouEnEst": "Reviewed. One picture at the largest text size is being redone on a Replicas iPhone.",
+   "ouEnEst": "One picture at the largest text size is still to redo on a Replicas iPhone.",
    "reste": "Picture, then merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Fewer requests, as you asked",
-   "pr": 4853,
-   "ouEnEst": "Expert notes are no longer re-read every minute on a Take that has none, and your Profile counters are re-read after 2 minutes instead of 30 s. A third idea was dropped: the app already did it.",
-   "reste": "Review, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "A Replicas machine builds it and takes the pictures and the measurement on a cloud iPhone.",
-   "reste": "Pictures and measurement, then merge."
+   "ouEnEst": "Reviewed: it works, but in bursts about 1 glide in 10 costs 18 ms. A fix to cut that cost is being measured.",
+   "reste": "If the cost drops, merge; otherwise a fluidity call before the build."
+  },
+  {
+   "statut": "loop",
+   "sujet": "Test loop on the merged main",
+   "pr": 0,
+   "ouEnEst": "Done on the merged main: 21 of 22 flows green. The only red one is the profile swipe that already failed in build 196, fixed above. Nothing merged this morning broke what the loop covers.",
+   "reste": "Final loop on the exact build-197 commit."
   },
   {
    "statut": "measuring",
-   "sujet": "Videos ahead in the feed",
-   "pr": 4766,
-   "ouEnEst": "A Replicas machine measures it in Release, data size included.",
-   "reste": "If it is smoother, merge."
+   "sujet": "Before and after this morning's merges",
+   "pr": 0,
+   "ouEnEst": "A Replicas iPhone measures launch, vote, feed scroll, opening a Take and map search, before and after the merges.",
+   "reste": "Any regression gets fixed before the build."
   },
   {
    "statut": "claude",
-   "sujet": "A late database copy could show an old anonymity",
+   "sujet": "Avatars, continuously (six Codex)",
    "pr": 0,
-   "ouEnEst": "Found while fixing your vote, and it already exists today: right after you switch to anonymous, a lagging database copy could show your vote as public for a moment. Fix on the server: for 30 s after you vote, your own reads come from the main database.",
-   "reste": "Measured on staging behind a switch, then turned on. Not part of the app build."
+   "ouEnEst": "Six Codex agents work on the avatars: one wave per tap, the full avatar like Instagram, a human wave from a real analysed wave, the wave's proportions, head items and body items. The first pull requests are open.",
+   "reste": "Each one merges once its before/after board is checked."
   },
   {
    "statut": "later",
@@ -328,24 +380,78 @@
    "pr": 0,
    "ouEnEst": "15 options on the page; you said you will tell me later.",
    "reste": "Your choice, then a Claude builds it."
+  },
+  {
+   "statut": "later",
+   "sujet": "Taps less than 1 ms apart get lost",
+   "pr": 0,
+   "ouEnEst": "Found by the tap bench: a second tap under 1 ms after the first is lost before the app sees it (native touch handling). No finger does that, and 33 to 300 ms lose nothing. A cold-start re-measurement is running.",
+   "reste": "After build 197, unless the re-measurement shows a real loss."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, five Claude agents (fixes and reviews), and audit-hick running the test loop. Your emulator is switched off during the loop to save memory.",
-  "On Replicas, on Muse Spark through OpenCode: renard, belette and lemming (full review by zone, then pictures and a missing test), vison (videos ahead), harfang (Explore fix), wombat (pictures, then the conversation measurement). Claude is still rate-limited on Replicas, and two machines fail on their fallback."
+  "Here on the Mac: me, five Claude agents (fixes and reviews), audit-hick on the bench (frozen conversation measurement), and six Codex agents on the avatars.",
+  "On Replicas, on Muse Spark through OpenCode: vison (profile scroll, then before/after the merges), harfang (Explore fix), wombat (pictures, then the conversation measurement), belette (pictures, then the tap re-measurement). Claude is still rate-limited on Replicas."
  ],
  "etapes": [
-  "Finish the test loop on the Mac, then merge everything green and reviewed.",
-  "Finish your conversation fix: second review, then the iPhone measurement.",
-  "Last pictures (mentions, welcome screen, map on Android), then merge.",
-  "Measure and merge the videos ahead and the Explore fix.",
-  "Then the full regression loop on the exact build-197 commit, the list of what is in and out, and your OK."
+  "Merge the last reviewed pull requests: mentions, public pages, profile swipe, composer renders.",
+  "Finish the measurements: frozen conversation, before/after the merges, profile scroll, Explore.",
+  "Last picture (welcome screen), then merge.",
+  "Final regression loop on the exact build-197 commit, the list of what is in and out, and your OK."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4766,
+     "titre": "fix(web,mobile) : TAK-839 un segment vidéo par vidéo dans le fil borné, plus d'annulation tant que la vidéo reste dans la fenêtre ; registre S67c et D1053",
+     "fusion": "Oct 12, 07:44",
+     "build196": true
+    },
+    {
+     "pr": 4853,
+     "titre": "TAK-1174 : le retour sur son Profil ne relit le nombre d'amis et le score qu'après 2 min ou un badge",
+     "fusion": "Oct 12, 07:43",
+     "build196": true
+    },
+    {
+     "pr": 4852,
+     "titre": "TAK-1172 : les notes d'expert ne se relisent chaque minute que sur un Take qui en a, ou pour un expert",
+     "fusion": "Oct 12, 07:42",
+     "build196": true
+    },
+    {
+     "pr": 4826,
+     "titre": "TAK-1151 : compositeur, « Sans limite » à la place de « Plus d'options », panneau entier au-dessus de Publier",
+     "fusion": "Oct 12, 07:08",
+     "build196": true
+    },
+    {
+     "pr": 4818,
+     "titre": "TAK-1146 : les propositions de la carte suivent chaque lettre",
+     "fusion": "Oct 12, 07:06",
+     "build196": true
+    },
+    {
+     "pr": 4849,
+     "titre": "TAK-1167 : une lecture du fil ne remet plus un vote affiché à l'état non voté",
+     "fusion": "Oct 12, 07:03",
+     "build196": true
+    },
+    {
+     "pr": 4848,
+     "titre": "TAK-1166 : dans une liste, une carte au kind inconnu est sautée et signalée, le reste de la page s'affiche",
+     "fusion": "Oct 12, 07:02",
+     "build196": true
+    },
+    {
+     "pr": 4847,
+     "titre": "TAK-1164 : les réponses lues par le mobile tolèrent les champs ajoutés par le serveur, les tests restent stricts",
+     "fusion": "Oct 12, 07:02",
+     "build196": true
+    },
     {
      "pr": 4828,
      "titre": "TAK-1152 : compositeur, un seul bouton son (importer passe en appui long sur le micro)",
@@ -479,6 +585,18 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4855,
+     "titre": "TAK-1178 : un lecteur qui vient de voter relit son vote sur la base principale (drapeau éteint par défaut)",
+     "fusion": "Oct 12, 07:43",
+     "build196": true
+    },
+    {
+     "pr": 4838,
+     "titre": "TAK-1091: claim alert groups before sending, with provider idempotency keys",
+     "fusion": "Oct 12, 06:47",
+     "build196": true
+    },
+    {
      "pr": 4842,
      "titre": "TAK-1061 : les traces de retrait de vote sont oubliées chaque minute, pas à la purge horaire",
      "fusion": "Oct 12, 04:52",
@@ -514,6 +632,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4803,
+     "titre": "TAK-1118: banc de rafales de touchers à moins d'une milliseconde (scripts/mobile/tap-burst)",
+     "fusion": "Oct 12, 07:08",
+     "build196": true
+    },
     {
      "pr": 4843,
      "titre": "TAK-1096 : gitleaks ne rejoue plus un succès en cache, et les contrôles de sécurité tournent sur Mac",
