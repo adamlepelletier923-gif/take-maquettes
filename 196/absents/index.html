@@ -67,40 +67,36 @@ ul.points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
 <body>
 <main>
   <h1>Ce qui n'est pas dans le build 196</h1>
-  <p class="periode">16 points. Tu as 6 choix à faire, tout le reste attend sans rien te demander.</p>
+  <p class="periode">Mis à jour après tes réponses du soir : les feuilles de partage sont validées et dans le 196, et les quatre points que tu m'as demandé de finir sont en cours. Il te reste 5 choix (lancement en clair, Explorer façon X, trois comportements à confirmer) et l'accord sur les captures du site.</p>
   <ul class="points">
     <li class="point">
-      <h2>Feuilles de partage plus rapides</h2>
-      <p class="quoi">Le correctif de « Tu me connais » (le Retour perdu juste après une feuille de partage) fait aussi apparaître les feuilles de partage environ une demi-seconde plus tôt, « Envoyer à » compris.</p>
-      <p><b>Pourquoi pas dedans :</b> C'est un changement de mouvement, donc de design : il attend ton accord. Les deux relectures sont propres. Sans ce changement, iOS avale le Retour pendant le fondu caché, donc le correctif entre en entier ou pas du tout.</p>
-      <p>Avant/après, image toutes les 200 ms après le toucher sur « Partager mon score ». En haut, main : la feuille arrive vers 1 s. En bas, le correctif : elle arrive vers 0,4 s.</p>
-      <p><img src="feuilles-clair.png" alt="Feuille de partage, main puis correctif, en mode clair" style="width:100%;height:auto;border-radius:12px"></p>
-      <p><img src="feuilles-sombre.png" alt="Feuille de partage, main puis correctif, en mode sombre" style="width:100%;height:auto;border-radius:12px"></p>
-      <p class="decide"><b>À décider :</b> Valider les feuilles plus rapides : le correctif entre alors dans le 196. Sinon, il attend le build suivant.</p>
+      <h2>Feuilles de partage plus rapides : validé, dans le 196</h2>
+      <p class="quoi">Tu as validé ce soir. Le correctif de « Tu me connais » est fusionné : le Retour n'est plus avalé après une feuille de partage, et les feuilles arrivent vers 0,4 s au lieu de 1 s.</p>
+      <p class="decide rien"><b>À décider :</b> Rien, c'est fait.</p>
     </li>
     <li class="point">
-      <h2>Touchers plus rapides qu'une image</h2>
+      <h2>Touchers plus rapides qu'une image : en cours, à ta demande</h2>
       <p class="quoi">Deux touchers à moins d'environ 16 ms d'écart sur la même commande (onglets, votes, repost, fantôme) n'en font qu'un.</p>
-      <p><b>Pourquoi pas dedans :</b> Trouvé cette nuit par le nouveau banc de rafales. À partir de 33 ms, ce qui est déjà plus rapide qu'un doigt, rien n'est perdu (0 sur 24). La cause est cherchée côté React Native ; la corriger touche à la gestion des touchers, trop risqué juste avant un build.</p>
-      <p class="decide rien"><b>À décider :</b> Rien, sauf si tu préfères attendre ce correctif avant le build.</p>
-    </li>
-    <li class="point">
-      <h2>Pages voisines lues d'avance</h2>
-      <p class="quoi">Messages et le Profil seraient lus avant qu'on y aille.</p>
-      <p><b>Pourquoi pas dedans :</b> Le code est dans le 196 mais éteint : allumé, il alourdit un peu le lancement. Une version qui prépare ces pages morceau par morceau, au repos, a ses deux défauts corrigés ; elle est en relecture.</p>
-      <p class="decide rien"><b>À décider :</b> Rien. On l'allumera depuis le serveur, sans nouveau build.</p>
-    </li>
-    <li class="point">
-      <h2>Vidéos préparées d'avance dans le fil</h2>
-      <p class="quoi">Le début de chaque vidéo serait prêt avant qu'elle arrive à l'écran.</p>
-      <p><b>Pourquoi pas dedans :</b> Tu l'as mis après le 196. Mesurée cette nuit : la première image arrive en 46 ms au lieu de 343, et on télécharge neuf fois moins ; mais le défilement du fil devenait plus lourd. Ce travail a été sorti du fil principal de l'app, il reste à le remesurer.</p>
+      <p><b>Où on en est :</b> une machine lit la gestion des touchers de React Native pour trouver la cause. À partir de 33 ms, déjà plus rapide qu'un doigt, rien n'est perdu (0 sur 24). Corriger touche à la gestion des touchers : ça n'entre que prouvé sans régression.</p>
       <p class="decide rien"><b>À décider :</b> Rien.</p>
     </li>
     <li class="point">
-      <h2>Explorer : pages blanches pendant les changements rapides</h2>
+      <h2>Pages voisines lues d'avance : en cours, à ta demande</h2>
+      <p class="quoi">Messages et le Profil seraient lus avant qu'on y aille.</p>
+      <p><b>Où on en est :</b> la version qui prépare ces pages morceau par morceau, au repos, a deux relectures propres. Il reste à la mesurer sur le banc du Mac : elle entre si elle est aussi fluide que main, comme tu l'avais dit, et s'allume depuis le serveur.</p>
+      <p class="decide rien"><b>À décider :</b> Rien.</p>
+    </li>
+    <li class="point">
+      <h2>Vidéos préparées d'avance dans le fil : en cours, à ta demande</h2>
+      <p class="quoi">Le début de chaque vidéo serait prêt avant qu'elle arrive à l'écran.</p>
+      <p><b>Où on en est :</b> mesurée cette nuit, la première image arrivait en 46 ms au lieu de 343, mais le défilement devenait plus lourd. Ce travail a été sorti du fil principal de l'app. Il reste à remesurer le défilement sur le banc du Mac, puis à allumer l'interrupteur depuis le serveur.</p>
+      <p class="decide rien"><b>À décider :</b> Rien.</p>
+    </li>
+    <li class="point">
+      <h2>Explorer : pages blanches pendant les changements rapides : en cours, à ta demande</h2>
       <p class="quoi">La page qu'on quitte resterait dessinée pendant une rafale de changements de page.</p>
-      <p><b>Pourquoi pas dedans :</b> Brouillon pour après le 196. Le test qui manquait est en cours ; je ferai les captures sur le Mac pour ton accord.</p>
-      <p class="decide rien"><b>À décider :</b> Rien pour l'instant.</p>
+      <p><b>Où on en est :</b> le test natif qui casse sans le correctif existe et passe. Le correctif touche au pager natif, donc il lui faut un vrai build de l'app pour les captures et la mesure de fluidité : il ne peut entrer qu'avec ces preuves.</p>
+      <p class="decide rien"><b>À décider :</b> Rien pour l'instant ; ton accord viendra avec les captures.</p>
     </li>
     <li class="point">
       <h2>Lancement en mode clair : environ 3 s de noir</h2>
@@ -117,8 +113,11 @@ ul.points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
     <li class="point">
       <h2>Hashtags sur le site web</h2>
       <p class="quoi">Sur le site aussi, les hashtags deviennent des liens gris dans le titre, sans pastille.</p>
-      <p><b>Pourquoi pas dedans :</b> C'est le site, pour après le 196. Les captures ont trouvé deux trous, corrigés, et un petit saut sur les profils publics, dont la correction doit encore être poussée.</p>
-      <p class="decide rien"><b>À décider :</b> Rien pour l'instant ; ton accord viendra avec les captures.</p>
+      <p><b>Où on en est :</b> les trous et le petit saut sont corrigés, deux relectures propres, vérifications vertes. Captures avant/après de la version finale (à gauche main, à droite le correctif) :</p>
+      <p><img src="site-fil-clair.png" alt="Site, fil, clair" style="width:100%;height:auto;border-radius:12px"></p>
+      <p><img src="site-take-clair.png" alt="Site, Take ouvert, clair" style="width:100%;height:auto;border-radius:12px"></p>
+      <p><img src="site-fil-sombre.png" alt="Site, fil, sombre" style="width:100%;height:auto;border-radius:12px"></p>
+      <p class="decide"><b>À décider :</b> Valider ces captures : le site passe alors en hashtags gris dans le titre, comme l'app.</p>
     </li>
     <li class="point">
       <h2>Textes au plus grand</h2>
