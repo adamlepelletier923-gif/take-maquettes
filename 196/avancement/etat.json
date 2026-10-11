@@ -1,21 +1,33 @@
 {
- "majLe": "2026-10-11T20:57+09:00",
- "heure": "20:56",
+ "majLe": "2026-10-11T22:06+09:00",
+ "heure": "22:05",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 397,
-  "depuisDernierTableau": 202,
-  "enCours": 7,
-  "app": 175,
+  "fusionneesDepuis8Octobre": 399,
+  "depuisDernierTableau": 204,
+  "enCours": 6,
+  "app": 177,
   "siteEtAdmin": 69,
   "serveur": 73,
   "outilsEtDocs": 80
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "You validated the faster share sheets: they are in main. The page tour on today's main found one real bug (counts at a third of their size in 'Your activity'), already fixed and in review."
+  "texte": "The final loop passed on the exact build commit and you gave your go: the build starts as soon as a cloud iPhone confirms tonight's changes."
  },
  "depuis": [
+  {
+   "heure": "21:52",
+   "pr": 4787,
+   "texte": "On the website too, a Take's hashtags sit in grey inside its title and can be tapped, as in the app, with no pills under it. You validated the pictures tonight.",
+   "build196": false
+  },
+  {
+   "heure": "21:09",
+   "pr": 4812,
+   "texte": "In 'Your activity' and everywhere a count shrinks to fit, the repost, comment and vote counts are drawn at their normal size again; before, they could fall to a third of it.",
+   "build196": false
+  },
   {
    "heure": "20:48",
    "pr": 4799,
@@ -1265,69 +1277,74 @@
  },
  "enCours": [
   {
-   "statut": "review",
-   "sujet": "Counts drawn at a third of their size in 'Your activity'",
-   "pr": 4812,
-   "ouEnEst": "Found by tonight's page tour: in Settings > Your activity > Reposts, the repost and comment counts and '7 votes' were tiny. Cause found and fixed; on the Mac's iPhone the label goes from under 1 point to 10 points tall, with nothing else moving. A review found a missing test declaration for the checks, fixed; checks and the second review are running.",
-   "reste": "Two clean reviews, merge, then the final loop."
-  },
-  {
    "statut": "loop",
    "sujet": "Build 196 ready to go",
    "pr": 0,
-   "ouEnEst": "Main now holds the faster share sheets you validated. The final test loop and the filmed Home bar run again once the counts fix is in, on that exact code.",
-   "reste": "Then your go for the build."
+   "ouEnEst": "The final test loop passed on the exact build commit, 22 of 22, with the Home bar filmed and the long press checked. You gave your go: the build starts once a cloud iPhone has rechecked the nine points changed since this afternoon's tour, and the counts.",
+   "reste": "Start the build on that exact commit."
+  },
+  {
+   "statut": "review",
+   "sujet": "Official Take videos no longer removed on one error",
+   "pr": 4813,
+   "ouEnEst": "You said fix it: a video is now removed only when the video site says it is gone twice, a day apart. Its tests fail on main and pass here. It is server side, so it does not wait for the app build.",
+   "reste": "Checks and a review, then merge and deploy the server."
   },
   {
    "statut": "later",
    "sujet": "Taps lost when two arrive within one frame",
    "pr": 0,
-   "ouEnEst": "You asked to finish it: a cloud machine is reading React Native's touch handling to find the cause. From 33 ms on, faster than any finger, nothing is lost.",
-   "reste": "A fix per cause, proven without regression, for the next build."
+   "ouEnEst": "A cloud machine reproduces them on a cloud iPhone and tests each candidate cause, one at a time.",
+   "reste": "A fix per cause, proven, for the next build."
   },
   {
    "statut": "later",
-   "sujet": "Messages and the Profile read ahead, without a heavier launch",
+   "sujet": "Messages and the Profile read ahead",
    "pr": 4795,
-   "ouEnEst": "You asked to finish it: two clean reviews. It touches launch, tabs and the Profile, so it must be measured as smooth as main before it can enter.",
-   "reste": "Measurement on the Mac, then the next build, switched on from the server."
-  },
-  {
-   "statut": "later",
-   "sujet": "Hashtags on the website, as in the app",
-   "pr": 4787,
-   "ouEnEst": "All fixed, two clean reviews, checks green. Before-and-after pictures in light and dark are on the list of what is not in build 196.",
-   "reste": "Your OK on the pictures, then merge."
+   "ouEnEst": "Brought up to date with main, checks green. Being measured on a cloud iPhone, with the server switch off and then on.",
+   "reste": "Next build, switched on from the server if the measurement is clean."
   },
   {
    "statut": "later",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "You asked to finish it: its native test fails without the fix and passes with it. It changes the native pager, so its pictures and smoothness need a real build of the app.",
-   "reste": "Pictures and measurement on a real build, then your OK."
+   "ouEnEst": "A cloud machine builds the app with the native fix to take its pictures and measure its smoothness.",
+   "reste": "Pictures and measurement, then your OK."
   },
   {
    "statut": "later",
-   "sujet": "Videos ahead in the feed with preloading on",
+   "sujet": "Videos ahead in the feed",
    "pr": 4766,
-   "ouEnEst": "You asked to finish it: the heavy part was moved off the app's main thread, but the branch now conflicts with main.",
-   "reste": "Update the branch, reviews, measurement, then the next build."
+   "ouEnEst": "Brought up to date with main, checks green. Being measured on a cloud iPhone.",
+   "reste": "Reviews, measurement, then the next build."
   }
  ],
  "equipe": [
-  "Here on the Mac: me and your emulator, for the final loop and the measurements.",
-  "On Replicas, on Muse Spark through OpenCode until the Claude accounts come back on 16/10: mouflon and orignal reviewing, fouine on lost taps, castor on the website, putois, lemming and vison on the next build's points."
+  "Here on the Mac: me, and your emulator back on staging. Sign in again yourself: the loop's test account replaced yours.",
+  "On Replicas, nine machines on Muse Spark through OpenCode until the Claude accounts come back on 16/10: wombat (tour of the build commit), castor (counts), ibis (dark mode), putois and harfang (read ahead), vison (videos ahead), lemming (Explore), fouine (lost taps)."
  ],
  "etapes": [
-  "Merge the counts fix after its reviews.",
-  "The final loop and the filmed Home bar on that exact code.",
-  "Your OK on the website pictures, then your go for the build."
+  "A cloud iPhone rechecks the nine changed points and the counts.",
+  "Start build 196 on the loop's exact commit.",
+  "Review and merge the official videos fix, then deploy the server."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4787,
+     "titre": "TAK-1104 : sur le web aussi, les hashtags d'un Take se touchent dans le titre, en gris, sans pastille",
+     "fusion": "Oct 11, 21:52",
+     "build196": false
+    },
+    {
+     "pr": 4812,
+     "titre": "TAK-1137 : un chiffre qui rétrécit n'a plus de hauteur de ligne fixe (compteurs au tiers dans « Ton activité »)",
+     "fusion": "Oct 11, 21:09",
+     "build196": false
+    },
     {
      "pr": 4799,
      "titre": "TAK-974 : « Retour » répond dès que la feuille de partage KnowMe a disparu",
