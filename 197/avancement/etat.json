@@ -1,21 +1,33 @@
 {
- "majLe": "2026-10-12T05:46+09:00",
- "heure": "05:50",
+ "majLe": "2026-10-12T06:48+09:00",
+ "heure": "06:48",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 29,
-  "depuisDernierTableau": 29,
-  "enCours": 8,
-  "app": 13,
+  "fusionneesDepuis8Octobre": 31,
+  "depuisDernierTableau": 31,
+  "enCours": 13,
+  "app": 14,
   "siteEtAdmin": 6,
   "serveur": 5,
-  "outilsEtDocs": 5
+  "outilsEtDocs": 6
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Ten more pull requests merged, including the single map arrow (Hick's law point 8) and five flaky tests. Your two new TestFlight bugs (vote flicker, frozen conversation) have their tickets and agents."
+  "texte": "Your vote fix is reviewed with zero defects and green: it merges right after the test loop. The full review of everything since build 196 found no defect so far on the server and on most screens, and nothing that could break build 196."
  },
  "depuis": [
+  {
+   "heure": "06:43",
+   "pr": 4837,
+   "texte": "Server, outside the app: trace reports keep only their redacted copy, never the original.",
+   "build196": true
+  },
+  {
+   "heure": "05:52",
+   "pr": 4828,
+   "texte": "Hick's law point 10: the composer has a single sound button. Tap the mic to record, long-press it to import a sound.",
+   "build196": true
+  },
   {
    "heure": "05:23",
    "pr": 4843,
@@ -227,53 +239,88 @@
  },
  "enCours": [
   {
+   "statut": "review",
+   "sujet": "Your vote that flickers",
+   "pr": 4849,
+   "ouEnEst": "Fixed for the feed, where you filmed it, and for the opened Take: a late read can no longer hide your vote. Reviews found three more edge cases (anonymity, a read sent while the vote travels). All are fixed, the last review found zero defects, and CI is green.",
+   "reste": "Merge right after the test loop."
+  },
+  {
    "statut": "fixing",
-   "sujet": "Your two TestFlight bugs",
+   "sujet": "Your conversation that freezes 2 s on a cold start",
+   "pr": 4850,
+   "ouEnEst": "The conversation screen is now prepared while you look at Messages. A review found it could stutter during a scroll of the inbox: fixed, it waits for the list to rest. Second review in progress.",
+   "reste": "Measure on a Replicas iPhone in Release, then merge."
+  },
+  {
+   "statut": "loop",
+   "sujet": "Test loop on today's main",
    "pr": 0,
-   "ouEnEst": "The vote that flickers (shows, disappears for a third of a second, comes back): the server re-reads the feed from a copy that can lag behind your vote. The conversation that freezes 2 s on the first tap after a cold start: the thread screen's code is only loaded at that tap. Both are being fixed, and the cold-start tap joins the test loop.",
-   "reste": "Fix, test, measure, then merge."
+   "ouEnEst": "A full rehearsal of the regression loop on the Mac. First pass: flows 1 to 8 green, then an iOS camera permission alert on a fresh simulator stopped flow 9 (not a regression: nothing changed touches the camera). Restarted at 06:35 with permissions granted.",
+   "reste": "Any red flow gets its ticket right away."
   },
   {
    "statut": "review",
-   "sujet": "Hick's law: the last four of the seven you accepted",
+   "sujet": "Full review of everything changed since build 196",
    "pr": 0,
-   "ouEnEst": "Three are merged (no cross on the sign-in sheet, sorting only on Top, single map arrow). Left: mentions in the most likely order (two pictures to redo), the welcome screen (one picture to redo), and the composer's « No limit » with its header fix and the single sound button (pictures on the Mac).",
-   "reste": "Pictures, then merge."
+   "ouEnEst": "Three Replicas machines re-read every change, zone by zone. Server and contract: no defect, and nothing can break build 196 for its testers. Messages, profile, Explore, map and composer: no defect in 56 files. Feed, vote and navigation: in progress.",
+   "reste": "Anything found is fixed before the build."
   },
   {
    "statut": "review",
-   "sujet": "Map search: suggestions follow every letter, with the still panel",
+   "sujet": "Ready to merge after the loop",
+   "pr": 0,
+   "ouEnEst": "Green and reviewed: old builds ignore new server fields, unknown cards are skipped instead of blanking a list, the composer with its extra renders removed, and Expert notes read less often.",
+   "reste": "Merge as soon as the loop ends."
+  },
+  {
+   "statut": "review",
+   "sujet": "Map search: the still panel",
    "pr": 4818,
-   "ouEnEst": "Your still panel is pushed and reviewed.",
-   "reste": "Pictures in light and dark, then merge."
+   "ouEnEst": "Your still panel, plus an Android fix found in review: the back key closes the keyboard and the panel shrinks back. A last iOS detail is being fixed.",
+   "reste": "Android picture on Replicas, then merge."
   },
   {
    "statut": "review",
-   "sujet": "Mentions appear faster",
-   "pr": 4822,
-   "ouEnEst": "Reviewed and green.",
-   "reste": "Merge right after the mention ranking."
+   "sujet": "Mentions in the most likely order",
+   "pr": 4827,
+   "ouEnEst": "Reviewed. One picture is being redone on a single database: the first one was taken on another database.",
+   "reste": "Picture, then merge, then the faster mentions."
+  },
+  {
+   "statut": "review",
+   "sujet": "Welcome screen without an account",
+   "pr": 4829,
+   "ouEnEst": "Reviewed. One picture at the largest text size is being redone on a Replicas iPhone.",
+   "reste": "Picture, then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Fewer requests, as you asked",
+   "pr": 4853,
+   "ouEnEst": "Expert notes are no longer re-read every minute on a Take that has none, and your Profile counters are re-read after 2 minutes instead of 30 s. A third idea was dropped: the app already did it.",
+   "reste": "Review, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "You want it in build 197: a Replicas machine builds it and takes the pictures and the measurement on a cloud iPhone.",
+   "ouEnEst": "A Replicas machine builds it and takes the pictures and the measurement on a cloud iPhone.",
    "reste": "Pictures and measurement, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Videos ahead in the feed",
    "pr": 4766,
-   "ouEnEst": "You want it in build 197: a Replicas machine measures it in Release, data size included, with and without the two-line fix.",
-   "reste": "If it is smoother, push the fix and merge."
+   "ouEnEst": "A Replicas machine measures it in Release, data size included.",
+   "reste": "If it is smoother, merge."
   },
   {
-   "statut": "fixing",
-   "sujet": "Old builds that break when the server adds a field",
+   "statut": "claude",
+   "sujet": "A late database copy could show an old anonymity",
    "pr": 0,
-   "ouEnEst": "Today one new field can stop an installed build from starting (it broke build 195 on staging). Build 197 will ignore fields it does not know, while the tests stay strict.",
-   "reste": "Review, then merge before the build."
+   "ouEnEst": "Found while fixing your vote, and it already exists today: right after you switch to anonymous, a lagging database copy could show your vote as public for a moment. Fix on the server: for 30 s after you vote, your own reads come from the main database.",
+   "reste": "Measured on staging behind a switch, then turned on. Not part of the app build."
   },
   {
    "statut": "later",
@@ -284,20 +331,27 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, five Claude agents (your two bugs, reviews, tolerant parsing), audit-hick taking the composer and map pictures, and your emulator on staging.",
-  "On Replicas, on Muse Spark through OpenCode: vison (videos ahead, Release measurement), harfang (Explore fix pictures and measurement), wombat (the last pictures). Claude is still out on Replicas."
+  "Here on the Mac: me, five Claude agents (fixes and reviews), and audit-hick running the test loop. Your emulator is switched off during the loop to save memory.",
+  "On Replicas, on Muse Spark through OpenCode: renard, belette and lemming (full review by zone, then pictures and a missing test), vison (videos ahead), harfang (Explore fix), wombat (pictures, then the conversation measurement). Claude is still rate-limited on Replicas, and two machines fail on their fallback."
  ],
  "etapes": [
-  "Fix your two TestFlight bugs: vote flicker and frozen conversation.",
-  "Pictures, then merge: mentions, welcome screen, composer, map search.",
+  "Finish the test loop on the Mac, then merge everything green and reviewed.",
+  "Finish your conversation fix: second review, then the iPhone measurement.",
+  "Last pictures (mentions, welcome screen, map on Android), then merge.",
   "Measure and merge the videos ahead and the Explore fix.",
-  "Then the full regression loop on the exact build-197 commit, and your OK."
+  "Then the full regression loop on the exact build-197 commit, the list of what is in and out, and your OK."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4828,
+     "titre": "TAK-1152 : compositeur, un seul bouton son (importer passe en appui long sur le micro)",
+     "fusion": "Oct 12, 05:52",
+     "build196": true
+    },
     {
      "pr": 4846,
      "titre": "TAK-1161 : une lecture d'écran refusée par son schéma signale l'écran, le chemin et le code zod",
@@ -490,6 +544,12 @@
    "zone": "autre",
    "nom": "Other",
    "prs": [
+    {
+     "pr": 4837,
+     "titre": "TAK-1091: persist the redacted raw projection, never original envelope bytes",
+     "fusion": "Oct 12, 06:43",
+     "build196": true
+    },
     {
      "pr": 4821,
      "titre": "TAK-1148 : le lint interdit aussi router et Link d'expo-router (garde du double toucher)",
