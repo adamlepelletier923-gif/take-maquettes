@@ -1,21 +1,45 @@
 {
- "majLe": "2026-10-11T16:49+09:00",
- "heure": "16:50",
+ "majLe": "2026-10-11T17:46+09:00",
+ "heure": "17:50",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 390,
-  "depuisDernierTableau": 195,
-  "enCours": 8,
-  "app": 171,
-  "siteEtAdmin": 68,
+  "fusionneesDepuis8Octobre": 394,
+  "depuisDernierTableau": 199,
+  "enCours": 9,
+  "app": 172,
+  "siteEtAdmin": 69,
   "serveur": 73,
-  "outilsEtDocs": 78
+  "outilsEtDocs": 80
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The fix for old Takes in Friends is in main, proven on cloud iPhones and measured as fast as before; the map pin and Nearby title fixes are in too, and the loop on today's main passed 22 of 22. The new tap-spam tests found a real privacy bug (an anonymous vote turning public in an open Take), already fixed and in review."
+  "texte": "The anonymous-vote fix is in main. The 90-point tour on cloud iPhones is done: almost everything green, with two real defects (a blocked Take staying open, a link to Messages lost after quick tab taps) being fixed now."
  },
  "depuis": [
+  {
+   "heure": "17:23",
+   "pr": 4809,
+   "texte": "TAK-1135: upload bucket and telemetry map copies independently",
+   "build196": false
+  },
+  {
+   "heure": "17:00",
+   "pr": 4804,
+   "texte": "In an open Take, tapping the ghost right after voting keeps the vote anonymous; before, the vote could stay public while the ghost was on. Found tonight by the new tap-spam tests.",
+   "build196": false
+  },
+  {
+   "heure": "16:57",
+   "pr": 4808,
+   "texte": "TAK-1133: render Hyperdrive id from env.staging in telemetry deploy",
+   "build196": false
+  },
+  {
+   "heure": "16:52",
+   "pr": 4807,
+   "texte": "TAK-1132: keep patches/ in telemetry staging checkout for bun ci",
+   "build196": false
+  },
   {
    "heure": "16:48",
    "pr": 4798,
@@ -1223,76 +1247,90 @@
  },
  "enCours": [
   {
-   "statut": "review",
-   "sujet": "An anonymous vote could turn public in an open Take",
-   "pr": 4804,
-   "ouEnEst": "Found tonight by the new tap-spam tests: in an open Take, voting Yes then tapping the ghost right away could leave the vote public while the ghost was on. Fixed like the feed row was, with tests that fail first; checks green, two reviews running.",
-   "reste": "Two clean reviews, then merge."
+   "statut": "fixing",
+   "sujet": "A Take blocked by moderation stayed open",
+   "pr": 0,
+   "ouEnEst": "Found by the 90-point tour: when a Take is blocked while you have it open, it stayed on screen 25 s and more with 'The discussion is not answering, Retry', although the server already answers that it no longer exists. putois has tests that fail on main and is writing the fix.",
+   "reste": "A PR with proof on a cloud iPhone, two reviews, merge."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "A link to Messages lost after quick tab taps",
+   "pr": 0,
+   "ouEnEst": "Found by the 90-point tour: three quick tab taps followed by a link to Messages ended on Home 2 times out of 9. fouine is looking for the place where the link gets overwritten.",
+   "reste": "A PR with a test that fails first and 20 tries on a device, two reviews, merge."
   },
   {
    "statut": "review",
    "sujet": "'Know me' ignoring Back after a share sheet",
    "pr": 4799,
-   "ouEnEst": "renard is closing the last window where Back was still lost (between the sheet disappearing and its removal) and preparing before-and-after pictures. The fix also makes the share sheets appear about half a second sooner, 'Send to' included: a motion change that waits for your OK.",
-   "reste": "Your OK on the faster sheets (or the fix without that part), two clean reviews, merge."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Taps lost when two arrive within one frame",
-   "pr": 0,
-   "ouEnEst": "On cloud iPhones, two taps less than a frame apart (under about 16 ms) count as one on tabs, votes, repost and the ghost; from 33 ms on, which is faster than any finger, nothing is lost. manul is instrumenting the device and an agent on the Mac reads React Native's touch handling to find the common cause.",
-   "reste": "A fix per cause, measured, starting with the ghost."
+   "ouEnEst": "Back is now kept while the share sheet slides away and runs as soon as it is gone, with no lost tap at 300 or 450 ms. A review asks for one more test proving the real sheet is wired; renard is adding it with the before-and-after pictures. The fix makes the share sheets appear half a second sooner, so it waits for your OK.",
+   "reste": "Your OK on the faster sheets, two clean reviews, merge."
   },
   {
    "statut": "loop",
    "sujet": "Final test loop and the 90-point tour",
    "pr": 0,
-   "ouEnEst": "The loop on today's main, map included, passed 22 of 22; the bench's time check was repaired after the app's new date clock. The filmed check of the Home bar is done on the final commit only.",
-   "reste": "Once the last fixes are in: the full loop, the filmed bar check and the 90-point tour on that exact commit."
+   "ouEnEst": "The 90-point tour is done on cloud iPhones: almost everything green, the two real defects above being fixed. The full loop runs again on today's main with the cache, map pin, Nearby title and anonymous-vote fixes.",
+   "reste": "The full loop, the filmed Home bar check and the tour's map points on the final commit."
+  },
+  {
+   "statut": "later",
+   "sujet": "Taps lost when two arrive within one frame",
+   "pr": 0,
+   "ouEnEst": "Two taps less than a frame apart count as one on tabs, votes, repost and the ghost; from 33 ms on, faster than any finger, nothing is lost. The search for the cause is paused: the cloud machine doing it has no Claude left tonight.",
+   "reste": "Resume as soon as the accounts are back, then a fix per cause."
   },
   {
    "statut": "later",
    "sujet": "Messages and the Profile read ahead, without a heavier launch",
    "pr": 4795,
-   "ouEnEst": "harfang's draft prepares Messages and the Profile one piece at a time while you are idle; a review found two defects, being fixed.",
-   "reste": "After build 196: fixes, measurement, then switch it on from the server."
+   "ouEnEst": "harfang fixed the two defects a review found; checks green, two new reviews running.",
+   "reste": "After build 196: measurement, then switch it on from the server."
   },
   {
    "statut": "later",
    "sujet": "Hashtags on the website, as in the app",
    "pr": 4787,
-   "ouEnEst": "castor's pictures found two holes: on a Take opened from a shared link while signed in, the hashtag could not be tapped at all, and with the server switch off there was no way left to search it. castor is fixing both, keeping the pills until links can show.",
-   "reste": "After build 196: fixes, pictures in light and dark, then your OK."
+   "ouEnEst": "castor fixed the two holes his pictures found; a review then found a small jump on public profiles (pills shown, then removed). castor is making the page show its final state from the start.",
+   "reste": "After build 196: pictures in light and dark, then your OK."
   },
   {
    "statut": "later",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "lemming's draft keeps the page you leave drawn during quick swipes; a review found the drawn copy cost 18 ms on almost every page change, and lemming pushed a fix.",
-   "reste": "Reviews and pictures for your OK, after build 196."
+   "ouEnEst": "One clean review and one asking for a test that fails if the fix is undone; lemming is adding it with pictures.",
+   "reste": "Your OK on the pictures, after build 196."
   },
   {
    "statut": "later",
    "sujet": "Videos ahead in the feed with preloading on",
    "pr": 4766,
-   "ouEnEst": "belette is measuring on cloud iPhones whether switching videos ahead on makes anything heavier.",
-   "reste": "Then turn the video switch on from the server."
+   "ouEnEst": "Measured tonight: the first frame of a video arrives in 46 ms instead of 343 and the feed downloads nine times less, but scrolling gets heavier on the JS side. vison is moving that work out of the scroll.",
+   "reste": "Measure again, then turn the video switch on from the server."
   }
  ],
  "equipe": [
-  "Here on the Mac, which is nearly full: me, your emulator for the final loop, and an agent reading React Native's touch handling for the lost taps.",
-  "On Replicas: manul on lost taps, renard on Know me, castor on the website hashtags, lemming on Explore, harfang on read-ahead, belette measuring videos ahead, putois and fouine done on the cache fix, wombat on the 90-point tour, and reviewers on each PR."
+  "Here on the Mac: me and your emulator running the loop; no new agent can start tonight.",
+  "On Replicas, now on OpenCode: putois and fouine on the two tour defects, renard on Know me, castor on the website hashtags, lemming on Explore, vison on videos ahead, harfang's draft in review."
  ],
  "etapes": [
-  "Merge the anonymous-vote fix after its reviews, and the Know me fix with or without the faster sheets.",
-  "The full loop, the filmed Home bar check and the 90-point tour on the final commit.",
-  "The list of what is not in build 196, then the build once you give the go."
+  "Fix the blocked Take staying open and the lost link to Messages.",
+  "Merge the Know me fix once you OK the faster sheets.",
+  "The full loop, the filmed Home bar check and the tour's map points on the final commit.",
+  "The list of what is not in build 196 (six choices for you), then the build once you give the go."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4804,
+     "titre": "TAK-1125 : dans le Take ouvert, le fantôme touché juste après un vote garde le vote anonyme",
+     "fusion": "Oct 11, 17:00",
+     "build196": false
+    },
     {
      "pr": 4798,
      "titre": "fix(mobile): TAK-1122 Nitro's iOS sessions keep no HTTP cache, so a 304 never revives an older body",
@@ -2326,6 +2364,12 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 4809,
+     "titre": "TAK-1135: upload bucket and telemetry map copies independently",
+     "fusion": "Oct 11, 17:23",
+     "build196": false
+    },
+    {
      "pr": 4797,
      "titre": "Telemetry staging deploys: worker pipeline, secrets, map uploads, read-back",
      "fusion": "Oct 11, 16:19",
@@ -3183,6 +3227,18 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4808,
+     "titre": "TAK-1133: render Hyperdrive id from env.staging in telemetry deploy",
+     "fusion": "Oct 11, 16:57",
+     "build196": false
+    },
+    {
+     "pr": 4807,
+     "titre": "TAK-1132: keep patches/ in telemetry staging checkout for bun ci",
+     "fusion": "Oct 11, 16:52",
+     "build196": false
+    },
     {
      "pr": 4806,
      "titre": "TAK-1132: check out transitive telemetry workspace deps in staging deploy",
