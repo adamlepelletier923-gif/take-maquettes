@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-11T22:46+09:00",
- "heure": "22:47",
+ "majLe": "2026-10-11T23:49+09:00",
+ "heure": "23:50",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 402,
-  "depuisDernierTableau": 207,
+  "fusionneesDepuis8Octobre": 403,
+  "depuisDernierTableau": 208,
   "enCours": 6,
-  "app": 178,
+  "app": 179,
   "siteEtAdmin": 69,
   "serveur": 74,
   "outilsEtDocs": 81
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "You asked for Explore to show results on number 1 only: done, checked on your emulator, and merged. The first build attempt stopped on a broken check of the build chain, now repaired, and build 196 is running again."
+  "texte": "Build 196 is on TestFlight, and the staging API is deployed with the official videos fix. Your three TestFlight points have their tickets: the map search is fixed and tested on your emulator; mentions and the private profile are being worked on."
  },
  "depuis": [
+  {
+   "heure": "22:58",
+   "pr": 4795,
+   "texte": "Messages and the Profile are prepared ahead while you rest on Amis, switched off by default. Measured on a cloud iPhone: off, it costs nothing; on, it slows nothing and makes launch lighter (12 network reads instead of 22). For the next build.",
+   "build196": false
+  },
   {
    "heure": "22:38",
    "pr": 4813,
@@ -1296,31 +1302,31 @@
  "enCours": [
   {
    "statut": "review",
-   "sujet": "Build 196 being built",
-   "pr": 0,
-   "ouEnEst": "Relaunched on main after your Explore fix and the repair of the build check. The code check runs first, then Expo builds the app and sends it to TestFlight.",
-   "reste": "Your install from TestFlight."
+   "sujet": "Map search keeps the place you picked",
+   "pr": 4816,
+   "ouEnEst": "Your TestFlight point: picking a suggestion now writes its name in the bar, ready to be written over. The places follow the typing sooner (150 ms instead of 250) and the flight takes 1.2 s instead of 2.4. Tested on your emulator.",
+   "reste": "Checks, then merge for the next build."
   },
   {
-   "statut": "staging",
-   "sujet": "Official videos fix on the staging server",
+   "statut": "measuring",
+   "sujet": "Mentions appear faster",
    "pr": 0,
-   "ouEnEst": "Merged and reviewed with no defect, its database change undone and redone for real. It reaches staging with the next server deploy, after the build.",
-   "reste": "Deploy the staging API."
+   "ouEnEst": "Your TestFlight point: the @ suggestions are slow in Messages and comments. A cloud machine measures where the time goes on a cloud iPhone.",
+   "reste": "Fix, measure before and after, then your OK."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Private profile shows its score and friends",
+   "pr": 0,
+   "ouEnEst": "Your TestFlight point: a private profile (like Ines) shows only its Takes count. A cloud machine adds the score, if any, and the friends count: numbers only, never lists.",
+   "reste": "Pictures before and after, for your OK."
   },
   {
    "statut": "later",
-   "sujet": "Taps lost when two arrive within one frame",
-   "pr": 0,
-   "ouEnEst": "A cloud machine reproduces them on a cloud iPhone and tests each candidate cause, one at a time.",
-   "reste": "A fix per cause, proven, for the next build."
-  },
-  {
-   "statut": "later",
-   "sujet": "Messages and the Profile read ahead",
-   "pr": 4795,
-   "ouEnEst": "Brought up to date with main, checks green. Being measured on a cloud iPhone, with the server switch off and then on.",
-   "reste": "Next build, switched on from the server if the measurement is clean."
+   "sujet": "Videos ahead in the feed",
+   "pr": 4766,
+   "ouEnEst": "Measured: a video's first image goes from 649 ms to 20 ms with 40 % less data, but switched on it adds about 80 ms of JS jank per run, so not yet.",
+   "reste": "Find the extra jank, then measure again."
   },
   {
    "statut": "later",
@@ -1331,26 +1337,32 @@
   },
   {
    "statut": "later",
-   "sujet": "Videos ahead in the feed",
-   "pr": 4766,
-   "ouEnEst": "Brought up to date with main, checks green. Being measured on a cloud iPhone.",
-   "reste": "Reviews, measurement, then the next build."
+   "sujet": "Taps lost when two arrive within one frame",
+   "pr": 0,
+   "ouEnEst": "Found: two fingers overlapping on the same button count once, which is React Native's normal touch model; taps apart, even barely, both count.",
+   "reste": "Decide whether anything should change."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, and your emulator on the latest main, on staging.",
-  "On Replicas, on Muse Spark through OpenCode until the Claude accounts come back on 16/10: wombat (tour), castor (counts), ibis (dark mode), putois and harfang (read ahead), vison (videos ahead), lemming (Explore), fouine (lost taps), orignal (reviews)."
+  "Here on the Mac: me, on the map search, and your emulator on staging.",
+  "On Replicas, on Muse Spark through OpenCode: harfang (mentions), putois (private profile), wombat (tour of the build), lemming (Explore)."
  ],
  "etapes": [
-  "The build's code check, then Expo builds the app and sends it to TestFlight.",
-  "Deploy the staging API with the official videos fix.",
-  "Wombat's tour of the build commit goes on, for the record."
+  "Map search: checks, then merge.",
+  "Mentions: measure, fix, measure again.",
+  "Private profile: score and friends, then your OK on the pictures."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4795,
+     "titre": "TAK-1114 : mode borné, Messages et le Profil se montent d'avance un morceau par créneau de repos, hors de la fenêtre du lancement",
+     "fusion": "Oct 11, 22:58",
+     "build196": false
+    },
     {
      "pr": 4814,
      "titre": "TAK-1139 : dans Explorer, seul le n°1 montre ses résultats de l'extérieur",
