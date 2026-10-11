@@ -1,21 +1,39 @@
 {
- "majLe": "2026-10-11T22:06+09:00",
- "heure": "22:05",
+ "majLe": "2026-10-11T22:46+09:00",
+ "heure": "22:47",
  "dernierTableau": "2026-10-09T22:28+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 399,
-  "depuisDernierTableau": 204,
+  "fusionneesDepuis8Octobre": 402,
+  "depuisDernierTableau": 207,
   "enCours": 6,
-  "app": 177,
+  "app": 178,
   "siteEtAdmin": 69,
-  "serveur": 73,
-  "outilsEtDocs": 80
+  "serveur": 74,
+  "outilsEtDocs": 81
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The final loop passed on the exact build commit and you gave your go: the build starts as soon as a cloud iPhone confirms tonight's changes."
+  "texte": "You asked for Explore to show results on number 1 only: done, checked on your emulator, and merged. The first build attempt stopped on a broken check of the build chain, now repaired, and build 196 is running again."
  },
  "depuis": [
+  {
+   "heure": "22:38",
+   "pr": 4813,
+   "texte": "An official Take's video is removed only when the video site says it is gone twice, a day apart; one passing error no longer removes it for good. It reaches staging with the next server deploy.",
+   "build196": false
+  },
+  {
+   "heure": "22:35",
+   "pr": 4815,
+   "texte": "The check that runs before every iOS build had lost main's history on 10/10 and failed every build; it has that history again, and the full check is kept.",
+   "build196": false
+  },
+  {
+   "heure": "22:33",
+   "pr": 4814,
+   "texte": "In Explore, only number 1 shows its results from outside, once you have voted, in Trending as in every theme. Ranks 2 to 10 never show them, even after you voted inside the Take. You asked for it tonight.",
+   "build196": false
+  },
   {
    "heure": "21:52",
    "pr": 4787,
@@ -1277,18 +1295,18 @@
  },
  "enCours": [
   {
-   "statut": "loop",
-   "sujet": "Build 196 ready to go",
+   "statut": "review",
+   "sujet": "Build 196 being built",
    "pr": 0,
-   "ouEnEst": "The final test loop passed on the exact build commit, 22 of 22, with the Home bar filmed and the long press checked. You gave your go: the build starts once a cloud iPhone has rechecked the nine points changed since this afternoon's tour, and the counts.",
-   "reste": "Start the build on that exact commit."
+   "ouEnEst": "Relaunched on main after your Explore fix and the repair of the build check. The code check runs first, then Expo builds the app and sends it to TestFlight.",
+   "reste": "Your install from TestFlight."
   },
   {
-   "statut": "review",
-   "sujet": "Official Take videos no longer removed on one error",
-   "pr": 4813,
-   "ouEnEst": "You said fix it: a video is now removed only when the video site says it is gone twice, a day apart. Its tests fail on main and pass here. It is server side, so it does not wait for the app build.",
-   "reste": "Checks and a review, then merge and deploy the server."
+   "statut": "staging",
+   "sujet": "Official videos fix on the staging server",
+   "pr": 0,
+   "ouEnEst": "Merged and reviewed with no defect, its database change undone and redone for real. It reaches staging with the next server deploy, after the build.",
+   "reste": "Deploy the staging API."
   },
   {
    "statut": "later",
@@ -1320,19 +1338,25 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, and your emulator back on staging. Sign in again yourself: the loop's test account replaced yours.",
-  "On Replicas, nine machines on Muse Spark through OpenCode until the Claude accounts come back on 16/10: wombat (tour of the build commit), castor (counts), ibis (dark mode), putois and harfang (read ahead), vison (videos ahead), lemming (Explore), fouine (lost taps)."
+  "Here on the Mac: me, and your emulator on the latest main, on staging.",
+  "On Replicas, on Muse Spark through OpenCode until the Claude accounts come back on 16/10: wombat (tour), castor (counts), ibis (dark mode), putois and harfang (read ahead), vison (videos ahead), lemming (Explore), fouine (lost taps), orignal (reviews)."
  ],
  "etapes": [
-  "A cloud iPhone rechecks the nine changed points and the counts.",
-  "Start build 196 on the loop's exact commit.",
-  "Review and merge the official videos fix, then deploy the server."
+  "The build's code check, then Expo builds the app and sends it to TestFlight.",
+  "Deploy the staging API with the official videos fix.",
+  "Wombat's tour of the build commit goes on, for the record."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4814,
+     "titre": "TAK-1139 : dans Explorer, seul le n°1 montre ses résultats de l'extérieur",
+     "fusion": "Oct 11, 22:33",
+     "build196": false
+    },
     {
      "pr": 4787,
      "titre": "TAK-1104 : sur le web aussi, les hashtags d'un Take se touchent dans le titre, en gris, sans pastille",
@@ -2822,6 +2846,12 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4813,
+     "titre": "TAK-1059: a curated video is dropped only after two gone answers a day apart",
+     "fusion": "Oct 11, 22:38",
+     "build196": false
+    },
+    {
      "pr": 4790,
      "titre": "TAK-1108: retention sweep and per-request deletion answer for telemetry",
      "fusion": "Oct 11, 15:20",
@@ -3265,6 +3295,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4815,
+     "titre": "TAK-1140 : la vérification d'un build mobile a l'historique de main",
+     "fusion": "Oct 11, 22:35",
+     "build196": false
+    },
     {
      "pr": 4808,
      "titre": "TAK-1133: render Hyperdrive id from env.staging in telemetry deploy",
