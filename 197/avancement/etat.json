@@ -1,21 +1,51 @@
 {
- "majLe": "2026-10-13T06:47+09:00",
- "heure": "06:47",
+ "majLe": "2026-10-13T07:47+09:00",
+ "heure": "07:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 134,
-  "depuisDernierTableau": 134,
-  "enCours": 12,
-  "app": 80,
+  "fusionneesDepuis8Octobre": 139,
+  "depuisDernierTableau": 139,
+  "enCours": 11,
+  "app": 84,
   "siteEtAdmin": 9,
-  "serveur": 18,
+  "serveur": 19,
   "outilsEtDocs": 27
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Your answers are in: everything goes into this build, the library update included, and the bottom bar hides while the full-body avatar is open. The profile with a glasses avatar opens no slower. The full-body view, checked on a real screen, showed a size jump at the end of the wave and the feet under the bar: both are being fixed. The fix that opens any conversation at your tap is under way."
+  "texte": "The fix for opening a conversation works: lower in the list, on a slow network, it opens in about 0.17 s instead of 0.43 s, as fast as the top ones. Merged: the bottom bar steps aside on the full-body avatar, the very large text fix, the library update and an avatar retry. The bench caught a real bug in the Android Explore change before the build; it is being fixed."
  },
  "depuis": [
+  {
+   "heure": "07:43",
+   "pr": 4942,
+   "texte": "Avatars: if the 3D avatar fails to load, the next tap tries again instead of staying stuck.",
+   "build196": true
+  },
+  {
+   "heure": "07:40",
+   "pr": 4949,
+   "texte": "Messages: the first part of opening any conversation at your tap, the format the inbox will use. It changes nothing on its own.",
+   "build196": true
+  },
+  {
+   "heure": "07:33",
+   "pr": 4947,
+   "texte": "A library update for the server and the app, done now as you asked, after checking the package.",
+   "build196": true
+  },
+  {
+   "heure": "07:19",
+   "pr": 4950,
+   "texte": "Avatars, full-body view: the bottom bar steps aside while it is open, so the feet show. It leaves and comes back in one frame, as you chose.",
+   "build196": true
+  },
+  {
+   "heure": "06:57",
+   "pr": 4940,
+   "texte": "Very large text: a button label now shows at its final size from the first frame. Captured at the largest text size: same look, no shrink.",
+   "build196": true
+  },
   {
    "heure": "06:45",
    "pr": 4948,
@@ -861,60 +891,53 @@
  },
  "enCours": [
   {
-   "statut": "fixing",
+   "statut": "review",
    "sujet": "Messages: any conversation opens at your tap, without waiting for the network",
    "pr": 0,
-   "ouEnEst": "You said yes for this build. The inbox will bring each conversation's last message, like Instagram, so a conversation lower in the list opens at once too. The contract is ready and reviewed; the server part and the app part are being built in parallel, switched off until measured.",
-   "reste": "Measure the opening on the bench with a simulated slow network, then switch it on."
+   "ouEnEst": "Measured on the bench: a conversation lower in the list now opens in about 0.17 s instead of 0.43 s on a slow network, as fast as the top ones, with nothing moving when its history arrives. The server part and the app part are being finished and reviewed.",
+   "reste": "Merge, then switch it on for the test server."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Colors: one green for the Yes, two reds",
+   "pr": 0,
+   "ouEnEst": "As you asked: \"Ami\" and the other greens turn black, the decorative reds too. The No, delete actions and the reds Instagram keeps stay red. Every place is listed; the change is being made.",
+   "reste": "Before and after captures for your OK, then merged."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Search: no more \"No take for ...\" line under the accounts",
+   "pr": 4953,
+   "ouEnEst": "As you asked. Ready; its captures are next.",
+   "reste": "Captures, then merged."
   },
   {
    "statut": "fixing",
    "sujet": "Avatars, full-body view: a size jump at the end of the wave",
    "pr": 0,
-   "ouEnEst": "Found on the bench: when the wave ends, the avatar shrinks for about a tenth of a second, then comes back to its size.",
+   "ouEnEst": "Found on the bench: when the wave ends, the avatar shrinks for about a tenth of a second, then comes back.",
    "reste": "An avatar agent fixes it for this build."
   },
   {
    "statut": "fixing",
-   "sujet": "Avatars, full-body view: the bottom bar hides the feet",
-   "pr": 0,
-   "ouEnEst": "You chose to hide the bar while the full-body view is open, like a full-screen view. An agent is on it.",
-   "reste": "Before and after captures, light and dark, in the pull request."
-  },
-  {
-   "statut": "review",
-   "sujet": "Very large text: a button label could shrink once",
-   "pr": 4940,
-   "ouEnEst": "Back in this build, as you said. Captured at the largest text size: same look before and after, the fix only changes the first frame. Checks running.",
-   "reste": "Merged once green."
-  },
-  {
-   "statut": "review",
-   "sujet": "A library update for the server and the app",
-   "pr": 4947,
-   "ouEnEst": "Done now, as you said: the package was checked before the update, and the usual three-day wait is lifted for this version only, put back tomorrow.",
-   "reste": "Merged once its checks are green."
+   "sujet": "Explore on Android: a bug caught on the bench",
+   "pr": 4429,
+   "ouEnEst": "After a trip through the search results, swiping between themes stopped working with this change; the current app is fine. It is being fixed with a test that replays it.",
+   "reste": "Measured again on the bench, then your OK on the look."
   },
   {
    "statut": "review",
    "sujet": "Error reports from the phone (Sentry)",
    "pr": 4774,
-   "ouEnEst": "Checks green and reviewed twice. It adds a native piece, so its app is built right after the reference app of the fluidity gate.",
-   "reste": "Its launch measured on the bench, then merged before the final checks."
+   "ouEnEst": "Checks green and reviewed. Its app is building now.",
+   "reste": "Launch measured on the bench, then merged before the final checks."
   },
   {
    "statut": "review",
    "sujet": "Avatars: more fixes in progress",
    "pr": 0,
-   "ouEnEst": "The Codex agents are finishing a recovery after a failed load, the wait for the first frame, the wave proportions, the human-like wave, the rotation on a vertical swipe and the headphone band on big hair.",
+   "ouEnEst": "One merged this hour. The Codex agents are finishing the wait for the first frame, the wave proportions and rhythm, the rotation on a vertical swipe, the socks and the headphone band; a follow-up opens the plain photo when the 3D cannot load.",
    "reste": "Each one merges once its board is checked."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Explore: the theme list no longer fades during a swipe, and search results swipe between tabs",
-   "pr": 4429,
-   "ouEnEst": "Changes Android only; the iPhone already behaves this way. Reviewed, bench apps and script ready.",
-   "reste": "Bench measurement, light and dark captures, then your OK on the look."
   },
   {
    "statut": "measuring",
@@ -927,7 +950,7 @@
    "statut": "review",
    "sujet": "Final checks of build 197",
    "pr": 0,
-   "ouEnEst": "Measured: the profile with a glasses avatar opens no slower. Checked on a real screen: the full-body view, with the two fixes above. Your OK on the private profile header is noted. The reference app of the fluidity gate is still building.",
+   "ouEnEst": "The reference app of the fluidity gate is built. Two tests that failed at random on everyone's checks are being made reliable.",
    "reste": "Run the gate and the full test loop on the final commit, then the go page and your go."
   },
   {
@@ -946,12 +969,12 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, three Claude agents (the conversation opening fix on the server and in the app; the library update, the reviews and the full-body bar) and six Codex agents on the avatars.",
+  "Here on the Mac: me, three Claude agents (the conversation opening fix; the colors, the search line and the reviews; the Android Explore fix and the bench apps) and six Codex agents on the avatars.",
   "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
  ],
  "etapes": [
-  "Finish and measure the conversation opening fix, the two full-body fixes and the very large text fix.",
-  "Measure the Sentry launch and Explore on the bench; merge the library update and the last avatar fixes.",
+  "Finish the conversation opening fix, the colors, the search line and the Android Explore fix; merge the last avatar fixes.",
+  "Measure the Sentry launch on the bench once its app is built, then merge it.",
   "Run the fluidity gate and the full test loop on the final commit, then the go page and your go for the iPhone build 197."
  ],
  "fait": [
@@ -959,6 +982,30 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4942,
+     "titre": "Avatars: a failed 3D load lets the next tap try again",
+     "fusion": "Oct 13, 07:43",
+     "build196": true
+    },
+    {
+     "pr": 4947,
+     "titre": "A library update for the server and the app",
+     "fusion": "Oct 13, 07:33",
+     "build196": true
+    },
+    {
+     "pr": 4950,
+     "titre": "Avatars: the bottom bar steps aside on the full-body view",
+     "fusion": "Oct 13, 07:19",
+     "build196": true
+    },
+    {
+     "pr": 4940,
+     "titre": "Very large text: a button label shows at its final size at once",
+     "fusion": "Oct 13, 06:57",
+     "build196": true
+    },
     {
      "pr": 4946,
      "titre": "Bottom bar: a long press on another tab opens it, like iOS",
@@ -1505,6 +1552,12 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4949,
+     "titre": "Messages: the inbox format for opening any conversation at once",
+     "fusion": "Oct 13, 07:40",
+     "build196": true
+    },
     {
      "pr": 4948,
      "titre": "Server tooling: the staging configuration check counts what a deployment really sends",
