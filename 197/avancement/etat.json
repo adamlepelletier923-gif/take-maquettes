@@ -1,21 +1,27 @@
 {
-  "majLe": "2026-10-13T02:59+09:00",
-  "heure": "02:58",
+  "majLe": "2026-10-13T03:16+09:00",
+  "heure": "03:16",
   "dernierTableau": "2026-10-11T22:35+09:00",
   "resume": {
-    "fusionneesDepuis8Octobre": 122,
-    "depuisDernierTableau": 122,
-    "enCours": 9,
+    "fusionneesDepuis8Octobre": 123,
+    "depuisDernierTableau": 123,
+    "enCours": 10,
     "app": 74,
     "siteEtAdmin": 8,
     "serveur": 15,
-    "outilsEtDocs": 25
+    "outilsEtDocs": 26
   },
   "alerte": {
     "titre": "This hour",
-    "texte": "The GIF fix is in: a conversation with a GIF opens in a third of a second instead of 11 to 13, and the same fix now covers GIFs in comments, Takes and the player. Take images respect Reduce Motion, and three avatar fixes are in. The full review of everything since build 196 found no regression. Friends is being measured on a separate simulator: your emulator is switched off meanwhile, with your login kept."
+    "texte": "Friends is being measured on a separate simulator; your emulator is off meanwhile, with your login kept. Two more fixes are ready and merge right after: feed videos that could overwrite each other, and a profile song that downloaded before any tap. Found tonight: VoiceOver never says which top tab is selected; a probe is ready. The private profile counters stay, since they follow your 'private like Instagram' rule."
   },
   "depuis": [
+    {
+      "heure": "03:01",
+      "pr": 4938,
+      "texte": "Avatars, docs only: the before and after boards of the corrected avatar benchmark.",
+      "build196": true
+    },
     {
       "heure": "02:55",
       "pr": 4899,
@@ -73,7 +79,7 @@
     {
       "heure": "02:00",
       "pr": 4912,
-      "texte": "TAK-1225 : rétablir l’import de la vague de référence dans le benchmark",
+      "texte": "Avatar tests only: the avatar benchmark imports its reference wave again.",
       "build196": true
     },
     {
@@ -792,8 +798,29 @@
       "statut": "measuring",
       "sujet": "Friends: the list keeps its rows when you come back and while it refreshes",
       "pr": 4582,
-      "ouEnEst": "Being measured now on a separate simulator, so your emulator keeps your login: it is switched off meanwhile, nothing erased. Each side runs 4 scenarios, 5 times.",
+      "ouEnEst": "Being measured on a separate simulator, so your emulator keeps your login: it is switched off meanwhile, nothing erased. The first run failed on the test script, not on the app; it is fixed and running again.",
       "reste": "Merge if Friends asks the server less and nothing gets slower."
+    },
+    {
+      "statut": "review",
+      "sujet": "Two fixes ready: feed videos and the profile song",
+      "pr": 4937,
+      "ouEnEst": "Feed video pieces no longer overwrite each other when two downloads of the same video overlap (picked up from a Replicas machine and finished here). The profile song preview no longer downloads before you tap play (#4939). Both reviewed, CI green.",
+      "reste": "Merged right after the Friends measurement, so the Mac is quiet while it runs."
+    },
+    {
+      "statut": "fixing",
+      "sujet": "Accessibility: VoiceOver never says which top tab is selected",
+      "pr": 0,
+      "ouEnEst": "Found tonight: Takes, Friends and Nearby are drawn as selected, but the screen reader is never told which one. A probe is ready to show why on the bench.",
+      "reste": "Probe on the bench, then the fix."
+    },
+    {
+      "statut": "review",
+      "sujet": "Regression review of everything merged since build 196",
+      "pr": 0,
+      "ouEnEst": "Done in three zones by three agents: no regression found. One doubt left, a button label in very large text that may shrink once on screen: its fix is being prepared and gets checked on the simulator.",
+      "reste": "Check on the simulator, then a last pass on what merges next."
     },
     {
       "statut": "measuring",
@@ -801,13 +828,6 @@
       "pr": 4429,
       "ouEnEst": "Finished here; it changes Android only, the iPhone already behaves this way. CI green.",
       "reste": "Bench measurement after Friends, light and dark captures, then your OK on the look."
-    },
-    {
-      "statut": "review",
-      "sujet": "Regression review of everything merged since build 196",
-      "pr": 0,
-      "ouEnEst": "Done in three zones by three agents (screens, data and cache, server): no regression found. Two doubts got their tickets: a button label in very large text that may shrink once on screen, and a profile song preview that loads before any tap (behind a switch that is off).",
-      "reste": "Check the large-text doubt on the simulator, then a last pass on what merges next."
     },
     {
       "statut": "go",
@@ -820,15 +840,8 @@
       "statut": "review",
       "sujet": "Avatars: four more fixes in progress",
       "pr": 0,
-      "ouEnEst": "Merged this hour: the ring and little fingers apart at rest, plus the rotation without a jump and the steady zoom (both behind the switch, off). The Codex agents are finishing four more fixes and the enlarged zoom you approved.",
+      "ouEnEst": "The Codex agents are finishing four fixes, the enlarged zoom you approved, and now the headphone band that sticks out of big hair.",
       "reste": "Each one merges once its board is checked."
-    },
-    {
-      "statut": "go",
-      "sujet": "Private profile: its counters are shown to a non-follower, like Instagram",
-      "pr": 4819,
-      "ouEnEst": "Merged after build 196: a locked private profile shows its Friends, Takes and Score counts. It follows your 08/10 rule 'private like Instagram', but I found no trace of your OK on its screenshots.",
-      "reste": "Your OK, or I hide the counters again."
     },
     {
       "statut": "go",
@@ -841,19 +854,19 @@
       "statut": "later",
       "sujet": "Bottom bar: a tab tap sometimes ignored right after launch",
       "pr": 0,
-      "ouEnEst": "Seen once in 20 launches on the simulator, cause not found, so it is not in this build. A debugging tool is ready to catch it on the next one.",
-      "reste": "Next build."
+      "ouEnEst": "Seen once in 20 launches on the simulator, cause not found. A bench script is being written to measure it again before the build.",
+      "reste": "Re-measured on the bench before the build."
     }
   ],
   "equipe": [
-    "Here on the Mac: me, three Claude agents (the regression review is done; now the absent list, the TestFlight notes and a privacy fix) and six Codex agents on the avatars.",
+    "Here on the Mac: me, three Claude agents (the VoiceOver probe and bench scripts, the large-text button fix, a test proof and ticket cleanup) and six Codex agents on the avatars.",
     "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
   ],
   "etapes": [
-    "Finish the Friends measurement, then Explore on Android and the Maestro check of the last test PR.",
+    "Finish the Friends measurement, then merge it with the two ready fixes.",
+    "On the bench: the VoiceOver probe, the large-text button, the bottom bar and Explore checks, the Maestro check of the last test PR.",
     "Merge the last avatar fixes as their boards are checked.",
-    "Redo the fluidity gate and the final loop on the final commit, then the go page.",
-    "Your go, then the iPhone build 197."
+    "Redo the fluidity gate and the final loop on the final commit, then the go page and your go for the iPhone build 197."
   ],
   "fait": [
     {
@@ -1544,6 +1557,12 @@
       "zone": "docs",
       "nom": "Docs",
       "prs": [
+        {
+          "pr": 4938,
+          "titre": "TAK-1225 : publier les planches avant/après du benchmark corrigé",
+          "fusion": "Oct 13, 03:01",
+          "build196": true
+        },
         {
           "pr": 4390,
           "titre": "docs : inventaire de parité web et Android (08/10)",
