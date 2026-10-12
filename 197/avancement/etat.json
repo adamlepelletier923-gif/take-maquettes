@@ -1,21 +1,57 @@
 {
- "majLe": "2026-10-12T11:47+09:00",
- "heure": "11:47",
+ "majLe": "2026-10-12T12:47+09:00",
+ "heure": "12:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 67,
-  "depuisDernierTableau": 67,
-  "enCours": 11,
-  "app": 33,
+  "fusionneesDepuis8Octobre": 73,
+  "depuisDernierTableau": 73,
+  "enCours": 9,
+  "app": 37,
   "siteEtAdmin": 6,
   "serveur": 13,
-  "outilsEtDocs": 15
+  "outilsEtDocs": 17
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Your cold-start conversation fix is measured with no slowdown and is merging, and the 4 flows pass on a fresh simulator, including the iOS camera alert."
+  "texte": "Merged: the welcome screen without an account, your cold-start conversation fix, and translations that no longer retry 20 times. The full rehearsal of the loop passed 18 of 22 flows."
  },
  "depuis": [
+  {
+   "heure": "12:19",
+   "pr": 4829,
+   "texte": "Welcome screen without an account: one big « Create an account » button, and « Log in » as a small line. You approved it.",
+   "build196": true
+  },
+  {
+   "heure": "12:00",
+   "pr": 4889,
+   "texte": "Test loop: Take relaunches without camera, photos or microphone access, like a new tester.",
+   "build196": true
+  },
+  {
+   "heure": "11:56",
+   "pr": 4891,
+   "texte": "Avatar: the thumb's shading follows its rotation during the wave.",
+   "build196": true
+  },
+  {
+   "heure": "11:53",
+   "pr": 4896,
+   "texte": "Comment and Take translations: a pending translation is re-read 4 times at most, more and more spaced out, instead of up to 20 times.",
+   "build196": true
+  },
+  {
+   "heure": "11:52",
+   "pr": 4835,
+   "texte": "Test loop: it opens a thread from a notification and comes back to the list.",
+   "build196": true
+  },
+  {
+   "heure": "11:47",
+   "pr": 4850,
+   "texte": "Your conversation that froze 2 s on a cold start: the thread now gets ready while the app is idle, before your first tap. Measured on a Replicas iPhone with no slowdown.",
+   "build196": true
+  },
   {
    "heure": "11:39",
    "pr": 4886,
@@ -455,73 +491,59 @@
  },
  "enCours": [
   {
-   "statut": "review",
-   "sujet": "Your conversation that freezes 2 s on a cold start",
-   "pr": 4850,
-   "ouEnEst": "Measured on a Replicas iPhone: the thread code now gets ready while the app is idle, not at your tap, with no cost moved to launch. The 2 s freeze from TestFlight did not show on the bench.",
-   "reste": "Merging now."
-  },
-  {
-   "statut": "review",
-   "sujet": "Test loop: opens a thread from a notification",
-   "pr": 4835,
-   "ouEnEst": "Green on a fresh simulator. It merges right after the cold-start fix, with 4 small conflicts already worked out.",
-   "reste": "Merge after the cold-start fix."
+   "statut": "loop",
+   "sujet": "Full rehearsal of the regression loop",
+   "pr": 0,
+   "ouEnEst": "18 of 22 flows green on a fresh simulator. The 4 failures come from that simulator's test server, not from the app: the native pager was switched off there (3 flows: Explore keeping its place, search tabs, Activity tabs) and it had no photo storage (1 flow). The Mac bench has both, and I am replaying them there to confirm.",
+   "reste": "If a replay fails on the bench, it gets its ticket and its fix before the build."
   },
   {
    "statut": "measuring",
    "sujet": "Profile: a swipe that starts on the tabs no longer gets stuck",
    "pr": 4861,
-   "ouEnEst": "A Replicas iPhone is building the app to measure the profile scroll.",
+   "ouEnEst": "A Replicas iPhone measures the profile scroll.",
    "reste": "Measurement, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "A Replicas iPhone is counting blank frames, including the 100 ms blank after a tap on a far theme.",
+   "ouEnEst": "A Replicas iPhone counts blank frames, including after a tap on a far theme.",
    "reste": "If the cost is gone, merge; a ready fix covers the far tap if the blank remains."
   },
   {
    "statut": "measuring",
    "sujet": "Explore: only the page on screen re-reads its votes",
    "pr": 4893,
-   "ouEnEst": "Each mounted theme page re-read the N°1 votes every 15 s, up to about 40 reads a minute instead of 4. Fixed and reviewed; a Replicas iPhone measures it after the Explore pages.",
+   "ouEnEst": "Fixed and reviewed; the same iPhone measures it right after the Explore pages.",
    "reste": "Measurement, then merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Comment and Take translations: 4 retries at most instead of 20",
-   "pr": 4896,
-   "ouEnEst": "A page of 20 foreign comments could make up to about 400 requests in 30 s. Now one shared, spaced-out schedule. In review.",
-   "reste": "Review, then merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Welcome screen without an account",
-   "pr": 4829,
-   "ouEnEst": "You approved the captures. One picture at the largest text size is being redone.",
-   "reste": "Picture, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Fewer requests: Friends and the open Take",
    "pr": 4866,
-   "ouEnEst": "Both ready and reviewed. A Replicas iPhone measures them right after the profile.",
+   "ouEnEst": "A second Replicas iPhone took this measurement, so it runs in parallel with the profile.",
    "reste": "They enter build 197 if they show fewer requests and no fluidity loss."
   },
   {
    "statut": "measuring",
    "sujet": "Before and after this morning's merges",
    "pr": 0,
-   "ouEnEst": "A Replicas iPhone is building both versions. Meanwhile, a full rehearsal of the regression loop runs on a fresh simulator on the Mac.",
+   "ouEnEst": "A Replicas iPhone is building both versions to compare launch, vote, scroll, opening a Take, map search, a conversation and the profile.",
    "reste": "Any regression gets fixed before the build."
+  },
+  {
+   "statut": "review",
+   "sujet": "Your vote re-read from the main database, on staging only",
+   "pr": 4869,
+   "ouEnEst": "You gave the go. It needs a measurement window before and after the staging deploy.",
+   "reste": "Before window, staging deploy, after window, then the cost."
   },
   {
    "statut": "claude",
    "sujet": "Avatars, continuously (six Codex)",
    "pr": 0,
-   "ouEnEst": "Next to merge: the shoulder (reviewed) and the elbow (one more test). In progress: the arm, the rhythm, glasses on a custom nose, fingers, and the full-body view made bigger.",
+   "ouEnEst": "Merged this hour: the thumb's shading. Next: the shoulder, the elbow, the arm, the rhythm, glasses on a custom nose, fingers, and the full-body view made bigger.",
    "reste": "Each one merges once its board is checked; you see the bigger full-body view before it is turned on."
   },
   {
@@ -533,12 +555,12 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, three Claude agents (reviews and fixes, the loop rehearsal on a fresh simulator) and six Codex agents on the avatars.",
-  "On Replicas, on Muse Spark through OpenCode: wombat (welcome picture), harfang (Explore, then its re-read fix), vison (profile, then fewer requests), belette (before/after the merges)."
+  "Here on the Mac: me on the bench (replaying the rehearsal's failures), Claude agents on the reviews, and six Codex agents on the avatars.",
+  "On Replicas, on Muse Spark through OpenCode, one emulator each and 4 at most: vison (profile), harfang (Explore, then its re-read fix), wombat (fewer requests), belette (before/after the merges). Two idle machines were put to sleep."
  ],
  "etapes": [
-  "Finish the measurements: profile scroll, Explore, the Explore re-read fix, fewer requests, before/after the merges.",
-  "Merge the last PRs: the thread-from-notification flow, the welcome screen, the translation fix, the avatar shoulder.",
+  "Replay the rehearsal's 4 failures on the Mac bench to confirm they come from its test server.",
+  "Finish the measurements (profile, Explore and its re-read fix, fewer requests, before/after the merges) and merge what passes.",
   "Final regression loop on the exact build-197 commit, the list of what is in and out, and your OK."
  ],
  "fait": [
@@ -546,6 +568,30 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4829,
+     "titre": "TAK-1150 : l'accueil sans compte met « Créer un compte » en avant, « Se connecter » en petite ligne (loi de Hick n° 10)",
+     "fusion": "Oct 12, 12:19",
+     "build196": true
+    },
+    {
+     "pr": 4891,
+     "titre": "TAK-1210 : les normales suivent la rotation progressive du pouce",
+     "fusion": "Oct 12, 11:56",
+     "build196": true
+    },
+    {
+     "pr": 4896,
+     "titre": "TAK-1212 : une traduction en attente (commentaire ou Take) est relue 4 fois au plus, de plus en plus espacées",
+     "fusion": "Oct 12, 11:53",
+     "build196": true
+    },
+    {
+     "pr": 4850,
+     "titre": "TAK-1168 : le fil d'une conversation est prêt avant le premier toucher après un lancement à froid",
+     "fusion": "Oct 12, 11:47",
+     "build196": true
+    },
     {
      "pr": 4862,
      "titre": "TAK-1181 : voir et tourner l’avatar en entier depuis le profil",
@@ -876,6 +922,18 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4889,
+     "titre": "TAK-1206 : la boucle relance Take sans donner la caméra, les photos ni le micro",
+     "fusion": "Oct 12, 12:00",
+     "build196": true
+    },
+    {
+     "pr": 4835,
+     "titre": "TAK-1159 : la boucle ouvre un fil depuis une notification et revient à la liste",
+     "fusion": "Oct 12, 11:52",
+     "build196": true
+    },
     {
      "pr": 4886,
      "titre": "TAK-1092: bounded WebKit telemetry-transport proof vehicle",
