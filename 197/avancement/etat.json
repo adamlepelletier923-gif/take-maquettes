@@ -1,11 +1,11 @@
 {
- "majLe": "2026-10-12T16:48+09:00",
- "heure": "16:50",
+ "majLe": "2026-10-12T17:46+09:00",
+ "heure": "17:45",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 96,
   "depuisDernierTableau": 96,
-  "enCours": 5,
+  "enCours": 6,
   "app": 55,
   "siteEtAdmin": 6,
   "serveur": 14,
@@ -13,7 +13,7 @@
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Three more PRs merged: the light request for Friends, the iOS avatar rotation and the headphone band on curly hair. The double-tap fix is being measured on the bench, and a fix for the 7 ms vote check on staging is in review. I still need your yes or no for the bigger full-body avatar."
+  "texte": "No merge this hour: everything waited for the bench to measure the double-tap fix, which shows no fluidity loss on four gestures while the fifth finishes. Four PRs merge right after it, and I still need your yes or no for the bigger full-body avatar."
  },
  "depuis": [
   {
@@ -632,45 +632,52 @@
    "statut": "measuring",
    "sujet": "Lost double taps (two taps less than 1 ms apart)",
    "pr": 4911,
-   "ouEnEst": "Two PRs ready and reviewed with no blocking defect (the app's native touch handling, and the home top tabs). On a device, the tickets' exact pairs now land 10 out of 10 for the vote and 6 out of 6 for the repost (4 out of 10 and 4 out of 6 before). The bench is measuring fluidity on five gestures now.",
-   "reste": "Fluidity verdict, then merge."
+   "ouEnEst": "Measured on the bench on five gestures (profile swipe from the tabs, repost, open a Take, home top tabs, Explore): no fluidity loss on the first four, the last one is finishing. On a device, the tickets' exact pairs land 10 out of 10 for the vote and 6 out of 6 for the repost.",
+   "reste": "Verdict, then merge."
   },
   {
    "statut": "review",
    "sujet": "Your vote re-read from the main database: removing its 7 ms cost",
    "pr": 4913,
-   "ouEnEst": "The staging measurement showed about 7 ms more per read, above our 5 % threshold. The fix: for 30 s after you vote, the app says so in a header, so the server no longer checks a cache on every read. CI and review are running.",
-   "reste": "Review, staging measurement, merge."
+   "ouEnEst": "Green and reviewed twice; the 30 s window now survives an app relaunch. It merges right after the bench measurement, then it is measured on staging.",
+   "reste": "Merge, staging measurement, verdict."
+  },
+  {
+   "statut": "review",
+   "sujet": "Friends: back to the light request after a server error, without a relaunch",
+   "pr": 4915,
+   "ouEnEst": "Green and reviewed. After a 404 during a deploy, the app tries the light request again after 10 minutes instead of waiting for a relaunch (15 to 10 full reads in 15 minutes).",
+   "reste": "Merge."
+  },
+  {
+   "statut": "claude",
+   "sujet": "Launch screen: the app underneath stays out of reach",
+   "pr": 4914,
+   "ouEnEst": "Under the black launch screen, VoiceOver and our test robot could still reach the tabs. Fixed with no visible change; the proof on 20 launches runs on the second simulator now.",
+   "reste": "Proof, CI, merge."
   },
   {
    "statut": "review",
    "sujet": "Avatar full body made bigger",
    "pr": 0,
-   "ouEnEst": "The character fills 88 to 92 % of the viewer instead of 43 to 45 %. Its PR goes up right after the bench measurement; it stays switched off until you say yes.",
+   "ouEnEst": "Its PR goes up right after the bench measurement, switched off until you say yes. Glasses on a custom nose may also make it, with a profile-opening measurement.",
    "reste": "Your yes or no, review, merge."
-  },
-  {
-   "statut": "claude",
-   "sujet": "Avatars, continuously (six Codex)",
-   "pr": 0,
-   "ouEnEst": "Merged this hour: the iOS view that cancels stale rotations, and the headphone band that no longer cuts through curly hair. Next: the arm and the rhythm of the wave, glasses on a custom nose, ring and little fingers.",
-   "reste": "Each one merges once reviewed and its board checked."
   },
   {
    "statut": "review",
    "sujet": "Whole-diff review before the build",
    "pr": 0,
-   "ouEnEst": "No defect found in everything merged up to this afternoon. The last increment and the test-loop selectors are being checked now.",
-   "reste": "Any finding is fixed before the build."
+   "ouEnEst": "No defect in everything merged until 16:34, and the final loop's checklist is checked against main.",
+   "reste": "A last check on the final increment."
   }
  ],
  "equipe": [
-  "Here on the Mac: me on the bench (double-tap measurement) and the merges, three Claude agents (vote-header fix, whole-diff review, reviews), six Codex agents on the avatars. Heavy work is paused while the bench measures.",
+  "Here on the Mac: me on the bench and the merges, three Claude agents (vote-check staging measurement and reviews, launch-screen fix, Friends retry), six Codex agents on the avatars, two simulators.",
   "Replicas: stopped and our machines deleted, by your order."
  ],
  "etapes": [
-  "Finish the double-tap measurement and merge it, then the vote-header fix after its staging measurement.",
-  "Merge the bigger full-body avatar (switched on only if you say yes), rebuild the bench app on the exact build-197 commit, and run the final test loop.",
+  "Merge the double-tap fix, the vote-check fix, the Friends retry and the launch-screen fix.",
+  "Merge the bigger full-body avatar switched off, deploy staging with the final main, rebuild the bench app on the exact build-197 commit, and run the final test loop.",
   "Publish the go page, then your OK around 20:30."
  ],
  "fait": [
