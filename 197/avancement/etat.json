@@ -1,21 +1,33 @@
 {
- "majLe": "2026-10-12T18:46+09:00",
- "heure": "18:45",
+ "majLe": "2026-10-12T20:03+09:00",
+ "heure": "20:03",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 102,
-  "depuisDernierTableau": 102,
-  "enCours": 4,
-  "app": 60,
-  "siteEtAdmin": 7,
+  "fusionneesDepuis8Octobre": 104,
+  "depuisDernierTableau": 104,
+  "enCours": 3,
+  "app": 61,
+  "siteEtAdmin": 8,
   "serveur": 14,
   "outilsEtDocs": 21
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Six more PRs merged: the double-tap fix, the home top tabs, the vote-check fix, the Friends retry, the launch screen and the web vote header. A new launch bug turned up (a tab tap ignored when the phone struggles) and its fix is being proved; a global fluidity check comes before the final loop, so your go is now aimed at about 21:30."
+  "texte": "The bigger full-body avatar (switched off) and the web vote fix are merged, so the build commit is set. The fluidity check finds Messages clearly smoother, but Activity looked slower on the final commit while my own commands were running, so I am re-measuring it calmly with voting and opening a Take; your go is now aimed at about 21:45."
  },
  "depuis": [
+  {
+   "heure": "19:40",
+   "pr": 4917,
+   "texte": "Full-body avatar: the body now fills the viewer (88 to 92% of its height on render boards); it stays switched off until you say yes.",
+   "build196": true
+  },
+  {
+   "heure": "18:53",
+   "pr": 4919,
+   "texte": "Web: a page reloaded within 30 s of your vote also reads your vote from the main database, like the app does (nothing changes on the iPhone).",
+   "build196": true
+  },
   {
    "heure": "18:32",
    "pr": 4916,
@@ -49,7 +61,7 @@
   {
    "heure": "17:48",
    "pr": 4913,
-   "texte": "Your vote re-read from the main database no longer costs a cache check on every read: for 30 s after you vote, the app says so in a header (staging only, measured now).",
+   "texte": "Your vote re-read from the main database no longer costs a cache check on every read: for 30 s after you vote, the app says so in a header (measured on staging: ordinary reads no longer pay the extra check; the re-read stays switched off in production).",
    "build196": true
   },
   {
@@ -665,48 +677,47 @@
  },
  "enCours": [
   {
-   "statut": "claude",
-   "sujet": "Bottom bar: a tab tap sometimes ignored right after launch",
-   "pr": 0,
-   "ouEnEst": "Found this evening: when the phone struggles at launch, a tap is taken for a long-press glide that goes nowhere. The fix is written and tested, and is being proved on 20 launches on the second simulator.",
-   "reste": "PR, review, merge."
-  },
-  {
-   "statut": "staging",
-   "sujet": "Vote re-read: staging measurement of the 7 ms fix",
-   "pr": 4913,
-   "ouEnEst": "Merged and deployed on staging; the after window is measuring now.",
-   "reste": "Verdict, then free the staging lock."
-  },
-  {
-   "statut": "claude",
-   "sujet": "Avatar full body made bigger (switched off)",
-   "pr": 4917,
-   "ouEnEst": "Green and reviewed, but one wave test hangs once combined with today's main; its agent fixes it. It stays switched off until you say yes, and a slight zoom breathing during rotation gets fixed first.",
-   "reste": "Fix, merge."
-  },
-  {
    "statut": "measuring",
    "sujet": "Global fluidity check before the build",
    "pr": 0,
-   "ouEnEst": "One bench comparison between this afternoon's main and the final build-197 commit, on launch, voting, tabs, opening a Take and scrolling, so every PR passes the same gate.",
-   "reste": "Measure, then the final test loop."
+   "ouEnEst": "Five scenarios, this afternoon's main against the final commit. Messages is clearly smoother, and launch, tabs and Friends scroll lose nothing. Voting, opening a Take and Activity are being re-measured calmly: my own commands and a merge check ran during some passes, and Activity looked slower.",
+   "reste": "Clean verdict. If Activity is really slower, find the PR and fix it before the build."
+  },
+  {
+   "statut": "loop",
+   "sujet": "Final test loop on the exact build commit",
+   "pr": 0,
+   "ouEnEst": "Read-only checks are done on the commit: the 24 test flows are there, no new database migration, and the long-press labels are intact.",
+   "reste": "Rebuild the bench app on the commit, restart the local server, run the 24 flows."
+  },
+  {
+   "statut": "later",
+   "sujet": "Bottom bar: a tab tap sometimes ignored right after launch",
+   "pr": 0,
+   "ouEnEst": "Seen once in 20 launches on the simulator, cause not found, so it is not in this build. A debugging tool is ready to catch it on the next one.",
+   "reste": "Next build."
   }
  ],
  "equipe": [
-  "Here on the Mac: me on the bench and the merges, three Claude agents (bottom-bar fix, staging measurement and go page, web server rendering), six Codex agents on the avatars.",
+  "Here on the Mac: me on the bench, and six Codex agents on the avatars, waiting for the bench pause. Four short Claude agents finished this hour: a debugging tool for the bottom bar, the slower staging feed (a Cloudflare drift, not our code), a proofread of the go page (nine claims toned down, three errors fixed) and an audit of the website's server reads (nothing bypasses the vote protection).",
   "Replicas: stopped and our machines deleted, by your order; checked at 18:10, nothing runs there."
  ],
  "etapes": [
-  "Merge the bottom-bar fix and the bigger full-body avatar (switched off).",
-  "Global fluidity check on the bench, then rebuild the bench app on the exact build-197 commit and run the final test loop.",
-  "Publish the go page, then your OK around 21:30."
+  "Finish the calm re-measure of voting, opening a Take and Activity (about 35 minutes).",
+  "If one is really slower, find the PR and fix it; otherwise rebuild the bench app on the build commit and run the final 24-flow loop.",
+  "Publish the go page, checked sentence by sentence against its proofs, then your OK around 21:45."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4917,
+     "titre": "TAK-1208 : l’avatar en pied remplit la visionneuse",
+     "fusion": "Oct 12, 19:40",
+     "build196": true
+    },
     {
      "pr": 4914,
      "titre": "TAK-1236 : sous le logo du lancement, l'app est cachée à VoiceOver et aux tests",
@@ -1073,6 +1084,12 @@
    "zone": "web",
    "nom": "Website and admin",
    "prs": [
+    {
+     "pr": 4919,
+     "titre": "TAK-1237 : le rendu serveur d'une page lit lui aussi le vote sur la base principale pendant les 30 s qui suivent",
+     "fusion": "Oct 12, 18:53",
+     "build196": true
+    },
     {
      "pr": 4916,
      "titre": "TAK-1235 : le lecteur web dit lui aussi qu'il vient de voter (en-tête et CORS)",
