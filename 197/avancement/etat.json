@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-12T13:35+09:00",
- "heure": "13:35",
+ "majLe": "2026-10-12T13:46+09:00",
+ "heure": "13:46",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 73,
@@ -515,7 +515,7 @@
    "statut": "measuring",
    "sujet": "Explore: only the page on screen re-reads its votes",
    "pr": 4893,
-   "ouEnEst": "Measured on the Mac bench now, against main.",
+   "ouEnEst": "On main, a tour of six themes then a minute at rest re-reads the N°1 about 38 times; the fix should bring it to 4 or 5. Its side is being measured on the Mac bench now.",
    "reste": "Measurement, then merge."
   },
   {
