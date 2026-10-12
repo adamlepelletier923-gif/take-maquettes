@@ -1,21 +1,57 @@
 {
- "majLe": "2026-10-12T17:46+09:00",
- "heure": "17:45",
+ "majLe": "2026-10-12T18:46+09:00",
+ "heure": "18:45",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 96,
-  "depuisDernierTableau": 96,
-  "enCours": 6,
-  "app": 55,
-  "siteEtAdmin": 6,
+  "fusionneesDepuis8Octobre": 102,
+  "depuisDernierTableau": 102,
+  "enCours": 4,
+  "app": 60,
+  "siteEtAdmin": 7,
   "serveur": 14,
   "outilsEtDocs": 21
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "No merge this hour: everything waited for the bench to measure the double-tap fix, which shows no fluidity loss on four gestures while the fifth finishes. Four PRs merge right after it, and I still need your yes or no for the bigger full-body avatar."
+  "texte": "Six more PRs merged: the double-tap fix, the home top tabs, the vote-check fix, the Friends retry, the launch screen and the web vote header. A new launch bug turned up (a tab tap ignored when the phone struggles) and its fix is being proved; a global fluidity check comes before the final loop, so your go is now aimed at about 21:30."
  },
  "depuis": [
+  {
+   "heure": "18:32",
+   "pr": 4916,
+   "texte": "Web: the browser also says it just voted for 30 s (nothing changes on the iPhone; it prepares switching the protection on in production).",
+   "build196": true
+  },
+  {
+   "heure": "18:16",
+   "pr": 4914,
+   "texte": "Launch: while the black launch screen is up, the app underneath is hidden from VoiceOver and test robots, so nothing reaches it through the screen.",
+   "build196": true
+  },
+  {
+   "heure": "17:52",
+   "pr": 4915,
+   "texte": "Friends: after a server error during a deploy, the app goes back to its light request 10 minutes later instead of waiting for a relaunch.",
+   "build196": true
+  },
+  {
+   "heure": "17:51",
+   "pr": 4910,
+   "texte": "Home top tabs: two quick taps on Nearby then Friends now end on Friends.",
+   "build196": true
+  },
+  {
+   "heure": "17:50",
+   "pr": 4911,
+   "texte": "Double taps: every tap of a fast burst now reaches the app, not only the first (vote 4/10 to 10/10, repost 4/6 to 6/6 on the tickets' exact pairs), with no fluidity loss on five gestures.",
+   "build196": true
+  },
+  {
+   "heure": "17:48",
+   "pr": 4913,
+   "texte": "Your vote re-read from the main database no longer costs a cache check on every read: for 30 s after you vote, the app says so in a header (staging only, measured now).",
+   "build196": true
+  },
   {
    "heure": "16:34",
    "pr": 4866,
@@ -629,62 +665,78 @@
  },
  "enCours": [
   {
-   "statut": "measuring",
-   "sujet": "Lost double taps (two taps less than 1 ms apart)",
-   "pr": 4911,
-   "ouEnEst": "Measured on the bench on five gestures (profile swipe from the tabs, repost, open a Take, home top tabs, Explore): no fluidity loss on the first four, the last one is finishing. On a device, the tickets' exact pairs land 10 out of 10 for the vote and 6 out of 6 for the repost.",
-   "reste": "Verdict, then merge."
+   "statut": "claude",
+   "sujet": "Bottom bar: a tab tap sometimes ignored right after launch",
+   "pr": 0,
+   "ouEnEst": "Found this evening: when the phone struggles at launch, a tap is taken for a long-press glide that goes nowhere. The fix is written and tested, and is being proved on 20 launches on the second simulator.",
+   "reste": "PR, review, merge."
   },
   {
-   "statut": "review",
-   "sujet": "Your vote re-read from the main database: removing its 7 ms cost",
+   "statut": "staging",
+   "sujet": "Vote re-read: staging measurement of the 7 ms fix",
    "pr": 4913,
-   "ouEnEst": "Green and reviewed twice; the 30 s window now survives an app relaunch. It merges right after the bench measurement, then it is measured on staging.",
-   "reste": "Merge, staging measurement, verdict."
-  },
-  {
-   "statut": "review",
-   "sujet": "Friends: back to the light request after a server error, without a relaunch",
-   "pr": 4915,
-   "ouEnEst": "Green and reviewed. After a 404 during a deploy, the app tries the light request again after 10 minutes instead of waiting for a relaunch (15 to 10 full reads in 15 minutes).",
-   "reste": "Merge."
+   "ouEnEst": "Merged and deployed on staging; the after window is measuring now.",
+   "reste": "Verdict, then free the staging lock."
   },
   {
    "statut": "claude",
-   "sujet": "Launch screen: the app underneath stays out of reach",
-   "pr": 4914,
-   "ouEnEst": "Under the black launch screen, VoiceOver and our test robot could still reach the tabs. Fixed with no visible change; the proof on 20 launches runs on the second simulator now.",
-   "reste": "Proof, CI, merge."
+   "sujet": "Avatar full body made bigger (switched off)",
+   "pr": 4917,
+   "ouEnEst": "Green and reviewed, but one wave test hangs once combined with today's main; its agent fixes it. It stays switched off until you say yes, and a slight zoom breathing during rotation gets fixed first.",
+   "reste": "Fix, merge."
   },
   {
-   "statut": "review",
-   "sujet": "Avatar full body made bigger",
+   "statut": "measuring",
+   "sujet": "Global fluidity check before the build",
    "pr": 0,
-   "ouEnEst": "Its PR goes up right after the bench measurement, switched off until you say yes. Glasses on a custom nose may also make it, with a profile-opening measurement.",
-   "reste": "Your yes or no, review, merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Whole-diff review before the build",
-   "pr": 0,
-   "ouEnEst": "No defect in everything merged until 16:34, and the final loop's checklist is checked against main.",
-   "reste": "A last check on the final increment."
+   "ouEnEst": "One bench comparison between this afternoon's main and the final build-197 commit, on launch, voting, tabs, opening a Take and scrolling, so every PR passes the same gate.",
+   "reste": "Measure, then the final test loop."
   }
  ],
  "equipe": [
-  "Here on the Mac: me on the bench and the merges, three Claude agents (vote-check staging measurement and reviews, launch-screen fix, Friends retry), six Codex agents on the avatars, two simulators.",
-  "Replicas: stopped and our machines deleted, by your order."
+  "Here on the Mac: me on the bench and the merges, three Claude agents (bottom-bar fix, staging measurement and go page, web server rendering), six Codex agents on the avatars.",
+  "Replicas: stopped and our machines deleted, by your order; checked at 18:10, nothing runs there."
  ],
  "etapes": [
-  "Merge the double-tap fix, the vote-check fix, the Friends retry and the launch-screen fix.",
-  "Merge the bigger full-body avatar switched off, deploy staging with the final main, rebuild the bench app on the exact build-197 commit, and run the final test loop.",
-  "Publish the go page, then your OK around 20:30."
+  "Merge the bottom-bar fix and the bigger full-body avatar (switched off).",
+  "Global fluidity check on the bench, then rebuild the bench app on the exact build-197 commit and run the final test loop.",
+  "Publish the go page, then your OK around 21:30."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4914,
+     "titre": "TAK-1236 : sous le logo du lancement, l'app est cachée à VoiceOver et aux tests",
+     "fusion": "Oct 12, 18:16",
+     "build196": true
+    },
+    {
+     "pr": 4915,
+     "titre": "TAK-1232 : après un 404 de la tête légère, Amis la redemande dix minutes plus tard",
+     "fusion": "Oct 12, 17:52",
+     "build196": true
+    },
+    {
+     "pr": 4910,
+     "titre": "TAK-1128 : « À proximité » puis « Amis » en rafale finissent sur Amis",
+     "fusion": "Oct 12, 17:51",
+     "build196": true
+    },
+    {
+     "pr": 4911,
+     "titre": "TAK-1131 : en rafale, chaque toucher atteint le JavaScript au lieu du premier seul",
+     "fusion": "Oct 12, 17:50",
+     "build196": true
+    },
+    {
+     "pr": 4913,
+     "titre": "TAK-1230 : le lecteur qui vient de voter le dit par un en-tête, plus aucune lecture ne le cherche dans le Worker Cache",
+     "fusion": "Oct 12, 17:48",
+     "build196": true
+    },
     {
      "pr": 4866,
      "titre": "TAK-1173 : Amis cherche ses nouveaux Takes par une tête légère, et lit les Takes complets au tirer ou à la pastille",
@@ -1021,6 +1073,12 @@
    "zone": "web",
    "nom": "Website and admin",
    "prs": [
+    {
+     "pr": 4916,
+     "titre": "TAK-1235 : le lecteur web dit lui aussi qu'il vient de voter (en-tête et CORS)",
+     "fusion": "Oct 12, 18:32",
+     "build196": true
+    },
     {
      "pr": 4845,
      "titre": "TAK-1087 : le web lit les notifications sous l'instantané de la liste montrée, comme le mobile",
