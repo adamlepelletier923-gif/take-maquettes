@@ -1,21 +1,39 @@
 {
- "majLe": "2026-10-12T16:11+09:00",
- "heure": "16:10",
+ "majLe": "2026-10-12T16:48+09:00",
+ "heure": "16:50",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 93,
-  "depuisDernierTableau": 93,
-  "enCours": 6,
-  "app": 52,
+  "fusionneesDepuis8Octobre": 96,
+  "depuisDernierTableau": 96,
+  "enCours": 5,
+  "app": 55,
   "siteEtAdmin": 6,
   "serveur": 14,
   "outilsEtDocs": 21
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Nine PRs merged this hour: all six request savings, the far-theme tap in Explore, the avatar after scrolling and the staging vote re-read. The double-tap agent found the real cause inside the app's native touch handling, and its fix is compiling. I need your yes or no to turn on the bigger full-body avatar; your go is aimed at about 20:30."
+  "texte": "Three more PRs merged: the light request for Friends, the iOS avatar rotation and the headphone band on curly hair. The double-tap fix is being measured on the bench, and a fix for the 7 ms vote check on staging is in review. I still need your yes or no for the bigger full-body avatar."
  },
  "depuis": [
+  {
+   "heure": "16:34",
+   "pr": 4866,
+   "texte": "Fewer requests: Friends checks for new Takes with a light request instead of re-reading its whole first page (full reads halved, same fluidity).",
+   "build196": true
+  },
+  {
+   "heure": "16:32",
+   "pr": 4895,
+   "texte": "Avatar: the headphone band now rests on curly, short curly and short waved hair instead of cutting through it.",
+   "build196": true
+  },
+  {
+   "heure": "16:32",
+   "pr": 4894,
+   "texte": "Avatar: when its 3D view is hidden, disabled or closed, the iOS rotations still waiting are cancelled, so nothing turns on its own when it comes back.",
+   "build196": true
+  },
   {
    "heure": "16:10",
    "pr": 4880,
@@ -611,62 +629,73 @@
  },
  "enCours": [
   {
-   "statut": "claude",
+   "statut": "measuring",
    "sujet": "Lost double taps (two taps less than 1 ms apart)",
-   "pr": 0,
-   "ouEnEst": "Real cause found in the app's own native touch handling: a burst of 20 taps reached the app as a single tap. With the fix, the home top tabs land right 4 times out of 4 (0 out of 2 before). The native part is recompiling on the second simulator, then the ghost, tabs, vote and repost are replayed.",
-   "reste": "Two PRs (native and JS), review, measurement on the bench, merge."
-  },
-  {
-   "statut": "staging",
-   "sujet": "Your vote re-read from the main database, on staging only",
-   "pr": 4869,
-   "ouEnEst": "Merged and deployed on staging with the setting on. The after window is measuring now; verdict around 16:20.",
-   "reste": "Verdict, then free the staging lock."
+   "pr": 4911,
+   "ouEnEst": "Two PRs ready and reviewed with no blocking defect (the app's native touch handling, and the home top tabs). On a device, the tickets' exact pairs now land 10 out of 10 for the vote and 6 out of 6 for the repost (4 out of 10 and 4 out of 6 before). The bench is measuring fluidity on five gestures now.",
+   "reste": "Fluidity verdict, then merge."
   },
   {
    "statut": "review",
-   "sujet": "Fewer requests: Friends checks for new Takes with a light request",
-   "pr": 4866,
-   "ouEnEst": "Measured on the Mac: full reads of the Friends feed halved. After the update from main, two new server tests flagged it; both fixed (the light request is classed as vote-free, the route table counts it), CI is running again.",
-   "reste": "Merge right after the staging vote verdict, then deploy staging."
+   "sujet": "Your vote re-read from the main database: removing its 7 ms cost",
+   "pr": 4913,
+   "ouEnEst": "The staging measurement showed about 7 ms more per read, above our 5 % threshold. The fix: for 30 s after you vote, the app says so in a header, so the server no longer checks a cache on every read. CI and review are running.",
+   "reste": "Review, staging measurement, merge."
   },
   {
    "statut": "review",
    "sujet": "Avatar full body made bigger",
    "pr": 0,
-   "ouEnEst": "The character now fills 88 to 92 % of the viewer's height instead of 43 to 45 %, and never less than 86 % when turned. The boards wait for your yes or no.",
-   "reste": "Your answer, then merge (switched on only if you say yes)."
+   "ouEnEst": "The character fills 88 to 92 % of the viewer instead of 43 to 45 %. Its PR goes up right after the bench measurement; it stays switched off until you say yes.",
+   "reste": "Your yes or no, review, merge."
   },
   {
    "statut": "claude",
    "sujet": "Avatars, continuously (six Codex)",
    "pr": 0,
-   "ouEnEst": "Next: the arm and the rhythm of the wave, glasses on a custom nose, ring and little fingers, a curly-hair helmet.",
+   "ouEnEst": "Merged this hour: the iOS view that cancels stale rotations, and the headphone band that no longer cuts through curly hair. Next: the arm and the rhythm of the wave, glasses on a custom nose, ring and little fingers.",
    "reste": "Each one merges once reviewed and its board checked."
   },
   {
    "statut": "review",
    "sujet": "Whole-diff review before the build",
    "pr": 0,
-   "ouEnEst": "An agent re-reads everything merged since the last review and checks that every test-loop selector still exists in the app.",
+   "ouEnEst": "No defect found in everything merged up to this afternoon. The last increment and the test-loop selectors are being checked now.",
    "reste": "Any finding is fixed before the build."
   }
  ],
  "equipe": [
-  "Here on the Mac: me on the merges and the bench, two Claude agents (double taps; staging vote verdict and the whole-diff review), six Codex agents on the avatars. One simulator runs; the bench one is off to leave memory to the double-tap build.",
+  "Here on the Mac: me on the bench (double-tap measurement) and the merges, three Claude agents (vote-header fix, whole-diff review, reviews), six Codex agents on the avatars. Heavy work is paused while the bench measures.",
   "Replicas: stopped and our machines deleted, by your order."
  ],
  "etapes": [
-  "Merge Friends once its CI is green, and the double-tap fix once measured on the bench.",
-  "Deploy staging with the final main, rebuild the bench app on the exact build-197 commit, and run the final test loop.",
-  "Finish the whole-diff review, publish the go page, then your OK around 20:30."
+  "Finish the double-tap measurement and merge it, then the vote-header fix after its staging measurement.",
+  "Merge the bigger full-body avatar (switched on only if you say yes), rebuild the bench app on the exact build-197 commit, and run the final test loop.",
+  "Publish the go page, then your OK around 20:30."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4866,
+     "titre": "TAK-1173 : Amis cherche ses nouveaux Takes par une tête légère, et lit les Takes complets au tirer ou à la pastille",
+     "fusion": "Oct 12, 16:34",
+     "build196": true
+    },
+    {
+     "pr": 4895,
+     "titre": "TAK-1204 : le casque épouse les coiffures bouclées masculines",
+     "fusion": "Oct 12, 16:32",
+     "build196": true
+    },
+    {
+     "pr": 4894,
+     "titre": "TAK-1207 : la vue iOS inactive annule ses rotations en attente",
+     "fusion": "Oct 12, 16:32",
+     "build196": true
+    },
     {
      "pr": 4880,
      "titre": "TAK-1202 : préparer l’avatar après le défilement",
