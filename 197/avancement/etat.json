@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-12T21:47+09:00",
- "heure": "21:47",
+ "majLe": "2026-10-12T22:47+09:00",
+ "heure": "22:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 104,
-  "depuisDernierTableau": 104,
+  "fusionneesDepuis8Octobre": 105,
+  "depuisDernierTableau": 105,
   "enCours": 2,
-  "app": 61,
+  "app": 62,
   "siteEtAdmin": 8,
   "serveur": 14,
   "outilsEtDocs": 21
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The first final loop found one real defect: on a cold start, the test app stopped because two JavaScript engines installed the double-tap fix at the same moment. It only happens in our test builds, not on testers' iPhones, but it is fixed (green CI) and the whole loop runs again on that commit, so your go is now aimed at about 22:30."
+  "texte": "The second final loop is green, 24 of 24, on the exact build commit, after the fix for the test app that stopped on a cold start. A last review of the newest changes found nothing, and the tab vibrations were proven safe. The go page is published: everything is ready, only your go is missing."
  },
  "depuis": [
+  {
+   "heure": "22:20",
+   "pr": 4921,
+   "texte": "Test builds only: the double-tap fix now installs once even when two JavaScript engines start together. The final loop found it; nothing changes on testers' iPhones.",
+   "build196": true
+  },
   {
    "heure": "19:40",
    "pr": 4917,
@@ -646,6 +652,10 @@
    "libelle": "Test loop",
    "ton": "bench"
   },
+  "go": {
+   "libelle": "Waiting for your go",
+   "ton": "wait"
+  },
   "staging": {
    "libelle": "Waiting for the staging lock",
    "ton": "wait"
@@ -677,11 +687,11 @@
  },
  "enCours": [
   {
-   "statut": "loop",
-   "sujet": "Second final test loop, on the fix commit",
-   "pr": 4921,
-   "ouEnEst": "The first loop passed 23 of 24 flows. On one cold start, the test app stopped because two JavaScript engines installed the double-tap fix at the same moment, which only our test builds do. Fixed in a few lines with green CI, and the whole loop runs again on that commit.",
-   "reste": "Verdict around 22:05, merge the fix, then the go page."
+   "statut": "go",
+   "sujet": "Your go for the iPhone build 197",
+   "pr": 0,
+   "ouEnEst": "Everything is merged, measured and checked: the final loop is green, 24 of 24, on the build commit, fluidity is nowhere slower than at 15:00, and the go page lists what is in, what stays out and why.",
+   "reste": "Your go, then the build starts from commit 1b95a28303."
   },
   {
    "statut": "later",
@@ -692,19 +702,25 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me on the bench for the final loop, and six Codex agents on the avatars, waiting for the bench pause to lift.",
+  "Here on the Mac: me, two Claude agents (a better staging sweep, and the real state of every open PR) and six Codex agents on the avatars.",
   "Replicas: stopped and our machines deleted, by your order; checked at 18:10, nothing runs there."
  ],
  "etapes": [
-  "Second final loop on the fix commit, until about 22:05.",
-  "Merge the fix, record the loop's native proofs (bottom bar and long press), then read the verdict.",
-  "Publish the go page, already checked against its proofs, then your OK around 22:30."
+  "Your go on the go page.",
+  "Then the iPhone build 197 starts from commit 1b95a28303, with its TestFlight notes ready.",
+  "Your yes or no on switching on the full-body avatar, which stays off until then."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4921,
+     "titre": "TAK-1246 : un seul runtime JavaScript installe SurfaceTouchEnding à la fois",
+     "fusion": "Oct 12, 22:20",
+     "build196": true
+    },
     {
      "pr": 4917,
      "titre": "TAK-1208 : l’avatar en pied remplit la visionneuse",
