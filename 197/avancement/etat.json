@@ -1,21 +1,51 @@
 {
- "majLe": "2026-10-12T09:47+09:00",
- "heure": "09:47",
+ "majLe": "2026-10-12T10:47+09:00",
+ "heure": "10:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 59,
-  "depuisDernierTableau": 59,
+  "fusionneesDepuis8Octobre": 64,
+  "depuisDernierTableau": 64,
   "enCours": 10,
-  "app": 31,
+  "app": 33,
   "siteEtAdmin": 6,
-  "serveur": 12,
-  "outilsEtDocs": 10
+  "serveur": 13,
+  "outilsEtDocs": 12
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "A full review of everything merged since the last one found nothing that blocks the build; its follow-ups are fixed and merged, with faster mentions and the avatar fix."
+  "texte": "You approved the 4 decisions: the full-body avatar is merged switched off, and a review of the last 8 merges found nothing that blocks the build."
  },
  "depuis": [
+  {
+   "heure": "10:40",
+   "pr": 4888,
+   "texte": "Map, switched off: the nearby places read less data before showing their cards.",
+   "build196": true
+  },
+  {
+   "heure": "10:38",
+   "pr": 4862,
+   "texte": "Avatar, switched off for now: see the avatar full body like Instagram, and turn it with a swipe. You approved it; it gets bigger before it is turned on.",
+   "build196": true
+  },
+  {
+   "heure": "09:59",
+   "pr": 4872,
+   "texte": "Avatar: the hand keeps natural poses during the whole wave.",
+   "build196": true
+  },
+  {
+   "heure": "09:54",
+   "pr": 4882,
+   "texte": "Map, switched off: the nearby places on the map get their own cache.",
+   "build196": true
+  },
+  {
+   "heure": "09:48",
+   "pr": 4877,
+   "texte": "Server: on the map, one place search counts once in the budget, not once per letter, with keys hashed with a secret.",
+   "build196": true
+  },
   {
    "heure": "09:44",
    "pr": 4874,
@@ -410,64 +440,64 @@
    "statut": "measuring",
    "sujet": "Your conversation that freezes 2 s on a cold start",
    "pr": 4850,
-   "ouEnEst": "Fixed and reviewed twice. Its Release build is still compiling on the Mac; it builds two architectures, and the recipe is fixed for next time.",
+   "ouEnEst": "A Replicas iPhone measures it right now, frame by frame. The Mac build that duplicated it was stopped, which gave back 18 GB of disk.",
    "reste": "Measurement, then merge."
   },
   {
-   "statut": "review",
+   "statut": "measuring",
    "sujet": "Profile: a swipe that starts on the tabs no longer gets stuck",
    "pr": 4861,
-   "ouEnEst": "Fixed and reviewed. A Replicas iPhone measures the profile scroll.",
+   "ouEnEst": "A Replicas iPhone is building the app to measure the profile scroll.",
    "reste": "Measurement, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "Fixed and reviewed again. A Replicas iPhone measures it, and also checks the 100 ms blank page after a tap on a far theme.",
+   "ouEnEst": "A Replicas iPhone is counting blank frames, including the 100 ms blank after a tap on a far theme.",
    "reste": "If the cost is gone, merge; a ready fix covers the far tap if the blank remains."
   },
   {
    "statut": "review",
    "sujet": "Welcome screen without an account",
    "pr": 4829,
-   "ouEnEst": "One picture at the largest text size is still to redo on a Replicas iPhone.",
-   "reste": "Picture, then your OK on the captures."
+   "ouEnEst": "You approved the captures. One picture at the largest text size is being redone.",
+   "reste": "Picture, then merge."
   },
   {
    "statut": "review",
-   "sujet": "Test loop: answers the iOS access alert, and opens a thread from a notification",
+   "sujet": "Test loop: answers the iOS access alert, opens a thread from a notification",
    "pr": 4857,
-   "ouEnEst": "flows-197 plays them on a fresh simulator now, with flow 04 too. The red banner it found on fresh installs is fixed and merged.",
-   "reste": "Merge after the run."
+   "ouEnEst": "On a fresh simulator, flows 24, 25 and 04 are green. Flow 09 found a bug in the test itself, now fixed, and it is being replayed.",
+   "reste": "Merge after the replay."
   },
   {
    "statut": "measuring",
    "sujet": "Fewer requests: Friends and the open Take",
    "pr": 4866,
-   "ouEnEst": "Both ready and reviewed: the Friends check reads 84% less data, and a calm open Take re-reads its counters every 30 s instead of 12.",
-   "reste": "They enter build 197 if the Replicas measurement shows fewer requests and no fluidity loss."
-  },
-  {
-   "statut": "review",
-   "sujet": "Map search: one search counts once in the budget",
-   "pr": 4877,
-   "ouEnEst": "Server only, so it ships without the app build. Fixed after review (no database write per letter, keys with a secret).",
-   "reste": "Last review, then merge."
+   "ouEnEst": "Both ready and reviewed. A Replicas iPhone measures them right after the profile.",
+   "reste": "They enter build 197 if they show fewer requests and no fluidity loss."
   },
   {
    "statut": "measuring",
    "sujet": "Before and after this morning's merges",
    "pr": 0,
-   "ouEnEst": "A Replicas iPhone measures launch, vote, feed scroll, opening a Take, map search, opening a conversation and the profile, before and after.",
+   "ouEnEst": "A Replicas iPhone is building both versions to compare launch, vote, scroll, opening a Take, map search, a conversation and the profile.",
    "reste": "Any regression gets fixed before the build."
+  },
+  {
+   "statut": "review",
+   "sujet": "Your vote re-read from the main database, on staging only",
+   "pr": 4869,
+   "ouEnEst": "You gave the go. The code is ready and green; a Replicas iPhone measures staging before and after I deploy it.",
+   "reste": "Before window, staging deploy, after window, then the cost."
   },
   {
    "statut": "claude",
    "sujet": "Avatars, continuously (six Codex)",
    "pr": 0,
-   "ouEnEst": "Merged: one wave per tap, the human wave reference, and taps that come back if a wave is lost. In progress: shoulder, arm, elbow, hand and rhythm. The full-body view like Instagram is reviewed and switched off.",
-   "reste": "You look at the full-body board before it merges."
+   "ouEnEst": "Merged: one wave per tap, the human wave, taps that come back, the hand. Next: the shoulder (reviewed), the elbow (one more test), the arm, the rhythm, glasses on a custom nose, fingers, and the full-body view made bigger.",
+   "reste": "Each one merges once its board is checked; you see the bigger full-body view before it is turned on."
   },
   {
    "statut": "later",
@@ -478,12 +508,12 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, six Claude agents (fixes, reviews, flows on a fresh simulator, the frozen conversation measurement) and six Codex agents on the avatars.",
-  "On Replicas, on Muse Spark through OpenCode: vison (profile, then fewer requests), harfang (Explore), wombat (welcome screen picture), belette (before/after the merges)."
+  "Here on the Mac: me, three Claude agents (reviews, flows on a fresh simulator, map follow-ups) and six Codex agents on the avatars. Agents that finished were closed to keep the Mac fluid.",
+  "On Replicas, on Muse Spark through OpenCode: wombat (frozen conversation, then the welcome picture and the staging vote), harfang (Explore), vison (profile, then fewer requests), belette (before/after the merges)."
  ],
  "etapes": [
   "Finish the measurements: frozen conversation, profile scroll, Explore, fewer requests, before/after the merges.",
-  "Flows on a fresh simulator, the welcome screen picture, then merge the last PRs.",
+  "Last flow on the fresh simulator and the welcome screen picture, then merge the last PRs.",
   "Final regression loop on the exact build-197 commit, the list of what is in and out, and your OK."
  ],
  "fait": [
@@ -491,6 +521,18 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4862,
+     "titre": "TAK-1181 : voir et tourner l’avatar en entier depuis le profil",
+     "fusion": "Oct 12, 10:38",
+     "build196": true
+    },
+    {
+     "pr": 4872,
+     "titre": "TAK-1191 : la main reste dans ses poses pendant le coucou",
+     "fusion": "Oct 12, 09:59",
+     "build196": true
+    },
     {
      "pr": 4874,
      "titre": "TAK-1192 : les appuis reprennent si la fin du coucou se perd",
@@ -726,6 +768,12 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4877,
+     "titre": "TAK-1197 : une recherche de la carte ne compte qu'une fois dans le budget des lieux précis, quel que soit son nombre de lettres",
+     "fusion": "Oct 12, 09:48",
+     "build196": true
+    },
+    {
      "pr": 4876,
      "titre": "TAK-1196 : les lectures de la carte sans vote ne lisent plus la marque « vient de voter »",
      "fusion": "Oct 12, 09:19",
@@ -857,6 +905,18 @@
    "zone": "autre",
    "nom": "Other",
    "prs": [
+    {
+     "pr": 4888,
+     "titre": "TAK-1165: bound the viewport card join before enrichment",
+     "fusion": "Oct 12, 10:40",
+     "build196": true
+    },
+    {
+     "pr": 4882,
+     "titre": "TAK-1165: viewport cache identity and qualified-address scope repair",
+     "fusion": "Oct 12, 09:54",
+     "build196": true
+    },
     {
      "pr": 4871,
      "titre": "Repair the Sentry bundler-plugins lock subtree ranges",
