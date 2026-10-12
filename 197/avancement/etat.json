@@ -1,21 +1,27 @@
 {
- "majLe": "2026-10-13T06:15+09:00",
- "heure": "06:15",
+ "majLe": "2026-10-13T06:47+09:00",
+ "heure": "06:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 133,
-  "depuisDernierTableau": 133,
-  "enCours": 11,
+  "fusionneesDepuis8Octobre": 134,
+  "depuisDernierTableau": 134,
+  "enCours": 12,
   "app": 80,
   "siteEtAdmin": 9,
-  "serveur": 17,
+  "serveur": 18,
   "outilsEtDocs": 27
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "A correction first: filmed from the finger, opening a conversation starts about 0.16 s after your touch, then iOS plays its own slide; my first figure started from the wrong frame. The review of the last nine merges found no regression and added two checks before the build: the profile with glasses, and the full-body view on a real screen. Sentry is green and reviewed; its launch measurement comes next."
+  "texte": "Your answers are in: everything goes into this build, the library update included, and the bottom bar hides while the full-body avatar is open. The profile with a glasses avatar opens no slower. The full-body view, checked on a real screen, showed a size jump at the end of the wave and the feet under the bar: both are being fixed. The fix that opens any conversation at your tap is under way."
  },
  "depuis": [
+  {
+   "heure": "06:45",
+   "pr": 4948,
+   "texte": "Server tooling only: the staging configuration check now counts what a deployment really sends, so it cannot pass while the real upload would fail.",
+   "build196": true
+  },
   {
    "heure": "05:48",
    "pr": 4946,
@@ -855,59 +861,73 @@
  },
  "enCours": [
   {
-   "statut": "measuring",
-   "sujet": "Messages: opening a conversation should feel instant, like on X",
+   "statut": "fixing",
+   "sujet": "Messages: any conversation opens at your tap, without waiting for the network",
    "pr": 0,
-   "ouEnEst": "Correction: my first figure started from the wrong frame. Filmed again from the finger, the opening starts about 0.16 s after your touch, 0.2 s for the first one after launch, then iOS plays its own 0.35 s slide. The top conversations are loaded ahead at launch, so the network wait only hits the ones lower in the list.",
-   "reste": "Split those 0.16 s between your finger and the drawing of the conversation, then fix the right part, with no skeleton. The inbox bringing each last message comes in the next build."
+   "ouEnEst": "You said yes for this build. The inbox will bring each conversation's last message, like Instagram, so a conversation lower in the list opens at once too. The contract is ready and reviewed; the server part and the app part are being built in parallel, switched off until measured.",
+   "reste": "Measure the opening on the bench with a simulated slow network, then switch it on."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Avatars, full-body view: a size jump at the end of the wave",
+   "pr": 0,
+   "ouEnEst": "Found on the bench: when the wave ends, the avatar shrinks for about a tenth of a second, then comes back to its size.",
+   "reste": "An avatar agent fixes it for this build."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Avatars, full-body view: the bottom bar hides the feet",
+   "pr": 0,
+   "ouEnEst": "You chose to hide the bar while the full-body view is open, like a full-screen view. An agent is on it.",
+   "reste": "Before and after captures, light and dark, in the pull request."
+  },
+  {
+   "statut": "review",
+   "sujet": "Very large text: a button label could shrink once",
+   "pr": 4940,
+   "ouEnEst": "Back in this build, as you said. Captured at the largest text size: same look before and after, the fix only changes the first frame. Checks running.",
+   "reste": "Merged once green."
+  },
+  {
+   "statut": "review",
+   "sujet": "A library update for the server and the app",
+   "pr": 4947,
+   "ouEnEst": "Done now, as you said: the package was checked before the update, and the usual three-day wait is lifted for this version only, put back tomorrow.",
+   "reste": "Merged once its checks are green."
   },
   {
    "statut": "review",
    "sujet": "Error reports from the phone (Sentry)",
    "pr": 4774,
-   "ouEnEst": "You said yes. Checks green and reviewed twice: staging only, JavaScript errors only, private data stripped, nothing started before the app shows its content.",
-   "reste": "Its launch is measured on the bench once its app is built (one build at a time on the Mac), then merged."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Avatars with glasses: opening the profile, before and after",
-   "pr": 0,
-   "ouEnEst": "The review of the last merges found no regression, but asked for this measurement: the glasses fix was merged without it.",
-   "reste": "Measured on the bench now."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Avatars: the full-body view seen on a real screen with the switch on",
-   "pr": 0,
-   "ouEnEst": "Not seen yet on a screen with the switch on. The check covers head and feet in view, the enlarged size while it turns, a single wave, and light and dark captures for the go page.",
-   "reste": "Checked on the bench before the build."
+   "ouEnEst": "Checks green and reviewed twice. It adds a native piece, so its app is built right after the reference app of the fluidity gate.",
+   "reste": "Its launch measured on the bench, then merged before the final checks."
   },
   {
    "statut": "review",
    "sujet": "Avatars: more fixes in progress",
    "pr": 0,
-   "ouEnEst": "The Codex agents are finishing a recovery after a failed load and the wait for the first frame (the priority now that the full-body view is on), the wave proportions, the human-like wave, the rotation on a vertical swipe and the headphone band on big hair.",
+   "ouEnEst": "The Codex agents are finishing a recovery after a failed load, the wait for the first frame, the wave proportions, the human-like wave, the rotation on a vertical swipe and the headphone band on big hair.",
    "reste": "Each one merges once its board is checked."
   },
   {
    "statut": "measuring",
    "sujet": "Explore: the theme list no longer fades during a swipe, and search results swipe between tabs",
    "pr": 4429,
-   "ouEnEst": "Changes Android only; the iPhone already behaves this way. Reviewed, and its bench apps are ready.",
-   "reste": "Bench measurement after the avatar checks, light and dark captures, then your OK on the look."
+   "ouEnEst": "Changes Android only; the iPhone already behaves this way. Reviewed, bench apps and script ready.",
+   "reste": "Bench measurement, light and dark captures, then your OK on the look."
   },
   {
    "statut": "measuring",
    "sujet": "Bottom bar: a tab tap sometimes ignored right after launch",
    "pr": 0,
-   "ouEnEst": "Seen once in 20 launches on the simulator. A bench script is ready.",
-   "reste": "Re-measured on the bench before the build."
+   "ouEnEst": "Seen once in 20 launches on the simulator. A burst test is ready for the bench.",
+   "reste": "Run on the bench before the build."
   },
   {
    "statut": "review",
    "sujet": "Final checks of build 197",
    "pr": 0,
-   "ouEnEst": "The review of the last nine merges found no regression. The reference app of the fluidity gate is still building.",
+   "ouEnEst": "Measured: the profile with a glasses avatar opens no slower. Checked on a real screen: the full-body view, with the two fixes above. Your OK on the private profile header is noted. The reference app of the fluidity gate is still building.",
    "reste": "Run the gate and the full test loop on the final commit, then the go page and your go."
   },
   {
@@ -923,23 +943,15 @@
    "pr": 4730,
    "ouEnEst": "You said: later, at the public launch. Merging it applies nothing by itself.",
    "reste": "When you want."
-  },
-  {
-   "statut": "later",
-   "sujet": "Very large text: a button label that could shrink once",
-   "pr": 4940,
-   "ouEnEst": "Checked on the simulator at 60 frames per second: no visible jump on any screen we found. The fix stays ready, out of this build.",
-   "reste": "Next build, if a screen shows it."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, three Claude agents (opening a conversation like on X, the avatar checks and Sentry, the bench apps and reviews) and six Codex agents on the avatars.",
+  "Here on the Mac: me, three Claude agents (the conversation opening fix on the server and in the app; the library update, the reviews and the full-body bar) and six Codex agents on the avatars.",
   "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
  ],
  "etapes": [
-  "On the bench: the profile with glasses, the full-body view with the switch on, then the Sentry launch and Explore.",
-  "Find where the 0.16 s before a conversation opens go, and fix what fits this build.",
-  "Merge the last avatar fixes as their boards are checked.",
+  "Finish and measure the conversation opening fix, the two full-body fixes and the very large text fix.",
+  "Measure the Sentry launch and Explore on the bench; merge the library update and the last avatar fixes.",
   "Run the fluidity gate and the full test loop on the final commit, then the go page and your go for the iPhone build 197."
  ],
  "fait": [
@@ -1493,6 +1505,12 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4948,
+     "titre": "Server tooling: the staging configuration check counts what a deployment really sends",
+     "fusion": "Oct 13, 06:45",
+     "build196": true
+    },
     {
      "pr": 4943,
      "titre": "Server: stricter limits on one request",
