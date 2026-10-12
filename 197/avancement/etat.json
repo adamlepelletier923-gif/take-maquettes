@@ -1,21 +1,57 @@
 {
- "majLe": "2026-10-13T03:47+09:00",
- "heure": "03:48",
+ "majLe": "2026-10-13T04:47+09:00",
+ "heure": "04:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 124,
-  "depuisDernierTableau": 124,
-  "enCours": 9,
-  "app": 75,
-  "siteEtAdmin": 8,
+  "fusionneesDepuis8Octobre": 130,
+  "depuisDernierTableau": 130,
+  "enCours": 11,
+  "app": 79,
+  "siteEtAdmin": 9,
   "serveur": 15,
-  "outilsEtDocs": 26
+  "outilsEtDocs": 27
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Correction first: the VoiceOver problem I reported is a false alarm. The app does announce the selected tab; my test tool simply cannot read it, and a second tool proved it. The Friends fix: the current app passed 20 runs out of 20, and the fixed version is running now. The full regression review, with a second pass, found nothing, and four old PRs that no longer served were closed."
+  "texte": "Your answers are in: the glasses are merged, the full-body avatar switches on for this build, and the long press on another tab is being finished. Friends now asks the server once instead of two or three times when you come back to it, measured and merged. An agent is on making a conversation open as fast as on X."
  },
  "depuis": [
+  {
+   "heure": "04:44",
+   "pr": 4883,
+   "texte": "Avatars: glasses now follow a customized nose. You approved the boards.",
+   "build196": true
+  },
+  {
+   "heure": "04:42",
+   "pr": 4550,
+   "texte": "Test tooling: two automatic phone tests no longer miss the link-copied and GIF-saved confirmations.",
+   "build196": true
+  },
+  {
+   "heure": "04:30",
+   "pr": 4582,
+   "texte": "Friends: coming back to Friends from Nearby or the map no longer reloads the list. One light request instead of two or three, and less jank; measured on the bench.",
+   "build196": true
+  },
+  {
+   "heure": "04:26",
+   "pr": 4936,
+   "texte": "Avatars (behind the switch): the full-body view keeps the enlarged size you approved while it turns.",
+   "build196": true
+  },
+  {
+   "heure": "04:10",
+   "pr": 2185,
+   "texte": "Admin only: the arrow keys move through the moderation queue.",
+   "build196": true
+  },
+  {
+   "heure": "04:10",
+   "pr": 4939,
+   "texte": "Profile song (switched off): the preview no longer downloads before you tap play.",
+   "build196": true
+  },
   {
    "heure": "03:24",
    "pr": 4937,
@@ -801,53 +837,60 @@
  },
  "enCours": [
   {
-   "statut": "measuring",
-   "sujet": "Friends: the list keeps its rows when you come back and while it refreshes",
-   "pr": 4582,
-   "ouEnEst": "Measured on a separate simulator, so your emulator keeps your login: it is off meanwhile, nothing erased. The current app passed 20 runs out of 20; the fixed version is running now. Its checks are green on an up-to-date branch.",
-   "reste": "Merge if Friends asks the server less and nothing gets slower."
-  },
-  {
-   "statut": "review",
-   "sujet": "Profile song: the preview no longer downloads before you tap play",
-   "pr": 4939,
-   "ouEnEst": "Reviewed, checks green. The profile song is switched off in this build, so nobody sees a change yet.",
-   "reste": "Merged right after the Friends measurement, so the Mac stays quiet while it runs."
-  },
-  {
    "statut": "fixing",
-   "sujet": "Very large text: a button label could shrink once, right under your eyes",
-   "pr": 4940,
-   "ouEnEst": "Found by the full review. The fix measures the label before the first frame, so it shows at its final size at once; normal text is untouched. Checks green.",
-   "reste": "Checked on the simulator at the largest text size right after the measurement, then merged."
+   "sujet": "Messages: opening a conversation should feel instant, like on X",
+   "pr": 0,
+   "ouEnEst": "Your report this hour: opening a conversation is not instant. An agent is studying how X and Instagram do it, and preparing a bench measurement of today's opening.",
+   "reste": "Measure, then fix, with proof that nothing else gets slower."
   },
   {
    "statut": "review",
-   "sujet": "Regression review of everything merged since build 196",
+   "sujet": "Avatars: the full-body view switches on for this build",
    "pr": 0,
-   "ouEnEst": "Done in three zones, plus a second pass on what merged since: no regression found.",
-   "reste": "A last pass on what merges before the build."
+   "ouEnEst": "You said yes. The enlarged size you approved is back, and the switch is being turned on on staging.",
+   "reste": "Check that staging serves it, then the final checks."
+  },
+  {
+   "statut": "review",
+   "sujet": "Bottom bar: a long press on another tab opens it, like on iOS",
+   "pr": 0,
+   "ouEnEst": "You approved the rule. The fix is ready and its pull request is being opened.",
+   "reste": "Bench measurement of the long press, the swipe and the plain tap, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Explore: the theme list no longer fades during a swipe, and search results swipe between tabs",
    "pr": 4429,
-   "ouEnEst": "Finished here; it changes Android only, the iPhone already behaves this way. Checks green.",
-   "reste": "Bench measurement after Friends, light and dark captures, then your OK on the look."
+   "ouEnEst": "Finished here; it changes Android only, the iPhone already behaves this way. Checks green, bench kit ready.",
+   "reste": "Bench measurement and light and dark captures before the build."
   },
   {
-   "statut": "go",
-   "sujet": "Avatars: glasses sit on the customized nose",
-   "pr": 4883,
-   "ouEnEst": "Ready and reviewed: no frame crosses the nose any more. On the most aquiline nose, round frames now sit a little off the face at 45 and 90 degrees; the board is in your messages.",
-   "reste": "Your OK on the look."
+   "statut": "measuring",
+   "sujet": "Bottom bar: a tab tap sometimes ignored right after launch",
+   "pr": 0,
+   "ouEnEst": "Seen once in 20 launches on the simulator. A bench script is ready.",
+   "reste": "Re-measured on the bench before the build."
   },
   {
    "statut": "review",
-   "sujet": "Avatars: four more fixes in progress",
+   "sujet": "Avatars: more fixes in progress",
    "pr": 0,
-   "ouEnEst": "The Codex agents are finishing four fixes, the enlarged zoom you approved, and the headphone band that sticks out of big hair.",
+   "ouEnEst": "The Codex agents are finishing the wave proportions, the human-like wave, the rotation on a vertical swipe, the knit of the socks and the headphone band on big hair.",
    "reste": "Each one merges once its board is checked."
+  },
+  {
+   "statut": "review",
+   "sujet": "Final checks of build 197",
+   "pr": 0,
+   "ouEnEst": "Being prepared: the fluidity gate against the last passed one (its reference app is building now), the full test loop on a separate simulator, and the go page.",
+   "reste": "Run them on the final commit, then your go."
+  },
+  {
+   "statut": "go",
+   "sujet": "Error reports from the phone (Sentry)",
+   "pr": 4774,
+   "ouEnEst": "Ready and switched off, with private data stripped before anything is sent. It needs a native build: this one or the next.",
+   "reste": "Your call."
   },
   {
    "statut": "go",
@@ -858,27 +901,58 @@
   },
   {
    "statut": "later",
-   "sujet": "Bottom bar: a tab tap sometimes ignored right after launch",
+   "sujet": "Hick's law: points 1, 2, 6 and 7",
    "pr": 0,
-   "ouEnEst": "Seen once in 20 launches on the simulator, cause not found. A bench script is ready to measure it again before the build.",
-   "reste": "Re-measured on the bench before the build."
+   "ouEnEst": "You said not yet.",
+   "reste": "When you want."
+  },
+  {
+   "statut": "later",
+   "sujet": "Very large text: a button label that could shrink once",
+   "pr": 4940,
+   "ouEnEst": "Checked on the simulator at 60 frames per second: no visible jump on any screen we found. The fix stays ready, out of this build.",
+   "reste": "Next build, if a screen shows it."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, three Claude agents (the final fluidity gate and its bench data, an old admin fix, the avatar reviews) and six Codex agents on the avatars.",
+  "Here on the Mac: me, three Claude agents (opening a conversation like on X, the full-body switch and the long press, the avatar reviews) and six Codex agents on the avatars.",
   "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
  ],
  "etapes": [
-  "Finish the Friends measurement, then merge it with the profile song fix.",
-  "On the bench: the very large text button, Explore right after launch, the bottom bar, the Maestro check of the last test PR, then Explore on Android.",
-  "Merge the last avatar fixes as their boards are checked.",
-  "Redo the fluidity gate and the final loop on the final commit, then the go page and your go for the iPhone build 197."
+  "Switch on the full-body avatar on staging; finish the long press, Explore and the last avatar fixes.",
+  "Measure the opening of a conversation and make it instant, like on X.",
+  "Run the fluidity gate and the full test loop on the final commit.",
+  "The go page, then your go for the iPhone build 197."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4883,
+     "titre": "TAK-1190 : Les lunettes suivent la surface du nez personnalisé",
+     "fusion": "Oct 13, 04:44",
+     "build196": true
+    },
+    {
+     "pr": 4582,
+     "titre": "TAK-831 : Amis garde ses lignes au retour et pendant le rafraîchissement",
+     "fusion": "Oct 13, 04:30",
+     "build196": true
+    },
+    {
+     "pr": 4936,
+     "titre": "TAK-1262 : garder la taille agrandie pendant la rotation",
+     "fusion": "Oct 13, 04:26",
+     "build196": true
+    },
+    {
+     "pr": 4939,
+     "titre": "TAK-1263 : l'extrait de la chanson du profil ne se télécharge qu'au premier toucher",
+     "fusion": "Oct 13, 04:10",
+     "build196": true
+    },
     {
      "pr": 4937,
      "titre": "TAK-1257: unique destination per video segment attempt",
@@ -1336,6 +1410,12 @@
    "nom": "Website and admin",
    "prs": [
     {
+     "pr": 2185,
+     "titre": "TAK-1267 : fix(admin), make queue rows reachable with arrow keys",
+     "fusion": "Oct 13, 04:10",
+     "build196": true
+    },
+    {
      "pr": 4919,
      "titre": "TAK-1237 : le rendu serveur d'une page lit lui aussi le vote sur la base principale pendant les 30 s qui suivent",
      "fusion": "Oct 12, 18:53",
@@ -1485,6 +1565,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4550,
+     "titre": "TAK-803 : fiabiliser les confirmations de copie et de GIF dans Maestro iOS",
+     "fusion": "Oct 13, 04:42",
+     "build196": true
+    },
     {
      "pr": 4930,
      "titre": "TAK-1254 : la parité tsrs exige d'abord que tsrs signale une erreur TS2322 connue",
