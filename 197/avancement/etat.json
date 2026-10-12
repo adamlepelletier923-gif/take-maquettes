@@ -1,11 +1,11 @@
 {
- "majLe": "2026-10-13T05:51+09:00",
- "heure": "05:51",
+ "majLe": "2026-10-13T06:15+09:00",
+ "heure": "06:15",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 133,
   "depuisDernierTableau": 133,
-  "enCours": 9,
+  "enCours": 11,
   "app": 80,
   "siteEtAdmin": 9,
   "serveur": 17,
@@ -13,7 +13,7 @@
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The long press on another tab is merged after a bench check, and the full-body avatar is on on staging. Opening a conversation: filmed on the final app, your tap starts the slide in about a tenth of a second, like on X; the slow case is probably a conversation not loaded yet, and it is being measured now. Sentry is fixed after two reviews, its checks are running."
+  "texte": "A correction first: filmed from the finger, opening a conversation starts about 0.16 s after your touch, then iOS plays its own slide; my first figure started from the wrong frame. The review of the last nine merges found no regression and added two checks before the build: the profile with glasses, and the full-body view on a real screen. Sentry is green and reviewed; its launch measurement comes next."
  },
  "depuis": [
   {
@@ -858,29 +858,43 @@
    "statut": "measuring",
    "sujet": "Messages: opening a conversation should feel instant, like on X",
    "pr": 0,
-   "ouEnEst": "Filmed on the final app: your tap starts the slide in about a tenth of a second, then iOS plays its own slide, as on X. A first fix gave nothing and is set aside. The slow case is probably a conversation not loaded yet, fetched over the network from Korea.",
-   "reste": "Measure that case with a simulated network delay; fix what fits this build, the full fix (each conversation's last message comes with the inbox) in the next one."
+   "ouEnEst": "Correction: my first figure started from the wrong frame. Filmed again from the finger, the opening starts about 0.16 s after your touch, 0.2 s for the first one after launch, then iOS plays its own 0.35 s slide. The top conversations are loaded ahead at launch, so the network wait only hits the ones lower in the list.",
+   "reste": "Split those 0.16 s between your finger and the drawing of the conversation, then fix the right part, with no skeleton. The inbox bringing each last message comes in the next build."
   },
   {
    "statut": "review",
    "sujet": "Error reports from the phone (Sentry)",
    "pr": 4774,
-   "ouEnEst": "You said yes. Fixed after two reviews: staging only, JavaScript errors only, private data stripped, nothing started before the app shows its content. Checks running.",
-   "reste": "Launch measured on the bench against the current app, then merged."
+   "ouEnEst": "You said yes. Checks green and reviewed twice: staging only, JavaScript errors only, private data stripped, nothing started before the app shows its content.",
+   "reste": "Its launch is measured on the bench once its app is built (one build at a time on the Mac), then merged."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Avatars with glasses: opening the profile, before and after",
+   "pr": 0,
+   "ouEnEst": "The review of the last merges found no regression, but asked for this measurement: the glasses fix was merged without it.",
+   "reste": "Measured on the bench now."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Avatars: the full-body view seen on a real screen with the switch on",
+   "pr": 0,
+   "ouEnEst": "Not seen yet on a screen with the switch on. The check covers head and feet in view, the enlarged size while it turns, a single wave, and light and dark captures for the go page.",
+   "reste": "Checked on the bench before the build."
+  },
+  {
+   "statut": "review",
+   "sujet": "Avatars: more fixes in progress",
+   "pr": 0,
+   "ouEnEst": "The Codex agents are finishing a recovery after a failed load and the wait for the first frame (the priority now that the full-body view is on), the wave proportions, the human-like wave, the rotation on a vertical swipe and the headphone band on big hair.",
+   "reste": "Each one merges once its board is checked."
   },
   {
    "statut": "measuring",
    "sujet": "Explore: the theme list no longer fades during a swipe, and search results swipe between tabs",
    "pr": 4429,
    "ouEnEst": "Changes Android only; the iPhone already behaves this way. Reviewed, and its bench apps are ready.",
-   "reste": "Bench measurement and light and dark captures, then your OK on the look."
-  },
-  {
-   "statut": "review",
-   "sujet": "Avatars: more fixes in progress",
-   "pr": 0,
-   "ouEnEst": "The Codex agents are finishing the wave proportions, the human-like wave, the rotation on a vertical swipe, a recovery after a failed load and the headphone band on big hair.",
-   "reste": "Each one merges once its board is checked."
+   "reste": "Bench measurement after the avatar checks, light and dark captures, then your OK on the look."
   },
   {
    "statut": "measuring",
@@ -893,7 +907,7 @@
    "statut": "review",
    "sujet": "Final checks of build 197",
    "pr": 0,
-   "ouEnEst": "The reference app of the fluidity gate is finishing its build, and a last regression review covers everything merged since the previous one.",
+   "ouEnEst": "The review of the last nine merges found no regression. The reference app of the fluidity gate is still building.",
    "reste": "Run the gate and the full test loop on the final commit, then the go page and your go."
   },
   {
@@ -919,14 +933,14 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, three Claude agents (opening a conversation like on X, Sentry and the last regression review, the bench apps and reviews) and six Codex agents on the avatars.",
+  "Here on the Mac: me, three Claude agents (opening a conversation like on X, the avatar checks and Sentry, the bench apps and reviews) and six Codex agents on the avatars.",
   "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
  ],
  "etapes": [
-  "Measure Explore and the Sentry launch on the bench, then merge them with the last avatar fixes.",
-  "Measure a conversation opening with a simulated network delay, and fix what fits this build.",
-  "Run the fluidity gate and the full test loop on the final commit.",
-  "The go page, then your go for the iPhone build 197."
+  "On the bench: the profile with glasses, the full-body view with the switch on, then the Sentry launch and Explore.",
+  "Find where the 0.16 s before a conversation opens go, and fix what fits this build.",
+  "Merge the last avatar fixes as their boards are checked.",
+  "Run the fluidity gate and the full test loop on the final commit, then the go page and your go for the iPhone build 197."
  ],
  "fait": [
   {
