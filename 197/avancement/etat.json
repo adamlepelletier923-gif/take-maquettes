@@ -1,21 +1,33 @@
 {
- "majLe": "2026-10-12T22:47+09:00",
- "heure": "22:47",
+ "majLe": "2026-10-12T23:46+09:00",
+ "heure": "23:46",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 105,
-  "depuisDernierTableau": 105,
+  "fusionneesDepuis8Octobre": 107,
+  "depuisDernierTableau": 107,
   "enCours": 2,
   "app": 62,
   "siteEtAdmin": 8,
-  "serveur": 14,
-  "outilsEtDocs": 21
+  "serveur": 15,
+  "outilsEtDocs": 22
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The second final loop is green, 24 of 24, on the exact build commit, after the fix for the test app that stopped on a cold start. A last review of the newest changes found nothing, and the tab vibrations were proven safe. The go page is published: everything is ready, only your go is missing."
+  "texte": "Nothing changed in the build: it stays pinned on the commit the final loop verified, and only waits for your go. Two tooling changes went in (a test date fix and a better staging sweep), your emulator is back on staging, and the full specs of the four Hick points are ready for when you answer."
  },
  "depuis": [
+  {
+   "heure": "23:40",
+   "pr": 4923,
+   "texte": "Staging tool only: the route sweep now tells « more calls » from « same calls, each slower », so a slower route is diagnosed at once.",
+   "build196": true
+  },
+  {
+   "heure": "23:05",
+   "pr": 4924,
+   "texte": "Tests only: an API test dated on a fixed day no longer turns red a week later.",
+   "build196": true
+  },
   {
    "heure": "22:20",
    "pr": 4921,
@@ -702,7 +714,7 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, two Claude agents (a better staging sweep, and the real state of every open PR) and six Codex agents on the avatars.",
+  "Here on the Mac: me, and six Codex agents on the avatars. New Claude sessions would not start from 22:50 to 23:30, so two Codex agents took over their missions in the meantime.",
   "Replicas: stopped and our machines deleted, by your order; checked at 18:10, nothing runs there."
  ],
  "etapes": [
@@ -1148,6 +1160,12 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4924,
+     "titre": "TAK-1250 : le test du fil de staging ne vieillit plus hors de la fenêtre de 7 jours",
+     "fusion": "Oct 12, 23:05",
+     "build196": true
+    },
+    {
      "pr": 4869,
      "titre": "TAK-1178 : staging lit les votes du lecteur sur la base principale (mesure, empilée sur #4855)",
      "fusion": "Oct 12, 15:24",
@@ -1237,6 +1255,12 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 4923,
+     "titre": "TAK-1242 : le balayage des routes sépare « plus d'appels sortants » et « chaque appel plus lent »",
+     "fusion": "Oct 12, 23:40",
+     "build196": true
+    },
     {
      "pr": 4898,
      "titre": "TAK-1092: WebKit map ambient proof vehicle (source only)",
