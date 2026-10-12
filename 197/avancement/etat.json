@@ -1,11 +1,11 @@
 {
- "majLe": "2026-10-12T12:56+09:00",
- "heure": "12:56",
+ "majLe": "2026-10-12T13:35+09:00",
+ "heure": "13:35",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 73,
   "depuisDernierTableau": 73,
-  "enCours": 9,
+  "enCours": 8,
   "app": 37,
   "siteEtAdmin": 6,
   "serveur": 13,
@@ -13,7 +13,7 @@
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Merged: the welcome screen without an account, your cold-start conversation fix, and translations that no longer retry 20 times. A full re-read of these 7 merges found no defect."
+  "texte": "As you ordered, Replicas is stopped for good: all 98 of our machines are deleted after noting what each one did, and everything runs on the Mac now."
  },
  "depuis": [
   {
@@ -494,74 +494,67 @@
    "statut": "loop",
    "sujet": "Full rehearsal of the regression loop",
    "pr": 0,
-   "ouEnEst": "18 of 22 flows green on a fresh simulator. The 4 failures come from that simulator's test server, not from the app: the native pager was switched off there (3 flows: Explore keeping its place, search tabs, Activity tabs) and it had no photo storage (1 flow). The Mac bench has both, and I am replaying them there to confirm.",
-   "reste": "If a replay fails on the bench, it gets its ticket and its fix before the build."
+   "ouEnEst": "On the Mac bench, the 4 flows that failed in the rehearsal pass: its test server had the native pager off. Flow 23 started its swipe under the floating tab bar when the first card has a photo; fixed in a small test-only PR and green on the bench.",
+   "reste": "Merge the flow fix, then the final loop on the exact build-197 commit."
   },
   {
-   "statut": "measuring",
-   "sujet": "Profile: a swipe that starts on the tabs no longer gets stuck",
-   "pr": 4861,
-   "ouEnEst": "A Replicas iPhone measures the profile scroll.",
-   "reste": "Measurement, then merge."
-  },
-  {
-   "statut": "measuring",
+   "statut": "review",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "A Replicas iPhone counts blank frames, including after a tap on a far theme.",
-   "reste": "If the cost is gone, merge; a ready fix covers the far tap if the blank remains."
+   "ouEnEst": "Measured in Release before Replicas stopped: blank flashes go from 6 to 1 in light and from 4 to 0 in dark, with no frame loss.",
+   "reste": "Merge once its CI is green."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Explore: a tap on a far theme no longer shows a blank page",
+   "pr": 4900,
+   "ouEnEst": "The last blank, about 100 ms on a tap on a far theme. Fixed on top of the blank-pages fix, and the native glide test is green. Two Release builds on the Mac, then a frame-by-frame video count.",
+   "reste": "Builds, measurement, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Explore: only the page on screen re-reads its votes",
    "pr": 4893,
-   "ouEnEst": "Fixed and reviewed; the same iPhone measures it right after the Explore pages.",
+   "ouEnEst": "Measured on the Mac bench now, against main.",
    "reste": "Measurement, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Fewer requests: Friends and the open Take",
    "pr": 4866,
-   "ouEnEst": "A second Replicas iPhone took this measurement, so it runs in parallel with the profile.",
+   "ouEnEst": "Measured on the Mac bench now, against main.",
    "reste": "They enter build 197 if they show fewer requests and no fluidity loss."
   },
   {
-   "statut": "measuring",
-   "sujet": "Before and after this morning's merges",
-   "pr": 0,
-   "ouEnEst": "A Replicas iPhone is building both versions to compare launch, vote, scroll, opening a Take, map search, a conversation and the profile.",
-   "reste": "Any regression gets fixed before the build."
+   "statut": "review",
+   "sujet": "Profile: a swipe that starts on the tabs no longer gets stuck",
+   "pr": 4861,
+   "ouEnEst": "Measured on a Replicas iPhone: no regression, but the stuck swipe did not show with synthetic gestures. I check it on the Mac bench before merging.",
+   "reste": "Check on the bench, then merge."
   },
   {
-   "statut": "review",
+   "statut": "later",
    "sujet": "Your vote re-read from the main database, on staging only",
    "pr": 4869,
-   "ouEnEst": "You gave the go. It needs a measurement window before and after the staging deploy.",
-   "reste": "Before window, staging deploy, after window, then the cost."
+   "ouEnEst": "Its measurement windows needed a Replicas machine with test access. To redo on the Mac after build 197.",
+   "reste": "After build 197."
   },
   {
    "statut": "claude",
    "sujet": "Avatars, continuously (six Codex)",
    "pr": 0,
-   "ouEnEst": "Merged this hour: the thumb's shading. Next: the shoulder, the elbow, the arm, the rhythm, glasses on a custom nose, fingers, and the full-body view made bigger.",
+   "ouEnEst": "Their renders now run on the Mac, one at a time, and pause while the bench measures. Ready to merge after review: the shoulder and the elbow.",
    "reste": "Each one merges once its board is checked; you see the bigger full-body view before it is turned on."
-  },
-  {
-   "statut": "later",
-   "sujet": "Six more ways to save requests",
-   "pr": 0,
-   "ouEnEst": "Found this morning and ticketed: iOS « inactive » refreshes, presence, analytics, profile invalidation, duel waiting, thread reopening.",
-   "reste": "Your choice after build 197."
   }
  ],
  "equipe": [
-  "Here on the Mac: me on the bench (replaying the rehearsal's failures), Claude agents on the reviews, and six Codex agents on the avatars.",
-  "On Replicas, on Muse Spark through OpenCode, one emulator each and 4 at most: vison (profile), harfang (Explore, then its re-read fix), wombat (fewer requests), belette (before/after the merges). Two idle machines were put to sleep."
+  "Everything on the Mac: me on the bench (measurements, then the final loop), one Claude agent on the Explore far-tap fix, and six Codex agents on the avatars.",
+  "Replicas: stopped and our machines deleted, by your order."
  ],
  "etapes": [
-  "Replay the rehearsal's 4 failures on the Mac bench to confirm they come from its test server.",
-  "Finish the measurements (profile, Explore and its re-read fix, fewer requests, before/after the merges) and merge what passes.",
-  "Final regression loop on the exact build-197 commit, the list of what is in and out, and your OK."
+  "Finish the request measurements on the Mac bench (Explore re-read, Friends, open Take) and check the profile swipe.",
+  "Two Release builds and the far-tap measurement for Explore.",
+  "Merge the last PRs, rebuild the bench app, final loop on the exact build-197 commit, then your OK around 17:00."
  ],
  "fait": [
   {
