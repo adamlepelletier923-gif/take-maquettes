@@ -1,21 +1,111 @@
 {
- "majLe": "2026-10-12T14:47+09:00",
- "heure": "14:47",
+ "majLe": "2026-10-12T16:11+09:00",
+ "heure": "16:10",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 78,
-  "depuisDernierTableau": 78,
-  "enCours": 8,
-  "app": 41,
+  "fusionneesDepuis8Octobre": 93,
+  "depuisDernierTableau": 93,
+  "enCours": 6,
+  "app": 52,
   "siteEtAdmin": 6,
-  "serveur": 13,
-  "outilsEtDocs": 18
+  "serveur": 14,
+  "outilsEtDocs": 21
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "As you asked, everything goes into build 197 except Hick's points 1, 2, 6 and 7, which wait for your answer: the double taps, the six request savings, the bigger full-body avatar and the staging vote measurement."
+  "texte": "Nine PRs merged this hour: all six request savings, the far-theme tap in Explore, the avatar after scrolling and the staging vote re-read. The double-tap agent found the real cause inside the app's native touch handling, and its fix is compiling. I need your yes or no to turn on the bigger full-body avatar; your go is aimed at about 20:30."
  },
  "depuis": [
+  {
+   "heure": "16:10",
+   "pr": 4880,
+   "texte": "Avatar: the avatar is prepared once a scroll settles, not during it; measured on the bench with no fluidity loss (slow frames 14 and 14, total jank 2720 to 2632 ms).",
+   "build196": true
+  },
+  {
+   "heure": "15:40",
+   "pr": 4900,
+   "texte": "Explore: a tap on a far theme slides the page you leave fully drawn, with no blank page; counted frame by frame in Release.",
+   "build196": true
+  },
+  {
+   "heure": "15:38",
+   "pr": 4909,
+   "texte": "Fewer requests: reopening a conversation no longer re-reads it while the live connection kept it up to date (5 minutes at most).",
+   "build196": true
+  },
+  {
+   "heure": "15:30",
+   "pr": 4908,
+   "texte": "Fewer requests: presence beats once per 5-minute slot instead of every 2 minutes.",
+   "build196": true
+  },
+  {
+   "heure": "15:24",
+   "pr": 4869,
+   "texte": "Server, staging only: right after you vote, your votes are read from the main database, so a lagging copy cannot show an old vote. Being measured on staging.",
+   "build196": true
+  },
+  {
+   "heure": "15:23",
+   "pr": 4907,
+   "texte": "Fewer requests: the app sends its analytics every 55 s instead of 15 s, without losing events.",
+   "build196": true
+  },
+  {
+   "heure": "15:22",
+   "pr": 4906,
+   "texte": "Fewer requests: waiting for a duel no longer re-reads the game every 8 s while its live subscription runs.",
+   "build196": true
+  },
+  {
+   "heure": "15:19",
+   "pr": 4905,
+   "texte": "Fewer requests: a repost, a delete or a new post re-reads only your own profile, not every profile.",
+   "build196": true
+  },
+  {
+   "heure": "15:15",
+   "pr": 4904,
+   "texte": "Fewer requests: when iOS goes briefly inactive (control center, a notification banner), the app no longer re-reads what is on screen.",
+   "build196": true
+  },
+  {
+   "heure": "15:12",
+   "pr": 4898,
+   "texte": "Map: a WebKit proof vehicle for the ambient map (source only).",
+   "build196": true
+  },
+  {
+   "heure": "15:03",
+   "pr": 4801,
+   "texte": "Explore: a page you leave stays drawn instead of flashing white or black (6 to 1 flashes in light, 4 to 0 in dark), measured in Release.",
+   "build196": true
+  },
+  {
+   "heure": "14:59",
+   "pr": 4897,
+   "texte": "Avatar: the palm's shading follows its rotation near the wrist.",
+   "build196": true
+  },
+  {
+   "heure": "14:57",
+   "pr": 4892,
+   "texte": "Avatar: the elbow's compression is bounded exactly during the wave.",
+   "build196": true
+  },
+  {
+   "heure": "14:50",
+   "pr": 4885,
+   "texte": "Avatar: the fingers' shading follows their curve.",
+   "build196": true
+  },
+  {
+   "heure": "14:48",
+   "pr": 4870,
+   "texte": "Avatar: the skin no longer shows through the sleeve at the elbow during the wave.",
+   "build196": true
+  },
   {
    "heure": "14:45",
    "pr": 4865,
@@ -521,76 +611,128 @@
  },
  "enCours": [
   {
-   "statut": "measuring",
-   "sujet": "Explore: a tap on a far theme no longer shows a blank page",
-   "pr": 4900,
-   "ouEnEst": "Two Release builds are compiling on the Mac, then a frame-by-frame video count of blank frames.",
-   "reste": "Measurement, then merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Fewer requests: Friends checks for new Takes with a light request",
-   "pr": 4866,
-   "ouEnEst": "Measured on the Mac with its own server: full reads of the Friends feed halved, same fluidity at equal load. It changes the server, so it merges right after the staging vote measurement.",
-   "reste": "Merge, then deploy staging."
+   "statut": "claude",
+   "sujet": "Lost double taps (two taps less than 1 ms apart)",
+   "pr": 0,
+   "ouEnEst": "Real cause found in the app's own native touch handling: a burst of 20 taps reached the app as a single tap. With the fix, the home top tabs land right 4 times out of 4 (0 out of 2 before). The native part is recompiling on the second simulator, then the ghost, tabs, vote and repost are replayed.",
+   "reste": "Two PRs (native and JS), review, measurement on the bench, merge."
   },
   {
    "statut": "staging",
    "sujet": "Your vote re-read from the main database, on staging only",
    "pr": 4869,
-   "ouEnEst": "Measuring on staging now: the before window is running, then the deploy with the setting, then the after window.",
-   "reste": "Merge, deploy, after window, verdict."
+   "ouEnEst": "Merged and deployed on staging with the setting on. The after window is measuring now; verdict around 16:20.",
+   "reste": "Verdict, then free the staging lock."
   },
   {
-   "statut": "claude",
-   "sujet": "Lost double taps (two taps less than 1 ms apart)",
-   "pr": 0,
-   "ouEnEst": "Cause found: one shared iOS touch recognizer only resets at the end of the run loop, so the second tap is lost. A small native fix with an off switch is ready to compile; proof on the second simulator after my builds.",
-   "reste": "Builds, before and after proof, measurement, merge."
+   "statut": "review",
+   "sujet": "Fewer requests: Friends checks for new Takes with a light request",
+   "pr": 4866,
+   "ouEnEst": "Measured on the Mac: full reads of the Friends feed halved. After the update from main, two new server tests flagged it; both fixed (the light request is classed as vote-free, the route table counts it), CI is running again.",
+   "reste": "Merge right after the staging vote verdict, then deploy staging."
   },
   {
-   "statut": "claude",
-   "sujet": "Six more ways to save requests",
-   "pr": 0,
-   "ouEnEst": "Two Claude agents code them now, one PR each: iOS inactive refreshes, profile invalidation, thread reopening, presence, analytics every 60 s, duel waiting.",
-   "reste": "Tests, measurement on the bench, merge."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Avatar prepared after scrolling",
-   "pr": 4880,
-   "ouEnEst": "Reviewed with no blocking defect. It touches scrolling, so the bench measures it before merging.",
-   "reste": "Measurement, then merge."
-  },
-  {
-   "statut": "claude",
+   "statut": "review",
    "sujet": "Avatar full body made bigger",
    "pr": 0,
-   "ouEnEst": "Its renders now run on the Mac. You see the board before it is turned on.",
-   "reste": "Board for you, then merge switched off."
+   "ouEnEst": "The character now fills 88 to 92 % of the viewer's height instead of 43 to 45 %, and never less than 86 % when turned. The boards wait for your yes or no.",
+   "reste": "Your answer, then merge (switched on only if you say yes)."
   },
   {
    "statut": "claude",
    "sujet": "Avatars, continuously (six Codex)",
    "pr": 0,
-   "ouEnEst": "Merged this hour: shoulder, elbow, finger and palm shading, compression. Next: the arm, the rhythm, glasses on a custom nose, ring and little fingers, socks, a curly-hair helmet.",
+   "ouEnEst": "Next: the arm and the rhythm of the wave, glasses on a custom nose, ring and little fingers, a curly-hair helmet.",
    "reste": "Each one merges once reviewed and its board checked."
+  },
+  {
+   "statut": "review",
+   "sujet": "Whole-diff review before the build",
+   "pr": 0,
+   "ouEnEst": "An agent re-reads everything merged since the last review and checks that every test-loop selector still exists in the app.",
+   "reste": "Any finding is fixed before the build."
   }
  ],
  "equipe": [
-  "Here on the Mac: me on the bench and the merges, four Claude agents (Explore far tap and staging vote, double taps, two on request savings), six Codex agents on the avatars, and two simulators.",
+  "Here on the Mac: me on the merges and the bench, two Claude agents (double taps; staging vote verdict and the whole-diff review), six Codex agents on the avatars. One simulator runs; the bench one is off to leave memory to the double-tap build.",
   "Replicas: stopped and our machines deleted, by your order."
  ],
  "etapes": [
-  "Finish the Explore far-tap measurement, the staging vote measurement, and the agents' fixes (double taps, six request savings, bigger full-body avatar).",
-  "Measure each one on the Mac bench and merge it, then deploy staging with the final main.",
-  "Rebuild the bench app, final loop on the exact build-197 commit, then your OK in the evening."
+  "Merge Friends once its CI is green, and the double-tap fix once measured on the bench.",
+  "Deploy staging with the final main, rebuild the bench app on the exact build-197 commit, and run the final test loop.",
+  "Finish the whole-diff review, publish the go page, then your OK around 20:30."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4880,
+     "titre": "TAK-1202 : préparer l’avatar après le défilement",
+     "fusion": "Oct 12, 16:10",
+     "build196": true
+    },
+    {
+     "pr": 4909,
+     "titre": "TAK-1220 : un fil rouvert ne se relit plus tant que la socket l'a tenu à jour",
+     "fusion": "Oct 12, 15:38",
+     "build196": true
+    },
+    {
+     "pr": 4908,
+     "titre": "TAK-1216 : la présence bat une fois par tranche de 5 min au lieu de toutes les 2 min",
+     "fusion": "Oct 12, 15:30",
+     "build196": true
+    },
+    {
+     "pr": 4907,
+     "titre": "TAK-1217 : l'analytique mobile envoie toutes les 55 s au lieu de 15 s, sans perdre d'événement",
+     "fusion": "Oct 12, 15:23",
+     "build196": true
+    },
+    {
+     "pr": 4906,
+     "titre": "TAK-1219 : l'attente d'un duel ne relit plus la partie tant que son abonnement temps réel vit",
+     "fusion": "Oct 12, 15:22",
+     "build196": true
+    },
+    {
+     "pr": 4905,
+     "titre": "TAK-1218 : un repost, une suppression ou une publication ne relit plus que son propre profil",
+     "fusion": "Oct 12, 15:19",
+     "build196": true
+    },
+    {
+     "pr": 4904,
+     "titre": "TAK-1215 : un passage d'iOS par « inactive » ne relit plus ce qui est affiché",
+     "fusion": "Oct 12, 15:15",
+     "build196": true
+    },
+    {
+     "pr": 4897,
+     "titre": "TAK-1213 : les normales suivent la rotation progressive de la paume",
+     "fusion": "Oct 12, 14:59",
+     "build196": true
+    },
+    {
+     "pr": 4892,
+     "titre": "TAK-1209 : borner la compression entre les sommets échantillonnés du coucou",
+     "fusion": "Oct 12, 14:57",
+     "build196": true
+    },
+    {
+     "pr": 4885,
+     "titre": "TAK-1203 : les normales suivent la courbure des doigts",
+     "fusion": "Oct 12, 14:50",
+     "build196": true
+    },
+    {
+     "pr": 4870,
+     "titre": "TAK-1189 : couvrir la peau au pli du coude pendant le coucou",
+     "fusion": "Oct 12, 14:48",
+     "build196": true
+    },
     {
      "pr": 4865,
      "titre": "TAK-1186 : l’épaule et les manches gardent leur volume pendant le coucou",
@@ -886,6 +1028,12 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 4869,
+     "titre": "TAK-1178 : staging lit les votes du lecteur sur la base principale (mesure, empilée sur #4855)",
+     "fusion": "Oct 12, 15:24",
+     "build196": true
+    },
+    {
      "pr": 4877,
      "titre": "TAK-1197 : une recherche de la carte ne compte qu'une fois dans le budget des lieux précis, quel que soit son nombre de lettres",
      "fusion": "Oct 12, 09:48",
@@ -970,6 +1118,12 @@
    "nom": "CI, scripts and infra",
    "prs": [
     {
+     "pr": 4898,
+     "titre": "TAK-1092: WebKit map ambient proof vehicle (source only)",
+     "fusion": "Oct 12, 15:12",
+     "build196": true
+    },
+    {
      "pr": 4889,
      "titre": "TAK-1206 : la boucle relance Take sans donner la caméra, les photos ni le micro",
      "fusion": "Oct 12, 12:00",
@@ -1029,6 +1183,18 @@
    "zone": "docs",
    "nom": "Docs",
    "prs": [
+    {
+     "pr": 4900,
+     "titre": "TAK-1120 : un toucher sur un thème éloigné d'Explorer fait glisser la page quittée dessinée",
+     "fusion": "Oct 12, 15:40",
+     "build196": true
+    },
+    {
+     "pr": 4801,
+     "titre": "TAK-966 : la page quittée glisse dessinée, plus une capture vide, pendant les changements rapides d'Explorer",
+     "fusion": "Oct 12, 15:03",
+     "build196": true
+    },
     {
      "pr": 4890,
      "titre": "TAK-1067 : captures de la barre du bas masquée (Take ouvert, Activité), clair et sombre",
