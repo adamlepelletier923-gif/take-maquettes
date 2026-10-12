@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avatar en entier</title>
+<style>
+:root {
+  --fond: #f4f4f6; --carte: #ffffff; --texte: #15161a; --doux: #5d6070; --trait: #e2e3e8;
+  --accent: #1d6ff2; --oui: #12805c; --attention: #b45309;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fond: #0f1014; --carte: #1a1c22; --texte: #f1f2f5; --doux: #a3a7b5; --trait: #2c2f38;
+    --accent: #6ea2ff; --oui: #4cc79a; --attention: #f0a64a;
+  }
+}
+:root[data-theme="dark"] {
+  --fond: #0f1014; --carte: #1a1c22; --texte: #f1f2f5; --doux: #a3a7b5; --trait: #2c2f38;
+  --accent: #6ea2ff; --oui: #4cc79a; --attention: #f0a64a;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fond); color: var(--texte);
+  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 20px 16px 48px; }
+h1 { font-size: 26px; line-height: 1.2; margin: 4px 0 6px; }
+.sous { color: var(--doux); margin: 0 0 20px; }
+section { background: var(--carte); border: 1px solid var(--trait); border-radius: 16px;
+  padding: 16px; margin: 0 0 16px; }
+h2 { font-size: 19px; margin: 0 0 6px; }
+.num { display: inline-block; min-width: 26px; height: 26px; border-radius: 13px; background: var(--accent);
+  color: #fff; font-size: 14px; font-weight: 700; text-align: center; line-height: 26px; margin-right: 8px; }
+p { margin: 8px 0; }
+.reco { border-left: 4px solid var(--oui); padding: 6px 10px; margin: 12px 0 4px; }
+.reco b { color: var(--oui); }
+.note { border-left: 4px solid var(--attention); padding: 6px 10px; margin: 10px 0; color: var(--doux); }
+figure { margin: 12px 0 0; min-width: 0; }
+figure img { display: block; max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--trait); }
+figcaption { color: var(--doux); font-size: 14px; margin-top: 6px; }
+.ref { color: var(--doux); font-size: 14px; }
+.reponse { color: var(--doux); font-size: 15px; margin-top: 18px; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+<h1>Avatar en entier, agrandi</h1>
+<p class="sous">Build 197. Le réglage est toujours éteint : rien ne change chez les testeurs tant que tu n'as pas dit oui.</p>
+<section>
+<h2><span class="num">1</span>Ce qui change</h2>
+<p>Quand on ouvre l'avatar en entier, comme sur Instagram, le personnage occupait à peu près un tiers de la hauteur de la visionneuse. Maintenant, il la remplit de la tête aux pieds, avec la même marge pour tout le monde.</p>
+<p>Sur la planche, chaque case montre « avant » à gauche et « après » à droite. On y voit 2 personnages, 3 corpulences, 2 peaux, et 3 angles (face, trois-quarts, profil). La hauteur remplie va de 86 % à 99 %, et rien ne sort du cadre.</p>
+<div class="reco"><b>Ma reco :</b> l'allumer dans le 197. Le personnage se lit enfin en entier, comme sur Instagram, sans rien couper.</div>
+<p class="note">Ce que je te demande : oui ou non pour allumer l'avatar en entier dans le 197. Si c'est non, il reste éteint, et je garde la version agrandie pour plus tard.</p>
+</section>
+<section>
+<h2><span class="num">2</span>Planche en clair</h2>
+<figure><img src="planche-clair.jpg" alt="Planche avant et après de l'avatar en entier, en clair" loading="lazy"><figcaption>En haut, le profil d'origine, avec « avant » et « après » côte à côte. En dessous, les 36 cas, avant et après.</figcaption></figure>
+</section>
+<section>
+<h2><span class="num">3</span>Planche en sombre</h2>
+<figure><img src="planche-sombre.jpg" alt="Planche avant et après de l'avatar en entier, en sombre" loading="lazy"><figcaption>Les mêmes cas, en sombre.</figcaption></figure>
+</section>
+<p class="ref">TAK-1208. Rendus faits sur le Mac, sur l'app réelle et ses modèles 3D.</p>
+</main>
+</body>
+</html>
