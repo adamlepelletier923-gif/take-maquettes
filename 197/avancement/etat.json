@@ -1,21 +1,39 @@
 {
- "majLe": "2026-10-13T08:04+09:00",
- "heure": "08:04",
+ "majLe": "2026-10-13T08:49+09:00",
+ "heure": "08:49",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 139,
-  "depuisDernierTableau": 139,
-  "enCours": 11,
-  "app": 84,
+  "fusionneesDepuis8Octobre": 142,
+  "depuisDernierTableau": 142,
+  "enCours": 12,
+  "app": 87,
   "siteEtAdmin": 9,
   "serveur": 19,
   "outilsEtDocs": 27
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The fix for opening a conversation is fast: lower in the list, on a slow network, it opens in about 0.17 s instead of 0.43 s; a small jump it causes is being fixed. Merged: the bottom bar steps aside on the full-body avatar, the very large text fix, the library update and an avatar retry. The bench caught a real bug in the Android Explore change before the build; it is being fixed."
+  "texte": "Merged: search shows accounts alone without the \"No take for ...\" line, Explore on Android after a bug found and fixed on the bench, and a test that failed at random. The color change is ready, with captures of every screen, for your OK. Four Codex agents started on Android, as you asked."
  },
  "depuis": [
+  {
+   "heure": "08:21",
+   "pr": 4429,
+   "texte": "Explore on Android: the theme list no longer fades during a swipe, and search results swipe between tabs like on iPhone. A bug found on the bench was fixed first, then measured again: no slowdown.",
+   "build196": true
+  },
+  {
+   "heure": "08:16",
+   "pr": 4955,
+   "texte": "A test that failed at random on everyone's checks now waits for the screen to settle. Nothing changes in the app.",
+   "build196": true
+  },
+  {
+   "heure": "08:12",
+   "pr": 4953,
+   "texte": "Search: when a search finds accounts but no take, the accounts show alone, without the \"No take for ...\" line, as you asked.",
+   "build196": true
+  },
   {
    "heure": "07:43",
    "pr": 4942,
@@ -894,49 +912,42 @@
    "statut": "review",
    "sujet": "Messages: any conversation opens at your tap, without waiting for the network",
    "pr": 0,
-   "ouEnEst": "Measured on the bench: a conversation lower in the list now opens in about 0.17 s instead of 0.43 s on a slow network, as fast as the top ones. But the bench also showed a jump: the last message first appears at the top, then moves to the bottom when the rest arrives. It is being fixed before anything ships.",
-   "reste": "Merge, then switch it on for the test server."
+   "ouEnEst": "Fast on the bench: lower in the list, on a slow network, about 0.17 s instead of 0.43 s. The jump it caused is fixed in the app: the last message shows at once only for long conversations, already at the bottom; short ones wait as today. The server part is being finished.",
+   "reste": "Film long and short conversations on the bench, then merge and switch it on for the test server."
   },
   {
-   "statut": "fixing",
+   "statut": "review",
    "sujet": "Colors: one green for the Yes, two reds",
-   "pr": 0,
-   "ouEnEst": "As you asked: \"Ami\" and the other greens turn black, the decorative reds too. The No, delete actions and the reds Instagram keeps stay red. Every place is listed; the change is being made.",
-   "reste": "Before and after captures for your OK, then merged."
+   "pr": 4954,
+   "ouEnEst": "Ready. Before and after captures of every screen it touches, in light and dark, are on the change: the red dots of trends, \"Rising\" and unread questions turn black (white in dark), and so do the greens of \"available\" and the Know Me checks.",
+   "reste": "Your OK on the captures, then merged."
   },
   {
    "statut": "fixing",
-   "sujet": "Search: no more \"No take for ...\" line under the accounts",
-   "pr": 4953,
-   "ouEnEst": "As you asked. Ready; its captures are next.",
+   "sujet": "Search on the website: the same \"No take for ...\" line",
+   "pr": 0,
+   "ouEnEst": "Removed from the app this hour; the website still shows it. It is being removed there too, with captures.",
    "reste": "Captures, then merged."
   },
   {
    "statut": "fixing",
    "sujet": "Avatars, full-body view: a size jump at the end of the wave",
-   "pr": 0,
-   "ouEnEst": "Found on the bench: when the wave ends, the avatar shrinks for about a tenth of a second, then comes back.",
-   "reste": "An avatar agent fixes it for this build."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Explore on Android: a bug caught on the bench",
-   "pr": 4429,
-   "ouEnEst": "After a trip through the search results, swiping between themes stopped working with this change; the current app is fine. It is being fixed with a test that replays it.",
-   "reste": "Measured again on the bench, then your OK on the look."
+   "pr": 4956,
+   "ouEnEst": "An avatar agent keeps the enlarged framing when the wave returns to rest. Its board is being checked.",
+   "reste": "Merged once its board is checked."
   },
   {
    "statut": "review",
    "sujet": "Error reports from the phone (Sentry)",
    "pr": 4774,
-   "ouEnEst": "Checks green and reviewed. Its app is building now.",
+   "ouEnEst": "Checks green and reviewed. Its app is still building: the Mac is busy, so it builds slowly in the background.",
    "reste": "Launch measured on the bench, then merged before the final checks."
   },
   {
    "statut": "review",
    "sujet": "Avatars: more fixes in progress",
    "pr": 0,
-   "ouEnEst": "One merged this hour. The Codex agents are finishing the wait for the first frame, the wave proportions and rhythm, the rotation on a vertical swipe, the socks and the headphone band; a follow-up opens the plain photo when the 3D cannot load.",
+   "ouEnEst": "One is ready: after a failed load, the 3D waits for its first image instead of flashing. The Codex agents are finishing the wave proportions and rhythm, the rotation on a vertical swipe, the socks and the cuff details.",
    "reste": "Each one merges once its board is checked."
   },
   {
@@ -950,8 +961,22 @@
    "statut": "review",
    "sujet": "Final checks of build 197",
    "pr": 0,
-   "ouEnEst": "The reference app of the fluidity gate is built. Two tests that failed at random on everyone's checks are being made reliable.",
-   "reste": "Run the gate and the full test loop on the final commit, then the go page and your go."
+   "ouEnEst": "Everything merged since the last build was re-read for regressions, in three passes: green. The test that failed at random is fixed. A take with a GIF comment was opened on the bench: no freeze.",
+   "reste": "Run the fluidity gate and the full test loop on the final commit, then the go page and your go."
+  },
+  {
+   "statut": "later",
+   "sujet": "Android: catching up with iPhone, like X on Android",
+   "pr": 0,
+   "ouEnEst": "As you asked, four Codex agents work on Android without stopping: native page swipes, launch and scroll smoothness, system gestures (back, keyboard, edge to edge) and a screen-by-screen check. Their first changes are open. Not needed for this iPhone build.",
+   "reste": "Each change is reviewed, then measured and captured on an Android emulator when the iPhone simulator is free."
+  },
+  {
+   "statut": "later",
+   "sujet": "Android: larger touch areas and very large text",
+   "pr": 4412,
+   "ouEnEst": "You said it is not needed for this iPhone build, but to keep working on it. It is up to date with the latest code and its checks are green.",
+   "reste": "Android captures right after build 197 starts, then your OK on the look."
   },
   {
    "statut": "later",
@@ -969,11 +994,11 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, three Claude agents (the conversation opening fix; the colors, the search line and the reviews; the Android Explore fix and the bench apps) and six Codex agents on the avatars.",
+  "Here on the Mac: me, three Claude agents (the conversation opening fix and its server part; the regression re-reads and the website search line; the reviews of the Android work), six Codex agents on the avatars and four Codex agents on Android.",
   "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
  ],
  "etapes": [
-  "Finish the conversation opening fix, the colors, the search line and the Android Explore fix; merge the last avatar fixes.",
+  "Get your OK on the colors; film the conversation opening on long and short conversations, then merge it with its server part; merge the last avatar fixes.",
   "Measure the Sentry launch on the bench once its app is built, then merge it.",
   "Run the fluidity gate and the full test loop on the final commit, then the go page and your go for the iPhone build 197."
  ],
@@ -982,6 +1007,24 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4429,
+     "titre": "Explore on Android: smooth theme swipes, search results swipe like on iPhone",
+     "fusion": "Oct 13, 08:21",
+     "build196": true
+    },
+    {
+     "pr": 4955,
+     "titre": "A test made reliable (nothing changes in the app)",
+     "fusion": "Oct 13, 08:16",
+     "build196": true
+    },
+    {
+     "pr": 4953,
+     "titre": "Search: accounts alone, without the \"No take for ...\" line",
+     "fusion": "Oct 13, 08:12",
+     "build196": true
+    },
     {
      "pr": 4942,
      "titre": "Avatars: a failed 3D load lets the next tap try again",
