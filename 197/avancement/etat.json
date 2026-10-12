@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-13T07:47+09:00",
- "heure": "07:47",
+ "majLe": "2026-10-13T08:04+09:00",
+ "heure": "08:04",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 139,
@@ -13,7 +13,7 @@
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The fix for opening a conversation works: lower in the list, on a slow network, it opens in about 0.17 s instead of 0.43 s, as fast as the top ones. Merged: the bottom bar steps aside on the full-body avatar, the very large text fix, the library update and an avatar retry. The bench caught a real bug in the Android Explore change before the build; it is being fixed."
+  "texte": "The fix for opening a conversation is fast: lower in the list, on a slow network, it opens in about 0.17 s instead of 0.43 s; a small jump it causes is being fixed. Merged: the bottom bar steps aside on the full-body avatar, the very large text fix, the library update and an avatar retry. The bench caught a real bug in the Android Explore change before the build; it is being fixed."
  },
  "depuis": [
   {
@@ -894,7 +894,7 @@
    "statut": "review",
    "sujet": "Messages: any conversation opens at your tap, without waiting for the network",
    "pr": 0,
-   "ouEnEst": "Measured on the bench: a conversation lower in the list now opens in about 0.17 s instead of 0.43 s on a slow network, as fast as the top ones, with nothing moving when its history arrives. The server part and the app part are being finished and reviewed.",
+   "ouEnEst": "Measured on the bench: a conversation lower in the list now opens in about 0.17 s instead of 0.43 s on a slow network, as fast as the top ones. But the bench also showed a jump: the last message first appears at the top, then moves to the bottom when the rest arrives. It is being fixed before anything ships.",
    "reste": "Merge, then switch it on for the test server."
   },
   {
