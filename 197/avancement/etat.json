@@ -1,6 +1,6 @@
 {
- "majLe": "2026-10-12T20:50+09:00",
- "heure": "20:50",
+ "majLe": "2026-10-12T21:47+09:00",
+ "heure": "21:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 104,
@@ -13,7 +13,7 @@
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The fluidity check is done, measured calmly: nothing is slower than at 15:00, and Messages and voting are smoother. The Activity alarm came from the test robot, which now waits for the launch logo before tapping, not from the app. The final loop starts around 21:00, and your go is aimed at about 21:45."
+  "texte": "The first final loop found one real defect: on a cold start, the test app stopped because two JavaScript engines installed the double-tap fix at the same moment. It only happens in our test builds, not on testers' iPhones, but it is fixed (green CI) and the whole loop runs again on that commit, so your go is now aimed at about 22:30."
  },
  "depuis": [
   {
@@ -678,10 +678,10 @@
  "enCours": [
   {
    "statut": "loop",
-   "sujet": "Final test loop on the exact build commit",
-   "pr": 0,
-   "ouEnEst": "The bench server runs the build commit with staging's settings, the test data is seeded and the production bundle server is up. The bench app is being rebuilt on the commit.",
-   "reste": "Install it, sign in the test account, run the 24 flows (about 25 minutes), then read the verdict."
+   "sujet": "Second final test loop, on the fix commit",
+   "pr": 4921,
+   "ouEnEst": "The first loop passed 23 of 24 flows. On one cold start, the test app stopped because two JavaScript engines installed the double-tap fix at the same moment, which only our test builds do. Fixed in a few lines with green CI, and the whole loop runs again on that commit.",
+   "reste": "Verdict around 22:05, merge the fix, then the go page."
   },
   {
    "statut": "later",
@@ -696,9 +696,9 @@
   "Replicas: stopped and our machines deleted, by your order; checked at 18:10, nothing runs there."
  ],
  "etapes": [
-  "Finish rebuilding the bench app on the build commit, then run the 24-flow final loop (about 25 minutes).",
-  "Record the loop's native proofs (bottom bar and long press), then read the verdict.",
-  "Publish the go page, already checked against its proofs, then your OK around 21:45."
+  "Second final loop on the fix commit, until about 22:05.",
+  "Merge the fix, record the loop's native proofs (bottom bar and long press), then read the verdict.",
+  "Publish the go page, already checked against its proofs, then your OK around 22:30."
  ],
  "fait": [
   {
