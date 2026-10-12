@@ -1,21 +1,39 @@
 {
- "majLe": "2026-10-12T10:47+09:00",
- "heure": "10:47",
+ "majLe": "2026-10-12T11:47+09:00",
+ "heure": "11:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 64,
-  "depuisDernierTableau": 64,
-  "enCours": 10,
+  "fusionneesDepuis8Octobre": 67,
+  "depuisDernierTableau": 67,
+  "enCours": 11,
   "app": 33,
   "siteEtAdmin": 6,
   "serveur": 13,
-  "outilsEtDocs": 12
+  "outilsEtDocs": 15
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "You approved the 4 decisions: the full-body avatar is merged switched off, and a review of the last 8 merges found nothing that blocks the build."
+  "texte": "Your cold-start conversation fix is measured with no slowdown and is merging, and the 4 flows pass on a fresh simulator, including the iOS camera alert."
  },
  "depuis": [
+  {
+   "heure": "11:39",
+   "pr": 4886,
+   "texte": "Web, switched off: a bounded proof of the web telemetry transport on staging.",
+   "build196": true
+  },
+  {
+   "heure": "10:50",
+   "pr": 4890,
+   "texte": "Proof only: pictures of the bottom bar hidden on an open Take and in Activity, light and dark.",
+   "build196": true
+  },
+  {
+   "heure": "10:50",
+   "pr": 4857,
+   "texte": "Test loop: it answers the iOS camera alert like a new tester would; proven on a fresh simulator, fresh and already allowed.",
+   "build196": true
+  },
   {
    "heure": "10:40",
    "pr": 4888,
@@ -437,11 +455,18 @@
  },
  "enCours": [
   {
-   "statut": "measuring",
+   "statut": "review",
    "sujet": "Your conversation that freezes 2 s on a cold start",
    "pr": 4850,
-   "ouEnEst": "A Replicas iPhone measures it right now, frame by frame. The Mac build that duplicated it was stopped, which gave back 18 GB of disk.",
-   "reste": "Measurement, then merge."
+   "ouEnEst": "Measured on a Replicas iPhone: the thread code now gets ready while the app is idle, not at your tap, with no cost moved to launch. The 2 s freeze from TestFlight did not show on the bench.",
+   "reste": "Merging now."
+  },
+  {
+   "statut": "review",
+   "sujet": "Test loop: opens a thread from a notification",
+   "pr": 4835,
+   "ouEnEst": "Green on a fresh simulator. It merges right after the cold-start fix, with 4 small conflicts already worked out.",
+   "reste": "Merge after the cold-start fix."
   },
   {
    "statut": "measuring",
@@ -458,18 +483,25 @@
    "reste": "If the cost is gone, merge; a ready fix covers the far tap if the blank remains."
   },
   {
+   "statut": "measuring",
+   "sujet": "Explore: only the page on screen re-reads its votes",
+   "pr": 4893,
+   "ouEnEst": "Each mounted theme page re-read the N°1 votes every 15 s, up to about 40 reads a minute instead of 4. Fixed and reviewed; a Replicas iPhone measures it after the Explore pages.",
+   "reste": "Measurement, then merge."
+  },
+  {
+   "statut": "review",
+   "sujet": "Comment and Take translations: 4 retries at most instead of 20",
+   "pr": 4896,
+   "ouEnEst": "A page of 20 foreign comments could make up to about 400 requests in 30 s. Now one shared, spaced-out schedule. In review.",
+   "reste": "Review, then merge."
+  },
+  {
    "statut": "review",
    "sujet": "Welcome screen without an account",
    "pr": 4829,
    "ouEnEst": "You approved the captures. One picture at the largest text size is being redone.",
    "reste": "Picture, then merge."
-  },
-  {
-   "statut": "review",
-   "sujet": "Test loop: answers the iOS access alert, opens a thread from a notification",
-   "pr": 4857,
-   "ouEnEst": "On a fresh simulator, flows 24, 25 and 04 are green. Flow 09 found a bug in the test itself, now fixed, and it is being replayed.",
-   "reste": "Merge after the replay."
   },
   {
    "statut": "measuring",
@@ -482,38 +514,31 @@
    "statut": "measuring",
    "sujet": "Before and after this morning's merges",
    "pr": 0,
-   "ouEnEst": "A Replicas iPhone is building both versions to compare launch, vote, scroll, opening a Take, map search, a conversation and the profile.",
+   "ouEnEst": "A Replicas iPhone is building both versions. Meanwhile, a full rehearsal of the regression loop runs on a fresh simulator on the Mac.",
    "reste": "Any regression gets fixed before the build."
-  },
-  {
-   "statut": "review",
-   "sujet": "Your vote re-read from the main database, on staging only",
-   "pr": 4869,
-   "ouEnEst": "You gave the go. The code is ready and green; a Replicas iPhone measures staging before and after I deploy it.",
-   "reste": "Before window, staging deploy, after window, then the cost."
   },
   {
    "statut": "claude",
    "sujet": "Avatars, continuously (six Codex)",
    "pr": 0,
-   "ouEnEst": "Merged: one wave per tap, the human wave, taps that come back, the hand. Next: the shoulder (reviewed), the elbow (one more test), the arm, the rhythm, glasses on a custom nose, fingers, and the full-body view made bigger.",
+   "ouEnEst": "Next to merge: the shoulder (reviewed) and the elbow (one more test). In progress: the arm, the rhythm, glasses on a custom nose, fingers, and the full-body view made bigger.",
    "reste": "Each one merges once its board is checked; you see the bigger full-body view before it is turned on."
   },
   {
    "statut": "later",
-   "sujet": "Hick's law points 1, 2, 6 and 7",
+   "sujet": "Six more ways to save requests",
    "pr": 0,
-   "ouEnEst": "15 options on the page; you said you will tell me later.",
-   "reste": "Your choice, then a Claude builds it."
+   "ouEnEst": "Found this morning and ticketed: iOS « inactive » refreshes, presence, analytics, profile invalidation, duel waiting, thread reopening.",
+   "reste": "Your choice after build 197."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, three Claude agents (reviews, flows on a fresh simulator, map follow-ups) and six Codex agents on the avatars. Agents that finished were closed to keep the Mac fluid.",
-  "On Replicas, on Muse Spark through OpenCode: wombat (frozen conversation, then the welcome picture and the staging vote), harfang (Explore), vison (profile, then fewer requests), belette (before/after the merges)."
+  "Here on the Mac: me, three Claude agents (reviews and fixes, the loop rehearsal on a fresh simulator) and six Codex agents on the avatars.",
+  "On Replicas, on Muse Spark through OpenCode: wombat (welcome picture), harfang (Explore, then its re-read fix), vison (profile, then fewer requests), belette (before/after the merges)."
  ],
  "etapes": [
-  "Finish the measurements: frozen conversation, profile scroll, Explore, fewer requests, before/after the merges.",
-  "Last flow on the fresh simulator and the welcome screen picture, then merge the last PRs.",
+  "Finish the measurements: profile scroll, Explore, the Explore re-read fix, fewer requests, before/after the merges.",
+  "Merge the last PRs: the thread-from-notification flow, the welcome screen, the translation fix, the avatar shoulder.",
   "Final regression loop on the exact build-197 commit, the list of what is in and out, and your OK."
  ],
  "fait": [
@@ -852,6 +877,18 @@
    "nom": "CI, scripts and infra",
    "prs": [
     {
+     "pr": 4886,
+     "titre": "TAK-1092: bounded WebKit telemetry-transport proof vehicle",
+     "fusion": "Oct 12, 11:39",
+     "build196": true
+    },
+    {
+     "pr": 4857,
+     "titre": "TAK-1179 : la boucle répond à l'alerte d'accès d'iOS quand elle s'affiche",
+     "fusion": "Oct 12, 10:50",
+     "build196": true
+    },
+    {
      "pr": 4803,
      "titre": "TAK-1118: banc de rafales de touchers à moins d'une milliseconde (scripts/mobile/tap-burst)",
      "fusion": "Oct 12, 07:08",
@@ -887,6 +924,12 @@
    "zone": "docs",
    "nom": "Docs",
    "prs": [
+    {
+     "pr": 4890,
+     "titre": "TAK-1067 : captures de la barre du bas masquée (Take ouvert, Activité), clair et sombre",
+     "fusion": "Oct 12, 10:50",
+     "build196": true
+    },
     {
      "pr": 4860,
      "titre": "TAK-1185 : le flow 23 fait défiler le Profil depuis la liste, pas depuis la rangée d'onglets",
