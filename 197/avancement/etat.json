@@ -1,21 +1,51 @@
 {
- "majLe": "2026-10-12T13:46+09:00",
- "heure": "13:46",
+ "majLe": "2026-10-12T14:47+09:00",
+ "heure": "14:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 73,
-  "depuisDernierTableau": 73,
+  "fusionneesDepuis8Octobre": 78,
+  "depuisDernierTableau": 78,
   "enCours": 8,
-  "app": 37,
+  "app": 41,
   "siteEtAdmin": 6,
   "serveur": 13,
-  "outilsEtDocs": 17
+  "outilsEtDocs": 18
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "As you ordered, Replicas is stopped for good: all 98 of our machines are deleted after noting what each one did, and everything runs on the Mac now."
+  "texte": "As you asked, everything goes into build 197 except Hick's points 1, 2, 6 and 7, which wait for your answer: the double taps, the six request savings, the bigger full-body avatar and the staging vote measurement."
  },
  "depuis": [
+  {
+   "heure": "14:45",
+   "pr": 4865,
+   "texte": "Avatar: the shoulder and sleeves keep their volume during the wave.",
+   "build196": true
+  },
+  {
+   "heure": "14:44",
+   "pr": 4861,
+   "texte": "Profile: a vertical swipe that starts on the Takes, Questions and Game tabs now scrolls the page (stuck 2 times out of 2 on main, scrolls 3 out of 3).",
+   "build196": true
+  },
+  {
+   "heure": "14:40",
+   "pr": 4893,
+   "texte": "Explore: only the page on screen re-reads its N°1 (38 to 10 reads on the measured path, 64 to 36 requests), with no fluidity loss.",
+   "build196": true
+  },
+  {
+   "heure": "14:39",
+   "pr": 4875,
+   "texte": "Open Take: its counters re-read every 30 s when calm instead of 12 s (6 to 4 reads a minute), measured with no fluidity loss.",
+   "build196": true
+  },
+  {
+   "heure": "14:37",
+   "pr": 4902,
+   "texte": "Test loop: flow 23 now swipes from the card's question, not from its vote count hidden under the floating tab bar.",
+   "build196": true
+  },
   {
    "heure": "12:19",
    "pr": 4829,
@@ -491,76 +521,100 @@
  },
  "enCours": [
   {
-   "statut": "loop",
-   "sujet": "Full rehearsal of the regression loop",
-   "pr": 0,
-   "ouEnEst": "On the Mac bench, the 4 flows that failed in the rehearsal pass: its test server had the native pager off. Flow 23 started its swipe under the floating tab bar when the first card has a photo; fixed in a small test-only PR and green on the bench.",
-   "reste": "Merge the flow fix, then the final loop on the exact build-197 commit."
-  },
-  {
-   "statut": "review",
-   "sujet": "Explore pages going blank during quick changes",
-   "pr": 4801,
-   "ouEnEst": "Measured in Release before Replicas stopped: blank flashes go from 6 to 1 in light and from 4 to 0 in dark, with no frame loss.",
-   "reste": "Merge once its CI is green."
-  },
-  {
    "statut": "measuring",
    "sujet": "Explore: a tap on a far theme no longer shows a blank page",
    "pr": 4900,
-   "ouEnEst": "The last blank, about 100 ms on a tap on a far theme. Fixed on top of the blank-pages fix, and the native glide test is green. Two Release builds on the Mac, then a frame-by-frame video count.",
-   "reste": "Builds, measurement, then merge."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Explore: only the page on screen re-reads its votes",
-   "pr": 4893,
-   "ouEnEst": "On main, a tour of six themes then a minute at rest re-reads the N°1 about 38 times; the fix should bring it to 4 or 5. Its side is being measured on the Mac bench now.",
+   "ouEnEst": "Two Release builds are compiling on the Mac, then a frame-by-frame video count of blank frames.",
    "reste": "Measurement, then merge."
   },
   {
-   "statut": "measuring",
-   "sujet": "Fewer requests: Friends and the open Take",
-   "pr": 4866,
-   "ouEnEst": "Measured on the Mac bench now, against main.",
-   "reste": "They enter build 197 if they show fewer requests and no fluidity loss."
-  },
-  {
    "statut": "review",
-   "sujet": "Profile: a swipe that starts on the tabs no longer gets stuck",
-   "pr": 4861,
-   "ouEnEst": "Measured on a Replicas iPhone: no regression, but the stuck swipe did not show with synthetic gestures. I check it on the Mac bench before merging.",
-   "reste": "Check on the bench, then merge."
+   "sujet": "Fewer requests: Friends checks for new Takes with a light request",
+   "pr": 4866,
+   "ouEnEst": "Measured on the Mac with its own server: full reads of the Friends feed halved, same fluidity at equal load. It changes the server, so it merges right after the staging vote measurement.",
+   "reste": "Merge, then deploy staging."
   },
   {
-   "statut": "later",
+   "statut": "staging",
    "sujet": "Your vote re-read from the main database, on staging only",
    "pr": 4869,
-   "ouEnEst": "Its measurement windows needed a Replicas machine with test access. To redo on the Mac after build 197.",
-   "reste": "After build 197."
+   "ouEnEst": "Measuring on staging now: the before window is running, then the deploy with the setting, then the after window.",
+   "reste": "Merge, deploy, after window, verdict."
+  },
+  {
+   "statut": "claude",
+   "sujet": "Lost double taps (two taps less than 1 ms apart)",
+   "pr": 0,
+   "ouEnEst": "Cause found: one shared iOS touch recognizer only resets at the end of the run loop, so the second tap is lost. A small native fix with an off switch is ready to compile; proof on the second simulator after my builds.",
+   "reste": "Builds, before and after proof, measurement, merge."
+  },
+  {
+   "statut": "claude",
+   "sujet": "Six more ways to save requests",
+   "pr": 0,
+   "ouEnEst": "Two Claude agents code them now, one PR each: iOS inactive refreshes, profile invalidation, thread reopening, presence, analytics every 60 s, duel waiting.",
+   "reste": "Tests, measurement on the bench, merge."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Avatar prepared after scrolling",
+   "pr": 4880,
+   "ouEnEst": "Reviewed with no blocking defect. It touches scrolling, so the bench measures it before merging.",
+   "reste": "Measurement, then merge."
+  },
+  {
+   "statut": "claude",
+   "sujet": "Avatar full body made bigger",
+   "pr": 0,
+   "ouEnEst": "Its renders now run on the Mac. You see the board before it is turned on.",
+   "reste": "Board for you, then merge switched off."
   },
   {
    "statut": "claude",
    "sujet": "Avatars, continuously (six Codex)",
    "pr": 0,
-   "ouEnEst": "Their renders now run on the Mac, one at a time, and pause while the bench measures. Ready to merge after review: the shoulder and the elbow.",
-   "reste": "Each one merges once its board is checked; you see the bigger full-body view before it is turned on."
+   "ouEnEst": "Merged this hour: shoulder, elbow, finger and palm shading, compression. Next: the arm, the rhythm, glasses on a custom nose, ring and little fingers, socks, a curly-hair helmet.",
+   "reste": "Each one merges once reviewed and its board checked."
   }
  ],
  "equipe": [
-  "Everything on the Mac: me on the bench (measurements, then the final loop), one Claude agent on the Explore far-tap fix, and six Codex agents on the avatars.",
+  "Here on the Mac: me on the bench and the merges, four Claude agents (Explore far tap and staging vote, double taps, two on request savings), six Codex agents on the avatars, and two simulators.",
   "Replicas: stopped and our machines deleted, by your order."
  ],
  "etapes": [
-  "Finish the request measurements on the Mac bench (Explore re-read, Friends, open Take) and check the profile swipe.",
-  "Two Release builds and the far-tap measurement for Explore.",
-  "Merge the last PRs, rebuild the bench app, final loop on the exact build-197 commit, then your OK around 17:00."
+  "Finish the Explore far-tap measurement, the staging vote measurement, and the agents' fixes (double taps, six request savings, bigger full-body avatar).",
+  "Measure each one on the Mac bench and merge it, then deploy staging with the final main.",
+  "Rebuild the bench app, final loop on the exact build-197 commit, then your OK in the evening."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4865,
+     "titre": "TAK-1186 : l’épaule et les manches gardent leur volume pendant le coucou",
+     "fusion": "Oct 12, 14:45",
+     "build196": true
+    },
+    {
+     "pr": 4861,
+     "titre": "TAK-1184 : un glissé vertical sur les onglets du profil fait défiler la page",
+     "fusion": "Oct 12, 14:44",
+     "build196": true
+    },
+    {
+     "pr": 4893,
+     "titre": "TAK-1211 : seule la page de thème affichée d'Explorer relit son n°1 en direct",
+     "fusion": "Oct 12, 14:40",
+     "build196": true
+    },
+    {
+     "pr": 4875,
+     "titre": "TAK-1170 : les compteurs d'un Take ouvert et calme se relisent toutes les 30 s, et reviennent à 12 s au premier changement",
+     "fusion": "Oct 12, 14:39",
+     "build196": true
+    },
     {
      "pr": 4829,
      "titre": "TAK-1150 : l'accueil sans compte met « Créer un compte » en avant, « Se connecter » en petite ligne (loi de Hick n° 10)",
@@ -999,6 +1053,12 @@
    "zone": "autre",
    "nom": "Other",
    "prs": [
+    {
+     "pr": 4902,
+     "titre": "TAK-1223 : le flow 23 glisse depuis la question de la carte, plus depuis son compteur caché sous la barre d'onglets",
+     "fusion": "Oct 12, 14:37",
+     "build196": true
+    },
     {
      "pr": 4888,
      "titre": "TAK-1165: bound the viewport card join before enrichment",
