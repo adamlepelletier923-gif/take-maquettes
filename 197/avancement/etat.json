@@ -1,21 +1,51 @@
 {
- "majLe": "2026-10-12T08:47+09:00",
- "heure": "08:47",
+ "majLe": "2026-10-12T09:47+09:00",
+ "heure": "09:47",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 54,
-  "depuisDernierTableau": 54,
+  "fusionneesDepuis8Octobre": 59,
+  "depuisDernierTableau": 59,
   "enCours": 10,
-  "app": 27,
+  "app": 31,
   "siteEtAdmin": 6,
-  "serveur": 11,
+  "serveur": 12,
   "outilsEtDocs": 10
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Twelve more pull requests are merged, including one wave per tap, the faster mentions and the composer without extra redraws, and main stays green."
+  "texte": "A full review of everything merged since the last one found nothing that blocks the build; its follow-ups are fixed and merged, with faster mentions and the avatar fix."
  },
  "depuis": [
+  {
+   "heure": "09:44",
+   "pr": 4874,
+   "texte": "Avatar: if the end of a wave gets lost, taps work again instead of staying blocked.",
+   "build196": true
+  },
+  {
+   "heure": "09:41",
+   "pr": 4879,
+   "texte": "Mentions: after the first letter the list follows in about 11 ms; from Korea the first list comes in 386 ms instead of 527.",
+   "build196": true
+  },
+  {
+   "heure": "09:41",
+   "pr": 4881,
+   "texte": "Development only: a red error banner on a fresh install no longer covers the tab bar. Nothing changes in TestFlight.",
+   "build196": true
+  },
+  {
+   "heure": "09:31",
+   "pr": 4878,
+   "texte": "In a list, a media of an unknown newer kind drops only that media: the Take stays and can still be voted.",
+   "build196": true
+  },
+  {
+   "heure": "09:19",
+   "pr": 4876,
+   "texte": "Server: the map's place and activity reads no longer check the « just voted » mark, and a test now makes every new route say whether it serves votes.",
+   "build196": true
+  },
   {
    "heure": "08:43",
    "pr": 4859,
@@ -380,7 +410,7 @@
    "statut": "measuring",
    "sujet": "Your conversation that freezes 2 s on a cold start",
    "pr": 4850,
-   "ouEnEst": "Fixed and reviewed twice. The Release build for its measurement is compiling on the Mac, and a new agent plays its test-loop flow on a fresh simulator.",
+   "ouEnEst": "Fixed and reviewed twice. Its Release build is still compiling on the Mac; it builds two architectures, and the recipe is fixed for next time.",
    "reste": "Measurement, then merge."
   },
   {
@@ -394,43 +424,50 @@
    "statut": "measuring",
    "sujet": "Explore pages going blank during quick changes",
    "pr": 4801,
-   "ouEnEst": "Fixed and reviewed again: each pager now keeps its own activity, so a glide no longer pays for another pager. A Replicas iPhone measures it.",
-   "reste": "If the cost is gone, merge; otherwise a fluidity call."
+   "ouEnEst": "Fixed and reviewed again. A Replicas iPhone measures it, and also checks the 100 ms blank page after a tap on a far theme.",
+   "reste": "If the cost is gone, merge; a ready fix covers the far tap if the blank remains."
   },
   {
    "statut": "review",
    "sujet": "Welcome screen without an account",
    "pr": 4829,
    "ouEnEst": "One picture at the largest text size is still to redo on a Replicas iPhone.",
-   "reste": "Picture, then merge."
+   "reste": "Picture, then your OK on the captures."
   },
   {
    "statut": "review",
    "sujet": "Test loop: answers the iOS access alert, and opens a thread from a notification",
    "pr": 4857,
-   "ouEnEst": "Both reviewed. A new agent plays them on a fresh simulator right now.",
+   "ouEnEst": "flows-197 plays them on a fresh simulator now, with flow 04 too. The red banner it found on fresh installs is fixed and merged.",
    "reste": "Merge after the run."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Fewer requests: Friends and the open Take",
+   "pr": 4866,
+   "ouEnEst": "Both ready and reviewed: the Friends check reads 84% less data, and a calm open Take re-reads its counters every 30 s instead of 12.",
+   "reste": "They enter build 197 if the Replicas measurement shows fewer requests and no fluidity loss."
+  },
+  {
+   "statut": "review",
+   "sujet": "Map search: one search counts once in the budget",
+   "pr": 4877,
+   "ouEnEst": "Server only, so it ships without the app build. Fixed after review (no database write per letter, keys with a secret).",
+   "reste": "Last review, then merge."
   },
   {
    "statut": "measuring",
    "sujet": "Before and after this morning's merges",
    "pr": 0,
-   "ouEnEst": "A Replicas iPhone measures launch, vote, feed scroll, opening a Take and map search, before and after the merges.",
+   "ouEnEst": "A Replicas iPhone measures launch, vote, feed scroll, opening a Take, map search, opening a conversation and the profile, before and after.",
    "reste": "Any regression gets fixed before the build."
   },
   {
    "statut": "claude",
    "sujet": "Avatars, continuously (six Codex)",
    "pr": 0,
-   "ouEnEst": "One wave per tap is merged, and the real human wave reference too. Next in review: the shoulder keeps its volume during the wave, the arm follows the human posture, a shirt no longer shows skin at the elbow, and the full avatar like Instagram.",
-   "reste": "Each one merges once its board is checked."
-  },
-  {
-   "statut": "later",
-   "sujet": "Fewer requests (after build 197)",
-   "pr": 0,
-   "ouEnEst": "Ready and reviewed: the Friends check reads 84% less data, and an open Take that stays calm re-reads its counters 2 times a minute instead of 5.",
-   "reste": "Merge right after build 197."
+   "ouEnEst": "Merged: one wave per tap, the human wave reference, and taps that come back if a wave is lost. In progress: shoulder, arm, elbow, hand and rhythm. The full-body view like Instagram is reviewed and switched off.",
+   "reste": "You look at the full-body board before it merges."
   },
   {
    "statut": "later",
@@ -438,22 +475,15 @@
    "pr": 0,
    "ouEnEst": "15 options on the page; you said you will tell me later.",
    "reste": "Your choice, then a Claude builds it."
-  },
-  {
-   "statut": "later",
-   "sujet": "Taps less than 1 ms apart get lost",
-   "pr": 0,
-   "ouEnEst": "Native touch handling; no finger does that. A cold-start re-measurement checks the 65 ms case.",
-   "reste": "After build 197, unless the re-measurement shows a real loss."
   }
  ],
  "equipe": [
-  "Here on the Mac: me, five Claude agents (fixes and reviews), audit-hick on the bench (frozen conversation measurement), flows-197 on a fresh simulator, and six Codex agents on the avatars.",
-  "On Replicas, on Muse Spark through OpenCode: vison (profile scroll, then before/after), harfang (Explore), wombat (welcome screen picture, then the conversation), belette (pictures, then the tap re-measurement). Six measurers were archived this morning by a ticket I unlinked; a guard now prevents it."
+  "Here on the Mac: me, six Claude agents (fixes, reviews, flows on a fresh simulator, the frozen conversation measurement) and six Codex agents on the avatars.",
+  "On Replicas, on Muse Spark through OpenCode: vison (profile, then fewer requests), harfang (Explore), wombat (welcome screen picture), belette (before/after the merges)."
  ],
  "etapes": [
-  "Finish the measurements: frozen conversation, profile scroll, Explore, before/after the merges.",
-  "Last picture (welcome screen) and the test-loop flows on a fresh simulator, then merge.",
+  "Finish the measurements: frozen conversation, profile scroll, Explore, fewer requests, before/after the merges.",
+  "Flows on a fresh simulator, the welcome screen picture, then merge the last PRs.",
   "Final regression loop on the exact build-197 commit, the list of what is in and out, and your OK."
  ],
  "fait": [
@@ -461,6 +491,30 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4874,
+     "titre": "TAK-1192 : les appuis reprennent si la fin du coucou se perd",
+     "fusion": "Oct 12, 09:44",
+     "build196": true
+    },
+    {
+     "pr": 4879,
+     "titre": "TAK-1200 : mentions, la lecture du « @ » seul compte, et une lettre ne coupe plus la lecture en cours",
+     "fusion": "Oct 12, 09:41",
+     "build196": true
+    },
+    {
+     "pr": 4881,
+     "titre": "TAK-1201 : l'observateur de personnalisation de Takes porte la queryFn du document de config",
+     "fusion": "Oct 12, 09:41",
+     "build196": true
+    },
+    {
+     "pr": 4878,
+     "titre": "TAK-1199 : dans une liste, un média d'un kind inconnu ne fait sauter que ce média, la carte reste",
+     "fusion": "Oct 12, 09:31",
+     "build196": true
+    },
     {
      "pr": 4859,
      "titre": "TAK-1165: map exploration ambient places on mobile and web plus structured address repair",
@@ -671,6 +725,12 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4876,
+     "titre": "TAK-1196 : les lectures de la carte sans vote ne lisent plus la marque « vient de voter »",
+     "fusion": "Oct 12, 09:19",
+     "build196": true
+    },
     {
      "pr": 4868,
      "titre": "TAK-1188 : public_contract_broken une fois par kind inconnu et par heure",
