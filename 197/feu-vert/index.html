@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F3F6FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1420" media="(prefers-color-scheme: dark)">
+<title>Build 197 : ton feu vert</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232A5BD7'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='900' font-size='13' fill='white' text-anchor='middle'%3E197%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap">
+<style>
+:root{
+  --bg:#F3F6FB;--surface:#FFFFFF;--surface-2:#E9EEF7;--ink:#141B2D;--muted:#55607A;--line:#DCE3EF;--line-2:#C6D0E2;
+  --brand:#2A5BD7;--brand-dark:#1D43A8;--brand-soft:#E3EBFD;
+  --ok:#21995A;--ok-dark:#187444;--ok-soft:#DFF4E8;--ok-ink:#16653B;
+  --wait:#D9931C;--wait-dark:#A86F10;--wait-soft:#FCF0D8;--wait-ink:#7F530A;
+  --bench:#7A4FD6;--bench-dark:#5B36AA;--bench-soft:#EEE7FC;--bench-ink:#4E2D99;
+  --bad:#D9483B;--bad-dark:#A93329;--bad-soft:#FBE4E1;--bad-ink:#9A2C21;
+  --z-mobile:#2A5BD7;--z-web:#E0752D;--z-api:#21995A;--z-outillage:#7A4FD6;--z-docs:#C9449A;--z-autre:#7C8798;
+  --sans:"Nunito","Avenir Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0F1420;--surface:#18202F;--surface-2:#222C3E;--ink:#EEF2FA;--muted:#A5B0C6;--line:#2A3446;--line-2:#3A4659;
+  --brand:#7FA2F5;--brand-dark:#4F72C7;--brand-soft:#1B2944;
+  --ok:#42BE7C;--ok-dark:#2B8A57;--ok-soft:#15372A;--ok-ink:#93E2B7;
+  --wait:#E7B04F;--wait-dark:#B5852E;--wait-soft:#3A2E14;--wait-ink:#F3CF8C;
+  --bench:#AE8DF0;--bench-dark:#8466C4;--bench-soft:#2A2147;--bench-ink:#D3C2F8;
+  --bad:#EC6A5C;--bad-dark:#B8463B;--bad-soft:#3E201C;--bad-ink:#F7AEA4;
+  --z-mobile:#7FA2F5;--z-web:#F09A5C;--z-api:#42BE7C;--z-outillage:#AE8DF0;--z-docs:#E57FBF;--z-autre:#9AA5B8;
+  color-scheme:dark;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.45;font-weight:600;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overflow-wrap:anywhere}
+@media (prefers-color-scheme:dark){body{font-weight:700}}
+a{color:var(--brand);font-weight:800}
+:focus-visible{outline:3px solid var(--wait);outline-offset:2px;border-radius:6px}
+main{max-width:620px;margin:0 auto;padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(48px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:26px}
+h1,h2,h3,p{margin:0}
+h1{font-size:30px;font-weight:900;letter-spacing:-.02em;line-height:1.1}
+h2{font-size:22px;font-weight:900;letter-spacing:-.01em;margin-bottom:12px}
+section{display:flex;flex-direction:column}
+.msg{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:18px;font-size:18px;font-weight:800}
+
+/* Top */
+.top{display:flex;flex-direction:column;gap:8px}
+.badge196{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;background:var(--brand);color:#fff;font-weight:900;font-size:16px;padding:6px 12px 6px 8px;border-radius:12px;box-shadow:0 4px 0 var(--brand-dark)}
+.badge196 b{background:rgba(255,255,255,.22);border-radius:8px;padding:1px 7px}
+.maj{color:var(--muted);font-size:16px}
+.maj strong{color:var(--ink);font-weight:900}
+
+/* Counters */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tile{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:12px 10px 10px;box-shadow:0 3px 0 var(--line-2);display:flex;flex-direction:column;gap:2px}
+.tile .n{font-size:30px;font-weight:900;line-height:1;letter-spacing:-.02em}
+.tile .l{font-size:15px;color:var(--muted);line-height:1.25}
+.tile.a .n{color:var(--ok)}.tile.b .n{color:var(--wait-dark)}.tile.c .n{color:var(--brand)}
+@media (prefers-color-scheme:dark){.tile.b .n{color:var(--wait)}}
+.mix{margin-top:12px;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px}
+.mix p{font-size:16px;color:var(--muted);margin-bottom:10px}
+.bar{display:flex;height:16px;border-radius:999px;overflow:hidden;gap:3px}
+.bar span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:15px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:4px;display:inline-block}
+.legend b{font-weight:900}
+
+/* Alert */
+.alerte{background:var(--ok-soft);border:2px solid var(--ok);border-radius:18px;padding:16px 16px 16px 16px;box-shadow:0 4px 0 var(--ok-dark)}
+.alerte h2{color:var(--ok-ink);font-size:19px;margin-bottom:6px}
+.alerte p{font-size:17px;color:var(--ink)}
+
+/* Since last night */
+.fil{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.fil li{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:11px 12px;display:grid;grid-template-columns:auto 1fr;gap:2px 12px}
+.fil .h{font-weight:900;font-size:16px;color:var(--muted);font-variant-numeric:tabular-nums;grid-row:span 2;padding-top:1px}
+.fil .t{font-size:17px}
+.fil .meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:15px}
+.in196{display:inline-flex;align-items:center;gap:4px;background:var(--brand-soft);color:var(--brand);font-weight:900;font-size:14px;padding:2px 8px;border-radius:999px}
+.in196 svg{width:12px;height:12px}
+
+/* What is left */
+.cartes{display:flex;flex-direction:column;gap:12px}
+.carte{background:var(--surface);border:2px solid var(--line);border-left-width:6px;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.carte.wait{border-left-color:var(--wait)}.carte.bench{border-left-color:var(--bench)}.carte.bad{border-left-color:var(--bad)}
+.carte .head{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.carte h3{font-size:18px;font-weight:900;line-height:1.25}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:900;padding:3px 10px;border-radius:999px}
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.pill.wait{background:var(--wait-soft);color:var(--wait-ink)}
+.pill.bench{background:var(--bench-soft);color:var(--bench-ink)}
+.pill.bad{background:var(--bad-soft);color:var(--bad-ink)}
+.carte .row{font-size:16px}
+.carte .row b{font-weight:900}
+.carte .reste{background:var(--surface-2);border-radius:10px;padding:8px 10px}
+.filtres{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.filtres span{font-size:15px;color:var(--muted)}
+
+/* Team */
+.equipe{display:flex;flex-direction:column;gap:10px}
+.equipe div{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:12px 14px;font-size:17px;display:flex;gap:12px;align-items:flex-start}
+.equipe svg{flex:none;width:26px;height:26px;color:var(--brand);margin-top:1px}
+
+/* Steps: the path */
+.piste{list-style:none;margin:0;padding:0;position:relative}
+.piste li{position:relative;display:grid;grid-template-columns:48px 1fr;gap:12px;padding-bottom:16px}
+.piste li:not(:last-child)::after{content:"";position:absolute;left:22px;top:46px;bottom:-2px;width:4px;border-radius:4px;background:var(--line-2)}
+.piste .rond{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:20px;background:var(--surface);border:3px solid var(--brand);color:var(--brand);box-shadow:0 4px 0 var(--line-2);position:relative;z-index:1}
+.piste .txt{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:10px 12px;font-size:17px;align-self:start}
+.piste li.fin .rond{background:var(--brand);color:#fff;border-color:var(--brand-dark);box-shadow:0 4px 0 var(--brand-dark)}
+.piste li.fin .rond svg{width:24px;height:24px}
+.piste li.fin .txt{border-color:var(--brand);background:var(--brand-soft)}
+
+/* Done */
+.zones{display:flex;flex-direction:column;gap:10px}
+details{background:var(--surface);border:2px solid var(--line);border-radius:16px;overflow:hidden}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px;min-height:56px;font-weight:900;font-size:18px}
+summary::-webkit-details-marker{display:none}
+summary .dot{width:14px;height:14px;border-radius:5px;flex:none}
+summary .nom{flex:1}
+summary .cnt{font-size:16px;color:var(--muted);font-weight:800}
+summary .chev{width:22px;height:22px;color:var(--muted);transition:transform .2s}
+details[open] summary .chev{transform:rotate(90deg)}
+details ul{list-style:none;margin:0;padding:0 14px 8px;border-top:2px solid var(--line)}
+details li{padding:10px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+details li:last-child{border-bottom:0}
+details li .t{font-size:16px}
+details li .meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:14px;color:var(--muted)}
+details li .meta a{font-size:15px}
+@media (prefers-reduced-motion:reduce){summary .chev{transition:none}}
+footer{font-size:15px;color:var(--muted);text-align:center}
+
+/* Page du feu vert du 197 */
+.decide{background:var(--wait-soft);border:2px solid var(--wait);border-radius:18px;padding:16px;box-shadow:0 4px 0 var(--wait-dark);display:flex;flex-direction:column;gap:12px}
+.decide h2{color:var(--wait-ink);font-size:21px;margin-bottom:0}
+.decide ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px}
+.decide li{font-size:17px}
+.decide li b{font-weight:900}
+.essais{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;counter-reset:essai}
+.essais li{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:12px 12px 12px 52px;position:relative;font-size:17px;counter-increment:essai}
+.essais li::before{content:counter(essai);position:absolute;left:12px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--brand);color:#fff;font-weight:900;display:grid;place-items:center;font-size:16px}
+.voir{display:block;margin-top:4px;color:var(--ok-ink);font-weight:800}
+.voir::before{content:"→ ";font-weight:900}
+.ecran{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.ecran h3{font-size:19px;font-weight:900}
+.ecran ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.ecran li{font-size:16px}
+.si{display:inline-block;background:var(--bench-soft);color:var(--bench-ink);font-weight:900;font-size:13px;padding:1px 8px;border-radius:999px;margin-right:4px}
+.prs{font-size:14px;color:var(--muted);font-weight:800}
+.pile{display:flex;flex-direction:column;gap:12px}
+.aremplir{display:inline-block;background:var(--bad-soft);color:var(--bad-ink);border:2px dashed var(--bad);border-radius:8px;padding:0 8px;font-weight:900}
+.remplir{background:var(--bad-soft);border:2px dashed var(--bad);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.remplir h2{color:var(--bad-ink);font-size:20px;margin-bottom:0}
+.remplir ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:16px}
+.note{font-size:15px;color:var(--muted)}
+</style>
+<style>
+.list{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.list li{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:12px 14px}
+.list .p{display:block;margin-top:4px;font-size:15px;color:var(--muted)}
+.todo{background:var(--wait-soft);color:var(--wait-ink);border-radius:8px;padding:1px 6px;font-weight:900}
+</style>
+</head>
+<body><main>
+<header class="top"><span class="badge196">Build <b>197</b></span><h1>Ton feu vert</h1>
+
+<p class="maj"><strong>108 PR</strong> fusionnées depuis le build 196. Commit du build : <strong>1b95a28303</strong>.</p></header>
+<section><h2>Ce que tu vas voir</h2><ul class="list">
+<li>Explorer : un toucher sur un thème éloigné fait arriver la page (155 ms au p50, sur simulateur, en clair), au lieu de la figer environ 1 s ou de ne rien faire.<span class="p">#4900 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4900#issuecomment-6118973584">mesure</a></span></li>
+<li>Explorer : en changeant vite de thème, moins d&#x27;écrans blancs ou noirs (6 → 1 en clair, 4 → 0 en sombre, sur 5 passages de simulateur).<span class="p">#4801 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4801#issuecomment-6117674560">mesure</a></span></li>
+<li>Profil : glisser vers le haut ou le bas en partant des onglets fait défiler la page (banc du Mac : 3 sur 3, contre 0 sur 2 avant).<span class="p">#4861 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4861#issuecomment-6118392567">mesure sur le banc</a></span></li>
+<li>Accueil sans compte : « Créer un compte » en grand bouton, « Se connecter » en petite ligne.<span class="p">#4829 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4829#issuecomment-6113142205">preuve</a></span></li>
+<li>Mentions : elles arrivent dès le « @ », et une lettre de plus ne coupe plus la lecture en cours.<span class="p">#4879 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4879#issuecomment-6115612703">relecture</a></span></li>
+<li>Texte en très grande taille : « Choisir un lieu manuellement » garde ses mots entiers.<span class="p">#4792 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4792#issuecomment-6114873872">relecture</a></span></li>
+<li>Mentions : les propositions suivent chaque lettre, sans relire quand la réponse est déjà complète.<span class="p">#4822 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4822#issuecomment-6115419551">mesure</a></span></li>
+<li>Mentions : d&#x27;abord les personnes du fil, puis celles de ta boîte de messages.<span class="p">#4827 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4827#issuecomment-6116415149">preuve</a></span></li>
+<li>Compositeur : « Sans limite » remplace « Plus d&#x27;options », et le panneau entier s&#x27;ouvre au-dessus de Publier.<span class="p">#4826 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4826#issuecomment-6113779981">preuve</a></span></li>
+<li>Carte : les propositions suivent chaque lettre tapée.<span class="p">#4818 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4818#issuecomment-6114271050">relecture</a></span></li>
+<li>Compositeur : un seul bouton son. Importer un son passe par un appui long sur le micro.<span class="p">#4828 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4828#issuecomment-6113777984">preuve</a></span></li>
+<li>Carte : une seule flèche, et « Rechercher ici » quand tu as déplacé la carte.<span class="p">#4830 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4830#issuecomment-6113235990">preuve</a></span></li>
+<li>Profil privé verrouillé : il montre quand même Amis, Takes et Score.<span class="p">#4819 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4819#issuecomment-6112490432">relecture</a></span></li>
+<li>Recherche : la feuille de filtres ne trie plus que l&#x27;onglet Top.<span class="p">#4825 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4825#issuecomment-6112451438">preuve</a></span></li>
+<li>Le portail « Connecte-toi » se ferme par « Plus tard », sans croix.<span class="p">#4824 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4824#issuecomment-6112319038">preuve</a></span></li>
+<li>Messages : « Retour » depuis un fil ouvert d&#x27;ailleurs revient à la liste des messages.<span class="p">#4817 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4817">CI verte</a></span></li>
+<li>Messages : toucher l&#x27;onglet Messages revient toujours à la boîte, même avec des fils ouverts.<span class="p">#4823 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4823">CI verte</a></span></li>
+<li>Carte : la recherche garde le lieu touché et va plus vite.<span class="p">#4816 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4816#issuecomment-6110339105">relecture</a></span></li>
+<li>Explorer : seul le n°1 montre ses résultats, sur Tendances comme dans chaque thème.<span class="p">#4814 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4814">CI verte</a></span></li>
+</ul></section>
+<section><h2>Dans le build mais éteint</h2><ul class="list">
+<li>Profil : voir et tourner l&#x27;avatar en entier. Réglage éteint, agrandi avant de l&#x27;allumer.<span class="p">#4862 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4862#issuecomment-6115453566">relecture</a></span></li>
+<li>Carte : les lieux autour de toi, sur mobile et web. C&#x27;est le travail de l&#x27;autre équipe, réglage éteint.<span class="p">#4859 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4859">CI verte</a></span></li>
+<li>Fil vidéo : un seul morceau de vidéo par vidéo, préparé d&#x27;avance. Réglage éteint : le comportement reste celui du 196.<span class="p">#4766 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4766#issuecomment-6114670451">relecture</a></span></li>
+<li>Chanson du profil (choix et pastille), sur mobile et web. Réglage éteint.<span class="p">#4780 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4780">CI verte</a></span></li>
+<li>Messages et Profil préparés d&#x27;avance, par petits morceaux, au repos. Réglage éteint : mesuré allumé sans ralentir (10 lectures de moins au lancement), mais il reste éteint.<span class="p">#4795 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4795#issuecomment-6109724674">mesure</a></span></li>
+<li>L&#x27;avatar en pied remplit la visionneuse (88 à 92 % de la hauteur, mesuré sur les planches de rendu) ; réglage éteint jusqu&#x27;à ton oui, et le zoom qui respire en rotation se corrige avant (TAK-1239).<span class="p">#4917 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4917#issuecomment-6120973764">relecture</a></span></li>
+</ul></section>
+<section><h2>Plus fluide, plus solide</h2><ul class="list">
+<li>Sous le logo du lancement, l&#x27;app est cachée à VoiceOver et aux tests automatiques, puis rendue à la levée.<span class="p">#4914 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4914#issuecomment-6120655573">relecture</a></span></li>
+<li>Deux touchers très rapides, « À proximité » puis « Amis » : la pastille finit sous Amis (4 sur 4 avec #4911, 2 sur 4 sans elle, sur simulateur).<span class="p">#4910 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4911#issuecomment-6120864858">mesure de fluidité (pas de régression)</a> · <a href="https://github.com/TakeAppAIOrg/take-app/pull/4910">description de la PR</a></span></li>
+<li>En rafale, presque tous les touchers arrivent jusqu&#x27;à l&#x27;app (20 ou 21 sur 21 en rafale de synthèse, contre 1 avant). Il reste une petite perte (TAK-1231). Même cause que le vote « Oui puis Non » et les deux reposts.<span class="p">#4911 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4911#issuecomment-6120864858">mesure de fluidité (pas de régression)</a> · <a href="https://github.com/TakeAppAIOrg/take-app/pull/4911">description de la PR</a></span></li>
+<li>L&#x27;avatar se prépare une fois le défilement fini, sans ralentir le défilement (aucune régression mesurée).<span class="p">#4880 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4880#issuecomment-6119166811">mesure</a></span></li>
+<li>Messages : le module du fil est préparé au repos, pas au toucher. Le gel de ~2 s du 196 ne s&#x27;est pas reproduit sur notre banc : on ne l&#x27;a pas vu disparaître.<span class="p">#4850 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4850#issuecomment-6116811905">mesure</a></span></li>
+<li>Dans une liste, un média d&#x27;un type inconnu ne fait sauter que ce média, la carte reste.<span class="p">#4878 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4878#issuecomment-6115598216">relecture</a></span></li>
+<li>Compositeur : faire défiler un panneau ne redessine plus tout l&#x27;écran.<span class="p">#4854 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4854#issuecomment-6114790603">relecture</a></span></li>
+<li>Un média d&#x27;un type inconnu est sauté : la carte garde ses autres médias.<span class="p">#4858 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4858">CI verte</a></span></li>
+<li>Un vote affiché ne repasse plus à « non voté » quand le fil se relit (30 s au plus ; limite connue avec une réplique en retard).<span class="p">#4849 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4849#issuecomment-6117648312">mesure partielle</a></span></li>
+<li>Dans une liste, une carte d&#x27;un type inconnu est sautée, et le reste de la page s&#x27;affiche.<span class="p">#4848 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4848#issuecomment-6113935621">relecture</a></span></li>
+<li>L&#x27;app accepte les champs que le serveur ajoute plus tard, donc les vieux builds continuent de charger.<span class="p">#4847 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4847#issuecomment-6113935908">relecture</a></span></li>
+</ul></section>
+<section><h2>Moins de requêtes, rien de visible</h2><ul class="list">
+<li>Amis : après un 404 de la lecture légère, elle est redemandée dix minutes plus tard.<span class="p">#4915 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4915#issuecomment-6120826407">relecture</a></span></li>
+<li>Juste après ton vote, c&#x27;est l&#x27;app qui le dit au serveur pendant 30 s, au lieu d&#x27;une vérification à chaque lecture qui coûtait ~7 ms. Mesuré sur staging : le coût par lecture a disparu (serveur p50 21 → 18 ms), dans les seuils. Le passage par la base principale avec l&#x27;en-tête n&#x27;est pas dans ce balayage (Postgres +1 ms mesuré le matin, sur #4869). Cette relecture reste éteinte en production.<span class="p">#4913 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4913#issuecomment-6121900085">mesure sur staging</a> · <a href="https://github.com/TakeAppAIOrg/take-app/pull/4869#issuecomment-6119747153">mesure de #4869</a></span></li>
+<li>Amis cherche ses nouveaux Takes par une lecture légère (l&#x27;id, la date et le visage de l&#x27;auteur), au lieu de relire chaque minute les Takes entiers.<span class="p">#4866 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4866#issuecomment-6118225227">mesure</a></span></li>
+<li>Messages : un fil rouvert ne se relit plus tant que le temps réel l&#x27;a tenu à jour.<span class="p">#4909 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4909#issuecomment-6119029520">relecture</a></span></li>
+<li>La présence « en ligne » est envoyée une fois toutes les 5 min au lieu de toutes les 2 min.<span class="p">#4908 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4908#issuecomment-6119029280">relecture</a></span></li>
+<li>Le même réglage, allumé sur staging seulement, pour le mesurer : +6 à 7 % de coût, au-dessus du seuil de +5 %, d&#x27;où #4913.<span class="p">#4869 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4869#issuecomment-6119747153">mesure</a></span></li>
+<li>Les statistiques de l&#x27;app partent toutes les 55 s au lieu de 15 s, sans perdre d&#x27;événement.<span class="p">#4907 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4907">CI verte</a></span></li>
+<li>L&#x27;attente d&#x27;un duel ne relit plus la partie tant que le temps réel la suit.<span class="p">#4906 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4906">CI verte</a></span></li>
+<li>Un repost, une suppression ou une publication ne relit plus que ton propre profil.<span class="p">#4905 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4905">CI verte</a></span></li>
+<li>Un passage d&#x27;iOS par « inactif » (centre de contrôle, notification) ne relit plus l&#x27;écran affiché.<span class="p">#4904 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4904">CI verte</a></span></li>
+<li>Explorer : seule la page affichée relit son n°1 en direct (4 lectures par minute au lieu d&#x27;environ 40).<span class="p">#4893 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4893#issuecomment-6118292418">mesure</a></span></li>
+<li>Un Take ouvert et calme relit ses compteurs toutes les 30 s, et revient à 12 s au premier changement.<span class="p">#4875 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4875#issuecomment-6118227129">mesure</a></span></li>
+<li>Une traduction en attente est relue 4 fois au plus, de plus en plus espacées, au lieu de 20 fois.<span class="p">#4896 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4896#issuecomment-6116833298">relecture</a></span></li>
+<li>Carte : la jonction des cartes de la zone est bornée avant d&#x27;être enrichie (travail de l&#x27;autre équipe).<span class="p">#4888 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4888">CI verte</a></span></li>
+<li>Carte : mise en cache de la zone affichée (travail de l&#x27;autre équipe).<span class="p">#4882 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4882">CI verte</a></span></li>
+<li>Carte : une recherche ne compte qu&#x27;une fois dans le budget des lieux, quel que soit le nombre de lettres.<span class="p">#4877 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4877#issuecomment-6115762574">relecture</a></span></li>
+<li>Carte : les lectures sans vote ne cherchent plus si tu viens de voter.<span class="p">#4876 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4876">CI verte</a></span></li>
+<li>Juste après ton vote, tes lectures passent par la base principale, pour ne jamais revoir l&#x27;ancien anonymat. Éteint en production.<span class="p">#4855 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4855#issuecomment-6114596007">relecture</a></span></li>
+<li>Revenir sur ton Profil ne relit le nombre d&#x27;amis et le score qu&#x27;après 2 min ou un badge.<span class="p">#4853 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4853">CI verte</a></span></li>
+<li>Les notes d&#x27;expert ne se relisent chaque minute que sur un Take qui en a, ou pour un expert.<span class="p">#4852 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4852#issuecomment-6114122427">relecture</a></span></li>
+</ul></section>
+<section><h2>L&#x27;avatar et son coucou</h2><ul class="list">
+<li>Le casque passe au-dessus des coiffures bouclées masculines, au lieu de les traverser.<span class="p">#4895 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4895#issuecomment-6119681471">relecture</a></span></li>
+<li>Une vue d&#x27;avatar cachée, en arrière-plan ou désactivée oublie les rotations en attente.<span class="p">#4894 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4894#issuecomment-6119681814">relecture</a></span></li>
+<li>La lumière suit la rotation de la paume.<span class="p">#4897 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4897">CI verte</a></span></li>
+<li>La déformation du coucou reste bornée entre ses points mesurés.<span class="p">#4892 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4892">CI verte</a></span></li>
+<li>La lumière suit la courbure des doigts.<span class="p">#4885 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4885">CI verte</a></span></li>
+<li>La peau au pli du coude reste couverte pendant le coucou.<span class="p">#4870 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4870#issuecomment-6116161371">relecture</a></span></li>
+<li>L&#x27;épaule et les manches gardent leur volume pendant le coucou.<span class="p">#4865 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4865#issuecomment-6115936480">relecture</a></span></li>
+<li>La lumière suit la rotation du pouce.<span class="p">#4891 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4891#issuecomment-6116880277">relecture</a></span></li>
+<li>La main garde ses poses pendant le coucou.<span class="p">#4872 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4872#issuecomment-6115842355">relecture</a></span></li>
+<li>Les appuis reviennent si la fin du coucou se perd.<span class="p">#4874 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4874#issuecomment-6115414843">relecture</a></span></li>
+<li>La référence d&#x27;un vrai salut humain, analysée (document).<span class="p">#4863 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4863">CI verte</a></span></li>
+<li>Un seul coucou par appui.<span class="p">#4864 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4864">CI verte</a></span></li>
+</ul></section>
+<section><h2>Invisible pour toi : serveur, web, tests et outils</h2><ul class="list">
+<li>Le site web dit lui aussi qu&#x27;il vient de voter. Rien pour l&#x27;iPhone ; l&#x27;API se déploie avant le web.<span class="p">#4916 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4916#issuecomment-6121276471">relecture</a></span></li>
+<li>Preuve technique pour la carte web (autre équipe).<span class="p">#4898 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4898">CI verte</a></span></li>
+<li>Le flow 23 glisse depuis la question de la carte.<span class="p">#4902 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4902">CI verte</a></span></li>
+<li>La boucle de tests relance Take sans donner la caméra, les photos ni le micro.<span class="p">#4889 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4889">CI verte</a></span></li>
+<li>La boucle ouvre un fil depuis une notification et revient à la liste.<span class="p">#4835 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4835#issuecomment-6115114216">relecture</a></span></li>
+<li>Preuve technique pour la télémétrie web (autre équipe).<span class="p">#4886 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4886">CI verte</a></span></li>
+<li>Captures de la barre du bas masquée (preuve).<span class="p">#4890 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4890">CI verte</a></span></li>
+<li>La boucle répond seule à l&#x27;alerte d&#x27;accès d&#x27;iOS quand elle s&#x27;affiche.<span class="p">#4857 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4857">CI verte</a></span></li>
+<li>Correction d&#x27;une erreur rouge au premier lancement en développement.<span class="p">#4881 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4881">CI verte</a></span></li>
+<li>Le flow 23 fait défiler le Profil depuis la liste.<span class="p">#4860 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4860#issuecomment-6114849079">relecture</a></span></li>
+<li>Le serveur signale une seule fois par heure un type de média inconnu.<span class="p">#4868 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4868#issuecomment-6114752193">relecture</a></span></li>
+<li>Réparation du verrou de dépendances de Sentry.<span class="p">#4871 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4871">CI verte</a></span></li>
+<li>Un test rejoue le retour arrière de la migration 0078.<span class="p">#4856 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4856#issuecomment-6114732545">relecture</a></span></li>
+<li>Banc de mesure des rafales de touchers.<span class="p">#4803 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4803">CI verte</a></span></li>
+<li>Alertes : chaque groupe n&#x27;est envoyé qu&#x27;une fois.<span class="p">#4838 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4838">CI verte</a></span></li>
+<li>Alertes : seule la version expurgée des données est gardée.<span class="p">#4837 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4837">CI verte</a></span></li>
+<li>Contrôle des secrets : plus de faux succès en cache.<span class="p">#4843 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4843#issuecomment-6113345094">relecture</a></span></li>
+<li>Une lecture d&#x27;écran refusée dit quel écran, quel chemin et quel code.<span class="p">#4846 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4846#issuecomment-6113308340">relecture</a></span></li>
+<li>Web : les notifications se lisent comme sur le mobile.<span class="p">#4845 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4845#issuecomment-6113136632">relecture</a></span></li>
+<li>Tests web plus stables.<span class="p">#4839 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4839#issuecomment-6112791035">relecture</a></span></li>
+<li>Serveur : les traces de vote retiré sont oubliées chaque minute.<span class="p">#4842 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4842#issuecomment-6112992662">relecture</a></span></li>
+<li>Tests de révocation et d&#x27;invité indépendants de l&#x27;horloge.<span class="p">#4841 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4841#issuecomment-6113005134">relecture</a></span></li>
+<li>Test de l&#x27;avatar sur une horloge simulée.<span class="p">#4840 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4840#issuecomment-6112831040">relecture</a></span></li>
+<li>Test KnowMe stabilisé.<span class="p">#4833 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4833#issuecomment-6112749961">relecture</a></span></li>
+<li>Serveur : une vieille image refusée par le contrat reste hors des médias.<span class="p">#4844 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4844#issuecomment-6112970090">relecture</a></span></li>
+<li>Chaîne de mesure de performance (outil).<span class="p">#4769 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4769">CI verte</a></span></li>
+<li>Écrans d&#x27;observabilité de la console, et SDK navigateur.<span class="p">#4775 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4775">CI verte</a></span></li>
+<li>Contrôle des captures de PR plus juste.<span class="p">#4832 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4832#issuecomment-6112262029">relecture</a></span></li>
+<li>Le typage vérifie les noms de route.<span class="p">#4834 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4834#issuecomment-6112480952">relecture</a></span></li>
+<li>Revérification des vidéos mieux espacée.<span class="p">#4836 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4836#issuecomment-6112565224">relecture</a></span></li>
+<li>Le jeu de données de développement porte celles de la boucle.<span class="p">#4831 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4831#issuecomment-6112369115">relecture</a></span></li>
+<li>Droits du balayage des routes.<span class="p">#4820 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4820">CI verte</a></span></li>
+<li>Web : langue des documents forcée.<span class="p">#4782 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4782">CI verte</a></span></li>
+<li>Lint : garde-fou contre le double toucher.<span class="p">#4821 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4821#issuecomment-6111645190">relecture</a></span></li>
+<li>Une PR de code sans étude de régression est refusée.<span class="p">#4726 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4726#issuecomment-6111552316">relecture</a></span></li>
+<li>Une vidéo sélectionnée n&#x27;est retirée qu&#x27;après deux absences à un jour d&#x27;écart.<span class="p">#4813 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4813#issuecomment-6109407517">relecture</a></span></li>
+<li>La vérification d&#x27;un build a l&#x27;historique de main.<span class="p">#4815 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4815">CI verte</a></span></li>
+<li>Web : les hashtags d&#x27;un Take se touchent dans le titre.<span class="p">#4787 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4787#issuecomment-6108345120">relecture</a></span></li>
+<li>Le rendu serveur d&#x27;une page lit aussi le vote sur la base principale pendant les 30 s qui suivent. Web seulement, rien pour l&#x27;iPhone.<span class="p">#4919 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4919#issuecomment-6121860258">relecture</a></span></li>
+<li>Le module des doubles touchers s&#x27;installe une seule fois même quand deux moteurs JavaScript démarrent ensemble, ce qui n&#x27;arrive que dans nos apps de test (la boucle finale l&#x27;a trouvé). Rien ne change pour l&#x27;iPhone des testeurs.<span class="p">#4921 · preuve : <a href="https://github.com/TakeAppAIOrg/take-app/pull/4921#issuecomment-6125118571">relecture</a></span></li>
+</ul></section>
+<section><h2>Pas dans le 197, et pourquoi</h2><ul class="list">
+<li>Loi de Hick, points 1, 2, 6 et 7 : ils attendent ta réponse.</li>
+<li>La barre du bas qui ne prend pas le premier toucher (TAK-1240) : 1 lancement sur 20 sur simulateur, cause non trouvée, donc pas de correctif.</li>
+<li>TAK-1231 : il reste une perte sur des rafales de synthèse de 20 touchers en 200 ms. Un doigt ne peut pas aller aussi vite.</li>
+<li>Le zoom de l&#x27;avatar en pied qui respire quand on le tourne (TAK-1239) : à régler avant d&#x27;allumer le réglage.</li>
+<li>Brouillons d&#x27;avatar, ni fusionnés ni prêts : les lunettes sur le nez personnalisé (#4883), le bras du coucou (#4867), ses oscillations (#4873), l&#x27;annulaire et l&#x27;auriculaire au repos (#4899), la maille des chaussettes (#4901), l&#x27;import de la vague de référence dans le banc (#4912), les poids des poses dans la main (#4918).</li>
+<li>Le champ de commentaire en pilule (#4887) : tu l&#x27;as validé à 10:36, mais sa fusion revient à l&#x27;autre équipe. Il entre dans le 197 seulement s&#x27;il est fusionné avant que le commit du build soit épinglé.</li>
+<li>Le travail de l&#x27;autre équipe encore en cours.</li>
+</ul></section>
+<section><h2>Les dernières preuves</h2><ul class="list">
+<li>Commit du build : 1b95a28303, le dernier commit de main (22:20).</li>
+<li>Boucle de régression : verte, 24 parcours sur 24, sur e4051f10c7, dont le contenu est exactement celui du commit du build. Les trois contrôles natifs passent : les heures, la barre de l&#x27;accueil filmée sur Takes et sur Amis, et l&#x27;appui long. La première boucle, sur 069cfaa620, avait fait 23 sur 24 : au lancement à froid, l&#x27;app de test s&#x27;arrêtait, parce que deux moteurs JavaScript installaient le correctif des doubles touchers en même temps (TAK-1246). Ça n&#x27;arrive que dans nos apps de test. Corrigé par #4921, puis boucle refaite en entier.</li>
+<li>Fluidité d&#x27;ensemble, sur le banc du Mac (simulateur, app de production, 3 passages par côté), entre main de 15 h et le commit final. Le lancement, les onglets et le défilement d&#x27;Amis ne perdent rien (saccade 2354 → 2101 ms). Messages est nettement plus fluide (images manquées 82 → 49). Le vote aussi (saccade 1997 → 1556 ms). L&#x27;ouverture d&#x27;un Take et « Ton activité » restent dans le bruit, une fois le lancement mis à part. Une première passe était faussée par le robot de test, qui attend la fin du logo depuis le correctif du lancement : elle a été refaite avec la même attente des deux côtés. L&#x27;avatar en entier agrandi, fusionné ensuite, ne change rien tant que son réglage est éteint (lu dans le code).</li>
+</ul></section>
+<section><h2>Les notes TestFlight, telles que les testeurs les liront</h2>
+<h3>Quoi de neuf dans cette version</h3>
+<p><strong>Ton vote reste en place.</strong></p>
+<p>Juste après avoir voté, ton choix pouvait clignoter et revenir à « non voté » pendant un instant. C&#x27;est corrigé, dans le fil comme dans un Take ouvert.</p>
+<p><strong>Les conversations s&#x27;ouvrent plus sereinement.</strong></p>
+<p>Juste après le lancement de l&#x27;app, toucher une conversation dans Messages a pu laisser l&#x27;écran figé environ deux secondes. Nous avons déplacé le travail du fil au repos pour l&#x27;éviter ; sur notre banc, le gel ne se reproduisait pas, donc dis-nous si tu le vois encore.</p>
+<p><strong>Les mentions sont plus rapides et mieux triées.</strong></p>
+<ul>
+<li>Quand tu tapes « @ » dans une conversation ou un commentaire, les propositions suivent chaque lettre, sans attendre que tu t&#x27;arrêtes.</li>
+<li>Les personnes proposées en premier sont celles de la conversation, puis celles de tes messages.</li>
+</ul>
+<p><strong>La carte.</strong></p>
+<ul>
+<li>Les propositions de lieux suivent chaque lettre, et pendant que tu tapes, le panneau de recherche prend toute la hauteur au-dessus du clavier et n&#x27;en bouge plus.</li>
+<li>Le lieu que tu touches est gardé, et la recherche va plus vite.</li>
+<li>Une seule flèche, et un bouton « Rechercher ici » apparaît quand tu as déplacé la carte.</li>
+</ul>
+<p><strong>Créer un Take.</strong></p>
+<ul>
+<li>« Sans limite » remplace « Plus d&#x27;options ».</li>
+<li>Quand tu ouvres un panneau (format, durée…), il remonte en entier au-dessus du bouton Publier, et le faire défiler ne redessine plus tout l&#x27;écran.</li>
+<li>Un seul bouton pour le son : un appui long sur le micro permet d&#x27;importer un son.</li>
+</ul>
+<p><strong>Le profil.</strong></p>
+<ul>
+<li>Un profil privé montre quand même ses amis, ses Takes et son score.</li>
+<li>Revenir sur ton profil est plus léger : le nombre d&#x27;amis et le score ne se rechargent plus à chaque fois.</li>
+<li>Faire glisser la page depuis les onglets Takes, Questions ou Jeu la fait défiler.</li>
+</ul>
+<p><strong>Recherche et accueil.</strong></p>
+<ul>
+<li>Le tri de la recherche ne concerne plus que l&#x27;onglet Top.</li>
+<li>L&#x27;invitation à te connecter se ferme par « Plus tard ».</li>
+</ul>
+<p><strong>Messages.</strong></p>
+<ul>
+<li>Retour, dans une conversation, ramène toujours à la liste, même si tu l&#x27;as ouverte depuis une notification.</li>
+<li>Toucher l&#x27;onglet Messages ramène toujours à la liste des conversations.</li>
+</ul>
+<p><strong>Plus lisible au plus grand texte.</strong></p>
+<p>Avec la plus grande taille de texte d&#x27;iOS, le bouton « Choisir un lieu manuellement » (À proximité) garde ses mots entiers.</p>
+<p><strong>Deux touchers rapides comptent tous les deux.</strong></p>
+<p>Quand tu touches très vite deux fois de suite, seul le premier toucher comptait. Presque tous les touchers arrivent maintenant (une petite perte reste possible sur des rafales extrêmes), sur le fantôme, le vote, le repost et les onglets du haut de l&#x27;Accueil. Exemple : « Oui » puis « Non » très vite finit bien sur « Non », et un toucher de plus sur ton choix retire ton vote, même très vite après.</p>
+<p><strong>Amis se met à jour plus légèrement.</strong></p>
+<p>Pour savoir s&#x27;il y a de nouveaux Takes, Amis fait une petite vérification au lieu de tout recharger. Les Takes complets arrivent quand tu tires la page vers le bas ou que tu touches la pastille des nouveautés.</p>
+<p><strong>Explorer.</strong></p>
+<p>Toucher un thème éloigné fait arriver sa page sans rester figé. Et en passant vite d&#x27;un thème à l&#x27;autre, tu vois moins de pages blanches.</p>
+<p><strong>L&#x27;avatar.</strong></p>
+<ul>
+<li>Sur l&#x27;avatar masculin, le casque ne traverse plus les cheveux bouclés.</li>
+<li>Le coucou de ton avatar se prépare quand la page s&#x27;arrête de défiler, et non pendant, sans ralentir le défilement.</li>
+</ul>
+<p><strong>Plus solide.</strong></p>
+<ul>
+<li>L&#x27;app ne casse plus quand le serveur ajoute un nouveau champ.</li>
+<li>Un contenu d&#x27;un type inconnu est ignoré, et le reste de la page s&#x27;affiche.</li>
+</ul>
+<p>Et l&#x27;app fait moins de requêtes en arrière-plan.</p>
+<h3>À tester en priorité</h3>
+<ol>
+<li><strong>Voter.</strong> Vote sur plusieurs Takes du fil, en public puis en anonyme, et ouvre un Take pour y voter. Ton choix ne doit pas revenir à « non voté », et l&#x27;anonymat choisi doit rester celui que tu as mis.</li>
+<li><strong>Une conversation à froid.</strong> Ferme complètement l&#x27;app, rouvre-la, va dans Messages et touche une conversation. Elle doit s&#x27;ouvrir sans écran figé. Essaie aussi en faisant défiler la liste juste avant.</li>
+<li><strong>Les mentions.</strong> Dans une conversation et dans des commentaires, tape « @ » puis quelques lettres. Les propositions doivent suivre chaque lettre, avec les personnes de la conversation en premier.</li>
+<li><strong>La carte.</strong> Cherche un lieu en tapant lettre par lettre : le panneau ne doit pas changer de hauteur. Déplace la carte et utilise « Rechercher ici ».</li>
+<li><strong>Le compositeur.</strong> Crée un Take, ouvre les panneaux Format et Durée : chacun doit tenir en entier au-dessus de Publier. Essaie l&#x27;appui long sur le micro pour importer un son.</li>
+<li><strong>Le profil.</strong> Ouvre ton profil, change d&#x27;onglet et reviens plusieurs fois. Ouvre un profil privé. Essaie de faire défiler la page en partant des onglets.</li>
+</ol>
+<h3>À tester sur ton iPhone</h3>
+<ol>
+<li><strong>Le fantôme en rafale.</strong> Sur un Take déjà voté en anonyme, touche le fantôme deux fois très vite. Il doit revenir en anonyme, et ne pas rester en public.</li>
+<li><strong>Oui puis Non.</strong> Sur un Take sans vote, touche « Oui », « Non », puis encore « Non », le plus vite possible : ton vote doit être retiré. Recommence avec seulement « Oui » puis « Non » : ton vote doit finir sur « Non ».</li>
+<li><strong>Le repost en double.</strong> Touche deux fois très vite le bouton Repost : le Take doit revenir à son état de départ.</li>
+<li><strong>Les onglets du haut.</strong> Sur l&#x27;Accueil, touche « À proximité » puis « Amis » très vite : « Amis » doit être souligné, avec sa page affichée.</li>
+<li><strong>Amis.</strong> Laisse Amis ouvert un moment, puis tire la page vers le bas, ou touche la pastille des nouveautés si elle apparaît : les nouveaux Takes doivent arriver.</li>
+<li><strong>Explorer.</strong> Touche un thème éloigné, puis passe vite d&#x27;un thème à l&#x27;autre : la page doit arriver sans rester figée, et sans page blanche.</li>
+<li><strong>L&#x27;avatar.</strong> Fais défiler ton profil vite : ça ne doit pas saccader. Avec un avatar masculin aux cheveux bouclés et un casque, le casque ne doit pas traverser les cheveux.</li>
+</ol>
+<p>Si quelque chose clignote, saute ou reste figé, une courte vidéo de l&#x27;écran nous aide beaucoup.</p>
+</section>
+</main></body></html>
