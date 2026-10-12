@@ -1,11 +1,11 @@
 {
- "majLe": "2026-10-12T20:03+09:00",
- "heure": "20:03",
+ "majLe": "2026-10-12T20:50+09:00",
+ "heure": "20:50",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
   "fusionneesDepuis8Octobre": 104,
   "depuisDernierTableau": 104,
-  "enCours": 3,
+  "enCours": 2,
   "app": 61,
   "siteEtAdmin": 8,
   "serveur": 14,
@@ -13,7 +13,7 @@
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The bigger full-body avatar (switched off) and the web vote fix are merged, so the build commit is set. The fluidity check finds Messages clearly smoother, but Activity looked slower on the final commit while my own commands were running, so I am re-measuring it calmly with voting and opening a Take; your go is now aimed at about 21:45."
+  "texte": "The fluidity check is done, measured calmly: nothing is slower than at 15:00, and Messages and voting are smoother. The Activity alarm came from the test robot, which now waits for the launch logo before tapping, not from the app. The final loop starts around 21:00, and your go is aimed at about 21:45."
  },
  "depuis": [
   {
@@ -677,18 +677,11 @@
  },
  "enCours": [
   {
-   "statut": "measuring",
-   "sujet": "Global fluidity check before the build",
-   "pr": 0,
-   "ouEnEst": "Five scenarios, this afternoon's main against the final commit. Messages is clearly smoother, and launch, tabs and Friends scroll lose nothing. Voting, opening a Take and Activity are being re-measured calmly: my own commands and a merge check ran during some passes, and Activity looked slower.",
-   "reste": "Clean verdict. If Activity is really slower, find the PR and fix it before the build."
-  },
-  {
    "statut": "loop",
    "sujet": "Final test loop on the exact build commit",
    "pr": 0,
-   "ouEnEst": "Read-only checks are done on the commit: the 24 test flows are there, no new database migration, and the long-press labels are intact.",
-   "reste": "Rebuild the bench app on the commit, restart the local server, run the 24 flows."
+   "ouEnEst": "The bench server runs the build commit with staging's settings, the test data is seeded and the production bundle server is up. The bench app is being rebuilt on the commit.",
+   "reste": "Install it, sign in the test account, run the 24 flows (about 25 minutes), then read the verdict."
   },
   {
    "statut": "later",
@@ -699,13 +692,13 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me on the bench, and six Codex agents on the avatars, waiting for the bench pause. Four short Claude agents finished this hour: a debugging tool for the bottom bar, the slower staging feed (a Cloudflare drift, not our code), a proofread of the go page (nine claims toned down, three errors fixed) and an audit of the website's server reads (nothing bypasses the vote protection).",
+  "Here on the Mac: me on the bench for the final loop, and six Codex agents on the avatars, waiting for the bench pause to lift.",
   "Replicas: stopped and our machines deleted, by your order; checked at 18:10, nothing runs there."
  ],
  "etapes": [
-  "Finish the calm re-measure of voting, opening a Take and Activity (about 35 minutes).",
-  "If one is really slower, find the PR and fix it; otherwise rebuild the bench app on the build commit and run the final 24-flow loop.",
-  "Publish the go page, checked sentence by sentence against its proofs, then your OK around 21:45."
+  "Finish rebuilding the bench app on the build commit, then run the 24-flow final loop (about 25 minutes).",
+  "Record the loop's native proofs (bottom bar and long press), then read the verdict.",
+  "Publish the go page, already checked against its proofs, then your OK around 21:45."
  ],
  "fait": [
   {
