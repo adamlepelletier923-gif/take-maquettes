@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>197 à trancher</title>
+<style>
+:root {
+  --fond: #f4f4f6; --carte: #ffffff; --texte: #15161a; --doux: #5d6070; --trait: #e2e3e8;
+  --accent: #1d6ff2; --oui: #12805c; --attention: #b45309;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fond: #0f1014; --carte: #1a1c22; --texte: #f1f2f5; --doux: #a3a7b5; --trait: #2c2f38;
+    --accent: #6ea2ff; --oui: #4cc79a; --attention: #f0a64a;
+  }
+}
+:root[data-theme="dark"] {
+  --fond: #0f1014; --carte: #1a1c22; --texte: #f1f2f5; --doux: #a3a7b5; --trait: #2c2f38;
+  --accent: #6ea2ff; --oui: #4cc79a; --attention: #f0a64a;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fond); color: var(--texte);
+  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 20px 16px 48px; }
+h1 { font-size: 26px; line-height: 1.2; margin: 4px 0 6px; }
+.sous { color: var(--doux); margin: 0 0 20px; }
+section { background: var(--carte); border: 1px solid var(--trait); border-radius: 16px;
+  padding: 16px; margin: 0 0 16px; }
+h2 { font-size: 19px; margin: 0 0 6px; }
+.num { display: inline-block; min-width: 26px; height: 26px; border-radius: 13px; background: var(--accent);
+  color: #fff; font-size: 14px; font-weight: 700; text-align: center; line-height: 26px; margin-right: 8px; }
+p { margin: 8px 0; }
+.reco { border-left: 4px solid var(--oui); padding: 6px 10px; margin: 12px 0 4px; }
+.reco b { color: var(--oui); }
+.note { border-left: 4px solid var(--attention); padding: 6px 10px; margin: 10px 0; color: var(--doux); }
+figure { margin: 12px 0 0; min-width: 0; }
+figure img { display: block; max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--trait); }
+figcaption { color: var(--doux); font-size: 14px; margin-top: 6px; }
+.ref { color: var(--doux); font-size: 14px; }
+.reponse { color: var(--doux); font-size: 15px; margin-top: 18px; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+<h1>Build 197 : 4 choses à trancher</h1>
+<p class="sous">Ce sont tes décisions de DA et de staging. Tout le reste avance sans toi, et je te demanderai ton feu vert pour le build à part.</p>
+
+<section>
+<h2><span class="num">1</span>L'accueil sans compte</h2>
+<p>Avant, il y avait deux gros boutons au même niveau, « Se connecter » et « S'inscrire ». Après, un seul gros bouton, « Créer un compte », et « Déjà un compte ? Se connecter » sur une petite ligne en dessous. C'est la loi de Hick : un seul choix évident pour quelqu'un qui découvre l'app, comme sur X.</p>
+<figure><img src="accueil-fr-light.jpg" alt="Accueil sans compte, avant et après, en clair" loading="lazy"><figcaption>À gauche avant, à droite après, en clair.</figcaption></figure>
+<figure><img src="accueil-fr-dark.jpg" alt="Accueil sans compte, avant et après, en sombre" loading="lazy"><figcaption>Le même en sombre.</figcaption></figure>
+<figure><img src="accueil-max-light.jpg" alt="Accueil sans compte au texte maximal" loading="lazy"><figcaption>Au texte le plus grand d'iOS. Cette image est en train d'être refaite sur un iPhone de Replicas : la version finale arrive avant la fusion.</figcaption></figure>
+<p class="reco"><b>Ma reco : oui.</b> Un nouveau venu voit tout de suite quoi faire, et quelqu'un qui a déjà un compte garde son lien.</p>
+<p class="ref">PR #4829</p>
+</section>
+
+<section>
+<h2><span class="num">2</span>Voir l'avatar en entier, comme sur Insta</h2>
+<p>Un appui sur l'avatar d'un profil ouvre l'avatar en pied, et tu le fais tourner en glissant. Avant, on ne voyait que le buste. C'est derrière un réglage serveur éteint : rien ne change dans le 197 tant que tu ne dis pas de l'allumer.</p>
+<figure><img src="avatar-planche-clair.jpg" alt="Avatar en buste avant, en pied après, en clair" loading="lazy"><figcaption>À gauche le profil, au milieu avant (le buste), à droite après (en pied).</figcaption></figure>
+<figure><img src="avatar-planche-sombre.jpg" alt="Avatar en buste avant, en pied après, en sombre" loading="lazy"><figcaption>Le même en sombre.</figcaption></figure>
+<p class="note">Un relecteur note qu'en pied, le personnage ne prend qu'environ un tiers de la hauteur de la visionneuse, avec beaucoup de vide autour.</p>
+<p class="reco"><b>Ma reco :</b> on le fusionne éteint. Avant de l'allumer, je fais agrandir le personnage pour qu'il remplisse la visionneuse, sauf si tu le veux comme ça.</p>
+<p class="ref">PR #4862</p>
+</section>
+
+<section>
+<h2><span class="num">3</span>Le champ de commentaire aussi arrondi que celui des messages</h2>
+<p>Un testeur sur TestFlight a demandé que le champ pour écrire un commentaire sous un Take ait les mêmes bords tout ronds que le champ des messages privés. Aujourd'hui, ses coins sont arrondis à 22 points, comme prévu dans la maquette. C'est l'agent de Jordan qui a fait la PR, et elle ne contient pas de capture.</p>
+<p class="reco"><b>Ma reco : oui</b>, pour que les deux champs se ressemblent. C'est ta décision ou celle de Jordan. Si tu veux la voir avant, je fais prendre la capture en clair et en sombre.</p>
+<p class="ref">PR #4887</p>
+</section>
+
+<section>
+<h2><span class="num">4</span>Allumer « relire son vote sur la base principale », sur staging seulement</h2>
+<p>Le code est déjà dans le 197, éteint. Une fois allumé, pendant 30 secondes après ton vote, tes lectures viennent de la base principale au lieu de la copie qui peut avoir un peu de retard. Du coup, un vote ou un passage en anonyme ne peut plus revenir en arrière sous tes yeux. Pour le mesurer, il faut redéployer l'API de staging avec ce réglage allumé, comme on l'a fait pour le 196. La production reste éteinte.</p>
+<p class="reco"><b>Ma reco : oui</b>, le temps de mesurer ce que ça coûte (p50 et p95) sur staging. Si c'est négligeable, on en reparle pour la production.</p>
+<p class="ref">PR #4869</p>
+</section>
+
+<p class="reponse">Réponds-moi simplement, par exemple : « 1 oui, 2 oui mais plus grand, 3 oui, 4 go ».</p>
+</main>
+</body>
+</html>
