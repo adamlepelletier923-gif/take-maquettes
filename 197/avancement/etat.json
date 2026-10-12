@@ -1,21 +1,33 @@
 {
-  "majLe": "2026-10-13T01:04+09:00",
-  "heure": "01:04",
+  "majLe": "2026-10-13T01:50+09:00",
+  "heure": "01:50",
   "dernierTableau": "2026-10-11T22:35+09:00",
   "resume": {
-    "fusionneesDepuis8Octobre": 109,
-    "depuisDernierTableau": 109,
-    "enCours": 8,
-    "app": 64,
+    "fusionneesDepuis8Octobre": 111,
+    "depuisDernierTableau": 111,
+    "enCours": 9,
+    "app": 65,
     "siteEtAdmin": 8,
     "serveur": 15,
-    "outilsEtDocs": 22
+    "outilsEtDocs": 23
   },
   "alerte": {
     "titre": "This hour",
-    "texte": "The build waits, by your order, until every Replicas PR that concerns us and every avatar PR is in. Since 23:46: the checks are green again (Expo patches installed, your call), the audio import fix is merged, and 22 Replicas PRs are closed, each with its proof, because the app already had them or they were out of date. And the freeze you found on the first conversation opened is reproduced and being fixed first."
+    "texte": "Two more PRs are in: the parity inventory doc and the sticker draft fix. The conversation freeze has its cause: a GIF whose frames were all decoded at once on the main thread; the fix is written and being measured on your emulator. A mistake of mine in last night's Expo update would have broken the iPhone build: caught by a review, fixed and reviewed again."
   },
   "depuis": [
+    {
+      "heure": "01:27",
+      "pr": 4572,
+      "texte": "Stickers: a sticker draft you cancel no longer comes back the next time you open the picker.",
+      "build196": true
+    },
+    {
+      "heure": "01:26",
+      "pr": 4390,
+      "texte": "Docs only: the web and Android parity inventory of 08/10, which three other docs already pointed to.",
+      "build196": true
+    },
     {
       "heure": "00:33",
       "pr": 4570,
@@ -712,10 +724,17 @@
   "enCours": [
     {
       "statut": "fixing",
-      "sujet": "Messages: the first conversation opened after a launch freezes for seconds",
-      "pr": 0,
-      "ouEnEst": "You saw it on your emulator and we reproduced it every time: the app does its part in half a second, then the screen waits about 10 s before the conversation slides in. Second openings are instant. Prime suspect: the touch fix merged last evening; a diagnostic build is comparing it switched off, as is, and fixed.",
-      "reste": "The fix, measured on the bench, before anything else goes in."
+      "sujet": "Messages: the first conversation with a GIF froze for seconds",
+      "pr": 4932,
+      "ouEnEst": "Cause found: the image library decoded every frame of the GIF at once, on the main thread, the first time it showed, so the screen could not move. The same trap hit GIFs in comments and in Takes. The fix plays GIFs frame by frame; it is being measured on your emulator now, with and without it.",
+      "reste": "Measured on the bench, then merged."
+    },
+    {
+      "statut": "review",
+      "sujet": "iPhone build safety: a native patch dropped by mistake is back",
+      "pr": 4931,
+      "ouEnEst": "Last night's Expo update silently stopped applying one of our native patches, which would have broken the iPhone build. Restored, reviewed by a second agent, and a new check now refuses any patch that no longer applies.",
+      "reste": "Merge right after the bench measurement."
     },
     {
       "statut": "measuring",
@@ -723,13 +742,6 @@
       "pr": 4582,
       "ouEnEst": "Finished here from the work a Replicas machine left; one more defect found and fixed on the way. CI green.",
       "reste": "Bench measurement on the Friends path, then merge."
-    },
-    {
-      "statut": "review",
-      "sujet": "Stickers: a cancelled sticker draft no longer comes back",
-      "pr": 4572,
-      "ouEnEst": "Finished here from a Replicas machine's work. CI green.",
-      "reste": "A last check, then merge."
     },
     {
       "statut": "measuring",
@@ -747,10 +759,10 @@
     },
     {
       "statut": "review",
-      "sujet": "Avatars: ten more avatar fixes",
+      "sujet": "Avatars: three reviewed fixes ready, seven more in progress",
       "pr": 0,
-      "ouEnEst": "The six Codex agents are finishing them. One is ready to merge (a test-only fix), three are close, the others still have red tests.",
-      "reste": "Each merges once ready, with its board reviewed."
+      "ouEnEst": "Ready: the wave benchmark, the hand normals during the wave (no visible change) and the thumbnails redrawn after the headphones fix. The six Codex agents are finishing the others.",
+      "reste": "The three ready ones merge right after the bench measurement."
     },
     {
       "statut": "go",
@@ -768,12 +780,12 @@
     }
   ],
   "equipe": [
-    "Here on the Mac: me, three Claude agents finishing the Replicas PRs, and six Codex agents on the avatars, asked to hold their heavy runs while a native diagnostic build used the memory.",
+    "Here on the Mac: me, three Claude agents (reviews, bench tooling, build checks) and six Codex agents on the avatars.",
     "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
   ],
   "etapes": [
-    "Fix the conversation freeze and measure it.",
-    "Merge what is ready: Friends, stickers, Explore on Android, the avatar fixes as they come.",
+    "Measure and merge the GIF fix, then the restored Expo patch.",
+    "Merge what is ready: the avatar fixes, Friends after its measurement, Explore on Android.",
     "Redo the fluidity gate and the final loop on the new commit, then the go page.",
     "Your go, then the iPhone build 197."
   ],
@@ -782,6 +794,12 @@
       "zone": "mobile",
       "nom": "iPhone and Android app",
       "prs": [
+        {
+          "pr": 4572,
+          "titre": "TAK-848 : empêcher le retour des brouillons de sticker annulés",
+          "fusion": "Oct 13, 01:27",
+          "build196": true
+        },
         {
           "pr": 4570,
           "titre": "Libérer le lecteur et les copies de l’import audio (TAK-846)",
@@ -1394,6 +1412,12 @@
       "zone": "docs",
       "nom": "Docs",
       "prs": [
+        {
+          "pr": 4390,
+          "titre": "docs : inventaire de parité web et Android (08/10)",
+          "fusion": "Oct 13, 01:26",
+          "build196": true
+        },
         {
           "pr": 4900,
           "titre": "TAK-1120 : un toucher sur un thème éloigné d'Explorer fait glisser la page quittée dessinée",
