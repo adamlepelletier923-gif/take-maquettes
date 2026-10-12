@@ -1,21 +1,87 @@
 {
-  "majLe": "2026-10-13T01:50+09:00",
-  "heure": "01:50",
+  "majLe": "2026-10-13T02:59+09:00",
+  "heure": "02:58",
   "dernierTableau": "2026-10-11T22:35+09:00",
   "resume": {
-    "fusionneesDepuis8Octobre": 111,
-    "depuisDernierTableau": 111,
+    "fusionneesDepuis8Octobre": 122,
+    "depuisDernierTableau": 122,
     "enCours": 9,
-    "app": 65,
+    "app": 74,
     "siteEtAdmin": 8,
     "serveur": 15,
-    "outilsEtDocs": 23
+    "outilsEtDocs": 25
   },
   "alerte": {
     "titre": "This hour",
-    "texte": "Two more PRs are in: the parity inventory doc and the sticker draft fix. The conversation freeze has its cause: a GIF whose frames were all decoded at once on the main thread; the fix is written and being measured on your emulator. A mistake of mine in last night's Expo update would have broken the iPhone build: caught by a review, fixed and reviewed again."
+    "texte": "The GIF fix is in: a conversation with a GIF opens in a third of a second instead of 11 to 13, and the same fix now covers GIFs in comments, Takes and the player. Take images respect Reduce Motion, and three avatar fixes are in. The full review of everything since build 196 found no regression. Friends is being measured on a separate simulator: your emulator is switched off meanwhile, with your login kept."
   },
   "depuis": [
+    {
+      "heure": "02:55",
+      "pr": 4899,
+      "texte": "Avatars: the ring and little fingers are no longer stuck together at rest.",
+      "build196": true
+    },
+    {
+      "heure": "02:41",
+      "pr": 4922,
+      "texte": "Avatars (behind the switch, off): turning the full-body avatar resumes without a jump after a two-finger gesture.",
+      "build196": true
+    },
+    {
+      "heure": "02:40",
+      "pr": 4935,
+      "texte": "GIFs everywhere (comments, the GIF picker, Takes and the player) are now prepared on disk only, so none can freeze the screen the first time it shows.",
+      "build196": true
+    },
+    {
+      "heure": "02:34",
+      "pr": 4934,
+      "texte": "Reduce Motion: the GIF of a Take no longer plays when the phone asks for fewer animations.",
+      "build196": true
+    },
+    {
+      "heure": "02:20",
+      "pr": 4920,
+      "texte": "Avatars (behind the switch, off): the full-body view keeps the same zoom while it turns.",
+      "build196": true
+    },
+    {
+      "heure": "02:13",
+      "pr": 4933,
+      "texte": "Messages: a conversation with a GIF opens right away. The first tap used to freeze the screen for 11 to 13 seconds; it now opens in about a third of a second.",
+      "build196": true
+    },
+    {
+      "heure": "02:01",
+      "pr": 4926,
+      "texte": "Avatars: the reference thumbnails are redrawn after the rendering fix.",
+      "build196": true
+    },
+    {
+      "heure": "02:00",
+      "pr": 4918,
+      "texte": "Avatars: the hand keeps its shading during the wave (no visible change).",
+      "build196": true
+    },
+    {
+      "heure": "02:00",
+      "pr": 4930,
+      "texte": "Tooling only: a type-checking test now first proves that the checker reports a known error.",
+      "build196": true
+    },
+    {
+      "heure": "02:00",
+      "pr": 4912,
+      "texte": "TAK-1225 : rétablir l’import de la vague de référence dans le benchmark",
+      "build196": true
+    },
+    {
+      "heure": "01:59",
+      "pr": 4931,
+      "texte": "Tooling: a native patch that last night's Expo update had stopped applying is back, and a check now refuses any patch that no longer applies.",
+      "build196": true
+    },
     {
       "heure": "01:27",
       "pr": 4572,
@@ -723,32 +789,25 @@
   },
   "enCours": [
     {
-      "statut": "fixing",
-      "sujet": "Messages: the first conversation with a GIF froze for seconds",
-      "pr": 4932,
-      "ouEnEst": "Cause found: the image library decoded every frame of the GIF at once, on the main thread, the first time it showed, so the screen could not move. The same trap hit GIFs in comments and in Takes. The fix plays GIFs frame by frame; it is being measured on your emulator now, with and without it.",
-      "reste": "Measured on the bench, then merged."
-    },
-    {
-      "statut": "review",
-      "sujet": "iPhone build safety: a native patch dropped by mistake is back",
-      "pr": 4931,
-      "ouEnEst": "Last night's Expo update silently stopped applying one of our native patches, which would have broken the iPhone build. Restored, reviewed by a second agent, and a new check now refuses any patch that no longer applies.",
-      "reste": "Merge right after the bench measurement."
-    },
-    {
       "statut": "measuring",
       "sujet": "Friends: the list keeps its rows when you come back and while it refreshes",
       "pr": 4582,
-      "ouEnEst": "Finished here from the work a Replicas machine left; one more defect found and fixed on the way. CI green.",
-      "reste": "Bench measurement on the Friends path, then merge."
+      "ouEnEst": "Being measured now on a separate simulator, so your emulator keeps your login: it is switched off meanwhile, nothing erased. Each side runs 4 scenarios, 5 times.",
+      "reste": "Merge if Friends asks the server less and nothing gets slower."
     },
     {
       "statut": "measuring",
       "sujet": "Explore: the theme list no longer fades during a swipe, and search results swipe between tabs",
       "pr": 4429,
       "ouEnEst": "Finished here; it changes Android only, the iPhone already behaves this way. CI green.",
-      "reste": "Bench measurement, light and dark captures, then your OK on the look."
+      "reste": "Bench measurement after Friends, light and dark captures, then your OK on the look."
+    },
+    {
+      "statut": "review",
+      "sujet": "Regression review of everything merged since build 196",
+      "pr": 0,
+      "ouEnEst": "Done in three zones by three agents (screens, data and cache, server): no regression found. Two doubts got their tickets: a button label in very large text that may shrink once on screen, and a profile song preview that loads before any tap (behind a switch that is off).",
+      "reste": "Check the large-text doubt on the simulator, then a last pass on what merges next."
     },
     {
       "statut": "go",
@@ -759,10 +818,17 @@
     },
     {
       "statut": "review",
-      "sujet": "Avatars: three reviewed fixes ready, seven more in progress",
+      "sujet": "Avatars: four more fixes in progress",
       "pr": 0,
-      "ouEnEst": "Ready: the wave benchmark, the hand normals during the wave (no visible change) and the thumbnails redrawn after the headphones fix. The six Codex agents are finishing the others.",
-      "reste": "The three ready ones merge right after the bench measurement."
+      "ouEnEst": "Merged this hour: the ring and little fingers apart at rest, plus the rotation without a jump and the steady zoom (both behind the switch, off). The Codex agents are finishing four more fixes and the enlarged zoom you approved.",
+      "reste": "Each one merges once its board is checked."
+    },
+    {
+      "statut": "go",
+      "sujet": "Private profile: its counters are shown to a non-follower, like Instagram",
+      "pr": 4819,
+      "ouEnEst": "Merged after build 196: a locked private profile shows its Friends, Takes and Score counts. It follows your 08/10 rule 'private like Instagram', but I found no trace of your OK on its screenshots.",
+      "reste": "Your OK, or I hide the counters again."
     },
     {
       "statut": "go",
@@ -780,13 +846,13 @@
     }
   ],
   "equipe": [
-    "Here on the Mac: me, three Claude agents (reviews, bench tooling, build checks) and six Codex agents on the avatars.",
+    "Here on the Mac: me, three Claude agents (the regression review is done; now the absent list, the TestFlight notes and a privacy fix) and six Codex agents on the avatars.",
     "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
   ],
   "etapes": [
-    "Measure and merge the GIF fix, then the restored Expo patch.",
-    "Merge what is ready: the avatar fixes, Friends after its measurement, Explore on Android.",
-    "Redo the fluidity gate and the final loop on the new commit, then the go page.",
+    "Finish the Friends measurement, then Explore on Android and the Maestro check of the last test PR.",
+    "Merge the last avatar fixes as their boards are checked.",
+    "Redo the fluidity gate and the final loop on the final commit, then the go page.",
     "Your go, then the iPhone build 197."
   ],
   "fait": [
@@ -794,6 +860,60 @@
       "zone": "mobile",
       "nom": "iPhone and Android app",
       "prs": [
+        {
+          "pr": 4899,
+          "titre": "TAK-1221 : séparer l’annulaire et l’auriculaire au repos",
+          "fusion": "Oct 13, 02:55",
+          "build196": true
+        },
+        {
+          "pr": 4922,
+          "titre": "TAK-1247 : la rotation reprend sans saut après deux doigts",
+          "fusion": "Oct 13, 02:41",
+          "build196": true
+        },
+        {
+          "pr": 4935,
+          "titre": "TAK-1261 : les GIF des commentaires, du plateau, des fils et du lecteur se préchargent sur disque seulement",
+          "fusion": "Oct 13, 02:40",
+          "build196": true
+        },
+        {
+          "pr": 4934,
+          "titre": "TAK-1260 : l'image d'un Take ne s'anime plus quand le système demande moins d'animations",
+          "fusion": "Oct 13, 02:34",
+          "build196": true
+        },
+        {
+          "pr": 4920,
+          "titre": "TAK-1239 : le cadrage garde le même zoom pendant la rotation",
+          "fusion": "Oct 13, 02:20",
+          "build196": true
+        },
+        {
+          "pr": 4933,
+          "titre": "TAK-1168 : une conversation avec un GIF s'ouvre tout de suite (GIF et stickers préchargés sur disque seulement)",
+          "fusion": "Oct 13, 02:13",
+          "build196": true
+        },
+        {
+          "pr": 4926,
+          "titre": "TAK-1244 : régénérer les vignettes après correction du rendu",
+          "fusion": "Oct 13, 02:01",
+          "build196": true
+        },
+        {
+          "pr": 4918,
+          "titre": "TAK-1234 : conserver les poids des normales de la main pendant le coucou",
+          "fusion": "Oct 13, 02:00",
+          "build196": true
+        },
+        {
+          "pr": 4912,
+          "titre": "TAK-1225 : rétablir l’import de la vague de référence dans le benchmark",
+          "fusion": "Oct 13, 02:00",
+          "build196": true
+        },
         {
           "pr": 4572,
           "titre": "TAK-848 : empêcher le retour des brouillons de sticker annulés",
@@ -1340,6 +1460,18 @@
       "zone": "outillage",
       "nom": "CI, scripts and infra",
       "prs": [
+        {
+          "pr": 4930,
+          "titre": "TAK-1254 : la parité tsrs exige d'abord que tsrs signale une erreur TS2322 connue",
+          "fusion": "Oct 13, 02:00",
+          "build196": true
+        },
+        {
+          "pr": 4931,
+          "titre": "TAK-1259 : le patch d'expo-modules-core suit la 57.0.22, et un garde refuse un patch sans version résolue",
+          "fusion": "Oct 13, 01:59",
+          "build196": true
+        },
         {
           "pr": 4923,
           "titre": "TAK-1242 : le balayage des routes sépare « plus d'appels sortants » et « chaque appel plus lent »",
