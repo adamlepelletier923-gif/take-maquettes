@@ -1,21 +1,39 @@
 {
- "majLe": "2026-10-13T04:47+09:00",
- "heure": "04:47",
+ "majLe": "2026-10-13T05:51+09:00",
+ "heure": "05:51",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 130,
-  "depuisDernierTableau": 130,
-  "enCours": 11,
-  "app": 79,
+  "fusionneesDepuis8Octobre": 133,
+  "depuisDernierTableau": 133,
+  "enCours": 9,
+  "app": 80,
   "siteEtAdmin": 9,
-  "serveur": 15,
+  "serveur": 17,
   "outilsEtDocs": 27
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Your answers are in: the glasses are merged, the full-body avatar switches on for this build, and the long press on another tab is being finished. Friends now asks the server once instead of two or three times when you come back to it, measured and merged. An agent is on making a conversation open as fast as on X."
+  "texte": "The long press on another tab is merged after a bench check, and the full-body avatar is on on staging. Opening a conversation: filmed on the final app, your tap starts the slide in about a tenth of a second, like on X; the slow case is probably a conversation not loaded yet, and it is being measured now. Sentry is fixed after two reviews, its checks are running."
  },
  "depuis": [
+  {
+   "heure": "05:48",
+   "pr": 4946,
+   "texte": "Bottom bar: a long press on another tab opens it, like on iOS. Checked on the bench: the long press, the swipe across the bar and the plain tap all behave as before or better.",
+   "build196": true
+  },
+  {
+   "heure": "05:03",
+   "pr": 4943,
+   "texte": "Server: stricter limits on one request, ahead of a library update.",
+   "build196": true
+  },
+  {
+   "heure": "04:55",
+   "pr": 4945,
+   "texte": "Avatars: the full-body view is switched on on staging, as you decided.",
+   "build196": true
+  },
   {
    "heure": "04:44",
    "pr": 4883,
@@ -837,32 +855,32 @@
  },
  "enCours": [
   {
-   "statut": "fixing",
+   "statut": "measuring",
    "sujet": "Messages: opening a conversation should feel instant, like on X",
    "pr": 0,
-   "ouEnEst": "Your report this hour: opening a conversation is not instant. An agent is studying how X and Instagram do it, and preparing a bench measurement of today's opening.",
-   "reste": "Measure, then fix, with proof that nothing else gets slower."
+   "ouEnEst": "Filmed on the final app: your tap starts the slide in about a tenth of a second, then iOS plays its own slide, as on X. A first fix gave nothing and is set aside. The slow case is probably a conversation not loaded yet, fetched over the network from Korea.",
+   "reste": "Measure that case with a simulated network delay; fix what fits this build, the full fix (each conversation's last message comes with the inbox) in the next one."
   },
   {
    "statut": "review",
-   "sujet": "Avatars: the full-body view switches on for this build",
-   "pr": 0,
-   "ouEnEst": "You said yes. The enlarged size you approved is back, and the switch is being turned on on staging.",
-   "reste": "Check that staging serves it, then the final checks."
-  },
-  {
-   "statut": "review",
-   "sujet": "Bottom bar: a long press on another tab opens it, like on iOS",
-   "pr": 0,
-   "ouEnEst": "You approved the rule. The fix is ready and its pull request is being opened.",
-   "reste": "Bench measurement of the long press, the swipe and the plain tap, then merge."
+   "sujet": "Error reports from the phone (Sentry)",
+   "pr": 4774,
+   "ouEnEst": "You said yes. Fixed after two reviews: staging only, JavaScript errors only, private data stripped, nothing started before the app shows its content. Checks running.",
+   "reste": "Launch measured on the bench against the current app, then merged."
   },
   {
    "statut": "measuring",
    "sujet": "Explore: the theme list no longer fades during a swipe, and search results swipe between tabs",
    "pr": 4429,
-   "ouEnEst": "Finished here; it changes Android only, the iPhone already behaves this way. Checks green, bench kit ready.",
-   "reste": "Bench measurement and light and dark captures before the build."
+   "ouEnEst": "Changes Android only; the iPhone already behaves this way. Reviewed, and its bench apps are ready.",
+   "reste": "Bench measurement and light and dark captures, then your OK on the look."
+  },
+  {
+   "statut": "review",
+   "sujet": "Avatars: more fixes in progress",
+   "pr": 0,
+   "ouEnEst": "The Codex agents are finishing the wave proportions, the human-like wave, the rotation on a vertical swipe, a recovery after a failed load and the headphone band on big hair.",
+   "reste": "Each one merges once its board is checked."
   },
   {
    "statut": "measuring",
@@ -873,37 +891,23 @@
   },
   {
    "statut": "review",
-   "sujet": "Avatars: more fixes in progress",
-   "pr": 0,
-   "ouEnEst": "The Codex agents are finishing the wave proportions, the human-like wave, the rotation on a vertical swipe, the knit of the socks and the headphone band on big hair.",
-   "reste": "Each one merges once its board is checked."
-  },
-  {
-   "statut": "review",
    "sujet": "Final checks of build 197",
    "pr": 0,
-   "ouEnEst": "Being prepared: the fluidity gate against the last passed one (its reference app is building now), the full test loop on a separate simulator, and the go page.",
-   "reste": "Run them on the final commit, then your go."
-  },
-  {
-   "statut": "go",
-   "sujet": "Error reports from the phone (Sentry)",
-   "pr": 4774,
-   "ouEnEst": "Ready and switched off, with private data stripped before anything is sent. It needs a native build: this one or the next.",
-   "reste": "Your call."
-  },
-  {
-   "statut": "go",
-   "sujet": "Maps in production (Frankfurt)",
-   "pr": 4730,
-   "ouEnEst": "Merging it applies nothing by itself, and this build does not need it. Turning it on has a monthly cost: the figures are in your messages.",
-   "reste": "Your OK on the cost, whenever you want."
+   "ouEnEst": "The reference app of the fluidity gate is finishing its build, and a last regression review covers everything merged since the previous one.",
+   "reste": "Run the gate and the full test loop on the final commit, then the go page and your go."
   },
   {
    "statut": "later",
    "sujet": "Hick's law: points 1, 2, 6 and 7",
    "pr": 0,
    "ouEnEst": "You said not yet.",
+   "reste": "When you want."
+  },
+  {
+   "statut": "later",
+   "sujet": "Maps in production (Frankfurt)",
+   "pr": 4730,
+   "ouEnEst": "You said: later, at the public launch. Merging it applies nothing by itself.",
    "reste": "When you want."
   },
   {
@@ -915,12 +919,12 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, three Claude agents (opening a conversation like on X, the full-body switch and the long press, the avatar reviews) and six Codex agents on the avatars.",
+  "Here on the Mac: me, three Claude agents (opening a conversation like on X, Sentry and the last regression review, the bench apps and reviews) and six Codex agents on the avatars.",
   "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
  ],
  "etapes": [
-  "Switch on the full-body avatar on staging; finish the long press, Explore and the last avatar fixes.",
-  "Measure the opening of a conversation and make it instant, like on X.",
+  "Measure Explore and the Sentry launch on the bench, then merge them with the last avatar fixes.",
+  "Measure a conversation opening with a simulated network delay, and fix what fits this build.",
   "Run the fluidity gate and the full test loop on the final commit.",
   "The go page, then your go for the iPhone build 197."
  ],
@@ -929,6 +933,12 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4946,
+     "titre": "Bottom bar: a long press on another tab opens it, like iOS",
+     "fusion": "Oct 13, 05:48",
+     "build196": true
+    },
     {
      "pr": 4883,
      "titre": "TAK-1190 : Les lunettes suivent la surface du nez personnalisé",
@@ -1469,6 +1479,18 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4943,
+     "titre": "Server: stricter limits on one request",
+     "fusion": "Oct 13, 05:03",
+     "build196": true
+    },
+    {
+     "pr": 4945,
+     "titre": "Avatars: the full-body view switched on for staging",
+     "fusion": "Oct 13, 04:55",
+     "build196": true
+    },
     {
      "pr": 4924,
      "titre": "TAK-1250 : le test du fil de staging ne vieillit plus hors de la fenêtre de 7 jours",
