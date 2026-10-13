@@ -1,21 +1,75 @@
 {
- "majLe": "2026-10-13T10:46+09:00",
- "heure": "10:46",
+ "majLe": "2026-10-13T12:29+09:00",
+ "heure": "12:29",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 149,
-  "depuisDernierTableau": 149,
-  "enCours": 12,
-  "app": 92,
+  "fusionneesDepuis8Octobre": 159,
+  "depuisDernierTableau": 159,
+  "enCours": 13,
+  "app": 100,
   "siteEtAdmin": 10,
-  "serveur": 20,
-  "outilsEtDocs": 27
+  "serveur": 21,
+  "outilsEtDocs": 28
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The server part of the conversation opening is merged; the app part waits for your OK, like the colors. The Sentry measure found that the reporting starts too early, so it is being fixed, and the review found empty avatar tiles during a redraw, fixed before the build."
+  "texte": "Merged: the colors (one green for the Yes, \"Rising\" stays red), the rounded comment field, error reports from the phone on the test server, and the conversation opening, switched on for the test server. The last four iPhone changes are in review."
  },
  "depuis": [
+  {
+   "heure": "12:12",
+   "pr": 4986,
+   "texte": "A test made reliable (nothing changes in the app)",
+   "build196": true
+  },
+  {
+   "heure": "12:09",
+   "pr": 4954,
+   "texte": "Colors: the only green left is the Yes; the reds are the No and the actions that delete. \"Rising\" and the trend dot stay red, like news.",
+   "build196": true
+  },
+  {
+   "heure": "11:57",
+   "pr": 4983,
+   "texte": "Android: lighter, faster release builds (nothing changes on iPhone)",
+   "build196": true
+  },
+  {
+   "heure": "11:48",
+   "pr": 4980,
+   "texte": "Avatar editor: an option tile keeps its previous image until the new one is drawn, instead of an empty bust.",
+   "build196": true
+  },
+  {
+   "heure": "11:38",
+   "pr": 4774,
+   "texte": "Error reports from the phone: script errors only, on the test server only",
+   "build196": true
+  },
+  {
+   "heure": "11:35",
+   "pr": 4887,
+   "texte": "Comments: the comment field is a rounded pill, like in Messages",
+   "build196": true
+  },
+  {
+   "heure": "11:13",
+   "pr": 4959,
+   "texte": "Android: predictive back on Android 13 to 15, without losing Back (nothing changes on iPhone)",
+   "build196": true
+  },
+  {
+   "heure": "11:10",
+   "pr": 4977,
+   "texte": "Server: the newest message in the inbox is switched on for the test server",
+   "build196": true
+  },
+  {
+   "heure": "11:05",
+   "pr": 4951,
+   "texte": "Messages: a long conversation opens at your tap on its newest message, then the history fills in above without moving anything. Short conversations are unchanged. Switched on for the test server.",
+   "build196": true
+  },
   {
    "heure": "10:34",
    "pr": 4952,
@@ -200,6 +254,12 @@
    "heure": "02:34",
    "pr": 4934,
    "texte": "Reduce Motion: the GIF of a Take no longer plays when the phone asks for fewer animations.",
+   "build196": true
+  },
+  {
+   "heure": "02:32",
+   "pr": 4929,
+   "texte": "Build tooling: the iOS test build pipeline is more reliable (nothing changes in the app)",
    "build196": true
   },
   {
@@ -952,31 +1012,45 @@
  "enCours": [
   {
    "statut": "review",
-   "sujet": "Messages: a long conversation opens at your tap",
-   "pr": 4951,
-   "ouEnEst": "Server part merged. Measured again on the bench over 20 openings each: short conversations are unchanged, and long ones open in about 0.34 s instead of 0.68 s on a slow network, with nothing moving. The images are on the change for your OK.",
-   "reste": "Your OK on the images, then merged, then its switch turned on for the test server."
+   "sujet": "Feeds: shown without a 220 ms fade or slide",
+   "pr": 4987,
+   "ouEnEst": "In regression review, with its CI.",
+   "reste": "Reviewed and green, then filmed on the bench, then merged before the final checks."
   },
   {
    "statut": "review",
-   "sujet": "Colors: one green for the Yes, two reds",
-   "pr": 4954,
-   "ouEnEst": "Ready. Before and after captures of every screen it touches, in light and dark, are on the change: the red dots of trends, \"Rising\" and unread questions turn black (white in dark), and so do the greens of \"available\" and the Know Me checks.",
-   "reste": "Your OK on the captures, then merged."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Error reports from the phone (Sentry)",
-   "pr": 4774,
-   "ouEnEst": "Measured on the bench, 10 pairs: the launch is not slower. But the reporting starts before your friends list shows, and it opens a connection during the launch. It is being changed to start only once the screen is shown and the phone is idle.",
-   "reste": "Measured again, then merged before the final checks."
+   "sujet": "Friends and Nearby: the page comes back after a cancelled swipe",
+   "pr": 4989,
+   "ouEnEst": "In regression review, with its CI.",
+   "reste": "Merged once reviewed and green, before the final checks."
   },
   {
    "statut": "review",
-   "sujet": "Avatar editor: empty tiles while the option images redraw",
-   "pr": 4980,
-   "ouEnEst": "Found by the review: after the update, the option tiles of the avatar editor stayed empty while their new images were drawn, against your no-skeleton rule. Fixed: the old image now stays until the new one is ready.",
-   "reste": "Filmed on the bench, then merged before the build."
+   "sujet": "Feed and message images without the 120 ms fade",
+   "pr": 4964,
+   "ouEnEst": "In regression review, with its CI.",
+   "reste": "Merged once reviewed and green, before the final checks."
+  },
+  {
+   "statut": "review",
+   "sujet": "Avatars: the textured haircut stays steady while the ears are adjusted",
+   "pr": 4988,
+   "ouEnEst": "In regression review, with its CI.",
+   "reste": "Merged once reviewed and green, before the final checks."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Profile song search: the list stays while you type",
+   "pr": 4981,
+   "ouEnEst": "Ready. The profile song stays hidden, even on the test server, while its server switch is off.",
+   "reste": "Filmed on the bench, then merged."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Fast taps in bursts",
+   "pr": 0,
+   "ouEnEst": "The burst test is running on the bench.",
+   "reste": "If there is no safe fix before the build, build 197 keeps it as a known limit."
   },
   {
    "statut": "fixing",
@@ -989,28 +1063,21 @@
    "statut": "review",
    "sujet": "Avatars: more fixes in progress",
    "pr": 0,
-   "ouEnEst": "Merged this hour: the headphone band follows curly hair. The Codex agents are finishing the framing at rest in the full-body view, the rotation on a vertical swipe, the wave rhythm, the cuffs and the socks.",
+   "ouEnEst": "Merged this hour: the option tiles of the editor keep their image while they redraw. The Codex agents are finishing the framing at rest in the full-body view, the rotation on a vertical swipe, the wave rhythm, the cuffs and the socks.",
    "reste": "Each one merges once its board is checked."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Bottom bar: a tab tap sometimes ignored right after launch",
-   "pr": 0,
-   "ouEnEst": "Seen once in 20 launches on the simulator. A burst test is ready for the bench, after the Sentry measure.",
-   "reste": "Run on the bench before the build."
   },
   {
    "statut": "review",
    "sujet": "Final checks of build 197",
    "pr": 0,
-   "ouEnEst": "Everything merged since the last build has been re-read for regressions, in four passes: green apart from the empty avatar tiles above. The fluidity gate and the full test loop are ready to run on the final commit.",
-   "reste": "Run them on the final commit, then the go page and your go."
+   "ouEnEst": "The seventh regression re-read of everything merged since the last build is in progress.",
+   "reste": "Then the fluidity gate and the full test loop on the final commit, then your go."
   },
   {
    "statut": "later",
    "sujet": "Android: catching up with iPhone, like X on Android",
    "pr": 0,
-   "ouEnEst": "Four Codex agents keep going. Merged this hour: one more test made reliable. A single Android build gathering all the reviewed changes is prepared for the emulator checks; the changes that also touch the iPhone wait until build 197 is out.",
+   "ouEnEst": "Four Codex agents keep going. A single Android build gathering all the reviewed changes is prepared for the emulator checks; the changes that also touch the iPhone wait until build 197 is out.",
    "reste": "Android emulator checks when the iPhone simulator is free."
   },
   {
@@ -1036,19 +1103,67 @@
   }
  ],
  "equipe": [
-  "Here on the Mac: me, three Claude agents (the conversation opening fix and its server part; the regression re-reads and the website search line; the reviews of the Android work), six Codex agents on the avatars and four Codex agents on Android.",
+  "Here on the Mac: me and six Claude agents (the last iPhone pull requests for build 197; the go page and test notes; the regression re-reads; the search for leftover fades; the bench tools; the test fixes), six Codex agents on the avatars, four Codex agents on Android and five Codex agents with a Claude lead on the desktop website.",
   "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
  ],
  "etapes": [
-  "Get your OK on the colors and on the conversation opening, then merge them.",
-  "Fix and measure again the Sentry start, fix the empty avatar tiles, run the bottom bar burst test; merge the avatar fixes that are ready.",
-  "Run the fluidity gate and the full test loop on the final commit, then the go page and your go for the iPhone build 197."
+  "Finish the review of the last four iPhone changes, film the profile song search and the feeds without fade on the bench, and finish the burst test.",
+  "Finish the seventh regression re-read, then run the fluidity gate and the full test loop on the final commit.",
+  "Then the go page and your go for the iPhone build 197."
  ],
  "fait": [
   {
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4986,
+     "titre": "A test made reliable (nothing changes in the app)",
+     "fusion": "Oct 13, 12:12",
+     "build196": true
+    },
+    {
+     "pr": 4954,
+     "titre": "Colors: one green for the Yes, reds for the No and for deleting",
+     "fusion": "Oct 13, 12:09",
+     "build196": true
+    },
+    {
+     "pr": 4983,
+     "titre": "Android: lighter, faster release builds (nothing changes on iPhone)",
+     "fusion": "Oct 13, 11:57",
+     "build196": true
+    },
+    {
+     "pr": 4980,
+     "titre": "Avatar editor: an option tile keeps its image until the new one is drawn",
+     "fusion": "Oct 13, 11:48",
+     "build196": true
+    },
+    {
+     "pr": 4774,
+     "titre": "Error reports from the phone: script errors only, on the test server only",
+     "fusion": "Oct 13, 11:38",
+     "build196": true
+    },
+    {
+     "pr": 4887,
+     "titre": "Comments: the comment field is a rounded pill, like in Messages",
+     "fusion": "Oct 13, 11:35",
+     "build196": true
+    },
+    {
+     "pr": 4959,
+     "titre": "Android: predictive back on Android 13 to 15, without losing Back (nothing changes on iPhone)",
+     "fusion": "Oct 13, 11:13",
+     "build196": true
+    },
+    {
+     "pr": 4951,
+     "titre": "Messages: a conversation opens at your tap on its newest message",
+     "fusion": "Oct 13, 11:05",
+     "build196": true
+    },
     {
      "pr": 4976,
      "titre": "A test made reliable (nothing changes in the app)",
@@ -1129,25 +1244,25 @@
     },
     {
      "pr": 4883,
-     "titre": "TAK-1190 : Les lunettes suivent la surface du nez personnalisé",
+     "titre": "TAK-1190: glasses follow the surface of a custom nose",
      "fusion": "Oct 13, 04:44",
      "build196": true
     },
     {
      "pr": 4582,
-     "titre": "TAK-831 : Amis garde ses lignes au retour et pendant le rafraîchissement",
+     "titre": "TAK-831: Friends keeps its rows when you come back and while refreshing",
      "fusion": "Oct 13, 04:30",
      "build196": true
     },
     {
      "pr": 4936,
-     "titre": "TAK-1262 : garder la taille agrandie pendant la rotation",
+     "titre": "TAK-1262: the enlarged size is kept during the rotation",
      "fusion": "Oct 13, 04:26",
      "build196": true
     },
     {
      "pr": 4939,
-     "titre": "TAK-1263 : l'extrait de la chanson du profil ne se télécharge qu'au premier toucher",
+     "titre": "TAK-1263: the profile song preview downloads only at the first tap",
      "fusion": "Oct 13, 04:10",
      "build196": true
     },
@@ -1159,283 +1274,283 @@
     },
     {
      "pr": 4899,
-     "titre": "TAK-1221 : séparer l’annulaire et l’auriculaire au repos",
+     "titre": "TAK-1221: the ring and little fingers separated at rest",
      "fusion": "Oct 13, 02:55",
      "build196": true
     },
     {
      "pr": 4922,
-     "titre": "TAK-1247 : la rotation reprend sans saut après deux doigts",
+     "titre": "TAK-1247: the rotation resumes without a jump after two fingers",
      "fusion": "Oct 13, 02:41",
      "build196": true
     },
     {
      "pr": 4935,
-     "titre": "TAK-1261 : les GIF des commentaires, du plateau, des fils et du lecteur se préchargent sur disque seulement",
+     "titre": "TAK-1261: GIFs in comments, the tray, threads and the viewer are preloaded on disk only",
      "fusion": "Oct 13, 02:40",
      "build196": true
     },
     {
      "pr": 4934,
-     "titre": "TAK-1260 : l'image d'un Take ne s'anime plus quand le système demande moins d'animations",
+     "titre": "TAK-1260: a Take's image no longer animates when the phone asks for fewer animations",
      "fusion": "Oct 13, 02:34",
      "build196": true
     },
     {
      "pr": 4920,
-     "titre": "TAK-1239 : le cadrage garde le même zoom pendant la rotation",
+     "titre": "TAK-1239: the framing keeps the same zoom during the rotation",
      "fusion": "Oct 13, 02:20",
      "build196": true
     },
     {
      "pr": 4933,
-     "titre": "TAK-1168 : une conversation avec un GIF s'ouvre tout de suite (GIF et stickers préchargés sur disque seulement)",
+     "titre": "TAK-1168: a conversation with a GIF opens at once (GIFs and stickers preloaded on disk only)",
      "fusion": "Oct 13, 02:13",
      "build196": true
     },
     {
      "pr": 4926,
-     "titre": "TAK-1244 : régénérer les vignettes après correction du rendu",
+     "titre": "TAK-1244: thumbnails regenerated after a rendering fix",
      "fusion": "Oct 13, 02:01",
      "build196": true
     },
     {
      "pr": 4918,
-     "titre": "TAK-1234 : conserver les poids des normales de la main pendant le coucou",
+     "titre": "TAK-1234: the hand's normal weights are kept during the wave",
      "fusion": "Oct 13, 02:00",
      "build196": true
     },
     {
      "pr": 4912,
-     "titre": "TAK-1225 : rétablir l’import de la vague de référence dans le benchmark",
+     "titre": "TAK-1225: the reference wave import restored in the benchmark",
      "fusion": "Oct 13, 02:00",
      "build196": true
     },
     {
      "pr": 4572,
-     "titre": "TAK-848 : empêcher le retour des brouillons de sticker annulés",
+     "titre": "TAK-848: cancelled sticker drafts no longer come back",
      "fusion": "Oct 13, 01:27",
      "build196": true
     },
     {
      "pr": 4570,
-     "titre": "Libérer le lecteur et les copies de l’import audio (TAK-846)",
+     "titre": "TAK-846: the audio import frees the player and its copies",
      "fusion": "Oct 13, 00:33",
      "build196": true
     },
     {
      "pr": 4928,
-     "titre": "TAK-1252 : mise à jour des dix paquets Expo du 12/10, sans attendre trois jours",
+     "titre": "TAK-1252: the ten Expo packages of Oct 12 updated, without waiting three days",
      "fusion": "Oct 13, 00:23",
      "build196": true
     },
     {
      "pr": 4921,
-     "titre": "TAK-1246 : un seul runtime JavaScript installe SurfaceTouchEnding à la fois",
+     "titre": "TAK-1246: only one JavaScript runtime installs the touch-ending hook at a time",
      "fusion": "Oct 12, 22:20",
      "build196": true
     },
     {
      "pr": 4917,
-     "titre": "TAK-1208 : l’avatar en pied remplit la visionneuse",
+     "titre": "TAK-1208: the full-body avatar fills the viewer",
      "fusion": "Oct 12, 19:40",
      "build196": true
     },
     {
      "pr": 4914,
-     "titre": "TAK-1236 : sous le logo du lancement, l'app est cachée à VoiceOver et aux tests",
+     "titre": "TAK-1236: under the launch logo, the app is hidden from VoiceOver and tests",
      "fusion": "Oct 12, 18:16",
      "build196": true
     },
     {
      "pr": 4915,
-     "titre": "TAK-1232 : après un 404 de la tête légère, Amis la redemande dix minutes plus tard",
+     "titre": "TAK-1232: after a 404 on the light request, Friends asks again ten minutes later",
      "fusion": "Oct 12, 17:52",
      "build196": true
     },
     {
      "pr": 4910,
-     "titre": "TAK-1128 : « À proximité » puis « Amis » en rafale finissent sur Amis",
+     "titre": "TAK-1128: \"Nearby\" then \"Friends\" in a burst end on Friends",
      "fusion": "Oct 12, 17:51",
      "build196": true
     },
     {
      "pr": 4911,
-     "titre": "TAK-1131 : en rafale, chaque toucher atteint le JavaScript au lieu du premier seul",
+     "titre": "TAK-1131: in a burst, every tap reaches the app instead of the first one only",
      "fusion": "Oct 12, 17:50",
      "build196": true
     },
     {
      "pr": 4913,
-     "titre": "TAK-1230 : le lecteur qui vient de voter le dit par un en-tête, plus aucune lecture ne le cherche dans le Worker Cache",
+     "titre": "TAK-1230: a reader who just voted says so in a header, no read looks for it in the cache anymore",
      "fusion": "Oct 12, 17:48",
      "build196": true
     },
     {
      "pr": 4866,
-     "titre": "TAK-1173 : Amis cherche ses nouveaux Takes par une tête légère, et lit les Takes complets au tirer ou à la pastille",
+     "titre": "TAK-1173: Friends checks for new Takes with a light request, and reads full Takes on pull or on the badge",
      "fusion": "Oct 12, 16:34",
      "build196": true
     },
     {
      "pr": 4895,
-     "titre": "TAK-1204 : le casque épouse les coiffures bouclées masculines",
+     "titre": "TAK-1204: the headphones follow men's curly hairstyles",
      "fusion": "Oct 12, 16:32",
      "build196": true
     },
     {
      "pr": 4894,
-     "titre": "TAK-1207 : la vue iOS inactive annule ses rotations en attente",
+     "titre": "TAK-1207: the inactive iOS view cancels its pending rotations",
      "fusion": "Oct 12, 16:32",
      "build196": true
     },
     {
      "pr": 4880,
-     "titre": "TAK-1202 : préparer l’avatar après le défilement",
+     "titre": "TAK-1202: the avatar is prepared after scrolling",
      "fusion": "Oct 12, 16:10",
      "build196": true
     },
     {
      "pr": 4909,
-     "titre": "TAK-1220 : un fil rouvert ne se relit plus tant que la socket l'a tenu à jour",
+     "titre": "TAK-1220: a reopened thread is no longer re-read while the live connection kept it up to date",
      "fusion": "Oct 12, 15:38",
      "build196": true
     },
     {
      "pr": 4908,
-     "titre": "TAK-1216 : la présence bat une fois par tranche de 5 min au lieu de toutes les 2 min",
+     "titre": "TAK-1216: presence beats once every 5 min instead of every 2 min",
      "fusion": "Oct 12, 15:30",
      "build196": true
     },
     {
      "pr": 4907,
-     "titre": "TAK-1217 : l'analytique mobile envoie toutes les 55 s au lieu de 15 s, sans perdre d'événement",
+     "titre": "TAK-1217: mobile analytics send every 55 s instead of 15 s, without losing events",
      "fusion": "Oct 12, 15:23",
      "build196": true
     },
     {
      "pr": 4906,
-     "titre": "TAK-1219 : l'attente d'un duel ne relit plus la partie tant que son abonnement temps réel vit",
+     "titre": "TAK-1219: waiting for a duel no longer re-reads the game while its live subscription is alive",
      "fusion": "Oct 12, 15:22",
      "build196": true
     },
     {
      "pr": 4905,
-     "titre": "TAK-1218 : un repost, une suppression ou une publication ne relit plus que son propre profil",
+     "titre": "TAK-1218: a repost, a delete or a post re-reads only your own profile",
      "fusion": "Oct 12, 15:19",
      "build196": true
     },
     {
      "pr": 4904,
-     "titre": "TAK-1215 : un passage d'iOS par « inactive » ne relit plus ce qui est affiché",
+     "titre": "TAK-1215: iOS passing through \"inactive\" no longer re-reads what is shown",
      "fusion": "Oct 12, 15:15",
      "build196": true
     },
     {
      "pr": 4897,
-     "titre": "TAK-1213 : les normales suivent la rotation progressive de la paume",
+     "titre": "TAK-1213: normals follow the palm's gradual rotation",
      "fusion": "Oct 12, 14:59",
      "build196": true
     },
     {
      "pr": 4892,
-     "titre": "TAK-1209 : borner la compression entre les sommets échantillonnés du coucou",
+     "titre": "TAK-1209: compression is bounded between the wave's sampled points",
      "fusion": "Oct 12, 14:57",
      "build196": true
     },
     {
      "pr": 4885,
-     "titre": "TAK-1203 : les normales suivent la courbure des doigts",
+     "titre": "TAK-1203: normals follow the curve of the fingers",
      "fusion": "Oct 12, 14:50",
      "build196": true
     },
     {
      "pr": 4870,
-     "titre": "TAK-1189 : couvrir la peau au pli du coude pendant le coucou",
+     "titre": "TAK-1189: the skin at the elbow fold stays covered during the wave",
      "fusion": "Oct 12, 14:48",
      "build196": true
     },
     {
      "pr": 4865,
-     "titre": "TAK-1186 : l’épaule et les manches gardent leur volume pendant le coucou",
+     "titre": "TAK-1186: the shoulder and sleeves keep their volume during the wave",
      "fusion": "Oct 12, 14:45",
      "build196": true
     },
     {
      "pr": 4861,
-     "titre": "TAK-1184 : un glissé vertical sur les onglets du profil fait défiler la page",
+     "titre": "TAK-1184: a vertical swipe on the profile tabs scrolls the page",
      "fusion": "Oct 12, 14:44",
      "build196": true
     },
     {
      "pr": 4893,
-     "titre": "TAK-1211 : seule la page de thème affichée d'Explorer relit son n°1 en direct",
+     "titre": "TAK-1211: only the shown Explore theme page re-reads its #1 live",
      "fusion": "Oct 12, 14:40",
      "build196": true
     },
     {
      "pr": 4875,
-     "titre": "TAK-1170 : les compteurs d'un Take ouvert et calme se relisent toutes les 30 s, et reviennent à 12 s au premier changement",
+     "titre": "TAK-1170: an open, quiet Take re-reads its counters every 30 s, back to 12 s at the first change",
      "fusion": "Oct 12, 14:39",
      "build196": true
     },
     {
      "pr": 4829,
-     "titre": "TAK-1150 : l'accueil sans compte met « Créer un compte » en avant, « Se connecter » en petite ligne (loi de Hick n° 10)",
+     "titre": "TAK-1150: the signed-out home puts \"Create an account\" first, \"Log in\" as a small line (Hick's law no. 10)",
      "fusion": "Oct 12, 12:19",
      "build196": true
     },
     {
      "pr": 4891,
-     "titre": "TAK-1210 : les normales suivent la rotation progressive du pouce",
+     "titre": "TAK-1210: normals follow the thumb's gradual rotation",
      "fusion": "Oct 12, 11:56",
      "build196": true
     },
     {
      "pr": 4896,
-     "titre": "TAK-1212 : une traduction en attente (commentaire ou Take) est relue 4 fois au plus, de plus en plus espacées",
+     "titre": "TAK-1212: a pending translation (comment or Take) is re-read 4 times at most, further and further apart",
      "fusion": "Oct 12, 11:53",
      "build196": true
     },
     {
      "pr": 4850,
-     "titre": "TAK-1168 : le fil d'une conversation est prêt avant le premier toucher après un lancement à froid",
+     "titre": "TAK-1168: a conversation's thread is ready before the first tap after a cold launch",
      "fusion": "Oct 12, 11:47",
      "build196": true
     },
     {
      "pr": 4862,
-     "titre": "TAK-1181 : voir et tourner l’avatar en entier depuis le profil",
+     "titre": "TAK-1181: see and turn the full avatar from the profile",
      "fusion": "Oct 12, 10:38",
      "build196": true
     },
     {
      "pr": 4872,
-     "titre": "TAK-1191 : la main reste dans ses poses pendant le coucou",
+     "titre": "TAK-1191: the hand keeps its poses during the wave",
      "fusion": "Oct 12, 09:59",
      "build196": true
     },
     {
      "pr": 4874,
-     "titre": "TAK-1192 : les appuis reprennent si la fin du coucou se perd",
+     "titre": "TAK-1192: taps work again if the end of the wave gets lost",
      "fusion": "Oct 12, 09:44",
      "build196": true
     },
     {
      "pr": 4879,
-     "titre": "TAK-1200 : mentions, la lecture du « @ » seul compte, et une lettre ne coupe plus la lecture en cours",
+     "titre": "TAK-1200: mentions, the read for \"@\" alone counts, and a letter no longer cuts the read in progress",
      "fusion": "Oct 12, 09:41",
      "build196": true
     },
     {
      "pr": 4881,
-     "titre": "TAK-1201 : l'observateur de personnalisation de Takes porte la queryFn du document de config",
+     "titre": "TAK-1201: the Takes personalization watcher carries the config document's query",
      "fusion": "Oct 12, 09:41",
      "build196": true
     },
     {
      "pr": 4878,
-     "titre": "TAK-1199 : dans une liste, un média d'un kind inconnu ne fait sauter que ce média, la carte reste",
+     "titre": "TAK-1199: in a list, a media of unknown type skips only that media, the card stays",
      "fusion": "Oct 12, 09:31",
      "build196": true
     },
@@ -1447,97 +1562,97 @@
     },
     {
      "pr": 4792,
-     "titre": "TAK-970: au texte maximal, un bouton garde ses mots entiers (« Choisir un lieu manuellement » sur À proximité)",
+     "titre": "TAK-970: at the largest text size, a button keeps its words whole (\"Choose a place manually\" on Nearby)",
      "fusion": "Oct 12, 08:34",
      "build196": true
     },
     {
      "pr": 4864,
-     "titre": "TAK-1180 : un seul coucou par appui",
+     "titre": "TAK-1180: one wave per tap",
      "fusion": "Oct 12, 08:03",
      "build196": true
     },
     {
      "pr": 4822,
-     "titre": "TAK-1143 : les mentions suivent chaque lettre, sans lecture quand la réponse d'un préfixe est complète",
+     "titre": "TAK-1143: mentions follow every letter, with no read when a prefix's answer is complete",
      "fusion": "Oct 12, 07:57",
      "build196": true
     },
     {
      "pr": 4854,
-     "titre": "TAK-1176 : le défilement d'un panneau ne redessine plus la racine du compositeur",
+     "titre": "TAK-1176: scrolling a panel no longer redraws the whole composer",
      "fusion": "Oct 12, 07:54",
      "build196": true
     },
     {
      "pr": 4766,
-     "titre": "fix(web,mobile) : TAK-839 un segment vidéo par vidéo dans le fil borné, plus d'annulation tant que la vidéo reste dans la fenêtre ; registre S67c et D1053",
+     "titre": "TAK-839: one video segment per video in the bounded feed, no cancel while the video stays in the window",
      "fusion": "Oct 12, 07:44",
      "build196": true
     },
     {
      "pr": 4853,
-     "titre": "TAK-1174 : le retour sur son Profil ne relit le nombre d'amis et le score qu'après 2 min ou un badge",
+     "titre": "TAK-1174: coming back to your Profile re-reads friends and score only after 2 min or a badge",
      "fusion": "Oct 12, 07:43",
      "build196": true
     },
     {
      "pr": 4852,
-     "titre": "TAK-1172 : les notes d'expert ne se relisent chaque minute que sur un Take qui en a, ou pour un expert",
+     "titre": "TAK-1172: expert notes are re-read every minute only on a Take that has some, or for an expert",
      "fusion": "Oct 12, 07:42",
      "build196": true
     },
     {
      "pr": 4826,
-     "titre": "TAK-1151 : compositeur, « Sans limite » à la place de « Plus d'options », panneau entier au-dessus de Publier",
+     "titre": "TAK-1151: composer, \"No limit\" instead of \"More options\", the whole panel above Publish",
      "fusion": "Oct 12, 07:08",
      "build196": true
     },
     {
      "pr": 4818,
-     "titre": "TAK-1146 : les propositions de la carte suivent chaque lettre",
+     "titre": "TAK-1146: map suggestions follow every letter",
      "fusion": "Oct 12, 07:06",
      "build196": true
     },
     {
      "pr": 4849,
-     "titre": "TAK-1167 : une lecture du fil ne remet plus un vote affiché à l'état non voté",
+     "titre": "TAK-1167: a feed read no longer puts a shown vote back to not voted",
      "fusion": "Oct 12, 07:03",
      "build196": true
     },
     {
      "pr": 4848,
-     "titre": "TAK-1166 : dans une liste, une carte au kind inconnu est sautée et signalée, le reste de la page s'affiche",
+     "titre": "TAK-1166: in a list, a card of unknown type is skipped and reported, the rest of the page shows",
      "fusion": "Oct 12, 07:02",
      "build196": true
     },
     {
      "pr": 4847,
-     "titre": "TAK-1164 : les réponses lues par le mobile tolèrent les champs ajoutés par le serveur, les tests restent stricts",
+     "titre": "TAK-1164: the app tolerates fields added by the server, tests stay strict",
      "fusion": "Oct 12, 07:02",
      "build196": true
     },
     {
      "pr": 4828,
-     "titre": "TAK-1152 : compositeur, un seul bouton son (importer passe en appui long sur le micro)",
+     "titre": "TAK-1152: composer, a single sound button (import moves to a long press on the mic)",
      "fusion": "Oct 12, 05:52",
      "build196": true
     },
     {
      "pr": 4846,
-     "titre": "TAK-1161 : une lecture d'écran refusée par son schéma signale l'écran, le chemin et le code zod",
+     "titre": "TAK-1161: a screen read rejected by its schema reports the screen, the path and the error code",
      "fusion": "Oct 12, 05:20",
      "build196": true
     },
     {
      "pr": 4830,
-     "titre": "TAK-1154 : la carte garde une seule flèche et offre « Rechercher ici » quand on l'a déplacée (loi de Hick n° 8)",
+     "titre": "TAK-1154: the map keeps a single arrow and offers \"Search here\" once moved (Hick's law no. 8)",
      "fusion": "Oct 12, 05:19",
      "build196": true
     },
     {
      "pr": 4840,
-     "titre": "TAK-1086 : le test de l'éditeur d'avatar pilote l'horloge de la garde « immobile » au lieu du temps du runner",
+     "titre": "TAK-1086: the avatar editor test drives its own clock instead of the machine's time",
      "fusion": "Oct 12, 04:51",
      "build196": true
     },
@@ -1549,25 +1664,25 @@
     },
     {
      "pr": 4819,
-     "titre": "TAK-1144 : le profil privé verrouillé montre Amis, Takes et Score",
+     "titre": "TAK-1144: a locked private profile shows Friends, Takes and Score",
      "fusion": "Oct 12, 04:10",
      "build196": true
     },
     {
      "pr": 4825,
-     "titre": "TAK-1155 : la feuille de filtres de la recherche ne trie plus que l'onglet Top (loi de Hick n° 12)",
+     "titre": "TAK-1155: the search filter sheet now sorts only the Top tab (Hick's law no. 12)",
      "fusion": "Oct 12, 04:08",
      "build196": true
     },
     {
      "pr": 4824,
-     "titre": "TAK-1149 : le portail « Connecte-toi » se ferme par « Plus tard », sans croix (loi de Hick n° 3)",
+     "titre": "TAK-1149: the \"Log in\" prompt closes with \"Later\", without a cross (Hick's law no. 3)",
      "fusion": "Oct 12, 04:08",
      "build196": true
     },
     {
      "pr": 4834,
-     "titre": "TAK-1157 : le typage du mobile vérifie les noms de route, générés sans Metro",
+     "titre": "TAK-1157: mobile type checking checks route names, generated without the bundler",
      "fusion": "Oct 12, 04:06",
      "build196": true
     },
@@ -1591,13 +1706,13 @@
     },
     {
      "pr": 4816,
-     "titre": "TAK-1145 : la recherche de la carte garde le lieu touché et va plus vite",
+     "titre": "TAK-1145: map search keeps the tapped place and is faster",
      "fusion": "Oct 12, 00:02",
      "build196": true
     },
     {
      "pr": 4795,
-     "titre": "TAK-1114 : mode borné, Messages et le Profil se montent d'avance un morceau par créneau de repos, hors de la fenêtre du lancement",
+     "titre": "TAK-1114: Messages and Profile are mounted ahead piece by piece when the phone is idle, outside the launch window",
      "fusion": "Oct 11, 22:58",
      "build196": true
     }
@@ -1621,37 +1736,37 @@
     },
     {
      "pr": 4919,
-     "titre": "TAK-1237 : le rendu serveur d'une page lit lui aussi le vote sur la base principale pendant les 30 s qui suivent",
+     "titre": "TAK-1237: server rendering of a page also reads the vote from the main database for the next 30 s",
      "fusion": "Oct 12, 18:53",
      "build196": true
     },
     {
      "pr": 4916,
-     "titre": "TAK-1235 : le lecteur web dit lui aussi qu'il vient de voter (en-tête et CORS)",
+     "titre": "TAK-1235: the website reader also says it just voted (header and CORS)",
      "fusion": "Oct 12, 18:32",
      "build196": true
     },
     {
      "pr": 4845,
-     "titre": "TAK-1087 : le web lit les notifications sous l'instantané de la liste montrée, comme le mobile",
+     "titre": "TAK-1087: the website marks notifications read from the list it showed, like the app",
      "fusion": "Oct 12, 05:06",
      "build196": true
     },
     {
      "pr": 4839,
-     "titre": "TAK-1158 : les tests web retirent happy-dom seulement après que React a fini son travail",
+     "titre": "TAK-1158: website tests tear down only after React has finished its work",
      "fusion": "Oct 12, 04:53",
      "build196": true
     },
     {
      "pr": 4841,
-     "titre": "TAK-934 / TAK-1160 : les tests s60 de révocation et d'invité hébergé ne dépendent plus de l'horloge du runner",
+     "titre": "TAK-934 / TAK-1160: two server tests no longer depend on the machine's clock",
      "fusion": "Oct 12, 04:52",
      "build196": true
     },
     {
      "pr": 4833,
-     "titre": "TAK-1018 : le test KnowMe « a lost saved answer… » tient lui-même ses minuteurs",
+     "titre": "TAK-1018: a Know Me test holds its own timers",
      "fusion": "Oct 12, 04:50",
      "build196": true
     },
@@ -1673,6 +1788,12 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4977,
+     "titre": "Server: the newest message in the inbox is switched on for the test server",
+     "fusion": "Oct 13, 11:10",
+     "build196": true
+    },
     {
      "pr": 4952,
      "titre": "Messages: the inbox can carry the newest message, and threads cost less to open",
@@ -1705,55 +1826,55 @@
     },
     {
      "pr": 4924,
-     "titre": "TAK-1250 : le test du fil de staging ne vieillit plus hors de la fenêtre de 7 jours",
+     "titre": "TAK-1250: the staging feed test no longer ages out of the 7-day window",
      "fusion": "Oct 12, 23:05",
      "build196": true
     },
     {
      "pr": 4869,
-     "titre": "TAK-1178 : staging lit les votes du lecteur sur la base principale (mesure, empilée sur #4855)",
+     "titre": "TAK-1178: the test server reads the reader's votes from the main database (measure)",
      "fusion": "Oct 12, 15:24",
      "build196": true
     },
     {
      "pr": 4877,
-     "titre": "TAK-1197 : une recherche de la carte ne compte qu'une fois dans le budget des lieux précis, quel que soit son nombre de lettres",
+     "titre": "TAK-1197: a map search counts once in the precise-places budget, whatever its number of letters",
      "fusion": "Oct 12, 09:48",
      "build196": true
     },
     {
      "pr": 4876,
-     "titre": "TAK-1196 : les lectures de la carte sans vote ne lisent plus la marque « vient de voter »",
+     "titre": "TAK-1196: map reads without a vote no longer look for the \"just voted\" mark",
      "fusion": "Oct 12, 09:19",
      "build196": true
     },
     {
      "pr": 4868,
-     "titre": "TAK-1188 : public_contract_broken une fois par kind inconnu et par heure",
+     "titre": "TAK-1188: a broken-contract report once per unknown type and per hour",
      "fusion": "Oct 12, 08:11",
      "build196": true
     },
     {
      "pr": 4856,
-     "titre": "TAK-1177 : un test rejoue le script de retour de la migration 0078",
+     "titre": "TAK-1177: a test replays the rollback script of migration 0078",
      "fusion": "Oct 12, 07:58",
      "build196": true
     },
     {
      "pr": 4858,
-     "titre": "TAK-1175 : un média d'un kind inconnu est sauté et signalé, la carte garde ses autres médias",
+     "titre": "TAK-1175: a media of unknown type is skipped and reported, the card keeps its other media",
      "fusion": "Oct 12, 07:48",
      "build196": true
     },
     {
      "pr": 4827,
-     "titre": "TAK-1153 : les mentions proposent d'abord les personnes du fil, puis la boîte de messages",
+     "titre": "TAK-1153: mentions suggest people from the thread first, then from the inbox",
      "fusion": "Oct 12, 07:47",
      "build196": true
     },
     {
      "pr": 4855,
-     "titre": "TAK-1178 : un lecteur qui vient de voter relit son vote sur la base principale (drapeau éteint par défaut)",
+     "titre": "TAK-1178: a reader who just voted re-reads their vote from the main database (switch off by default)",
      "fusion": "Oct 12, 07:43",
      "build196": true
     },
@@ -1765,25 +1886,25 @@
     },
     {
      "pr": 4842,
-     "titre": "TAK-1061 : les traces de retrait de vote sont oubliées chaque minute, pas à la purge horaire",
+     "titre": "TAK-1061: vote removal traces are forgotten every minute, not at the hourly purge",
      "fusion": "Oct 12, 04:52",
      "build196": true
     },
     {
      "pr": 4844,
-     "titre": "TAK-1134 : une image héritée que le contrat refuse reste hors de media (fil Takes de la graine sans S3)",
+     "titre": "TAK-1134: an old image the contract rejects stays out of the media list",
      "fusion": "Oct 12, 04:49",
      "build196": true
     },
     {
      "pr": 4836,
-     "titre": "TAK-1012 : le pacer du recheck des vidéos espace les départs réels, plus des heures prévues",
+     "titre": "TAK-1012: the video re-check spaces out its real starts, not its planned times",
      "fusion": "Oct 12, 04:04",
      "build196": true
     },
     {
      "pr": 4831,
-     "titre": "TAK-1103 : le seed de développement porte les données de la boucle de régression",
+     "titre": "TAK-1103: the development seed carries the test loop's data",
      "fusion": "Oct 12, 04:03",
      "build196": true
     },
@@ -1801,25 +1922,31 @@
    "prs": [
     {
      "pr": 4550,
-     "titre": "TAK-803 : fiabiliser les confirmations de copie et de GIF dans Maestro iOS",
+     "titre": "TAK-803: copy and GIF confirmations made reliable in the iOS tests",
      "fusion": "Oct 13, 04:42",
      "build196": true
     },
     {
+     "pr": 4929,
+     "titre": "Build tooling: the iOS test build pipeline is more reliable (nothing changes in the app)",
+     "fusion": "Oct 13, 02:32",
+     "build196": true
+    },
+    {
      "pr": 4930,
-     "titre": "TAK-1254 : la parité tsrs exige d'abord que tsrs signale une erreur TS2322 connue",
+     "titre": "TAK-1254: the fast type checker must first report a known error",
      "fusion": "Oct 13, 02:00",
      "build196": true
     },
     {
      "pr": 4931,
-     "titre": "TAK-1259 : le patch d'expo-modules-core suit la 57.0.22, et un garde refuse un patch sans version résolue",
+     "titre": "TAK-1259: the expo-modules-core patch follows 57.0.22, and a guard rejects a patch without a resolved version",
      "fusion": "Oct 13, 01:59",
      "build196": true
     },
     {
      "pr": 4923,
-     "titre": "TAK-1242 : le balayage des routes sépare « plus d'appels sortants » et « chaque appel plus lent »",
+     "titre": "TAK-1242: the route sweep separates \"more outgoing calls\" from \"each call slower\"",
      "fusion": "Oct 12, 23:40",
      "build196": true
     },
@@ -1831,13 +1958,13 @@
     },
     {
      "pr": 4889,
-     "titre": "TAK-1206 : la boucle relance Take sans donner la caméra, les photos ni le micro",
+     "titre": "TAK-1206: the test loop relaunches Take without granting camera, photos or mic",
      "fusion": "Oct 12, 12:00",
      "build196": true
     },
     {
      "pr": 4835,
-     "titre": "TAK-1159 : la boucle ouvre un fil depuis une notification et revient à la liste",
+     "titre": "TAK-1159: the test loop opens a thread from a notification and goes back to the list",
      "fusion": "Oct 12, 11:52",
      "build196": true
     },
@@ -1849,25 +1976,25 @@
     },
     {
      "pr": 4857,
-     "titre": "TAK-1179 : la boucle répond à l'alerte d'accès d'iOS quand elle s'affiche",
+     "titre": "TAK-1179: the test loop answers iOS's access alert when it shows",
      "fusion": "Oct 12, 10:50",
      "build196": true
     },
     {
      "pr": 4803,
-     "titre": "TAK-1118: banc de rafales de touchers à moins d'une milliseconde (scripts/mobile/tap-burst)",
+     "titre": "TAK-1118: a bench for bursts of taps less than a millisecond apart",
      "fusion": "Oct 12, 07:08",
      "build196": true
     },
     {
      "pr": 4843,
-     "titre": "TAK-1096 : gitleaks ne rejoue plus un succès en cache, et les contrôles de sécurité tournent sur Mac",
+     "titre": "TAK-1096: a CI scan no longer replays a cached success, and its checks run on Mac",
      "fusion": "Oct 12, 05:23",
      "build196": true
     },
     {
      "pr": 4832,
-     "titre": "TAK-1156 : visual-evidence ne prend plus le logo d'un pied de page de bot pour une capture",
+     "titre": "TAK-1156: the screenshot checker no longer mistakes a footer logo for a capture",
      "fusion": "Oct 12, 04:07",
      "build196": true
     },
@@ -1891,43 +2018,43 @@
    "prs": [
     {
      "pr": 4938,
-     "titre": "TAK-1225 : publier les planches avant/après du benchmark corrigé",
+     "titre": "TAK-1225: before/after boards of the fixed benchmark published",
      "fusion": "Oct 13, 03:01",
      "build196": true
     },
     {
      "pr": 4390,
-     "titre": "docs : inventaire de parité web et Android (08/10)",
+     "titre": "Docs: website and Android parity inventory (Oct 8)",
      "fusion": "Oct 13, 01:26",
      "build196": true
     },
     {
      "pr": 4900,
-     "titre": "TAK-1120 : un toucher sur un thème éloigné d'Explorer fait glisser la page quittée dessinée",
+     "titre": "TAK-1120: tapping a far Explore theme slides the page you leave, drawn",
      "fusion": "Oct 12, 15:40",
      "build196": true
     },
     {
      "pr": 4801,
-     "titre": "TAK-966 : la page quittée glisse dessinée, plus une capture vide, pendant les changements rapides d'Explorer",
+     "titre": "TAK-966: the page you leave slides drawn, no more blank capture, during fast Explore changes",
      "fusion": "Oct 12, 15:03",
      "build196": true
     },
     {
      "pr": 4890,
-     "titre": "TAK-1067 : captures de la barre du bas masquée (Take ouvert, Activité), clair et sombre",
+     "titre": "TAK-1067: captures of the hidden bottom bar (open Take, Activity), light and dark",
      "fusion": "Oct 12, 10:50",
      "build196": true
     },
     {
      "pr": 4860,
-     "titre": "TAK-1185 : le flow 23 fait défiler le Profil depuis la liste, pas depuis la rangée d'onglets",
+     "titre": "TAK-1185: test 23 scrolls the Profile from the list, not from the tab row",
      "fusion": "Oct 12, 08:11",
      "build196": true
     },
     {
      "pr": 4863,
-     "titre": "TAK-1182 : la référence d'un vrai salut humain, analysée",
+     "titre": "TAK-1182: the reference of a real human wave, analyzed",
      "fusion": "Oct 12, 08:09",
      "build196": true
     }
@@ -1939,7 +2066,7 @@
    "prs": [
     {
      "pr": 4902,
-     "titre": "TAK-1223 : le flow 23 glisse depuis la question de la carte, plus depuis son compteur caché sous la barre d'onglets",
+     "titre": "TAK-1223: test 23 swipes from the map's question, no longer from its counter hidden under the tab bar",
      "fusion": "Oct 12, 14:37",
      "build196": true
     },
@@ -1969,7 +2096,7 @@
     },
     {
      "pr": 4821,
-     "titre": "TAK-1148 : le lint interdit aussi router et Link d'expo-router (garde du double toucher)",
+     "titre": "TAK-1148: the linter also blocks the raw router and links (double-tap guard)",
      "fusion": "Oct 12, 02:24",
      "build196": true
     }
