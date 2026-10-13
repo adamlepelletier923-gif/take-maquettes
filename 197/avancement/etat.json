@@ -1,21 +1,45 @@
 {
- "majLe": "2026-10-13T08:49+09:00",
- "heure": "08:49",
+ "majLe": "2026-10-13T09:48+09:00",
+ "heure": "09:48",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 142,
-  "depuisDernierTableau": 142,
-  "enCours": 12,
-  "app": 87,
-  "siteEtAdmin": 9,
+  "fusionneesDepuis8Octobre": 146,
+  "depuisDernierTableau": 146,
+  "enCours": 11,
+  "app": 90,
+  "siteEtAdmin": 10,
   "serveur": 19,
   "outilsEtDocs": 27
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Merged: search shows accounts alone without the \"No take for ...\" line, Explore on Android after a bug found and fixed on the bench, and a test that failed at random. The color change is ready, with captures of every screen, for your OK. Four Codex agents started on Android, as you asked."
+  "texte": "The fix for opening long conversations now works: about 0.34 s instead of 0.68 s on a slow network, with nothing moving. Its images wait for your OK, like the colors. Merged: the website search line, an avatar fix and the first Android changes."
  },
  "depuis": [
+  {
+   "heure": "09:25",
+   "pr": 4958,
+   "texte": "Android: native page swipes get their own server switch, on wherever the iPhone's is. Nothing changes for today's phones.",
+   "build196": true
+  },
+  {
+   "heure": "09:16",
+   "pr": 4969,
+   "texte": "Android: two tests made independent of their environment. Nothing changes in the app.",
+   "build196": true
+  },
+  {
+   "heure": "09:11",
+   "pr": 4968,
+   "texte": "Website: a search that finds accounts but no take shows the accounts alone, like the app.",
+   "build196": true
+  },
+  {
+   "heure": "08:52",
+   "pr": 4944,
+   "texte": "Avatars: after a failed 3D load, reopening the avatar shows the loader until its first image, instead of an empty view.",
+   "build196": true
+  },
   {
    "heure": "08:21",
    "pr": 4429,
@@ -910,10 +934,10 @@
  "enCours": [
   {
    "statut": "review",
-   "sujet": "Messages: any conversation opens at your tap, without waiting for the network",
-   "pr": 0,
-   "ouEnEst": "Fast on the bench: lower in the list, on a slow network, about 0.17 s instead of 0.43 s. The jump it caused is fixed in the app: the last message shows at once only for long conversations, already at the bottom; short ones wait as today. The server part is being finished.",
-   "reste": "Film long and short conversations on the bench, then merge and switch it on for the test server."
+   "sujet": "Messages: a long conversation opens at your tap",
+   "pr": 4951,
+   "ouEnEst": "Fixed and measured on the bench: on a slow network, a long conversation now opens in about 0.34 s instead of 0.68 s, with your newest message at the bottom from the first frame; the history then fills in above it without moving it. Short conversations stay as today. The images are on the change for your OK. The server part is being made lighter.",
+   "reste": "Your OK on the images, then the server part and this one merged."
   },
   {
    "statut": "review",
@@ -921,13 +945,6 @@
    "pr": 4954,
    "ouEnEst": "Ready. Before and after captures of every screen it touches, in light and dark, are on the change: the red dots of trends, \"Rising\" and unread questions turn black (white in dark), and so do the greens of \"available\" and the Know Me checks.",
    "reste": "Your OK on the captures, then merged."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Search on the website: the same \"No take for ...\" line",
-   "pr": 0,
-   "ouEnEst": "Removed from the app this hour; the website still shows it. It is being removed there too, with captures.",
-   "reste": "Captures, then merged."
   },
   {
    "statut": "fixing",
@@ -940,36 +957,36 @@
    "statut": "review",
    "sujet": "Error reports from the phone (Sentry)",
    "pr": 4774,
-   "ouEnEst": "Checks green and reviewed. Its app is still building: the Mac is busy, so it builds slowly in the background.",
+   "ouEnEst": "Checks green and reviewed. Its app is still building: the Mac is busy, so it builds slowly in the background. The launch measure is ready to run.",
    "reste": "Launch measured on the bench, then merged before the final checks."
   },
   {
    "statut": "review",
    "sujet": "Avatars: more fixes in progress",
    "pr": 0,
-   "ouEnEst": "One is ready: after a failed load, the 3D waits for its first image instead of flashing. The Codex agents are finishing the wave proportions and rhythm, the rotation on a vertical swipe, the socks and the cuff details.",
+   "ouEnEst": "Merged this hour: after a failed load, reopening shows the loader until the 3D's first image. The Codex agents are finishing the wave proportions and rhythm, the rotation on a vertical swipe, the socks and the cuff details.",
    "reste": "Each one merges once its board is checked."
   },
   {
    "statut": "measuring",
    "sujet": "Bottom bar: a tab tap sometimes ignored right after launch",
    "pr": 0,
-   "ouEnEst": "Seen once in 20 launches on the simulator. A burst test is ready for the bench.",
+   "ouEnEst": "Seen once in 20 launches on the simulator. A burst test is ready for the bench; it runs once the Sentry app is built, one build at a time on the Mac.",
    "reste": "Run on the bench before the build."
   },
   {
    "statut": "review",
    "sujet": "Final checks of build 197",
    "pr": 0,
-   "ouEnEst": "Everything merged since the last build was re-read for regressions, in three passes: green. The test that failed at random is fixed. A take with a GIF comment was opened on the bench: no freeze.",
-   "reste": "Run the fluidity gate and the full test loop on the final commit, then the go page and your go."
+   "ouEnEst": "The go page and the test notes are up to date with everything merged today. Everything merged since the last build was re-read for regressions: green.",
+   "reste": "Run the fluidity gate and the full test loop on the final commit, then your go."
   },
   {
    "statut": "later",
    "sujet": "Android: catching up with iPhone, like X on Android",
    "pr": 0,
-   "ouEnEst": "As you asked, four Codex agents work on Android without stopping: native page swipes, launch and scroll smoothness, system gestures (back, keyboard, edge to edge) and a screen-by-screen check. Their first changes are open. Not needed for this iPhone build.",
-   "reste": "Each change is reviewed, then measured and captured on an Android emulator when the iPhone simulator is free."
+   "ouEnEst": "Four Codex agents keep going. Merged: a separate switch for Android's native page swipes (nothing changes for today's phones) and two tests made reliable. Several more changes are reviewed and wait for checks on an Android emulator; the ones that also touch the iPhone wait until build 197 is out.",
+   "reste": "Android emulator checks when the iPhone simulator is free."
   },
   {
    "statut": "later",
@@ -998,8 +1015,8 @@
   "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
  ],
  "etapes": [
-  "Get your OK on the colors; film the conversation opening on long and short conversations, then merge it with its server part; merge the last avatar fixes.",
-  "Measure the Sentry launch on the bench once its app is built, then merge it.",
+  "Get your OK on the colors and on the conversation opening; merge the conversation opening with its server part; merge the last avatar fixes.",
+  "Measure the Sentry launch on the bench once its app is built, then merge it; run the bottom bar burst test.",
   "Run the fluidity gate and the full test loop on the final commit, then the go page and your go for the iPhone build 197."
  ],
  "fait": [
@@ -1007,6 +1024,24 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4958,
+     "titre": "Android: native page swipes get their own server switch",
+     "fusion": "Oct 13, 09:25",
+     "build196": true
+    },
+    {
+     "pr": 4969,
+     "titre": "Android: two tests made reliable (nothing changes in the app)",
+     "fusion": "Oct 13, 09:16",
+     "build196": true
+    },
+    {
+     "pr": 4944,
+     "titre": "Avatars: the loader shows when reopening after a failed 3D load",
+     "fusion": "Oct 13, 08:52",
+     "build196": true
+    },
     {
      "pr": 4429,
      "titre": "Explore on Android: smooth theme swipes, search results swipe like on iPhone",
@@ -1535,6 +1570,12 @@
    "zone": "web",
    "nom": "Website and admin",
    "prs": [
+    {
+     "pr": 4968,
+     "titre": "Website: accounts alone, without the \"No take for ...\" line",
+     "fusion": "Oct 13, 09:11",
+     "build196": true
+    },
     {
      "pr": 2185,
      "titre": "TAK-1267 : fix(admin), make queue rows reachable with arrow keys",
