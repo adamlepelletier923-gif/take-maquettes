@@ -1,21 +1,39 @@
 {
- "majLe": "2026-10-13T09:48+09:00",
- "heure": "09:48",
+ "majLe": "2026-10-13T10:46+09:00",
+ "heure": "10:46",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 146,
-  "depuisDernierTableau": 146,
-  "enCours": 11,
-  "app": 90,
+  "fusionneesDepuis8Octobre": 149,
+  "depuisDernierTableau": 149,
+  "enCours": 12,
+  "app": 92,
   "siteEtAdmin": 10,
-  "serveur": 19,
+  "serveur": 20,
   "outilsEtDocs": 27
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "The fix for opening long conversations now works: about 0.34 s instead of 0.68 s on a slow network, with nothing moving. Its images wait for your OK, like the colors. Merged: the website search line, an avatar fix and the first Android changes."
+  "texte": "The server part of the conversation opening is merged; the app part waits for your OK, like the colors. The Sentry measure found that the reporting starts too early, so it is being fixed, and the review found empty avatar tiles during a redraw, fixed before the build."
  },
  "depuis": [
+  {
+   "heure": "10:34",
+   "pr": 4952,
+   "texte": "Messages, server part: the inbox can carry each conversation's newest message, for the apps that ask for it, and opening any conversation now costs the server three times less planning. Nothing changes until the app part is merged.",
+   "build196": true
+  },
+  {
+   "heure": "10:06",
+   "pr": 4976,
+   "texte": "A test that failed at random now waits for its votes to settle. Nothing changes in the app.",
+   "build196": true
+  },
+  {
+   "heure": "09:50",
+   "pr": 4966,
+   "texte": "Avatars: the headphone band now follows curly hair instead of floating above it. Shaved heads are unchanged.",
+   "build196": true
+  },
   {
    "heure": "09:25",
    "pr": 4958,
@@ -936,8 +954,8 @@
    "statut": "review",
    "sujet": "Messages: a long conversation opens at your tap",
    "pr": 4951,
-   "ouEnEst": "Fixed and measured on the bench: on a slow network, a long conversation now opens in about 0.34 s instead of 0.68 s, with your newest message at the bottom from the first frame; the history then fills in above it without moving it. Short conversations stay as today. The images are on the change for your OK. The server part is being made lighter.",
-   "reste": "Your OK on the images, then the server part and this one merged."
+   "ouEnEst": "Server part merged. Measured again on the bench over 20 openings each: short conversations are unchanged, and long ones open in about 0.34 s instead of 0.68 s on a slow network, with nothing moving. The images are on the change for your OK.",
+   "reste": "Your OK on the images, then merged, then its switch turned on for the test server."
   },
   {
    "statut": "review",
@@ -948,51 +966,58 @@
   },
   {
    "statut": "fixing",
-   "sujet": "Avatars, full-body view: a size jump at the end of the wave",
-   "pr": 4956,
-   "ouEnEst": "An avatar agent keeps the enlarged framing when the wave returns to rest. Its board is being checked.",
-   "reste": "Merged once its board is checked."
+   "sujet": "Error reports from the phone (Sentry)",
+   "pr": 4774,
+   "ouEnEst": "Measured on the bench, 10 pairs: the launch is not slower. But the reporting starts before your friends list shows, and it opens a connection during the launch. It is being changed to start only once the screen is shown and the phone is idle.",
+   "reste": "Measured again, then merged before the final checks."
   },
   {
    "statut": "review",
-   "sujet": "Error reports from the phone (Sentry)",
-   "pr": 4774,
-   "ouEnEst": "Checks green and reviewed. Its app is still building: the Mac is busy, so it builds slowly in the background. The launch measure is ready to run.",
-   "reste": "Launch measured on the bench, then merged before the final checks."
+   "sujet": "Avatar editor: empty tiles while the option images redraw",
+   "pr": 4980,
+   "ouEnEst": "Found by the review: after the update, the option tiles of the avatar editor stayed empty while their new images were drawn, against your no-skeleton rule. Fixed: the old image now stays until the new one is ready.",
+   "reste": "Filmed on the bench, then merged before the build."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Avatars: the wave seen from the side",
+   "pr": 4867,
+   "ouEnEst": "Not merged: seen from the side, the raised hand came against the chin and looked like a thinking pose. Its agent keeps the hand away from the face at every angle, with a test.",
+   "reste": "Merged once its new images are checked."
   },
   {
    "statut": "review",
    "sujet": "Avatars: more fixes in progress",
    "pr": 0,
-   "ouEnEst": "Merged this hour: after a failed load, reopening shows the loader until the 3D's first image. The Codex agents are finishing the wave proportions and rhythm, the rotation on a vertical swipe, the socks and the cuff details.",
+   "ouEnEst": "Merged this hour: the headphone band follows curly hair. The Codex agents are finishing the framing at rest in the full-body view, the rotation on a vertical swipe, the wave rhythm, the cuffs and the socks.",
    "reste": "Each one merges once its board is checked."
   },
   {
    "statut": "measuring",
    "sujet": "Bottom bar: a tab tap sometimes ignored right after launch",
    "pr": 0,
-   "ouEnEst": "Seen once in 20 launches on the simulator. A burst test is ready for the bench; it runs once the Sentry app is built, one build at a time on the Mac.",
+   "ouEnEst": "Seen once in 20 launches on the simulator. A burst test is ready for the bench, after the Sentry measure.",
    "reste": "Run on the bench before the build."
   },
   {
    "statut": "review",
    "sujet": "Final checks of build 197",
    "pr": 0,
-   "ouEnEst": "The go page and the test notes are up to date with everything merged today. Everything merged since the last build was re-read for regressions: green.",
-   "reste": "Run the fluidity gate and the full test loop on the final commit, then your go."
+   "ouEnEst": "Everything merged since the last build has been re-read for regressions, in four passes: green apart from the empty avatar tiles above. The fluidity gate and the full test loop are ready to run on the final commit.",
+   "reste": "Run them on the final commit, then the go page and your go."
   },
   {
    "statut": "later",
    "sujet": "Android: catching up with iPhone, like X on Android",
    "pr": 0,
-   "ouEnEst": "Four Codex agents keep going. Merged: a separate switch for Android's native page swipes (nothing changes for today's phones) and two tests made reliable. Several more changes are reviewed and wait for checks on an Android emulator; the ones that also touch the iPhone wait until build 197 is out.",
+   "ouEnEst": "Four Codex agents keep going. Merged this hour: one more test made reliable. A single Android build gathering all the reviewed changes is prepared for the emulator checks; the changes that also touch the iPhone wait until build 197 is out.",
    "reste": "Android emulator checks when the iPhone simulator is free."
   },
   {
    "statut": "later",
    "sujet": "Android: larger touch areas and very large text",
    "pr": 4412,
-   "ouEnEst": "You said it is not needed for this iPhone build, but to keep working on it. It is up to date with the latest code and its checks are green.",
+   "ouEnEst": "You said it is not needed for this iPhone build, but to keep working on it. It is part of the prepared Android build.",
    "reste": "Android captures right after build 197 starts, then your OK on the look."
   },
   {
@@ -1015,8 +1040,8 @@
   "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
  ],
  "etapes": [
-  "Get your OK on the colors and on the conversation opening; merge the conversation opening with its server part; merge the last avatar fixes.",
-  "Measure the Sentry launch on the bench once its app is built, then merge it; run the bottom bar burst test.",
+  "Get your OK on the colors and on the conversation opening, then merge them.",
+  "Fix and measure again the Sentry start, fix the empty avatar tiles, run the bottom bar burst test; merge the avatar fixes that are ready.",
   "Run the fluidity gate and the full test loop on the final commit, then the go page and your go for the iPhone build 197."
  ],
  "fait": [
@@ -1024,6 +1049,18 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4976,
+     "titre": "A test made reliable (nothing changes in the app)",
+     "fusion": "Oct 13, 10:06",
+     "build196": true
+    },
+    {
+     "pr": 4966,
+     "titre": "Avatars: the headphone band follows curly hair",
+     "fusion": "Oct 13, 09:50",
+     "build196": true
+    },
     {
      "pr": 4958,
      "titre": "Android: native page swipes get their own server switch",
@@ -1636,6 +1673,12 @@
    "zone": "api",
    "nom": "Server",
    "prs": [
+    {
+     "pr": 4952,
+     "titre": "Messages: the inbox can carry the newest message, and threads cost less to open",
+     "fusion": "Oct 13, 10:34",
+     "build196": true
+    },
     {
      "pr": 4949,
      "titre": "Messages: the inbox format for opening any conversation at once",
