@@ -1,21 +1,33 @@
 {
- "majLe": "2026-10-13T12:29+09:00",
- "heure": "12:29",
+ "majLe": "2026-10-13T13:20+09:00",
+ "heure": "13:20",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 159,
-  "depuisDernierTableau": 159,
-  "enCours": 13,
-  "app": 100,
+  "fusionneesDepuis8Octobre": 161,
+  "depuisDernierTableau": 161,
+  "enCours": 15,
+  "app": 102,
   "siteEtAdmin": 10,
   "serveur": 21,
   "outilsEtDocs": 28
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Merged: the colors (one green for the Yes, \"Rising\" stays red), the rounded comment field, error reports from the phone on the test server, and the conversation opening, switched on for the test server. The last four iPhone changes are in review."
+  "texte": "Merged: the feeds without fade and the profile song search that keeps its list, both with your OK on the images. Two new test-loop flows (map and mentions) are green and wait for the bench rehearsal."
  },
  "depuis": [
+  {
+   "heure": "13:07",
+   "pr": 4987,
+   "texte": "Feeds: Takes, Friends and Nearby appear at once, without the 220 ms fade and slide from below.",
+   "build196": true
+  },
+  {
+   "heure": "13:04",
+   "pr": 4981,
+   "texte": "Profile song search: the list stays while you type instead of emptying at each letter. The profile song stays hidden while its server switch is off.",
+   "build196": true
+  },
   {
    "heure": "12:12",
    "pr": 4986,
@@ -1012,38 +1024,59 @@
  "enCours": [
   {
    "statut": "review",
-   "sujet": "Feeds: shown without a 220 ms fade or slide",
-   "pr": 4987,
-   "ouEnEst": "In regression review, with its CI.",
-   "reste": "Reviewed and green, then filmed on the bench, then merged before the final checks."
+   "sujet": "No fade anywhere: 14 changes",
+   "pr": 0,
+   "ouEnEst": "Fourteen changes remove the last fades and slides, on iPhone and Android. They are in regression review, with their CI.",
+   "reste": "Each one merges once reviewed, filmed and green."
+  },
+  {
+   "statut": "measuring",
+   "sujet": "Bench films",
+   "pr": 0,
+   "ouEnEst": "Three effects are being filmed for your OK, and two changes are filmed again: Friends and Nearby after a cancelled swipe, and images without fade.",
+   "reste": "Your OK on the films, then merged."
   },
   {
    "statut": "review",
    "sujet": "Friends and Nearby: the page comes back after a cancelled swipe",
    "pr": 4989,
-   "ouEnEst": "In regression review, with its CI.",
-   "reste": "Merged once reviewed and green, before the final checks."
+   "ouEnEst": "The first film showed no difference: the swipe filmed stopped too early. It is filmed again with a longer swipe.",
+   "reste": "Filmed again, then your OK, then merged."
   },
   {
    "statut": "review",
    "sujet": "Feed and message images without the 120 ms fade",
    "pr": 4964,
-   "ouEnEst": "In regression review, with its CI.",
-   "reste": "Merged once reviewed and green, before the final checks."
+   "ouEnEst": "Waiting for its film.",
+   "reste": "Filmed, then your OK, then merged."
   },
   {
    "statut": "review",
-   "sujet": "Avatars: the textured haircut stays steady while the ears are adjusted",
-   "pr": 4988,
-   "ouEnEst": "In regression review, with its CI.",
-   "reste": "Merged once reviewed and green, before the final checks."
+   "sujet": "Test loop: new checks for the map and mentions",
+   "pr": 5018,
+   "ouEnEst": "Two new flows: the map of Nearby with its place search and \"Search here\", and mentions in a conversation. CI green.",
+   "reste": "Played on the bench in the loop rehearsal, then merged."
+  },
+  {
+   "statut": "review",
+   "sujet": "Test loop: importing a sound by a long press on the mic",
+   "pr": 5019,
+   "ouEnEst": "A new flow for importing a sound in the composer.",
+   "reste": "Played on the bench in the loop rehearsal, then merged."
   },
   {
    "statut": "measuring",
-   "sujet": "Profile song search: the list stays while you type",
-   "pr": 4981,
-   "ouEnEst": "Ready. The profile song stays hidden, even on the test server, while its server switch is off.",
-   "reste": "Filmed on the bench, then merged."
+   "sujet": "Android emulator: the integration app",
+   "pr": 0,
+   "ouEnEst": "The emulator is building the app that gathers all the reviewed Android changes.",
+   "reste": "Android checks on the emulator once it is built."
+  },
+  {
+   "statut": "loop",
+   "sujet": "Rehearsal of the test loop",
+   "pr": 0,
+   "ouEnEst": "The full test loop is rehearsed on the bench before the final run. A CI check that runs the mobile test loop on its own isolated server is in review.",
+   "reste": "Then the fluidity gate and the final loop on the last commit, then your go."
   },
   {
    "statut": "measuring",
@@ -1063,22 +1096,15 @@
    "statut": "review",
    "sujet": "Avatars: more fixes in progress",
    "pr": 0,
-   "ouEnEst": "Merged this hour: the option tiles of the editor keep their image while they redraw. The Codex agents are finishing the framing at rest in the full-body view, the rotation on a vertical swipe, the wave rhythm, the cuffs and the socks.",
+   "ouEnEst": "Reviewed this hour: the framing kept at the end of the full-body wave, and a finished wave that no longer replays. The textured haircut now stays steady while the ears are adjusted; its boards are ready for your OK. The wave benchmark now also counts the cuff details it bends.",
    "reste": "Each one merges once its board is checked."
-  },
-  {
-   "statut": "review",
-   "sujet": "Final checks of build 197",
-   "pr": 0,
-   "ouEnEst": "The seventh regression re-read of everything merged since the last build is in progress.",
-   "reste": "Then the fluidity gate and the full test loop on the final commit, then your go."
   },
   {
    "statut": "later",
    "sujet": "Android: catching up with iPhone, like X on Android",
    "pr": 0,
-   "ouEnEst": "Four Codex agents keep going. A single Android build gathering all the reviewed changes is prepared for the emulator checks; the changes that also touch the iPhone wait until build 197 is out.",
-   "reste": "Android emulator checks when the iPhone simulator is free."
+   "ouEnEst": "Four Codex agents keep going; the changes that also touch the iPhone wait until build 197 is out.",
+   "reste": "Android emulator checks when the integration app is built."
   },
   {
    "statut": "later",
@@ -1107,8 +1133,8 @@
   "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
  ],
  "etapes": [
-  "Finish the review of the last four iPhone changes, film the profile song search and the feeds without fade on the bench, and finish the burst test.",
-  "Finish the seventh regression re-read, then run the fluidity gate and the full test loop on the final commit.",
+  "Film the last effects for your OK, review and merge the changes without fade, and finish the burst test.",
+  "Rehearse the full test loop on the bench with the new flows, then run the fluidity gate and the final loop on the last commit.",
   "Then the go page and your go for the iPhone build 197."
  ],
  "fait": [
@@ -1116,6 +1142,18 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 4987,
+     "titre": "TAK-1321: feeds appear without the 220 ms fade and slide",
+     "fusion": "Oct 13, 13:07",
+     "build196": true
+    },
+    {
+     "pr": 4981,
+     "titre": "TAK-1316: the profile song search keeps its list while you type",
+     "fusion": "Oct 13, 13:04",
+     "build196": true
+    },
     {
      "pr": 4986,
      "titre": "A test made reliable (nothing changes in the app)",
