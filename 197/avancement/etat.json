@@ -1,21 +1,471 @@
 {
- "majLe": "2026-10-13T13:20+09:00",
- "heure": "13:20",
+ "majLe": "2026-10-14T00:39+09:00",
+ "heure": "00:39",
  "dernierTableau": "2026-10-11T22:35+09:00",
  "resume": {
-  "fusionneesDepuis8Octobre": 161,
-  "depuisDernierTableau": 161,
+  "fusionneesDepuis8Octobre": 236,
+  "depuisDernierTableau": 236,
   "enCours": 15,
-  "app": 102,
+  "app": 169,
   "siteEtAdmin": 10,
-  "serveur": 21,
-  "outilsEtDocs": 28
+  "serveur": 22,
+  "outilsEtDocs": 35
  },
  "alerte": {
   "titre": "This hour",
-  "texte": "Merged: the feeds without fade and the profile song search that keeps its list, both with your OK on the images. Two new test-loop flows (map and mentions) are green and wait for the bench rehearsal."
+  "texte": "The keyboard that did not open after « Reply » in the test loop was the bench, not the app: the test simulator had its hardware keyboard on. It is now checked before and after every loop. Two loop rehearsals ran on an older app and do not count: the final loop now builds and checks its own app."
  },
  "depuis": [
+  {
+   "heure": "23:57",
+   "pr": 5068,
+   "texte": "TAK-1402: keep fixed renders and current loads of media",
+   "build196": true
+  },
+  {
+   "heure": "23:56",
+   "pr": 5081,
+   "texte": "TAK-1410: release the native pager of Notifications and Activity when the route is hidden",
+   "build196": true
+  },
+  {
+   "heure": "23:53",
+   "pr": 5094,
+   "texte": "TAK-1426: the test « an ordinary swipe ends the watch » runs on a simulated clock",
+   "build196": true
+  },
+  {
+   "heure": "23:31",
+   "pr": 5084,
+   "texte": "TAK-1064: the pin of the blocked person's anonymous Take waits for the server (guard test)",
+   "build196": true
+  },
+  {
+   "heure": "23:29",
+   "pr": 5073,
+   "texte": "perf(bundle): declare sideEffects false on internal packages",
+   "build196": true
+  },
+  {
+   "heure": "23:27",
+   "pr": 5061,
+   "texte": "TAK-1396: retry the profile photo after the module fails",
+   "build196": true
+  },
+  {
+   "heure": "23:18",
+   "pr": 5063,
+   "texte": "TAK-1064: blocking someone removes the pins of their known Takes at the tap",
+   "build196": true
+  },
+  {
+   "heure": "23:14",
+   "pr": 4901,
+   "texte": "TAK-1222: render the knit of the socks",
+   "build196": true
+  },
+  {
+   "heure": "23:09",
+   "pr": 4956,
+   "texte": "TAK-1278: keep the enlarged framing when the wave returns to rest",
+   "build196": true
+  },
+  {
+   "heure": "23:06",
+   "pr": 5077,
+   "texte": "TAK-1412: flow 26 touches the veil only while the search sheet is still open",
+   "build196": true
+  },
+  {
+   "heure": "23:05",
+   "pr": 5078,
+   "texte": "TAK-1355: the iOS 26 photo picker closes and picks without fragile coordinates (04, 05, 30)",
+   "build196": true
+  },
+  {
+   "heure": "23:05",
+   "pr": 5075,
+   "texte": "TAK-1407: an onLoad whose native URL differs counts for the image shown",
+   "build196": true
+  },
+  {
+   "heure": "23:03",
+   "pr": 5071,
+   "texte": "TAK-1403: pass the public profile's focus to its native pages",
+   "build196": true
+  },
+  {
+   "heure": "23:02",
+   "pr": 5064,
+   "texte": "TAK-1395: release the pager batch when the stack hides Home",
+   "build196": true
+  },
+  {
+   "heure": "22:59",
+   "pr": 5059,
+   "texte": "TAK-809: do not re-read the header when switching profile tabs",
+   "build196": true
+  },
+  {
+   "heure": "22:58",
+   "pr": 4974,
+   "texte": "TAK-1303: paint the audio scrub without redrawing the React player",
+   "build196": true
+  },
+  {
+   "heure": "22:36",
+   "pr": 5056,
+   "texte": "TAK-1048: after a failed vote, the next read tells every feed what the server kept",
+   "build196": true
+  },
+  {
+   "heure": "22:29",
+   "pr": 5067,
+   "texte": "TAK-1400: the sheets' veil follows the finger again",
+   "build196": true
+  },
+  {
+   "heure": "22:28",
+   "pr": 5066,
+   "texte": "TAK-1398: one tap closes the comments preview in the same frame",
+   "build196": true
+  },
+  {
+   "heure": "22:28",
+   "pr": 4992,
+   "texte": "TAK-1226: render the canvas of high-top sneakers",
+   "build196": true
+  },
+  {
+   "heure": "16:36",
+   "pr": 5053,
+   "texte": "TAK-1047: a repost lets the feed refresh finish instead of cancelling it",
+   "build196": true
+  },
+  {
+   "heure": "16:34",
+   "pr": 5060,
+   "texte": "TAK-1394: flow 31, the keyboard after « Reply », right after the first camera access prompt",
+   "build196": true
+  },
+  {
+   "heure": "16:33",
+   "pr": 5062,
+   "texte": "TAK-1355 TAK-1376: flows 04, 26, 27 sturdier on the bench, and a local flow for the profile song",
+   "build196": true
+  },
+  {
+   "heure": "16:32",
+   "pr": 5051,
+   "texte": "TAK-1388: the textured fringe takes the chosen gradient",
+   "build196": true
+  },
+  {
+   "heure": "16:26",
+   "pr": 5021,
+   "texte": "TAK-1357: regression flows for a long press on a tab and a cancelled sticker",
+   "build196": true
+  },
+  {
+   "heure": "16:25",
+   "pr": 5057,
+   "texte": "TAK-1392: text fields follow the iOS text size while the app runs",
+   "build196": true
+  },
+  {
+   "heure": "16:23",
+   "pr": 4982,
+   "texte": "TAK-1243: a finished wave no longer replays when the document is replaced",
+   "build196": true
+  },
+  {
+   "heure": "16:22",
+   "pr": 4970,
+   "texte": "TAK-1304: keep the audio position when the scrub is cancelled",
+   "build196": true
+  },
+  {
+   "heure": "16:20",
+   "pr": 5019,
+   "texte": "TAK-1356: the test loop covers importing a sound by a long press on the mic",
+   "build196": true
+  },
+  {
+   "heure": "16:19",
+   "pr": 5032,
+   "texte": "TAK-1285: open the plain photo when the avatar module is rejected",
+   "build196": true
+  },
+  {
+   "heure": "16:19",
+   "pr": 5045,
+   "texte": "TAK-1387: the video's ±5 s marker appears and leaves without fade",
+   "build196": true
+  },
+  {
+   "heure": "16:18",
+   "pr": 5043,
+   "texte": "TAK-1325: the comments preview opens and closes without fade",
+   "build196": true
+  },
+  {
+   "heure": "16:17",
+   "pr": 5008,
+   "texte": "TAK-1349: show confirmations without fade (iPhone and Android)",
+   "build196": true
+  },
+  {
+   "heure": "16:17",
+   "pr": 4985,
+   "texte": "TAK-1320: present the sheets' veil without fade (iPhone and Android)",
+   "build196": true
+  },
+  {
+   "heure": "16:16",
+   "pr": 4979,
+   "texte": "TAK-1314: open the message menu without fade (iPhone and Android)",
+   "build196": true
+  },
+  {
+   "heure": "16:15",
+   "pr": 4978,
+   "texte": "TAK-1311: slide sign-in and permission without fade on Android and iPhone",
+   "build196": true
+  },
+  {
+   "heure": "16:14",
+   "pr": 4975,
+   "texte": "TAK-1307: open native windows without fade on Android and iPhone",
+   "build196": true
+  },
+  {
+   "heure": "16:13",
+   "pr": 5005,
+   "texte": "TAK-1350: stop the profile pull when the gesture is cancelled",
+   "build196": true
+  },
+  {
+   "heure": "16:11",
+   "pr": 5035,
+   "texte": "TAK-1376: the profile song becomes a small tappable pill, like Instagram",
+   "build196": true
+  },
+  {
+   "heure": "16:10",
+   "pr": 5050,
+   "texte": "TAK-1390: the profile song shows at once and retries silently offline",
+   "build196": true
+  },
+  {
+   "heure": "16:10",
+   "pr": 5023,
+   "texte": "TAK-1358: the Rain veil takes the other fabrics' reflection",
+   "build196": true
+  },
+  {
+   "heure": "16:08",
+   "pr": 5049,
+   "texte": "TAK-1362: an already loaded GIF follows Reduce Motion",
+   "build196": true
+  },
+  {
+   "heure": "16:07",
+   "pr": 4925,
+   "texte": "TAK-1251: rotation also follows a vertical swipe",
+   "build196": true
+  },
+  {
+   "heure": "15:58",
+   "pr": 4994,
+   "texte": "TAK-1323: keep the resting zoom while the avatar tilts",
+   "build196": true
+  },
+  {
+   "heure": "15:56",
+   "pr": 5052,
+   "texte": "TAK-1391: full-body avatar with VoiceOver, rotation by up/down gesture and « View photo »",
+   "build196": true
+  },
+  {
+   "heure": "15:56",
+   "pr": 4941,
+   "texte": "TAK-1245: count the cuff details bent by the wave",
+   "build196": true
+  },
+  {
+   "heure": "15:54",
+   "pr": 4873,
+   "texte": "TAK-1193: the wave's swings follow a measured human wave",
+   "build196": true
+  },
+  {
+   "heure": "15:53",
+   "pr": 4867,
+   "texte": "TAK-1187: keep the waving hand away from the face",
+   "build196": true
+  },
+  {
+   "heure": "15:51",
+   "pr": 5022,
+   "texte": "TAK-1354: pause hidden GIFs outside their playback window",
+   "build196": true
+  },
+  {
+   "heure": "15:47",
+   "pr": 5044,
+   "texte": "TAK-1385: Android cursor, handles and selection take the app's blue",
+   "build196": true
+  },
+  {
+   "heure": "15:21",
+   "pr": 5024,
+   "texte": "TAK-1361: keep the profile's new tab against a stale swipe",
+   "build196": true
+  },
+  {
+   "heure": "15:15",
+   "pr": 5029,
+   "texte": "TAK-1365: release the writes held by a hidden pager page",
+   "build196": true
+  },
+  {
+   "heure": "15:12",
+   "pr": 5017,
+   "texte": "TAK-1352: protect the profile from unfinished vertical values",
+   "build196": true
+  },
+  {
+   "heure": "15:08",
+   "pr": 4991,
+   "texte": "TAK-1333: keep the chosen tab after a cancelled swipe",
+   "build196": true
+  },
+  {
+   "heure": "15:06",
+   "pr": 5018,
+   "texte": "TAK-1355: regression flows for the Nearby map and mentions",
+   "build196": true
+  },
+  {
+   "heure": "15:06",
+   "pr": 4964,
+   "texte": "TAK-1295: remove the 120 ms fade of feed and message images",
+   "build196": true
+  },
+  {
+   "heure": "15:04",
+   "pr": 5026,
+   "texte": "TAK-1363: the chart's duration menu, slightly glassy over the curve",
+   "build196": true
+  },
+  {
+   "heure": "15:03",
+   "pr": 5013,
+   "texte": "TAK-1336: creating a Take without fades",
+   "build196": true
+  },
+  {
+   "heure": "15:02",
+   "pr": 5011,
+   "texte": "TAK-1341: a Take's comments open their veil and error without fade",
+   "build196": true
+  },
+  {
+   "heure": "15:02",
+   "pr": 5009,
+   "texte": "TAK-1334: a sent message appears in the conversation without fade",
+   "build196": true
+  },
+  {
+   "heure": "15:00",
+   "pr": 5007,
+   "texte": "TAK-1335: an accepted or declined message request leaves without fade",
+   "build196": true
+  },
+  {
+   "heure": "14:54",
+   "pr": 5006,
+   "texte": "TAK-1340: onboarding moves between steps without fade",
+   "build196": true
+  },
+  {
+   "heure": "14:53",
+   "pr": 5004,
+   "texte": "TAK-1339: the notification permission example cards arrive without fade",
+   "build196": true
+  },
+  {
+   "heure": "14:52",
+   "pr": 5003,
+   "texte": "TAK-1338: the Know Me result shows without fade",
+   "build196": true
+  },
+  {
+   "heure": "14:51",
+   "pr": 5002,
+   "texte": "TAK-1337: Know Me moves to the next question without fade",
+   "build196": true
+  },
+  {
+   "heure": "14:50",
+   "pr": 5001,
+   "texte": "TAK-1346: the profile's Game tab loses its fade-in, never played in the app",
+   "build196": true
+  },
+  {
+   "heure": "14:49",
+   "pr": 5000,
+   "texte": "TAK-1342: the « Reply to » quote of the message field appears and leaves without fade",
+   "build196": true
+  },
+  {
+   "heure": "14:48",
+   "pr": 4999,
+   "texte": "TAK-1343: the publishing card appears and leaves without fade",
+   "build196": true
+  },
+  {
+   "heure": "14:48",
+   "pr": 4997,
+   "texte": "TAK-1345: the odds chart switches period without fade",
+   "build196": true
+  },
+  {
+   "heure": "14:47",
+   "pr": 4996,
+   "texte": "TAK-1344: the comments' GIF and sticker tray switches collection without fade",
+   "build196": true
+  },
+  {
+   "heure": "14:46",
+   "pr": 4993,
+   "texte": "TAK-1347: the profile's Top 8 without fade",
+   "build196": true
+  },
+  {
+   "heure": "14:45",
+   "pr": 4988,
+   "texte": "TAK-1324: the textured fringe stays steady with ears taken from a photo",
+   "build196": true
+  },
+  {
+   "heure": "14:44",
+   "pr": 4989,
+   "texte": "TAK-1332: Friends / Nearby pages come back after a cancelled swipe",
+   "build196": true
+  },
+  {
+   "heure": "14:44",
+   "pr": 5033,
+   "texte": "TAK-1370: the Android window takes the app's background, light and dark",
+   "build196": true
+  },
+  {
+   "heure": "14:43",
+   "pr": 5031,
+   "texte": "TAK-1371: Android notification accent is the icon's black, not the template purple",
+   "build196": true
+  },
   {
    "heure": "13:07",
    "pr": 4987,
@@ -1024,80 +1474,80 @@
  "enCours": [
   {
    "statut": "review",
-   "sujet": "No fade anywhere: 14 changes",
+   "sujet": "Mentions: the suggestion list runs from one edge of the screen to the other",
+   "pr": 5082,
+   "ouEnEst": "Your decision tonight, like X and Instagram. Screenshots light and dark taken on the bench, and its test flow is green.",
+   "reste": "Merging now."
+  },
+  {
+   "statut": "review",
+   "sujet": "Messages: a thread already opened reopens at once on its newest message",
+   "pr": 5091,
+   "ouEnEst": "Draft, in review with its CI.",
+   "reste": "Merged before the build only if green and measured; otherwise it waits for the next one."
+  },
+  {
+   "statut": "review",
+   "sujet": "Messages: the threads of one screen are read ahead on Wi-Fi, a second after the first paint",
+   "pr": 5092,
+   "ouEnEst": "Draft, in review with its CI.",
+   "reste": "Merged before the build only if green and measured; otherwise it waits for the next one."
+  },
+  {
+   "statut": "fixing",
+   "sujet": "Avatars: the arm under jackets",
+   "pr": 5015,
+   "ouEnEst": "Draft: the arm's path under jackets is being steadied.",
+   "reste": "Merged once its images are checked."
+  },
+  {
+   "statut": "review",
+   "sujet": "Avatars: the wave stops cleanly when the server switches it off",
+   "pr": 5099,
+   "ouEnEst": "Ready, in review with its CI.",
+   "reste": "Merged once reviewed and green."
+  },
+  {
+   "statut": "review",
+   "sujet": "Avatars: View photo waits for the new avatar's first image",
+   "pr": 5079,
+   "ouEnEst": "Draft, in review.",
+   "reste": "Merged once reviewed and green."
+  },
+  {
+   "statut": "review",
+   "sujet": "Reduce Motion also applies to the pickers' previews",
+   "pr": 5074,
+   "ouEnEst": "Draft, in review.",
+   "reste": "Merged once reviewed and green."
+  },
+  {
+   "statut": "go",
+   "sujet": "Launch logo without fade, on iPhone and Android",
+   "pr": 5041,
+   "ouEnEst": "A visual choice that is yours.",
+   "reste": "Your choice, when you want."
+  },
+  {
+   "statut": "loop",
+   "sujet": "Final test loop and fluidity gate",
    "pr": 0,
-   "ouEnEst": "Fourteen changes remove the last fades and slides, on iPhone and Android. They are in regression review, with their CI.",
-   "reste": "Each one merges once reviewed, filmed and green."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Bench films",
-   "pr": 0,
-   "ouEnEst": "Three effects are being filmed for your OK, and two changes are filmed again: Friends and Nearby after a cancelled swipe, and images without fade.",
-   "reste": "Your OK on the films, then merged."
-  },
-  {
-   "statut": "review",
-   "sujet": "Friends and Nearby: the page comes back after a cancelled swipe",
-   "pr": 4989,
-   "ouEnEst": "The first film showed no difference: the swipe filmed stopped too early. It is filmed again with a longer swipe.",
-   "reste": "Filmed again, then your OK, then merged."
-  },
-  {
-   "statut": "review",
-   "sujet": "Feed and message images without the 120 ms fade",
-   "pr": 4964,
-   "ouEnEst": "Waiting for its film.",
-   "reste": "Filmed, then your OK, then merged."
-  },
-  {
-   "statut": "review",
-   "sujet": "Test loop: new checks for the map and mentions",
-   "pr": 5018,
-   "ouEnEst": "Two new flows: the map of Nearby with its place search and \"Search here\", and mentions in a conversation. CI green.",
-   "reste": "Played on the bench in the loop rehearsal, then merged."
-  },
-  {
-   "statut": "review",
-   "sujet": "Test loop: importing a sound by a long press on the mic",
-   "pr": 5019,
-   "ouEnEst": "A new flow for importing a sound in the composer.",
-   "reste": "Played on the bench in the loop rehearsal, then merged."
+   "ouEnEst": "Two loop rehearsals today ran on an app built at 14:26 that ignored the loop's own code, so they did not test the commit they named. The loop now builds its own app from the exact commit, and refuses to start unless that app is the one installed and talks to the loop's server.",
+   "reste": "Run on the final commit once the queue is empty, then the go page and your go."
   },
   {
    "statut": "measuring",
    "sujet": "Android emulator: the integration app",
    "pr": 0,
-   "ouEnEst": "The emulator is building the app that gathers all the reviewed Android changes.",
+   "ouEnEst": "The Android app that gathers all the reviewed Android changes is being built.",
    "reste": "Android checks on the emulator once it is built."
   },
   {
-   "statut": "loop",
-   "sujet": "Rehearsal of the test loop",
-   "pr": 0,
-   "ouEnEst": "The full test loop is rehearsed on the bench before the final run. A CI check that runs the mobile test loop on its own isolated server is in review.",
-   "reste": "Then the fluidity gate and the final loop on the last commit, then your go."
-  },
-  {
-   "statut": "measuring",
-   "sujet": "Fast taps in bursts",
-   "pr": 0,
-   "ouEnEst": "The burst test is running on the bench.",
-   "reste": "If there is no safe fix before the build, build 197 keeps it as a known limit."
-  },
-  {
-   "statut": "fixing",
-   "sujet": "Avatars: the wave seen from the side",
-   "pr": 4867,
-   "ouEnEst": "Not merged: seen from the side, the raised hand came against the chin and looked like a thinking pose. Its agent keeps the hand away from the face at every angle, with a test.",
-   "reste": "Merged once its new images are checked."
-  },
-  {
    "statut": "review",
-   "sujet": "Avatars: more fixes in progress",
-   "pr": 0,
-   "ouEnEst": "Reviewed this hour: the framing kept at the end of the full-body wave, and a finished wave that no longer replays. The textured haircut now stays steady while the ears are adjusted; its boards are ready for your OK. The wave benchmark now also counts the cuff details it bends.",
-   "reste": "Each one merges once its board is checked."
+   "sujet": "Security: audit fixes and dependency updates",
+   "pr": 5065,
+   "ouEnEst": "In review with its CI.",
+   "reste": "Merged once reviewed and green; if it changes the app's packages, it waits for the next build."
   },
   {
    "statut": "later",
@@ -1133,8 +1583,8 @@
   "Replicas: stopped and our machines deleted, by your order; nothing is done there, its branches are only picked up and finished here."
  ],
  "etapes": [
-  "Film the last effects for your OK, review and merge the changes without fade, and finish the burst test.",
-  "Rehearse the full test loop on the bench with the new flows, then run the fluidity gate and the final loop on the last commit.",
+  "Finish the last pull requests in the queue: threads that reopen at once, the avatars, Reduce Motion in the pickers.",
+  "Run the fluidity gate and the final test loop on the final commit, with the app the loop builds itself.",
   "Then the go page and your go for the iPhone build 197."
  ],
  "fait": [
@@ -1142,6 +1592,408 @@
    "zone": "mobile",
    "nom": "iPhone and Android app",
    "prs": [
+    {
+     "pr": 5068,
+     "titre": "TAK-1402: keep fixed renders and current loads of media",
+     "fusion": "Oct 13, 23:57",
+     "build196": true
+    },
+    {
+     "pr": 5081,
+     "titre": "TAK-1410: release the native pager of Notifications and Activity when the route is hidden",
+     "fusion": "Oct 13, 23:56",
+     "build196": true
+    },
+    {
+     "pr": 5094,
+     "titre": "TAK-1426: the test « an ordinary swipe ends the watch » runs on a simulated clock",
+     "fusion": "Oct 13, 23:53",
+     "build196": true
+    },
+    {
+     "pr": 5084,
+     "titre": "TAK-1064: the pin of the blocked person's anonymous Take waits for the server (guard test)",
+     "fusion": "Oct 13, 23:31",
+     "build196": true
+    },
+    {
+     "pr": 5061,
+     "titre": "TAK-1396: retry the profile photo after the module fails",
+     "fusion": "Oct 13, 23:27",
+     "build196": true
+    },
+    {
+     "pr": 5063,
+     "titre": "TAK-1064: blocking someone removes the pins of their known Takes at the tap",
+     "fusion": "Oct 13, 23:18",
+     "build196": true
+    },
+    {
+     "pr": 4901,
+     "titre": "TAK-1222: render the knit of the socks",
+     "fusion": "Oct 13, 23:14",
+     "build196": true
+    },
+    {
+     "pr": 4956,
+     "titre": "TAK-1278: keep the enlarged framing when the wave returns to rest",
+     "fusion": "Oct 13, 23:09",
+     "build196": true
+    },
+    {
+     "pr": 5075,
+     "titre": "TAK-1407: an onLoad whose native URL differs counts for the image shown",
+     "fusion": "Oct 13, 23:05",
+     "build196": true
+    },
+    {
+     "pr": 5071,
+     "titre": "TAK-1403: pass the public profile's focus to its native pages",
+     "fusion": "Oct 13, 23:03",
+     "build196": true
+    },
+    {
+     "pr": 5064,
+     "titre": "TAK-1395: release the pager batch when the stack hides Home",
+     "fusion": "Oct 13, 23:02",
+     "build196": true
+    },
+    {
+     "pr": 5059,
+     "titre": "TAK-809: do not re-read the header when switching profile tabs",
+     "fusion": "Oct 13, 22:59",
+     "build196": true
+    },
+    {
+     "pr": 4974,
+     "titre": "TAK-1303: paint the audio scrub without redrawing the React player",
+     "fusion": "Oct 13, 22:58",
+     "build196": true
+    },
+    {
+     "pr": 5056,
+     "titre": "TAK-1048: after a failed vote, the next read tells every feed what the server kept",
+     "fusion": "Oct 13, 22:36",
+     "build196": true
+    },
+    {
+     "pr": 5067,
+     "titre": "TAK-1400: the sheets' veil follows the finger again",
+     "fusion": "Oct 13, 22:29",
+     "build196": true
+    },
+    {
+     "pr": 5066,
+     "titre": "TAK-1398: one tap closes the comments preview in the same frame",
+     "fusion": "Oct 13, 22:28",
+     "build196": true
+    },
+    {
+     "pr": 4992,
+     "titre": "TAK-1226: render the canvas of high-top sneakers",
+     "fusion": "Oct 13, 22:28",
+     "build196": true
+    },
+    {
+     "pr": 5053,
+     "titre": "TAK-1047: a repost lets the feed refresh finish instead of cancelling it",
+     "fusion": "Oct 13, 16:36",
+     "build196": true
+    },
+    {
+     "pr": 5051,
+     "titre": "TAK-1388: the textured fringe takes the chosen gradient",
+     "fusion": "Oct 13, 16:32",
+     "build196": true
+    },
+    {
+     "pr": 5057,
+     "titre": "TAK-1392: text fields follow the iOS text size while the app runs",
+     "fusion": "Oct 13, 16:25",
+     "build196": true
+    },
+    {
+     "pr": 4982,
+     "titre": "TAK-1243: a finished wave no longer replays when the document is replaced",
+     "fusion": "Oct 13, 16:23",
+     "build196": true
+    },
+    {
+     "pr": 4970,
+     "titre": "TAK-1304: keep the audio position when the scrub is cancelled",
+     "fusion": "Oct 13, 16:22",
+     "build196": true
+    },
+    {
+     "pr": 5032,
+     "titre": "TAK-1285: open the plain photo when the avatar module is rejected",
+     "fusion": "Oct 13, 16:19",
+     "build196": true
+    },
+    {
+     "pr": 5045,
+     "titre": "TAK-1387: the video's ±5 s marker appears and leaves without fade",
+     "fusion": "Oct 13, 16:19",
+     "build196": true
+    },
+    {
+     "pr": 5043,
+     "titre": "TAK-1325: the comments preview opens and closes without fade",
+     "fusion": "Oct 13, 16:18",
+     "build196": true
+    },
+    {
+     "pr": 5008,
+     "titre": "TAK-1349: show confirmations without fade (iPhone and Android)",
+     "fusion": "Oct 13, 16:17",
+     "build196": true
+    },
+    {
+     "pr": 4985,
+     "titre": "TAK-1320: present the sheets' veil without fade (iPhone and Android)",
+     "fusion": "Oct 13, 16:17",
+     "build196": true
+    },
+    {
+     "pr": 4979,
+     "titre": "TAK-1314: open the message menu without fade (iPhone and Android)",
+     "fusion": "Oct 13, 16:16",
+     "build196": true
+    },
+    {
+     "pr": 4978,
+     "titre": "TAK-1311: slide sign-in and permission without fade on Android and iPhone",
+     "fusion": "Oct 13, 16:15",
+     "build196": true
+    },
+    {
+     "pr": 4975,
+     "titre": "TAK-1307: open native windows without fade on Android and iPhone",
+     "fusion": "Oct 13, 16:14",
+     "build196": true
+    },
+    {
+     "pr": 5005,
+     "titre": "TAK-1350: stop the profile pull when the gesture is cancelled",
+     "fusion": "Oct 13, 16:13",
+     "build196": true
+    },
+    {
+     "pr": 5035,
+     "titre": "TAK-1376: the profile song becomes a small tappable pill, like Instagram",
+     "fusion": "Oct 13, 16:11",
+     "build196": true
+    },
+    {
+     "pr": 5050,
+     "titre": "TAK-1390: the profile song shows at once and retries silently offline",
+     "fusion": "Oct 13, 16:10",
+     "build196": true
+    },
+    {
+     "pr": 5023,
+     "titre": "TAK-1358: the Rain veil takes the other fabrics' reflection",
+     "fusion": "Oct 13, 16:10",
+     "build196": true
+    },
+    {
+     "pr": 5049,
+     "titre": "TAK-1362: an already loaded GIF follows Reduce Motion",
+     "fusion": "Oct 13, 16:08",
+     "build196": true
+    },
+    {
+     "pr": 4925,
+     "titre": "TAK-1251: rotation also follows a vertical swipe",
+     "fusion": "Oct 13, 16:07",
+     "build196": true
+    },
+    {
+     "pr": 4994,
+     "titre": "TAK-1323: keep the resting zoom while the avatar tilts",
+     "fusion": "Oct 13, 15:58",
+     "build196": true
+    },
+    {
+     "pr": 5052,
+     "titre": "TAK-1391: full-body avatar with VoiceOver, rotation by up/down gesture and « View photo »",
+     "fusion": "Oct 13, 15:56",
+     "build196": true
+    },
+    {
+     "pr": 4941,
+     "titre": "TAK-1245: count the cuff details bent by the wave",
+     "fusion": "Oct 13, 15:56",
+     "build196": true
+    },
+    {
+     "pr": 4873,
+     "titre": "TAK-1193: the wave's swings follow a measured human wave",
+     "fusion": "Oct 13, 15:54",
+     "build196": true
+    },
+    {
+     "pr": 4867,
+     "titre": "TAK-1187: keep the waving hand away from the face",
+     "fusion": "Oct 13, 15:53",
+     "build196": true
+    },
+    {
+     "pr": 5022,
+     "titre": "TAK-1354: pause hidden GIFs outside their playback window",
+     "fusion": "Oct 13, 15:51",
+     "build196": true
+    },
+    {
+     "pr": 5044,
+     "titre": "TAK-1385: Android cursor, handles and selection take the app's blue",
+     "fusion": "Oct 13, 15:47",
+     "build196": true
+    },
+    {
+     "pr": 5024,
+     "titre": "TAK-1361: keep the profile's new tab against a stale swipe",
+     "fusion": "Oct 13, 15:21",
+     "build196": true
+    },
+    {
+     "pr": 5029,
+     "titre": "TAK-1365: release the writes held by a hidden pager page",
+     "fusion": "Oct 13, 15:15",
+     "build196": true
+    },
+    {
+     "pr": 5017,
+     "titre": "TAK-1352: protect the profile from unfinished vertical values",
+     "fusion": "Oct 13, 15:12",
+     "build196": true
+    },
+    {
+     "pr": 4991,
+     "titre": "TAK-1333: keep the chosen tab after a cancelled swipe",
+     "fusion": "Oct 13, 15:08",
+     "build196": true
+    },
+    {
+     "pr": 4964,
+     "titre": "TAK-1295: remove the 120 ms fade of feed and message images",
+     "fusion": "Oct 13, 15:06",
+     "build196": true
+    },
+    {
+     "pr": 5026,
+     "titre": "TAK-1363: the chart's duration menu, slightly glassy over the curve",
+     "fusion": "Oct 13, 15:04",
+     "build196": true
+    },
+    {
+     "pr": 5013,
+     "titre": "TAK-1336: creating a Take without fades",
+     "fusion": "Oct 13, 15:03",
+     "build196": true
+    },
+    {
+     "pr": 5011,
+     "titre": "TAK-1341: a Take's comments open their veil and error without fade",
+     "fusion": "Oct 13, 15:02",
+     "build196": true
+    },
+    {
+     "pr": 5009,
+     "titre": "TAK-1334: a sent message appears in the conversation without fade",
+     "fusion": "Oct 13, 15:02",
+     "build196": true
+    },
+    {
+     "pr": 5007,
+     "titre": "TAK-1335: an accepted or declined message request leaves without fade",
+     "fusion": "Oct 13, 15:00",
+     "build196": true
+    },
+    {
+     "pr": 5006,
+     "titre": "TAK-1340: onboarding moves between steps without fade",
+     "fusion": "Oct 13, 14:54",
+     "build196": true
+    },
+    {
+     "pr": 5004,
+     "titre": "TAK-1339: the notification permission example cards arrive without fade",
+     "fusion": "Oct 13, 14:53",
+     "build196": true
+    },
+    {
+     "pr": 5003,
+     "titre": "TAK-1338: the Know Me result shows without fade",
+     "fusion": "Oct 13, 14:52",
+     "build196": true
+    },
+    {
+     "pr": 5002,
+     "titre": "TAK-1337: Know Me moves to the next question without fade",
+     "fusion": "Oct 13, 14:51",
+     "build196": true
+    },
+    {
+     "pr": 5001,
+     "titre": "TAK-1346: the profile's Game tab loses its fade-in, never played in the app",
+     "fusion": "Oct 13, 14:50",
+     "build196": true
+    },
+    {
+     "pr": 5000,
+     "titre": "TAK-1342: the « Reply to » quote of the message field appears and leaves without fade",
+     "fusion": "Oct 13, 14:49",
+     "build196": true
+    },
+    {
+     "pr": 4999,
+     "titre": "TAK-1343: the publishing card appears and leaves without fade",
+     "fusion": "Oct 13, 14:48",
+     "build196": true
+    },
+    {
+     "pr": 4997,
+     "titre": "TAK-1345: the odds chart switches period without fade",
+     "fusion": "Oct 13, 14:48",
+     "build196": true
+    },
+    {
+     "pr": 4996,
+     "titre": "TAK-1344: the comments' GIF and sticker tray switches collection without fade",
+     "fusion": "Oct 13, 14:47",
+     "build196": true
+    },
+    {
+     "pr": 4993,
+     "titre": "TAK-1347: the profile's Top 8 without fade",
+     "fusion": "Oct 13, 14:46",
+     "build196": true
+    },
+    {
+     "pr": 4988,
+     "titre": "TAK-1324: the textured fringe stays steady with ears taken from a photo",
+     "fusion": "Oct 13, 14:45",
+     "build196": true
+    },
+    {
+     "pr": 4989,
+     "titre": "TAK-1332: Friends / Nearby pages come back after a cancelled swipe",
+     "fusion": "Oct 13, 14:44",
+     "build196": true
+    },
+    {
+     "pr": 5033,
+     "titre": "TAK-1370: the Android window takes the app's background, light and dark",
+     "fusion": "Oct 13, 14:44",
+     "build196": true
+    },
+    {
+     "pr": 5031,
+     "titre": "TAK-1371: Android notification accent is the icon's black, not the template purple",
+     "fusion": "Oct 13, 14:43",
+     "build196": true
+    },
     {
      "pr": 4987,
      "titre": "TAK-1321: feeds appear without the 220 ms fade and slide",
@@ -1827,6 +2679,12 @@
    "nom": "Server",
    "prs": [
     {
+     "pr": 5073,
+     "titre": "perf(bundle): declare sideEffects false on internal packages",
+     "fusion": "Oct 13, 23:29",
+     "build196": true
+    },
+    {
      "pr": 4977,
      "titre": "Server: the newest message in the inbox is switched on for the test server",
      "fusion": "Oct 13, 11:10",
@@ -1958,6 +2816,36 @@
    "zone": "outillage",
    "nom": "CI, scripts and infra",
    "prs": [
+    {
+     "pr": 5078,
+     "titre": "TAK-1355: the iOS 26 photo picker closes and picks without fragile coordinates (04, 05, 30)",
+     "fusion": "Oct 13, 23:05",
+     "build196": true
+    },
+    {
+     "pr": 5060,
+     "titre": "TAK-1394: flow 31, the keyboard after « Reply », right after the first camera access prompt",
+     "fusion": "Oct 13, 16:34",
+     "build196": true
+    },
+    {
+     "pr": 5021,
+     "titre": "TAK-1357: regression flows for a long press on a tab and a cancelled sticker",
+     "fusion": "Oct 13, 16:26",
+     "build196": true
+    },
+    {
+     "pr": 5019,
+     "titre": "TAK-1356: the test loop covers importing a sound by a long press on the mic",
+     "fusion": "Oct 13, 16:20",
+     "build196": true
+    },
+    {
+     "pr": 5018,
+     "titre": "TAK-1355: regression flows for the Nearby map and mentions",
+     "fusion": "Oct 13, 15:06",
+     "build196": true
+    },
     {
      "pr": 4550,
      "titre": "TAK-803: copy and GIF confirmations made reliable in the iOS tests",
@@ -2102,6 +2990,18 @@
    "zone": "autre",
    "nom": "Other",
    "prs": [
+    {
+     "pr": 5077,
+     "titre": "TAK-1412: flow 26 touches the veil only while the search sheet is still open",
+     "fusion": "Oct 13, 23:06",
+     "build196": true
+    },
+    {
+     "pr": 5062,
+     "titre": "TAK-1355 TAK-1376: flows 04, 26, 27 sturdier on the bench, and a local flow for the profile song",
+     "fusion": "Oct 13, 16:33",
+     "build196": true
+    },
     {
      "pr": 4902,
      "titre": "TAK-1223: test 23 swipes from the map's question, no longer from its counter hidden under the tab bar",
