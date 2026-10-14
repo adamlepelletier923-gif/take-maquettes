@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gains du 197 en ms</title>
+<style>
+  :root {
+    --bg: #ffffff; --ink: #111111; --muted: #6b6b6b; --line: #e6e6e6; --gain: #12813a;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0d0d0d; --ink: #f2f2f2; --muted: #9a9a9a; --line: #262626; --gain: #4cc777; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 16px 48px; }
+  h1 { font-size: 26px; margin: 0 0 6px; text-wrap: balance; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  h2 { font-size: 17px; margin: 28px 0 8px; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  td { padding: 12px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.quoi { width: 52%; }
+  td.avant, td.apres { white-space: nowrap; text-align: right; }
+  td.avant { color: var(--muted); }
+  td.apres { color: var(--gain); font-weight: 700; }
+  td.fleche { color: var(--muted); text-align: center; width: 24px; }
+  th { text-align: right; color: var(--muted); font-size: 13px; font-weight: 600; padding: 6px; border-bottom: 1px solid var(--line); }
+  th:first-child { text-align: left; }
+  .pr { display: block; color: var(--muted); font-size: 12px; }
+  .note { color: var(--muted); font-size: 14px; margin-top: 20px; }
+  @media (max-width: 480px) {
+    td.quoi { width: auto; }
+    td { padding: 10px 4px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Build 197 : ce qui va plus vite</h1>
+  <p class="sub">Temps d'attente réels, avant → après, en millisecondes. Commit 7d15901447.</p>
+
+  <h2>Mesuré sur le banc (même iPhone simulé, même compte)</h2>
+  <table>
+    <thead><tr><th>Sur quoi</th><th>Avant</th><th></th><th>Après</th></tr></thead>
+    <tbody>
+      <tr><td class="quoi">Ouvrir l'app jusqu'à l'accueil affiché</td><td class="avant">5 216 ms</td><td class="fleche">→</td><td class="apres">4 989 ms</td></tr>
+      <tr><td class="quoi">Ouvrir l'app jusqu'à la 1re page d'Amis reçue</td><td class="avant">674 ms</td><td class="fleche">→</td><td class="apres">631 ms</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Mesuré dans les changements du 197</h2>
+  <table>
+    <thead><tr><th>Sur quoi</th><th>Avant</th><th></th><th>Après</th></tr></thead>
+    <tbody>
+      <tr><td class="quoi">Ouvrir à froid une conversation avec un GIF<span class="pr">#4933</span></td><td class="avant">11 000 ms</td><td class="fleche">→</td><td class="apres">350 ms</td></tr>
+      <tr><td class="quoi">Ouvrir un long fil de messages sur le dernier message<span class="pr">#4977</span></td><td class="avant">680 ms</td><td class="fleche">→</td><td class="apres">340 ms</td></tr>
+      <tr><td class="quoi">Carte : 1re proposition de lieu en tapant<span class="pr">#4818</span></td><td class="avant">1 334 ms</td><td class="fleche">→</td><td class="apres">445 ms</td></tr>
+      <tr><td class="quoi">Mentions : la liste suit la lettre tapée<span class="pr">#4879</span></td><td class="avant">277 ms</td><td class="fleche">→</td><td class="apres">128 ms</td></tr>
+      <tr><td class="quoi">Chanson du profil : écran vide à chaque lettre tapée<span class="pr">#4981</span></td><td class="avant">600 à 1 000 ms</td><td class="fleche">→</td><td class="apres">0 ms</td></tr>
+      <tr><td class="quoi">Avatar : tourner la tête<span class="pr">#5173</span></td><td class="avant">33 à 73 ms</td><td class="fleche">→</td><td class="apres">0,03 ms</td></tr>
+      <tr><td class="quoi">Serveur : lire une page de Messages<span class="pr">#4952</span></td><td class="avant">4,98 ms</td><td class="fleche">→</td><td class="apres">4,06 ms</td></tr>
+    </tbody>
+  </table>
+
+  <p class="note">Les « 2 000 ms et quelques » de l'ancienne fiche n'étaient pas un temps d'attente : c'était le total des petites saccades pendant tout un parcours d'environ une minute. Ce total baisse sur 19 écrans sur 23, et aucun n'empire. Le 196 sera ajouté quand le Mac sera assez calme pour le reconstruire.</p>
+</main>
+</body>
+</html>
